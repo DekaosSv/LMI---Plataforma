@@ -29,6 +29,16 @@ function escapeHTML(str) {
     .replace(/'/g, '&#039;');
 }
 
+function getFichajesUrl(name) {
+  if (!name) return 'https://www.fichajes.com/';
+  const slug = name.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, '-');
+  return `https://www.fichajes.com/jugador/${slug}/`;
+}
+
 // Storage Management
 function loadDataFromStorage() {
   try {
