@@ -51,7 +51,7 @@ def extraer_posicion_y_nombre(cadena_original):
     
     pats_pos = [
         ('PT', r'^(PT|POR|GK)\b[:\s]*'),
-        ('CT', r'^(CT|DFC|DC|DF)\b[:\s]*'),
+        ('CT', r'^(CT|DFC|DF)\b[:\s]*'),
         ('LI', r'^(LI|LTI)\b[:\s]*'),
         ('LD', r'^(LD|LTD)\b[:\s]*'),
         ('MCD', r'^(MCD|CD)\b[:\s]*'),

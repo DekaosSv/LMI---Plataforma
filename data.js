@@ -615,7 +615,7 @@ const INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "price": 5000000,
       "isLegend": false
     },
@@ -1105,7 +1105,7 @@ const INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "rbleipzig",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "price": 5000000,
       "isLegend": false
     },
@@ -1505,7 +1505,7 @@ const INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "price": 5000000,
       "isLegend": false
     },
@@ -1592,7 +1592,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_127",
       "name": "Kai Havertz",
-      "position": "CT",
+      "position": "DC",
       "teamId": "realmadrid",
       "goals": 4,
       "assists": 4,
@@ -1644,7 +1644,7 @@ const INITIAL_LMI_DATA = {
       "name": "Dirk Kuyt",
       "position": "ED",
       "teamId": "rbleipzig",
-      "goals": 5,
+      "goals": 6,
       "assists": 2,
       "price": 5000000,
       "isLegend": false
@@ -1652,7 +1652,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_133",
       "name": "Ademola Lookman",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bocajuniors",
       "goals": 2,
       "assists": 0,
@@ -1685,7 +1685,7 @@ const INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 4,
+      "assists": 6,
       "price": 5000000,
       "isLegend": false
     },
@@ -1822,7 +1822,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_150",
       "name": "Harry Kane",
-      "position": "CT",
+      "position": "DC",
       "teamId": "rbleipzig",
       "goals": 5,
       "assists": 2,
@@ -1832,7 +1832,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_151",
       "name": "Bryan Mbeumo",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bocajuniors",
       "goals": 2,
       "assists": 2,
@@ -1902,7 +1902,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_158",
       "name": "del Piero",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayermunich",
       "goals": 0,
       "assists": 0,
@@ -1932,7 +1932,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_161",
       "name": "Liam Delap",
-      "position": "CT",
+      "position": "DC",
       "teamId": "wrexham",
       "goals": 0,
       "assists": 0,
@@ -1962,7 +1962,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_164",
       "name": "Julián Alvarez (p)",
-      "position": "CT",
+      "position": "DC",
       "teamId": "fcbarcelona",
       "goals": 5,
       "assists": 10,
@@ -1982,7 +1982,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_166",
       "name": "Erling Haaland",
-      "position": "CT",
+      "position": "DC",
       "teamId": "acmiln",
       "goals": 11,
       "assists": 5,
@@ -2042,7 +2042,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_172",
       "name": "Semih Kiliçsoy",
-      "position": "CT",
+      "position": "DC",
       "teamId": "arsenal",
       "goals": 0,
       "assists": 1,
@@ -2062,7 +2062,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_174",
       "name": "Darwin Núñez",
-      "position": "CT",
+      "position": "DC",
       "teamId": "tottenhamhotspur",
       "goals": 10,
       "assists": 4,
@@ -2082,7 +2082,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_176",
       "name": "Watkins",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayermunich",
       "goals": 0,
       "assists": 0,
@@ -2122,7 +2122,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_180",
       "name": "Kylian Mbappé",
-      "position": "CT",
+      "position": "DC",
       "teamId": "interdemilan",
       "goals": 4,
       "assists": 2,
@@ -2132,7 +2132,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_181",
       "name": "João Pedro",
-      "position": "CT",
+      "position": "DC",
       "teamId": "realmadrid",
       "goals": 4,
       "assists": 1,
@@ -2142,7 +2142,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_182",
       "name": "Gabriel Batistuta",
-      "position": "CT",
+      "position": "DC",
       "teamId": "fcbarcelona",
       "goals": 3,
       "assists": 1,
@@ -2152,7 +2152,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_183",
       "name": "Andriy Shevchenko",
-      "position": "CT",
+      "position": "DC",
       "teamId": "terengganufc",
       "goals": 9,
       "assists": 1,
@@ -2162,7 +2162,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_184",
       "name": "Cristiano Ronaldo",
-      "position": "CT",
+      "position": "DC",
       "teamId": "acmiln",
       "goals": 14,
       "assists": 3,
@@ -2172,7 +2172,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_185",
       "name": "Lautaro Martínez",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayernleverkusen",
       "goals": 5,
       "assists": 0,
@@ -2182,7 +2182,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_186",
       "name": "Yoane Wissa",
-      "position": "CT",
+      "position": "DC",
       "teamId": "rbleipzig",
       "goals": 1,
       "assists": 1,
@@ -2202,7 +2202,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_188",
       "name": "Viktor Gyökeres",
-      "position": "CT",
+      "position": "DC",
       "teamId": "galatasaray",
       "goals": 1,
       "assists": 1,
@@ -2212,7 +2212,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_189",
       "name": "Paul Onuachu",
-      "position": "CT",
+      "position": "DC",
       "teamId": "psg",
       "goals": 10,
       "assists": 2,
@@ -2222,7 +2222,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_190",
       "name": "Umar Sadiq",
-      "position": "CT",
+      "position": "DC",
       "teamId": "arsenal",
       "goals": 1,
       "assists": 0,
@@ -2232,7 +2232,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_191",
       "name": "Jamie Vardy",
-      "position": "CT",
+      "position": "DC",
       "teamId": "como1907",
       "goals": 15,
       "assists": 1,
@@ -2242,7 +2242,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_192",
       "name": "Loïs Openda",
-      "position": "CT",
+      "position": "DC",
       "teamId": "tottenhamhotspur",
       "goals": 5,
       "assists": 11,
@@ -2252,7 +2252,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_193",
       "name": "Raúl Jiménez",
-      "position": "CT",
+      "position": "DC",
       "teamId": "hellasverona",
       "goals": 0,
       "assists": 0,
@@ -2262,7 +2262,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_194",
       "name": "diaby",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayermunich",
       "goals": 0,
       "assists": 0,
@@ -2272,7 +2272,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_195",
       "name": "Joshua Zirkzee",
-      "position": "CT",
+      "position": "DC",
       "teamId": "manchesterunited",
       "goals": 0,
       "assists": 0,
@@ -2292,7 +2292,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_197",
       "name": "Alexander Sørloth",
-      "position": "CT",
+      "position": "DC",
       "teamId": "wrexham",
       "goals": 0,
       "assists": 0,
@@ -2362,7 +2362,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_204",
       "name": "Romelu Lukaku",
-      "position": "CT",
+      "position": "DC",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 1,
@@ -2442,7 +2442,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_212",
       "name": "Mateta",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayermunich",
       "goals": 0,
       "assists": 0,
@@ -2542,7 +2542,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_222",
       "name": "Karim Benzema",
-      "position": "CT",
+      "position": "DC",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -2692,7 +2692,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_237",
       "name": "Thierno Barry",
-      "position": "CT",
+      "position": "DC",
       "teamId": "terengganufc",
       "goals": 0,
       "assists": 0,
@@ -2722,7 +2722,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_240",
       "name": "Joselu",
-      "position": "CT",
+      "position": "DC",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -2872,7 +2872,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_255",
       "name": "Marcus Thuram",
-      "position": "CT",
+      "position": "DC",
       "teamId": "terengganufc",
       "goals": 0,
       "assists": 0,
@@ -2912,7 +2912,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_259",
       "name": "Omar Marmoush",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bocajuniors",
       "goals": 1,
       "assists": 0,
@@ -3224,7 +3224,7 @@ const INITIAL_LMI_DATA = {
       "name": "N'Golo Kanté",
       "position": "MCD",
       "teamId": "fcbarcelona",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "price": 5000000,
       "isLegend": false
@@ -3264,7 +3264,7 @@ const INITIAL_LMI_DATA = {
       "name": "Paul Pogba",
       "position": "MC",
       "teamId": "rbleipzig",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "price": 5000000,
       "isLegend": false
@@ -3305,7 +3305,7 @@ const INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "price": 5000000,
       "isLegend": false
     },
@@ -3445,7 +3445,7 @@ const INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "rbleipzig",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "price": 5000000,
       "isLegend": false
     },
@@ -3712,7 +3712,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_339",
       "name": "Schick",
-      "position": "CT",
+      "position": "DC",
       "teamId": "manchesterunited",
       "goals": 0,
       "assists": 0,
@@ -3754,7 +3754,7 @@ const INITIAL_LMI_DATA = {
       "name": "Giuliano Simeone",
       "position": "ID",
       "teamId": "realmadrid",
-      "goals": 4,
+      "goals": 5,
       "assists": 3,
       "price": 5000000,
       "isLegend": false
@@ -3844,8 +3844,8 @@ const INITIAL_LMI_DATA = {
       "name": "Antoine Semenyo",
       "position": "ED",
       "teamId": "arsenal",
-      "goals": 4,
-      "assists": 5,
+      "goals": 6,
+      "assists": 6,
       "price": 5000000,
       "isLegend": false
     },
@@ -3922,7 +3922,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_360",
       "name": "Pio Esposito",
-      "position": "CT",
+      "position": "DC",
       "teamId": "interdemilan",
       "goals": 0,
       "assists": 0,
@@ -4002,7 +4002,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_368",
       "name": "Samu Aghehowa",
-      "position": "CT",
+      "position": "DC",
       "teamId": "galatasaray",
       "goals": 0,
       "assists": 1,
@@ -4024,8 +4024,8 @@ const INITIAL_LMI_DATA = {
       "name": "Estêvão",
       "position": "ED",
       "teamId": "arsenal",
-      "goals": 9,
-      "assists": 4,
+      "goals": 11,
+      "assists": 7,
       "price": 5000000,
       "isLegend": false
     },
@@ -4052,7 +4052,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_373",
       "name": "Youssef En Nesyri",
-      "position": "CT",
+      "position": "DC",
       "teamId": "hellasverona",
       "goals": 0,
       "assists": 0,
@@ -4082,7 +4082,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_376",
       "name": "Moise Kean",
-      "position": "CT",
+      "position": "DC",
       "teamId": "melbournecity",
       "goals": 0,
       "assists": 0,
@@ -4102,7 +4102,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_378",
       "name": "Alexander Isak",
-      "position": "CT",
+      "position": "DC",
       "teamId": "interdemilan",
       "goals": 3,
       "assists": 0,
@@ -4122,7 +4122,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_380",
       "name": "Gonçalo Ramos",
-      "position": "CT",
+      "position": "DC",
       "teamId": "fcbarcelona",
       "goals": 8,
       "assists": 5,
@@ -4142,7 +4142,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_382",
       "name": "Rasmus Højlund",
-      "position": "CT",
+      "position": "DC",
       "teamId": "acmiln",
       "goals": 0,
       "assists": 0,
@@ -4152,7 +4152,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_383",
       "name": "Gabriel Jesus",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayernleverkusen",
       "goals": 8,
       "assists": 2,
@@ -4182,7 +4182,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_386",
       "name": "Julio Enciso",
-      "position": "CT",
+      "position": "DC",
       "teamId": "galatasaray",
       "goals": 0,
       "assists": 0,
@@ -4192,7 +4192,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_387",
       "name": "Christian Pulišić",
-      "position": "CT",
+      "position": "DC",
       "teamId": "psg",
       "goals": 1,
       "assists": 0,
@@ -4202,9 +4202,9 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_388",
       "name": "Samuel Eto’o",
-      "position": "CT",
+      "position": "DC",
       "teamId": "arsenal",
-      "goals": 9,
+      "goals": 14,
       "assists": 3,
       "price": 5000000,
       "isLegend": false
@@ -4222,7 +4222,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_390",
       "name": "Edinson Cavani",
-      "position": "CT",
+      "position": "DC",
       "teamId": "tottenhamhotspur",
       "goals": 0,
       "assists": 0,
@@ -4262,7 +4262,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_394",
       "name": "Artem Dovbyk",
-      "position": "CT",
+      "position": "DC",
       "teamId": "melbournecity",
       "goals": 0,
       "assists": 0,
@@ -4282,7 +4282,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_396",
       "name": "Mikel Oyarzabal",
-      "position": "CT",
+      "position": "DC",
       "teamId": "interdemilan",
       "goals": 2,
       "assists": 1,
@@ -4302,7 +4302,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_398",
       "name": "Ferran Torres",
-      "position": "CT",
+      "position": "DC",
       "teamId": "fcbarcelona",
       "goals": 3,
       "assists": 2,
@@ -4322,7 +4322,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_400",
       "name": "Endrick",
-      "position": "CT",
+      "position": "DC",
       "teamId": "acmiln",
       "goals": 2,
       "assists": 0,
@@ -4332,7 +4332,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_401",
       "name": "Hugo Ekitiké",
-      "position": "CT",
+      "position": "DC",
       "teamId": "bayernleverkusen",
       "goals": 7,
       "assists": 0,
@@ -4362,7 +4362,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_404",
       "name": "Mateo Retegui",
-      "position": "CT",
+      "position": "DC",
       "teamId": "galatasaray",
       "goals": 4,
       "assists": 1,
@@ -4372,7 +4372,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_405",
       "name": "Castolo",
-      "position": "CT",
+      "position": "DC",
       "teamId": "psg",
       "goals": 0,
       "assists": 0,
@@ -4392,7 +4392,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_407",
       "name": "Serhou Guirassy",
-      "position": "CT",
+      "position": "DC",
       "teamId": "como1907",
       "goals": 0,
       "assists": 0,
@@ -4402,7 +4402,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_408",
       "name": "Pedro Neto",
-      "position": "CT",
+      "position": "DC",
       "teamId": "tottenhamhotspur",
       "goals": 1,
       "assists": 0,
@@ -4432,7 +4432,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_411",
       "name": "Enner Valencia",
-      "position": "CT",
+      "position": "DC",
       "teamId": "melbournecity",
       "goals": 0,
       "assists": 0,
@@ -4442,7 +4442,7 @@ const INITIAL_LMI_DATA = {
     {
       "id": "p_412",
       "name": "Jhon Durán",
-      "position": "CT",
+      "position": "DC",
       "teamId": "wrexham",
       "goals": 0,
       "assists": 0,
