@@ -1,10 +1,17 @@
 // App Engine for Liga Master Internacional (LMI) - Temporada 9
 
-let lmiData = null;
-let currentNav = 'dashboard';
+var lmiData = null;
+var currentNav = 'dashboard';
 // Secure Cryptographic PIN Storage (SHA-256 hash of '28100703')
 const ADMIN_PIN_HASH = 'b050b14c930ce375e7faac42d2403474bb1c00bf12986fdf9b83c2dca25c7394';
 
+// Initialize App
+document.addEventListener('DOMContentLoaded', () => {
+  loadDataFromStorage();
+  initUI();
+});
+
+// Global Helpers
 async function sha256(message) {
   const msgBuffer = new TextEncoder().encode(message);
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);

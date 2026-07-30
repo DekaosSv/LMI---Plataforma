@@ -407,7 +407,7 @@ def process_excel():
 
         # 7. Write to data.js
         print("💾 Guardando resultados en 'data.js'...")
-        js_content = f"// Base de datos unificada LMI Temporada 9 desde lmi temp 9.xlsx\n\nconst INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
+        js_content = f"// Base de datos unificada LMI Temporada 9 desde lmi temp 9.xlsx\n\nvar INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
         
         with open('data.js', 'w', encoding='utf-8') as f:
             f.write(js_content)

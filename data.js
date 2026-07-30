@@ -1,6 +1,6 @@
 // Base de datos unificada LMI Temporada 9 desde lmi temp 9.xlsx
 
-const INITIAL_LMI_DATA = {
+var INITIAL_LMI_DATA = {
   "season": "Temporada 9 en Curso",
   "teams": [
     {
