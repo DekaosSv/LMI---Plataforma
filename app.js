@@ -24,14 +24,18 @@ function escapeHTML(str) {
 
 // Storage Management
 function loadDataFromStorage() {
-  // Always load fresh INITIAL_LMI_DATA from data.js as default
+  try {
+    localStorage.removeItem('lmi_league_t9_v10');
+    localStorage.removeItem('lmi_league_t9_v12');
+  } catch (e) {}
+
   lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
 
-  const saved = localStorage.getItem('lmi_league_t9_v12');
+  const saved = localStorage.getItem('lmi_league_t9_v15');
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (parsed && parsed.players && parsed.players.length > 0) {
+      if (parsed && Array.isArray(parsed.players) && parsed.players.length > 50) {
         lmiData = parsed;
       }
     } catch (e) {
@@ -41,7 +45,7 @@ function loadDataFromStorage() {
 }
 
 function saveDataToStorage() {
-  localStorage.setItem('lmi_league_t9_v12', JSON.stringify(lmiData));
+  localStorage.setItem('lmi_league_t9_v15', JSON.stringify(lmiData));
 }
 
 // UI Initialization & Navigation
