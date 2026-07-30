@@ -2,24 +2,24 @@
 
 let lmiData = null;
 let currentNav = 'dashboard';
-let isAdminLoggedIn = false;
-const ADMIN_PIN = '1234';
+// Secure Cryptographic PIN Storage (SHA-256 hash of '28100703')
+const ADMIN_PIN_HASH = 'b050b14c930ce375e7faac42d2403474bb1c00bf12986fdf9b83c2dca25c7394';
 
-// Initialize App
-document.addEventListener('DOMContentLoaded', () => {
-  loadDataFromStorage();
-  initUI();
-});
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
-// Global Helpers
-function getFichajesUrl(name) {
-  if (!name) return 'https://www.fichajes.com/';
-  const slug = name.toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, '-');
-  return `https://www.fichajes.com/jugador/${slug}/`;
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 // Storage Management
@@ -534,6 +534,8 @@ function renderRules() {
 }
 
 // Admin Operations
+let isAdminLoggedIn = false;
+
 function openAdminModal() {
   const modal = document.getElementById('modal-admin-login');
   const loginForm = modal.querySelector('form');
@@ -546,7 +548,7 @@ function openAdminModal() {
     if (dbTools) dbTools.style.display = 'block';
   } else {
     if (loginForm) loginForm.style.display = 'block';
-    if (modalText) modalText.innerHTML = 'Introduce el PIN de administrador para habilitar el modo edición (PIN por defecto: <strong>1234</strong>).';
+    if (modalText) modalText.innerHTML = 'Introduce el PIN de administrador para habilitar el modo edición.';
     if (dbTools) dbTools.style.display = 'none';
   }
   
@@ -557,16 +559,23 @@ function closeModal(modalId) {
   document.getElementById(modalId).classList.remove('active');
 }
 
-function handleAdminLogin(e) {
+async function handleAdminLogin(e) {
   e.preventDefault();
-  const input = document.getElementById('admin-pin-input').value;
-  if (input === ADMIN_PIN) {
+  const inputInput = document.getElementById('admin-pin-input');
+  const inputVal = inputInput ? inputInput.value.trim() : '';
+  
+  if (!inputVal) return;
+
+  const hashedInput = await sha256(inputVal);
+
+  if (hashedInput === ADMIN_PIN_HASH) {
     isAdminLoggedIn = true;
+    if (inputInput) inputInput.value = '';
     updateAdminUI();
     showToast("¡Modo Administrador activado con éxito!", "fa-circle-check");
     openAdminModal();
   } else {
-    showToast("PIN incorrecto. Intenta de nuevo (Default: 1234)", "fa-triangle-exclamation");
+    showToast("PIN incorrecto. Intenta de nuevo.", "fa-triangle-exclamation");
   }
 }
 

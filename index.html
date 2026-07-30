@@ -6,6 +6,11 @@
   <title>Liga Master Internacional (LMI) - Temporada 9</title>
   <meta name="description" content="Plataforma oficial de la Liga Master Internacional (LMI) eFootball. Estadísticas de goleadores/asistidores, plantillas oficiales y Calculadora de Renovaciones Temporada 9.">
   
+  <!-- Security & CSP Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -336,13 +341,13 @@
         <h3 class="modal-title"><i class="fa-solid fa-shield-halved"></i> Panel de Administración</h3>
         <button class="close-btn" onclick="closeModal('modal-admin-login')">&times;</button>
       </div>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;">
-        Introduce el PIN de administrador para habilitar el modo edición (PIN por defecto: <strong>1234</strong>).
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+        Introduce el PIN de administrador para habilitar el modo edición.
       </p>
       <form onsubmit="handleAdminLogin(event)">
         <div class="form-group">
           <label class="form-label">PIN de Seguridad:</label>
-          <input type="password" id="admin-pin-input" class="form-control" placeholder="1234" required autofocus>
+          <input type="password" id="admin-pin-input" class="form-control" placeholder="••••••••" required autofocus>
         </div>
         <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Desbloquear Modo Edición</button>
       </form>
