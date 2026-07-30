@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liga Master Internacional (LMI) - Temporada 9</title>
+  <meta name="description" content="Plataforma oficial de la Liga Master Internacional (LMI) eFootball. Estadísticas de goleadores/asistidores, plantillas oficiales y Calculadora de Renovaciones Temporada 9.">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <a class="brand-logo" onclick="switchNav('dashboard')">
+      <span class="brand-badge">LMI</span>
+      <span class="brand-title">LIGA MASTER INTERNACIONAL</span>
+    </a>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><button class="nav-link active" onclick="switchNav('dashboard')"><i class="fa-solid fa-house"></i> Inicio</button></li>
+        <li><button class="nav-link" onclick="switchNav('stats')"><i class="fa-solid fa-chart-line"></i> Estadísticas</button></li>
+        <li><button class="nav-link" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Equipos</button></li>
+        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
+        <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscador BD</button></li>
+        <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li>
+        <li><button class="nav-link admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-lock"></i> Admin</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sub Navigation / Season Bar -->
+  <div class="division-bar">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <span class="hero-tag" style="margin-bottom:0; background: rgba(0, 255, 136, 0.15); border-color: var(--neon-green); color: var(--neon-green);">
+        <i class="fa-solid fa-trophy"></i> LIGA UNIFICADA
+      </span>
+      <span style="font-family: var(--font-heading); font-weight: 700; color: #fff;">Temporada 9 en Curso</span>
+    </div>
+
+    <div class="league-status">
+      <span class="status-dot"></span>
+      <span>16 Clubes Oficiales &bull; eFootball v4.x</span>
+    </div>
+  </div>
+
+  <!-- Main Application Container -->
+  <main class="app-container">
+
+    <!-- 1. DASHBOARD / INICIO -->
+    <section id="sec-dashboard" class="page-section active">
+      <div class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-tag">Liga Master eFootball</span>
+          <h1 class="hero-title">BIENVENIDO A LA <span>LMI TEMPORADA 9</span></h1>
+          <p class="hero-desc">Consulta estadísticas de goleadores y asistidores en tiempo real, explora la plantilla de los 16 clubes y calcula las renovaciones oficiales de tu equipo.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="switchNav('renovaciones')"><i class="fa-solid fa-calculator"></i> Calculadora de Renovaciones T9</button>
+            <button class="btn-secondary" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Ver Equipos</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Top Scorers Column -->
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-fire"></i> Top Goleadores de la Liga</h2>
+              <button class="btn-secondary" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;" onclick="switchNav('stats')">Ver todos</button>
+            </div>
+            <div id="dashboard-top-scorers">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Top Assists & Quick Actions -->
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Top Asistidores</h2>
+              <button class="btn-secondary" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;" onclick="switchNav('stats')">Ver más</button>
+            </div>
+            <div id="dashboard-top-assists">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ESTADÍSTICAS -->
+    <section id="sec-stats" class="page-section">
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: var(--neon-green);"></i> Tabla de Goleadores</h2>
+          </div>
+          <div id="full-goleadores-list">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Tabla de Asistidores</h2>
+          </div>
+          <div id="full-asistencias-list">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HUB DE EQUIPOS -->
+    <section id="sec-teams" class="page-section">
+      <div class="card" style="margin-bottom: 1rem; padding: 1rem 1.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <label class="form-label" style="margin-bottom:0;">Seleccionar Club:</label>
+            <select id="team-select" class="form-control" style="width: auto; font-weight: 700;" onchange="loadTeamHub(this.value)">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+          <div id="admin-team-edit-btn-container">
+            <button class="btn-secondary" onclick="openEditTeamModal()"><i class="fa-solid fa-pen-to-square"></i> Personalizar Club</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Custom Banner -->
+      <div id="team-hub-header" class="team-hub-header">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Team Details & Roster Grid -->
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-users"></i> Plantilla Oficial de Jugadores</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="standings-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Pos</th>
+                  <th>Jugador & Consultas</th>
+                  <th style="text-align: center;">Goles</th>
+                  <th style="text-align: center;">Asist.</th>
+                  <th style="text-align: right;">Costo Renovación</th>
+                </tr>
+              </thead>
+              <tbody id="team-roster-tbody">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-info-circle"></i> Información del Club</h2>
+          </div>
+          <div id="team-hub-stats-box">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 9 -->
+    <section id="sec-renovaciones" class="page-section">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title"><i class="fa-solid fa-file-signature" style="color: var(--neon-green);"></i> Calculadora de Renovaciones - Temporada 9</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Calcula el costo total de renovación de tu plantilla según tu posición asignada por el Administrador.</p>
+          </div>
+          <button class="btn-secondary" onclick="exportRenewalReport()"><i class="fa-solid fa-copy"></i> Copiar Resumen</button>
+        </div>
+
+        <!-- Team Selector & Discount Badge Header -->
+        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <label class="form-label" style="margin-bottom:0;">Seleccionar tu Club:</label>
+            <select id="renovation-team-select" class="form-control" style="width: auto; font-weight: 700;" onchange="loadRenovationsForTeam(this.value)">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+
+          <div id="renovation-discount-badge" style="display: flex; align-items: center; gap: 0.75rem;">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Roster Renewal Table -->
+        <div class="table-responsive" style="margin-bottom: 1.5rem;">
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Pos</th>
+                <th>Jugador & Verificación</th>
+                <th style="text-align: center;">¿Leyenda / Épico?</th>
+                <th style="text-align: right;">Sueldo / Valor Base ($M)</th>
+              </tr>
+            </thead>
+            <tbody id="renovation-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Total Calculation Breakdown & Legend Notes -->
+        <div class="dashboard-grid">
+          <div class="card" style="background: rgba(0,0,0,0.5); border-color: rgba(0, 255, 136, 0.3);">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--neon-green); margin-bottom: 1rem;">
+              <i class="fa-solid fa-calculator"></i> Desglose Total de Renovación
+            </h3>
+            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <span>Suma Bruta de Jugadores:</span>
+              <strong id="renovation-subtotal" style="font-family: var(--font-heading); color: var(--neon-gold);">$0M USD</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <span>Porcentaje de Pago (Posición en Liga):</span>
+              <strong id="renovation-percent-label" style="font-family: var(--font-heading); color: var(--neon-cyan);">100%</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; font-size: 1.25rem; font-weight: 700;">
+              <span>TOTAL A PAGAR:</span>
+              <strong id="renovation-total-final" style="font-family: var(--font-heading); color: var(--neon-green); font-size: 1.5rem;">$0M USD</strong>
+            </div>
+          </div>
+
+          <!-- Legend Change / Removal Notes -->
+          <div class="card" style="background: rgba(0,0,0,0.5);">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--neon-cyan); margin-bottom: 1rem;">
+              <i class="fa-solid fa-crown"></i> Registro de Leyenda / Épico / Big Time
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+              Cada club tiene derecho a <strong>1 Leyenda o Épico</strong>. Los <strong>Big Time</strong> están disponibles. Si deseas cambiar o eliminar tu leyenda / épico / Big Time, debes pagar su renovación y especificarlo aquí abajo:
+            </p>
+            <div class="form-group">
+              <label class="form-label">Cambio de Leyenda / Épico / Big Time:</label>
+              <input type="text" id="renovation-note-change" class="form-control" placeholder="Ej. Cambio leyenda por Ronaldinho" onchange="saveRenovationNotes()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Eliminación de Leyenda / Épico / Big Time:</label>
+              <input type="text" id="renovation-note-remove" class="form-control" placeholder="Ej. Elimino mi leyenda Pelé" onchange="saveRenovationNotes()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BUSCADOR DE JUGADORES BD -->
+    <section id="sec-buscador" class="page-section">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title"><i class="fa-solid fa-magnifying-glass" style="color: var(--neon-cyan);"></i> Buscador General de Jugadores BD</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+              En la LMI ningún jugador se repite. Busca por coincidencia exacta o aproximada para saber a qué club pertenece cualquier jugador de la liga.
+            </p>
+          </div>
+          <span class="hero-tag" style="background: rgba(0, 229, 255, 0.15); border-color: var(--neon-cyan); color: var(--neon-cyan);" id="search-count-badge">
+            Cargando Base de Datos...
+          </span>
+        </div>
+
+        <!-- Search Controls -->
+        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+          <div style="flex: 1; min-width: 280px; position: relative;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+            <input type="text" id="player-search-input" class="form-control" style="padding-left: 2.75rem;" placeholder="Buscar jugador por nombre exacto o aproximado (ej. Mbappé, Oblak, Pedri, Bastoni...)" oninput="filterPlayersDatabase()">
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <select id="player-search-pos-filter" class="form-control" style="width: auto;" onchange="filterPlayersDatabase()">
+              <option value="">Todas las Posiciones</option>
+              <option value="PT">PT (Portero)</option>
+              <option value="CT">CT (Defensa Central)</option>
+              <option value="LI">LI (Lateral Izquierdo)</option>
+              <option value="LD">LD (Lateral Derecho)</option>
+              <option value="MCD">MCD (Contención)</option>
+              <option value="MC">MC (Mediocampista)</option>
+              <option value="ID">ID (Interior Derecho)</option>
+              <option value="II">II (Interior Izquierdo)</option>
+              <option value="MP">MP (Mediapunta)</option>
+              <option value="SD">SD (Segundo Delantero)</option>
+              <option value="EI">EI (Extremo Izquierdo)</option>
+              <option value="ED">ED (Extremo Derecho)</option>
+              <option value="DC">DC (Delantero Centro)</option>
+            </select>
+
+            <select id="player-search-team-filter" class="form-control" style="width: auto;" onchange="filterPlayersDatabase()">
+              <!-- Populated via JS -->
+            </select>
+
+            <button class="btn-secondary" onclick="resetPlayerSearchFilters()"><i class="fa-solid fa-rotate-left"></i> Limpiar</button>
+          </div>
+        </div>
+
+        <!-- Search Results Grid / List -->
+        <div id="player-search-results-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. REGLAMENTO -->
+    <section id="sec-rules" class="page-section">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title"><i class="fa-solid fa-book"></i> Reglamento Oficial LMI - Temporada 9</h2>
+        </div>
+        <div id="rules-content">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALS -->
+
+  <!-- Admin Login Modal -->
+  <div id="modal-admin-login" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 400px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-shield-halved"></i> Panel de Administración</h3>
+        <button class="close-btn" onclick="closeModal('modal-admin-login')">&times;</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;">
+        Introduce el PIN de administrador para habilitar el modo edición (PIN por defecto: <strong>1234</strong>).
+      </p>
+      <form onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label class="form-label">PIN de Seguridad:</label>
+          <input type="password" id="admin-pin-input" class="form-control" placeholder="1234" required autofocus>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Desbloquear Modo Edición</button>
+      </form>
+
+      <div id="admin-db-tools" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+        <h4 style="font-family: var(--font-heading); font-size: 0.95rem; color: var(--neon-cyan); margin-bottom: 0.8rem;">Gestión de Base de Datos (JSON)</h4>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="btn-secondary" style="flex: 1; padding: 0.5rem; font-size: 0.85rem;" onclick="exportDatabaseJSON()"><i class="fa-solid fa-download"></i> Exportar BD</button>
+          <button class="btn-secondary" style="flex: 1; padding: 0.5rem; font-size: 0.85rem;" onclick="triggerImportJSON()"><i class="fa-solid fa-upload"></i> Importar BD</button>
+          <input type="file" id="import-json-file" accept=".json" style="display: none;" onchange="importDatabaseJSON(event)">
+        </div>
+        <button class="btn-secondary" style="width: 100%; margin-top: 0.5rem; padding: 0.4rem; font-size: 0.8rem; color: var(--neon-pink); border-color: rgba(255,0,85,0.3);" onclick="resetToInitialData()"><i class="fa-solid fa-rotate-left"></i> Restablecer Datos de Fábrica</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Team Modal -->
+  <div id="modal-edit-team" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-pen-to-square"></i> Personalizar Club & Posición Admin</h3>
+        <button class="close-btn" onclick="closeModal('modal-edit-team')">&times;</button>
+      </div>
+      <form onsubmit="handleSaveTeamCustomization(event)">
+        <input type="hidden" id="modal-team-id">
+        <div class="form-group">
+          <label class="form-label">Nombre del Club:</label>
+          <input type="text" id="modal-team-name" class="form-control" required>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Posición Oficial en Liga (1 a 16):</label>
+            <input type="number" id="modal-team-rank" class="form-control" min="1" max="16" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Director Técnico:</label>
+            <input type="text" id="modal-team-manager" class="form-control" required>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Estadio:</label>
+            <input type="text" id="modal-team-stadium" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Presupuesto ($USD):</label>
+            <input type="number" id="modal-team-budget" class="form-control" step="1000000" required>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">Guardar Personalización</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Player Modal -->
+  <div id="modal-edit-player" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-user-pen"></i> Editar Jugador</h3>
+        <button class="close-btn" onclick="closeModal('modal-edit-player')">&times;</button>
+      </div>
+      <form onsubmit="handleSavePlayer(event)">
+        <input type="hidden" id="modal-player-id">
+        <div class="form-group">
+          <label class="form-label">Nombre del Jugador:</label>
+          <input type="text" id="modal-player-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Posición Oficial (13 Categorías):</label>
+          <select id="modal-player-position" class="form-control" required>
+            <option value="PT">PT - Portero</option>
+            <option value="CT">CT - Defensa central</option>
+            <option value="LI">LI - Lateral izquierdo</option>
+            <option value="LD">LD - Lateral derecho</option>
+            <option value="MCD">MCD - Contención</option>
+            <option value="MC">MC - Mediocampista</option>
+            <option value="ID">ID - Interior derecho</option>
+            <option value="II">II - Interior izquierdo</option>
+            <option value="MP">MP - Mediapunta</option>
+            <option value="SD">SD - Segundo delantero</option>
+            <option value="EI">EI - Extremo izquierdo</option>
+            <option value="ED">ED - Extremo derecho</option>
+            <option value="DC">DC - Delantero centro</option>
+          </select>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Goles:</label>
+            <input type="number" id="modal-player-goals" class="form-control" min="0" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Asistencias:</label>
+            <input type="number" id="modal-player-assists" class="form-control" min="0" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Costo / Sueldo Base de Renovación ($USD):</label>
+          <input type="number" id="modal-player-price" class="form-control" step="100000" required>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Liga Master Internacional (LMI) eFootball Platform. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
