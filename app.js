@@ -24,24 +24,24 @@ function escapeHTML(str) {
 
 // Storage Management
 function loadDataFromStorage() {
-  const saved = localStorage.getItem('lmi_league_t9_v10');
+  // Always load fresh INITIAL_LMI_DATA from data.js as default
+  lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
+
+  const saved = localStorage.getItem('lmi_league_t9_v12');
   if (saved) {
     try {
-      lmiData = JSON.parse(saved);
-      if (!lmiData || !lmiData.players || lmiData.players.length === 0) {
-        lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.players && parsed.players.length > 0) {
+        lmiData = parsed;
       }
     } catch (e) {
-      console.error("Error loading saved data, resetting to initial", e);
-      lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
+      console.error("Error loading saved data", e);
     }
-  } else {
-    lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
   }
 }
 
 function saveDataToStorage() {
-  localStorage.setItem('lmi_league_t9_v10', JSON.stringify(lmiData));
+  localStorage.setItem('lmi_league_t9_v12', JSON.stringify(lmiData));
 }
 
 // UI Initialization & Navigation
@@ -642,6 +642,7 @@ function importDatabaseJSON(event) {
 
 function resetToInitialData() {
   if (confirm("¿Estás seguro de restablecer todos los datos a la configuración inicial de fábrica? Se borrarán los cambios locales.")) {
+    localStorage.removeItem('lmi_league_t9_v12');
     localStorage.removeItem('lmi_league_t9_v10');
     loadDataFromStorage();
     initUI();
