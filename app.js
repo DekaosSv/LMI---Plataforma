@@ -45,13 +45,14 @@ function saveDataToStorage() {
 }
 
 // UI Initialization & Navigation
+let renderedSections = { dashboard: true };
+let currentSearchPageSize = 24;
+
 function initUI() {
   renderDashboard();
-  renderStats();
   initTeamSelect();
   initRenovationSelect();
   initPlayerSearchUI();
-  renderRules();
   updateAdminUI();
 }
 
@@ -67,7 +68,10 @@ function switchNav(navId) {
   if (activeSec) activeSec.classList.add('active');
 
   if (navId === 'dashboard') renderDashboard();
-  if (navId === 'stats') renderStats();
+  if (navId === 'stats' && !renderedSections.stats) {
+    renderStats();
+    renderedSections.stats = true;
+  }
   if (navId === 'teams') {
     const sel = document.getElementById('team-select');
     if (sel && sel.value) loadTeamHub(sel.value);
@@ -77,7 +81,14 @@ function switchNav(navId) {
     if (sel && sel.value) loadRenovationsForTeam(sel.value);
   }
   if (navId === 'buscador') {
-    filterPlayersDatabase();
+    if (!renderedSections.buscador) {
+      filterPlayersDatabase();
+      renderedSections.buscador = true;
+    }
+  }
+  if (navId === 'rules' && !renderedSections.rules) {
+    renderRules();
+    renderedSections.rules = true;
   }
 }
 
@@ -748,7 +759,7 @@ function normalizeSearchString(str) {
     .replace(/[^a-z0-9]/g, "");
 }
 
-function filterPlayersDatabase() {
+function filterPlayersDatabase(resetLimit = true) {
   const queryInput = document.getElementById('player-search-input');
   const posFilter = document.getElementById('player-search-pos-filter');
   const teamFilter = document.getElementById('player-search-team-filter');
@@ -756,6 +767,10 @@ function filterPlayersDatabase() {
   const countBadge = document.getElementById('search-count-badge');
 
   if (!resultsContainer) return;
+
+  if (resetLimit) {
+    currentSearchPageSize = 24;
+  }
 
   const rawQuery = queryInput ? queryInput.value.trim() : '';
   const normQuery = normalizeSearchString(rawQuery);
@@ -793,7 +808,9 @@ function filterPlayersDatabase() {
     return;
   }
 
-  resultsContainer.innerHTML = filtered.map(p => {
+  const sliced = filtered.slice(0, currentSearchPageSize);
+
+  let html = sliced.map(p => {
     const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: 'Logos Equipos/Real_Madrid.png' };
     const priceVal = (p.price || 5000000) / 1000000;
 
@@ -812,7 +829,7 @@ function filterPlayersDatabase() {
 
         <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08);">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <img src="${team.logo}" alt="${team.name}" style="width: 24px; height: 24px; object-fit: contain;">
+            <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 24px; height: 24px; object-fit: contain;">
             <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">${team.name}</span>
           </div>
 
@@ -824,6 +841,24 @@ function filterPlayersDatabase() {
       </div>
     `;
   }).join('');
+
+  if (filtered.length > currentSearchPageSize) {
+    const remaining = filtered.length - currentSearchPageSize;
+    html += `
+      <div style="grid-column: 1 / -1; text-align: center; margin-top: 1rem;">
+        <button class="btn-primary" onclick="loadMoreSearchResults()" style="padding: 0.7rem 1.8rem; font-size: 0.95rem;">
+          <i class="fa-solid fa-angles-down"></i> Mostrar más (${remaining} restantes)
+        </button>
+      </div>
+    `;
+  }
+
+  resultsContainer.innerHTML = html;
+}
+
+function loadMoreSearchResults() {
+  currentSearchPageSize += 24;
+  filterPlayersDatabase(false);
 }
 
 function resetPlayerSearchFilters() {
