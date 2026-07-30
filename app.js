@@ -25,38 +25,30 @@ function escapeHTML(str) {
 // Storage Management
 function loadDataFromStorage() {
   try {
-    localStorage.removeItem('lmi_league_t9_v10');
-    localStorage.removeItem('lmi_league_t9_v12');
+    localStorage.clear();
   } catch (e) {}
 
-  lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
-
-  const saved = localStorage.getItem('lmi_league_t9_v15');
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-      if (parsed && Array.isArray(parsed.players) && parsed.players.length > 50) {
-        lmiData = parsed;
-      }
-    } catch (e) {
-      console.error("Error loading saved data", e);
-    }
+  if (typeof INITIAL_LMI_DATA !== 'undefined') {
+    lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
+  } else {
+    console.error("INITIAL_LMI_DATA is not defined!");
   }
 }
 
 function saveDataToStorage() {
-  localStorage.setItem('lmi_league_t9_v15', JSON.stringify(lmiData));
+  localStorage.setItem('lmi_league_t9_v20', JSON.stringify(lmiData));
 }
 
 // UI Initialization & Navigation
-let renderedSections = { dashboard: true };
 let currentSearchPageSize = 24;
 
 function initUI() {
   renderDashboard();
+  renderStats();
   initTeamSelect();
   initRenovationSelect();
   initPlayerSearchUI();
+  renderRules();
   updateAdminUI();
 }
 
@@ -72,10 +64,7 @@ function switchNav(navId) {
   if (activeSec) activeSec.classList.add('active');
 
   if (navId === 'dashboard') renderDashboard();
-  if (navId === 'stats' && !renderedSections.stats) {
-    renderStats();
-    renderedSections.stats = true;
-  }
+  if (navId === 'stats') renderStats();
   if (navId === 'teams') {
     const sel = document.getElementById('team-select');
     if (sel && sel.value) loadTeamHub(sel.value);
@@ -84,16 +73,8 @@ function switchNav(navId) {
     const sel = document.getElementById('renovation-team-select');
     if (sel && sel.value) loadRenovationsForTeam(sel.value);
   }
-  if (navId === 'buscador') {
-    if (!renderedSections.buscador) {
-      filterPlayersDatabase();
-      renderedSections.buscador = true;
-    }
-  }
-  if (navId === 'rules' && !renderedSections.rules) {
-    renderRules();
-    renderedSections.rules = true;
-  }
+  if (navId === 'buscador') filterPlayersDatabase();
+  if (navId === 'rules') renderRules();
 }
 
 // Render Dashboard
