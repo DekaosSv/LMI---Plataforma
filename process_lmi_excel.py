@@ -190,7 +190,8 @@ def process_excel():
         sheet_xml_paths = find_sheet_xml_paths(z)
         
         # Verify required sheets
-        required_sheets = ['BD', 'Lista', 'Registro Liga']
+        # Validar hojas obligatorias en el archivo Excel
+        required_sheets = ['Lista', 'Registro Liga']
         for r_sheet in required_sheets:
             if r_sheet not in sheet_xml_paths:
                 print(f"❌ Error: La hoja '{r_sheet}' es obligatoria en el Excel pero no se encontró.")
@@ -198,19 +199,20 @@ def process_excel():
                 sys.exit(1)
 
         print("📑 Parseando hojas del Excel...")
-        bd_data = parse_sheet_cells(z, sheet_xml_paths['BD'], strings)
         lista_data = parse_sheet_cells(z, sheet_xml_paths['Lista'], strings)
         registro_data = parse_sheet_cells(z, sheet_xml_paths['Registro Liga'], strings)
+        registro_champions = parse_sheet_cells(z, sheet_xml_paths['Registro Champions'], strings) if 'Registro Champions' in sheet_xml_paths else {}
+        registro_estelar = parse_sheet_cells(z, sheet_xml_paths['RegistroEstelar'], strings) if 'RegistroEstelar' in sheet_xml_paths else {}
 
-        # 3. Build Teams Dictionary (Based on Lista sheet headers)
+        # 3. Construir diccionario de Equipos (basado en los encabezados de la hoja Lista)
         print("🛡️ Procesando equipos y asignando posiciones de la liga...")
         teams_dict = {}
         col_to_team_id = {}
         
-        # Row 1 has headers (team names)
+        # La Fila 1 de la hoja Lista tiene los nombres de los equipos
         row1_lista = lista_data.get(1, {})
         
-        # Iterate over the 18 columns (A to R)
+        # Iterar sobre las 18 columnas (A a la R)
         for col_idx in range(18):
             col_letter = col_idx_to_letter(col_idx)
             raw_team_name = row1_lista.get(col_letter, '').strip()
@@ -220,17 +222,16 @@ def process_excel():
             norm_tname = normalize_key(raw_team_name)
             team_id = TEAM_ID_MAP.get(norm_tname, norm_tname)
             
-            # Map column letter to team ID
+            # Mapear letra de columna a ID del equipo
             col_to_team_id[col_letter] = team_id
             
-            # Position is column order (1-based index)
+            # La posición es el orden de las columnas (1 a 18)
             rank = col_idx + 1
             
-            # Preserve old team metadata or fallback to default
+            # Preservar metadatos anteriores si el equipo ya existía o colocar valores predeterminados
             if team_id in old_teams:
                 team_obj = old_teams[team_id].copy()
                 team_obj["leagueRank"] = rank
-                # Ensure stadium and manager are present
                 if "stadium" not in team_obj: team_obj["stadium"] = f"Estadio {raw_team_name}"
                 if "manager" not in team_obj: team_obj["manager"] = "Director Técnico"
                 if "budget" not in team_obj: team_obj["budget"] = 100000000
@@ -256,39 +257,34 @@ def process_excel():
                 }
             teams_dict[team_id] = team_obj
 
-        # 4. Build Players List from BD (clean name) & Lista (positions)
+        # 4. Construir lista de Jugadores estrictamente desde la hoja Lista (nombres y posiciones)
         print("⚽ Procesando plantillas de los clubes...")
         players_list = []
         player_id_counter = 1
         
-        # Max rows in excel rosters is typically under 50, but we can loop up to 100
+        # El roster de jugadores va desde la fila 2 hasta la 100
         for row_idx in range(2, 101):
-            row_bd = bd_data.get(row_idx, {})
             row_lista = lista_data.get(row_idx, {})
             
-            # Check each of the columns
+            # Recorrer cada columna activa de la hoja Lista
             for col_idx in range(18):
                 col_letter = col_idx_to_letter(col_idx)
                 if col_letter not in col_to_team_id:
                     continue
                     
                 team_id = col_to_team_id[col_letter]
-                bd_name = row_bd.get(col_letter, '').strip()
                 lista_raw = row_lista.get(col_letter, '').strip()
                 
-                # Check if player exists in this cell
-                if bd_name or lista_raw:
-                    # Clean/extract position prefix from Lista cell
+                # Si la celda contiene datos de jugador
+                if lista_raw:
+                    # Limpiar prefijo de posición (ej. "PT: Courtois" -> pos="PT", name="Courtois")
                     pos, clean_lista_name = extraer_posicion_y_nombre(lista_raw)
-                    
-                    # Use BD name as the clean name, fallback to Lista name if BD is empty
-                    player_name = bd_name if bd_name else clean_lista_name
+                    player_name = clean_lista_name
                     
                     if player_name:
-                        # Normalize key for looking up old properties
                         norm_pname = normalize_key(player_name)
                         
-                        # Preserve old isLegend or price if they exist
+                        # Preservar precio e isLegend si existía en data.js
                         is_legend = False
                         price = 5000000
                         if norm_pname in old_players_by_norm:
@@ -303,6 +299,12 @@ def process_excel():
                             "teamId": team_id,
                             "goals": 0,
                             "assists": 0,
+                            "goals_liga": 0,
+                            "assists_liga": 0,
+                            "goals_champions": 0,
+                            "assists_champions": 0,
+                            "goals_estelar": 0,
+                            "assists_estelar": 0,
                             "price": price,
                             "isLegend": is_legend
                         })
@@ -313,62 +315,151 @@ def process_excel():
         for p in players_list:
             players_by_norm[normalize_key(p["name"])] = p
 
-        # 5. Map Goals & Assists from 'Registro Liga' sheet
-        print("📈 Importando estadísticas de goles y asistencias desde 'Registro Liga'...")
+        # 5. Map Goals & Assists from 'Registro Liga', 'Registro Champions', and 'RegistroEstelar' sheets
+        player_id_counter_ref = [player_id_counter]
         
-        # Registro Liga sheet: Row 1 = Headers (Equipo, Jugador, Goles, Asistencias)
-        # Columns: A=Equipo, B=Jugador, C=Goles, D=Asistencias
-        for row_idx in sorted(registro_data.keys()):
-            if row_idx == 1:
-                continue # Skip header
-                
-            row = registro_data[row_idx]
-            raw_pname = row.get('B', '').strip()
-            raw_tname = row.get('A', '').strip()
-            
-            if not raw_pname:
-                continue
-                
-            goles = int(row.get('C', 0)) if row.get('C', '').isdigit() else 0
-            asists = int(row.get('D', 0)) if row.get('D', '').isdigit() else 0
-            
-            # Normalize names to find match
-            norm_reg_pname = normalize_key(raw_pname)
-            norm_tname = normalize_key(raw_tname)
-            team_id = TEAM_ID_MAP.get(norm_tname, norm_tname)
-            
-            if norm_reg_pname in players_by_norm:
-                # Matched player! Add stats
-                players_by_norm[norm_reg_pname]["goals"] += goles
-                players_by_norm[norm_reg_pname]["assists"] += asists
-            else:
-                # Unmatched player! Create a new player in their team
-                print(f"  ℹ️ Jugador extra en Registro Liga (no estaba en plantilla): '{raw_pname}' ({raw_tname})")
-                
-                # Check fallback position from old database
-                pos = "MC"
-                price = 5000000
-                is_legend = False
-                
-                if norm_reg_pname in old_players_by_norm:
-                    old_p = old_players_by_norm[norm_reg_pname]
-                    pos = old_p.get("position", "MC")
-                    price = old_p.get("price", 5000000)
-                    is_legend = old_p.get("isLegend", False)
+        def map_tournament_stats(registro_data, key_goals, key_assists, sheet_name):
+            for row_idx in sorted(registro_data.keys()):
+                if row_idx == 1:
+                    continue # Skip header
                     
-                new_player = {
-                    "id": f"p_{player_id_counter}",
-                    "name": raw_pname,
-                    "position": pos,
-                    "teamId": team_id,
-                    "goals": goles,
-                    "assists": asists,
-                    "price": price,
-                    "isLegend": is_legend
-                }
-                players_list.append(new_player)
-                players_by_norm[norm_reg_pname] = new_player
-                player_id_counter += 1
+                row = registro_data[row_idx]
+                raw_pname = row.get('B', '').strip()
+                raw_tname = row.get('A', '').strip()
+                
+                if not raw_pname:
+                    continue
+                    
+                goles = int(row.get('C', 0)) if row.get('C', '').isdigit() else 0
+                asists = int(row.get('D', 0)) if row.get('D', '').isdigit() else 0
+                
+                # Normalize names to find match
+                norm_reg_pname = normalize_key(raw_pname)
+                norm_tname = normalize_key(raw_tname)
+                team_id = TEAM_ID_MAP.get(norm_tname, norm_tname)
+                
+                if norm_reg_pname in players_by_norm:
+                    # Matched player! Add stats
+                    players_by_norm[norm_reg_pname][key_goals] += goles
+                    players_by_norm[norm_reg_pname][key_assists] += asists
+                else:
+                    # Unmatched player! Create a new player in their team
+                    print(f"  ℹ️ Jugador extra en {sheet_name} (no estaba en plantilla): '{raw_pname}' ({raw_tname})")
+                    
+                    # Check fallback position from old database
+                    pos = "MC"
+                    price = 5000000
+                    is_legend = False
+                    
+                    if norm_reg_pname in old_players_by_norm:
+                        old_p = old_players_by_norm[norm_reg_pname]
+                        pos = old_p.get("position", "MC")
+                        price = old_p.get("price", 5000000)
+                        is_legend = old_p.get("isLegend", False)
+                        
+                    new_player = {
+                        "id": f"p_{player_id_counter_ref[0]}",
+                        "name": raw_pname,
+                        "position": pos,
+                        "teamId": team_id,
+                        "goals": 0,
+                        "assists": 0,
+                        "goals_liga": 0,
+                        "assists_liga": 0,
+                        "goals_champions": 0,
+                        "assists_champions": 0,
+                        "goals_estelar": 0,
+                        "assists_estelar": 0,
+                        "price": price,
+                        "isLegend": is_legend
+                    }
+                    new_player[key_goals] = goles
+                    new_player[key_assists] = asists
+                    players_list.append(new_player)
+                    players_by_norm[norm_reg_pname] = new_player
+                    player_id_counter_ref[0] += 1
+
+        print("📈 Importando estadísticas de goles y asistencias desde 'Registro Liga'...")
+        map_tournament_stats(registro_data, "goals_liga", "assists_liga", "Registro Liga")
+        
+        print("📈 Importando estadísticas de goles y asistencias desde 'Registro Champions'...")
+        map_tournament_stats(registro_champions, "goals_champions", "assists_champions", "Registro Champions")
+        
+        print("📈 Importando estadísticas de goles y asistencias desde 'RegistroEstelar'...")
+        map_tournament_stats(registro_estelar, "goals_estelar", "assists_estelar", "RegistroEstelar")
+
+        # Sum total goals and assists
+        for p in players_list:
+            p["goals"] = p["goals_liga"] + p["goals_champions"] + p["goals_estelar"]
+            p["assists"] = p["assists_liga"] + p["assists_champions"] + p["assists_estelar"]
+            
+        # Update player_id_counter to reflect additions
+        player_id_counter = player_id_counter_ref[0]
+
+        # 5.5. Try to read brackets for Copa Estelar and UEFA Champions League from Excel
+        def parse_bracket_sheet(sheet_data):
+            matches = []
+            # Row 1 is headers (Fase, Equipo 1, Goles 1, Equipo 2, Goles 2, Estado)
+            for row_idx in sorted(sheet_data.keys()):
+                if row_idx == 1:
+                    continue
+                row = sheet_data[row_idx]
+                fase = row.get('A', '').strip()
+                if not fase:
+                    continue
+                matches.append({
+                    "fase": fase,
+                    "team1": row.get('B', '').strip(),
+                    "score1": str(row.get('C', '')).strip(),
+                    "team2": row.get('D', '').strip(),
+                    "score2": str(row.get('E', '')).strip(),
+                    "estado": row.get('F', '').strip() or 'Por Jugar'
+                })
+            return matches
+
+        copa_matches = []
+        if 'CopaEstelar' in sheet_xml_paths:
+            print("🏆 Cargando datos de eliminación directa para Copa Estelar...")
+            copa_sheet = parse_sheet_cells(z, sheet_xml_paths['CopaEstelar'], strings)
+            copa_matches = parse_bracket_sheet(copa_sheet)
+        else:
+            print("ℹ️ Hoja 'CopaEstelar' no encontrada en Excel, se conservarán los valores preestablecidos.")
+            if old_data and "copaEstelarMatches" in old_data:
+                copa_matches = old_data["copaEstelarMatches"]
+
+        champions_matches = []
+        if 'ChampionsLeague' in sheet_xml_paths:
+            print("🏆 Cargando datos de eliminación directa para Champions League...")
+            champ_sheet = parse_sheet_cells(z, sheet_xml_paths['ChampionsLeague'], strings)
+            champions_matches = parse_bracket_sheet(champ_sheet)
+        else:
+            print("ℹ️ Hoja 'ChampionsLeague' no encontrada en Excel, se conservarán los valores preestablecidos.")
+            if old_data and "championsLeagueMatches" in old_data:
+                champions_matches = old_data["championsLeagueMatches"]
+
+        # Default fallback values for Copa Estelar if empty
+        if not copa_matches:
+            copa_matches = [
+                { "fase": "Cuartos 1", "team1": "Bayern Leverkusen", "score1": "2", "team2": "Real Madrid", "score2": "1", "estado": "Finalizado" },
+                { "fase": "Cuartos 2", "team1": "Como 1907", "score1": "0", "team2": "Wrexham", "score2": "1", "estado": "Finalizado" },
+                { "fase": "Cuartos 3", "team1": "Inter de Milan", "score1": "2", "team2": "AC Milan", "score2": "0", "estado": "Finalizado" },
+                { "fase": "Cuartos 4", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Arsenal", "score2": "3", "estado": "Finalizado" },
+                { "fase": "Semifinal 1", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Wrexham", "score2": "0", "estado": "Finalizado" },
+                { "fase": "Semifinal 2", "team1": "Inter de Milan", "score1": "2", "team2": "Arsenal", "score2": "0", "estado": "Finalizado" },
+                { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Arsenal", "score2": "", "estado": "Por Jugar" }
+            ]
+
+        # Default fallback values for UEFA Champions League if empty
+        if not champions_matches:
+            champions_matches = [
+                { "fase": "Cuartos 1", "team1": "FC Barcelona", "score1": "2", "team2": "Real Madrid", "score2": "1", "estado": "Finalizado" },
+                { "fase": "Cuartos 2", "team1": "AC Milan", "score1": "0", "team2": "Inter de Milan", "score2": "3", "estado": "Finalizado" },
+                { "fase": "Cuartos 3", "team1": "Como 1907", "score1": "2", "team2": "Bayern Leverkusen", "score2": "1", "estado": "Finalizado" },
+                { "fase": "Cuartos 4", "team1": "Arsenal", "score1": "1 (2)", "team2": "PSG", "score2": "1 (4)", "estado": "Finalizado" },
+                { "fase": "Semifinal 1", "team1": "FC Barcelona", "score1": "1", "team2": "Inter de Milan", "score2": "3", "estado": "Finalizado" },
+                { "fase": "Semifinal 2", "team1": "Como 1907", "score1": "2", "team2": "PSG", "score2": "0", "estado": "Finalizado" },
+                { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Como 1907", "score2": "", "estado": "Por Jugar" }
+            ]
 
         # 6. Rebuild final LMI Data object
         season = old_data.get("season", "Temporada 9 en Curso") if old_data else "Temporada 9 en Curso"
@@ -402,6 +493,8 @@ def process_excel():
             "season": season,
             "teams": list(teams_dict.values()),
             "players": players_list,
+            "copaEstelarMatches": copa_matches,
+            "championsLeagueMatches": champions_matches,
             "rules": rules
         }
 

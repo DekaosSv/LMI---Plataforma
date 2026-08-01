@@ -1,17 +1,17 @@
-// App Engine for Liga Master Internacional (LMI) - Temporada 9
+// Motor de la Aplicación para la Liga Master Internacional (LMI) - Temporada 9
 
 var lmiData = null;
 var currentNav = 'dashboard';
-// Secure Cryptographic PIN Storage (SHA-256 hash of '28100703')
+// Almacenamiento seguro del PIN de administrador (Hash SHA-256 de '28100703')
 const ADMIN_PIN_HASH = 'b050b14c930ce375e7faac42d2403474bb1c00bf12986fdf9b83c2dca25c7394';
 
-// Initialize App
+// Inicialización de la Aplicación
 document.addEventListener('DOMContentLoaded', () => {
   loadDataFromStorage();
   initUI();
 });
 
-// Global Helpers
+// Funciones Auxiliares Globales
 async function sha256(message) {
   const msgBuffer = new TextEncoder().encode(message);
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -39,7 +39,7 @@ function getFichajesUrl(name) {
   return `https://www.fichajes.com/jugador/${slug}/`;
 }
 
-// Storage Management
+// Gestión del Almacenamiento Local
 function loadDataFromStorage() {
   try {
     localStorage.clear();
@@ -47,6 +47,32 @@ function loadDataFromStorage() {
 
   if (typeof INITIAL_LMI_DATA !== 'undefined') {
     lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
+    
+    // Set default Copa Estelar bracket if missing
+    if (!lmiData.copaEstelarMatches) {
+      lmiData.copaEstelarMatches = [
+        { "fase": "Cuartos 1", "team1": "Bayern Leverkusen", "score1": "2", "team2": "Real Madrid", "score2": "1", "estado": "Finalizado" },
+        { "fase": "Cuartos 2", "team1": "Como 1907", "score1": "0", "team2": "Wrexham", "score2": "1", "estado": "Finalizado" },
+        { "fase": "Cuartos 3", "team1": "Inter de Milan", "score1": "2", "team2": "AC Milan", "score2": "0", "estado": "Finalizado" },
+        { "fase": "Cuartos 4", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Arsenal", "score2": "3", "estado": "Finalizado" },
+        { "fase": "Semifinal 1", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Wrexham", "score2": "0", "estado": "Finalizado" },
+        { "fase": "Semifinal 2", "team1": "Inter de Milan", "score1": "2", "team2": "Arsenal", "score2": "0", "estado": "Finalizado" },
+        { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Arsenal", "score2": "", "estado": "Por Jugar" }
+      ];
+    }
+    
+    // Set default UEFA Champions League bracket if missing
+    if (!lmiData.championsLeagueMatches) {
+      lmiData.championsLeagueMatches = [
+        { "fase": "Cuartos 1", "team1": "FC Barcelona", "score1": "2", "team2": "Real Madrid", "score2": "1", "estado": "Finalizado" },
+        { "fase": "Cuartos 2", "team1": "AC Milan", "score1": "0", "team2": "Inter de Milan", "score2": "3", "estado": "Finalizado" },
+        { "fase": "Cuartos 3", "team1": "Como 1907", "score1": "2", "team2": "Bayern Leverkusen", "score2": "1", "estado": "Finalizado" },
+        { "fase": "Cuartos 4", "team1": "Arsenal", "score1": "1 (2)", "team2": "PSG", "score2": "1 (4)", "estado": "Finalizado" },
+        { "fase": "Semifinal 1", "team1": "FC Barcelona", "score1": "1", "team2": "Inter de Milan", "score2": "3", "estado": "Finalizado" },
+        { "fase": "Semifinal 2", "team1": "Como 1907", "score1": "2", "team2": "PSG", "score2": "0", "estado": "Finalizado" },
+        { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Como 1907", "score2": "", "estado": "Por Jugar" }
+      ];
+    }
   } else {
     console.error("INITIAL_LMI_DATA is not defined!");
   }
@@ -66,6 +92,11 @@ function initUI() {
   initRenovationSelect();
   initPlayerSearchUI();
   renderRules();
+  
+  // Render direct elimination brackets
+  renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
+  renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
+
   updateAdminUI();
 }
 
@@ -144,10 +175,33 @@ function renderStats() {
   const goleadoresContainer = document.getElementById('full-goleadores-list');
   const asistenciasContainer = document.getElementById('full-asistencias-list');
 
-  const topScorers = [...lmiData.players].sort((a, b) => b.goals - a.goals).slice(0, 10);
-  const topAssists = [...lmiData.players].sort((a, b) => b.assists - a.assists).slice(0, 10);
+  const tSel = document.getElementById('stats-tournament-select');
+  const tournament = tSel ? tSel.value : 'liga';
 
-  goleadoresContainer.innerHTML = topScorers.map((p, idx) => {
+  let goalsKey = 'goals_liga';
+  let assistsKey = 'assists_liga';
+  let statLabelGoals = 'goles';
+  let statLabelAssists = 'asist.';
+
+  if (tournament === 'copa') {
+    goalsKey = 'goals_estelar';
+    assistsKey = 'assists_estelar';
+  } else if (tournament === 'champions') {
+    goalsKey = 'goals_champions';
+    assistsKey = 'assists_champions';
+  }
+
+  const topScorers = [...lmiData.players]
+    .filter(p => p[goalsKey] > 0)
+    .sort((a, b) => b[goalsKey] - a[goalsKey])
+    .slice(0, 10);
+
+  const topAssists = [...lmiData.players]
+    .filter(p => p[assistsKey] > 0)
+    .sort((a, b) => b[assistsKey] - a[assistsKey])
+    .slice(0, 10);
+
+  goleadoresContainer.innerHTML = topScorers.length === 0 ? '<div style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Sin goles registrados aún en este torneo</div>' : topScorers.map((p, idx) => {
     const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '' };
     return `
       <div class="leader-row">
@@ -159,27 +213,187 @@ function renderStats() {
             <div class="player-meta">${team.name} &bull; <span class="pos-badge pos-${p.position}">${p.position}</span></div>
           </div>
         </div>
-        <div class="stat-value">${p.goals} <span style="font-size: 0.75rem; color: var(--text-muted);">goles</span></div>
+        <div class="stat-value">${p[goalsKey]} <span style="font-size: 0.75rem; color: var(--text-muted);">${statLabelGoals}</span></div>
       </div>
     `;
   }).join('');
 
-  asistenciasContainer.innerHTML = topAssists.map((p, idx) => {
+  asistenciasContainer.innerHTML = topAssists.length === 0 ? '<div style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Sin asistencias registradas aún en este torneo</div>' : topAssists.map((p, idx) => {
     const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '' };
     return `
       <div class="leader-row">
         <div class="leader-info">
-          <div class="player-avatar" style="border-color: var(--neon-cyan);">${idx + 1}</div>
+          <div class="player-avatar" style="border-color: var(--lmi-blue); color: var(--lmi-blue);">${idx + 1}</div>
           <img src="${team.logo}" class="team-logo" alt="${team.name}">
           <div>
             <div class="player-name">${p.name}</div>
             <div class="player-meta">${team.name} &bull; <span class="pos-badge pos-${p.position}">${p.position}</span></div>
           </div>
         </div>
-        <div class="stat-value" style="color: var(--neon-cyan);">${p.assists} <span style="font-size: 0.75rem; color: var(--text-muted);">asist.</span></div>
+        <div class="stat-value" style="color: var(--lmi-blue);">${p[assistsKey]} <span style="font-size: 0.75rem; color: var(--text-muted);">${statLabelAssists}</span></div>
       </div>
     `;
   }).join('');
+}
+
+// Render Bracket dynamically
+function renderBracket(containerId, matches) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  if (!matches || matches.length === 0) {
+    container.innerHTML = `<div style="text-align: center; width: 100%; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para esta fase.</div>`;
+    return;
+  }
+
+  const normalizedTeams = lmiData.teams.map(t => ({
+    ...t,
+    normName: normalizeSearchString(t.name)
+  }));
+
+  // Group matches by phase
+  const cuartos = matches.filter(m => m.fase.toLowerCase().includes('cuartos'));
+  const semifinales = matches.filter(m => m.fase.toLowerCase().includes('semifinal'));
+  const finalMatch = matches.find(m => m.fase.toLowerCase() === 'final');
+
+  // helper function to render a team row in match box
+  const getTeamRowHtml = (teamName, score, isWinner, isOpponentWinner) => {
+    const normSearchName = normalizeSearchString(teamName);
+    const teamObj = normalizedTeams.find(t => t.normName === normSearchName) || { logo: 'Imagenes/lmi logo original.jpg' };
+    const nameStyle = isWinner ? 'font-weight: 700; color: var(--text-primary);' : (isOpponentWinner ? 'color: var(--text-muted);' : 'color: var(--text-primary);');
+    const scoreStyle = isWinner ? 'font-weight: 700; color: var(--lmi-blue);' : 'color: var(--text-muted);';
+    return `
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0.5rem; ${isOpponentWinner ? 'opacity: 0.75;' : ''}">
+        <div style="display: flex; align-items: center; gap: 0.5rem; max-width: 80%;">
+          <img src="${teamObj.logo}" alt="${teamName}" style="width: 20px; height: 20px; object-fit: contain;">
+          <span style="font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ${nameStyle}">${teamName || 'Por clasificar'}</span>
+        </div>
+        <span style="font-family: var(--font-heading); font-size: 0.85rem; ${scoreStyle}">${score !== undefined ? score : ''}</span>
+      </div>
+    `;
+  };
+
+  const getMatchBoxHtml = (match) => {
+    const score1Str = String(match.score1 || '');
+    const score2Str = String(match.score2 || '');
+    const isFinished = match.estado.toLowerCase() === 'finalizado';
+    
+    // Determine winner
+    let isT1Winner = false;
+    let isT2Winner = false;
+    if (isFinished) {
+      const getNumericVal = (valStr) => {
+        const clean = valStr.replace(/[^\d]/g, '');
+        return parseInt(clean) || 0;
+      };
+      const n1 = getNumericVal(score1Str);
+      const n2 = getNumericVal(score2Str);
+      if (n1 > n2) isT1Winner = true;
+      else if (n2 > n1) isT2Winner = true;
+    }
+
+    return `
+      <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.4rem 0.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); margin: 0.5rem 0; width: 100%;">
+        ${getTeamRowHtml(match.team1, match.score1, isT1Winner, isT2Winner)}
+        <div style="border-top: 1px solid rgba(0,0,0,0.05); margin: 0.15rem 0;"></div>
+        ${getTeamRowHtml(match.team2, match.score2, isT2Winner, isT1Winner)}
+      </div>
+    `;
+  };
+
+  // Render Cuartos Column
+  let cuartosHtml = `
+    <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
+      <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-gamepad"></i> Cuartos de Final</h3>
+      ${cuartos.map(getMatchBoxHtml).join('')}
+    </div>
+  `;
+
+  // Render Semifinal Column
+  let semifinalHtml = `
+    <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem;">
+      <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield"></i> Semifinales</h3>
+      ${semifinales.map(getMatchBoxHtml).join('')}
+    </div>
+  `;
+
+  // Render Final Column
+  let finalHtml = '';
+  if (finalMatch) {
+    const isFinished = finalMatch.estado.toLowerCase() === 'finalizado';
+    const score1Str = String(finalMatch.score1 || '');
+    const score2Str = String(finalMatch.score2 || '');
+    
+    // Determine winner
+    let isT1Winner = false;
+    let isT2Winner = false;
+    let championName = '';
+    let championLogo = '';
+    
+    if (isFinished) {
+      const getNumericVal = (valStr) => {
+        const clean = valStr.replace(/[^\d]/g, '');
+        return parseInt(clean) || 0;
+      };
+      const n1 = getNumericVal(score1Str);
+      const n2 = getNumericVal(score2Str);
+      if (n1 > n2) { isT1Winner = true; championName = finalMatch.team1; }
+      else if (n2 > n1) { isT2Winner = true; championName = finalMatch.team2; }
+      
+      const champTeam = normalizedTeams.find(t => t.normName === normalizeSearchString(championName)) || { logo: 'Imagenes/lmi logo original.jpg' };
+      championLogo = champTeam.logo;
+    }
+
+    const t1Obj = normalizedTeams.find(t => t.normName === normalizeSearchString(finalMatch.team1)) || { logo: 'Imagenes/lmi logo original.jpg' };
+    const t2Obj = normalizedTeams.find(t => t.normName === normalizeSearchString(finalMatch.team2)) || { logo: 'Imagenes/lmi logo original.jpg' };
+
+    let finalGraphicHtml = '';
+    if (isFinished) {
+      // Champion! Show only the champion logo
+      finalGraphicHtml = `
+        <div style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.15) 0%, rgba(0, 168, 89, 0.1) 100%); border: 2px solid var(--lmi-yellow); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: 0 8px 20px rgba(255, 209, 0, 0.15); text-align: center;">
+          <i class="fa-solid fa-trophy" style="font-size: 2.5rem; color: var(--lmi-yellow); margin-bottom: 0.75rem; display: inline-block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));"></i>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem;">¡CAMPEÓN OFICIAL!</div>
+          <img src="${championLogo}" alt="${championName}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));">
+          <div style="font-size: 1.25rem; font-weight: 800; color: var(--lmi-blue); line-height: 1.2;">${championName}</div>
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--lmi-green); margin-top: 0.5rem;">Marcador: ${finalMatch.score1} - ${finalMatch.score2}</div>
+        </div>
+      `;
+    } else {
+      // By play! Show both team logos next to each other
+      finalGraphicHtml = `
+        <div style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.05) 0%, rgba(0, 51, 160, 0.03) 100%); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: center;">
+          <i class="fa-solid fa-trophy" style="font-size: 2.2rem; color: #cbd5e1; margin-bottom: 0.75rem;"></i>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.75rem;">Gran Final</div>
+          
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.75rem;">
+            <div style="text-align: center; width: 75px;">
+              <img src="${t1Obj.logo}" alt="${finalMatch.team1}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+              <div style="font-size: 0.7rem; font-weight: 700; margin-top: 0.25rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${finalMatch.team1 || 'Por Clasificar'}</div>
+            </div>
+            
+            <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted);">VS</span>
+            
+            <div style="text-align: center; width: 75px;">
+              <img src="${t2Obj.logo}" alt="${finalMatch.team2}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+              <div style="font-size: 0.7rem; font-weight: 700; margin-top: 0.25rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${finalMatch.team2 || 'Por Clasificar'}</div>
+            </div>
+          </div>
+          
+          <span style="display: inline-block; background: var(--lmi-blue); color: #ffffff; padding: 0.25rem 0.75rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Por Jugar</span>
+        </div>
+      `;
+    }
+
+    finalHtml = `
+      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-yellow); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-crown"></i> Gran Final</h3>
+        ${finalGraphicHtml}
+      </div>
+    `;
+  }
+
+  container.innerHTML = cuartosHtml + semifinalHtml + finalHtml;
 }
 
 // Team Hub
@@ -270,52 +484,80 @@ function loadTeamHub(teamId) {
 
   statsBox.innerHTML = `
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; margin-bottom: 1.25rem;">
-      <div style="background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: var(--radius-md);">
-        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Posición Asignada</div>
-        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--neon-gold);">#${rank}</div>
+      <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); padding: 0.85rem; border-radius: var(--radius-md); color: #ffffff; box-shadow: var(--shadow-card);">
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Posición Asignada</div>
+        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--neon-gold); margin-top: 0.25rem;">#${rank}</div>
       </div>
-      <div style="background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: var(--radius-md);">
-        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Tasa de Renovación</div>
-        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--neon-green);">${payPercent}</div>
+      <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); padding: 0.85rem; border-radius: var(--radius-md); color: #ffffff; box-shadow: var(--shadow-card);">
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Tasa de Renovación</div>
+        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--neon-green); margin-top: 0.25rem;">${payPercent}</div>
       </div>
     </div>
 
-    <h3 style="font-family: var(--font-heading); font-size: 1rem; color: var(--neon-cyan); margin-bottom: 0.8rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+    <h3 style="font-family: var(--font-heading); font-size: 1rem; color: var(--lmi-blue); margin-bottom: 0.8rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
       <i class="fa-solid fa-star"></i> Jugadores Destacados del Club
     </h3>
 
-    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
       <!-- Máximo Goleador -->
-      <div style="background: rgba(0, 255, 136, 0.08); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <div class="player-avatar" style="border-color: var(--neon-green); background: rgba(0,255,136,0.2); width: 42px; height: 42px;">
-            <i class="fa-solid fa-futbol" style="color: var(--neon-green); font-size: 1.1rem;"></i>
+      <div style="display: flex; flex-direction: column;">
+        <!-- Detached Photo Container -->
+        <div style="background: rgba(255, 255, 255, 0.9); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem; text-align: center; margin-bottom: 0.4rem; display: flex; flex-direction: column; align-items: center; box-shadow: var(--shadow-card);">
+          <div style="position: relative; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid var(--lmi-green); background: #f8fafc; display: flex; align-items: center; justify-content: center;">
+            <img src="Imagenes/Jugadores/${topScorer ? normalizeSearchString(topScorer.name) : 'none'}.png" 
+                 onerror="this.src='Imagenes/lmi logo original.jpg';" 
+                 style="width: 100%; height: 100%; object-fit: cover;" 
+                 alt="${topScorer ? topScorer.name : 'Ejemplo'}">
           </div>
-          <div>
-            <div style="font-size: 0.65rem; text-transform: uppercase; color: var(--neon-green); font-weight: 700;">Máximo Goleador</div>
-            <div style="font-weight: 700; font-size: 0.95rem;">${topScorer ? topScorer.name : 'Sin datos'}</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);"><span class="pos-badge pos-${topScorer ? topScorer.position : 'MC'}">${topScorer ? topScorer.position : '-'}</span></div>
-          </div>
+          <div style="margin-top: 0.4rem; font-size: 0.7rem; font-weight: 700; color: var(--lmi-green); text-transform: uppercase; letter-spacing: 0.5px;">Foto Oficial</div>
         </div>
-        <div style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--neon-green);">
-          ${topScorer ? topScorer.goals : 0} <span style="font-size: 0.75rem; color: var(--text-muted);">goles</span>
+
+        <!-- Detail Card -->
+        <div style="background: rgba(0, 168, 89, 0.05); border: 1px solid rgba(0, 168, 89, 0.15); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div class="player-avatar" style="border-color: var(--lmi-green); background: rgba(0,168,89,0.15); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid;">
+              <i class="fa-solid fa-futbol" style="color: var(--lmi-green); font-size: 1.1rem;"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.65rem; text-transform: uppercase; color: var(--lmi-green); font-weight: 700; letter-spacing: 0.5px;">Máximo Goleador</div>
+              <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">${topScorer ? topScorer.name : 'Sin datos'}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;"><span class="pos-badge pos-${topScorer ? topScorer.position : 'MC'}">${topScorer ? topScorer.position : '-'}</span></div>
+            </div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--lmi-green); flex-shrink: 0;">
+            ${topScorer ? topScorer.goals : 0} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">goles</span>
+          </div>
         </div>
       </div>
 
       <!-- Máximo Asistidor -->
-      <div style="background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <div class="player-avatar" style="border-color: var(--neon-cyan); background: rgba(0,229,255,0.2); width: 42px; height: 42px;">
-            <i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan); font-size: 1.1rem;"></i>
+      <div style="display: flex; flex-direction: column;">
+        <!-- Detached Photo Container -->
+        <div style="background: rgba(255, 255, 255, 0.9); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem; text-align: center; margin-bottom: 0.4rem; display: flex; flex-direction: column; align-items: center; box-shadow: var(--shadow-card);">
+          <div style="position: relative; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid var(--lmi-blue); background: #f8fafc; display: flex; align-items: center; justify-content: center;">
+            <img src="Imagenes/Jugadores/${topAssister ? normalizeSearchString(topAssister.name) : 'none'}.png" 
+                 onerror="this.src='Imagenes/lmi logo original.jpg';" 
+                 style="width: 100%; height: 100%; object-fit: cover;" 
+                 alt="${topAssister ? topAssister.name : 'Ejemplo'}">
           </div>
-          <div>
-            <div style="font-size: 0.65rem; text-transform: uppercase; color: var(--neon-cyan); font-weight: 700;">Máximo Asistidor</div>
-            <div style="font-weight: 700; font-size: 0.95rem;">${topAssister ? topAssister.name : 'Sin datos'}</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);"><span class="pos-badge pos-${topAssister ? topAssister.position : 'MC'}">${topAssister ? topAssister.position : '-'}</span></div>
-          </div>
+          <div style="margin-top: 0.4rem; font-size: 0.7rem; font-weight: 700; color: var(--lmi-blue); text-transform: uppercase; letter-spacing: 0.5px;">Foto Oficial</div>
         </div>
-        <div style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--neon-cyan);">
-          ${topAssister ? topAssister.assists : 0} <span style="font-size: 0.75rem; color: var(--text-muted);">asist.</span>
+
+        <!-- Detail Card -->
+        <div style="background: rgba(0, 51, 160, 0.05); border: 1px solid rgba(0, 51, 160, 0.15); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div class="player-avatar" style="border-color: var(--lmi-blue); background: rgba(0,51,160,0.15); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid;">
+              <i class="fa-solid fa-hands-clapping" style="color: var(--lmi-blue); font-size: 1.1rem;"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.65rem; text-transform: uppercase; color: var(--lmi-blue); font-weight: 700; letter-spacing: 0.5px;">Máximo Asistidor</div>
+              <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">${topAssister ? topAssister.name : 'Sin datos'}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;"><span class="pos-badge pos-${topAssister ? topAssister.position : 'MC'}">${topAssister ? topAssister.position : '-'}</span></div>
+            </div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--lmi-blue); flex-shrink: 0;">
+            ${topAssister ? topAssister.assists : 0} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">asist.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -358,7 +600,7 @@ function loadRenovationsForTeam(teamId) {
   // Render Discount Badge
   const badgeContainer = document.getElementById('renovation-discount-badge');
   badgeContainer.innerHTML = `
-    <span style="font-size: 0.9rem; color: var(--text-muted);">Posición #${rank} en Liga:</span>
+    <span style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85);">Posición #${rank} en Liga:</span>
     <span class="discount-pill ${pillClass}">
       <i class="fa-solid fa-percent"></i> ${payPercentText}
     </span>
@@ -596,6 +838,11 @@ function updateAdminUI() {
     dbTools.style.display = isAdminLoggedIn ? 'block' : 'none';
   }
 
+  const teamEditBtn = document.getElementById('admin-team-edit-btn-container');
+  if (teamEditBtn) {
+    teamEditBtn.style.display = isAdminLoggedIn ? 'block' : 'none';
+  }
+
   if (currentNav === 'teams') {
     const sel = document.getElementById('team-select');
     if (sel && sel.value) loadTeamHub(sel.value);
@@ -827,7 +1074,7 @@ function filterPlayersDatabase(resetLimit = true) {
     const priceVal = (p.price || 5000000) / 1000000;
 
     return `
-      <div class="card" style="margin-bottom: 0; background: rgba(18, 26, 43, 0.7); border-color: rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s;">
+      <div class="card" style="margin-bottom: 0; background: var(--lmi-blue); border-color: var(--lmi-blue); box-shadow: var(--shadow-card); transition: transform 0.2s, border-color 0.2s;">
         <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem;">
           <div style="display: flex; align-items: center; gap: 0.6rem;">
             <span class="pos-badge pos-${p.position}">${p.position}</span>
@@ -839,15 +1086,15 @@ function filterPlayersDatabase(resetLimit = true) {
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.15);">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 24px; height: 24px; object-fit: contain;">
-            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">${team.name}</span>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">${team.name}</span>
           </div>
 
           <div style="font-size: 0.8rem; text-align: right;">
-            <span style="color: var(--neon-green); font-weight: 700;">${p.goals}G</span> &bull; 
-            <span style="color: var(--neon-cyan); font-weight: 700;">${p.assists}A</span>
+            <span style="color: #00ff88; font-weight: 700;">${p.goals}G</span> &bull; 
+            <span style="color: #00e5ff; font-weight: 700;">${p.assists}A</span>
           </div>
         </div>
       </div>

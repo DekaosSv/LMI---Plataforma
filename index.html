@@ -17,7 +17,6 @@
   <!-- Top Navigation Bar -->
   <header class="top-nav">
     <a class="brand-logo" onclick="switchNav('dashboard')">
-      <span class="brand-badge">LMI</span>
       <span class="brand-title">LIGA MASTER INTERNACIONAL</span>
     </a>
 
@@ -26,8 +25,10 @@
         <li><button class="nav-link active" onclick="switchNav('dashboard')"><i class="fa-solid fa-house"></i> Inicio</button></li>
         <li><button class="nav-link" onclick="switchNav('stats')"><i class="fa-solid fa-chart-line"></i> Estadísticas</button></li>
         <li><button class="nav-link" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Equipos</button></li>
+        <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa Estelar</button></li>
+        <li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions League</button></li>
         <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
-        <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscador BD</button></li>
+        <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar Jugadores</button></li>
         <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li>
         <li><button class="nav-link admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-lock"></i> Admin</button></li>
       </ul>
@@ -37,10 +38,10 @@
   <!-- Sub Navigation / Season Bar -->
   <div class="division-bar">
     <div style="display: flex; align-items: center; gap: 0.75rem;">
-      <span class="hero-tag" style="margin-bottom:0; background: rgba(0, 255, 136, 0.15); border-color: var(--neon-green); color: var(--neon-green);">
+      <span class="hero-tag" style="margin-bottom:0; background: rgba(0, 168, 89, 0.1); border-color: var(--lmi-green); color: var(--lmi-green);">
         <i class="fa-solid fa-trophy"></i> LIGA UNIFICADA
       </span>
-      <span style="font-family: var(--font-heading); font-weight: 700; color: #fff;">Temporada 9 en Curso</span>
+      <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-primary);">Temporada 9 en Curso</span>
     </div>
 
     <div class="league-status">
@@ -58,10 +59,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <span class="hero-tag">Liga Master eFootball</span>
-          <h1 class="hero-title">BIENVENIDO A LA <span>LMI TEMPORADA 9</span></h1>
-          <p class="hero-desc">Consulta estadísticas de goleadores y asistidores en tiempo real, explora la plantilla de los 16 clubes y calcula las renovaciones oficiales de tu equipo.</p>
+          <h1 class="hero-title">BIENVENIDO A LA LIGA MASTER INTERNACIONAL TEMPORADA 9</h1>
+          <p class="hero-desc">Explora la plantilla de cada club participante y explora las herramientas disponibles.</p>
           <div class="hero-actions">
-            <button class="btn-primary" onclick="switchNav('renovaciones')"><i class="fa-solid fa-calculator"></i> Calculadora de Renovaciones T9</button>
             <button class="btn-secondary" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Ver Equipos</button>
           </div>
         </div>
@@ -98,6 +98,19 @@
 
     <!-- 2. ESTADÍSTICAS -->
     <section id="sec-stats" class="page-section">
+      <div class="card" style="margin-bottom: 1.5rem; padding: 1rem 1.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <label class="form-label" style="margin-bottom:0; color: var(--text-muted); font-weight: 700;">Seleccionar Torneo:</label>
+            <select id="stats-tournament-select" class="form-control" style="width: auto; font-weight: 700;" onchange="renderStats()">
+              <option value="liga">Liga Temporada 9</option>
+              <option value="copa">Copa Estelar</option>
+              <option value="champions">Champions League</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <div class="dashboard-grid">
         <div class="card">
           <div class="card-header">
@@ -129,7 +142,7 @@
               <!-- Rendered via JS -->
             </select>
           </div>
-          <div id="admin-team-edit-btn-container">
+          <div id="admin-team-edit-btn-container" style="display: none;">
             <button class="btn-secondary" onclick="openEditTeamModal()"><i class="fa-solid fa-pen-to-square"></i> Personalizar Club</button>
           </div>
         </div>
@@ -175,6 +188,47 @@
       </div>
     </section>
 
+    <!-- COPA ESTELAR -->
+    <section id="sec-copa-estelar" class="page-section">
+      <div class="hero-banner" style="background-image: linear-gradient(135deg, rgba(0, 51, 160, 0.8) 0%, rgba(124, 58, 237, 0.7) 100%), url('Imagenes/copa estelar.jpeg');">
+        <div class="hero-content">
+          <span class="hero-tag" style="background: rgba(255, 209, 0, 0.2); color: var(--lmi-yellow); border-color: var(--lmi-yellow);">Torneo Oficial</span>
+          <h1 class="hero-title" style="color: #ffffff;">COPA ESTELAR LMI</h1>
+          <p class="hero-desc" style="color: rgba(255,255,255,0.9);">El torneo de copa más prestigioso de la Liga Master Internacional. Los mejores clubes compitiendo por la gloria estelar en partidos de eliminación directa.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title"><i class="fa-solid fa-sitemap" style="color: var(--lmi-blue);"></i> Árbol de Eliminación Directa</h2>
+        </div>
+        <div id="copa-estelar-bracket" style="display: flex; gap: 2rem; justify-content: space-between; overflow-x: auto; padding: 1.5rem 0;">
+          <!-- Loaded dynamically from JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAMPIONS LEAGUE -->
+    <section id="sec-uefa-champions" class="page-section">
+      <div class="hero-banner" style="background-image: linear-gradient(135deg, rgba(0, 20, 80, 0.9) 0%, rgba(0, 51, 160, 0.8) 100%), url('Imagenes/uefa portada.webp');">
+        <div class="hero-content">
+          <span class="hero-tag" style="background: rgba(255, 255, 255, 0.2); color: #ffffff; border-color: rgba(255,255,255,0.3);">UEFA Champions League LMI</span>
+          <h1 class="hero-title" style="color: #ffffff; font-size: 2.4rem; margin-top: 0.25rem; margin-bottom: 0.25rem;">LA BÚSQUEDA DE LA GLORIA</h1>
+          <p class="hero-desc" style="color: rgba(255,255,255,0.85); margin-bottom: 0;">El torneo de clubes más importante de Europa adaptado a la comunidad LMI. Descubre los enfrentamientos y la fase final del torneo.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title"><i class="fa-solid fa-sitemap" style="color: var(--lmi-blue);"></i> Fase de Eliminación Directa</h2>
+        </div>
+        
+        <div id="uefa-champions-bracket" style="display: flex; gap: 2rem; justify-content: space-between; overflow-x: auto; padding: 1.5rem 0;">
+          <!-- Loaded dynamically from JS -->
+        </div>
+      </div>
+    </section>
+
     <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 9 -->
     <section id="sec-renovaciones" class="page-section">
       <div class="card">
@@ -187,10 +241,10 @@
         </div>
 
         <!-- Team Selector & Discount Badge Header -->
-        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: #ffffff;">
           <div style="display: flex; align-items: center; gap: 1rem;">
-            <label class="form-label" style="margin-bottom:0;">Seleccionar tu Club:</label>
-            <select id="renovation-team-select" class="form-control" style="width: auto; font-weight: 700;" onchange="loadRenovationsForTeam(this.value)">
+            <label class="form-label" style="margin-bottom:0; color: #ffffff;">Seleccionar tu Club:</label>
+            <select id="renovation-team-select" class="form-control" style="width: auto; font-weight: 700; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" onchange="loadRenovationsForTeam(this.value)">
               <!-- Rendered via JS -->
             </select>
           </div>
@@ -219,39 +273,39 @@
 
         <!-- Total Calculation Breakdown & Legend Notes -->
         <div class="dashboard-grid">
-          <div class="card" style="background: rgba(0,0,0,0.5); border-color: rgba(0, 255, 136, 0.3);">
-            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--neon-green); margin-bottom: 1rem;">
+          <div class="card" style="background: var(--lmi-blue); border-color: var(--lmi-blue); color: #ffffff; box-shadow: var(--shadow-card);">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: #ffffff; margin-bottom: 1rem;">
               <i class="fa-solid fa-calculator"></i> Desglose Total de Renovación
             </h3>
-            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
               <span>Suma Bruta de Jugadores:</span>
-              <strong id="renovation-subtotal" style="font-family: var(--font-heading); color: var(--neon-gold);">$0M USD</strong>
+              <strong id="renovation-subtotal" style="font-family: var(--font-heading); color: var(--neon-gold); font-weight: 800;">$0M USD</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
               <span>Porcentaje de Pago (Posición en Liga):</span>
-              <strong id="renovation-percent-label" style="font-family: var(--font-heading); color: var(--neon-cyan);">100%</strong>
+              <strong id="renovation-percent-label" style="font-family: var(--font-heading); color: #00e5ff; font-weight: 800;">100%</strong>
             </div>
             <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; font-size: 1.25rem; font-weight: 700;">
               <span>TOTAL A PAGAR:</span>
-              <strong id="renovation-total-final" style="font-family: var(--font-heading); color: var(--neon-green); font-size: 1.5rem;">$0M USD</strong>
+              <strong id="renovation-total-final" style="font-family: var(--font-heading); color: var(--lmi-green); font-size: 1.5rem; font-weight: 800; text-shadow: 0 0 10px rgba(0,255,136,0.2);">$0M USD</strong>
             </div>
           </div>
 
           <!-- Legend Change / Removal Notes -->
-          <div class="card" style="background: rgba(0,0,0,0.5);">
-            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--neon-cyan); margin-bottom: 1rem;">
+          <div class="card" style="background: var(--lmi-blue); border-color: var(--lmi-blue); color: #ffffff; box-shadow: var(--shadow-card);">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: #ffffff; margin-bottom: 1rem;">
               <i class="fa-solid fa-crown"></i> Registro de Leyenda / Épico / Big Time
             </h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-bottom: 1rem; line-height: 1.4;">
               Cada club tiene derecho a <strong>1 Leyenda o Épico</strong>. Los <strong>Big Time</strong> están disponibles. Si deseas cambiar o eliminar tu leyenda / épico / Big Time, debes pagar su renovación y especificarlo aquí abajo:
             </p>
-            <div class="form-group">
-              <label class="form-label">Cambio de Leyenda / Épico / Big Time:</label>
-              <input type="text" id="renovation-note-change" class="form-control" placeholder="Ej. Cambio leyenda por Ronaldinho" onchange="saveRenovationNotes()">
+            <div class="form-group" style="margin-bottom: 0.75rem;">
+              <label class="form-label" style="color: #ffffff;">Cambio de Leyenda / Épico / Big Time:</label>
+              <input type="text" id="renovation-note-change" class="form-control" style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" placeholder="Ej. Cambio leyenda por Ronaldinho" onchange="saveRenovationNotes()">
             </div>
-            <div class="form-group">
-              <label class="form-label">Eliminación de Leyenda / Épico / Big Time:</label>
-              <input type="text" id="renovation-note-remove" class="form-control" placeholder="Ej. Elimino mi leyenda Pelé" onchange="saveRenovationNotes()">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="color: #ffffff;">Eliminación de Leyenda / Épico / Big Time:</label>
+              <input type="text" id="renovation-note-remove" class="form-control" style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" placeholder="Ej. Elimino mi leyenda Pelé" onchange="saveRenovationNotes()">
             </div>
           </div>
         </div>
@@ -274,35 +328,35 @@
         </div>
 
         <!-- Search Controls -->
-        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+        <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; box-shadow: var(--shadow-card);">
           <div style="flex: 1; min-width: 280px; position: relative;">
-            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-            <input type="text" id="player-search-input" class="form-control" style="padding-left: 2.75rem;" placeholder="Buscar jugador por nombre exacto o aproximado (ej. Mbappé, Oblak, Pedri, Bastoni...)" oninput="filterPlayersDatabase()">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.7);"></i>
+            <input type="text" id="player-search-input" class="form-control" style="padding-left: 2.75rem; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" placeholder="Buscar jugador por nombre exacto o aproximado (ej. Mbappé, Oblak, Pedri, Bastoni...)" oninput="filterPlayersDatabase()">
           </div>
 
           <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            <select id="player-search-pos-filter" class="form-control" style="width: auto;" onchange="filterPlayersDatabase()">
-              <option value="">Todas las Posiciones</option>
-              <option value="PT">PT (Portero)</option>
-              <option value="CT">CT (Defensa Central)</option>
-              <option value="LI">LI (Lateral Izquierdo)</option>
-              <option value="LD">LD (Lateral Derecho)</option>
-              <option value="MCD">MCD (Contención)</option>
-              <option value="MC">MC (Mediocampista)</option>
-              <option value="ID">ID (Interior Derecho)</option>
-              <option value="II">II (Interior Izquierdo)</option>
-              <option value="MP">MP (Mediapunta)</option>
-              <option value="SD">SD (Segundo Delantero)</option>
-              <option value="EI">EI (Extremo Izquierdo)</option>
-              <option value="ED">ED (Extremo Derecho)</option>
-              <option value="DC">DC (Delantero Centro)</option>
+            <select id="player-search-pos-filter" class="form-control" style="width: auto; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" onchange="filterPlayersDatabase()">
+              <option value="" style="background-color: var(--lmi-blue); color: #ffffff;">Todas las Posiciones</option>
+              <option value="PT" style="background-color: var(--lmi-blue); color: #ffffff;">PT (Portero)</option>
+              <option value="CT" style="background-color: var(--lmi-blue); color: #ffffff;">CT (Defensa Central)</option>
+              <option value="LI" style="background-color: var(--lmi-blue); color: #ffffff;">LI (Lateral Izquierdo)</option>
+              <option value="LD" style="background-color: var(--lmi-blue); color: #ffffff;">LD (Lateral Derecho)</option>
+              <option value="MCD" style="background-color: var(--lmi-blue); color: #ffffff;">MCD (Contención)</option>
+              <option value="MC" style="background-color: var(--lmi-blue); color: #ffffff;">MC (Mediocampista)</option>
+              <option value="ID" style="background-color: var(--lmi-blue); color: #ffffff;">ID (Interior Derecho)</option>
+              <option value="II" style="background-color: var(--lmi-blue); color: #ffffff;">II (Interior Izquierdo)</option>
+              <option value="MP" style="background-color: var(--lmi-blue); color: #ffffff;">MP (Mediapunta)</option>
+              <option value="SD" style="background-color: var(--lmi-blue); color: #ffffff;">SD (Segundo Delantero)</option>
+              <option value="EI" style="background-color: var(--lmi-blue); color: #ffffff;">EI (Extremo Izquierdo)</option>
+              <option value="ED" style="background-color: var(--lmi-blue); color: #ffffff;">ED (Extremo Derecho)</option>
+              <option value="DC" style="background-color: var(--lmi-blue); color: #ffffff;">DC (Delantero Centro)</option>
             </select>
 
-            <select id="player-search-team-filter" class="form-control" style="width: auto;" onchange="filterPlayersDatabase()">
+            <select id="player-search-team-filter" class="form-control" style="width: auto; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" onchange="filterPlayersDatabase()">
               <!-- Populated via JS -->
             </select>
 
-            <button class="btn-secondary" onclick="resetPlayerSearchFilters()"><i class="fa-solid fa-rotate-left"></i> Limpiar</button>
+            <button class="btn-secondary" style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" onclick="resetPlayerSearchFilters()"><i class="fa-solid fa-rotate-left"></i> Limpiar</button>
           </div>
         </div>
 
