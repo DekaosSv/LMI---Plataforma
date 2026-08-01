@@ -156,7 +156,7 @@ def load_old_data():
     try:
         with open('data.js', 'r', encoding='utf-8') as f:
             content = f.read()
-        match = re.search(r'const INITIAL_LMI_DATA = ({.*?});', content, re.DOTALL)
+        match = re.search(r'(?:var|const|let)\s+INITIAL_LMI_DATA\s*=\s*({.*?});', content, re.DOTALL)
         if match:
             return json.loads(match.group(1))
     except Exception as e:
