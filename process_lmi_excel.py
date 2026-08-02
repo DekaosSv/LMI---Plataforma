@@ -221,29 +221,59 @@ def process_excel():
         if 'Clubes' in sheet_xml_paths:
             print("🛡️ Cargando detalles personalizados de los clubes desde la hoja 'Clubes'...")
             clubes_sheet = parse_sheet_cells(z, sheet_xml_paths['Clubes'], strings)
-            # Fila 1 son cabeceras: Equipo, Abreviatura, Estadio, DT, Presupuesto, Presupuesto Inicial, Color Primario, Color Secundario, Degradado Fondo, Logo, Nota Cambio Leyenda, Nota Eliminar Leyenda
+            
+            # Mapear dinámicamente las cabeceras de la fila 1 a las letras de columna
+            header_map = {}
+            for col_letter, val in clubes_sheet.get(1, {}).items():
+                if val:
+                    header_map[normalize_key(val)] = col_letter
+            
+            col_equipo = header_map.get(normalize_key("Equipo"))
+            col_shortName = header_map.get(normalize_key("Abreviatura"))
+            col_stadium = header_map.get(normalize_key("Estadio"))
+            col_manager = header_map.get(normalize_key("DT"))
+            col_budget = header_map.get(normalize_key("Presupuesto"))
+            col_init_budget = header_map.get(normalize_key("Presupuesto Inicial"))
+            col_primary = header_map.get(normalize_key("Color Primario"))
+            col_secondary = header_map.get(normalize_key("Color Secundario"))
+            col_gradient = header_map.get(normalize_key("Degradado Fondo"))
+            col_logo = header_map.get(normalize_key("Logo"))
+            col_change_note = header_map.get(normalize_key("Nota Cambio Leyenda"))
+            col_remove_note = header_map.get(normalize_key("Nota Eliminar Leyenda"))
+            
             for row_idx in sorted(clubes_sheet.keys()):
                 if row_idx == 1:
                     continue
                 row = clubes_sheet[row_idx]
-                raw_tname = row.get('A', '').strip()
+                raw_tname = row.get(col_equipo, '').strip() if col_equipo else ''
                 if not raw_tname:
                     continue
                 norm_t = normalize_key(raw_tname)
                 tid = TEAM_ID_MAP.get(norm_t, norm_t)
                 
+                # Leer presupuestos
+                budget_raw = row.get(col_budget, '').strip() if col_budget else ''
+                init_budget_raw = row.get(col_init_budget, '').strip() if col_init_budget else ''
+                
+                budget = int(budget_raw) if budget_raw.isdigit() else 100000000
+                init_budget = int(init_budget_raw) if init_budget_raw.isdigit() else 100000000
+                
+                # Sincronizar presupuesto con presupuesto inicial si el de la columna Presupuesto quedó en el valor base
+                if init_budget != 100000000 and budget == 100000000:
+                    budget = init_budget
+                
                 clubes_excel_data[tid] = {
-                    "shortName": row.get('B', '').strip(),
-                    "stadium": row.get('C', '').strip(),
-                    "manager": row.get('D', '').strip(),
-                    "budget": int(row.get('E', 100000000)) if str(row.get('E', '')).isdigit() else 100000000,
-                    "initialBudget": int(row.get('F', 100000000)) if str(row.get('F', '')).isdigit() else 100000000,
-                    "primaryColor": row.get('G', '').strip(),
-                    "secondaryColor": row.get('H', '').strip(),
-                    "bgGradient": row.get('I', '').strip(),
-                    "logo": row.get('J', '').strip(),
-                    "legendChangeNote": row.get('K', '').strip(),
-                    "legendRemoveNote": row.get('L', '').strip()
+                    "shortName": row.get(col_shortName, '').strip() if col_shortName else '',
+                    "stadium": row.get(col_stadium, '').strip() if col_stadium else '',
+                    "manager": row.get(col_manager, '').strip() if col_manager else '',
+                    "budget": budget,
+                    "initialBudget": init_budget,
+                    "primaryColor": row.get(col_primary, '').strip() if col_primary else '',
+                    "secondaryColor": row.get(col_secondary, '').strip() if col_secondary else '',
+                    "bgGradient": row.get(col_gradient, '').strip() if col_gradient else '',
+                    "logo": row.get(col_logo, '').strip() if col_logo else '',
+                    "legendChangeNote": row.get(col_change_note, '').strip() if col_change_note else '',
+                    "legendRemoveNote": row.get(col_remove_note, '').strip() if col_remove_note else ''
                 }
 
         # 3. Construir diccionario de Equipos (basado en los encabezados de la hoja Lista)
