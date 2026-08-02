@@ -30,7 +30,7 @@
         <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
         <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar Jugadores</button></li>
         <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li>
-        <li><button class="nav-link admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-lock"></i> Admin</button></li>
+
       </ul>
     </nav>
   </header>
@@ -142,9 +142,7 @@
               <!-- Rendered via JS -->
             </select>
           </div>
-          <div id="admin-team-edit-btn-container" style="display: none;">
-            <button class="btn-secondary" onclick="openEditTeamModal()"><i class="fa-solid fa-pen-to-square"></i> Personalizar Club</button>
-          </div>
+
         </div>
       </div>
 
@@ -167,7 +165,6 @@
                   <th>Jugador & Consultas</th>
                   <th style="text-align: center;">Goles</th>
                   <th style="text-align: center;">Asist.</th>
-                  <th style="text-align: right;">Costo Renovación</th>
                 </tr>
               </thead>
               <tbody id="team-roster-tbody">
@@ -383,123 +380,7 @@
 
   <!-- MODALS -->
 
-  <!-- Admin Login Modal -->
-  <div id="modal-admin-login" class="modal-backdrop">
-    <div class="modal-card" style="max-width: 400px;">
-      <div class="modal-header">
-        <h3 class="modal-title"><i class="fa-solid fa-shield-halved"></i> Panel de Administración</h3>
-        <button class="close-btn" onclick="closeModal('modal-admin-login')">&times;</button>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
-        Introduce el PIN de administrador para habilitar el modo edición.
-      </p>
-      <form onsubmit="handleAdminLogin(event)">
-        <div class="form-group">
-          <label class="form-label">PIN de Seguridad:</label>
-          <input type="password" id="admin-pin-input" class="form-control" placeholder="••••••••" required autofocus>
-        </div>
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Desbloquear Modo Edición</button>
-      </form>
 
-      <div id="admin-db-tools" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
-        <h4 style="font-family: var(--font-heading); font-size: 0.95rem; color: var(--neon-cyan); margin-bottom: 0.8rem;">Gestión de Base de Datos (JSON)</h4>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <button class="btn-secondary" style="flex: 1; padding: 0.5rem; font-size: 0.85rem;" onclick="exportDatabaseJSON()"><i class="fa-solid fa-download"></i> Exportar BD</button>
-          <button class="btn-secondary" style="flex: 1; padding: 0.5rem; font-size: 0.85rem;" onclick="triggerImportJSON()"><i class="fa-solid fa-upload"></i> Importar BD</button>
-          <input type="file" id="import-json-file" accept=".json" style="display: none;" onchange="importDatabaseJSON(event)">
-        </div>
-        <button class="btn-secondary" style="width: 100%; margin-top: 0.5rem; padding: 0.4rem; font-size: 0.8rem; color: var(--neon-pink); border-color: rgba(255,0,85,0.3);" onclick="resetToInitialData()"><i class="fa-solid fa-rotate-left"></i> Restablecer Datos de Fábrica</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit Team Modal -->
-  <div id="modal-edit-team" class="modal-backdrop">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 class="modal-title"><i class="fa-solid fa-pen-to-square"></i> Personalizar Club & Posición Admin</h3>
-        <button class="close-btn" onclick="closeModal('modal-edit-team')">&times;</button>
-      </div>
-      <form onsubmit="handleSaveTeamCustomization(event)">
-        <input type="hidden" id="modal-team-id">
-        <div class="form-group">
-          <label class="form-label">Nombre del Club:</label>
-          <input type="text" id="modal-team-name" class="form-control" required>
-        </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label class="form-label">Posición Oficial en Liga (1 a 16):</label>
-            <input type="number" id="modal-team-rank" class="form-control" min="1" max="16" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Director Técnico:</label>
-            <input type="text" id="modal-team-manager" class="form-control" required>
-          </div>
-        </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label class="form-label">Estadio:</label>
-            <input type="text" id="modal-team-stadium" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Presupuesto ($USD):</label>
-            <input type="number" id="modal-team-budget" class="form-control" step="1000000" required>
-          </div>
-        </div>
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">Guardar Personalización</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Edit Player Modal -->
-  <div id="modal-edit-player" class="modal-backdrop">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 class="modal-title"><i class="fa-solid fa-user-pen"></i> Editar Jugador</h3>
-        <button class="close-btn" onclick="closeModal('modal-edit-player')">&times;</button>
-      </div>
-      <form onsubmit="handleSavePlayer(event)">
-        <input type="hidden" id="modal-player-id">
-        <div class="form-group">
-          <label class="form-label">Nombre del Jugador:</label>
-          <input type="text" id="modal-player-name" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Posición Oficial (13 Categorías):</label>
-          <select id="modal-player-position" class="form-control" required>
-            <option value="PT">PT - Portero</option>
-            <option value="CT">CT - Defensa central</option>
-            <option value="LI">LI - Lateral izquierdo</option>
-            <option value="LD">LD - Lateral derecho</option>
-            <option value="MCD">MCD - Contención</option>
-            <option value="MC">MC - Mediocampista</option>
-            <option value="ID">ID - Interior derecho</option>
-            <option value="II">II - Interior izquierdo</option>
-            <option value="MP">MP - Mediapunta</option>
-            <option value="SD">SD - Segundo delantero</option>
-            <option value="EI">EI - Extremo izquierdo</option>
-            <option value="ED">ED - Extremo derecho</option>
-            <option value="DC">DC - Delantero centro</option>
-          </select>
-        </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label class="form-label">Goles:</label>
-            <input type="number" id="modal-player-goals" class="form-control" min="0" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Asistencias:</label>
-            <input type="number" id="modal-player-assists" class="form-control" min="0" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Costo / Sueldo Base de Renovación ($USD):</label>
-          <input type="number" id="modal-player-price" class="form-control" step="100000" required>
-        </div>
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">Guardar Cambios</button>
-      </form>
-    </div>
-  </div>
 
   <!-- Toast Container -->
   <div id="toast-container" class="toast-container"></div>

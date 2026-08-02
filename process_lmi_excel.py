@@ -240,6 +240,7 @@ def process_excel():
             col_logo = header_map.get(normalize_key("Logo"))
             col_change_note = header_map.get(normalize_key("Nota Cambio Leyenda"))
             col_remove_note = header_map.get(normalize_key("Nota Eliminar Leyenda"))
+            col_league_rank = header_map.get(normalize_key("Posicion en Liga")) or header_map.get(normalize_key("Posicion"))
             
             for row_idx in sorted(clubes_sheet.keys()):
                 if row_idx == 1:
@@ -251,12 +252,14 @@ def process_excel():
                 norm_t = normalize_key(raw_tname)
                 tid = TEAM_ID_MAP.get(norm_t, norm_t)
                 
-                # Leer presupuestos
+                # Leer presupuestos y posicion en liga
                 budget_raw = row.get(col_budget, '').strip() if col_budget else ''
                 init_budget_raw = row.get(col_init_budget, '').strip() if col_init_budget else ''
+                rank_raw = row.get(col_league_rank, '').strip() if col_league_rank else ''
                 
                 budget = int(budget_raw) if budget_raw.isdigit() else 100000000
                 init_budget = int(init_budget_raw) if init_budget_raw.isdigit() else 100000000
+                league_rank = int(rank_raw) if rank_raw.isdigit() else None
                 
                 # Sincronizar presupuesto con presupuesto inicial si el de la columna Presupuesto quedó en el valor base
                 if init_budget != 100000000 and budget == 100000000:
@@ -268,6 +271,7 @@ def process_excel():
                     "manager": row.get(col_manager, '').strip() if col_manager else '',
                     "budget": budget,
                     "initialBudget": init_budget,
+                    "leagueRank": league_rank,
                     "primaryColor": row.get(col_primary, '').strip() if col_primary else '',
                     "secondaryColor": row.get(col_secondary, '').strip() if col_secondary else '',
                     "bgGradient": row.get(col_gradient, '').strip() if col_gradient else '',
@@ -328,6 +332,8 @@ def process_excel():
             team_obj["leagueRank"] = rank
             
             if excel_club:
+                if excel_club["leagueRank"] is not None:
+                    team_obj["leagueRank"] = excel_club["leagueRank"]
                 if excel_club["shortName"]: team_obj["shortName"] = excel_club["shortName"]
                 if excel_club["stadium"]: team_obj["stadium"] = excel_club["stadium"]
                 if excel_club["manager"]: team_obj["manager"] = excel_club["manager"]

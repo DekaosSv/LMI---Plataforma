@@ -2,8 +2,7 @@
 
 var lmiData = null;
 var currentNav = 'dashboard';
-// Almacenamiento seguro del PIN de administrador (Hash SHA-256 de '28100703')
-const ADMIN_PIN_HASH = 'b050b14c930ce375e7faac42d2403474bb1c00bf12986fdf9b83c2dca25c7394';
+
 
 // Inicialización de la Aplicación
 document.addEventListener('DOMContentLoaded', () => {
@@ -97,7 +96,7 @@ function initUI() {
   renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
   renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
 
-  updateAdminUI();
+
 }
 
 function switchNav(navId) {
@@ -445,12 +444,6 @@ function loadTeamHub(teamId) {
     rosterTbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sin jugadores registrados en plantilla.</td></tr>`;
   } else {
     rosterTbody.innerHTML = teamPlayers.map(p => {
-      const editBtn = isAdminLoggedIn ? `
-        <button class="btn-secondary" style="padding: 0.15rem 0.35rem; font-size: 0.7rem; margin-right: 0.3rem; border-color: rgba(0, 229, 255, 0.3);" onclick="openEditPlayerModal('${p.id}')">
-          <i class="fa-solid fa-pen-to-square" style="color: var(--neon-cyan);"></i>
-        </button>
-      ` : '';
-
       return `
         <tr>
           <td><span class="pos-badge pos-${p.position}">${p.position}</span></td>
@@ -465,9 +458,6 @@ function loadTeamHub(teamId) {
           </td>
           <td style="text-align: center; font-weight: 700;">${p.goals}</td>
           <td style="text-align: center; font-weight: 700;">${p.assists}</td>
-          <td style="text-align: right; color: var(--neon-gold); font-weight: 600;">
-            ${editBtn}$${((p.price || 5000000) / 1000000).toFixed(1)}M
-          </td>
         </tr>
       `;
     }).join('');
@@ -775,211 +765,6 @@ function renderRules() {
       </ul>
     </div>
   `).join('');
-}
-
-// Admin Operations
-let isAdminLoggedIn = false;
-
-function openAdminModal() {
-  const modal = document.getElementById('modal-admin-login');
-  const loginForm = modal.querySelector('form');
-  const modalText = modal.querySelector('p');
-  const dbTools = document.getElementById('admin-db-tools');
-
-  if (isAdminLoggedIn) {
-    if (loginForm) loginForm.style.display = 'none';
-    if (modalText) modalText.innerHTML = '<strong>Modo Administrador Activo</strong>. Puedes realizar copias de seguridad (Exportar) o subir tu base de datos (Importar).';
-    if (dbTools) dbTools.style.display = 'block';
-  } else {
-    if (loginForm) loginForm.style.display = 'block';
-    if (modalText) modalText.innerHTML = 'Introduce el PIN de administrador para habilitar el modo edición.';
-    if (dbTools) dbTools.style.display = 'none';
-  }
-  
-  modal.classList.add('active');
-}
-
-function closeModal(modalId) {
-  document.getElementById(modalId).classList.remove('active');
-}
-
-async function handleAdminLogin(e) {
-  e.preventDefault();
-  const inputInput = document.getElementById('admin-pin-input');
-  const inputVal = inputInput ? inputInput.value.trim() : '';
-  
-  if (!inputVal) return;
-
-  const hashedInput = await sha256(inputVal);
-
-  if (hashedInput === ADMIN_PIN_HASH) {
-    isAdminLoggedIn = true;
-    if (inputInput) inputInput.value = '';
-    updateAdminUI();
-    showToast("¡Modo Administrador activado con éxito!", "fa-circle-check");
-    openAdminModal();
-  } else {
-    showToast("PIN incorrecto. Intenta de nuevo.", "fa-triangle-exclamation");
-  }
-}
-
-function updateAdminUI() {
-  const btn = document.querySelector('.admin-btn');
-  const dbTools = document.getElementById('admin-db-tools');
-  if (btn) {
-    if (isAdminLoggedIn) {
-      btn.innerHTML = `<i class="fa-solid fa-unlock"></i> Modo Admin`;
-      btn.style.background = 'var(--neon-green)';
-      btn.style.color = '#000';
-      btn.style.borderColor = 'var(--neon-green)';
-    }
-  }
-  if (dbTools) {
-    dbTools.style.display = isAdminLoggedIn ? 'block' : 'none';
-  }
-
-  const teamEditBtn = document.getElementById('admin-team-edit-btn-container');
-  if (teamEditBtn) {
-    teamEditBtn.style.display = isAdminLoggedIn ? 'block' : 'none';
-  }
-
-  if (currentNav === 'teams') {
-    const sel = document.getElementById('team-select');
-    if (sel && sel.value) loadTeamHub(sel.value);
-  }
-}
-
-// Database Export & Import Tools
-function exportDatabaseJSON() {
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(lmiData, null, 2));
-  const downloadAnchor = document.createElement('a');
-  downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", `lmi_t9_database_backup_${new Date().toISOString().split('T')[0]}.json`);
-  document.body.appendChild(downloadAnchor);
-  downloadAnchor.click();
-  downloadAnchor.remove();
-  showToast("Base de datos exportada en archivo JSON", "fa-download");
-}
-
-function triggerImportJSON() {
-  document.getElementById('import-json-file').click();
-}
-
-function importDatabaseJSON(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const parsed = JSON.parse(e.target.result);
-      if (parsed.teams && parsed.players) {
-        lmiData = parsed;
-        saveDataToStorage();
-        initUI();
-        showToast("¡Base de datos importada exitosamente!", "fa-circle-check");
-        closeModal('modal-admin-login');
-      } else {
-        showToast("El archivo JSON no tiene la estructura válida de la LMI T9", "fa-triangle-exclamation");
-      }
-    } catch (err) {
-      showToast("Error al leer el archivo JSON", "fa-triangle-exclamation");
-    }
-  };
-  reader.readAsText(file);
-}
-
-function resetToInitialData() {
-  if (confirm("¿Estás seguro de restablecer todos los datos a la configuración inicial de fábrica? Se borrarán los cambios locales.")) {
-    localStorage.removeItem('lmi_league_t9_v12');
-    localStorage.removeItem('lmi_league_t9_v10');
-    loadDataFromStorage();
-    initUI();
-    showToast("Datos restablecidos a la configuración de fábrica", "fa-rotate-left");
-    closeModal('modal-admin-login');
-  }
-}
-
-// Customization Team Modal (Admin sets league rank here)
-function openEditTeamModal() {
-  if (!isAdminLoggedIn) {
-    openAdminModal();
-    return;
-  }
-  const sel = document.getElementById('team-select');
-  if (!sel || !sel.value) return;
-
-  const team = lmiData.teams.find(t => t.id === sel.value);
-  if (!team) return;
-
-  document.getElementById('modal-team-id').value = team.id;
-  document.getElementById('modal-team-name').value = team.name;
-  document.getElementById('modal-team-rank').value = team.leagueRank || 1;
-  document.getElementById('modal-team-stadium').value = team.stadium;
-  document.getElementById('modal-team-manager').value = team.manager;
-  document.getElementById('modal-team-budget').value = team.budget || 100000000;
-
-  document.getElementById('modal-edit-team').classList.add('active');
-}
-
-function handleSaveTeamCustomization(e) {
-  e.preventDefault();
-  const id = document.getElementById('modal-team-id').value;
-  const team = lmiData.teams.find(t => t.id === id);
-  if (!team) return;
-
-  team.name = document.getElementById('modal-team-name').value;
-  team.leagueRank = parseInt(document.getElementById('modal-team-rank').value);
-  team.stadium = document.getElementById('modal-team-stadium').value;
-  team.manager = document.getElementById('modal-team-manager').value;
-  team.budget = parseFloat(document.getElementById('modal-team-budget').value);
-
-  saveDataToStorage();
-  closeModal('modal-edit-team');
-  showToast("¡Personalización y posición del club guardadas!", "fa-circle-check");
-
-  loadTeamHub(id);
-  initRenovationSelect();
-}
-
-// Edit Player Modal Operations (13 official positions, no media/overall)
-function openEditPlayerModal(playerId) {
-  if (!isAdminLoggedIn) {
-    openAdminModal();
-    return;
-  }
-  const player = lmiData.players.find(p => p.id === playerId);
-  if (!player) return;
-
-  document.getElementById('modal-player-id').value = player.id;
-  document.getElementById('modal-player-name').value = player.name;
-  document.getElementById('modal-player-position').value = player.position || 'MC';
-  document.getElementById('modal-player-goals').value = player.goals || 0;
-  document.getElementById('modal-player-assists').value = player.assists || 0;
-  document.getElementById('modal-player-price').value = player.price || 5000000;
-
-  document.getElementById('modal-edit-player').classList.add('active');
-}
-
-function handleSavePlayer(e) {
-  e.preventDefault();
-  const id = document.getElementById('modal-player-id').value;
-  const player = lmiData.players.find(p => p.id === id);
-  if (!player) return;
-
-  player.name = document.getElementById('modal-player-name').value;
-  player.position = document.getElementById('modal-player-position').value;
-  player.goals = parseInt(document.getElementById('modal-player-goals').value);
-  player.assists = parseInt(document.getElementById('modal-player-assists').value);
-  player.price = parseFloat(document.getElementById('modal-player-price').value);
-
-  saveDataToStorage();
-  closeModal('modal-edit-player');
-  showToast(`¡Jugador ${player.name} actualizado!`, "fa-circle-check");
-
-  loadTeamHub(player.teamId);
-  renderStats();
-  renderDashboard();
 }
 
 // Toast Notifications
