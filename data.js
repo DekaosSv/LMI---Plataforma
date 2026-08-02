@@ -7,8 +7,6 @@ var INITIAL_LMI_DATA = {
       "id": "interdemilan",
       "name": "Inter de Milan",
       "shortName": "INT",
-      "leagueRank": 1,
-      "logo": "Logos Equipos/intermilan.webp",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -19,14 +17,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 1,
+      "logo": "Logos Equipos/intermilan.webp"
     },
     {
       "id": "realmadrid",
       "name": "Real Madrid",
       "shortName": "REA",
-      "leagueRank": 2,
-      "logo": "Logos Equipos/realmadrid.webp",
       "colors": {
         "primary": "#000000",
         "secondary": "#ffffff",
@@ -37,14 +35,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 2,
+      "logo": "Logos Equipos/realmadrid.webp"
     },
     {
       "id": "fcbarcelona",
       "name": "FC Barcelona",
-      "shortName": "FC ",
-      "leagueRank": 3,
-      "logo": "Logos Equipos/fcbarcelona.png",
+      "shortName": "FC",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -55,14 +53,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 3,
+      "logo": "Logos Equipos/fcbarcelona.png"
     },
     {
       "id": "riverplate",
       "name": "River Plate",
       "shortName": "RIV",
-      "leagueRank": 4,
-      "logo": "Logos Equipos/riverplate.webp",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -73,14 +71,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 4,
+      "logo": "Logos Equipos/riverplate.webp"
     },
     {
       "id": "acmiln",
       "name": "AC Milán",
-      "shortName": "AC ",
-      "leagueRank": 5,
-      "logo": "Logos Equipos/acmilan.webp",
+      "shortName": "AC",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -91,14 +89,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 5,
+      "logo": "Logos Equipos/acmilan.webp"
     },
     {
       "id": "bayernleverkusen",
       "name": "Bayern Leverkusen",
       "shortName": "BAY",
-      "leagueRank": 6,
-      "logo": "Logos Equipos/bayernleverkusen.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -109,14 +107,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 6,
+      "logo": "Logos Equipos/bayernleverkusen.png"
     },
     {
       "id": "rbleipzig",
       "name": "RB Leipzig",
-      "shortName": "RB ",
-      "leagueRank": 7,
-      "logo": "Logos Equipos/rbleipzig.png",
+      "shortName": "RB",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -127,14 +125,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 7,
+      "logo": "Logos Equipos/rbleipzig.png"
     },
     {
       "id": "bocajuniors",
       "name": "Boca Juniors",
       "shortName": "BOC",
-      "leagueRank": 8,
-      "logo": "Logos Equipos/boca.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -145,14 +143,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 8,
+      "logo": "Logos Equipos/boca.png"
     },
     {
       "id": "galatasaray",
       "name": "Galatasaray",
       "shortName": "GAL",
-      "leagueRank": 9,
-      "logo": "Logos Equipos/galatasaray.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -163,14 +161,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 9,
+      "logo": "Logos Equipos/galatasaray.png"
     },
     {
       "id": "psg",
       "name": "PSG",
       "shortName": "PSG",
-      "leagueRank": 10,
-      "logo": "Logos Equipos/psg.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -181,14 +179,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 10,
+      "logo": "Logos Equipos/psg.png"
     },
     {
       "id": "arsenal",
       "name": "Arsenal",
       "shortName": "ARS",
-      "leagueRank": 11,
-      "logo": "Logos Equipos/arsenal.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -199,14 +197,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 11,
+      "logo": "Logos Equipos/arsenal.png"
     },
     {
       "id": "como1907",
       "name": "Como 1907",
       "shortName": "COM",
-      "leagueRank": 12,
-      "logo": "Logos Equipos/como.webp",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -217,14 +215,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 12,
+      "logo": "Logos Equipos/como.webp"
     },
     {
       "id": "tottenhamhotspur",
       "name": "Tottenham Hotspur",
       "shortName": "TOT",
-      "leagueRank": 13,
-      "logo": "Logos Equipos/tottenham.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -235,14 +233,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 13,
+      "logo": "Logos Equipos/tottenham.png"
     },
     {
       "id": "hellasverona",
       "name": "Hellas Verona",
       "shortName": "HEL",
-      "leagueRank": 14,
-      "logo": "Logos Equipos/hellas.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -253,14 +251,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 14,
+      "logo": "Logos Equipos/hellas.png"
     },
     {
       "id": "manchesterunited",
       "name": "Manchester United",
       "shortName": "MAN",
-      "leagueRank": 15,
-      "logo": "Logos Equipos/manchesterunited.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -271,14 +269,14 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 15,
+      "logo": "Logos Equipos/manchesterunited.png"
     },
     {
       "id": "wrexham",
       "name": "Wrexham",
       "shortName": "WRE",
-      "leagueRank": 18,
-      "logo": "Logos Equipos/wrexham.png",
       "colors": {
         "primary": "#004789",
         "secondary": "#ffffff",
@@ -289,7 +287,9 @@ var INITIAL_LMI_DATA = {
       "budget": 100000000,
       "initialBudget": 100000000,
       "legendChangeNote": "",
-      "legendRemoveNote": ""
+      "legendRemoveNote": "",
+      "leagueRank": 18,
+      "logo": "Logos Equipos/wrexham.png"
     }
   ],
   "players": [
