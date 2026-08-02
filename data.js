@@ -18,7 +18,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 1259000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 1,
+      "leagueRank": 8,
       "logo": "Logos Equipos/intermilan.webp"
     },
     {
@@ -36,7 +36,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 191000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 2,
+      "leagueRank": 12,
       "logo": "Logos Equipos/realmadrid.webp"
     },
     {
@@ -54,7 +54,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 2097000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 3,
+      "leagueRank": 5,
       "logo": "Logos Equipos/fcbarcelona.png"
     },
     {
@@ -72,7 +72,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 4,
+      "leagueRank": 14,
       "logo": "Logos Equipos/riverplate.webp"
     },
     {
@@ -90,7 +90,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 251000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 5,
+      "leagueRank": 7,
       "logo": "Logos Equipos/acmilan.webp"
     },
     {
@@ -108,7 +108,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 1265000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 6,
+      "leagueRank": 4,
       "logo": "Logos Equipos/bayernleverkusen.png"
     },
     {
@@ -126,7 +126,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 7,
+      "leagueRank": 11,
       "logo": "Logos Equipos/rbleipzig.png"
     },
     {
@@ -144,7 +144,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 921000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 8,
+      "leagueRank": 9,
       "logo": "Logos Equipos/boca.png"
     },
     {
@@ -162,7 +162,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 205000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 9,
+      "leagueRank": 10,
       "logo": "Logos Equipos/galatasaray.png"
     },
     {
@@ -180,7 +180,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 433000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 10,
+      "leagueRank": 6,
       "logo": "Logos Equipos/psg.png"
     },
     {
@@ -198,7 +198,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 11,
+      "leagueRank": 3,
       "logo": "Logos Equipos/arsenal.png"
     },
     {
@@ -216,7 +216,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 1732000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 12,
+      "leagueRank": 1,
       "logo": "Logos Equipos/como.webp"
     },
     {
@@ -234,7 +234,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 106000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 13,
+      "leagueRank": 2,
       "logo": "Logos Equipos/tottenham.png"
     },
     {
@@ -252,7 +252,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 14,
+      "leagueRank": 15,
       "logo": "Logos Equipos/hellas.png"
     },
     {
@@ -270,7 +270,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 15,
+      "leagueRank": 13,
       "logo": "Logos Equipos/manchesterunited.png"
     },
     {
@@ -288,7 +288,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 18,
+      "leagueRank": 16,
       "logo": "Logos Equipos/wrexham.png"
     }
   ],
@@ -5895,8 +5895,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_351",
-      "name": "Diogo Jota",
-      "position": "EI",
+      "name": "Hristo Stoichkov",
+      "position": "DC",
       "teamId": "wrexham",
       "goals": 0,
       "assists": 0,
