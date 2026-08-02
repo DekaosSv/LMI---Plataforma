@@ -236,13 +236,32 @@ def process_excel():
                 if "manager" not in team_obj: team_obj["manager"] = "Director Técnico"
                 if "budget" not in team_obj: team_obj["budget"] = 100000000
                 if "initialBudget" not in team_obj: team_obj["initialBudget"] = 100000000
+                
+                # Auto-corregir extensión del logotipo si el archivo no existe en disco
+                current_logo = team_obj.get("logo", "")
+                if current_logo and not os.path.exists(current_logo):
+                    base, ext = os.path.splitext(current_logo)
+                    for alt_ext in ['.webp', '.png', '.jpg', '.jpeg', '.PNG']:
+                        alt_logo = base + alt_ext
+                        if os.path.exists(alt_logo):
+                            team_obj["logo"] = alt_logo
+                            print(f"  🔧 Auto-corrigiendo extensión del logotipo de {raw_team_name}: '{current_logo}' -> '{alt_logo}'")
+                            break
             else:
+                # Comprobar extensión física para el nuevo equipo
+                logo_path = f"Logos Equipos/{team_id}.png"
+                for alt_ext in ['.webp', '.png', '.jpg', '.jpeg', '.PNG']:
+                    test_path = f"Logos Equipos/{team_id}{alt_ext}"
+                    if os.path.exists(test_path):
+                        logo_path = test_path
+                        break
+                
                 team_obj = {
                     "id": team_id,
                     "name": raw_team_name,
                     "shortName": raw_team_name[:3].upper(),
                     "leagueRank": rank,
-                    "logo": f"Logos Equipos/{team_id}.png",
+                    "logo": logo_path,
                     "colors": {
                         "primary": "#004789",
                         "secondary": "#ffffff",
@@ -339,45 +358,16 @@ def process_excel():
                 team_id = TEAM_ID_MAP.get(norm_tname, norm_tname)
                 
                 if norm_reg_pname in players_by_norm:
-                    # Matched player! Add stats
-                    players_by_norm[norm_reg_pname][key_goals] += goles
-                    players_by_norm[norm_reg_pname][key_assists] += asists
+                    player = players_by_norm[norm_reg_pname]
+                    # Solo sumar estadísticas si el equipo registrado en el partido coincide con el equipo actual del jugador
+                    if player["teamId"] == team_id:
+                        player[key_goals] += goles
+                        player[key_assists] += asists
+                    else:
+                        print(f"  ⚠️ Estadísticas omitidas para '{raw_pname}' (en plantilla está en '{player['teamId']}', pero el registro indica '{team_id}')")
                 else:
-                    # Unmatched player! Create a new player in their team
-                    print(f"  ℹ️ Jugador extra en {sheet_name} (no estaba en plantilla): '{raw_pname}' ({raw_tname})")
-                    
-                    # Check fallback position from old database
-                    pos = "MC"
-                    price = 5000000
-                    is_legend = False
-                    
-                    if norm_reg_pname in old_players_by_norm:
-                        old_p = old_players_by_norm[norm_reg_pname]
-                        pos = old_p.get("position", "MC")
-                        price = old_p.get("price", 5000000)
-                        is_legend = old_p.get("isLegend", False)
-                        
-                    new_player = {
-                        "id": f"p_{player_id_counter_ref[0]}",
-                        "name": raw_pname,
-                        "position": pos,
-                        "teamId": team_id,
-                        "goals": 0,
-                        "assists": 0,
-                        "goals_liga": 0,
-                        "assists_liga": 0,
-                        "goals_champions": 0,
-                        "assists_champions": 0,
-                        "goals_estelar": 0,
-                        "assists_estelar": 0,
-                        "price": price,
-                        "isLegend": is_legend
-                    }
-                    new_player[key_goals] = goles
-                    new_player[key_assists] = asists
-                    players_list.append(new_player)
-                    players_by_norm[norm_reg_pname] = new_player
-                    player_id_counter_ref[0] += 1
+                    # Jugador extra omitido: no se añade a la plantilla ya que no figura en la hoja principal 'Lista'
+                    print(f"  ℹ️ Jugador extra omitido en {sheet_name} (no está en la hoja Lista): '{raw_pname}' ({raw_tname})")
 
         print("📈 Importando estadísticas de goles y asistencias desde 'Registro Liga'...")
         map_tournament_stats(registro_data, "goals_liga", "assists_liga", "Registro Liga")
