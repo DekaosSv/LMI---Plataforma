@@ -58,24 +58,6 @@ var INITIAL_LMI_DATA = {
       "logo": "Logos Equipos/fcbarcelona.png"
     },
     {
-      "id": "riverplate",
-      "name": "River Plate",
-      "shortName": "RIV",
-      "colors": {
-        "primary": "#004789",
-        "secondary": "#ffffff",
-        "bgGradient": "linear-gradient(135deg, #0b0e15 0%, #161f30 100%)"
-      },
-      "stadium": "Estadio Mâs Monumental",
-      "manager": "Director Técnico",
-      "budget": 300000000,
-      "initialBudget": 300000000,
-      "legendChangeNote": "",
-      "legendRemoveNote": "",
-      "leagueRank": 14,
-      "logo": "Logos Equipos/riverplate.webp"
-    },
-    {
       "id": "acmiln",
       "name": "AC Milán",
       "shortName": "AC",
@@ -274,6 +256,24 @@ var INITIAL_LMI_DATA = {
       "logo": "Logos Equipos/manchesterunited.png"
     },
     {
+      "id": "manchestercity",
+      "name": "Manchester_City",
+      "shortName": "CYT",
+      "colors": {
+        "primary": "#004789",
+        "secondary": "#ffffff",
+        "bgGradient": "linear-gradient(135deg, #0b0e15 0%, #161f30 100%)"
+      },
+      "stadium": "Etihad Stadium",
+      "manager": "Director Técnico",
+      "budget": 300000000,
+      "initialBudget": 300000000,
+      "legendChangeNote": "",
+      "legendRemoveNote": "",
+      "leagueRank": 14,
+      "logo": "Logos Equipos/city.webp"
+    },
+    {
       "id": "wrexham",
       "name": "Wrexham",
       "shortName": "WRE",
@@ -343,22 +343,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_4",
-      "name": "David Raya",
-      "position": "PT",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_5",
       "name": "Ederson Moraes",
       "position": "PT",
       "teamId": "acmiln",
@@ -374,7 +358,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_6",
+      "id": "p_5",
       "name": "Gianluigi Donnarumma",
       "position": "PT",
       "teamId": "bayernleverkusen",
@@ -390,7 +374,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_7",
+      "id": "p_6",
       "name": "Giorgi Mamardashvili",
       "position": "PT",
       "teamId": "rbleipzig",
@@ -406,7 +390,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_8",
+      "id": "p_7",
       "name": "Alisson Becker",
       "position": "PT",
       "teamId": "bocajuniors",
@@ -422,7 +406,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_9",
+      "id": "p_8",
       "name": "Christian Abbiati",
       "position": "PT",
       "teamId": "galatasaray",
@@ -438,7 +422,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_10",
+      "id": "p_9",
       "name": "Uğurcan Çakir",
       "position": "PT",
       "teamId": "psg",
@@ -454,7 +438,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_11",
+      "id": "p_10",
       "name": "Lucas Chevalier",
       "position": "PT",
       "teamId": "arsenal",
@@ -470,7 +454,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_12",
+      "id": "p_11",
       "name": "Diogo Costa",
       "position": "PT",
       "teamId": "como1907",
@@ -486,7 +470,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_13",
+      "id": "p_12",
       "name": "Manuel Neuer",
       "position": "PT",
       "teamId": "tottenhamhotspur",
@@ -502,7 +486,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_14",
+      "id": "p_13",
       "name": "Marco Carnesecchi",
       "position": "PT",
       "teamId": "hellasverona",
@@ -518,10 +502,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_15",
+      "id": "p_14",
       "name": "Juan Musso",
       "position": "PT",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_15",
+      "name": "Pickford",
+      "position": "PT",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -599,22 +599,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_20",
-      "name": "Joan García",
-      "position": "PT",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_21",
       "name": "Pau Torres",
       "position": "CT",
       "teamId": "acmiln",
@@ -630,7 +614,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_22",
+      "id": "p_21",
       "name": "Nuno Mendes",
       "position": "LI",
       "teamId": "bayernleverkusen",
@@ -646,7 +630,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_23",
+      "id": "p_22",
       "name": "Jonathan Tah",
       "position": "CT",
       "teamId": "rbleipzig",
@@ -662,7 +646,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_24",
+      "id": "p_23",
       "name": "Gabriel Magalhães",
       "position": "CT",
       "teamId": "bocajuniors",
@@ -678,7 +662,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_25",
+      "id": "p_24",
       "name": "Nuno Tavares",
       "position": "LI",
       "teamId": "galatasaray",
@@ -694,7 +678,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_26",
+      "id": "p_25",
       "name": "Emmanuel Agbadou",
       "position": "CT",
       "teamId": "psg",
@@ -710,7 +694,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_27",
+      "id": "p_26",
       "name": "Kyle Walker-Peters",
       "position": "LD",
       "teamId": "arsenal",
@@ -726,7 +710,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_28",
+      "id": "p_27",
       "name": "Ronald Araújo",
       "position": "CT",
       "teamId": "como1907",
@@ -742,7 +726,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_29",
+      "id": "p_28",
       "name": "Paolo Maldini",
       "position": "LI",
       "teamId": "tottenhamhotspur",
@@ -758,7 +742,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_30",
+      "id": "p_29",
       "name": "Gabriele Zappa",
       "position": "LD",
       "teamId": "hellasverona",
@@ -774,10 +758,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_31",
+      "id": "p_30",
       "name": "Trent Alexander-Arnold",
       "position": "LD",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_31",
+      "name": "Ter stegen",
+      "position": "PT",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -855,22 +855,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_36",
-      "name": "Alejandro Balde",
-      "position": "LI",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_37",
       "name": "Antonio Rüdiger",
       "position": "CT",
       "teamId": "acmiln",
@@ -886,7 +870,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_38",
+      "id": "p_37",
       "name": "Pepe",
       "position": "CT",
       "teamId": "bayernleverkusen",
@@ -902,7 +886,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_39",
+      "id": "p_38",
       "name": "Murillo",
       "position": "CT",
       "teamId": "rbleipzig",
@@ -918,7 +902,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_40",
+      "id": "p_39",
       "name": "Federico Dimarco",
       "position": "II",
       "teamId": "bocajuniors",
@@ -934,7 +918,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_41",
+      "id": "p_40",
       "name": "Marquinhos",
       "position": "CT",
       "teamId": "galatasaray",
@@ -950,7 +934,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_42",
+      "id": "p_41",
       "name": "Ezri Konsa",
       "position": "CT",
       "teamId": "psg",
@@ -966,7 +950,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_43",
+      "id": "p_42",
       "name": "Kota Takai",
       "position": "CT",
       "teamId": "arsenal",
@@ -982,7 +966,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_44",
+      "id": "p_43",
       "name": "Nico Schlotterbeck",
       "position": "CT",
       "teamId": "como1907",
@@ -998,7 +982,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_45",
+      "id": "p_44",
       "name": "Micky van de Ven",
       "position": "CT",
       "teamId": "tottenhamhotspur",
@@ -1014,7 +998,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_46",
+      "id": "p_45",
       "name": "Jean-Clair Todibo",
       "position": "CT",
       "teamId": "hellasverona",
@@ -1030,10 +1014,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_47",
+      "id": "p_46",
       "name": "Robert Andrich",
       "position": "MCD",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_47",
+      "name": "Robertson",
+      "position": "LI",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -1111,22 +1111,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_52",
-      "name": "Enzo Fernández",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_53",
       "name": "Álvaro Carreras",
       "position": "LI",
       "teamId": "acmiln",
@@ -1142,7 +1126,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_54",
+      "id": "p_53",
       "name": "Dean Huijsen (P)",
       "position": "CT",
       "teamId": "bayernleverkusen",
@@ -1158,7 +1142,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_55",
+      "id": "p_54",
       "name": "Joško Gvardiol",
       "position": "LI",
       "teamId": "rbleipzig",
@@ -1174,7 +1158,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_56",
+      "id": "p_55",
       "name": "Alejandro Garnacho",
       "position": "II",
       "teamId": "bocajuniors",
@@ -1190,7 +1174,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_57",
+      "id": "p_56",
       "name": "Pierre Kalulu",
       "position": "CT",
       "teamId": "galatasaray",
@@ -1206,7 +1190,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_58",
+      "id": "p_57",
       "name": "Ferdi Kadioğlu",
       "position": "LI",
       "teamId": "psg",
@@ -1222,7 +1206,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_59",
+      "id": "p_58",
       "name": "Marc Guéhi",
       "position": "CT",
       "teamId": "arsenal",
@@ -1238,7 +1222,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_60",
+      "id": "p_59",
       "name": "Maximiliano Araújo",
       "position": "LI",
       "teamId": "como1907",
@@ -1254,7 +1238,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_61",
+      "id": "p_60",
       "name": "Ibrahima Konaté",
       "position": "CT",
       "teamId": "tottenhamhotspur",
@@ -1270,7 +1254,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_62",
+      "id": "p_61",
       "name": "Edmond Tapsoba",
       "position": "CT",
       "teamId": "hellasverona",
@@ -1286,10 +1270,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_63",
+      "id": "p_62",
       "name": "Dayot Upamecano",
       "position": "CT",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_63",
+      "name": "Fabinho",
+      "position": "MCD",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -1367,22 +1367,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_68",
-      "name": "Dávid Hancko",
-      "position": "CT",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_69",
       "name": "Ben White",
       "position": "LD",
       "teamId": "acmiln",
@@ -1398,7 +1382,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_70",
+      "id": "p_69",
       "name": "João Cancelo",
       "position": "LD",
       "teamId": "bayernleverkusen",
@@ -1414,7 +1398,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_71",
+      "id": "p_70",
       "name": "Jeremie Frimpong",
       "position": "LD",
       "teamId": "rbleipzig",
@@ -1430,7 +1414,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_72",
+      "id": "p_71",
       "name": "Robin Le Normand",
       "position": "CT",
       "teamId": "bocajuniors",
@@ -1446,7 +1430,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_73",
+      "id": "p_72",
       "name": "Raoul Bellanova",
       "position": "LD",
       "teamId": "galatasaray",
@@ -1462,7 +1446,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_74",
+      "id": "p_73",
       "name": "Stefan Posch",
       "position": "LD",
       "teamId": "psg",
@@ -1478,7 +1462,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_75",
+      "id": "p_74",
       "name": "Djed Spence",
       "position": "LD",
       "teamId": "arsenal",
@@ -1494,7 +1478,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_76",
+      "id": "p_75",
       "name": "Kyle Walker",
       "position": "LD",
       "teamId": "como1907",
@@ -1510,7 +1494,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_77",
+      "id": "p_76",
       "name": "Achraf Hakimi",
       "position": "LD",
       "teamId": "tottenhamhotspur",
@@ -1526,7 +1510,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_78",
+      "id": "p_77",
       "name": "Aaron Martin",
       "position": "LI",
       "teamId": "hellasverona",
@@ -1542,10 +1526,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_79",
+      "id": "p_78",
       "name": "Alphonso Davies",
       "position": "LI",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_79",
+      "name": "Stones",
+      "position": "CT",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -1623,22 +1623,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_84",
-      "name": "José María Giménez",
-      "position": "CT",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_85",
       "name": "Aurélien Tchouaméni",
       "position": "MCD",
       "teamId": "acmiln",
@@ -1654,7 +1638,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_86",
+      "id": "p_85",
       "name": "Nicolò Barella",
       "position": "MCD",
       "teamId": "bayernleverkusen",
@@ -1670,7 +1654,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_87",
+      "id": "p_86",
       "name": "Manu Koné",
       "position": "MC",
       "teamId": "rbleipzig",
@@ -1686,7 +1670,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_88",
+      "id": "p_87",
       "name": "Boubacar Kamara",
       "position": "MCD",
       "teamId": "bocajuniors",
@@ -1702,7 +1686,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_89",
+      "id": "p_88",
       "name": "André Zambo Anguissa",
       "position": "MCD",
       "teamId": "galatasaray",
@@ -1718,7 +1702,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_90",
+      "id": "p_89",
       "name": "Joāo Palhinha",
       "position": "MCD",
       "teamId": "psg",
@@ -1734,7 +1718,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_91",
+      "id": "p_90",
       "name": "Bruno Fernandes",
       "position": "MP",
       "teamId": "arsenal",
@@ -1750,7 +1734,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_92",
+      "id": "p_91",
       "name": "Felix Nmecha",
       "position": "MCD",
       "teamId": "como1907",
@@ -1766,7 +1750,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_93",
+      "id": "p_92",
       "name": "Youssouf Fofana",
       "position": "MCD",
       "teamId": "tottenhamhotspur",
@@ -1782,7 +1766,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_94",
+      "id": "p_93",
       "name": "James Garner",
       "position": "MCD",
       "teamId": "hellasverona",
@@ -1798,10 +1782,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_95",
+      "id": "p_94",
       "name": "Manuel Ugarte",
       "position": "MCD",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_95",
+      "name": "Sergio Ramos",
+      "position": "CT",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -1879,22 +1879,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_100",
-      "name": "Leandro Trossard",
-      "position": "EI",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_101",
       "name": "Joelinton",
       "position": "MC",
       "teamId": "acmiln",
@@ -1910,7 +1894,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_102",
+      "id": "p_101",
       "name": "Warren ZaÏre-Emery",
       "position": "MCD",
       "teamId": "bayernleverkusen",
@@ -1926,7 +1910,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_103",
+      "id": "p_102",
       "name": "Leandro Paredes",
       "position": "MCD",
       "teamId": "rbleipzig",
@@ -1942,7 +1926,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_104",
+      "id": "p_103",
       "name": "Malo Gusto",
       "position": "LD",
       "teamId": "bocajuniors",
@@ -1958,7 +1942,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_105",
+      "id": "p_104",
       "name": "Mikel Merino",
       "position": "MC",
       "teamId": "galatasaray",
@@ -1974,7 +1958,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_106",
+      "id": "p_105",
       "name": "Alexis Mac Allister",
       "position": "MC",
       "teamId": "psg",
@@ -1990,7 +1974,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_107",
+      "id": "p_106",
       "name": "Nico O’Reilly",
       "position": "MP",
       "teamId": "arsenal",
@@ -2006,7 +1990,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_108",
+      "id": "p_107",
       "name": "Manuel Locatelli",
       "position": "MC",
       "teamId": "como1907",
@@ -2022,7 +2006,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_109",
+      "id": "p_108",
       "name": "Joshua Kimmich",
       "position": "MCD",
       "teamId": "tottenhamhotspur",
@@ -2038,7 +2022,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_110",
+      "id": "p_109",
       "name": "Michel Aebischer",
       "position": "MC",
       "teamId": "hellasverona",
@@ -2054,10 +2038,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_111",
+      "id": "p_110",
       "name": "Nadiem Amiri",
       "position": "MC",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_111",
+      "name": "Lisandro martine<",
+      "position": "CT",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -2135,22 +2135,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_116",
-      "name": "Robert Lewandowski",
-      "position": "DC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_117",
       "name": "Rodrygo",
       "position": "II",
       "teamId": "acmiln",
@@ -2166,7 +2150,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_118",
+      "id": "p_117",
       "name": "Nico Paz (P)",
       "position": "MC",
       "teamId": "bayernleverkusen",
@@ -2182,7 +2166,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_119",
+      "id": "p_118",
       "name": "Dirk Kuyt",
       "position": "ED",
       "teamId": "rbleipzig",
@@ -2198,7 +2182,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_120",
+      "id": "p_119",
       "name": "Ademola Lookman",
       "position": "DC",
       "teamId": "bocajuniors",
@@ -2214,7 +2198,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_121",
+      "id": "p_120",
       "name": "Antoine Griezmann",
       "position": "MP",
       "teamId": "galatasaray",
@@ -2230,7 +2214,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_122",
+      "id": "p_121",
       "name": "Pablo Barrios",
       "position": "MC",
       "teamId": "psg",
@@ -2246,7 +2230,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_123",
+      "id": "p_122",
       "name": "Gavi",
       "position": "MC",
       "teamId": "arsenal",
@@ -2262,7 +2246,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_124",
+      "id": "p_123",
       "name": "Florian Wirtz",
       "position": "MP",
       "teamId": "como1907",
@@ -2278,7 +2262,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_125",
+      "id": "p_124",
       "name": "Isco",
       "position": "MC",
       "teamId": "tottenhamhotspur",
@@ -2294,7 +2278,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_126",
+      "id": "p_125",
       "name": "Andreas Schjelderup",
       "position": "MP",
       "teamId": "hellasverona",
@@ -2310,10 +2294,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_127",
+      "id": "p_126",
       "name": "Petar Sučić",
       "position": "MC",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_127",
+      "name": "jorginho",
+      "position": "MCD",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -2391,22 +2391,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_132",
-      "name": "Luis Suárez",
-      "position": "DC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_133",
       "name": "Mason Greenwood",
       "position": "ID",
       "teamId": "acmiln",
@@ -2422,7 +2406,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_134",
+      "id": "p_133",
       "name": "Savinho",
       "position": "EI",
       "teamId": "bayernleverkusen",
@@ -2438,7 +2422,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_135",
+      "id": "p_134",
       "name": "Harry Kane",
       "position": "DC",
       "teamId": "rbleipzig",
@@ -2454,7 +2438,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_136",
+      "id": "p_135",
       "name": "Bryan Mbeumo",
       "position": "DC",
       "teamId": "bocajuniors",
@@ -2470,7 +2454,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_137",
+      "id": "p_136",
       "name": "Mattia Zaccagni",
       "position": "EI",
       "teamId": "galatasaray",
@@ -2486,7 +2470,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_138",
+      "id": "p_137",
       "name": "Mohamed Salah",
       "position": "ED",
       "teamId": "psg",
@@ -2502,13 +2486,13 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_139",
+      "id": "p_138",
       "name": "Bukayo Saka",
       "position": "ED",
       "teamId": "arsenal",
-      "goals": 2,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2518,7 +2502,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_140",
+      "id": "p_139",
       "name": "Kenan Yildiz",
       "position": "EI",
       "teamId": "como1907",
@@ -2534,7 +2518,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_141",
+      "id": "p_140",
       "name": "Jonathan David",
       "position": "SD",
       "teamId": "tottenhamhotspur",
@@ -2550,7 +2534,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_142",
+      "id": "p_141",
       "name": "Julian Quiñones",
       "position": "EI",
       "teamId": "hellasverona",
@@ -2566,10 +2550,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_143",
+      "id": "p_142",
       "name": "Pablo Fornals",
       "position": "MP",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_143",
+      "name": "Declan rice",
+      "position": "MCD",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -2647,22 +2647,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_148",
-      "name": "Máximo Perrone",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_149",
       "name": "Erling Haaland",
       "position": "DC",
       "teamId": "acmiln",
@@ -2678,7 +2662,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_150",
+      "id": "p_149",
       "name": "Bernardo Silva",
       "position": "ED",
       "teamId": "bayernleverkusen",
@@ -2694,7 +2678,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_151",
+      "id": "p_150",
       "name": "Federico Chiesa",
       "position": "EI",
       "teamId": "rbleipzig",
@@ -2710,7 +2694,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_152",
+      "id": "p_151",
       "name": "Leroy Sané",
       "position": "ED",
       "teamId": "bocajuniors",
@@ -2726,7 +2710,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_153",
+      "id": "p_152",
       "name": "Iñaki Williams",
       "position": "ED",
       "teamId": "galatasaray",
@@ -2742,7 +2726,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_154",
+      "id": "p_153",
       "name": "Luis Díaz",
       "position": "EI",
       "teamId": "psg",
@@ -2758,7 +2742,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_155",
+      "id": "p_154",
       "name": "Semih Kiliçsoy",
       "position": "DC",
       "teamId": "arsenal",
@@ -2774,7 +2758,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_156",
+      "id": "p_155",
       "name": "Lamine Yamal",
       "position": "ED",
       "teamId": "como1907",
@@ -2790,7 +2774,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_157",
+      "id": "p_156",
       "name": "Darwin Núñez",
       "position": "DC",
       "teamId": "tottenhamhotspur",
@@ -2806,7 +2790,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_158",
+      "id": "p_157",
       "name": "Antonio Nusa",
       "position": "ED",
       "teamId": "hellasverona",
@@ -2822,10 +2806,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_159",
+      "id": "p_158",
       "name": "Roberto Baggio",
       "position": "SD",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_159",
+      "name": "Bruno fernandez",
+      "position": "MP",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -2903,22 +2903,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_164",
-      "name": "Stanislav Lobotka",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_165",
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
@@ -2934,7 +2918,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_166",
+      "id": "p_165",
       "name": "Lautaro Martínez",
       "position": "DC",
       "teamId": "bayernleverkusen",
@@ -2950,7 +2934,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_167",
+      "id": "p_166",
       "name": "Yoane Wissa",
       "position": "DC",
       "teamId": "rbleipzig",
@@ -2966,7 +2950,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_168",
+      "id": "p_167",
       "name": "Rodrigo De Paul",
       "position": "MC",
       "teamId": "bocajuniors",
@@ -2982,7 +2966,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_169",
+      "id": "p_168",
       "name": "Viktor Gyökeres",
       "position": "DC",
       "teamId": "galatasaray",
@@ -2998,7 +2982,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_170",
+      "id": "p_169",
       "name": "Paul Onuachu",
       "position": "DC",
       "teamId": "psg",
@@ -3014,7 +2998,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_171",
+      "id": "p_170",
       "name": "Umar Sadiq",
       "position": "DC",
       "teamId": "arsenal",
@@ -3030,7 +3014,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_172",
+      "id": "p_171",
       "name": "Jamie Vardy",
       "position": "DC",
       "teamId": "como1907",
@@ -3046,7 +3030,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_173",
+      "id": "p_172",
       "name": "Loïs Openda",
       "position": "DC",
       "teamId": "tottenhamhotspur",
@@ -3062,7 +3046,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_174",
+      "id": "p_173",
       "name": "Raúl Jiménez",
       "position": "DC",
       "teamId": "hellasverona",
@@ -3078,10 +3062,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_175",
+      "id": "p_174",
       "name": "Marko Arnautović",
       "position": "DC",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_175",
+      "name": "Modric",
+      "position": "MC",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -3159,22 +3159,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_180",
-      "name": "Azzedine Ounahi",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_181",
       "name": "António Silva",
       "position": "CT",
       "teamId": "acmiln",
@@ -3190,7 +3174,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_182",
+      "id": "p_181",
       "name": "David de Gea",
       "position": "PT",
       "teamId": "bayernleverkusen",
@@ -3206,7 +3190,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_183",
+      "id": "p_182",
       "name": "Romelu Lukaku",
       "position": "DC",
       "teamId": "rbleipzig",
@@ -3222,7 +3206,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_184",
+      "id": "p_183",
       "name": "Marc Bernal",
       "position": "MC",
       "teamId": "bocajuniors",
@@ -3238,7 +3222,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_185",
+      "id": "p_184",
       "name": "Francesco Acerbi",
       "position": "CT",
       "teamId": "galatasaray",
@@ -3254,7 +3238,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_186",
+      "id": "p_185",
       "name": "Gregor Kobel",
       "position": "PT",
       "teamId": "psg",
@@ -3270,7 +3254,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_187",
+      "id": "p_186",
       "name": "Emiliano Martínez",
       "position": "PT",
       "teamId": "arsenal",
@@ -3286,7 +3270,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_188",
+      "id": "p_187",
       "name": "Thibaut Courtois",
       "position": "PT",
       "teamId": "como1907",
@@ -3302,7 +3286,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_189",
+      "id": "p_188",
       "name": "David Soria",
       "position": "PT",
       "teamId": "tottenhamhotspur",
@@ -3318,7 +3302,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_190",
+      "id": "p_189",
       "name": "Orlando Gil",
       "position": "PT",
       "teamId": "hellasverona",
@@ -3334,10 +3318,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_191",
+      "id": "p_190",
       "name": "Nahuel Molina",
       "position": "LD",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_191",
+      "name": "Bukayo saka",
+      "position": "ED",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -3415,22 +3415,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_196",
-      "name": "Pablo Fornals",
-      "position": "MP",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_197",
       "name": "Dani Carvajal",
       "position": "LD",
       "teamId": "acmiln",
@@ -3446,7 +3430,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_198",
+      "id": "p_197",
       "name": "Matthijs de Ligt",
       "position": "CT",
       "teamId": "bayernleverkusen",
@@ -3462,7 +3446,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_199",
+      "id": "p_198",
       "name": "Karim Benzema",
       "position": "DC",
       "teamId": "rbleipzig",
@@ -3478,7 +3462,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_200",
+      "id": "p_199",
       "name": "Keylor Navas",
       "position": "PT",
       "teamId": "bocajuniors",
@@ -3494,7 +3478,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_201",
+      "id": "p_200",
       "name": "Myles Lewis-Skelly",
       "position": "LI",
       "teamId": "galatasaray",
@@ -3510,7 +3494,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_202",
+      "id": "p_201",
       "name": "Manuel Akanji",
       "position": "CT",
       "teamId": "psg",
@@ -3526,7 +3510,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_203",
+      "id": "p_202",
       "name": "Illia Zabarnyi",
       "position": "CT",
       "teamId": "arsenal",
@@ -3542,7 +3526,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_204",
+      "id": "p_203",
       "name": "Cristian Romero",
       "position": "CT",
       "teamId": "como1907",
@@ -3558,7 +3542,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_205",
+      "id": "p_204",
       "name": "Rayan Aït-Nouri",
       "position": "LI",
       "teamId": "tottenhamhotspur",
@@ -3574,7 +3558,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_206",
+      "id": "p_205",
       "name": "Jhon Lucumi",
       "position": "CT",
       "teamId": "hellasverona",
@@ -3590,10 +3574,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_207",
+      "id": "p_206",
       "name": "Hans Vanaken",
       "position": "CT",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_207",
+      "name": "Wayne rooney",
+      "position": "DC",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -3671,22 +3671,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_212",
-      "name": "Pedro Porro",
-      "position": "LD",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_213",
       "name": "Tomoya Miki",
       "position": "MC",
       "teamId": "acmiln",
@@ -3702,7 +3686,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_214",
+      "id": "p_213",
       "name": "João Neves",
       "position": "LD",
       "teamId": "bayernleverkusen",
@@ -3718,7 +3702,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_215",
+      "id": "p_214",
       "name": "Joselu",
       "position": "DC",
       "teamId": "rbleipzig",
@@ -3734,7 +3718,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_216",
+      "id": "p_215",
       "name": "Ryan Gravenberch",
       "position": "MCD",
       "teamId": "bocajuniors",
@@ -3750,7 +3734,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_217",
+      "id": "p_216",
       "name": "Nico González",
       "position": "MC",
       "teamId": "galatasaray",
@@ -3766,7 +3750,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_218",
+      "id": "p_217",
       "name": "Gerard Martín",
       "position": "LI",
       "teamId": "psg",
@@ -3782,7 +3766,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_219",
+      "id": "p_218",
       "name": "Trevoh Chalobah",
       "position": "CT",
       "teamId": "arsenal",
@@ -3798,7 +3782,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_220",
+      "id": "p_219",
       "name": "Andrea Cambiaso",
       "position": "II",
       "teamId": "como1907",
@@ -3814,7 +3798,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_221",
+      "id": "p_220",
       "name": "Éder Militão",
       "position": "CT",
       "teamId": "tottenhamhotspur",
@@ -3830,7 +3814,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_222",
+      "id": "p_221",
       "name": "Raphael Onyedika",
       "position": "MCD",
       "teamId": "hellasverona",
@@ -3846,10 +3830,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_223",
+      "id": "p_222",
       "name": "Facundo Pellistri",
       "position": "EI",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_223",
+      "name": "Barcola",
+      "position": "EI",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -3927,22 +3927,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_228",
-      "name": "Danilo",
-      "position": "LD",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_229",
       "name": "Federico Valverde",
       "position": "MC",
       "teamId": "acmiln",
@@ -3958,7 +3942,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_230",
+      "id": "p_229",
       "name": "Rúben Neves",
       "position": "MCD",
       "teamId": "bayernleverkusen",
@@ -3974,7 +3958,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_231",
+      "id": "p_230",
       "name": "Malcom",
       "position": "ED",
       "teamId": "rbleipzig",
@@ -3990,7 +3974,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_232",
+      "id": "p_231",
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "bocajuniors",
@@ -4006,7 +3990,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_233",
+      "id": "p_232",
       "name": "Pascal Groß",
       "position": "MC",
       "teamId": "galatasaray",
@@ -4022,7 +4006,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_234",
+      "id": "p_233",
       "name": "Dodô",
       "position": "LD",
       "teamId": "psg",
@@ -4038,7 +4022,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_235",
+      "id": "p_234",
       "name": "Leny Yoro",
       "position": "CT",
       "teamId": "arsenal",
@@ -4054,7 +4038,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_236",
+      "id": "p_235",
       "name": "Sergi Cardona",
       "position": "LI",
       "teamId": "como1907",
@@ -4070,7 +4054,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_237",
+      "id": "p_236",
       "name": "Lewis Dunk",
       "position": "CT",
       "teamId": "tottenhamhotspur",
@@ -4086,7 +4070,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_238",
+      "id": "p_237",
       "name": "Yangel Herrera",
       "position": "MCD",
       "teamId": "hellasverona",
@@ -4102,10 +4086,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_239",
+      "id": "p_238",
       "name": "Jan Paul van Hecke",
       "position": "CT",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_239",
+      "name": "Morgan rogers",
+      "position": "MP",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -4183,22 +4183,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_244",
-      "name": "Marcos Senesi",
-      "position": "CT",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_245",
       "name": "Javi Guerra",
       "position": "MC",
       "teamId": "acmiln",
@@ -4214,7 +4198,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_246",
+      "id": "p_245",
       "name": "Marcelo Brozović",
       "position": "MCD",
       "teamId": "bayernleverkusen",
@@ -4230,7 +4214,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_247",
+      "id": "p_246",
       "name": "Paulo Dybala",
       "position": "SD",
       "teamId": "rbleipzig",
@@ -4246,7 +4230,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_248",
+      "id": "p_247",
       "name": "Ousmane Dembélé",
       "position": "EI",
       "teamId": "bocajuniors",
@@ -4262,7 +4246,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_249",
+      "id": "p_248",
       "name": "Rodrigo Mora",
       "position": "MP",
       "teamId": "galatasaray",
@@ -4278,7 +4262,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_250",
+      "id": "p_249",
       "name": "Sandro Tonali",
       "position": "MC",
       "teamId": "psg",
@@ -4294,7 +4278,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_251",
+      "id": "p_250",
       "name": "Jobe Bellingham",
       "position": "MC",
       "teamId": "arsenal",
@@ -4310,7 +4294,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_252",
+      "id": "p_251",
       "name": "Pape Gueye",
       "position": "MCD",
       "teamId": "como1907",
@@ -4326,7 +4310,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_253",
+      "id": "p_252",
       "name": "Nordi Mukiele",
       "position": "LD",
       "teamId": "tottenhamhotspur",
@@ -4342,7 +4326,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_254",
+      "id": "p_253",
       "name": "Qazim Laci",
       "position": "MC",
       "teamId": "hellasverona",
@@ -4358,10 +4342,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_255",
+      "id": "p_254",
       "name": "Marcel Sabitzer",
       "position": "MC",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_255",
+      "name": "Rafael leao",
+      "position": "EI",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -4439,22 +4439,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_260",
-      "name": "Gianluca Mancini",
-      "position": "CT",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_261",
       "name": "Malik Tillman",
       "position": "MP",
       "teamId": "acmiln",
@@ -4470,7 +4454,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_262",
+      "id": "p_261",
       "name": "Hakan Çalhanoğlu",
       "position": "MCD",
       "teamId": "bayernleverkusen",
@@ -4486,7 +4470,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_263",
+      "id": "p_262",
       "name": "Paul Pogba",
       "position": "MC",
       "teamId": "rbleipzig",
@@ -4502,7 +4486,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_264",
+      "id": "p_263",
       "name": "Lewis Hall",
       "position": "LI",
       "teamId": "bocajuniors",
@@ -4518,7 +4502,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_265",
+      "id": "p_264",
       "name": "Charles De Ketelaere",
       "position": "MP",
       "teamId": "galatasaray",
@@ -4534,7 +4518,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_266",
+      "id": "p_265",
       "name": "Matteo Guendouzi",
       "position": "MC",
       "teamId": "psg",
@@ -4550,7 +4534,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_267",
+      "id": "p_266",
       "name": "Kobbie Mainoo",
       "position": "MC",
       "teamId": "arsenal",
@@ -4566,7 +4550,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_268",
+      "id": "p_267",
       "name": "Rodri",
       "position": "MC",
       "teamId": "como1907",
@@ -4582,7 +4566,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_269",
+      "id": "p_268",
       "name": "Morten Hjulmand",
       "position": "MCD",
       "teamId": "tottenhamhotspur",
@@ -4598,7 +4582,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_270",
+      "id": "p_269",
       "name": "James Ward Prowse",
       "position": "MP",
       "teamId": "hellasverona",
@@ -4614,10 +4598,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_271",
+      "id": "p_270",
       "name": "James Rodríguez",
       "position": "MP",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_271",
+      "name": "Marcus rashford",
+      "position": "EI",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -4695,22 +4695,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_276",
-      "name": "Aleix García",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_277",
       "name": "Jude Bellingham",
       "position": "MP",
       "teamId": "acmiln",
@@ -4726,7 +4710,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_278",
+      "id": "p_277",
       "name": "Brahim Díaz",
       "position": "MP",
       "teamId": "bayernleverkusen",
@@ -4742,7 +4726,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_279",
+      "id": "p_278",
       "name": "Amadou Onana",
       "position": "MCD",
       "teamId": "rbleipzig",
@@ -4758,7 +4742,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_280",
+      "id": "p_279",
       "name": "Conor Gallagher",
       "position": "II",
       "teamId": "bocajuniors",
@@ -4774,7 +4758,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_281",
+      "id": "p_280",
       "name": "Yéremy Pino",
       "position": "ID",
       "teamId": "galatasaray",
@@ -4790,7 +4774,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_282",
+      "id": "p_281",
       "name": "Marco Asensio",
       "position": "MP",
       "teamId": "psg",
@@ -4806,7 +4790,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_283",
+      "id": "p_282",
       "name": "Simon Adringa",
       "position": "ID",
       "teamId": "arsenal",
@@ -4822,7 +4806,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_284",
+      "id": "p_283",
       "name": "Xavi Simons",
       "position": "MP",
       "teamId": "como1907",
@@ -4838,7 +4822,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_285",
+      "id": "p_284",
       "name": "Granit Xhaka",
       "position": "MCD",
       "teamId": "tottenhamhotspur",
@@ -4854,7 +4838,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_286",
+      "id": "p_285",
       "name": "Josip Stanisić",
       "position": "LD",
       "teamId": "hellasverona",
@@ -4870,10 +4854,26 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_287",
+      "id": "p_286",
       "name": "Benjamin Šeško",
       "position": "DC",
       "teamId": "manchesterunited",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_287",
+      "name": "Son heung-min",
+      "position": "DC",
+      "teamId": "manchestercity",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -4951,22 +4951,6 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_292",
-      "name": "Dani Ceballos",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_293",
       "name": "Arda Güler",
       "position": "ID",
       "teamId": "acmiln",
@@ -4982,7 +4966,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_294",
+      "id": "p_293",
       "name": "Christopher Nkunku",
       "position": "MP",
       "teamId": "bayernleverkusen",
@@ -4998,7 +4982,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_295",
+      "id": "p_294",
       "name": "Marco Verratti",
       "position": "MC",
       "teamId": "rbleipzig",
@@ -5014,7 +4998,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_296",
+      "id": "p_295",
       "name": "Donyell Malen",
       "position": "ED",
       "teamId": "bocajuniors",
@@ -5030,7 +5014,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_297",
+      "id": "p_296",
       "name": "Serge Gnabry",
       "position": "ED",
       "teamId": "galatasaray",
@@ -5046,7 +5030,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_298",
+      "id": "p_297",
       "name": "Tijjani Reijnders",
       "position": "MP",
       "teamId": "psg",
@@ -5062,7 +5046,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_299",
+      "id": "p_298",
       "name": "Roony Bardghji",
       "position": "ID",
       "teamId": "arsenal",
@@ -5078,7 +5062,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_300",
+      "id": "p_299",
       "name": "Oihan Sancet",
       "position": "MP",
       "teamId": "como1907",
@@ -5094,7 +5078,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_301",
+      "id": "p_300",
       "name": "Ismael Saibari",
       "position": "MP",
       "teamId": "tottenhamhotspur",
@@ -5110,7 +5094,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_302",
+      "id": "p_301",
       "name": "Antonee Robinson",
       "position": "LI",
       "teamId": "hellasverona",
@@ -5126,7 +5110,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_303",
+      "id": "p_302",
       "name": "Strahinja Pavlović",
       "position": "CT",
       "teamId": "manchesterunited",
@@ -5142,7 +5126,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_304",
+      "id": "p_303",
       "name": "Nicolò Zaniolo",
       "position": "MP",
       "teamId": "wrexham",
@@ -5158,7 +5142,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_305",
+      "id": "p_304",
       "name": "Nico Williams",
       "position": "II",
       "teamId": "interdemilan",
@@ -5174,7 +5158,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_306",
+      "id": "p_305",
       "name": "Giuliano Simeone",
       "position": "ID",
       "teamId": "realmadrid",
@@ -5190,7 +5174,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_307",
+      "id": "p_306",
       "name": "Jamal Musiala",
       "position": "MP",
       "teamId": "fcbarcelona",
@@ -5206,23 +5190,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_308",
-      "name": "Fabio Miretti",
-      "position": "MC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_309",
+      "id": "p_307",
       "name": "Igor Paixão",
       "position": "EI",
       "teamId": "acmiln",
@@ -5238,7 +5206,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_310",
+      "id": "p_308",
       "name": "Jérémy Doku",
       "position": "EI",
       "teamId": "bayernleverkusen",
@@ -5254,7 +5222,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_311",
+      "id": "p_309",
       "name": "Kim Min-Jae",
       "position": "CT",
       "teamId": "rbleipzig",
@@ -5270,7 +5238,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_312",
+      "id": "p_310",
       "name": "Casemiro",
       "position": "MCD",
       "teamId": "bocajuniors",
@@ -5286,7 +5254,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_313",
+      "id": "p_311",
       "name": "Harvey Barnes",
       "position": "EI",
       "teamId": "galatasaray",
@@ -5302,7 +5270,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_314",
+      "id": "p_312",
       "name": "Ritsu Doan",
       "position": "ID",
       "teamId": "psg",
@@ -5318,7 +5286,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_315",
+      "id": "p_313",
       "name": "Antoine Semenyo",
       "position": "ED",
       "teamId": "arsenal",
@@ -5334,7 +5302,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_316",
+      "id": "p_314",
       "name": "Riyad Mahrez",
       "position": "ED",
       "teamId": "como1907",
@@ -5350,7 +5318,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_317",
+      "id": "p_315",
       "name": "Álexbaena",
       "position": "MP",
       "teamId": "tottenhamhotspur",
@@ -5366,7 +5334,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_318",
+      "id": "p_316",
       "name": "Bilal El Khannouss",
       "position": "MP",
       "teamId": "hellasverona",
@@ -5382,7 +5350,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_319",
+      "id": "p_317",
       "name": "Ismaila Sarr",
       "position": "ED",
       "teamId": "manchesterunited",
@@ -5398,7 +5366,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_320",
+      "id": "p_318",
       "name": "Matheus Cunha",
       "position": "MP",
       "teamId": "wrexham",
@@ -5414,7 +5382,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_321",
+      "id": "p_319",
       "name": "Pio Esposito",
       "position": "DC",
       "teamId": "interdemilan",
@@ -5430,7 +5398,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_322",
+      "id": "p_320",
       "name": "Talisca",
       "position": "MP",
       "teamId": "realmadrid",
@@ -5446,7 +5414,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_323",
+      "id": "p_321",
       "name": "Fermín López",
       "position": "MP",
       "teamId": "fcbarcelona",
@@ -5462,23 +5430,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_324",
-      "name": "João Félix",
-      "position": "EI",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_325",
+      "id": "p_322",
       "name": "Franco Mastantuono",
       "position": "ED",
       "teamId": "acmiln",
@@ -5494,7 +5446,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_326",
+      "id": "p_323",
       "name": "Phil Foden",
       "position": "ED",
       "teamId": "bayernleverkusen",
@@ -5510,7 +5462,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_327",
+      "id": "p_324",
       "name": "Roger Ibañez",
       "position": "CT",
       "teamId": "rbleipzig",
@@ -5526,7 +5478,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_328",
+      "id": "p_325",
       "name": "Rubén Dias",
       "position": "CT",
       "teamId": "bocajuniors",
@@ -5542,7 +5494,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_329",
+      "id": "p_326",
       "name": "Samu Aghehowa",
       "position": "DC",
       "teamId": "galatasaray",
@@ -5558,7 +5510,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_330",
+      "id": "p_327",
       "name": "Gabriel Martinelli",
       "position": "EI",
       "teamId": "psg",
@@ -5574,7 +5526,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_331",
+      "id": "p_328",
       "name": "Estêvão",
       "position": "ED",
       "teamId": "arsenal",
@@ -5590,7 +5542,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_332",
+      "id": "p_329",
       "name": "Cody Gakpo",
       "position": "EI",
       "teamId": "como1907",
@@ -5606,7 +5558,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_333",
+      "id": "p_330",
       "name": "Ángel Di María",
       "position": "SD",
       "teamId": "tottenhamhotspur",
@@ -5622,7 +5574,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_334",
+      "id": "p_331",
       "name": "Youssef En Nesyri",
       "position": "DC",
       "teamId": "hellasverona",
@@ -5638,7 +5590,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_335",
+      "id": "p_332",
       "name": "Aymeric Laporte",
       "position": "CT",
       "teamId": "manchesterunited",
@@ -5654,7 +5606,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_336",
+      "id": "p_333",
       "name": "Francisco Trincão",
       "position": "ED",
       "teamId": "wrexham",
@@ -5670,7 +5622,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_337",
+      "id": "p_334",
       "name": "Alexander Isak",
       "position": "DC",
       "teamId": "interdemilan",
@@ -5686,7 +5638,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_338",
+      "id": "p_335",
       "name": "Noni Madueke",
       "position": "ED",
       "teamId": "realmadrid",
@@ -5702,7 +5654,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_339",
+      "id": "p_336",
       "name": "Gonçalo Ramos",
       "position": "DC",
       "teamId": "fcbarcelona",
@@ -5718,23 +5670,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_340",
-      "name": "Dušan Vlahović",
-      "position": "DC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_341",
+      "id": "p_337",
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "acmiln",
@@ -5750,7 +5686,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_342",
+      "id": "p_338",
       "name": "Gabriel Jesus",
       "position": "DC",
       "teamId": "bayernleverkusen",
@@ -5766,7 +5702,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_343",
+      "id": "p_339",
       "name": "Iñigo Martínez",
       "position": "CT",
       "teamId": "rbleipzig",
@@ -5782,7 +5718,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_344",
+      "id": "p_340",
       "name": "Lucas Beraldo",
       "position": "CT",
       "teamId": "bocajuniors",
@@ -5798,7 +5734,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_345",
+      "id": "p_341",
       "name": "Julio Enciso",
       "position": "DC",
       "teamId": "galatasaray",
@@ -5814,7 +5750,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_346",
+      "id": "p_342",
       "name": "Christian Pulišić",
       "position": "DC",
       "teamId": "psg",
@@ -5830,7 +5766,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_347",
+      "id": "p_343",
       "name": "Samuel Eto’o",
       "position": "DC",
       "teamId": "arsenal",
@@ -5846,7 +5782,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_348",
+      "id": "p_344",
       "name": "Karim Adeyemi",
       "position": "MP",
       "teamId": "como1907",
@@ -5862,7 +5798,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_349",
+      "id": "p_345",
       "name": "Edinson Cavani",
       "position": "DC",
       "teamId": "tottenhamhotspur",
@@ -5878,7 +5814,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_350",
+      "id": "p_346",
       "name": "Václav Černy",
       "position": "ED",
       "teamId": "hellasverona",
@@ -5894,7 +5830,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_351",
+      "id": "p_347",
       "name": "Hristo Stoichkov",
       "position": "DC",
       "teamId": "wrexham",
@@ -5910,7 +5846,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_352",
+      "id": "p_348",
       "name": "Mikel Oyarzabal",
       "position": "DC",
       "teamId": "interdemilan",
@@ -5926,7 +5862,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_353",
+      "id": "p_349",
       "name": "K. Kvaratskhelia",
       "position": "EI",
       "teamId": "realmadrid",
@@ -5942,7 +5878,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_354",
+      "id": "p_350",
       "name": "Ferran Torres",
       "position": "DC",
       "teamId": "fcbarcelona",
@@ -5958,23 +5894,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_355",
-      "name": "Victor Osimhen",
-      "position": "DC",
-      "teamId": "riverplate",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
-    },
-    {
-      "id": "p_356",
+      "id": "p_351",
       "name": "Endrick",
       "position": "DC",
       "teamId": "acmiln",
@@ -5990,7 +5910,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_357",
+      "id": "p_352",
       "name": "Hugo Ekitiké",
       "position": "DC",
       "teamId": "bayernleverkusen",
@@ -6006,7 +5926,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_358",
+      "id": "p_353",
       "name": "Lee Tae-Seok",
       "position": "LI",
       "teamId": "rbleipzig",
@@ -6022,7 +5942,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_359",
+      "id": "p_354",
       "name": "Vanderson",
       "position": "LI",
       "teamId": "bocajuniors",
@@ -6038,7 +5958,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_360",
+      "id": "p_355",
       "name": "Mateo Retegui",
       "position": "DC",
       "teamId": "galatasaray",
@@ -6054,7 +5974,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_361",
+      "id": "p_356",
       "name": "Castolo",
       "position": "DC",
       "teamId": "psg",
@@ -6070,7 +5990,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_362",
+      "id": "p_357",
       "name": "Jack Grealish",
       "position": "EI",
       "teamId": "arsenal",
@@ -6086,7 +6006,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_363",
+      "id": "p_358",
       "name": "Serhou Guirassy",
       "position": "DC",
       "teamId": "como1907",
@@ -6102,7 +6022,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_364",
+      "id": "p_359",
       "name": "Pedro Neto",
       "position": "DC",
       "teamId": "tottenhamhotspur",
@@ -6118,7 +6038,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_365",
+      "id": "p_360",
       "name": "Dejan Kulusevski",
       "position": "ED",
       "teamId": "hellasverona",
@@ -6134,7 +6054,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_366",
+      "id": "p_361",
       "name": "Jhon Durán",
       "position": "DC",
       "teamId": "wrexham",
