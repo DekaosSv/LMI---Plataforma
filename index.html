@@ -361,6 +361,21 @@
         <div id="player-search-results-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
           <!-- Rendered via JS -->
         </div>
+
+        <!-- Sección de Jugadores No Renovados -->
+        <div id="non-renewed-container" class="card" style="margin-top: 2.5rem; background: rgba(231, 76, 60, 0.05); border: 1px solid rgba(231, 76, 60, 0.2); box-shadow: var(--shadow-card); display: none; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(231, 76, 60, 0.15); padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+            <h3 style="font-family: var(--font-heading); color: #ff6b6b; font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-user-slash"></i> Jugadores No Renovados
+            </h3>
+            <span class="hero-tag" style="background: rgba(231, 76, 60, 0.15); border-color: rgba(231, 76, 60, 0.4); color: #ff6b6b;" id="non-renewed-count-badge">
+              0 Jugadores
+            </span>
+          </div>
+          <div id="non-renewed-list-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem;">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
       </div>
     </section>
 

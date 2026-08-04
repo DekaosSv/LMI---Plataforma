@@ -621,7 +621,6 @@ function loadRenovationsForTeam(teamId) {
                 ${isNotRenewed ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' : ''}
               </div>
               <div style="display: flex; gap: 0.3rem;">
-                <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm">TM</a>
                 <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom">F.COM</a>
               </div>
             </div>
@@ -867,55 +866,97 @@ function filterPlayersDatabase(resetLimit = true) {
         <p style="font-size: 0.85rem; margin-top: 0.5rem;">Intenta buscar por otro nombre o limpia los filtros de búsqueda.</p>
       </div>
     `;
-    return;
-  }
+  } else {
+    const sliced = filtered.slice(0, currentSearchPageSize);
 
-  const sliced = filtered.slice(0, currentSearchPageSize);
+    let html = sliced.map(p => {
+      const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: 'Logos Equipos/Real_Madrid.png' };
+      const priceVal = (p.price || 5000000) / 1000000;
 
-  let html = sliced.map(p => {
-    const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: 'Logos Equipos/Real_Madrid.png' };
-    const priceVal = (p.price || 5000000) / 1000000;
-
-    return `
-      <div class="card" style="margin-bottom: 0; background: var(--lmi-blue); border-color: var(--lmi-blue); box-shadow: var(--shadow-card); transition: transform 0.2s, border-color 0.2s;">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem;">
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <span class="pos-badge pos-${p.position}">${p.position}</span>
-            <span style="font-weight: 700; font-size: 1.05rem; color: #fff;">${p.name}</span>
+      return `
+        <div class="card" style="margin-bottom: 0; background: var(--lmi-blue); border-color: var(--lmi-blue); box-shadow: var(--shadow-card); transition: transform 0.2s, border-color 0.2s;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span class="pos-badge pos-${p.position}">${p.position}</span>
+              <span style="font-weight: 700; font-size: 1.05rem; color: #fff;">${p.name}</span>
+            </div>
+            <div style="display: flex; gap: 0.3rem;">
+              <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm" title="Buscar en Transfermarkt">TM</a>
+              <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom" title="Buscar perfil en Fichajes.com">F.COM</a>
+            </div>
           </div>
-          <div style="display: flex; gap: 0.3rem;">
-            <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm" title="Buscar en Transfermarkt">TM</a>
-            <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom" title="Buscar perfil en Fichajes.com">F.COM</a>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.15);">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 24px; height: 24px; object-fit: contain;">
+              <span style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">${team.name}</span>
+            </div>
+
+            <div style="font-size: 0.8rem; text-align: right;">
+              <span style="color: #00ff88; font-weight: 700;">${p.goals}G</span> &bull; 
+              <span style="color: #00e5ff; font-weight: 700;">${p.assists}A</span>
+            </div>
           </div>
         </div>
+      `;
+    }).join('');
 
-        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.15);">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 24px; height: 24px; object-fit: contain;">
-            <span style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">${team.name}</span>
-          </div>
-
-          <div style="font-size: 0.8rem; text-align: right;">
-            <span style="color: #00ff88; font-weight: 700;">${p.goals}G</span> &bull; 
-            <span style="color: #00e5ff; font-weight: 700;">${p.assists}A</span>
-          </div>
+    if (filtered.length > currentSearchPageSize) {
+      const remaining = filtered.length - currentSearchPageSize;
+      html += `
+        <div style="grid-column: 1 / -1; text-align: center; margin-top: 1rem;">
+          <button class="btn-primary" onclick="loadMoreSearchResults()" style="padding: 0.7rem 1.8rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-angles-down"></i> Mostrar más (${remaining} restantes)
+          </button>
         </div>
-      </div>
-    `;
-  }).join('');
+      `;
+    }
 
-  if (filtered.length > currentSearchPageSize) {
-    const remaining = filtered.length - currentSearchPageSize;
-    html += `
-      <div style="grid-column: 1 / -1; text-align: center; margin-top: 1rem;">
-        <button class="btn-primary" onclick="loadMoreSearchResults()" style="padding: 0.7rem 1.8rem; font-size: 0.95rem;">
-          <i class="fa-solid fa-angles-down"></i> Mostrar más (${remaining} restantes)
-        </button>
-      </div>
-    `;
+    resultsContainer.innerHTML = html;
   }
 
-  resultsContainer.innerHTML = html;
+  // Renderizado dinámico de Jugadores No Renovados
+  const nonRenewedContainer = document.getElementById('non-renewed-container');
+  const nonRenewedGrid = document.getElementById('non-renewed-list-grid');
+  const nonRenewedCountBadge = document.getElementById('non-renewed-count-badge');
+
+  if (nonRenewedContainer && nonRenewedGrid) {
+    if (selectedTeam) {
+      nonRenewedContainer.style.display = 'none';
+    } else {
+      const filteredNonRenewed = (lmiData.nonRenewedPlayers || []).filter(p => {
+        // 1. Filtro de Posición
+        if (selectedPos && p.position !== selectedPos) return false;
+        // 2. Filtro de Búsqueda de Texto
+        if (normQuery) {
+          const normPlayerName = normalizeSearchString(p.name);
+          if (!normPlayerName.includes(normQuery)) return false;
+        }
+        return true;
+      });
+
+      if (filteredNonRenewed.length > 0) {
+        nonRenewedContainer.style.display = 'block';
+        if (nonRenewedCountBadge) {
+          nonRenewedCountBadge.innerText = `${filteredNonRenewed.length} Jugadores`;
+        }
+        nonRenewedGrid.innerHTML = filteredNonRenewed.map(p => `
+          <div style="background: var(--lmi-blue); border: 1px solid rgba(231, 76, 60, 0.3); border-radius: var(--radius-sm); padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; box-shadow: var(--shadow-card);">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span class="pos-badge pos-${p.position}">${p.position}</span>
+              <span style="font-weight: 700; color: #fff; font-size: 0.95rem;">${p.name}</span>
+            </div>
+            <div style="display: flex; gap: 0.3rem;">
+              <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;" title="Buscar en Transfermarkt">TM</a>
+              <a href="https://www.fichajes.com/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-fcom" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;" title="Buscar perfil en Fichajes.com">F.COM</a>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        nonRenewedContainer.style.display = 'none';
+      }
+    }
+  }
 }
 
 function loadMoreSearchResults() {

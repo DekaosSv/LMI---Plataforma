@@ -383,8 +383,8 @@ def process_excel():
         players_list = []
         player_id_counter = 1
         
-        # El roster de jugadores va desde la fila 2 hasta la 100
-        for row_idx in range(2, 101):
+        # El roster de jugadores va desde la fila 2 hasta la 25 (para no mezclar con la lista de No Renovados en la fila 26+)
+        for row_idx in range(2, 26):
             row_lista = lista_data.get(row_idx, {})
             
             # Recorrer cada columna activa de la hoja Lista
@@ -430,6 +430,21 @@ def process_excel():
                             "isLegend": is_legend
                         })
                         player_id_counter += 1
+
+        # 4.5. Procesar jugadores No Renovados (Hoja Lista, Columna A, Fila 27 en adelante)
+        print("📋 Procesando lista de jugadores No Renovados...")
+        non_renewed_players = []
+        for row_idx in range(27, 200): # Rango amplio para leer todos
+            row_lista = lista_data.get(row_idx, {})
+            lista_raw = row_lista.get('A', '').strip()
+            if lista_raw:
+                pos, clean_lista_name = extraer_posicion_y_nombre(lista_raw)
+                if clean_lista_name:
+                    non_renewed_players.append({
+                        "name": clean_lista_name,
+                        "position": pos,
+                        "raw": lista_raw
+                    })
 
         # Helper map to find players quickly in stats mapping
         players_by_norm = {}
@@ -589,7 +604,8 @@ def process_excel():
             "players": players_list,
             "copaEstelarMatches": copa_matches,
             "championsLeagueMatches": champions_matches,
-            "rules": rules
+            "rules": rules,
+            "nonRenewedPlayers": non_renewed_players
         }
 
         # 7. Write to data.js
