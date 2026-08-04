@@ -607,15 +607,19 @@ function loadRenovationsForTeam(teamId) {
     tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Sin jugadores registrados en este club.</td></tr>`;
   } else {
     tbody.innerHTML = teamPlayers.map(p => {
-      const priceVal = (p.price || 5000000) / 1000000;
+      const priceVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5;
       const isDisabled = hasActiveLegend && !p.isLegend;
+      const isNotRenewed = priceVal === 0;
 
       return `
-        <tr>
+        <tr style="${isNotRenewed ? 'opacity: 0.7; background: rgba(231, 76, 60, 0.08);' : ''}">
           <td><span class="pos-badge pos-${p.position}">${p.position}</span></td>
           <td>
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
-              <span style="font-weight: 600;">${p.name}</span>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-weight: 600; ${isNotRenewed ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${p.name}</span>
+                ${isNotRenewed ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' : ''}
+              </div>
               <div style="display: flex; gap: 0.3rem;">
                 <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm">TM</a>
                 <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom">F.COM</a>
@@ -626,7 +630,7 @@ function loadRenovationsForTeam(teamId) {
             <input type="checkbox" ${p.isLegend ? 'checked' : ''} ${isDisabled ? 'disabled' : ''} onchange="togglePlayerLegend('${p.id}', this.checked, '${teamId}')" title="${isDisabled ? 'Solo se permite 1 Leyenda o Épico por club' : 'Marcar si es Leyenda o Épico'}">
           </td>
           <td style="text-align: right;">
-            <input type="number" class="form-control" style="width: 100px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right;" value="${priceVal}" step="0.5" min="1" onchange="updatePlayerRenewalPrice('${p.id}', this.value)"> M
+            <input type="number" class="form-control" style="width: 100px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right;" value="${priceVal}" step="0.5" min="0" onchange="updatePlayerRenewalPrice('${p.id}', this.value)"> M
           </td>
         </tr>
       `;
@@ -642,14 +646,15 @@ function loadRenovationsForTeam(teamId) {
 
 function updatePlayerRenewalPrice(playerId, newVal) {
   let val = parseFloat(newVal);
-  if (isNaN(val) || val <= 0.6) val = 1.0; // Rule: sueldos de 600k o menores se cuentan como 1M
+  if (isNaN(val) || val < 0) val = 1.0;
+  else if (val > 0 && val <= 0.6) val = 1.0; // Rule: sueldos mayores a 0 y menores/iguales a 600k se cuentan como 1M
   
   const player = lmiData.players.find(p => p.id === playerId);
   if (player) {
     player.price = val * 1000000;
     saveDataToStorage();
     const sel = document.getElementById('renovation-team-select');
-    if (sel) recalculateRenovationTotals(sel.value);
+    if (sel && sel.value) loadRenovationsForTeam(sel.value);
   }
 }
 
@@ -684,8 +689,8 @@ function recalculateRenovationTotals(teamId) {
   let grossTotal = 0;
 
   teamPlayers.forEach(p => {
-    let pVal = (p.price || 5000000) / 1000000;
-    if (pVal <= 0.6) pVal = 1.0;
+    let pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
+    if (pVal > 0 && pVal <= 0.6) pVal = 1.0;
     grossTotal += pVal;
   });
 
@@ -728,17 +733,30 @@ function exportRenewalReport() {
   summary += `--------------------------------------------------\n`;
   
   let grossTotal = 0;
+  let renewedCount = 0;
+  let nonRenewedCount = 0;
+
   teamPlayers.forEach((p, idx) => {
-    let pVal = (p.price || 5000000) / 1000000;
-    if (pVal <= 0.6) pVal = 1.0;
-    grossTotal += pVal;
-    summary += `${idx + 1}. [${p.position}] ${p.name} - $${pVal.toFixed(1)}M ${p.isLegend ? '(Leyenda/Épico)' : ''}\n`;
+    let pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
+    if (pVal > 0 && pVal <= 0.6) pVal = 1.0;
+
+    if (pVal === 0) {
+      nonRenewedCount++;
+      summary += `${idx + 1}. [${p.position}] ${p.name} - NO RENOVADO ($0M)${p.isLegend ? ' (Leyenda/Épico)' : ''}\n`;
+    } else {
+      renewedCount++;
+      grossTotal += pVal;
+      summary += `${idx + 1}. [${p.position}] ${p.name} - $${pVal.toFixed(1)}M${p.isLegend ? ' (Leyenda/Épico)' : ''}\n`;
+    }
   });
 
   const payFactor = rank <= 5 ? 0.5 : (rank <= 10 ? 0.75 : 1.0);
   const finalTotal = grossTotal * payFactor;
 
   summary += `--------------------------------------------------\n`;
+  if (nonRenewedCount > 0) {
+    summary += `Jugadores Renovados: ${renewedCount} | No Renovados: ${nonRenewedCount}\n`;
+  }
   summary += `Subtotal Bruto: $${grossTotal.toFixed(1)}M USD\n`;
   summary += `Porcentaje Aplicado: ${payPercentText}\n`;
   summary += `TOTAL A PAGAR: $${finalTotal.toFixed(2)}M USD\n`;

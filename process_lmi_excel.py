@@ -563,6 +563,7 @@ def process_excel():
                     "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
                     "Posiciones 11 a 16 en Liga: Pagan el 100% de la suma total de su renovación.",
                     "El costo se consulta en fichajes.com (sueldo/estrellas). Sueldos de 600k o menores se cuentan como 1M.",
+                    "Jugadores no renovados: Si no deseas renovar a un jugador, ingresa 0 en su sueldo/valor de renovación.",
                     "Jugadores Leyendas/Épicos/Big Time: Se mide según el Valor Global Máximo (ej. Pelé 108 = 108M). Maximum 1 Leyenda o Épico por club.",
                     "Si deseas cambiar o eliminar tu leyenda/épico/Big Time, debes pagar su renovación y anotar 'Cambio leyenda por ----' o 'Elimino mi leyenda ----'."
                 ]
@@ -575,6 +576,7 @@ def process_excel():
                     "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
                     "Posiciones 11 a 16 en Liga: Pagan el 100% de la suma total de su renovación.",
                     "El costo se consulta en fichajes.com (sueldo/estrellas). Sueldos de 600k o menores se cuentan como 1M.",
+                    "Jugadores no renovados: Si no deseas renovar a un jugador, ingresa 0 en su sueldo/valor de renovación.",
                     "Jugadores Leyendas/Épicos/Big Time: Se mide según el Valor Global Máximo (ej. Pelé 108 = 108M). Maximum 1 Leyenda o Épico por club.",
                     "Si deseas cambiar o eliminar tu leyenda/épico/Big Time, debes pagar su renovación y anotar 'Cambio leyenda por ----' o 'Elimino mi leyenda ----'."
                 ]
