@@ -31,7 +31,9 @@ TEAM_ID_MAP = {
     "bayernmunich": "bayermunich",
     "manchesterunited": "manchesterunited",
     "melbournecity": "melbournecity",
-    "wrexham": "wrexham"
+    "wrexham": "wrexham",
+    "atleticodemadrid": "atleticodemadrid",
+    "atleticomadrid": "atleticodemadrid"
 }
 
 def normalize_key(name):
@@ -310,6 +312,7 @@ def process_excel():
             # Preservar metadatos anteriores si el equipo ya existía o colocar valores predeterminados
             if team_id in old_teams:
                 team_obj = old_teams[team_id].copy()
+                team_obj["name"] = raw_team_name
             else:
                 team_obj = {
                     "id": team_id,
@@ -569,34 +572,29 @@ def process_excel():
             ]
 
         # 6. Rebuild final LMI Data object
-        season = old_data.get("season", "Temporada 9 en Curso") if old_data else "Temporada 9 en Curso"
-        rules = old_data.get("rules", [
-            {
-                "category": "Reglamento de Renovaciones Temporada 9",
-                "items": [
-                    "Posiciones 1 a 5 en Liga: Pagan el 50% de la suma total de su renovación.",
-                    "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
-                    "Posiciones 11 a 16 en Liga: Pagan el 100% de la suma total de su renovación.",
-                    "El costo se consulta en fichajes.com (sueldo/estrellas). Sueldos de 600k o menores se cuentan como 1M.",
-                    "Jugadores no renovados: Si no deseas renovar a un jugador, ingresa 0 en su sueldo/valor de renovación.",
-                    "Jugadores Leyendas/Épicos/Big Time: Se mide según el Valor Global Máximo (ej. Pelé 108 = 108M). Maximum 1 Leyenda o Épico por club.",
-                    "Si deseas cambiar o eliminar tu leyenda/épico/Big Time, debes pagar su renovación y anotar 'Cambio leyenda por ----' o 'Elimino mi leyenda ----'."
-                ]
-            }
-        ]) if old_data else [
-            {
-                "category": "Reglamento de Renovaciones Temporada 9",
-                "items": [
-                    "Posiciones 1 a 5 en Liga: Pagan el 50% de la suma total de su renovación.",
-                    "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
-                    "Posiciones 11 a 16 en Liga: Pagan el 100% de la suma total de su renovación.",
-                    "El costo se consulta en fichajes.com (sueldo/estrellas). Sueldos de 600k o menores se cuentan como 1M.",
-                    "Jugadores no renovados: Si no deseas renovar a un jugador, ingresa 0 en su sueldo/valor de renovación.",
-                    "Jugadores Leyendas/Épicos/Big Time: Se mide según el Valor Global Máximo (ej. Pelé 108 = 108M). Maximum 1 Leyenda o Épico por club.",
-                    "Si deseas cambiar o eliminar tu leyenda/épico/Big Time, debes pagar su renovación y anotar 'Cambio leyenda por ----' o 'Elimino mi leyenda ----'."
-                ]
-            }
-        ]
+        season = "Temporada 9 Finalizada"
+        
+        # Load rules from old data if present, and update 11-16 to 11-17
+        rules = old_data.get("rules", []) if old_data else []
+        if not rules:
+            rules = [
+                {
+                    "category": "Reglamento de Renovaciones Temporada 9",
+                    "items": [
+                        "Posiciones 1 a 5 en Liga: Pagan el 50% de la suma total de su renovación.",
+                        "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
+                        "Posiciones 11 a 17 en Liga: Pagan el 100% de la suma total de su renovación.",
+                        "El costo se consulta en fichajes.com (sueldo/estrellas). Sueldos de 600k o menores se cuentan como 1M.",
+                        "Jugadores no renovados: Si no deseas renovar a un jugador, ingresa 0 en su sueldo/valor de renovación.",
+                        "Jugadores Leyendas/Épicos/Big Time: Se mide según el Valor Global Máximo (ej. Pelé 108 = 108M). Maximum 1 Leyenda o Épico por club.",
+                        "Si deseas cambiar o eliminar tu leyenda/épico/Big Time, debes pagar su renovación y anotar 'Cambio leyenda por ----' o 'Elimino mi leyenda ----'."
+                    ]
+                }
+            ]
+        else:
+            for r in rules:
+                if r.get("category") == "Reglamento de Renovaciones Temporada 9":
+                    r["items"] = [item.replace("11 a 16", "11 a 17") for item in r.get("items", [])]
 
         final_data = {
             "season": season,

@@ -17,7 +17,7 @@ if %errorlevel% neq 0 (
 echo.
 :: 2. Añadir y hacer commit a los archivos modificados
 echo [2/3] Creando commit en Git...
-git add data.js "lmi temp 9.xlsx"
+git add data.js "lmi temp 9.xlsx" "Logos Equipos" "Imagenes"
 git commit -m "Actualización automática de base de datos"
 
 echo.
