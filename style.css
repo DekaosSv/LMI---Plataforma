@@ -904,3 +904,150 @@ footer {
     font-size: 0.7rem;
   }
 }
+
+/* --- MERCADO DE FICHAJES STYLES --- */
+
+/* Tabs inside Mercado section */
+.market-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-tab {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-tab:hover {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  border-color: var(--text-dim);
+}
+
+.btn-tab.active {
+  background: var(--lmi-blue);
+  color: #ffffff;
+  border-color: var(--lmi-blue);
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 51, 160, 0.15);
+}
+
+/* Tab content visibility */
+.market-tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.market-tab-content.active {
+  display: block;
+}
+
+/* Badges for movement types */
+.badge-movement {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+}
+
+.badge-fichaje {
+  background: rgba(0, 168, 89, 0.1);
+  color: var(--lmi-green);
+  border-color: rgba(0, 168, 89, 0.2);
+}
+
+.badge-intercambio {
+  background: rgba(255, 209, 0, 0.15);
+  color: #d97706; /* Darker yellow/gold for readability */
+  border-color: rgba(255, 209, 0, 0.3);
+}
+
+.badge-prestamo {
+  background: rgba(0, 51, 160, 0.08);
+  color: var(--lmi-blue);
+  border-color: rgba(0, 51, 160, 0.15);
+}
+
+.badge-prestamo-costo {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--neon-purple);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.badge-regreso {
+  background: rgba(100, 116, 139, 0.1);
+  color: var(--text-muted);
+  border-color: rgba(100, 116, 139, 0.2);
+}
+
+.badge-baja {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Stat Cards for Market overview */
+.market-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.market-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.market-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.market-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.market-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.market-stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 0.15rem;
+}

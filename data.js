@@ -6634,5 +6634,95 @@ var INITIAL_LMI_DATA = {
       ]
     }
   ],
-  "nonRenewedPlayers": []
+  "nonRenewedPlayers": [],
+  "marketMovements": [
+    {
+      "player": "Anatoli Trubin",
+      "type": "Venta",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "arsenal",
+      "toTeamName": "Arsenal",
+      "price": 25.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Malick Thiaw",
+      "type": "Venta",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "arsenal",
+      "toTeamName": "Arsenal",
+      "price": 50.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Alexander Isak",
+      "type": "Venta",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "galatasaray",
+      "toTeamName": "Galatasaray",
+      "price": 120.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Nico Williams",
+      "type": "Venta",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "manchesterunited",
+      "toTeamName": "Manchester United",
+      "price": 65.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Raphinha",
+      "type": "Venta",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "atleticodemadrid",
+      "toTeamName": "Atletico de Madrid",
+      "price": 90.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Dominik Szoboslai",
+      "type": "Venta",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "rbleipzig",
+      "toTeamName": "RB Leipzig",
+      "price": 170.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Ousmane Dembele",
+      "type": "Intercambio",
+      "fromTeamId": "bocajuniors",
+      "fromTeamName": "Boca Juniors",
+      "toTeamId": "interdemilan",
+      "toTeamName": "Inter de Milan",
+      "price": 0.0,
+      "seasons": null,
+      "details": "Intercambio de Jugadores"
+    },
+    {
+      "player": "Kylian Mbappe",
+      "type": "Intercambio",
+      "fromTeamId": "interdemilan",
+      "fromTeamName": "Inter de Milan",
+      "toTeamId": "bocajuniors",
+      "toTeamName": "Boca Juniors",
+      "price": 0.0,
+      "seasons": null,
+      "details": "Intercambio de Jugadores"
+    }
+  ]
 };

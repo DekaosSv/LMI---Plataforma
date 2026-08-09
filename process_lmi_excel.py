@@ -571,6 +571,89 @@ def process_excel():
                 { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Como 1907", "score2": "", "estado": "Por Jugar" }
             ]
 
+        # 5.6. Parse Mercado sheet if exists
+        market_movements = []
+        if 'Mercado' in sheet_xml_paths:
+            print("💸 Cargando datos del mercado de fichajes...")
+            mercado_sheet = parse_sheet_cells(z, sheet_xml_paths['Mercado'], strings)
+            
+            # Map headers dynamically
+            header_map = {}
+            for col_letter, val in mercado_sheet.get(1, {}).items():
+                if val:
+                    header_map[normalize_key(val)] = col_letter
+                    
+            col_jugador = header_map.get(normalize_key("Jugador"))
+            col_tipo = header_map.get(normalize_key("Tipo"))
+            col_origen = header_map.get(normalize_key("Origen"))
+            col_destino = header_map.get(normalize_key("Destino"))
+            col_costo = header_map.get(normalize_key("Costo")) or header_map.get(normalize_key("Precio")) or header_map.get(normalize_key("Valor"))
+            col_temporadas = header_map.get(normalize_key("Temporadas"))
+            col_detalle = header_map.get(normalize_key("Detalle")) or header_map.get(normalize_key("Detalles")) or header_map.get(normalize_key("Nota")) or header_map.get(normalize_key("Notas"))
+            
+            for row_idx in sorted(mercado_sheet.keys()):
+                if row_idx == 1:
+                    continue
+                row = mercado_sheet[row_idx]
+                player_name = row.get(col_jugador, '').strip() if col_jugador else ''
+                if not player_name:
+                    continue
+                
+                mov_type = row.get(col_tipo, '').strip() if col_tipo else ''
+                orig_name = row.get(col_origen, '').strip() if col_origen else ''
+                dest_name = row.get(col_destino, '').strip() if col_destino else ''
+                cost_str = row.get(col_costo, '').strip() if col_costo else ''
+                seasons_str = row.get(col_temporadas, '').strip() if col_temporadas else ''
+                detail_str = row.get(col_detalle, '').strip() if col_detalle else ''
+                
+                # Normalize origin team
+                from_team_id = None
+                from_team_name = orig_name
+                if orig_name:
+                    norm_orig = normalize_key(orig_name)
+                    mapped_orig = TEAM_ID_MAP.get(norm_orig, norm_orig)
+                    if mapped_orig in teams_dict:
+                        from_team_id = mapped_orig
+                        from_team_name = teams_dict[mapped_orig]["name"]
+                
+                # Normalize destination team
+                to_team_id = None
+                to_team_name = dest_name
+                if dest_name:
+                    norm_dest = normalize_key(dest_name)
+                    mapped_dest = TEAM_ID_MAP.get(norm_dest, norm_dest)
+                    if mapped_dest in teams_dict:
+                        to_team_id = mapped_dest
+                        to_team_name = teams_dict[mapped_dest]["name"]
+                
+                # Parse cost
+                try:
+                    price = float(cost_str) if cost_str else 0.0
+                except ValueError:
+                    price = 0.0
+                    
+                # Parse seasons
+                try:
+                    seasons = int(seasons_str) if seasons_str else None
+                except ValueError:
+                    seasons = None
+                    
+                market_movements.append({
+                    "player": player_name,
+                    "type": mov_type,
+                    "fromTeamId": from_team_id,
+                    "fromTeamName": from_team_name,
+                    "toTeamId": to_team_id,
+                    "toTeamName": to_team_name,
+                    "price": price,
+                    "seasons": seasons,
+                    "details": detail_str
+                })
+        else:
+            print("ℹ️ Hoja 'Mercado' no encontrada en Excel, se inicializará vacía.")
+            if old_data and "marketMovements" in old_data:
+                market_movements = old_data["marketMovements"]
+
         # 6. Rebuild final LMI Data object
         season = "Temporada 9 Finalizada"
         
@@ -603,7 +686,8 @@ def process_excel():
             "copaEstelarMatches": copa_matches,
             "championsLeagueMatches": champions_matches,
             "rules": rules,
-            "nonRenewedPlayers": non_renewed_players
+            "nonRenewedPlayers": non_renewed_players,
+            "marketMovements": market_movements
         }
 
         # 7. Write to data.js

@@ -27,6 +27,7 @@
         <li><button class="nav-link" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Equipos</button></li>
         <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa Estelar</button></li>
         <li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions League</button></li>
+        <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i> Mercado</button></li>
         <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
         <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar Jugadores</button></li>
         <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li>
@@ -37,11 +38,14 @@
 
   <!-- Sub Navigation / Season Bar -->
   <div class="division-bar">
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
       <span class="hero-tag" style="margin-bottom:0; background: rgba(0, 168, 89, 0.1); border-color: var(--lmi-green); color: var(--lmi-green);">
         <i class="fa-solid fa-trophy"></i> LIGA UNIFICADA
       </span>
       <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-primary);">Temporada 9 Finalizada</span>
+      <span class="hero-tag" style="margin-bottom:0; background: rgba(255, 79, 0, 0.1); border-color: var(--lmi-red); color: var(--lmi-red);">
+        <i class="fa-solid fa-person-digging"></i> Temporada 10 en construcción
+      </span>
     </div>
 
     <div class="league-status">
@@ -55,11 +59,20 @@
 
     <!-- 1. DASHBOARD / INICIO -->
     <section id="sec-dashboard" class="page-section active">
+
+      <!-- Banner Animado de Encabezado (encabezado1.mp4) -->
+      <div class="card" style="background: #ffffff; padding: 0.5rem; margin-bottom: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-card); overflow: hidden; display: flex; justify-content: center; align-items: center;">
+        <video autoplay loop muted playsinline style="max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; background: #ffffff;">
+          <source src="encabezado1.mp4" type="video/mp4">
+          Tu navegador no soporta video.
+        </video>
+      </div>
+
       <div class="hero-banner">
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <span class="hero-tag">Liga Master eFootball</span>
-          <h1 class="hero-title">BIENVENIDO A LA LIGA MASTER INTERNACIONAL TEMPORADA 9</h1>
+          <h1 class="hero-title">BIENVENIDO A LA LIGA MASTER INTERNACIONAL (TEMPORADA 9 FINALIZADA)</h1>
           <p class="hero-desc">Explora la plantilla de cada club participante y explora las herramientas disponibles.</p>
           <div class="hero-actions">
             <button class="btn-secondary" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Ver Equipos</button>
@@ -222,6 +235,145 @@
         
         <div id="uefa-champions-bracket" style="display: flex; gap: 2rem; justify-content: space-between; overflow-x: auto; padding: 1.5rem 0;">
           <!-- Loaded dynamically from JS -->
+      </div>
+    </section>
+
+    <!-- MERCADO -->
+    <section id="sec-mercado" class="page-section">
+      <div class="hero-banner" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(0, 51, 160, 0.8) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-tag" style="background: rgba(255, 79, 0, 0.2); color: var(--lmi-red); border-color: var(--lmi-red);">Mercado Temporada 10</span>
+          <h1 class="hero-title" style="color: #ffffff;">MERCADO DE FICHAJES - T10</h1>
+          <p class="hero-desc" style="color: rgba(255,255,255,0.85); margin-bottom: 0;">Consulta las altas y bajas oficiales de cada club, los préstamos activos y los traspasos más caros para la **Temporada 10 (En construcción)**.</p>
+        </div>
+      </div>
+
+      <!-- Market Stats Summary Row -->
+      <div id="market-stats-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+        <!-- Filled dynamically via JS -->
+      </div>
+
+      <!-- Tab Buttons for Mercado View -->
+      <div class="card" style="margin-bottom: 1.5rem; padding: 0.5rem 1rem;">
+        <div class="market-tabs" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button id="btn-tab-altas-bajas" class="btn-tab active" onclick="switchMarketTab('altas-bajas')"><i class="fa-solid fa-arrows-spin"></i> Altas y Bajas por Club</button>
+          <button id="btn-tab-records" class="btn-tab" onclick="switchMarketTab('records')"><i class="fa-solid fa-ranking-star"></i> Fichajes Récord</button>
+          <button id="btn-tab-prestamos" class="btn-tab" onclick="switchMarketTab('prestamos')"><i class="fa-solid fa-handshake"></i> Préstamos Activos</button>
+        </div>
+      </div>
+
+      <!-- 1. Tab Content: Altas y Bajas por Club -->
+      <div id="market-tab-altas-bajas" class="market-tab-content active">
+        <div class="card" style="margin-bottom: 1.5rem; padding: 1rem 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <label class="form-label" style="margin-bottom:0; font-weight: 700;">Seleccionar Club:</label>
+            <select id="market-team-select" class="form-control" style="width: auto; font-weight: 700;" onchange="loadMarketForTeam(this.value)">
+              <!-- Loaded via JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Altas Column -->
+          <div class="card" style="border-top: 4px solid var(--lmi-green);">
+            <div class="card-header" style="border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.75rem;">
+              <h2 class="card-title" style="color: var(--lmi-green);"><i class="fa-solid fa-circle-arrow-down"></i> Altas (Entradas)</h2>
+              <span id="altas-count-badge" class="hero-tag" style="background: rgba(0, 168, 89, 0.1); border-color: var(--lmi-green); color: var(--lmi-green); margin-bottom: 0;">0</span>
+            </div>
+            <div class="table-responsive">
+              <table class="standings-table">
+                <thead>
+                  <tr>
+                    <th>Jugador</th>
+                    <th>Tipo</th>
+                    <th>Procedencia</th>
+                    <th style="text-align: right;">Costo</th>
+                  </tr>
+                </thead>
+                <tbody id="market-altas-tbody">
+                  <!-- Filled via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Bajas Column -->
+          <div class="card" style="border-top: 4px solid #ef4444;">
+            <div class="card-header" style="border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.75rem;">
+              <h2 class="card-title" style="color: #ef4444;"><i class="fa-solid fa-circle-arrow-up"></i> Bajas (Salidas)</h2>
+              <span id="bajas-count-badge" class="hero-tag" style="background: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; margin-bottom: 0;">0</span>
+            </div>
+            <div class="table-responsive">
+              <table class="standings-table">
+                <thead>
+                  <tr>
+                    <th>Jugador</th>
+                    <th>Tipo</th>
+                    <th>Destino</th>
+                    <th style="text-align: right;">Costo</th>
+                  </tr>
+                </thead>
+                <tbody id="market-bajas-tbody">
+                  <!-- Filled via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Tab Content: Fichajes Récord -->
+      <div id="market-tab-records" class="market-tab-content" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-ranking-star" style="color: var(--neon-gold);"></i> Ranking de Fichajes Más Caros</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="standings-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px; text-align: center;">Pos</th>
+                  <th>Jugador</th>
+                  <th>Origen</th>
+                  <th></th>
+                  <th>Destino</th>
+                  <th style="text-align: right;">Costo ($M USD)</th>
+                  <th>Detalles</th>
+                </tr>
+              </thead>
+              <tbody id="market-records-tbody">
+                <!-- Filled via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Tab Content: Préstamos Activos -->
+      <div id="market-tab-prestamos" class="market-tab-content" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-handshake" style="color: var(--lmi-blue);"></i> Préstamos Vigentes</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="standings-table">
+              <thead>
+                <tr>
+                  <th>Jugador</th>
+                  <th>Origen</th>
+                  <th></th>
+                  <th>Destino</th>
+                  <th style="text-align: center;">Temporadas</th>
+                  <th style="text-align: right;">Costo</th>
+                  <th>Detalle</th>
+                </tr>
+              </thead>
+              <tbody id="market-prestamos-tbody">
+                <!-- Filled via JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

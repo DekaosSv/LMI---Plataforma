@@ -90,6 +90,7 @@ function initUI() {
   initTeamSelect();
   initRenovationSelect();
   initPlayerSearchUI();
+  initMarketUI();
   renderRules();
   
   // Render direct elimination brackets
@@ -116,6 +117,7 @@ function switchNav(navId) {
     const sel = document.getElementById('team-select');
     if (sel && sel.value) loadTeamHub(sel.value);
   }
+  if (navId === 'mercado') renderMercado();
   if (navId === 'renovaciones') {
     const sel = document.getElementById('renovation-team-select');
     if (sel && sel.value) loadRenovationsForTeam(sel.value);
@@ -975,3 +977,274 @@ function resetPlayerSearchFilters() {
 
   filterPlayersDatabase();
 }
+
+// --- MERCADO DE FICHAJES ENGINE ---
+
+function initMarketUI() {
+  const sel = document.getElementById('market-team-select');
+  if (!sel) return;
+  if (lmiData && lmiData.teams) {
+    sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+  }
+}
+
+function switchMarketTab(tabId) {
+  // Update buttons
+  document.querySelectorAll('.market-tabs .btn-tab').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById(`btn-tab-${tabId}`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Update tabs visibility
+  document.querySelectorAll('.market-tab-content').forEach(content => {
+    content.classList.remove('active');
+    content.style.display = 'none';
+  });
+  const activeContent = document.getElementById(`market-tab-${tabId}`);
+  if (activeContent) {
+    activeContent.classList.add('active');
+    activeContent.style.display = 'block';
+  }
+}
+
+function renderMercado() {
+  const movements = lmiData.marketMovements || [];
+
+  // 1. Calculate and render general stats
+  let totalInvested = 0;
+  let recordTransfer = { player: 'Ninguno', price: 0, dest: '' };
+  let activeLoansCount = 0;
+
+  movements.forEach(m => {
+    const isFichaje = m.type.toLowerCase().includes('fichaje') || m.type.toLowerCase().includes('compra') || m.type.toLowerCase().includes('venta');
+    const isPrestamoCosto = m.type.toLowerCase().includes('costo');
+    const isAnyPrestamo = m.type.toLowerCase().includes('préstamo') || m.type.toLowerCase().includes('prestamo');
+    
+    if (isFichaje || isPrestamoCosto) {
+      totalInvested += m.price || 0;
+    }
+    
+    if (isFichaje && m.price > recordTransfer.price) {
+      recordTransfer = { player: m.player, price: m.price, dest: m.toTeamName || 'Liga' };
+    }
+    
+    if (isAnyPrestamo) {
+      activeLoansCount++;
+    }
+  });
+
+  const statsRow = document.getElementById('market-stats-row');
+  if (statsRow) {
+    statsRow.innerHTML = `
+      <div class="market-stat-card">
+        <div class="market-stat-icon" style="background: rgba(0, 168, 89, 0.12); color: var(--lmi-green);">
+          <i class="fa-solid fa-money-bill-trend-up"></i>
+        </div>
+        <div class="market-stat-info">
+          <span class="market-stat-label">Inversión Total Liga</span>
+          <span class="market-stat-value">$${totalInvested.toFixed(1)}M USD</span>
+        </div>
+      </div>
+
+      <div class="market-stat-card">
+        <div class="market-stat-icon" style="background: rgba(255, 209, 0, 0.12); color: #d97706;">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="market-stat-info">
+          <span class="market-stat-label">Fichaje Récord</span>
+          <span class="market-stat-value" style="font-size: 1rem; font-weight: 700; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${recordTransfer.price > 0 ? `${recordTransfer.player} ($${recordTransfer.price}M)` : ''}">
+            ${recordTransfer.price > 0 ? `${recordTransfer.player} ($${recordTransfer.price}M)` : 'Sin registros'}
+          </span>
+        </div>
+      </div>
+
+      <div class="market-stat-card">
+        <div class="market-stat-icon" style="background: rgba(0, 51, 160, 0.12); color: var(--lmi-blue);">
+          <i class="fa-solid fa-people-arrows"></i>
+        </div>
+        <div class="market-stat-info">
+          <span class="market-stat-label">Préstamos Activos</span>
+          <span class="market-stat-value">${activeLoansCount} Jugadores</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // 2. Select initial team if empty
+  const sel = document.getElementById('market-team-select');
+  if (sel) {
+    if (!sel.value && lmiData.teams && lmiData.teams.length > 0) {
+      sel.value = lmiData.teams[0].id;
+    }
+    loadMarketForTeam(sel.value);
+  }
+
+  // 3. Render list tabs
+  renderMarketRecords();
+  renderMarketPrestamos();
+}
+
+function getMovementBadge(type) {
+  const norm = type.toLowerCase();
+  let badgeClass = 'badge-fichaje';
+  if (norm.includes('intercambio')) badgeClass = 'badge-intercambio';
+  else if (norm.includes('costo')) badgeClass = 'badge-prestamo-costo';
+  else if (norm.includes('préstamo') || norm.includes('prestamo')) badgeClass = 'badge-prestamo';
+  else if (norm.includes('regreso')) badgeClass = 'badge-regreso';
+  else if (norm.includes('baja') || norm.includes('no renov')) badgeClass = 'badge-baja';
+  
+  return `<span class="badge-movement ${badgeClass}">${type}</span>`;
+}
+
+function renderTeamWithLogo(teamId, teamName) {
+  if (!teamName) return '<span style="color: var(--text-muted); font-style: italic;">Sin Equipo</span>';
+  if (!teamId) return `<span style="color: var(--text-muted); font-weight: 500;">${teamName}</span>`;
+  
+  const team = lmiData.teams.find(t => t.id === teamId);
+  if (team) {
+    return `
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <img src="${team.logo}" alt="${team.name}" style="width: 20px; height: 20px; object-fit: contain;">
+        <span style="font-weight: 600;">${team.name}</span>
+      </div>
+    `;
+  }
+  return `<span style="color: var(--text-muted); font-weight: 500;">${teamName}</span>`;
+}
+
+function loadMarketForTeam(teamId) {
+  if (!teamId) return;
+  const movements = lmiData.marketMovements || [];
+  
+  // Altas: where destination team matches teamId
+  const altas = movements.filter(m => m.toTeamId === teamId);
+  // Bajas: where origin team matches teamId
+  const bajas = movements.filter(m => m.fromTeamId === teamId);
+
+  // Update counts
+  const altasBadge = document.getElementById('altas-count-badge');
+  const bajasBadge = document.getElementById('bajas-count-badge');
+  if (altasBadge) altasBadge.innerText = altas.length;
+  if (bajasBadge) bajasBadge.innerText = bajas.length;
+
+  // Altas table rendering
+  const altasTbody = document.getElementById('market-altas-tbody');
+  if (altasTbody) {
+    if (altas.length === 0) {
+      altasTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Sin altas registradas.</td></tr>`;
+    } else {
+      altasTbody.innerHTML = altas.map(m => {
+        const seasonsText = m.seasons ? ` (${m.seasons} Temp.)` : '';
+        const priceVal = m.price > 0 ? `$${m.price.toFixed(1)}M USD` : 'Gratis';
+        return `
+          <tr>
+            <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
+            <td>${getMovementBadge(m.type)}</td>
+            <td>${renderTeamWithLogo(m.fromTeamId, m.fromTeamName)}</td>
+            <td style="text-align: right; font-weight: 700; color: var(--lmi-green);">${priceVal}${seasonsText}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+
+  // Bajas table rendering
+  const bajasTbody = document.getElementById('market-bajas-tbody');
+  if (bajasTbody) {
+    if (bajas.length === 0) {
+      bajasTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Sin bajas registradas.</td></tr>`;
+    } else {
+      bajasTbody.innerHTML = bajas.map(m => {
+        const priceVal = m.price > 0 ? `$${m.price.toFixed(1)}M USD` : 'Gratis';
+        return `
+          <tr>
+            <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
+            <td>${getMovementBadge(m.type)}</td>
+            <td>${renderTeamWithLogo(m.toTeamId, m.toTeamName)}</td>
+            <td style="text-align: right; font-weight: 700; color: #ef4444;">${priceVal}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+}
+
+function renderMarketRecords() {
+  const tbody = document.getElementById('market-records-tbody');
+  if (!tbody) return;
+
+  const movements = lmiData.marketMovements || [];
+  
+  // Filter for Fichajes or Intercambios, sorted by price descending
+  const records = movements
+    .filter(m => {
+      const typeLower = m.type.toLowerCase();
+      return typeLower.includes('fichaje') || typeLower.includes('compra') || typeLower.includes('intercambio') || typeLower.includes('venta');
+    })
+    .sort((a, b) => (b.price || 0) - (a.price || 0));
+
+  if (records.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay transferencias registradas en esta categoría.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = records.map((m, idx) => {
+    const isTop3 = idx < 3;
+    const rankStyle = isTop3 ? 'font-weight: 800; color: var(--neon-gold); font-size: 1.1rem;' : 'color: var(--text-dim);';
+    const rowBg = isTop3 ? 'background: rgba(255, 209, 0, 0.03);' : '';
+    
+    return `
+      <tr style="${rowBg}">
+        <td style="text-align: center; ${rankStyle}">#${idx + 1}</td>
+        <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
+        <td>${renderTeamWithLogo(m.fromTeamId, m.fromTeamName)}</td>
+        <td style="text-align: center; color: var(--text-muted); font-size: 0.8rem;"><i class="fa-solid fa-arrow-right"></i></td>
+        <td>${renderTeamWithLogo(m.toTeamId, m.toTeamName)}</td>
+        <td style="text-align: right; font-family: var(--font-heading); font-weight: 800; color: var(--lmi-green); font-size: 1.05rem;">
+          $${(m.price || 0).toFixed(1)}M USD
+        </td>
+        <td style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
+          ${m.details || '-'}
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderMarketPrestamos() {
+  const tbody = document.getElementById('market-prestamos-tbody');
+  if (!tbody) return;
+
+  const movements = lmiData.marketMovements || [];
+  
+  // Filter for loans
+  const prestamos = movements.filter(m => {
+    const typeLower = m.type.toLowerCase();
+    return typeLower.includes('préstamo') || typeLower.includes('prestamo');
+  });
+
+  if (prestamos.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay préstamos activos registrados.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = prestamos.map(m => {
+    const priceVal = m.price > 0 ? `$${m.price.toFixed(1)}M USD` : 'Gratis';
+    const seasonsVal = m.seasons ? `${m.seasons} ${m.seasons === 1 ? 'temporada' : 'temporadas'}` : 'No especificado';
+    
+    return `
+      <tr>
+        <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
+        <td>${renderTeamWithLogo(m.fromTeamId, m.fromTeamName)}</td>
+        <td style="text-align: center; color: var(--text-muted); font-size: 0.8rem;"><i class="fa-solid fa-arrow-right"></i></td>
+        <td>${renderTeamWithLogo(m.toTeamId, m.toTeamName)}</td>
+        <td style="text-align: center; font-weight: 700; color: var(--lmi-blue);">${seasonsVal}</td>
+        <td style="text-align: right; font-weight: 700; color: var(--lmi-green);">${priceVal}</td>
+        <td style="font-size: 0.8rem; color: var(--text-muted);">${m.details || '-'}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// Make functions globally available
+window.switchMarketTab = switchMarketTab;
+window.loadMarketForTeam = loadMarketForTeam;
