@@ -1231,14 +1231,8 @@ footer {
   display: block;
 }
 
-.pdf-fallback {
-  padding: 3rem 2rem;
-  text-align: center;
-  background: var(--bg-deep);
-  border-radius: var(--radius-md);
-  border: 1.5px dashed var(--border-color);
-  margin: 2rem;
-  color: var(--text-muted);
+.pdf-mobile-fallback {
+  display: none;
 }
 
 /* Responsive Overrides */
@@ -1258,13 +1252,30 @@ footer {
   }
   
   .hero-video-card {
-    max-width: 550px;
+    max-width: min(100%, 550px);
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
+  .pdf-iframe {
+    display: none;
+  }
+
+  .pdf-mobile-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    height: 100%;
+    background: var(--bg-deep);
+  }
+
   .pdf-viewer-wrapper {
-    height: 500px;
+    height: auto;
+    min-height: 350px;
   }
   
   .quick-actions-grid {

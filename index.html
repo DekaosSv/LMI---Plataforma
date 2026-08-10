@@ -603,14 +603,17 @@
         
         <!-- Visor PDF Incrustado -->
         <div class="pdf-viewer-wrapper">
-          <iframe src="Reglamento LMI.pdf#toolbar=1" title="Reglamento LMI">
-            <div class="pdf-fallback">
-              <p>Tu navegador no admite la visualización directa de archivos PDF en la página.</p>
-              <p style="margin-top: 1rem;">
-                <a href="Reglamento LMI.pdf" download class="btn-primary">Descargar Reglamento</a>
-              </p>
-            </div>
-          </iframe>
+          <iframe class="pdf-iframe" src="Reglamento LMI.pdf#toolbar=1" title="Reglamento LMI"></iframe>
+          <div class="pdf-mobile-fallback">
+            <i class="fa-solid fa-file-pdf" style="font-size: 3.5rem; color: #ef4444; margin-bottom: 1.25rem;"></i>
+            <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.5rem;">Visualización no disponible en móviles</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 320px; margin: 0 auto 1.5rem auto; line-height: 1.5;">
+              Para consultar el Reglamento Oficial de la LMI, por favor descarga el archivo PDF directamente en tu dispositivo.
+            </p>
+            <a href="Reglamento LMI.pdf" download class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; width: auto; padding: 0.75rem 1.5rem;">
+              <i class="fa-solid fa-download"></i> Descargar Reglamento
+            </a>
+          </div>
         </div>
 
 
