@@ -1135,10 +1135,14 @@ function loadMarketForTeam(teamId) {
       altasTbody.innerHTML = altas.map(m => {
         const seasonsText = m.seasons ? ` (${m.seasons} Temp.)` : '';
         const priceVal = m.price > 0 ? `$${m.price.toFixed(1)}M USD` : 'Gratis';
+        let displayType = m.type;
+        if (displayType.toLowerCase() === 'venta') {
+          displayType = 'Compra';
+        }
         return `
           <tr>
             <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
-            <td>${getMovementBadge(m.type)}</td>
+            <td>${getMovementBadge(displayType)}</td>
             <td>${renderTeamWithLogo(m.fromTeamId, m.fromTeamName)}</td>
             <td style="text-align: right; font-weight: 700; color: var(--lmi-green);">${priceVal}${seasonsText}</td>
           </tr>
@@ -1155,10 +1159,14 @@ function loadMarketForTeam(teamId) {
     } else {
       bajasTbody.innerHTML = bajas.map(m => {
         const priceVal = m.price > 0 ? `$${m.price.toFixed(1)}M USD` : 'Gratis';
+        let displayType = m.type;
+        if (displayType.toLowerCase() === 'compra') {
+          displayType = 'Venta';
+        }
         return `
           <tr>
             <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
-            <td>${getMovementBadge(m.type)}</td>
+            <td>${getMovementBadge(displayType)}</td>
             <td>${renderTeamWithLogo(m.toTeamId, m.toTeamName)}</td>
             <td style="text-align: right; font-weight: 700; color: #ef4444;">${priceVal}</td>
           </tr>

@@ -645,10 +645,9 @@ def process_excel():
                     print(f"⚠️ Advertencia (Fila {row_idx}): No se pudo convertir las temporadas '{seasons_str}' a entero. Se asignará null.")
                     seasons = None
 
-                # Signature for duplicate check
+                # Signature for duplicate check (checking player, origin, destination, price, and seasons)
                 mov_sig = (
                     player_name.lower().strip(),
-                    mov_type.lower().strip(),
                     (from_team_id or orig_name or "").lower().strip(),
                     (to_team_id or dest_name or "").lower().strip(),
                     price,

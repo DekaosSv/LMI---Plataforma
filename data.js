@@ -6736,17 +6736,6 @@ var INITIAL_LMI_DATA = {
       "details": "Traspaso normal"
     },
     {
-      "player": "Nico Williams",
-      "type": "Compra",
-      "fromTeamId": "interdemilan",
-      "fromTeamName": "Inter de Milan",
-      "toTeamId": "manchesterunited",
-      "toTeamName": "Manchester United",
-      "price": 65.0,
-      "seasons": null,
-      "details": "Traspaso normal"
-    },
-    {
       "player": "Benjamin Sesko",
       "type": "Venta",
       "fromTeamId": "manchesterunited",
