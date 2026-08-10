@@ -591,6 +591,7 @@ def process_excel():
             col_temporadas = header_map.get(normalize_key("Temporadas"))
             col_detalle = header_map.get(normalize_key("Detalle")) or header_map.get(normalize_key("Detalles")) or header_map.get(normalize_key("Nota")) or header_map.get(normalize_key("Notas"))
             
+            seen_movements = set()
             for row_idx in sorted(mercado_sheet.keys()):
                 if row_idx == 1:
                     continue
@@ -615,6 +616,8 @@ def process_excel():
                     if mapped_orig in teams_dict:
                         from_team_id = mapped_orig
                         from_team_name = teams_dict[mapped_orig]["name"]
+                    else:
+                        print(f"⚠️ Advertencia (Fila {row_idx}): Club de origen '{orig_name}' no mapeado formalmente.")
                 
                 # Normalize destination team
                 to_team_id = None
@@ -625,18 +628,37 @@ def process_excel():
                     if mapped_dest in teams_dict:
                         to_team_id = mapped_dest
                         to_team_name = teams_dict[mapped_dest]["name"]
+                    else:
+                        print(f"⚠️ Advertencia (Fila {row_idx}): Club de destino '{dest_name}' no mapeado formalmente.")
                 
                 # Parse cost
                 try:
                     price = float(cost_str) if cost_str else 0.0
                 except ValueError:
+                    print(f"⚠️ Advertencia (Fila {row_idx}): No se pudo convertir el costo '{cost_str}' a número. Se asignará 0.0.")
                     price = 0.0
                     
                 # Parse seasons
                 try:
                     seasons = int(seasons_str) if seasons_str else None
                 except ValueError:
+                    print(f"⚠️ Advertencia (Fila {row_idx}): No se pudo convertir las temporadas '{seasons_str}' a entero. Se asignará null.")
                     seasons = None
+
+                # Signature for duplicate check
+                mov_sig = (
+                    player_name.lower().strip(),
+                    mov_type.lower().strip(),
+                    (from_team_id or orig_name or "").lower().strip(),
+                    (to_team_id or dest_name or "").lower().strip(),
+                    price,
+                    seasons
+                )
+
+                if mov_sig in seen_movements:
+                    print(f"🚫 Movimiento repetido ignorado (Fila {row_idx}): {player_name} | {mov_type} | {from_team_name} -> {to_team_name}")
+                    continue
+                seen_movements.add(mov_sig)
                     
                 market_movements.append({
                     "player": player_name,

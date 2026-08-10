@@ -60,22 +60,80 @@
     <!-- 1. DASHBOARD / INICIO -->
     <section id="sec-dashboard" class="page-section active">
 
-      <!-- Banner Animado de Encabezado (encabezado1.mp4) -->
-      <div class="card" style="background: #ffffff; padding: 0.5rem; margin-bottom: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-card); overflow: hidden; display: flex; justify-content: center; align-items: center;">
-        <video autoplay loop muted playsinline style="max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; background: #ffffff;">
-          <source src="encabezado1.mp4" type="video/mp4">
-          Tu navegador no soporta video.
-        </video>
-      </div>
-
       <div class="hero-banner">
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <span class="hero-tag">Liga Master eFootball</span>
-          <h1 class="hero-title">BIENVENIDO A LA LIGA MASTER INTERNACIONAL (TEMPORADA 9 FINALIZADA)</h1>
-          <p class="hero-desc">Explora la plantilla de cada club participante y explora las herramientas disponibles.</p>
-          <div class="hero-actions">
-            <button class="btn-secondary" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Ver Equipos</button>
+        <div class="hero-content-wrapper">
+          <div class="hero-content-left">
+            <span class="hero-tag">Liga Master eFootball</span>
+            <h1 class="hero-title">BIENVENIDO A LA LIGA MASTER INTERNACIONAL</h1>
+            <p class="hero-desc">Explora la plantilla de cada club participante, las estadísticas de la liga, el mercado de fichajes y usa las herramientas disponibles.</p>
+            <div class="hero-actions">
+              <button class="btn-secondary" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Ver Equipos</button>
+              <button class="btn-primary-outline" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Ver Reglamento</button>
+            </div>
+          </div>
+          <div class="hero-content-right">
+            <div class="hero-video-card">
+              <video autoplay loop muted playsinline class="hero-video-player">
+                <source src="encabezado1.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accesos Rápidos Grid -->
+      <div class="quick-actions-grid">
+        <div class="quick-card" onclick="switchNav('stats')">
+          <div class="quick-icon-wrapper" style="background: rgba(0, 168, 89, 0.1); color: var(--lmi-green);">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="quick-card-content">
+            <h3 class="quick-card-title">Estadísticas</h3>
+            <p class="quick-card-desc">Goleadores, asistidores y detalles de torneos oficiales.</p>
+          </div>
+          <div class="quick-card-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <div class="quick-card" onclick="switchNav('teams')">
+          <div class="quick-icon-wrapper" style="background: rgba(0, 51, 160, 0.1); color: var(--lmi-blue);">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="quick-card-content">
+            <h3 class="quick-card-title">Equipos LMI</h3>
+            <p class="quick-card-desc">Explora plantillas oficiales, presupuestos y fichajes.</p>
+          </div>
+          <div class="quick-card-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <div class="quick-card" onclick="switchNav('renovaciones')">
+          <div class="quick-icon-wrapper" style="background: rgba(255, 209, 0, 0.15); color: #b89500;">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+          <div class="quick-card-content">
+            <h3 class="quick-card-title">Renovaciones</h3>
+            <p class="quick-card-desc">Calculadora de pago de renovaciones de equipos.</p>
+          </div>
+          <div class="quick-card-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <div class="quick-card" onclick="switchNav('buscador')">
+          <div class="quick-icon-wrapper" style="background: rgba(124, 58, 237, 0.1); color: var(--neon-purple);">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="quick-card-content">
+            <h3 class="quick-card-title">Buscador BD</h3>
+            <p class="quick-card-desc">Busca duplicados y pertenencia de jugadores.</p>
+          </div>
+          <div class="quick-card-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
         </div>
       </div>
@@ -443,17 +501,17 @@
           <!-- Legend Change / Removal Notes -->
           <div class="card" style="background: var(--lmi-blue); border-color: var(--lmi-blue); color: #ffffff; box-shadow: var(--shadow-card);">
             <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: #ffffff; margin-bottom: 1rem;">
-              <i class="fa-solid fa-crown"></i> Registro de Leyenda / Épico / Big Time
+              <i class="fa-solid fa-crown"></i> Registro de Leyenda / Épico / Legendario
             </h3>
             <p style="font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-bottom: 1rem; line-height: 1.4;">
-              Cada club tiene derecho a <strong>1 Leyenda o Épico</strong>. Los <strong>Big Time</strong> están disponibles. Si deseas cambiar o eliminar tu leyenda / épico / Big Time, debes pagar su renovación y especificarlo aquí abajo:
+              Cada club tiene derecho a <strong>1 Leyenda o Épico</strong>. Si deseas cambiar o eliminar tu leyenda / épico / legendario, debes pagar su renovación y especificarlo aquí abajo:
             </p>
             <div class="form-group" style="margin-bottom: 0.75rem;">
-              <label class="form-label" style="color: #ffffff;">Cambio de Leyenda / Épico / Big Time:</label>
-              <input type="text" id="renovation-note-change" class="form-control" style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" placeholder="Ej. Cambio leyenda por Ronaldinho" onchange="saveRenovationNotes()">
+              <label class="form-label" style="color: #ffffff;">Cambio de Leyenda / Épico / Legendario:</label>
+              <input type="text" id="renovation-note-change" class="form-control" style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" placeholder="Ej. Cambio mi leyenda Sergio Agüero por Ronaldinho" onchange="saveRenovationNotes()">
             </div>
             <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="color: #ffffff;">Eliminación de Leyenda / Épico / Big Time:</label>
+              <label class="form-label" style="color: #ffffff;">Eliminación de Leyenda / Épico / Legendario:</label>
               <input type="text" id="renovation-note-remove" class="form-control" style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);" placeholder="Ej. Elimino mi leyenda Pelé" onchange="saveRenovationNotes()">
             </div>
           </div>
@@ -534,12 +592,28 @@
     <!-- 6. REGLAMENTO -->
     <section id="sec-rules" class="page-section">
       <div class="card">
-        <div class="card-header">
-          <h2 class="card-title"><i class="fa-solid fa-book"></i> Reglamento Oficial LMI - Temporada 9</h2>
+        <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+          <h2 class="card-title"><i class="fa-solid fa-book"></i> Reglamento Oficial LMI</h2>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="Reglamento LMI.pdf" download class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: var(--radius-sm); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <i class="fa-solid fa-download"></i> Descargar PDF
+            </a>
+          </div>
         </div>
-        <div id="rules-content">
-          <!-- Rendered via JS -->
+        
+        <!-- Visor PDF Incrustado -->
+        <div class="pdf-viewer-wrapper">
+          <iframe src="Reglamento LMI.pdf#toolbar=1" title="Reglamento LMI">
+            <div class="pdf-fallback">
+              <p>Tu navegador no admite la visualización directa de archivos PDF en la página.</p>
+              <p style="margin-top: 1rem;">
+                <a href="Reglamento LMI.pdf" download class="btn-primary">Descargar Reglamento</a>
+              </p>
+            </div>
+          </iframe>
         </div>
+
+
       </div>
     </section>
 
