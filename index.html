@@ -31,10 +31,12 @@
             Estadísticas</button></li>
         <li><button class="nav-link" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i>
             Equipos</button></li>
-        <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
-            Estelar</button></li>
-        <li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions
-            League</button></li>
+        <li><button class="nav-link" onclick="switchNav('sala-campeones')"><i class="fa-solid fa-trophy"></i>
+            Sala de Trofeos</button></li>
+        <!-- <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
+            Estelar</button></li> -->
+        <!--<li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions
+            League</button></li> -->
         <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i>
             Mercado</button></li>
         <!-- <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li> -->
@@ -277,6 +279,24 @@
             <!-- Rendered via JS -->
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- SALA DE TROFEOS -->
+    <section id="sec-sala-campeones" class="page-section">
+      <div class="hero-banner"
+        style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(0, 51, 160, 0.8) 100%), url('Sala de campeones/Liga.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-tag"
+            style="background: rgba(255, 209, 0, 0.25); color: var(--lmi-yellow); border-color: var(--lmi-yellow);"><i class="fa-solid fa-crown"></i> Galería de Honor</span>
+          <h1 class="hero-title" style="color: #ffffff;">SALA DE TROFEOS</h1>
+          <p class="hero-desc" style="color: rgba(255,255,255,0.85); margin-bottom: 0;">Consulta el palmarés histórico de la Liga Master Internacional, la UEFA Champions League y la Copa Estelar. Los campeones eternos de nuestra comunidad.</p>
+        </div>
+      </div>
+
+      <div class="champions-grid" id="champions-gallery-grid">
+        <!-- Rendered via JS -->
       </div>
     </section>
 

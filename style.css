@@ -1329,3 +1329,135 @@ footer {
     padding: 1rem;
   }
 }
+
+/* --- SALA DE TROFEOS --- */
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tournament-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.tournament-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
+.tournament-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tournament-header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tournament-card:hover .tournament-header-image {
+  transform: scale(1.05);
+}
+
+.tournament-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 70%, rgba(15, 23, 42, 0.2) 100%);
+}
+
+.tournament-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tournament-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 2px solid var(--bg-deep);
+  padding-bottom: 0.75rem;
+}
+
+.champion-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.champion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-deep);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.champion-item:hover {
+  background: rgba(0, 51, 160, 0.04);
+  border-color: rgba(0, 51, 160, 0.1);
+  transform: translateX(3px);
+}
+
+.champion-rank {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.champion-badge-icon {
+  font-size: 1.1rem;
+}
+
+.champion-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.champion-trophies-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.champion-trophies-emojis {
+  letter-spacing: -2px;
+}
+
+.trophy-badge {
+  background: rgba(255, 209, 0, 0.12);
+  color: #b89500;
+  border: 1px solid rgba(255, 209, 0, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+}

@@ -7032,5 +7032,72 @@ var INITIAL_LMI_DATA = {
       "seasons": null,
       "details": "Intercambio de Jugadores"
     }
+  ],
+  "champions": [
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Robert Salve",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Santiago Perez",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Artez10",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Jorge Mtz",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Jose Encinas",
+      "cantidad": 4
+    },
+    {
+      "torneo": "Champions League",
+      "ganador": "RogerSu",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Champions League",
+      "ganador": "AlejandroSalgado",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Champions League",
+      "ganador": "Jose Encinas",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Champions League",
+      "ganador": "Robert Salve",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Champions League",
+      "ganador": "Santiago Encinas",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Copa Estelar",
+      "ganador": "Jorge Mtz",
+      "cantidad": 2
+    },
+    {
+      "torneo": "Copa Estelar",
+      "ganador": "Jose Encinas",
+      "cantidad": 2
+    },
+    {
+      "torneo": "Copa Estelar",
+      "ganador": "Santiago Encinas",
+      "cantidad": 1
+    }
   ]
 };

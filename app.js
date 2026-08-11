@@ -124,6 +124,7 @@ function switchNav(navId) {
   }
   if (navId === 'buscador') filterPlayersDatabase();
   if (navId === 'rules') renderRules();
+  if (navId === 'sala-campeones') renderSalaCampeones();
 }
 
 // Render Dashboard
@@ -1253,6 +1254,100 @@ function renderMarketPrestamos() {
   }).join('');
 }
 
+// Render Sala de Campeones / Trofeos
+function renderSalaCampeones() {
+  const container = document.getElementById('champions-gallery-grid');
+  if (!container) return;
+
+  const champions = lmiData.champions || [];
+
+  // Torneos definidos y sus metadatos
+  const tournaments = [
+    {
+      id: "liga",
+      name: "Liga LMI",
+      excelName: "Liga LMI",
+      image: "Sala de campeones/Liga.png",
+      icon: "fa-solid fa-trophy",
+      badgeColor: "#ffd100"
+    },
+    {
+      id: "champions",
+      name: "UEFA Champions League",
+      excelName: "Champions League",
+      image: "Sala de campeones/Uefa Champions League.png",
+      icon: "fa-solid fa-star",
+      badgeColor: "#0033a0"
+    },
+    {
+      id: "copa",
+      name: "Copa Estelar",
+      excelName: "Copa Estelar",
+      image: "Sala de campeones/Copa estelar.png",
+      icon: "fa-solid fa-circle-nodes",
+      badgeColor: "#7c3aed"
+    }
+  ];
+
+  let html = "";
+
+  tournaments.forEach(t => {
+    // Filter and sort winners for this tournament
+    const winners = champions
+      .filter(c => c.torneo.toLowerCase().includes(t.id) || c.torneo.toLowerCase().includes(t.excelName.toLowerCase()))
+      .sort((a, b) => b.cantidad - a.cantidad);
+
+    let listHtml = "";
+    if (winners.length === 0) {
+      listHtml = `<li class="champion-item" style="justify-content: center;"><span class="champion-name" style="color: var(--text-muted);">Aún no hay campeones registrados</span></li>`;
+    } else {
+      winners.forEach((w, index) => {
+        let medal = "";
+        if (index === 0) medal = "🥇";
+        else if (index === 1) medal = "🥈";
+        else if (index === 2) medal = "🥉";
+        else medal = "👑";
+
+        let trophiesStr = "";
+        for (let i = 0; i < w.cantidad; i++) {
+          trophiesStr += "🏆";
+        }
+
+        listHtml += `
+          <li class="champion-item">
+            <div class="champion-rank">
+              <span class="champion-badge-icon">${medal}</span>
+              <span class="champion-name">@${w.ganador}</span>
+            </div>
+            <div class="champion-trophies-container">
+              <span class="champion-trophies-emojis">${trophiesStr}</span>
+              <span class="trophy-badge">${w.cantidad} ${w.cantidad === 1 ? 'Título' : 'Títulos'}</span>
+            </div>
+          </li>
+        `;
+      });
+    }
+
+    html += `
+      <div class="tournament-card">
+        <div class="tournament-image-wrapper">
+          <img src="${t.image}" alt="${t.name}" class="tournament-header-image">
+          <div class="tournament-image-overlay"></div>
+        </div>
+        <div class="tournament-body">
+          <h2 class="tournament-title"><i class="${t.icon}" style="color: ${t.badgeColor}"></i> ${t.name}</h2>
+          <ul class="champion-list">
+            ${listHtml}
+          </ul>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
 // Make functions globally available
 window.switchMarketTab = switchMarketTab;
 window.loadMarketForTeam = loadMarketForTeam;
+window.renderSalaCampeones = renderSalaCampeones;

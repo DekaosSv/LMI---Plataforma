@@ -45,6 +45,48 @@ def normalize_key(name):
     clean = re.sub(r'\s*\([pPcC]\)\s*$', '', only_ascii)
     return re.sub(r'[^a-zA-Z0-9]', '', clean).lower()
 
+def parse_fallback_campeones_txt():
+    txt_path = "Sala de campeones/campeones.txt"
+    if not os.path.exists(txt_path):
+        print("⚠️ Advertencia: No se encontró 'Sala de campeones/campeones.txt'.")
+        return []
+    records = []
+    current_tournament = None
+    with open(txt_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            line_upper = line.upper()
+            if "LMI" in line_upper and "CAMPEONES" in line_upper:
+                current_tournament = "Liga LMI"
+                continue
+            elif "CHAMPIONS" in line_upper:
+                current_tournament = "Champions League"
+                continue
+            elif "COPA ESTELAR" in line_upper:
+                current_tournament = "Copa Estelar"
+                continue
+            if line.startswith("Campeones LMI") and not line.startswith("@"):
+                continue
+            if current_tournament and ("🏆" in line or "🥇" in line):
+                trophies_count = line.count("🏆")
+                if "-" in line:
+                    user_part = line.split("-")[0]
+                else:
+                    user_part = re.sub(r'[🏆🥇💫\s]+$', '', line)
+                # Remove unicode formatting characters and clean username
+                username = user_part.replace('\u2068', '').replace('\u2069', '').strip().lstrip('@').strip()
+                if username:
+                    records.append({
+                        "torneo": current_tournament,
+                        "ganador": username,
+                        "cantidad": trophies_count
+                    })
+    print(f"📖 Fallback: Se cargaron {len(records)} registros desde 'campeones.txt'.")
+    return records
+
+
 def extraer_posicion_y_nombre(cadena_original):
     if not cadena_original:
         return "MC", ""
@@ -217,6 +259,7 @@ def process_excel():
         registro_data = parse_sheet_cells(z, sheet_xml_paths['Registro Liga'], strings)
         registro_champions = parse_sheet_cells(z, sheet_xml_paths['Registro Champions'], strings) if 'Registro Champions' in sheet_xml_paths else {}
         registro_estelar = parse_sheet_cells(z, sheet_xml_paths['RegistroEstelar'], strings) if 'RegistroEstelar' in sheet_xml_paths else {}
+        campeones_excel_data = parse_sheet_cells(z, sheet_xml_paths['Campeones'], strings) if 'Campeones' in sheet_xml_paths else {}
 
         # 2.5. Cargar datos del club desde la hoja 'Clubes' si existe
         clubes_excel_data = {}
@@ -675,6 +718,43 @@ def process_excel():
             if old_data and "marketMovements" in old_data:
                 market_movements = old_data["marketMovements"]
 
+        # 5.5. Parse champions if the sheet exists, otherwise fallback to TXT
+        champions_list = []
+        if campeones_excel_data:
+            print("🏆 Procesando campeones desde la hoja 'Campeones'...")
+            header_map = {}
+            for col_letter, val in campeones_excel_data.get(1, {}).items():
+                if val:
+                    header_map[normalize_key(val)] = col_letter
+            
+            col_torneo = header_map.get(normalize_key("Torneo"))
+            col_ganador = header_map.get(normalize_key("Ganador"))
+            col_cantidad = header_map.get(normalize_key("Cantidad"))
+            
+            for row_idx in sorted(campeones_excel_data.keys()):
+                if row_idx == 1:
+                    continue
+                row = campeones_excel_data[row_idx]
+                torneo = row.get(col_torneo, '').strip() if col_torneo else ''
+                ganador = row.get(col_ganador, '').strip() if col_ganador else ''
+                cantidad_raw = row.get(col_cantidad, '').strip() if col_cantidad else '0'
+                
+                if torneo and ganador:
+                    try:
+                        cantidad = int(float(cantidad_raw))
+                    except ValueError:
+                        cantidad = 0
+                    champions_list.append({
+                        "torneo": torneo,
+                        "ganador": ganador,
+                        "cantidad": cantidad
+                    })
+        
+        # Fallback to txt file if no records found or sheet doesn't exist
+        if not champions_list:
+            print("🏆 Hoja 'Campeones' no encontrada o vacía. Cargando fallback desde campeones.txt...")
+            champions_list = parse_fallback_campeones_txt()
+
         # 6. Rebuild final LMI Data object
         season = "Temporada 9 Finalizada"
         
@@ -708,7 +788,8 @@ def process_excel():
             "championsLeagueMatches": champions_matches,
             "rules": rules,
             "nonRenewedPlayers": non_renewed_players,
-            "marketMovements": market_movements
+            "marketMovements": market_movements,
+            "champions": champions_list
         }
 
         # 7. Write to data.js
