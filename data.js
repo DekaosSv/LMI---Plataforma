@@ -7031,6 +7031,127 @@ var INITIAL_LMI_DATA = {
       "price": 20.0,
       "seasons": null,
       "details": "Intercambio de Jugadores"
+    },
+    {
+      "player": "Dani Carvajal",
+      "type": "Venta",
+      "fromTeamId": "tottenhamhotspur",
+      "fromTeamName": "Tottenham Hotspur",
+      "toTeamId": "acmiln",
+      "toTeamName": "AC Milán",
+      "price": 5.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Phil Foden",
+      "type": "Prestamo",
+      "fromTeamId": "bayernleverkusen",
+      "fromTeamName": "Bayern Leverkusen",
+      "toTeamId": "acmiln",
+      "toTeamName": "AC Milán",
+      "price": 0.0,
+      "seasons": 1,
+      "details": "Prestamo de jugadores"
+    },
+    {
+      "player": "Arda Guler",
+      "type": "Prestamo",
+      "fromTeamId": "acmiln",
+      "fromTeamName": "AC Milán",
+      "toTeamId": "bayernleverkusen",
+      "toTeamName": "Bayern Leverkusen",
+      "price": 0.0,
+      "seasons": 1,
+      "details": "Prestamo de jugadores"
+    },
+    {
+      "player": "Lamine Yamal",
+      "type": "Prestamo",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "psg",
+      "toTeamName": "PSG",
+      "price": 0.0,
+      "seasons": 1,
+      "details": "Prestamo de jugadores"
+    },
+    {
+      "player": "Mohamed Salah",
+      "type": "Prestamo",
+      "fromTeamId": "psg",
+      "fromTeamName": "PSG",
+      "toTeamId": "como1907",
+      "toTeamName": "Como 1907",
+      "price": 0.0,
+      "seasons": 1,
+      "details": "Prestamo de jugadores"
+    },
+    {
+      "player": "Oihan Sancet",
+      "type": "Venta",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "tottenhamhotspur",
+      "toTeamName": "Tottenham Hotspur",
+      "price": 30.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Dean Huijsen",
+      "type": "Prestamo",
+      "fromTeamId": "realmadrid",
+      "fromTeamName": "Real Madrid",
+      "toTeamId": "como1907",
+      "toTeamName": "Como 1907",
+      "price": 40.0,
+      "seasons": 2,
+      "details": "Prestamo de jugadores"
+    },
+    {
+      "player": "Thibaut Courtois",
+      "type": "Prestamo",
+      "fromTeamId": "realmadrid",
+      "fromTeamName": "Real Madrid",
+      "toTeamId": "como1907",
+      "toTeamName": "Como 1907",
+      "price": 15.0,
+      "seasons": 2,
+      "details": "Prestamo de jugadores"
+    },
+    {
+      "player": "Noah Okafor",
+      "type": "Venta",
+      "fromTeamId": "arsenal",
+      "fromTeamName": "Arsenal",
+      "toTeamId": "atleticodemadrid",
+      "toTeamName": "Atletico de Madrid",
+      "price": 42.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Denzel Dumfries",
+      "type": "Venta",
+      "fromTeamId": "arsenal",
+      "fromTeamName": "Arsenal",
+      "toTeamId": "atleticodemadrid",
+      "toTeamName": "Atletico de Madrid",
+      "price": 31.0,
+      "seasons": null,
+      "details": "Traspaso normal"
+    },
+    {
+      "player": "Artem Dovbyk",
+      "type": "Venta",
+      "fromTeamId": "arsenal",
+      "fromTeamName": "Arsenal",
+      "toTeamId": "atleticodemadrid",
+      "toTeamName": "Atletico de Madrid",
+      "price": 31.0,
+      "seasons": null,
+      "details": "Traspaso normal"
     }
   ],
   "champions": [
