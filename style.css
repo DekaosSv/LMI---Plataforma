@@ -1052,6 +1052,40 @@ footer {
   margin-top: 0.15rem;
 }
 
+/* --- WELCOME VIDEO BANNER --- */
+.welcome-video-banner {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  max-height: 400px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  margin-bottom: 2rem;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.welcome-video-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.welcome-video-player {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
 /* --- HERO GRID & INTEGRATED VIDEO --- */
 
 .hero-content-wrapper {
@@ -1255,6 +1289,12 @@ footer {
     max-width: min(100%, 550px);
     width: 100%;
   }
+  
+  .welcome-video-banner {
+    aspect-ratio: 16 / 9;
+    max-height: 350px;
+    padding: 1.25rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1280,5 +1320,12 @@ footer {
   
   .quick-actions-grid {
     gap: 1rem;
+  }
+  
+  .welcome-video-banner {
+    aspect-ratio: 16 / 9;
+    max-height: 250px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
   }
 }
