@@ -1,7 +1,7 @@
-// Base de datos unificada LMI Temporada 9 desde lmi temp 9.xlsx
+// Base de datos unificada LMI Temporada 10 desde lmi temp 10.xlsx
 
 var INITIAL_LMI_DATA = {
-  "season": "Temporada 9 Finalizada",
+  "season": "Temporada 10",
   "teams": [
     {
       "id": "interdemilan",
@@ -6622,7 +6622,7 @@ var INITIAL_LMI_DATA = {
   ],
   "rules": [
     {
-      "category": "Reglamento de Renovaciones Temporada 9",
+      "category": "Reglamento de Renovaciones Temporada 10",
       "items": [
         "Posiciones 1 a 5 en Liga: Pagan el 50% de la suma total de su renovación.",
         "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
