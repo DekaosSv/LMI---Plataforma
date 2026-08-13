@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liga Master Internacional (LMI) - Temporada 9</title>
+  <title>Liga Master Internacional (LMI) - Temporada 10</title>
   <meta name="description"
-    content="Plataforma oficial de la Liga Master Internacional (LMI) eFootball. Estadísticas de goleadores/asistidores, plantillas oficiales y Calculadora de Renovaciones Temporada 9.">
+    content="Plataforma oficial de la Liga Master Internacional (LMI) eFootball. Estadísticas de goleadores/asistidores, plantillas oficiales y Calculadora de Renovaciones Temporada 10.">
 
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,7 +39,7 @@
             League</button></li> -->
         <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i>
             Mercado</button></li>
-        <!-- <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li> -->
+        <!-- <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T10</button></li> -->
         <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar
             Jugadores</button></li>
         <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button>
@@ -56,12 +56,7 @@
         style="margin-bottom:0; background: rgba(0, 168, 89, 0.1); border-color: var(--lmi-green); color: var(--lmi-green);">
         <i class="fa-solid fa-trophy"></i> LIGA UNIFICADA
       </span>
-      <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-primary);">Temporada 9
-        Finalizada</span>
-      <span class="hero-tag"
-        style="margin-bottom:0; background: rgba(255, 79, 0, 0.1); border-color: var(--lmi-red); color: var(--lmi-red);">
-        <i class="fa-solid fa-person-digging"></i> Temporada 10 en construcción
-      </span>
+      <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-primary);">Temporada 10</span>
     </div>
 
     <div class="league-status">
@@ -197,7 +192,7 @@
               Torneo:</label>
             <select id="stats-tournament-select" class="form-control" style="width: auto; font-weight: 700;"
               onchange="renderStats()">
-              <option value="liga">Liga Temporada 9</option>
+              <option value="liga">Liga Temporada 10</option>
               <option value="copa">Copa Estelar</option>
               <option value="champions">Champions League</option>
             </select>
@@ -378,7 +373,7 @@
       </div>
 
       <!-- Tab Buttons for Mercado View -->
-      <div class="card" style="margin-bottom: 1.5rem; padding: 0.5rem 1rem;">
+      <div class="card" style="margin-bottom: 1.5rem; padding: 0.5rem 1rem; display: none;">
         <div class="market-tabs" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
           <button id="btn-tab-altas-bajas" class="btn-tab active" onclick="switchMarketTab('altas-bajas')"><i
               class="fa-solid fa-arrows-spin"></i> Altas y Bajas por Club</button>
@@ -390,7 +385,7 @@
       </div>
 
       <!-- 1. Tab Content: Altas y Bajas por Club -->
-      <div id="market-tab-altas-bajas" class="market-tab-content active">
+      <div id="market-tab-altas-bajas" class="market-tab-content" style="display: none;">
         <div class="card" style="margin-bottom: 1.5rem; padding: 1rem 1.5rem;">
           <div style="display: flex; align-items: center; gap: 0.75rem;">
             <label class="form-label" style="margin-bottom:0; font-weight: 700;">Seleccionar Club:</label>
@@ -483,7 +478,7 @@
       </div>
 
       <!-- 3. Tab Content: Préstamos Activos -->
-      <div id="market-tab-prestamos" class="market-tab-content" style="display: none;">
+      <div id="market-tab-prestamos" class="market-tab-content active">
         <div class="card">
           <div class="card-header">
             <h2 class="card-title"><i class="fa-solid fa-handshake" style="color: var(--lmi-blue);"></i> Préstamos
@@ -511,13 +506,13 @@
       </div>
     </section>
 
-    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 9 -->
+    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 10 -->
     <section id="sec-renovaciones" class="page-section">
       <div class="card">
         <div class="card-header">
           <div>
             <h2 class="card-title"><i class="fa-solid fa-file-signature" style="color: var(--neon-green);"></i>
-              Calculadora de Renovaciones - Temporada 9</h2>
+              Calculadora de Renovaciones - Temporada 10</h2>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Calcula el costo total de
               renovación de tu plantilla según tu posición asignada por el Administrador.</p>
           </div>

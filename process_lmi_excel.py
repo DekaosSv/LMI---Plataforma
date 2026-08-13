@@ -220,7 +220,7 @@ def load_old_data():
     return None
 
 def process_excel():
-    print("🔄 Iniciando proceso de importación del Excel 'lmi temp 9.xlsx'...")
+    print("🔄 Iniciando proceso de importación del Excel 'lmi temp 10.xlsx'...")
     
     # 1. Load old database template to preserve details
     old_data = load_old_data()
@@ -228,20 +228,20 @@ def process_excel():
     old_players_by_norm = {}
     
     if old_data:
-        print("📁 Base de datos existente 'data.js' cargada con éxito.")
-        for t in old_data.get("teams", []):
-            old_teams[t["id"]] = t
-        for p in old_data.get("players", []):
-            old_players_by_norm[normalize_key(p["name"])] = p
+      print("📁 Base de datos existente 'data.js' cargada con éxito.")
+      for t in old_data.get("teams", []):
+          old_teams[t["id"]] = t
+      for p in old_data.get("players", []):
+          old_players_by_norm[normalize_key(p["name"])] = p
     else:
-        print("⚠️ No se encontró base de datos 'data.js' previa o estaba corrupta, se usarán valores por defecto.")
+      print("⚠️ No se encontró base de datos 'data.js' previa o estaba corrupta, se usarán valores por defecto.")
 
     # 2. Parse Excel
-    if not os.path.exists('lmi temp 9.xlsx'):
-        print("❌ Error: No se encontró el archivo 'lmi temp 9.xlsx' en la ruta.")
-        sys.exit(1)
+    if not os.path.exists('lmi temp 10.xlsx'):
+      print("❌ Error: No se encontró el archivo 'lmi temp 10.xlsx' en la ruta.")
+      sys.exit(1)
 
-    with zipfile.ZipFile('lmi temp 9.xlsx', 'r') as z:
+    with zipfile.ZipFile('lmi temp 10.xlsx', 'r') as z:
         strings = get_shared_strings(z)
         sheet_xml_paths = find_sheet_xml_paths(z)
         
@@ -756,14 +756,14 @@ def process_excel():
             champions_list = parse_fallback_campeones_txt()
 
         # 6. Rebuild final LMI Data object
-        season = "Temporada 9 Finalizada"
+        season = "Temporada 10"
         
         # Load rules from old data if present, and update 11-16 to 11-17
         rules = old_data.get("rules", []) if old_data else []
         if not rules:
             rules = [
                 {
-                    "category": "Reglamento de Renovaciones Temporada 9",
+                    "category": "Reglamento de Renovaciones Temporada 10",
                     "items": [
                         "Posiciones 1 a 5 en Liga: Pagan el 50% de la suma total de su renovación.",
                         "Posiciones 6 a 10 en Liga: Pagan el 75% de la suma total de su renovación.",
@@ -777,7 +777,8 @@ def process_excel():
             ]
         else:
             for r in rules:
-                if r.get("category") == "Reglamento de Renovaciones Temporada 9":
+                if r.get("category") in ["Reglamento de Renovaciones Temporada 9", "Reglamento de Renovaciones Temporada 10"]:
+                    r["category"] = "Reglamento de Renovaciones Temporada 10"
                     r["items"] = [item.replace("11 a 16", "11 a 17") for item in r.get("items", [])]
 
         final_data = {
@@ -794,7 +795,7 @@ def process_excel():
 
         # 7. Write to data.js
         print("💾 Guardando resultados en 'data.js'...")
-        js_content = f"// Base de datos unificada LMI Temporada 9 desde lmi temp 9.xlsx\n\nvar INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
+        js_content = f"// Base de datos unificada LMI Temporada 10 desde lmi temp 10.xlsx\n\nvar INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
         
         with open('data.js', 'w', encoding='utf-8') as f:
             f.write(js_content)

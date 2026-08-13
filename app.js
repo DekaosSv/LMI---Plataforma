@@ -1,4 +1,4 @@
-// Motor de la Aplicación para la Liga Master Internacional (LMI) - Temporada 9
+// Motor de la Aplicación para la Liga Master Internacional (LMI) - Temporada 10
 
 var lmiData = null;
 var currentNav = 'dashboard';
@@ -78,7 +78,7 @@ function loadDataFromStorage() {
 }
 
 function saveDataToStorage() {
-  localStorage.setItem('lmi_league_t9_v20', JSON.stringify(lmiData));
+  localStorage.setItem('lmi_league_t10_v20', JSON.stringify(lmiData));
 }
 
 // UI Initialization & Navigation
@@ -557,7 +557,7 @@ function loadTeamHub(teamId) {
   `;
 }
 
-// RENOVACIONES TEMPORADA 9 ENGINE
+// RENOVACIONES TEMPORADA 10 ENGINE
 function initRenovationSelect() {
   const sel = document.getElementById('renovation-team-select');
   if (!sel) return;
@@ -729,7 +729,7 @@ function exportRenewalReport() {
   else if (rank <= 10) payPercentText = "75%";
 
   const teamPlayers = lmiData.players.filter(p => p.teamId === sel.value);
-  let summary = `📋 INFORME DE RENOVACIONES - TEMPORADA 9\n`;
+  let summary = `📋 INFORME DE RENOVACIONES - TEMPORADA 10\n`;
   summary += `Club: ${team.name}\n`;
   summary += `Posición Oficial en Liga: #${rank} (${payPercentText} de pago)\n`;
   summary += `--------------------------------------------------\n`;
@@ -1037,28 +1037,6 @@ function renderMercado() {
   if (statsRow) {
     statsRow.innerHTML = `
       <div class="market-stat-card">
-        <div class="market-stat-icon" style="background: rgba(0, 168, 89, 0.12); color: var(--lmi-green);">
-          <i class="fa-solid fa-money-bill-trend-up"></i>
-        </div>
-        <div class="market-stat-info">
-          <span class="market-stat-label">Inversión Total Liga</span>
-          <span class="market-stat-value">$${totalInvested.toFixed(1)}M USD</span>
-        </div>
-      </div>
-
-      <div class="market-stat-card">
-        <div class="market-stat-icon" style="background: rgba(255, 209, 0, 0.12); color: #d97706;">
-          <i class="fa-solid fa-crown"></i>
-        </div>
-        <div class="market-stat-info">
-          <span class="market-stat-label">Fichaje Récord</span>
-          <span class="market-stat-value" style="font-size: 1rem; font-weight: 700; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${recordTransfer.price > 0 ? `${recordTransfer.player} ($${recordTransfer.price}M)` : ''}">
-            ${recordTransfer.price > 0 ? `${recordTransfer.player} ($${recordTransfer.price}M)` : 'Sin registros'}
-          </span>
-        </div>
-      </div>
-
-      <div class="market-stat-card">
         <div class="market-stat-icon" style="background: rgba(0, 51, 160, 0.12); color: var(--lmi-blue);">
           <i class="fa-solid fa-people-arrows"></i>
         </div>
@@ -1082,6 +1060,7 @@ function renderMercado() {
   // 3. Render list tabs
   renderMarketRecords();
   renderMarketPrestamos();
+  switchMarketTab('prestamos');
 }
 
 function getMovementBadge(type) {
