@@ -441,7 +441,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_9",
-      "name": "Giorgi Mamardashvili",
+      "name": "Wojciech Szczęsny",
       "position": "PT",
       "teamId": "rbleipzig",
       "goals": 0,
@@ -713,8 +713,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_26",
-      "name": "Murillo",
-      "position": "CT",
+      "name": "Joško Gvardiol",
+      "position": "LI",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -985,7 +985,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_43",
-      "name": "Ramy Bensebaïni",
+      "name": "Nicolás Otamendi",
       "position": "CT",
       "teamId": "rbleipzig",
       "goals": 0,
@@ -1257,8 +1257,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_60",
-      "name": "Jeremie Frimpong",
-      "position": "LD",
+      "name": "Iñigo Martínez",
+      "position": "CT",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -1529,8 +1529,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_77",
-      "name": "Joško Gvardiol",
-      "position": "LI",
+      "name": "Takehiro Tomiyasu",
+      "position": "LD",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -1801,7 +1801,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_94",
-      "name": "Dominik Szoboszlai",
+      "name": "Piotr Zieliński",
       "position": "MC",
       "teamId": "rbleipzig",
       "goals": 0,
@@ -2073,8 +2073,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_111",
-      "name": "Manu Koné",
-      "position": "MC",
+      "name": "Leandro Paredes",
+      "position": "MCD",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -2345,8 +2345,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_128",
-      "name": "Leandro Paredes",
-      "position": "MCD",
+      "name": "Nico O'Reilly",
+      "position": "MP",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -2617,8 +2617,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_145",
-      "name": "Dirk Kuyt",
-      "position": "ED",
+      "name": "Thiago Almada",
+      "position": "II",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -2889,8 +2889,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_162",
-      "name": "Yoane Wissa",
-      "position": "DC",
+      "name": "Franco Mastantuono",
+      "position": "ID",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -3433,8 +3433,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_196",
-      "name": "Romelu Lukaku",
-      "position": "DC",
+      "name": "Ian Maatsen",
+      "position": "LI",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -3705,8 +3705,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_213",
-      "name": "Federico Chiesa",
-      "position": "ED",
+      "name": "Sergiño Dest",
+      "position": "LD",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -3977,8 +3977,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_230",
-      "name": "Paul Pogba",
-      "position": "MC",
+      "name": "Wesley Fofana",
+      "position": "CT",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -4249,8 +4249,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_247",
-      "name": "Amadou Onana",
-      "position": "MCD",
+      "name": "Lucas Vázquez",
+      "position": "LD",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -4521,8 +4521,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_264",
-      "name": "Marco Verratti",
-      "position": "MC",
+      "name": "Ben Chilwell",
+      "position": "II",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -4793,7 +4793,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_281",
-      "name": "Gonçalo Guedes",
+      "name": "Jack Grealish",
       "position": "II",
       "teamId": "rbleipzig",
       "goals": 0,
@@ -5065,8 +5065,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_298",
-      "name": "Xavi Simons",
-      "position": "MC",
+      "name": "Kaoru Mitoma",
+      "position": "II",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -5337,8 +5337,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_315",
-      "name": "Paulo Dybala",
-      "position": "SD",
+      "name": "Harry Wilson",
+      "position": "ID",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -5609,8 +5609,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_332",
-      "name": "Jonathan Tah",
-      "position": "CT",
+      "name": "Lucas Bergvall",
+      "position": "MC",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -5881,8 +5881,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_349",
-      "name": "Kim Min-jae",
-      "position": "CT",
+      "name": "Azzedine Ounahi",
+      "position": "MP",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -6153,8 +6153,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_366",
-      "name": "Iñigo Martínez",
-      "position": "CT",
+      "name": "Dominik Szoboszlai",
+      "position": "MP",
       "teamId": "rbleipzig",
       "goals": 0,
       "assists": 0,
@@ -6425,6 +6425,22 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_383",
+      "name": "Ansu Fati",
+      "position": "DC",
+      "teamId": "rbleipzig",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "isLegend": false
+    },
+    {
+      "id": "p_384",
       "name": "Jonathan Clauss",
       "position": "LD",
       "teamId": "atleticodemadrid",
@@ -6440,7 +6456,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_384",
+      "id": "p_385",
       "name": "Jhon Durán",
       "position": "DC",
       "teamId": "wrexham",
@@ -6456,7 +6472,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_385",
+      "id": "p_386",
       "name": "Hugo Ekitiké",
       "position": "DC",
       "teamId": "bayernleverkusen",
@@ -6472,7 +6488,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_386",
+      "id": "p_387",
       "name": "Endrick",
       "position": "DC",
       "teamId": "acmiln",
@@ -6488,7 +6504,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_387",
+      "id": "p_388",
       "name": "Castolo",
       "position": "DC",
       "teamId": "psg",
@@ -6504,7 +6520,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_388",
+      "id": "p_389",
       "name": "Serhou Guirassy",
       "position": "DC",
       "teamId": "como1907",
@@ -6520,7 +6536,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_389",
+      "id": "p_390",
       "name": "Gonzalo García",
       "position": "DC",
       "teamId": "arsenal",
@@ -6536,7 +6552,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_390",
+      "id": "p_391",
       "name": "Oihan Sancet",
       "position": "MP",
       "teamId": "tottenhamhotspur",
