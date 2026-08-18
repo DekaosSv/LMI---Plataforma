@@ -5,6 +5,26 @@ import os
 import re
 import sys
 import unicodedata
+import glob
+
+def find_lmi_excel_file():
+    candidates = []
+    for p in ['lmi temp *.xlsx', 'LMI*.xlsx', 'lmi*.xlsx', '*.xlsx']:
+        for f in glob.glob(p):
+            base = os.path.basename(f)
+            if base.startswith('~$') or base.lower() == 'presupuestos.xlsx':
+                continue
+            if f not in candidates:
+                candidates.append(f)
+    
+    if candidates:
+        candidates.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+        return candidates[0]
+        
+    if os.path.exists('lmi temp 10.xlsx'):
+        return 'lmi temp 10.xlsx'
+    return None
+
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -33,7 +53,11 @@ TEAM_ID_MAP = {
     "melbournecity": "melbournecity",
     "wrexham": "wrexham",
     "atleticodemadrid": "atleticodemadrid",
-    "atleticomadrid": "atleticodemadrid"
+    "atleticomadrid": "atleticodemadrid",
+    "borussiadortmund": "borussiadortmund",
+    "borussia": "borussiadortmund",
+    "riverplate": "riverplate",
+    "river": "riverplate"
 }
 
 def normalize_key(name):
@@ -220,7 +244,12 @@ def load_old_data():
     return None
 
 def process_excel():
-    print("🔄 Iniciando proceso de importación del Excel 'lmi temp 10.xlsx'...")
+    excel_file = find_lmi_excel_file()
+    if not excel_file or not os.path.exists(excel_file):
+        print("❌ Error: No se encontró ningún archivo Excel de la LMI en la ruta.")
+        sys.exit(1)
+
+    print(f"🔄 Iniciando proceso de importación del Excel '{excel_file}'...")
     
     # 1. Load old database template to preserve details
     old_data = load_old_data()
@@ -237,11 +266,7 @@ def process_excel():
       print("⚠️ No se encontró base de datos 'data.js' previa o estaba corrupta, se usarán valores por defecto.")
 
     # 2. Parse Excel
-    if not os.path.exists('lmi temp 10.xlsx'):
-      print("❌ Error: No se encontró el archivo 'lmi temp 10.xlsx' en la ruta.")
-      sys.exit(1)
-
-    with zipfile.ZipFile('lmi temp 10.xlsx', 'r') as z:
+    with zipfile.ZipFile(excel_file, 'r') as z:
         strings = get_shared_strings(z)
         sheet_xml_paths = find_sheet_xml_paths(z)
         
@@ -407,6 +432,8 @@ def process_excel():
             
             # Auto-corregir extensión del logotipo si el archivo no existe físicamente en disco
             current_logo = team_obj.get("logo", "")
+            if team_id == "borussiadortmund" and (not current_logo or not os.path.exists(current_logo)):
+                current_logo = "Logos Equipos/borussia.webp"
             if not current_logo or not os.path.exists(current_logo):
                 # Intentar buscar logotipo existente en Logos Equipos/
                 logo_path = current_logo or f"Logos Equipos/{team_id}.png"
@@ -421,6 +448,8 @@ def process_excel():
                 else:
                     if not current_logo:
                         team_obj["logo"] = f"Logos Equipos/{team_id}.png"
+            else:
+                team_obj["logo"] = current_logo
             
             teams_dict[team_id] = team_obj
 
@@ -659,8 +688,15 @@ def process_excel():
                     if mapped_orig in teams_dict:
                         from_team_id = mapped_orig
                         from_team_name = teams_dict[mapped_orig]["name"]
+                    elif mapped_orig in clubes_excel_data:
+                        from_team_id = mapped_orig
+                        from_team_name = orig_name
+                    elif mapped_orig in TEAM_ID_MAP.values():
+                        from_team_id = mapped_orig
+                        from_team_name = orig_name
                     else:
-                        print(f"⚠️ Advertencia (Fila {row_idx}): Club de origen '{orig_name}' no mapeado formalmente.")
+                        from_team_id = mapped_orig if mapped_orig else None
+                        from_team_name = orig_name
                 
                 # Normalize destination team
                 to_team_id = None
@@ -671,22 +707,32 @@ def process_excel():
                     if mapped_dest in teams_dict:
                         to_team_id = mapped_dest
                         to_team_name = teams_dict[mapped_dest]["name"]
+                    elif mapped_dest in clubes_excel_data:
+                        to_team_id = mapped_dest
+                        to_team_name = dest_name
+                    elif mapped_dest in TEAM_ID_MAP.values():
+                        to_team_id = mapped_dest
+                        to_team_name = dest_name
                     else:
-                        print(f"⚠️ Advertencia (Fila {row_idx}): Club de destino '{dest_name}' no mapeado formalmente.")
+                        to_team_id = mapped_dest if mapped_dest else None
+                        to_team_name = dest_name
                 
                 # Parse cost
                 try:
                     price = float(cost_str) if cost_str else 0.0
                 except ValueError:
-                    print(f"⚠️ Advertencia (Fila {row_idx}): No se pudo convertir el costo '{cost_str}' a número. Se asignará 0.0.")
                     price = 0.0
                     
                 # Parse seasons
-                try:
-                    seasons = int(seasons_str) if seasons_str else None
-                except ValueError:
-                    print(f"⚠️ Advertencia (Fila {row_idx}): No se pudo convertir las temporadas '{seasons_str}' a entero. Se asignará null.")
-                    seasons = None
+                seasons = None
+                if seasons_str:
+                    s_clean = seasons_str.strip()
+                    if s_clean.lower() in ['permanente', 'permanentes', 'perm', 'definitivo', 'definitiva']:
+                        seasons = "Permanente"
+                    elif s_clean.isdigit():
+                        seasons = int(s_clean)
+                    else:
+                        seasons = s_clean
 
                 # Signature for duplicate check (checking player, origin, destination, price, and seasons)
                 mov_sig = (
@@ -795,7 +841,7 @@ def process_excel():
 
         # 7. Write to data.js
         print("💾 Guardando resultados en 'data.js'...")
-        js_content = f"// Base de datos unificada LMI Temporada 10 desde lmi temp 10.xlsx\n\nvar INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
+        js_content = f"// Base de datos unificada LMI Temporada 10 desde {excel_file}\n\nvar INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
         
         with open('data.js', 'w', encoding='utf-8') as f:
             f.write(js_content)
