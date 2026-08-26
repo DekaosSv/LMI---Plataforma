@@ -2359,8 +2359,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_130",
-      "name": "Paulo Dybala",
-      "position": "SD",
+      "name": "Álex Baena",
+      "position": "II",
       "teamId": "casapiaac",
       "goals": 0,
       "assists": 0,
