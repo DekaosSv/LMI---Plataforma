@@ -57,7 +57,16 @@ TEAM_ID_MAP = {
     "borussiadortmund": "borussiadortmund",
     "borussia": "borussiadortmund",
     "riverplate": "riverplate",
-    "river": "riverplate"
+    "river": "riverplate",
+    "casapiaac": "casapiaac",
+    "casapia": "casapiaac",
+    "casa_pia_ac": "casapiaac",
+    "urawareddiamonds": "urawareddiamonds",
+    "urawareds": "urawareddiamonds",
+    "urawa_red_diamonds": "urawareddiamonds",
+    "clubamerica": "clubamerica",
+    "clubamrica": "clubamerica",
+    "america": "clubamerica"
 }
 
 def normalize_key(name):
@@ -358,8 +367,8 @@ def process_excel():
         # La Fila 1 de la hoja Lista tiene los nombres de los equipos
         row1_lista = lista_data.get(1, {})
         
-        # Iterar sobre las 18 columnas (A a la R)
-        for col_idx in range(18):
+        # Iterar sobre las columnas de equipos (hasta 30 columnas: A a AD)
+        for col_idx in range(30):
             col_letter = col_idx_to_letter(col_idx)
             raw_team_name = row1_lista.get(col_letter, '').strip()
             if not raw_team_name:
@@ -434,6 +443,12 @@ def process_excel():
             current_logo = team_obj.get("logo", "")
             if team_id == "borussiadortmund" and (not current_logo or not os.path.exists(current_logo)):
                 current_logo = "Logos Equipos/borussia.webp"
+            if team_id in ["casapiaac", "casapia", "casa_pia_ac"] and (not current_logo or not os.path.exists(current_logo)):
+                current_logo = "Logos Equipos/casapia.webp"
+            if team_id in ["urawareddiamonds", "urawareds", "urawa_red_diamonds"] and (not current_logo or not os.path.exists(current_logo)):
+                current_logo = "Logos Equipos/urawareds.png"
+            if team_id in ["clubamerica", "america", "clubamrica"] and (not current_logo or not os.path.exists(current_logo)):
+                current_logo = "Logos Equipos/clubamerica.png"
             if not current_logo or not os.path.exists(current_logo):
                 # Intentar buscar logotipo existente en Logos Equipos/
                 logo_path = current_logo or f"Logos Equipos/{team_id}.png"
@@ -463,7 +478,7 @@ def process_excel():
             row_lista = lista_data.get(row_idx, {})
             
             # Recorrer cada columna activa de la hoja Lista
-            for col_idx in range(18):
+            for col_idx in range(30):
                 col_letter = col_idx_to_letter(col_idx)
                 if col_letter not in col_to_team_id:
                     continue
