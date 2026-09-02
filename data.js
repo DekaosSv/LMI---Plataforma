@@ -18,7 +18,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 1400000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 9,
+      "leagueRank": 11,
       "logo": "Logos Equipos/intermilan.webp"
     },
     {
@@ -36,7 +36,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 137000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 13,
+      "leagueRank": 15,
       "logo": "Logos Equipos/urawareds.png"
     },
     {
@@ -54,7 +54,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 450000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 15,
+      "leagueRank": 14,
       "logo": "Logos Equipos/casapia.webp"
     },
     {
@@ -72,7 +72,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 815000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 10,
+      "leagueRank": 5,
       "logo": "Logos Equipos/boca.png"
     },
     {
@@ -90,7 +90,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 2575000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 6,
+      "leagueRank": 4,
       "logo": "Logos Equipos/fcbarcelona.png"
     },
     {
@@ -108,7 +108,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 358000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 7,
+      "leagueRank": 10,
       "logo": "Logos Equipos/galatasaray.png"
     },
     {
@@ -126,7 +126,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 14,
+      "leagueRank": 6,
       "logo": "Logos Equipos/manchestercity.png"
     },
     {
@@ -144,7 +144,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 68000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 12,
+      "leagueRank": 8,
       "logo": "Logos Equipos/realmadrid.webp"
     },
     {
@@ -162,7 +162,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 299000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 11,
+      "leagueRank": 12,
       "logo": "Logos Equipos/rbleipzig.png"
     },
     {
@@ -180,7 +180,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 17,
+      "leagueRank": 9,
       "logo": "Logos Equipos/atleticomadrid.webp"
     },
     {
@@ -198,7 +198,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 16,
+      "leagueRank": 13,
       "logo": "Logos Equipos/wrexham.png"
     },
     {
@@ -216,7 +216,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 2152000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 4,
+      "leagueRank": 7,
       "logo": "Logos Equipos/bayernleverkusen.png"
     },
     {
@@ -234,7 +234,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 566000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 8,
+      "leagueRank": 16,
       "logo": "Logos Equipos/acmilan.webp"
     },
     {
@@ -288,7 +288,7 @@ var INITIAL_LMI_DATA = {
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
-      "leagueRank": 5,
+      "leagueRank": 2,
       "logo": "Logos Equipos/arsenal.png"
     },
     {
