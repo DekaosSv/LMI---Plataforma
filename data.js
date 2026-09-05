@@ -1,4 +1,4 @@
-// Base de datos unificada LMI Temporada 10 desde lmi temp 10.xlsx
+// Base de datos unificada LMI Temporada 10 desde LMI Base.xlsx
 
 var INITIAL_LMI_DATA = {
   "season": "Temporada 10",
@@ -763,7 +763,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_28",
-      "name": "Antonio Rüdiger",
+      "name": "Antonio Rüdiger (P)",
       "position": "CT",
       "teamId": "atleticodemadrid",
       "goals": 0,
@@ -2283,7 +2283,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_123",
-      "name": "Elliot Anderson",
+      "name": "Elliot Anderson (P)",
       "position": "MCD",
       "teamId": "como1907",
       "goals": 0,
@@ -2651,7 +2651,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_146",
-      "name": "Eden Hazard (C)",
+      "name": "Eden Hazard",
       "position": "EI",
       "teamId": "urawareddiamonds",
       "goals": 9,
@@ -4011,7 +4011,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_231",
-      "name": "Takehiro Tomiyasu",
+      "name": "Takehiro Tomiyasu (P)",
       "position": "CT",
       "teamId": "como1907",
       "goals": 0,
