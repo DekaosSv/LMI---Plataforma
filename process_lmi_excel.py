@@ -8,8 +8,12 @@ import unicodedata
 import glob
 
 def find_lmi_excel_file():
+    # Prioridad explícita a LMI Base.xlsx si existe
+    if os.path.exists('LMI Base.xlsx'):
+        return 'LMI Base.xlsx'
+        
     candidates = []
-    for p in ['lmi temp *.xlsx', 'LMI*.xlsx', 'lmi*.xlsx', '*.xlsx']:
+    for p in ['LMI Base*.xlsx', 'lmi temp *.xlsx', 'LMI*.xlsx', 'lmi*.xlsx', '*.xlsx']:
         for f in glob.glob(p):
             base = os.path.basename(f)
             if base.startswith('~$') or base.lower() == 'presupuestos.xlsx':

@@ -468,9 +468,6 @@ function loadTeamHub(teamId) {
 
   // Club Stats Box & Top Club Performers
   const rank = team.leagueRank || 1;
-  let payPercent = "100%";
-  if (rank <= 5) payPercent = "50%";
-  else if (rank <= 10) payPercent = "75%";
 
   const topScorer = teamPlayers.length > 0 ? [...teamPlayers].sort((a,b) => b.goals - a.goals)[0] : null;
   const topAssister = teamPlayers.length > 0 ? [...teamPlayers].sort((a,b) => b.assists - a.assists)[0] : null;
@@ -482,8 +479,8 @@ function loadTeamHub(teamId) {
         <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--neon-gold); margin-top: 0.25rem;">#${rank}</div>
       </div>
       <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); padding: 0.85rem; border-radius: var(--radius-md); color: #ffffff; box-shadow: var(--shadow-card);">
-        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Tasa de Renovación</div>
-        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--neon-green); margin-top: 0.25rem;">${payPercent}</div>
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Jugadores en Plantilla</div>
+        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--neon-green); margin-top: 0.25rem;">${teamPlayers.length}</div>
       </div>
     </div>
 
@@ -561,7 +558,7 @@ function loadTeamHub(teamId) {
 function initRenovationSelect() {
   const sel = document.getElementById('renovation-team-select');
   if (!sel) return;
-  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name} (Posición #${t.leagueRank || 1})</option>`).join('');
+  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name} (Presupuesto: $${((t.budget || 100000000) / 1000000).toFixed(1)}M)</option>`).join('');
   if (lmiData.teams.length > 0) {
     loadRenovationsForTeam(lmiData.teams[0].id);
   }
@@ -571,31 +568,14 @@ function loadRenovationsForTeam(teamId) {
   const team = lmiData.teams.find(t => t.id === teamId);
   if (!team) return;
 
-  const rank = team.leagueRank || 1;
-  let payFactor = 1.0;
-  let pillClass = "discount-100";
-  let payPercentText = "Pagan 100% de la Renovación";
+  const teamBudgetM = ((team.budget || 100000000) / 1000000);
 
-  if (rank >= 1 && rank <= 5) {
-    payFactor = 0.50;
-    pillClass = "discount-50";
-    payPercentText = "Pagan 50% (Posición 1 - 5)";
-  } else if (rank >= 6 && rank <= 10) {
-    payFactor = 0.75;
-    pillClass = "discount-75";
-    payPercentText = "Pagan 75% (Posición 6 - 10)";
-  } else {
-    payFactor = 1.00;
-    pillClass = "discount-100";
-    payPercentText = "Pagan 100% (Posición 11 - 16)";
-  }
-
-  // Render Discount Badge
+  // Render Budget Badge
   const badgeContainer = document.getElementById('renovation-discount-badge');
   badgeContainer.innerHTML = `
-    <span style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85);">Posición #${rank} en Liga:</span>
-    <span class="discount-pill ${pillClass}">
-      <i class="fa-solid fa-percent"></i> ${payPercentText}
+    <span style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85);">Presupuesto Club:</span>
+    <span class="discount-pill discount-50" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4);">
+      <i class="fa-solid fa-wallet"></i> $${teamBudgetM.toFixed(1)}M USD
     </span>
   `;
 
@@ -682,25 +662,28 @@ function recalculateRenovationTotals(teamId) {
   const team = lmiData.teams.find(t => t.id === teamId);
   if (!team) return;
 
-  const rank = team.leagueRank || 1;
-  let payFactor = 1.0;
-  if (rank <= 5) payFactor = 0.50;
-  else if (rank <= 10) payFactor = 0.75;
-
   const teamPlayers = lmiData.players.filter(p => p.teamId === teamId);
-  let grossTotal = 0;
+  let totalRenovations = 0;
 
   teamPlayers.forEach(p => {
     let pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
     if (pVal > 0 && pVal <= 0.6) pVal = 1.0;
-    grossTotal += pVal;
+    totalRenovations += pVal;
   });
 
-  const finalTotal = grossTotal * payFactor;
+  const teamBudgetM = ((team.budget || 100000000) / 1000000);
+  const remainingBudgetM = teamBudgetM - totalRenovations;
 
-  document.getElementById('renovation-subtotal').innerText = `$${grossTotal.toFixed(1)}M USD`;
-  document.getElementById('renovation-percent-label').innerText = `${(payFactor * 100).toFixed(0)}% (Posición #${rank})`;
-  document.getElementById('renovation-total-final').innerText = `$${finalTotal.toFixed(2)}M USD`;
+  const teamBudgetEl = document.getElementById('renovation-team-budget');
+  const totalFinalEl = document.getElementById('renovation-total-final');
+  const remainingEl = document.getElementById('renovation-budget-remaining');
+
+  if (teamBudgetEl) teamBudgetEl.innerText = `$${teamBudgetM.toFixed(1)}M USD`;
+  if (totalFinalEl) totalFinalEl.innerText = `-$${totalRenovations.toFixed(1)}M USD`;
+  if (remainingEl) {
+    remainingEl.innerText = `$${remainingBudgetM.toFixed(1)}M USD`;
+    remainingEl.style.color = remainingBudgetM >= 0 ? 'var(--lmi-green)' : '#ff6b6b';
+  }
 }
 
 function saveRenovationNotes() {
@@ -723,18 +706,12 @@ function exportRenewalReport() {
   const team = lmiData.teams.find(t => t.id === sel.value);
   if (!team) return;
 
-  const rank = team.leagueRank || 1;
-  let payPercentText = "100%";
-  if (rank <= 5) payPercentText = "50%";
-  else if (rank <= 10) payPercentText = "75%";
-
   const teamPlayers = lmiData.players.filter(p => p.teamId === sel.value);
   let summary = `📋 INFORME DE RENOVACIONES - TEMPORADA 10\n`;
   summary += `Club: ${team.name}\n`;
-  summary += `Posición Oficial en Liga: #${rank} (${payPercentText} de pago)\n`;
   summary += `--------------------------------------------------\n`;
   
-  let grossTotal = 0;
+  let totalRenovations = 0;
   let renewedCount = 0;
   let nonRenewedCount = 0;
 
@@ -747,21 +724,21 @@ function exportRenewalReport() {
       summary += `${idx + 1}. [${p.position}] ${p.name} - NO RENOVADO ($0M)${p.isLegend ? ' (Leyenda/Épico)' : ''}\n`;
     } else {
       renewedCount++;
-      grossTotal += pVal;
+      totalRenovations += pVal;
       summary += `${idx + 1}. [${p.position}] ${p.name} - $${pVal.toFixed(1)}M${p.isLegend ? ' (Leyenda/Épico)' : ''}\n`;
     }
   });
 
-  const payFactor = rank <= 5 ? 0.5 : (rank <= 10 ? 0.75 : 1.0);
-  const finalTotal = grossTotal * payFactor;
+  const teamBudgetM = ((team.budget || 100000000) / 1000000);
+  const remainingBudgetM = teamBudgetM - totalRenovations;
 
   summary += `--------------------------------------------------\n`;
   if (nonRenewedCount > 0) {
     summary += `Jugadores Renovados: ${renewedCount} | No Renovados: ${nonRenewedCount}\n`;
   }
-  summary += `Subtotal Bruto: $${grossTotal.toFixed(1)}M USD\n`;
-  summary += `Porcentaje Aplicado: ${payPercentText}\n`;
-  summary += `TOTAL A PAGAR: $${finalTotal.toFixed(2)}M USD\n`;
+  summary += `Presupuesto del Club: $${teamBudgetM.toFixed(1)}M USD\n`;
+  summary += `Total Renovaciones: -$${totalRenovations.toFixed(1)}M USD\n`;
+  summary += `Presupuesto Restante: $${remainingBudgetM.toFixed(1)}M USD\n`;
 
   if (team.legendChangeNote) summary += `\n📌 Cambio Leyenda: ${team.legendChangeNote}\n`;
   if (team.legendRemoveNote) summary += `📌 Elimino Leyenda: ${team.legendRemoveNote}\n`;
