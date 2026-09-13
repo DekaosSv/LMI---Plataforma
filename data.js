@@ -343,6 +343,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -359,6 +360,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -375,6 +377,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -391,6 +394,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -407,6 +411,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -423,6 +428,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -439,6 +445,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -455,6 +462,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -471,6 +479,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -487,6 +496,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -503,6 +513,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -519,6 +530,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -535,6 +547,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -551,6 +564,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -567,6 +581,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -583,6 +598,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -599,6 +615,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 5,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -615,6 +632,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -631,6 +649,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -647,6 +666,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -663,6 +683,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -679,6 +700,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -695,6 +717,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -711,6 +734,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -727,6 +751,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -743,6 +768,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -759,6 +785,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -775,6 +802,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -791,6 +819,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -807,6 +836,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -823,6 +853,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -839,6 +870,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -855,6 +887,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -871,6 +904,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -887,6 +921,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -903,6 +938,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -919,6 +955,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -935,6 +972,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -951,6 +989,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -967,6 +1006,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -983,6 +1023,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -999,6 +1040,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1015,6 +1057,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1031,6 +1074,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1047,6 +1091,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1063,6 +1108,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1079,6 +1125,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1094,8 +1141,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 106000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_49",
@@ -1111,6 +1159,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1127,6 +1176,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1143,6 +1193,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1159,6 +1210,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1175,6 +1227,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 3,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1191,6 +1244,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1207,6 +1261,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1223,6 +1278,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1239,6 +1295,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1255,6 +1312,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1271,6 +1329,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1287,6 +1346,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1303,6 +1363,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1319,6 +1380,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1335,6 +1397,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1351,6 +1414,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1367,6 +1431,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1382,8 +1447,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 105000000,
+      "cardType": "Big Time",
+      "isLegend": true
     },
     {
       "id": "p_67",
@@ -1399,6 +1465,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1415,6 +1482,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1431,6 +1499,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1447,6 +1516,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1463,6 +1533,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 3,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1479,6 +1550,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1495,6 +1567,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1511,6 +1584,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1527,6 +1601,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1543,6 +1618,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1559,6 +1635,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1575,6 +1652,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1590,8 +1668,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 103000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_80",
@@ -1607,6 +1686,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1623,6 +1703,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1639,6 +1720,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1655,6 +1737,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1671,6 +1754,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1686,8 +1770,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 102000000,
+      "cardType": "Big Time",
+      "isLegend": true
     },
     {
       "id": "p_86",
@@ -1703,6 +1788,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1719,6 +1805,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1735,6 +1822,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1751,6 +1839,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1767,6 +1856,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1782,8 +1872,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 1,
       "goals_estelar": 2,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 103000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_92",
@@ -1799,6 +1890,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1815,6 +1907,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1831,6 +1924,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1847,6 +1941,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1863,6 +1958,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1879,6 +1975,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1895,6 +1992,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1911,6 +2009,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1927,6 +2026,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1943,6 +2043,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1959,6 +2060,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1975,6 +2077,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -1991,6 +2094,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2007,6 +2111,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2022,8 +2127,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 101000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_107",
@@ -2039,6 +2145,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2055,6 +2162,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2071,6 +2179,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2087,6 +2196,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 2,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2102,8 +2212,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 107000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_112",
@@ -2119,6 +2230,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2135,6 +2247,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2150,8 +2263,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 2,
       "goals_estelar": 1,
       "assists_estelar": 1,
-      "price": 5000000,
-      "isLegend": false
+      "price": 104000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_115",
@@ -2167,6 +2281,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2183,6 +2298,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2199,6 +2315,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2215,6 +2332,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2231,6 +2349,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2247,6 +2366,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2263,6 +2383,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2279,6 +2400,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2295,6 +2417,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2311,6 +2434,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2327,6 +2451,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2343,6 +2468,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2359,6 +2485,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2375,6 +2502,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2391,6 +2519,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2407,6 +2536,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2423,6 +2553,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2439,6 +2570,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2455,6 +2587,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2471,6 +2604,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2487,6 +2621,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2503,6 +2638,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2519,6 +2655,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2535,6 +2672,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2550,8 +2688,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 1,
-      "price": 5000000,
-      "isLegend": false
+      "price": 103000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_140",
@@ -2567,6 +2706,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2583,6 +2723,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2599,6 +2740,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2615,6 +2757,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2631,6 +2774,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2647,6 +2791,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2663,6 +2808,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2679,6 +2825,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2695,6 +2842,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2711,6 +2859,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 3,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2727,6 +2876,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2743,6 +2893,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2759,6 +2910,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2775,6 +2927,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2791,6 +2944,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2807,6 +2961,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2823,6 +2978,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2839,6 +2995,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2855,6 +3012,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2871,6 +3029,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2887,6 +3046,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2903,6 +3063,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2919,6 +3080,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2935,6 +3097,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2951,6 +3114,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 2,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2967,6 +3131,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2983,6 +3148,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -2999,6 +3165,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3015,6 +3182,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3031,6 +3199,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3047,6 +3216,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3063,6 +3233,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3079,6 +3250,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3095,6 +3267,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3111,6 +3284,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3127,6 +3301,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 6,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3143,6 +3318,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3159,6 +3335,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3175,6 +3352,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3191,6 +3369,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3207,6 +3386,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3223,6 +3403,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3239,6 +3420,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3255,6 +3437,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3271,6 +3454,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3286,8 +3470,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 101000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_186",
@@ -3303,6 +3488,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3319,6 +3505,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3335,6 +3522,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3351,6 +3539,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3367,6 +3556,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3383,6 +3573,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3399,6 +3590,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 4,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3414,8 +3606,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 4,
       "goals_estelar": 5,
       "assists_estelar": 6,
-      "price": 5000000,
-      "isLegend": false
+      "price": 106000000,
+      "cardType": "Big Time",
+      "isLegend": true
     },
     {
       "id": "p_194",
@@ -3431,6 +3624,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3447,6 +3641,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3463,6 +3658,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3479,6 +3675,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3495,6 +3692,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3511,6 +3709,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3527,6 +3726,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3543,6 +3743,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3559,6 +3760,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3575,6 +3777,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3591,6 +3794,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3607,6 +3811,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3623,6 +3828,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3639,6 +3845,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3655,6 +3862,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3671,6 +3879,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3687,6 +3896,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3703,6 +3913,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3719,6 +3930,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3735,6 +3947,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3751,6 +3964,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3767,6 +3981,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3783,6 +3998,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3799,6 +4015,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3815,6 +4032,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3831,6 +4049,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3847,6 +4066,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3863,6 +4083,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3879,6 +4100,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3895,6 +4117,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3911,6 +4134,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3927,6 +4151,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3943,6 +4168,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3959,6 +4185,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3975,6 +4202,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -3991,6 +4219,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4007,6 +4236,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4023,6 +4253,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4039,6 +4270,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4055,6 +4287,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4071,6 +4304,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4087,6 +4321,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4103,6 +4338,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4119,6 +4355,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4135,6 +4372,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4151,6 +4389,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4167,6 +4406,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4183,6 +4423,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4199,6 +4440,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4215,6 +4457,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4231,6 +4474,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4247,6 +4491,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4263,6 +4508,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4279,6 +4525,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4295,6 +4542,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4311,6 +4559,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4327,6 +4576,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4343,6 +4593,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4359,6 +4610,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4375,6 +4627,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4391,6 +4644,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4407,6 +4661,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4423,6 +4678,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4439,6 +4695,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4455,6 +4712,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4471,6 +4729,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4487,6 +4746,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4503,6 +4763,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4519,6 +4780,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4535,6 +4797,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4551,6 +4814,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4567,6 +4831,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4583,6 +4848,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4599,6 +4865,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4615,6 +4882,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4631,6 +4899,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4647,6 +4916,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4663,6 +4933,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4679,6 +4950,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4695,6 +4967,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4711,6 +4984,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4727,6 +5001,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4743,6 +5018,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4759,6 +5035,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4775,6 +5052,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4791,6 +5069,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4807,6 +5086,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4823,6 +5103,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4839,6 +5120,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4855,6 +5137,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4871,6 +5154,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 2,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4887,6 +5171,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4903,6 +5188,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4919,6 +5205,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4935,6 +5222,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4951,6 +5239,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4967,6 +5256,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4983,6 +5273,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -4999,6 +5290,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5015,6 +5307,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5031,6 +5324,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5047,6 +5341,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5063,6 +5358,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5079,6 +5375,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5095,6 +5392,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5111,6 +5409,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5127,6 +5426,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5143,6 +5443,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5159,6 +5460,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5175,6 +5477,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5191,6 +5494,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5207,6 +5511,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5223,6 +5528,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5239,6 +5545,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5255,6 +5562,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5271,6 +5579,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5287,6 +5596,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5303,6 +5613,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5319,6 +5630,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5335,6 +5647,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5351,6 +5664,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5367,6 +5681,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5383,6 +5698,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5399,6 +5715,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5415,6 +5732,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5431,6 +5749,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 2,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5447,6 +5766,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5463,6 +5783,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5479,6 +5800,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5495,6 +5817,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5511,6 +5834,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5527,6 +5851,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5543,6 +5868,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5559,6 +5885,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5575,6 +5902,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5591,6 +5919,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5607,6 +5936,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5622,8 +5952,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 2,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 105000000,
+      "cardType": "Big Time",
+      "isLegend": true
     },
     {
       "id": "p_332",
@@ -5639,6 +5970,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5655,6 +5987,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5671,6 +6004,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5687,6 +6021,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5703,6 +6038,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 3,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5719,6 +6055,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5735,6 +6072,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5751,6 +6089,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5767,6 +6106,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5783,6 +6123,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5799,6 +6140,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5815,6 +6157,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5831,6 +6174,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5847,6 +6191,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5863,6 +6208,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5879,6 +6225,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5895,6 +6242,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5911,6 +6259,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5927,6 +6276,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5943,6 +6293,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5959,6 +6310,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5975,6 +6327,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -5991,6 +6344,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6007,6 +6361,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 2,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6023,6 +6378,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6039,6 +6395,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6055,6 +6412,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6071,6 +6429,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6087,6 +6446,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6103,6 +6463,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6119,6 +6480,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6135,6 +6497,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6151,6 +6514,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6167,6 +6531,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 5,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6183,6 +6548,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6199,6 +6565,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6215,6 +6582,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6231,6 +6599,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6247,6 +6616,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6263,6 +6633,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6279,6 +6650,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 3,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6295,6 +6667,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6311,6 +6684,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6327,6 +6701,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6343,6 +6718,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6359,6 +6735,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6375,6 +6752,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6391,6 +6769,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6407,6 +6786,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6423,6 +6803,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6439,6 +6820,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6455,6 +6837,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 10,
       "assists_estelar": 3,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6471,6 +6854,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6487,6 +6871,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6503,6 +6888,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6519,6 +6905,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6535,6 +6922,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6551,6 +6939,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6567,6 +6956,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 5,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6583,6 +6973,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6599,6 +6990,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6615,6 +7007,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6631,6 +7024,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6647,6 +7041,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6663,6 +7058,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6679,6 +7075,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6695,6 +7092,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6711,6 +7109,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6727,6 +7126,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 1,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6743,6 +7143,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 3,
       "assists_estelar": 2,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6759,6 +7160,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6775,6 +7177,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6790,8 +7193,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 107000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_405",
@@ -6807,6 +7211,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6823,6 +7228,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6839,6 +7245,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6855,6 +7262,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6871,6 +7279,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6886,8 +7295,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 1,
       "goals_estelar": 3,
       "assists_estelar": 0,
-      "price": 5000000,
-      "isLegend": false
+      "price": 102000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_411",
@@ -6903,6 +7313,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 2,
       "assists_estelar": 1,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6919,6 +7330,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6935,6 +7347,7 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
     },
     {
@@ -6951,7 +7364,25 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "price": 5000000,
+      "cardType": "Normal",
       "isLegend": false
+    },
+    {
+      "id": "p_415",
+      "name": "Fabio Cannavaro",
+      "position": "CT",
+      "teamId": "borussiadortmund",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 105000000,
+      "cardType": "Epico",
+      "isLegend": true
     }
   ],
   "copaEstelarMatches": [
