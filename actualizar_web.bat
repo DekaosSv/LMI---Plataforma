@@ -16,9 +16,8 @@ if %errorlevel% neq 0 (
 
 echo.
 :: 2. Añadir y hacer commit a los archivos modificados
-echo [2/3] Creando commit en Git...
-git add data.js *.xlsx "Logos Equipos" "Imagenes"
-git commit -m "Actualización automática de base de datos"
+git add data.js app.js index.html style.css process_lmi_excel.py *.xlsx "Logos Equipos" "Imagenes"
+git commit -m "Actualización automática de base de datos y web"
 
 echo.
 :: 3. Enviar a GitHub Pages
