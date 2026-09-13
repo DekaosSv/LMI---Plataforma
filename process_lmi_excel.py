@@ -298,6 +298,7 @@ def process_excel():
         registro_champions = parse_sheet_cells(z, sheet_xml_paths['Registro Champions'], strings) if 'Registro Champions' in sheet_xml_paths else {}
         registro_estelar = parse_sheet_cells(z, sheet_xml_paths['RegistroEstelar'], strings) if 'RegistroEstelar' in sheet_xml_paths else {}
         campeones_excel_data = parse_sheet_cells(z, sheet_xml_paths['Campeones'], strings) if 'Campeones' in sheet_xml_paths else {}
+        renovaciones_excel_data = parse_sheet_cells(z, sheet_xml_paths['Renovaciones'], strings) if 'Renovaciones' in sheet_xml_paths else {}
 
         # 2.5. Cargar datos del club desde la hoja 'Clubes' si existe
         clubes_excel_data = {}
@@ -476,6 +477,57 @@ def process_excel():
         print("⚽ Procesando plantillas de los clubes...")
         players_list = []
         player_id_counter = 1
+
+        # 4.1. Procesar datos de la hoja 'Renovaciones' si existe
+        renovaciones_by_team = {}
+        if renovaciones_excel_data:
+            print("🌟 Procesando hoja 'Renovaciones' (Épicos y Big Time)...")
+            for r_idx in sorted(renovaciones_excel_data.keys()):
+                row = renovaciones_excel_data[r_idx]
+                for col_idx in range(30):
+                    c1 = col_idx_to_letter(col_idx)
+                    c2 = col_idx_to_letter(col_idx + 1)
+                    c3 = col_idx_to_letter(col_idx + 2)
+                    v2 = row.get(c2, '').strip().lower()
+                    v3 = row.get(c3, '').strip().lower()
+                    if v2 == 'tipo' and v3 == 'valor':
+                        raw_team = row.get(c1, '').strip()
+                        if not raw_team:
+                            continue
+                        norm_team = normalize_key(raw_team)
+                        tid = TEAM_ID_MAP.get(norm_team, norm_team)
+                        if tid not in renovaciones_by_team:
+                            renovaciones_by_team[tid] = []
+                        
+                        curr_r = r_idx + 1
+                        while curr_r in renovaciones_excel_data:
+                            r_player = renovaciones_excel_data[curr_r].get(c1, '').strip()
+                            r_type = renovaciones_excel_data[curr_r].get(c2, '').strip()
+                            r_val = renovaciones_excel_data[curr_r].get(c3, '').strip()
+                            
+                            if r_type.lower() == 'tipo' and r_val.lower() == 'valor':
+                                break
+                            if not r_player:
+                                break
+                                
+                            pos_r, name_r = extraer_posicion_y_nombre(r_player)
+                            try:
+                                val_num = float(r_val)
+                            except (ValueError, TypeError):
+                                val_num = 5.0
+                                
+                            card_type = 'Epico' if 'epic' in r_type.lower() else ('Big Time' if 'big' in r_type.lower() else r_type)
+                            renovaciones_by_team[tid].append({
+                                "raw": r_player,
+                                "name": name_r,
+                                "pos": pos_r,
+                                "cardType": card_type,
+                                "val": val_num,
+                                "price": int(val_num * 1000000),
+                                "matched": False
+                            })
+                            curr_r += 1
+            print(f"  ✨ Se identificaron Épicos y Big Time para {len(renovaciones_by_team)} clubes.")
         
         # El roster de jugadores va desde la fila 2 hasta la 25 (para no mezclar con la lista de No Renovados en la fila 26+)
         for row_idx in range(2, 26):
@@ -499,13 +551,31 @@ def process_excel():
                     if player_name:
                         norm_pname = normalize_key(player_name)
                         
-                        # Preservar precio e isLegend si existía en data.js
-                        is_legend = False
-                        price = 5000000
-                        if norm_pname in old_players_by_norm:
-                            old_p = old_players_by_norm[norm_pname]
-                            is_legend = old_p.get("isLegend", False)
-                            price = old_p.get("price", 5000000)
+                        # Buscar si el jugador está en la hoja Renovaciones para este club
+                        matched_renov = None
+                        if team_id in renovaciones_by_team:
+                            for entry in renovaciones_by_team[team_id]:
+                                norm_entry = normalize_key(entry["name"])
+                                norm_entry_raw = normalize_key(entry["raw"])
+                                if norm_pname == norm_entry or norm_pname == norm_entry_raw or norm_entry in norm_pname or norm_pname in norm_entry:
+                                    matched_renov = entry
+                                    entry["matched"] = True
+                                    break
+                        
+                        if matched_renov:
+                            card_type = matched_renov["cardType"]
+                            is_legend = True
+                            price = matched_renov["price"]
+                        else:
+                            # Preservar precio, isLegend y cardType si existía en data.js
+                            is_legend = False
+                            card_type = "Normal"
+                            price = 5000000
+                            if norm_pname in old_players_by_norm:
+                                old_p = old_players_by_norm[norm_pname]
+                                is_legend = old_p.get("isLegend", False)
+                                card_type = old_p.get("cardType", "Normal")
+                                price = old_p.get("price", 5000000)
 
                         players_list.append({
                             "id": f"p_{player_id_counter}",
@@ -521,9 +591,34 @@ def process_excel():
                             "goals_estelar": 0,
                             "assists_estelar": 0,
                             "price": price,
+                            "cardType": card_type,
                             "isLegend": is_legend
                         })
                         player_id_counter += 1
+
+        # 4.2. Incorporar jugadores presentes en Renovaciones que no figuraban en Lista (ej. Fabio Cannavaro)
+        for tid, r_entries in renovaciones_by_team.items():
+            for entry in r_entries:
+                if not entry.get("matched"):
+                    print(f"  ➕ Agregando a {tid} jugador especial de Renovaciones no listado en plantilla: {entry['name']} ({entry['pos'] or 'DC'}) - {entry['cardType']} ${entry['val']}M")
+                    players_list.append({
+                        "id": f"p_{player_id_counter}",
+                        "name": entry["name"],
+                        "position": entry["pos"] or "DC",
+                        "teamId": tid,
+                        "goals": 0,
+                        "assists": 0,
+                        "goals_liga": 0,
+                        "assists_liga": 0,
+                        "goals_champions": 0,
+                        "assists_champions": 0,
+                        "goals_estelar": 0,
+                        "assists_estelar": 0,
+                        "price": entry["price"],
+                        "cardType": entry["cardType"],
+                        "isLegend": True
+                    })
+                    player_id_counter += 1
 
         # 4.5. Procesar jugadores No Renovados (Hoja Lista, Columna A, Fila 27 en adelante)
         print("📋 Procesando lista de jugadores No Renovados...")

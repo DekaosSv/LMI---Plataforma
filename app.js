@@ -583,25 +583,26 @@ function loadRenovationsForTeam(teamId) {
   const tbody = document.getElementById('renovation-tbody');
   const teamPlayers = lmiData.players.filter(p => p.teamId === teamId);
 
-  // Check if team already has 1 selected legend
-  const hasActiveLegend = teamPlayers.some(p => p.isLegend);
-
   if (!teamPlayers || teamPlayers.length === 0) {
     tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Sin jugadores registrados en este club.</td></tr>`;
   } else {
     tbody.innerHTML = teamPlayers.map(p => {
       const priceVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5;
-      const isDisabled = hasActiveLegend && !p.isLegend;
       const isNotRenewed = priceVal === 0;
+      const cardType = p.cardType || (p.isLegend ? 'Epico' : 'Normal');
 
       return `
-        <tr style="${isNotRenewed ? 'opacity: 0.7; background: rgba(231, 76, 60, 0.08);' : ''}">
+        <tr id="renovation-row-${p.id}" style="${isNotRenewed ? 'opacity: 0.7; background: rgba(231, 76, 60, 0.08);' : ''}">
           <td><span class="pos-badge pos-${p.position}">${p.position}</span></td>
           <td>
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span style="font-weight: 600; ${isNotRenewed ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${p.name}</span>
-                ${isNotRenewed ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' : ''}
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                <span id="player-name-${p.id}" style="font-weight: 600; ${isNotRenewed ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${p.name}</span>
+                <span id="player-status-badge-${p.id}">
+                  ${isNotRenewed ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' : ''}
+                </span>
+                ${cardType === 'Epico' ? '<span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.4); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;"><i class="fa-solid fa-crown"></i> ÉPICO</span>' : ''}
+                ${cardType === 'Big Time' ? '<span class="badge" style="background: rgba(0, 229, 255, 0.15); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.4); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;"><i class="fa-solid fa-bolt"></i> BIG TIME</span>' : ''}
               </div>
               <div style="display: flex; gap: 0.3rem;">
                 <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom">F.COM</a>
@@ -609,10 +610,32 @@ function loadRenovationsForTeam(teamId) {
             </div>
           </td>
           <td style="text-align: center;">
-            <input type="checkbox" ${p.isLegend ? 'checked' : ''} ${isDisabled ? 'disabled' : ''} onchange="togglePlayerLegend('${p.id}', this.checked, '${teamId}')" title="${isDisabled ? 'Solo se permite 1 Leyenda o Épico por club' : 'Marcar si es Leyenda o Épico'}">
+            <select class="form-control card-type-select" onchange="changePlayerCardType('${p.id}', this.value, '${teamId}')" style="display: inline-block; width: auto; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 6px; text-align: center; cursor: pointer; ${
+              cardType === 'Epico' 
+                ? 'background: rgba(255, 215, 0, 0.18); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.5);' 
+                : cardType === 'Big Time' 
+                  ? 'background: rgba(0, 229, 255, 0.18); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.5);' 
+                  : 'background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255, 255, 255, 0.15);'
+            }">
+              <option value="Normal" ${cardType === 'Normal' ? 'selected' : ''} style="background: #111827; color: #ffffff;">Normal</option>
+              <option value="Epico" ${cardType === 'Epico' ? 'selected' : ''} style="background: #111827; color: #ffd700; font-weight: 700;">⭐ Épico</option>
+              <option value="Big Time" ${cardType === 'Big Time' ? 'selected' : ''} style="background: #111827; color: #00e5ff; font-weight: 700;">⚡ Big Time</option>
+            </select>
           </td>
-          <td style="text-align: right;">
-            <input type="number" class="form-control" style="width: 100px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right;" value="${priceVal}" step="0.5" min="0" onchange="updatePlayerRenewalPrice('${p.id}', this.value)"> M
+          <td style="text-align: right; white-space: nowrap;">
+            <input 
+              type="text" 
+              inputmode="decimal" 
+              id="renovation-input-${p.id}"
+              class="form-control renewal-val-input" 
+              style="width: 95px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right; font-weight: 700;" 
+              value="${(priceVal % 1 === 0) ? priceVal.toFixed(0) : priceVal.toFixed(1)}" 
+              onkeydown="handleRenewalPriceKeydown(event)"
+              oninput="handleRenewalPriceInput(this, '${p.id}', '${teamId}')"
+              onpaste="handleRenewalPricePaste(event, this, '${p.id}', '${teamId}')"
+              onblur="handleRenewalPriceBlur(this, '${p.id}', '${teamId}')"
+              autocomplete="off"
+            > M
           </td>
         </tr>
       `;
@@ -626,36 +649,111 @@ function loadRenovationsForTeam(teamId) {
   recalculateRenovationTotals(teamId);
 }
 
-function updatePlayerRenewalPrice(playerId, newVal) {
-  let val = parseFloat(newVal);
-  if (isNaN(val) || val < 0) val = 1.0;
-  else if (val > 0 && val <= 0.6) val = 1.0; // Rule: sueldos mayores a 0 y menores/iguales a 600k se cuentan como 1M
+// Keydown: rechazar de inmediato teclas de negativos '-', exponente 'e', signo '+' y letras o símbolos
+function handleRenewalPriceKeydown(e) {
+  const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+  if (allowedKeys.includes(e.key)) return;
+  if (e.ctrlKey || e.metaKey) return;
   
+  // Bloquear '-' (negativos), '+', 'e', 'E' y cualquier letra o caracter especial
+  if (!/^[0-9.]$/.test(e.key)) {
+    e.preventDefault();
+    return;
+  }
+  // Bloquear múltiples puntos decimales
+  if (e.key === '.' && e.target.value.includes('.')) {
+    e.preventDefault();
+    return;
+  }
+}
+
+// Paste: interceptar y desinfectar texto pegado
+function handleRenewalPricePaste(e, input, playerId, teamId) {
+  e.preventDefault();
+  const pasted = (e.clipboardData || window.clipboardData).getData('text') || '';
+  let clean = pasted.replace(/[^0-9.]/g, '');
+  const parts = clean.split('.');
+  if (parts.length > 2) {
+    clean = parts[0] + '.' + parts.slice(1).join('');
+  }
+  input.value = clean;
+  handleRenewalPriceInput(input, playerId, teamId);
+}
+
+// Input: sanitización en tiempo real y cálculo sin perder foco
+function handleRenewalPriceInput(input, playerId, teamId) {
+  let clean = input.value.replace(/[^0-9.]/g, '');
+  const parts = clean.split('.');
+  if (parts.length > 2) {
+    clean = parts[0] + '.' + parts.slice(1).join('');
+  }
+  if (input.value !== clean) {
+    input.value = clean;
+  }
+
+  if (clean !== '') {
+    const val = parseFloat(clean);
+    if (!isNaN(val) && val >= 0) {
+      const player = lmiData.players.find(p => p.id === playerId);
+      if (player) {
+        player.price = val * 1000000;
+        recalculateRenovationTotals(teamId);
+        updateRowVisualsForRenewal(playerId, val);
+      }
+    }
+  }
+}
+
+// Blur: formateo final y guardado
+function handleRenewalPriceBlur(input, playerId, teamId) {
+  let clean = input.value.replace(/[^0-9.]/g, '').trim();
+  if (clean === '' || isNaN(parseFloat(clean))) {
+    clean = '0';
+  }
+  let val = parseFloat(clean);
+  if (val < 0) val = 0;
+  input.value = (val % 1 === 0) ? val.toFixed(0) : val.toFixed(1);
+
   const player = lmiData.players.find(p => p.id === playerId);
   if (player) {
     player.price = val * 1000000;
     saveDataToStorage();
-    const sel = document.getElementById('renovation-team-select');
-    if (sel && sel.value) loadRenovationsForTeam(sel.value);
+    recalculateRenovationTotals(teamId);
+    updateRowVisualsForRenewal(playerId, val);
   }
 }
 
-function togglePlayerLegend(playerId, isChecked, teamId) {
+// Actualización visual en vivo de fila (tachado si 0 / no renovado) sin recargar la tabla
+function updateRowVisualsForRenewal(playerId, val) {
+  const nameEl = document.getElementById(`player-name-${playerId}`);
+  const statusEl = document.getElementById(`player-status-badge-${playerId}`);
+  const trEl = document.getElementById(`renovation-row-${playerId}`);
+  const isNotRenewed = (val === 0);
+
+  if (nameEl) {
+    nameEl.style.textDecoration = isNotRenewed ? 'line-through' : 'none';
+    nameEl.style.color = isNotRenewed ? 'var(--text-muted)' : 'inherit';
+  }
+  if (statusEl) {
+    statusEl.innerHTML = isNotRenewed 
+      ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' 
+      : '';
+  }
+  if (trEl) {
+    trEl.style.opacity = isNotRenewed ? '0.7' : '1';
+    trEl.style.background = isNotRenewed ? 'rgba(231, 76, 60, 0.08)' : '';
+  }
+}
+
+// Cambiar tipo de carta de jugador
+function changePlayerCardType(playerId, newType, teamId) {
   const player = lmiData.players.find(p => p.id === playerId);
   if (!player) return;
 
-  if (isChecked) {
-    const existingLegend = lmiData.players.find(p => p.teamId === teamId && p.isLegend && p.id !== playerId);
-    if (existingLegend) {
-      showToast(`Cada equipo solo puede tener 1 Leyenda o Épico (${existingLegend.name} ya está marcado).`, "fa-triangle-exclamation");
-      if (teamId) loadRenovationsForTeam(teamId);
-      return;
-    }
-  }
-
-  player.isLegend = isChecked;
+  player.cardType = newType;
+  player.isLegend = (newType === 'Epico' || newType === 'Big Time');
   saveDataToStorage();
-  if (teamId) loadRenovationsForTeam(teamId);
+  loadRenovationsForTeam(teamId);
 }
 
 function recalculateRenovationTotals(teamId) {
@@ -719,13 +817,18 @@ function exportRenewalReport() {
     let pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
     if (pVal > 0 && pVal <= 0.6) pVal = 1.0;
 
+    let typeText = "";
+    if (p.cardType === 'Epico') typeText = ' (Épico)';
+    else if (p.cardType === 'Big Time') typeText = ' (Big Time)';
+    else if (p.isLegend) typeText = ' (Leyenda)';
+
     if (pVal === 0) {
       nonRenewedCount++;
-      summary += `${idx + 1}. [${p.position}] ${p.name} - NO RENOVADO ($0M)${p.isLegend ? ' (Leyenda/Épico)' : ''}\n`;
+      summary += `${idx + 1}. [${p.position}] ${p.name} - NO RENOVADO ($0M)${typeText}\n`;
     } else {
       renewedCount++;
       totalRenovations += pVal;
-      summary += `${idx + 1}. [${p.position}] ${p.name} - $${pVal.toFixed(1)}M${p.isLegend ? ' (Leyenda/Épico)' : ''}\n`;
+      summary += `${idx + 1}. [${p.position}] ${p.name} - $${pVal.toFixed(1)}M${typeText}\n`;
     }
   });
 
@@ -740,8 +843,8 @@ function exportRenewalReport() {
   summary += `Total Renovaciones: -$${totalRenovations.toFixed(1)}M USD\n`;
   summary += `Presupuesto Restante: $${remainingBudgetM.toFixed(1)}M USD\n`;
 
-  if (team.legendChangeNote) summary += `\n📌 Cambio Leyenda: ${team.legendChangeNote}\n`;
-  if (team.legendRemoveNote) summary += `📌 Elimino Leyenda: ${team.legendRemoveNote}\n`;
+  if (team.legendChangeNote) summary += `\n📌 Cambio Leyenda / Épico / Big Time: ${team.legendChangeNote}\n`;
+  if (team.legendRemoveNote) summary += `📌 Elimino Leyenda / Épico / Big Time: ${team.legendRemoveNote}\n`;
 
   navigator.clipboard.writeText(summary).then(() => {
     showToast("¡Resumen copiado al portapapeles!", "fa-copy");
