@@ -3691,9 +3691,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
-      "price": 5000000,
-      "cardType": "Normal",
-      "isLegend": false
+      "price": 101000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_199",
@@ -7125,9 +7125,9 @@ var INITIAL_LMI_DATA = {
       "assists_champions": 2,
       "goals_estelar": 1,
       "assists_estelar": 0,
-      "price": 5000000,
-      "cardType": "Normal",
-      "isLegend": false
+      "price": 104000000,
+      "cardType": "Epico",
+      "isLegend": true
     },
     {
       "id": "p_401",
