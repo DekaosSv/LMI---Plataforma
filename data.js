@@ -6604,8 +6604,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_370",
-      "name": "Tammy Abraham",
-      "position": "DC",
+      "name": "Jan Oblak",
+      "position": "PT",
       "teamId": "atleticodemadrid",
       "goals": 0,
       "assists": 0,
