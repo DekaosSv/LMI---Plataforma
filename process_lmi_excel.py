@@ -6,6 +6,7 @@ import re
 import sys
 import unicodedata
 import glob
+import difflib
 
 def find_lmi_excel_file():
     # Prioridad explícita a LMI Base.xlsx si existe
@@ -255,6 +256,107 @@ def load_old_data():
     except Exception as e:
         print(f"⚠️ Error loading old data.js: {e}")
     return None
+
+def run_preflight_audit(teams_dict, players_list, audit_stats):
+    critical_errors = []
+    warnings = []
+    
+    # 1. Validación de Clubes
+    total_teams = len(teams_dict)
+    if total_teams != 18:
+        critical_errors.append(f"Número de clubes incorrecto: {total_teams} (se esperaban 18)")
+        
+    # 2. Validación de Plantillas (23 jugadores exactos por club)
+    players_by_team = {}
+    for p in players_list:
+        tid = p["teamId"]
+        players_by_team.setdefault(tid, []).append(p)
+        
+    for tid, t_obj in teams_dict.items():
+        p_count = len(players_by_team.get(tid, []))
+        tname = t_obj.get("name", tid)
+        if p_count != 23:
+            critical_errors.append(f"Club '{tname}' ({tid}) tiene {p_count} jugadores (se esperan exactamente 23)")
+            
+    # 3. Validación de Porteros (PT)
+    for tid, t_obj in teams_dict.items():
+        t_players = players_by_team.get(tid, [])
+        pt_count = sum(1 for p in t_players if p.get("position") == "PT")
+        tname = t_obj.get("name", tid)
+        if pt_count == 0:
+            critical_errors.append(f"Club '{tname}' ({tid}) NO TIENE PORTERO (PT) asignado!")
+            
+    # 4. Validación de Jugadores Duplicados
+    seen_names = {}
+    for p in players_list:
+        norm = normalize_key(p["name"])
+        if norm in seen_names:
+            p_prev = seen_names[norm]
+            critical_errors.append(f"Jugador duplicado: '{p['name']}' figura en '{p['teamId']}' y '{p_prev['teamId']}'")
+        else:
+            seen_names[norm] = p
+            
+    # 5. Validación de Jugadores con prefijo de posición vacío
+    for p in players_list:
+        if not p.get("position"):
+            warnings.append(f"Jugador '{p['name']}' no tiene posición definida")
+            
+    # Imprimir semáforo visual
+    print("\n" + "=" * 70)
+    print("🛡️  AUDITORÍA PRE-VUELO LMI - PLATAFORMA WEB")
+    print("=" * 70)
+    
+    if total_teams == 18:
+        print(" [🟢 OK] 18 Clubes registrados y posicionados en la liga.")
+    else:
+        print(f" [🔴 ERROR] {total_teams} clubes registrados (deben ser 18).")
+        
+    total_players = len(players_list)
+    has_roster_error = any("se esperan exactamente 23" in e for e in critical_errors)
+    if total_players == 414 and not has_roster_error:
+        print(" [🟢 OK] 414 Jugadores validados (exactamente 23 por cada uno de los 18 clubes).")
+    else:
+        print(f" [🔴 ERROR] Plantillas desajustadas (Total jugadores: {total_players}).")
+        
+    has_gk_error = any("NO TIENE PORTERO" in e for e in critical_errors)
+    if not has_gk_error:
+        print(" [🟢 OK] Todos los clubes cuentan con al menos un Portero (PT) disponible.")
+    else:
+        print(" [🔴 ERROR] Hay clubes sin portero registrado.")
+        
+    has_dup_error = any("duplicado" in e for e in critical_errors)
+    if not has_dup_error:
+        print(" [🟢 OK] 0 Jugadores duplicados en toda la liga.")
+    else:
+        print(" [🔴 ERROR] Se detectaron jugadores duplicados entre clubes.")
+        
+    if audit_stats.get("transferred"):
+        print(f" [🟢 OK] {len(audit_stats['transferred'])} Estadísticas de jugadores cedidos/traspasados calculadas correctamente.")
+        
+    if audit_stats.get("fuzzy"):
+        print(f" [✨ INFO] {len(audit_stats['fuzzy'])} Nombres con variación tipográfica vinculados automáticamente.")
+        
+    if audit_stats.get("unassigned"):
+        unassigned_names = set(u["player"] for u in audit_stats["unassigned"])
+        print(f" [ℹ️ INFO] {len(audit_stats['unassigned'])} Registros de partidos archivados para {len(unassigned_names)} jugadores fuera de la liga.")
+        
+    print("=" * 70)
+    
+    # Manejo de errores críticos
+    if critical_errors:
+        print("\n❌ SE DETECTARON ERRORES CRÍTICOS QUE IMPIDEN EL DESPLIEGUE:")
+        for err in critical_errors:
+            print(f"   ⛔ {err}")
+        print("\n🔒 Por seguridad, la base de datos 'data.js' NO fue modificada.")
+        print("Por favor corrige los datos en 'LMI Base.xlsx' antes de reintentar.\n")
+        return False
+        
+    if warnings:
+        print("\n⚠️ Advertencias no críticas:")
+        for w in warnings:
+            print(f"   🔸 {w}")
+            
+    return True
 
 def process_excel():
     excel_file = find_lmi_excel_file()
@@ -643,6 +745,13 @@ def process_excel():
         # 5. Map Goals & Assists from 'Registro Liga', 'Registro Champions', and 'RegistroEstelar' sheets
         player_id_counter_ref = [player_id_counter]
         
+        audit_stats = {
+            "direct": 0,
+            "transferred": [],
+            "fuzzy": [],
+            "unassigned": []
+        }
+
         def map_tournament_stats(registro_data, key_goals, key_assists, sheet_name):
             for row_idx in sorted(registro_data.keys()):
                 if row_idx == 1:
@@ -655,25 +764,51 @@ def process_excel():
                 if not raw_pname:
                     continue
                     
-                goles = int(row.get('C', 0)) if row.get('C', '').isdigit() else 0
-                asists = int(row.get('D', 0)) if row.get('D', '').isdigit() else 0
+                goles = int(row.get('C', 0)) if str(row.get('C', '')).isdigit() else 0
+                asists = int(row.get('D', 0)) if str(row.get('D', '')).isdigit() else 0
+                
+                if goles == 0 and asists == 0:
+                    continue
                 
                 # Normalize names to find match
                 norm_reg_pname = normalize_key(raw_pname)
                 norm_tname = normalize_key(raw_tname)
                 team_id = TEAM_ID_MAP.get(norm_tname, norm_tname)
                 
-                if norm_reg_pname in players_by_norm:
-                    player = players_by_norm[norm_reg_pname]
-                    # Solo sumar estadísticas si el equipo registrado en el partido coincide con el equipo actual del jugador
+                # 1. Búsqueda exacta en plantilla
+                player = players_by_norm.get(norm_reg_pname)
+                
+                # 2. Coincidencia difusa inteligente si no se encuentra exacto
+                if not player:
+                    close_matches = difflib.get_close_matches(norm_reg_pname, players_by_norm.keys(), n=1, cutoff=0.85)
+                    if close_matches:
+                        player = players_by_norm[close_matches[0]]
+                        audit_stats["fuzzy"].append((raw_pname, player["name"], sheet_name))
+                        print(f"  ✨ Coincidencia inteligente: '{raw_pname}' vinculada a '{player['name']}' ({sheet_name})")
+
+                if player:
+                    player[key_goals] += goles
+                    player[key_assists] += asists
                     if player["teamId"] == team_id:
-                        player[key_goals] += goles
-                        player[key_assists] += asists
+                        audit_stats["direct"] += 1
                     else:
-                        print(f"  ⚠️ Estadísticas omitidas para '{raw_pname}' (en plantilla está en '{player['teamId']}', pero el registro indica '{team_id}')")
+                        audit_stats["transferred"].append({
+                            "player": player["name"],
+                            "from_team": raw_tname,
+                            "current_team": player["teamId"],
+                            "goals": goles,
+                            "assists": asists,
+                            "sheet": sheet_name
+                        })
+                        print(f"  🔄 Estadística asignada por cesión/traspaso: '{player['name']}' ({goles}G, {asists}A con {raw_tname} -> asignado a '{player['teamId']}')")
                 else:
-                    # Jugador extra omitido: no se añade a la plantilla ya que no figura en la hoja principal 'Lista'
-                    print(f"  ℹ️ Jugador extra omitido en {sheet_name} (no está en la hoja Lista): '{raw_pname}' ({raw_tname})")
+                    audit_stats["unassigned"].append({
+                        "player": raw_pname,
+                        "team": raw_tname,
+                        "goals": goles,
+                        "assists": asists,
+                        "sheet": sheet_name
+                    })
 
         print("📈 Importando estadísticas de goles y asistencias desde 'Registro Liga'...")
         map_tournament_stats(registro_data, "goals_liga", "assists_liga", "Registro Liga")
@@ -953,8 +1088,25 @@ def process_excel():
             "champions": champions_list
         }
 
+        # 6.5. Auditoría Pre-Vuelo y Semáforo de Control
+        is_clean = run_preflight_audit(teams_dict, players_list, audit_stats)
+        if not is_clean:
+            print("\n❌ La auditoría detectó errores críticos. El archivo 'data.js' NO se modificó.")
+            sys.exit(1)
+            
+        auto_approve = any(arg in sys.argv for arg in ['--yes', '-y', '--auto'])
+        if not auto_approve:
+            print("\n🚀 Estado del sistema: EXCELENTE Y LISTO PARA PRODUCCIÓN")
+            try:
+                resp = input("¿Deseas guardar los cambios y actualizar la web? (S/N) [S]: ").strip().lower()
+            except (EOFError, KeyboardInterrupt):
+                resp = "s"
+            if resp and resp not in ['s', 'si', 'y', 'yes']:
+                print("\n⏸️ Operación cancelada por el usuario. No se modificó data.js ni se subió a producción.\n")
+                sys.exit(2)
+
         # 7. Write to data.js
-        print("💾 Guardando resultados en 'data.js'...")
+        print("\n💾 Guardando resultados en 'data.js'...")
         js_content = f"// Base de datos unificada LMI Temporada 10 desde {excel_file}\n\nvar INITIAL_LMI_DATA = {json.dumps(final_data, indent=2, ensure_ascii=False)};\n"
         
         with open('data.js', 'w', encoding='utf-8') as f:

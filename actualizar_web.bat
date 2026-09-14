@@ -5,11 +5,18 @@ echo 🚀 Actualizando Base de Datos LMI y Web en GitHub...
 echo ----------------------------------------------------
 echo.
 
-:: 1. Procesar Excel con Python
-echo [1/3] Procesando el archivo Excel...
+:: 1. Procesar Excel con Python y Auditoría
+echo [1/3] Auditando y procesando el archivo Excel...
 python process_lmi_excel.py
+if %errorlevel% equ 2 (
+    echo.
+    echo ⏸️ Actualización cancelada por el usuario. No se realizaron cambios en producción.
+    pause
+    exit /b 0
+)
 if %errorlevel% neq 0 (
-    echo ❌ Error al procesar el Excel. Abortando.
+    echo.
+    echo ❌ Se detectaron problemas críticos en el Excel. Despliegue abortado para proteger la web.
     pause
     exit /b %errorlevel%
 )
