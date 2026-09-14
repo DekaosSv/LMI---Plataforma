@@ -51,10 +51,10 @@ function loadDataFromStorage() {
     if (!lmiData.copaEstelarMatches) {
       lmiData.copaEstelarMatches = [
         { "fase": "Cuartos 1", "team1": "Bayern Leverkusen", "score1": "2", "team2": "Real Madrid", "score2": "1", "estado": "Finalizado" },
-        { "fase": "Cuartos 2", "team1": "Como 1907", "score1": "0", "team2": "Wrexham", "score2": "1", "estado": "Finalizado" },
+        { "fase": "Cuartos 2", "team1": "Como 1907", "score1": "0", "team2": "Boca Juniors", "score2": "1", "estado": "Finalizado" },
         { "fase": "Cuartos 3", "team1": "Inter de Milan", "score1": "2", "team2": "AC Milan", "score2": "0", "estado": "Finalizado" },
         { "fase": "Cuartos 4", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Arsenal", "score2": "3", "estado": "Finalizado" },
-        { "fase": "Semifinal 1", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Wrexham", "score2": "0", "estado": "Finalizado" },
+        { "fase": "Semifinal 1", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Boca Juniors", "score2": "0", "estado": "Finalizado" },
         { "fase": "Semifinal 2", "team1": "Inter de Milan", "score1": "2", "team2": "Arsenal", "score2": "0", "estado": "Finalizado" },
         { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Arsenal", "score2": "", "estado": "Por Jugar" }
       ];

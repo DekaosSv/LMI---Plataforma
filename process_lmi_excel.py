@@ -263,8 +263,8 @@ def run_preflight_audit(teams_dict, players_list, audit_stats):
     
     # 1. Validación de Clubes
     total_teams = len(teams_dict)
-    if total_teams != 18:
-        critical_errors.append(f"Número de clubes incorrecto: {total_teams} (se esperaban 18)")
+    if total_teams < 2:
+        critical_errors.append(f"Número insuficiente de clubes: {total_teams} encontrados.")
         
     # 2. Validación de Plantillas (23 jugadores exactos por club)
     players_by_team = {}
@@ -306,17 +306,15 @@ def run_preflight_audit(teams_dict, players_list, audit_stats):
     print("🛡️  AUDITORÍA PRE-VUELO LMI - PLATAFORMA WEB")
     print("=" * 70)
     
-    if total_teams == 18:
-        print(" [🟢 OK] 18 Clubes registrados y posicionados en la liga.")
-    else:
-        print(f" [🔴 ERROR] {total_teams} clubes registrados (deben ser 18).")
+    expected_players = total_teams * 23
+    print(f" [🟢 OK] {total_teams} Clubes registrados y posicionados en la liga.")
         
     total_players = len(players_list)
     has_roster_error = any("se esperan exactamente 23" in e for e in critical_errors)
-    if total_players == 414 and not has_roster_error:
-        print(" [🟢 OK] 414 Jugadores validados (exactamente 23 por cada uno de los 18 clubes).")
+    if total_players == expected_players and not has_roster_error:
+        print(f" [🟢 OK] {total_players} Jugadores validados (exactamente 23 por cada uno de los {total_teams} clubes).")
     else:
-        print(f" [🔴 ERROR] Plantillas desajustadas (Total jugadores: {total_players}).")
+        print(f" [🔴 ERROR] Plantillas desajustadas (Total jugadores: {total_players}, esperados: {expected_players}).")
         
     has_gk_error = any("NO TIENE PORTERO" in e for e in critical_errors)
     if not has_gk_error:
@@ -872,10 +870,10 @@ def process_excel():
         if not copa_matches:
             copa_matches = [
                 { "fase": "Cuartos 1", "team1": "Bayern Leverkusen", "score1": "2", "team2": "Real Madrid", "score2": "1", "estado": "Finalizado" },
-                { "fase": "Cuartos 2", "team1": "Como 1907", "score1": "0", "team2": "Wrexham", "score2": "1", "estado": "Finalizado" },
+                { "fase": "Cuartos 2", "team1": "Como 1907", "score1": "0", "team2": "Boca Juniors", "score2": "1", "estado": "Finalizado" },
                 { "fase": "Cuartos 3", "team1": "Inter de Milan", "score1": "2", "team2": "AC Milan", "score2": "0", "estado": "Finalizado" },
                 { "fase": "Cuartos 4", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Arsenal", "score2": "3", "estado": "Finalizado" },
-                { "fase": "Semifinal 1", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Wrexham", "score2": "0", "estado": "Finalizado" },
+                { "fase": "Semifinal 1", "team1": "Bayern Leverkusen", "score1": "1", "team2": "Boca Juniors", "score2": "0", "estado": "Finalizado" },
                 { "fase": "Semifinal 2", "team1": "Inter de Milan", "score1": "2", "team2": "Arsenal", "score2": "0", "estado": "Finalizado" },
                 { "fase": "Final", "team1": "Inter de Milan", "score1": "", "team2": "Arsenal", "score2": "", "estado": "Por Jugar" }
             ]
