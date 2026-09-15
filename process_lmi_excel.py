@@ -7,6 +7,7 @@ import sys
 import unicodedata
 import glob
 import difflib
+import time
 
 def find_lmi_excel_file():
     # Prioridad explícita a LMI Base.xlsx si existe
@@ -1109,6 +1110,20 @@ def process_excel():
         
         with open('data.js', 'w', encoding='utf-8') as f:
             f.write(js_content)
+
+        # Actualizar cache-buster en index.html para evitar caché obsoleto en navegadores
+        if os.path.exists('index.html'):
+            try:
+                with open('index.html', 'r', encoding='utf-8') as f:
+                    html_code = f.read()
+                new_version = str(int(time.time()))
+                html_code = re.sub(r'data\.js(?:\?v=[^"\'\s>]+)?', f'data.js?v={new_version}', html_code)
+                html_code = re.sub(r'app\.js(?:\?v=[^"\'\s>]+)?', f'app.js?v={new_version}', html_code)
+                with open('index.html', 'w', encoding='utf-8') as f:
+                    f.write(html_code)
+                print(f"🔄 Versión de caché web actualizada en 'index.html' (v={new_version}).")
+            except Exception as e:
+                print(f"⚠️ No se pudo actualizar el cache-buster en index.html: {e}")
 
         print(f"✅ Base de datos procesada con éxito: {len(teams_dict)} equipos y {len(players_list)} jugadores importados.")
 

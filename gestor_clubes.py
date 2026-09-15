@@ -348,6 +348,63 @@ def anadir_club(wb):
     print(f"\n🎉 ¡Club '{nombre}' agregado exitosamente!")
     return True
 
+def desplegar_a_produccion():
+    print("\n" + "=" * 65)
+    print("🚀 DESPLEGANDO CAMBIOS A PRODUCCIÓN (GitHub Pages)...")
+    print("=" * 65)
+    try:
+        # 1. Asegurar procesamiento de base de datos
+        print("\n[1/3] Auditando y sincronizando base de datos local...")
+        res = subprocess.run([sys.executable, "process_lmi_excel.py", "--yes"])
+        if res.returncode != 0:
+            print("❌ La validación de la base de datos falló. Se canceló el despliegue.")
+            return False
+
+        # 2. Git add y commit
+        print("\n[2/3] Empaquetando archivos para despliegue...")
+        subprocess.run([
+            "git", "add", 
+            "data.js", "app.js", "index.html", "style.css", 
+            "process_lmi_excel.py", "*.xlsx", "Logos Equipos", 
+            "Imagenes", "gestor_clubes.py", "gestor_clubes.bat", "actualizar_web.bat"
+        ], check=False)
+
+        # Comprobar si hay cambios para commit
+        staged = subprocess.run(["git", "diff", "--staged", "--quiet"])
+        if staged.returncode != 0:
+            subprocess.run(["git", "commit", "-m", "Actualización de clubes y base de datos web"], check=True)
+            print("   ✅ Commit generado.")
+        else:
+            print("   ℹ️ No hay archivos nuevos pendientes de commit.")
+
+        # 3. Git push
+        print("\n[3/3] Subiendo cambios a GitHub (origin/main)...")
+        push_res = subprocess.run(["git", "push", "origin", "main"])
+        if push_res.returncode == 0:
+            print("\n" + "=" * 65)
+            print("✅ ¡ÉXITO TOTAL! Los cambios ya están en camino a producción.")
+            print("🌐 GitHub Pages tardará aproximadamente 1 a 2 minutos en actualizarse.")
+            print("💡 Si ya pasaron 2 minutos y no los ves, presiona Ctrl + F5 en la web.")
+            print("=" * 65)
+            return True
+        else:
+            print("\n⚠️ No se pudo realizar el push a GitHub. Revisa tu conexión de red o credenciales.")
+            return False
+    except Exception as e:
+        print(f"\n❌ Error durante el despliegue: {e}")
+        return False
+
+def sincronizar_y_desplegar(wb_changed=True):
+    if wb_changed:
+        sinc = input("\n¿Deseas sincronizar la base de datos web ahora? (S/N) [S]: ").strip().lower()
+        if sinc in ['n', 'no']:
+            return
+        subprocess.run([sys.executable, "process_lmi_excel.py", "--yes"])
+    
+    pub = input("\n¿Deseas publicar los cambios en PRODUCCIÓN (GitHub Pages) ahora? (S/N) [S]: ").strip().lower()
+    if pub not in ['n', 'no']:
+        desplegar_a_produccion()
+
 def main():
     while True:
         if not os.path.exists(EXCEL_FILE):
@@ -361,12 +418,13 @@ def main():
         print("  [2] Añadir un nuevo club a la liga (con 23 jugadores)")
         print("  [3] Modificar datos de un club (DT, Estadio, Presupuesto, etc.)")
         print("  [4] Eliminar un club (borrado limpio de todas las hojas)")
-        print("  [5] Sincronizar Base de Datos y Web (ejecutar auditoría)")
-        print("  [6] Salir")
+        print("  [5] Sincronizar Base de Datos local (ejecutar auditoría)")
+        print("  [6] Publicar y desplegar a PRODUCCIÓN (GitHub Pages)")
+        print("  [7] Salir")
         print("=" * 65)
         
         try:
-            opcion = input("Elige una opción (1-6): ").strip()
+            opcion = input("Elige una opción (1-7): ").strip()
         except (EOFError, KeyboardInterrupt):
             print("\nHasta luego.")
             break
@@ -376,29 +434,26 @@ def main():
         elif opcion == "2":
             changed = anadir_club(wb)
             if changed:
-                sinc = input("\n¿Deseas sincronizar la base de datos web ahora? (S/N) [S]: ").strip().lower()
-                if sinc not in ['n', 'no']:
-                    subprocess.run([sys.executable, "process_lmi_excel.py", "--yes"])
+                sincronizar_y_desplegar(wb_changed=True)
         elif opcion == "3":
             changed = modificar_club(wb)
             if changed:
-                sinc = input("\n¿Deseas sincronizar la base de datos web ahora? (S/N) [S]: ").strip().lower()
-                if sinc not in ['n', 'no']:
-                    subprocess.run([sys.executable, "process_lmi_excel.py", "--yes"])
+                sincronizar_y_desplegar(wb_changed=True)
         elif opcion == "4":
             changed = eliminar_club(wb)
             if changed:
-                sinc = input("\n¿Deseas sincronizar la base de datos web ahora? (S/N) [S]: ").strip().lower()
-                if sinc not in ['n', 'no']:
-                    subprocess.run([sys.executable, "process_lmi_excel.py", "--yes"])
+                sincronizar_y_desplegar(wb_changed=True)
         elif opcion == "5":
             print("\n🔄 Sincronizando con process_lmi_excel.py...")
             subprocess.run([sys.executable, "process_lmi_excel.py"])
+            sincronizar_y_desplegar(wb_changed=False)
         elif opcion == "6":
+            desplegar_a_produccion()
+        elif opcion == "7":
             print("\n¡Operación finalizada! Hasta luego.")
             break
         else:
-            print("Opción no válida. Ingresa un número del 1 al 6.")
+            print("Opción no válida. Ingresa un número del 1 al 7.")
             
         try:
             input("\nPresiona ENTER para volver al menú principal...")

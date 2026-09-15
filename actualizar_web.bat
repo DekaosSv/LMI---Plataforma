@@ -23,7 +23,7 @@ if %errorlevel% neq 0 (
 
 echo.
 :: 2. Añadir y hacer commit a los archivos modificados
-git add data.js app.js index.html style.css process_lmi_excel.py *.xlsx "Logos Equipos" "Imagenes"
+git add data.js app.js index.html style.css process_lmi_excel.py *.xlsx "Logos Equipos" "Imagenes" gestor_clubes.py gestor_clubes.bat
 git commit -m "Actualización automática de base de datos y web"
 
 echo.
