@@ -97,7 +97,8 @@ function initUI() {
   renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
   renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
 
-
+  // Initialize Balon de Oro Gallery
+  initBalonOro();
 }
 
 function switchNav(navId) {
@@ -125,6 +126,7 @@ function switchNav(navId) {
   if (navId === 'buscador') filterPlayersDatabase();
   if (navId === 'rules') renderRules();
   if (navId === 'sala-campeones') renderSalaCampeones();
+  if (navId === 'balon-oro') renderBalonOro();
 }
 
 // Render Dashboard
@@ -1372,11 +1374,12 @@ function renderSalaCampeones() {
           trophiesStr += "🏆";
         }
 
+        const cleanName = (w.ganador || '').replace(/^@+/, '').trim();
         listHtml += `
           <li class="champion-item">
             <div class="champion-rank">
               <span class="champion-badge-icon">${medal}</span>
-              <span class="champion-name">@${w.ganador}</span>
+              <span class="champion-name">${cleanName}</span>
             </div>
             <div class="champion-trophies-container">
               <span class="champion-trophies-emojis">${trophiesStr}</span>
@@ -1406,7 +1409,168 @@ function renderSalaCampeones() {
   container.innerHTML = html;
 }
 
+// ==========================================
+// BALÓN DE ORO - GALERÍA DE GANADORES LMI
+// ==========================================
+
+function initBalonOro() {
+  populateBalonSeasonFilter();
+}
+
+function populateBalonSeasonFilter() {
+  const filterSelect = document.getElementById('balon-season-filter');
+  if (!filterSelect) return;
+
+  const currentVal = filterSelect.value || 'all';
+  const winners = lmiData.balonOro || [];
+  const seasons = Array.from(new Set(winners.map(w => w.season))).filter(Boolean);
+
+  filterSelect.innerHTML = `
+    <option value="all">Todas las Temporadas (${winners.length})</option>
+    ${seasons.map(s => {
+      const count = winners.filter(w => w.season === s).length;
+      return `<option value="${s}" ${s === currentVal ? 'selected' : ''}>${s} (${count})</option>`;
+    }).join('')}
+  `;
+}
+
+function renderBalonOro() {
+  const container = document.getElementById('balon-oro-gallery-grid');
+  if (!container) return;
+
+  populateBalonSeasonFilter();
+
+  const seasonFilter = document.getElementById('balon-season-filter')?.value || 'all';
+  let winners = lmiData.balonOro || [];
+
+  if (seasonFilter !== 'all') {
+    winners = winners.filter(w => (w.season || '').toLowerCase() === seasonFilter.toLowerCase());
+  }
+
+  if (winners.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1.5rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px dashed rgba(255,209,0,0.3);">
+        <i class="fa-solid fa-award" style="font-size: 3.5rem; color: #ffd100; margin-bottom: 1rem; opacity: 0.8;"></i>
+        <h3 style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0.5rem;">No se encontraron ganadores</h3>
+        <p style="color: var(--text-muted); max-width: 420px; margin: 0 auto;">No hay registros de Balón de Oro disponibles para la temporada seleccionada.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = winners.map(w => {
+    const goalsPill = (w.goals !== undefined && w.goals !== null && w.goals > 0)
+      ? `<span class="balon-stat-pill"><i class="fa-solid fa-futbol"></i> <strong>${w.goals}</strong> Goles</span>`
+      : '';
+    const assistsPill = (w.assists !== undefined && w.assists !== null && w.assists > 0)
+      ? `<span class="balon-stat-pill"><i class="fa-solid fa-shoe-prints"></i> <strong>${w.assists}</strong> Asist.</span>`
+      : '';
+    const trophiesBox = w.trophies
+      ? `<div class="balon-trophies-box"><i class="fa-solid fa-trophy"></i> <span>${w.trophies}</span></div>`
+      : '';
+    const descText = w.description
+      ? `<p class="balon-card-desc">${w.description}</p>`
+      : '';
+
+    const imgSrc = w.image || 'Sala de campeones/Balon de oro/trofeo_balon_oro.jpg';
+    const teamLogoHtml = w.teamLogo
+      ? `<img src="${w.teamLogo}" alt="${w.team || ''}" class="balon-club-logo" onerror="this.style.display='none'">`
+      : '<i class="fa-solid fa-shield-halved" style="color: var(--text-muted); font-size: 0.9rem;"></i>';
+
+    return `
+      <div class="balon-card" id="bdo-card-${w.id}" onclick="openBalonOroLightbox('${w.id}')" title="Haz clic para ver detalles y foto completa">
+        <div class="balon-card-img-wrapper">
+          <img src="${imgSrc}" alt="${w.player}" class="balon-card-img" onerror="this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
+          <div class="balon-img-overlay"></div>
+          <span class="balon-season-badge-tag"><i class="fa-solid fa-crown"></i> ${w.season || 'Edición LMI'}</span>
+          <div class="balon-zoom-hint" title="Ver detalles"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="balon-card-body">
+          <div class="balon-card-title-group">
+            <span class="balon-player-name">${w.player}</span>
+            <div class="balon-card-club-row">
+              ${teamLogoHtml}
+              <strong>${w.team || 'Club LMI'}</strong>
+              <span style="color: var(--text-muted);">•</span>
+              <span class="balon-manager-tag"><i class="fa-solid fa-user-tie"></i> DT: ${w.manager || '-'}</span>
+            </div>
+          </div>
+
+          ${(goalsPill || assistsPill) ? `<div class="balon-stats-row">${goalsPill}${assistsPill}</div>` : ''}
+          ${trophiesBox}
+          ${descText}
+
+          <div class="balon-card-hint">
+            <i class="fa-solid fa-circle-info"></i> Toca la tarjeta para ver en grande
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterBalonOro() {
+  renderBalonOro();
+}
+
+function openBalonOroLightbox(id) {
+  const winner = (lmiData.balonOro || []).find(w => String(w.id) === String(id));
+  if (!winner) return;
+
+  const modal = document.getElementById('balon-oro-lightbox');
+  if (!modal) return;
+
+  document.getElementById('bdo-lightbox-img').src = winner.image || 'Sala de campeones/Balon de oro/trofeo_balon_oro.jpg';
+  document.getElementById('bdo-lightbox-season').textContent = winner.season || 'Edición Especial';
+  document.getElementById('bdo-lightbox-player').textContent = winner.player;
+  document.getElementById('bdo-lightbox-club-name').textContent = winner.team || 'LMI';
+  document.getElementById('bdo-lightbox-manager').textContent = winner.manager || '-';
+
+  const logoEl = document.getElementById('bdo-lightbox-club-logo');
+  if (winner.teamLogo) {
+    logoEl.src = winner.teamLogo;
+    logoEl.style.display = 'inline-block';
+  } else {
+    logoEl.style.display = 'none';
+  }
+
+  // Stats
+  const statsBox = document.getElementById('bdo-lightbox-stats');
+  let statsHtml = '';
+  if (winner.goals !== undefined && winner.goals !== null) {
+    statsHtml += `<span class="balon-stat-pill" style="font-size: 0.88rem; padding: 0.4rem 0.85rem;"><i class="fa-solid fa-futbol"></i> <strong>${winner.goals}</strong> Goles</span>`;
+  }
+  if (winner.assists !== undefined && winner.assists !== null) {
+    statsHtml += `<span class="balon-stat-pill" style="font-size: 0.88rem; padding: 0.4rem 0.85rem;"><i class="fa-solid fa-shoe-prints"></i> <strong>${winner.assists}</strong> Asistencias</span>`;
+  }
+  statsBox.innerHTML = statsHtml;
+
+  // Trophies
+  const trophiesBox = document.getElementById('bdo-lightbox-trophies-box');
+  if (winner.trophies) {
+    document.getElementById('bdo-lightbox-trophies').textContent = winner.trophies;
+    trophiesBox.style.display = 'block';
+  } else {
+    trophiesBox.style.display = 'none';
+  }
+
+  // Description
+  document.getElementById('bdo-lightbox-desc').textContent = winner.description || 'Máximo galardón individual entregado por su destacado desempeño en la temporada.';
+
+  modal.style.display = 'flex';
+}
+
+function closeBalonOroLightbox() {
+  const modal = document.getElementById('balon-oro-lightbox');
+  if (modal) modal.style.display = 'none';
+}
+
 // Make functions globally available
 window.switchMarketTab = switchMarketTab;
 window.loadMarketForTeam = loadMarketForTeam;
 window.renderSalaCampeones = renderSalaCampeones;
+window.renderBalonOro = renderBalonOro;
+window.filterBalonOro = filterBalonOro;
+window.openBalonOroLightbox = openBalonOroLightbox;
+window.closeBalonOroLightbox = closeBalonOroLightbox;
+

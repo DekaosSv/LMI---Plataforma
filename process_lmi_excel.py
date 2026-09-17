@@ -126,6 +126,160 @@ def parse_fallback_campeones_txt():
     return records
 
 
+def parse_balon_oro_txt(teams_dict=None):
+    candidate_paths = [
+        "Balon de oro/Registro Balon de Oro.txt",
+        "Balon de oro/registro balon de oro.txt",
+        "Balon de oro/registro.txt"
+    ]
+    txt_path = None
+    for p in candidate_paths:
+        if os.path.exists(p):
+            txt_path = p
+            break
+    
+    if not txt_path:
+        print("ℹ️ No se encontró 'Balon de oro/Registro Balon de Oro.txt'.")
+        return []
+
+    content = None
+    for enc in ['utf-8-sig', 'utf-8', 'cp1252', 'latin-1']:
+        try:
+            with open(txt_path, 'r', encoding=enc) as f:
+                raw = f.read()
+                if '\ufffd' not in raw:
+                    content = raw
+                    break
+        except Exception:
+            continue
+    if content is None:
+        with open(txt_path, 'r', encoding='latin-1') as f:
+            content = f.read()
+
+    blocks = [b.strip() for b in re.split(r'\n\s*\n', content) if b.strip()]
+    records = []
+
+    for block in blocks:
+        lines = [l.strip() for l in block.splitlines() if l.strip()]
+        if not lines:
+            continue
+
+        entry = {
+            "season": "Temporada 10",
+            "player": "",
+            "team": "",
+            "manager": "",
+            "goals": 0,
+            "assists": 0,
+            "trophies": "",
+            "description": "",
+            "image": "Balon de oro/vardybalonoro.jpg"
+        }
+
+        unmatched = []
+        for line in lines:
+            if re.match(r'^Temporada\s+\d+', line, re.I):
+                entry["season"] = line.strip()
+            elif ":" in line and not line.lower().startswith("imagen:"):
+                parts = line.split(":", 1)
+                k = normalize_key(parts[0])
+                val = parts[1].strip()
+
+                if "temporada" in k or "edicion" in k:
+                    entry["season"] = val
+                elif "jugador" in k or "nombre" in k:
+                    entry["player"] = val
+                elif "club" in k or "equipo" in k:
+                    entry["team"] = val
+                elif "dt" in k or "manager" in k or "entrenador" in k:
+                    entry["manager"] = val
+                elif "gol" in k:
+                    try:
+                        entry["goals"] = int(re.sub(r'\D', '', val) or '0')
+                    except ValueError:
+                        entry["goals"] = 0
+                elif "asist" in k:
+                    try:
+                        entry["assists"] = int(re.sub(r'\D', '', val) or '0')
+                    except ValueError:
+                        entry["assists"] = 0
+                elif "titulo" in k or "trofeo" in k:
+                    entry["trophies"] = val
+                elif "descrip" in k or "detalle" in k:
+                    entry["description"] = val
+                else:
+                    unmatched.append(line)
+            elif line.lower().startswith("imagen:"):
+                img_val = line.split(":", 1)[1].strip()
+                entry["image"] = img_val
+            else:
+                unmatched.append(line)
+
+        # Process freeform lines
+        for line in unmatched:
+            if "-" in line and not entry["player"] and len(line) < 70:
+                parts = line.split("-", 1)
+                entry["player"] = parts[0].strip()
+                entry["team"] = parts[1].strip()
+            elif re.search(r'\d+\s*(gol|asist)', line, re.I):
+                g_match = re.search(r'(\d+)\s*goles?', line, re.I)
+                if g_match:
+                    entry["goals"] = int(g_match.group(1))
+                a_match = re.search(r'(\d+)\s*asistencias?', line, re.I)
+                if a_match:
+                    entry["assists"] = int(a_match.group(1))
+            elif any(w in line.lower() for w in ['campeon', 'champions', 'liga lmi', 'copa estelar']) and not entry["trophies"]:
+                entry["trophies"] = line.strip()
+            elif not entry["description"]:
+                entry["description"] = line.strip()
+
+        if not entry["player"]:
+            continue
+
+        # Match team and logo
+        team_name = entry["team"]
+        team_logo = ""
+        manager = entry["manager"]
+        if teams_dict:
+            for tid, tdata in teams_dict.items():
+                if normalize_key(tdata.get("name", "")) == normalize_key(team_name):
+                    team_name = tdata.get("name", team_name)
+                    team_logo = tdata.get("logo", "")
+                    if not manager:
+                        manager = tdata.get("manager", "")
+                    break
+
+        # Resolve image
+        raw_img = entry["image"]
+        clean_img = os.path.basename(raw_img.replace('\\', '/'))
+        final_img = "Sala de campeones/Balon de oro/trofeo_balon_oro.jpg"
+        if os.path.exists(f"Balon de oro/{clean_img}"):
+            final_img = f"Balon de oro/{clean_img}"
+        elif os.path.exists(f"Sala de campeones/Balon de oro/{clean_img}"):
+            final_img = f"Sala de campeones/Balon de oro/{clean_img}"
+        elif os.path.exists(raw_img):
+            final_img = raw_img
+        elif clean_img:
+            final_img = f"Balon de oro/{clean_img}"
+
+        records.append({
+            "id": "bdo-" + str(len(records) + 1),
+            "season": entry["season"],
+            "player": entry["player"],
+            "manager": manager,
+            "team": team_name,
+            "teamLogo": team_logo,
+            "image": final_img,
+            "goals": entry["goals"],
+            "assists": entry["assists"],
+            "trophies": entry["trophies"],
+            "description": entry["description"]
+        })
+
+    print(f"🏆 Balón de Oro: Se cargaron {len(records)} registros desde '{txt_path}'.")
+    return records
+
+
 def extraer_posicion_y_nombre(cadena_original):
     if not cadena_original:
         return "MC", ""
@@ -1030,7 +1184,7 @@ def process_excel():
                     continue
                 row = campeones_excel_data[row_idx]
                 torneo = row.get(col_torneo, '').strip() if col_torneo else ''
-                ganador = row.get(col_ganador, '').strip() if col_ganador else ''
+                ganador = row.get(col_ganador, '').strip().lstrip('@').strip() if col_ganador else ''
                 cantidad_raw = row.get(col_cantidad, '').strip() if col_cantidad else '0'
                 
                 if torneo and ganador:
@@ -1048,6 +1202,11 @@ def process_excel():
         if not champions_list:
             print("🏆 Hoja 'Campeones' no encontrada o vacía. Cargando fallback desde campeones.txt...")
             champions_list = parse_fallback_campeones_txt()
+
+        # Load Balón de Oro gallery data from Registro Balon de Oro.txt or fallback to old_data
+        balon_oro_list = parse_balon_oro_txt(teams_dict)
+        if not balon_oro_list and old_data:
+            balon_oro_list = old_data.get("balonOro", [])
 
         # 6. Rebuild final LMI Data object
         season = "Temporada 10"
@@ -1084,7 +1243,8 @@ def process_excel():
             "rules": rules,
             "nonRenewedPlayers": non_renewed_players,
             "marketMovements": market_movements,
-            "champions": champions_list
+            "champions": champions_list,
+            "balonOro": balon_oro_list
         }
 
         # 6.5. Auditoría Pre-Vuelo y Semáforo de Control

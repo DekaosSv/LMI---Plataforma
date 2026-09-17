@@ -290,7 +290,48 @@
         </div>
       </div>
 
+      <!-- Conmutador entre Palmarés y Balón de Oro -->
+      <div class="trophy-subnav">
+        <button class="trophy-subnav-btn active"><i class="fa-solid fa-trophy"></i> Palmarés de Clubes</button>
+        <button class="trophy-subnav-btn" onclick="switchNav('balon-oro')"><i class="fa-solid fa-award"></i> Balón de Oro</button>
+      </div>
+
       <div class="champions-grid" id="champions-gallery-grid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- BALÓN DE ORO -->
+    <section id="sec-balon-oro" class="page-section">
+      <div class="hero-banner hero-balon-oro"
+        style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.94) 0%, rgba(161, 98, 7, 0.85) 100%), url('Sala de campeones/Balon de oro/banner_balon_oro.jpg'); background-position: center;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="hero-tag"
+            style="background: rgba(255, 209, 0, 0.25); color: var(--lmi-yellow); border-color: var(--lmi-yellow);"><i class="fa-solid fa-award"></i> Máxima Distinción Individual</span>
+          <h1 class="hero-title" style="color: #ffffff;"><i class="fa-solid fa-crown" style="color: var(--lmi-yellow);"></i> BALÓN DE ORO</h1>
+          <p class="hero-desc" style="color: rgba(255,255,255,0.9); margin-bottom: 0;">El galardón supremo individual de la Liga Master Internacional. Galería de futbolistas legendarios que han dejado su huella dorada en cada temporada.</p>
+        </div>
+      </div>
+
+      <!-- Conmutador de secciones de Honor -->
+      <div class="trophy-subnav">
+        <button class="trophy-subnav-btn" onclick="switchNav('sala-campeones')"><i class="fa-solid fa-trophy"></i> Palmarés de Clubes</button>
+        <button class="trophy-subnav-btn active"><i class="fa-solid fa-award"></i> Balón de Oro</button>
+      </div>
+
+      <!-- Barra de Filtro de Temporadas -->
+      <div class="balon-controls-bar card">
+        <div class="balon-filter-item">
+          <label for="balon-season-filter"><i class="fa-solid fa-filter"></i> Temporada:</label>
+          <select id="balon-season-filter" class="form-select" onchange="filterBalonOro()">
+            <option value="all">Todas las Temporadas</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Grid de Ganadores del Balón de Oro -->
+      <div class="balon-oro-grid" id="balon-oro-gallery-grid">
         <!-- Rendered via JS -->
       </div>
     </section>
@@ -747,6 +788,38 @@
   </main>
 
   <!-- MODALS -->
+
+  <!-- Modal Lightbox Balón de Oro -->
+  <div id="balon-oro-lightbox" class="bdo-modal-backdrop" style="display: none;" onclick="if(event.target === this) closeBalonOroLightbox()">
+    <div class="bdo-lightbox-card">
+      <button class="bdo-modal-close" onclick="closeBalonOroLightbox()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="bdo-lightbox-image-container">
+        <img id="bdo-lightbox-img" src="" alt="Ganador Balón de Oro" class="bdo-lightbox-img">
+        <div class="bdo-lightbox-glow"></div>
+      </div>
+      <div class="bdo-lightbox-info">
+        <div class="bdo-lightbox-header">
+          <span class="bdo-gold-season-badge" id="bdo-lightbox-season">Temporada</span>
+          <h2 class="bdo-lightbox-player" id="bdo-lightbox-player">Nombre del Jugador</h2>
+          <div class="bdo-lightbox-club-row">
+            <img id="bdo-lightbox-club-logo" src="" alt="Club Logo" class="bdo-club-logo-sm">
+            <span id="bdo-lightbox-club-name" class="bdo-club-name">Club</span>
+            <span class="bdo-separator">•</span>
+            <span class="bdo-manager-label"><i class="fa-solid fa-user-tie"></i> DT: <strong id="bdo-lightbox-manager">-</strong></span>
+          </div>
+        </div>
+        <div class="bdo-lightbox-stats" id="bdo-lightbox-stats">
+          <!-- Goles, asistencias, etc. -->
+        </div>
+        <div class="bdo-lightbox-trophies" id="bdo-lightbox-trophies-box">
+          <i class="fa-solid fa-trophy" style="color: #ffd100;"></i> <span id="bdo-lightbox-trophies">-</span>
+        </div>
+        <p class="bdo-lightbox-desc" id="bdo-lightbox-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  </div>
 
 
 

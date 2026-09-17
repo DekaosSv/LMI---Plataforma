@@ -1,0 +1,22 @@
+¿Cómo ocultar y activar estos apartados cuando desees?
+Para manejar la visibilidad de los botones en la barra de navegación, la forma más sencilla y recomendada es usar Comentarios HTML (<!-- contenido -->).
+
+1. Estado Actual (Oculto)
+En este momento, el código en 
+
+index.html
+ tiene este aspecto:
+
+html
+<!-- Habilitar para mostrar: Mercado y Renovaciones T9
+        <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i> Mercado</button></li>
+        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
+        -->
+(El navegador ignora todo lo que esté envuelto entre <!-- y --> por lo que no se renderiza en la web).
+
+2. Cómo Activarlos (Mostrar en la Web)
+Para volver a mostrarlos, simplemente elimina las etiquetas de comentarios inicial (<!-- ...) y de cierre (-->). El código debe quedar así:
+
+html
+<li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i> Mercado</button></li>
+        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>

@@ -8517,5 +8517,21 @@ var INITIAL_LMI_DATA = {
       "ganador": "Santiago Encinas",
       "cantidad": 1
     }
+  ],
+  "balonOro": [
+    {
+      "id": "bdo-1",
+      "season": "Temporada 10",
+      "player": "Jamie Vardy",
+      "manager": "Jose Encinas",
+      "team": "Como 1907",
+      "teamLogo": "Logos Equipos/como.webp",
+      "image": "Balon de oro/vardybalonoro.jpg",
+      "goals": 23,
+      "assists": 2,
+      "trophies": "Campeon Liga LMI & Champions League",
+      "description": "Máximo goleador y referente del Como 1907, ganador indiscutible del Balón de Oro tras una temporada histórica."
+    }
   ]
 };
+

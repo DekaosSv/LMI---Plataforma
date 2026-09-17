@@ -1461,3 +1461,630 @@ footer {
   font-size: 0.75rem;
   font-weight: 700;
 }
+
+/* --- CONMUTADOR DE SECCIONES DE TROFEOS & BALÓN DE ORO --- */
+.trophy-subnav {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  background: var(--bg-card);
+  padding: 0.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.trophy-subnav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.trophy-subnav-btn:hover {
+  color: var(--text-primary);
+  background: rgba(0, 51, 160, 0.06);
+}
+
+.trophy-subnav-btn.active {
+  background: linear-gradient(135deg, #0033a0 0%, #001f66 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 51, 160, 0.25);
+}
+
+.trophy-subnav-btn.active:nth-child(2) {
+  background: linear-gradient(135deg, #b48303 0%, #785200 100%);
+  box-shadow: 0 4px 14px rgba(180, 131, 3, 0.35);
+}
+
+.badge-gold-pill {
+  background: #ffd100;
+  color: #0f172a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- BOTÓN DORADO / LUXURY GOLD --- */
+.btn-gold {
+  background: linear-gradient(135deg, #ffd100 0%, #d49f00 100%);
+  color: #0b1324;
+  font-weight: 700;
+  border: 1px solid #ffde43;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(255, 209, 0, 0.3);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #ffdc33 0%, #e0ab07 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 209, 0, 0.45);
+}
+
+/* --- CONTROLES Y BARRA DE FILTRO BALÓN DE ORO --- */
+.balon-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.balon-filters {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.balon-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.balon-filter-item select {
+  min-width: 190px;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.balon-search-item {
+  flex-grow: 1;
+  max-width: 380px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input-wrapper i {
+  position: absolute;
+  left: 0.9rem;
+  color: var(--text-muted);
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 0.55rem 0.9rem 0.55rem 2.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.search-input-wrapper input:focus {
+  outline: none;
+  border-color: #ffd100;
+  box-shadow: 0 0 0 3px rgba(255, 209, 0, 0.2);
+}
+
+/* --- GRID DE GALERÍA BALÓN DE ORO --- */
+.balon-oro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.balon-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 209, 0, 0.25);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.balon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd100, #ff8c00, #ffd100);
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.balon-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(255, 209, 0, 0.6);
+  box-shadow: 0 20px 40px rgba(212, 159, 0, 0.18), 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.balon-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.balon-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.balon-card:hover .balon-card-img {
+  transform: scale(1.06);
+}
+
+.balon-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 60%, rgba(15, 23, 42, 0.8) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  opacity: 0.95;
+}
+
+.balon-zoom-hint {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  color: #ffd100;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 209, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.balon-card:hover .balon-zoom-hint {
+  background: #ffd100;
+  color: #0f172a;
+  transform: scale(1.1);
+}
+
+.balon-season-badge-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  color: #ffd100;
+  border: 1px solid rgba(255, 209, 0, 0.4);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.balon-card-body {
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.75rem;
+}
+
+.balon-card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.balon-player-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.balon-card-club-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.balon-club-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.balon-manager-tag {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.balon-stats-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.balon-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-deep);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.balon-stat-pill i {
+  color: #ffd100;
+}
+
+.balon-trophies-box {
+  background: rgba(255, 209, 0, 0.08);
+  border-left: 3px solid #ffd100;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.balon-card-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.balon-card-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.balon-card:hover .balon-card-hint {
+  color: #ffd100;
+}
+
+/* --- MODAL BACKDROP Y LIGHTBOX --- */
+.bdo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 29, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: bdoFadeIn 0.25s ease;
+}
+
+@keyframes bdoFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.bdo-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.bdo-modal-close:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* Lightbox Card */
+.bdo-lightbox-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 209, 0, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 209, 0, 0.15);
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .bdo-lightbox-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bdo-lightbox-image-container {
+  position: relative;
+  background: #090e1a;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bdo-lightbox-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 520px;
+}
+
+.bdo-lightbox-info {
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bdo-gold-season-badge {
+  display: inline-block;
+  background: rgba(255, 209, 0, 0.15);
+  color: #b89500;
+  border: 1px solid rgba(255, 209, 0, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.bdo-lightbox-player {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.bdo-lightbox-club-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.bdo-club-logo-sm {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.bdo-separator {
+  color: var(--text-muted);
+}
+
+.bdo-lightbox-stats {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bdo-lightbox-trophies {
+  background: rgba(255, 209, 0, 0.1);
+  border-left: 4px solid #ffd100;
+  padding: 0.75rem 1rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bdo-lightbox-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Modal Formulario para Registrar Ganador */
+.bdo-form-modal-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 209, 0, 0.3);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  max-width: 650px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2rem;
+}
+
+.bdo-form-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.bdo-form-modal-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bdo-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+@media (max-width: 580px) {
+  .bdo-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bdo-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bdo-form-group label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bdo-form-group input,
+.bdo-form-group select,
+.bdo-form-group textarea {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.bdo-form-group input:focus,
+.bdo-form-group select:focus,
+.bdo-form-group textarea:focus {
+  outline: none;
+  border-color: #ffd100;
+  box-shadow: 0 0 0 3px rgba(255, 209, 0, 0.2);
+}
+
+.bdo-image-preview-container {
+  margin-top: 0.75rem;
+  border: 1px dashed rgba(255, 209, 0, 0.4);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  max-width: 220px;
+  background: var(--bg-deep);
+}
+
+.bdo-image-preview-container img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.bdo-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
