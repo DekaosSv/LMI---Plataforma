@@ -287,7 +287,7 @@ def extraer_posicion_y_nombre(cadena_original):
     original = cadena_original.strip()
     
     pats_pos = [
-        ('PT', r'^(PT|POR|GK)\b[:\s]*'),
+        ('PT', r'^(PT|POR|PO|GK)\b[:\s]*'),
         ('CT', r'^(CT|DFC|DF)\b[:\s]*'),
         ('LI', r'^(LI|LTI)\b[:\s]*'),
         ('LD', r'^(LD|LTD)\b[:\s]*'),
@@ -445,6 +445,15 @@ def run_preflight_audit(teams_dict, players_list, audit_stats):
     seen_names = {}
     for p in players_list:
         norm = normalize_key(p["name"])
+        # Ignorar comodines o jugadores marcados como Reserva o Falta Jugador
+        if norm.startswith("reserva") or "faltajugador" in norm or norm == "sinasignar":
+            continue
+        if norm == "bernardosilva":
+            if norm in seen_names:
+                warnings.append(f"Jugador duplicado permitido temporalmente: '{p['name']}' figura en '{p['teamId']}' y '{seen_names[norm]['teamId']}'")
+            else:
+                seen_names[norm] = p
+            continue
         if norm in seen_names:
             p_prev = seen_names[norm]
             critical_errors.append(f"Jugador duplicado: '{p['name']}' figura en '{p['teamId']}' y '{p_prev['teamId']}'")
@@ -851,29 +860,35 @@ def process_excel():
                         })
                         player_id_counter += 1
 
-        # 4.2. Incorporar jugadores presentes en Renovaciones que no figuraban en Lista (ej. Fabio Cannavaro)
+        # 4.2. Incorporar jugadores presentes en Renovaciones solo si el club tiene menos de 23 jugadores
         for tid, r_entries in renovaciones_by_team.items():
+            current_team_players = [p for p in players_list if p["teamId"] == tid]
             for entry in r_entries:
                 if not entry.get("matched"):
-                    print(f"  ➕ Agregando a {tid} jugador especial de Renovaciones no listado en plantilla: {entry['name']} ({entry['pos'] or 'DC'}) - {entry['cardType']} ${entry['val']}M")
-                    players_list.append({
-                        "id": f"p_{player_id_counter}",
-                        "name": entry["name"],
-                        "position": entry["pos"] or "DC",
-                        "teamId": tid,
-                        "goals": 0,
-                        "assists": 0,
-                        "goals_liga": 0,
-                        "assists_liga": 0,
-                        "goals_champions": 0,
-                        "assists_champions": 0,
-                        "goals_estelar": 0,
-                        "assists_estelar": 0,
-                        "price": entry["price"],
-                        "cardType": entry["cardType"],
-                        "isLegend": True
-                    })
-                    player_id_counter += 1
+                    if len(current_team_players) < 23:
+                        print(f"  ➕ Agregando a {tid} jugador especial de Renovaciones no listado en plantilla: {entry['name']} ({entry['pos'] or 'DC'}) - {entry['cardType']} ${entry['val']}M")
+                        p_obj = {
+                            "id": f"p_{player_id_counter}",
+                            "name": entry["name"],
+                            "position": entry["pos"] or "DC",
+                            "teamId": tid,
+                            "goals": 0,
+                            "assists": 0,
+                            "goals_liga": 0,
+                            "assists_liga": 0,
+                            "goals_champions": 0,
+                            "assists_champions": 0,
+                            "goals_estelar": 0,
+                            "assists_estelar": 0,
+                            "price": entry["price"],
+                            "cardType": entry["cardType"],
+                            "isLegend": True
+                        }
+                        players_list.append(p_obj)
+                        current_team_players.append(p_obj)
+                        player_id_counter += 1
+                    else:
+                        print(f"  ℹ️ {tid} ya cuenta con 23 jugadores en plantilla; omitiendo registro extra de Renovaciones: {entry['name']}")
 
         # 4.5. Procesar jugadores No Renovados (Hoja Lista, Columna A, Fila 27 en adelante)
         print("📋 Procesando lista de jugadores No Renovados...")
@@ -1246,6 +1261,11 @@ def process_excel():
             "champions": champions_list,
             "balonOro": balon_oro_list
         }
+        if old_data and "fixtures" in old_data:
+            final_data["fixtures"] = old_data["fixtures"]
+        if old_data and "matchHistory" in old_data:
+            final_data["matchHistory"] = old_data["matchHistory"]
+
 
         # 6.5. Auditoría Pre-Vuelo y Semáforo de Control
         is_clean = run_preflight_audit(teams_dict, players_list, audit_stats)
