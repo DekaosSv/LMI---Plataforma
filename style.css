@@ -2088,3 +2088,21 @@ footer {
   border-top: 1px solid var(--border-color);
 }
 
+/* ==========================================
+   ESTILOS: TABLA DE POSICIONES Y FIXTURE
+   ========================================== */
+.data-table th, .data-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.035) !important;
+}
+
+@media (max-width: 768px) {
+  #web-jornada-matches-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+

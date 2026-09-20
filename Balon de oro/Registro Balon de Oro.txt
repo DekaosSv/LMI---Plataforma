@@ -1,8 +1,9 @@
-Temporada 10
-Jamie Vardy - Como 1907
-23 Goles 2 Asistencias
-Campeon Liga LMI & Champions League
-Máximo goleador y referente del Como 1907, ganador indiscutible del Balón de Oro tras una temporada histórica.
-Imagen: LMI\vardybalonoro.jpg
-
-
+Temporada: Temporada 10
+Jugador: Jamie Vardy
+Club: Como 1907
+DT: Jose Encinas
+Imagen: vardybalonoro.jpg
+Goles: 23
+Asistencias: 2
+Titulos: Campeon Liga LMI & Champions League
+Descripcion: Máximo goleador y referente del Como 1907, ganador indiscutible del Balón de Oro tras una temporada histórica.

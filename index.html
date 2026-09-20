@@ -11,6 +11,9 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- html2canvas for fixture image export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css?v=28100703">
 </head>
@@ -27,11 +30,13 @@
       <ul class="nav-menu">
         <li><button class="nav-link active" onclick="switchNav('dashboard')"><i class="fa-solid fa-house"></i>
             Inicio</button></li>
+        <li><button class="nav-link" onclick="switchNav('posiciones')"><i class="fa-solid fa-trophy"></i>
+            Tabla y Partidos</button></li>
         <li><button class="nav-link" onclick="switchNav('stats')"><i class="fa-solid fa-chart-line"></i>
             Estadísticas</button></li>
         <li><button class="nav-link" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i>
             Equipos</button></li>
-        <li><button class="nav-link" onclick="switchNav('sala-campeones')"><i class="fa-solid fa-trophy"></i>
+        <li><button class="nav-link" onclick="switchNav('sala-campeones')"><i class="fa-solid fa-award"></i>
             Sala de Trofeos</button></li>
         <!-- <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
             Estelar</button></li> -->
@@ -39,12 +44,10 @@
             League</button></li> -->
         <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i>
             Mercado</button></li>
-        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T10</button></li>
+        <!-- <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T10</button></li> -->
         <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar
             Jugadores</button></li>
-        <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button>
-        </li>
-
+        <!-- <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li> -->
       </ul>
     </nav>
   </header>
@@ -52,16 +55,20 @@
   <!-- Sub Navigation / Season Bar -->
   <div class="division-bar">
     <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-      <span class="hero-tag"
-        style="margin-bottom:0; background: rgba(0, 168, 89, 0.1); border-color: var(--lmi-green); color: var(--lmi-green);">
-        <i class="fa-solid fa-trophy"></i> LIGA UNIFICADA
+      <span class="hero-tag" id="bar-badge-oro"
+        style="margin-bottom:0; background: #fef3c7; border: 1.5px solid #d97706; color: #92400e; font-weight: 800; font-size: 0.82rem; padding: 0.35rem 0.8rem; border-radius: 99px;">
+        <i class="fa-solid fa-trophy" style="color: #b45309;"></i> DIVISIÓN ORO &bull; <strong id="lbl-bar-count-oro">8</strong> CLUBES
       </span>
-      <span style="font-family: var(--font-heading); font-weight: 700; color: var(--text-primary);">Temporada 10</span>
+      <span class="hero-tag" id="bar-badge-plata"
+        style="margin-bottom:0; background: #f1f5f9; border: 1.5px solid #64748b; color: #1e293b; font-weight: 800; font-size: 0.82rem; padding: 0.35rem 0.8rem; border-radius: 99px;">
+        <i class="fa-solid fa-medal" style="color: #475569;"></i> DIVISIÓN PLATA &bull; <strong id="lbl-bar-count-plata">12</strong> CLUBES
+      </span>
+      <span style="font-family: var(--font-heading); font-weight: 700; color: #0f172a;">Temporada 10</span>
     </div>
 
-    <div class="league-status">
+    <div class="league-status" style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #1e293b;">
       <span class="status-dot"></span>
-      <span>17 Clubes Oficiales &bull; eFootball v4.x</span>
+      <span><strong id="lbl-bar-count-total">20</strong> Clubes Oficiales &bull; eFootball v4.x</span>
     </div>
   </div>
 
@@ -80,19 +87,14 @@
       </div>
 
       <!-- Banner de Texto de Bienvenida -->
-      <div class="hero-banner">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <span class="hero-tag">Liga Master eFootball</span>
-          <h1 class="hero-title">BIENVENIDO A LA LIGA MASTER INTERNACIONAL</h1>
-          <p class="hero-desc">Explora la plantilla de cada club participante, las estadísticas de la liga, el mercado
-            de fichajes y usa las herramientas disponibles.</p>
-          <div class="hero-actions">
-            <button class="btn-secondary" onclick="switchNav('teams')"><i class="fa-solid fa-shield-halved"></i> Ver
-              Equipos</button>
-            <button class="btn-primary-outline" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Ver
-              Reglamento</button>
-          </div>
+      <div class="hero-banner" style="display: flex; justify-content: center; align-items: center; text-align: center; padding: 2.25rem 2rem;">
+        <div class="hero-overlay" style="background: linear-gradient(180deg, rgba(0, 51, 160, 0.88) 0%, rgba(9, 14, 26, 0.95) 100%);"></div>
+        <div class="hero-content" style="max-width: 820px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center;">
+          <span class="hero-tag" style="margin-bottom: 0.75rem;">Liga Master eFootball</span>
+          <h1 class="hero-title" style="margin-bottom: 0.75rem; font-size: 2.1rem; font-weight: 900; letter-spacing: 0.5px;">BIENVENIDO A LA LIGA MASTER INTERNACIONAL</h1>
+          <p class="hero-desc" style="max-width: 700px; margin: 0 auto; color: rgba(255, 255, 255, 0.88); font-size: 1.02rem; line-height: 1.6;">
+            Explora la plantilla de cada club participante, las estadísticas oficiales, el mercado de fichajes y la tabla de posiciones en vivo de la temporada.
+          </p>
         </div>
       </div>
 
@@ -124,13 +126,13 @@
           </div>
         </div>
 
-        <div class="quick-card" onclick="switchNav('renovaciones')">
-          <div class="quick-icon-wrapper" style="background: rgba(255, 209, 0, 0.15); color: #b89500;">
-            <i class="fa-solid fa-file-signature"></i>
+        <div class="quick-card" onclick="switchNav('posiciones')">
+          <div class="quick-icon-wrapper" style="background: rgba(255, 209, 0, 0.15); color: var(--lmi-gold);">
+            <i class="fa-solid fa-trophy"></i>
           </div>
           <div class="quick-card-content">
-            <h3 class="quick-card-title">Renovaciones</h3>
-            <p class="quick-card-desc">Calculadora de pago de renovaciones de equipos.</p>
+            <h3 class="quick-card-title">Tabla y Partidos</h3>
+            <p class="quick-card-desc">Posiciones de liga, calendario y resultados oficiales.</p>
           </div>
           <div class="quick-card-arrow">
             <i class="fa-solid fa-chevron-right"></i>
@@ -178,6 +180,98 @@
             <div id="dashboard-top-assists">
               <!-- Rendered via JS -->
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.5 POSICIONES Y RESULTADOS DE LIGA (ORO Y PLATA) -->
+    <section id="sec-posiciones" class="page-section">
+      <!-- Selector de Divisiones (Tabs) -->
+      <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <button class="btn-tab active" id="tab-web-oro" onclick="switchWebDivision('oro')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #d97706; background: #fef3c7; color: #92400e; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2); transition: all 0.2s;">
+          <i class="fa-solid fa-trophy" style="color: #b45309;"></i> <span>División Oro (<span id="lbl-tab-count-oro">8</span> Clubes)</span>
+        </button>
+        <button class="btn-tab" id="tab-web-plata" onclick="switchWebDivision('plata')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
+          <i class="fa-solid fa-medal" style="color: #64748b;"></i> <span>División Plata (<span id="lbl-tab-count-plata">12</span> Clubes)</span>
+        </button>
+      </div>
+
+      <!-- Tabla de Posiciones Tradicional -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title" id="web-standings-card-title">
+              <i class="fa-solid fa-table-list" style="color: #b45309;"></i> Tabla de Posiciones Tradicional &bull; División Oro
+            </h2>
+            <p class="card-desc" style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">
+              Clasificación general en vivo de la temporada regular.
+            </p>
+          </div>
+          <span class="badge" style="background: #fef3c7; border: 1.5px solid #d97706; color: #92400e; padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.85rem; font-weight: 800;" id="lbl-web-division-badge">
+            8 CLUBES
+          </span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="data-table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);">
+                <th style="padding: 0.75rem 1rem; text-align: center; width: 50px;">Pos</th>
+                <th style="padding: 0.75rem 1rem; text-align: left;">Club</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Partidos Jugados">PJ</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Partidos Ganados">G</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Partidos Empatados">E</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Partidos Perdidos">P</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Goles a Favor">GF</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Goles en Contra">GC</th>
+                <th style="padding: 0.75rem 0.75rem; text-align: center;" title="Diferencia de Goles">DG</th>
+                <th style="padding: 0.75rem 1rem; text-align: center; color: var(--lmi-gold); font-size: 0.95rem;" title="Puntos Totales">PTS</th>
+              </tr>
+            </thead>
+            <tbody id="web-standings-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Calendario y Resultados por Jornada -->
+      <div class="card">
+        <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="card-title">
+              <i class="fa-solid fa-calendar-days" style="color: var(--lmi-gold);"></i> Calendario y Partidos por Jornada
+            </h2>
+            <p class="card-desc" style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">
+              Consulta los marcadores y resultados oficiales de cada jornada.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <label style="font-weight: 700; color: var(--text-muted); font-size: 0.9rem;">Jornada:</label>
+            <select class="form-control" id="web-jornada-select" onchange="onWebJornadaSelectChange()" style="width: auto; font-weight: 700; padding: 0.45rem 1rem;">
+              <!-- Filled via JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Contenedor de Partidos -->
+        <div id="web-jornada-capture-container" style="padding: 1.5rem; background: #0c1220; border-radius: var(--radius-md); border: 1px solid rgba(250, 204, 21, 0.35);">
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #facc15; padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <div style="font-size: 1.8rem; color: #facc15;"><i class="fa-solid fa-trophy"></i></div>
+              <div>
+                <h2 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;" id="web-export-title">LIGA MÁSTER INTERNACIONAL</h2>
+                <span style="font-size: 0.88rem; font-weight: 900; color: #facc15; text-transform: uppercase; letter-spacing: 0.5px;" id="web-export-sub">DIVISIÓN ORO &bull; JORNADA 1</span>
+              </div>
+            </div>
+            <div style="text-align: right; color: #cbd5e1; font-size: 0.85rem; font-weight: 700;">
+              Temporada 10 &bull; eFootball
+            </div>
+          </div>
+
+          <div id="web-jornada-matches-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <!-- Matches rendered via JS -->
           </div>
         </div>
       </div>
@@ -547,8 +641,8 @@
       </div>
     </section>
 
-    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 10 -->
-    <section id="sec-renovaciones" class="page-section">
+    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 10 (OCULTO TEMPORALMENTE) -->
+    <section id="sec-renovaciones" class="page-section" style="display: none !important;">
       <div class="card">
         <div class="card-header">
           <div>
@@ -748,8 +842,8 @@
       </div>
     </section>
 
-    <!-- 6. REGLAMENTO -->
-    <section id="sec-rules" class="page-section">
+    <!-- 6. REGLAMENTO (OCULTO TEMPORALMENTE) -->
+    <section id="sec-rules" class="page-section" style="display: none !important;">
       <div class="card">
         <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
           <h2 class="card-title"><i class="fa-solid fa-book"></i> Reglamento Oficial LMI</h2>
@@ -832,8 +926,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1789533882"></script>
-  <script src="app.js?v=1789533882"></script>
+  <script src="data.js?v=1789878388"></script>
+  <script src="app.js?v=1789878388"></script>
 </body>
 
 </html>

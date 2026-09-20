@@ -1540,8 +1540,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_69",
-      "name": "Reserva",
-      "position": "MC",
+      "name": "Jack Hinshelwood",
+      "position": "MP",
       "teamId": "atleticodemadrid",
       "goals": 0,
       "assists": 0,
