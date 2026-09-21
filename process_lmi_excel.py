@@ -72,7 +72,37 @@ TEAM_ID_MAP = {
     "urawa_red_diamonds": "urawareddiamonds",
     "clubamerica": "clubamerica",
     "clubamrica": "clubamerica",
-    "america": "clubamerica"
+    "america": "clubamerica",
+    "liverpool": "liverpool",
+    "liverpoolfc": "liverpool",
+    "brighton": "brighton",
+    "clubatleticoriverplate": "riverplate",
+    "losclille": "losclille",
+    "lille": "losclille",
+    "realmadridcf": "realmadrid"
+}
+
+TEAM_DIVISION_MAP = {
+    "como1907": "oro",
+    "bayernleverkusen": "oro",
+    "psg": "oro",
+    "fcbarcelona": "oro",
+    "arsenal": "oro",
+    "manchestercity": "oro",
+    "bocajuniors": "oro",
+    "realmadrid": "oro",
+    "interdemilan": "plata",
+    "galatasaray": "plata",
+    "urawareddiamonds": "plata",
+    "atleticodemadrid": "plata",
+    "casapiaac": "plata",
+    "borussiadortmund": "plata",
+    "acmiln": "plata",
+    "brighton": "plata",
+    "clubamerica": "plata",
+    "riverplate": "plata",
+    "losclille": "plata",
+    "liverpool": "plata"
 }
 
 def normalize_key(name):
@@ -707,6 +737,9 @@ def process_excel():
                 if "manager" not in team_obj: team_obj["manager"] = "Director Técnico"
                 if "budget" not in team_obj: team_obj["budget"] = 100000000
                 if "initialBudget" not in team_obj: team_obj["initialBudget"] = 100000000
+
+            # Asignar división correspondiente
+            team_obj["division"] = TEAM_DIVISION_MAP.get(team_id, team_obj.get("division", "oro"))
             
             # Auto-corregir extensión del logotipo si el archivo no existe físicamente en disco
             current_logo = team_obj.get("logo", "")

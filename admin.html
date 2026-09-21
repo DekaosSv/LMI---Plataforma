@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMI Admin Hub | Panel de Control Centralizado</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" type="image/png" href="Balon de oro/balonoro.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    if (window.location.protocol === 'file:') {
+      fetch('http://127.0.0.1:8000/api/status')
+        .then(r => r.json())
+        .then(d => {
+          if (d && d.status === 'online') {
+            window.location.href = 'http://127.0.0.1:8000/admin.html';
+          }
+        }).catch(() => {});
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-futbol"></i>
+      </div>
+      <div class="brand-info">
+        <h2>LMI ADMIN</h2>
+        <span>Panel Central</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-title">Navegación</span>
+      <button class="nav-btn active" data-view="view-dashboard">
+        <i class="fa-solid fa-chart-pie"></i>
+        <span>Resumen General</span>
+      </button>
+      <button class="nav-btn" data-view="view-matches">
+        <i class="fa-solid fa-trophy"></i>
+        <span>Registrar Partido</span>
+      </button>
+      <button class="nav-btn" data-view="view-teams">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Clubes y Plantillas</span>
+      </button>
+      <button class="nav-btn" data-view="view-market">
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+        <span>Mercado de Fichajes</span>
+      </button>
+      <button class="nav-btn" data-view="view-trophies">
+        <i class="fa-solid fa-award"></i>
+        <span>Trofeos & Balón de Oro</span>
+      </button>
+
+      <span class="nav-section-title">Sistema</span>
+      <button class="nav-btn" id="btn-quick-deploy">
+        <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i>
+        <span>Publicar Web (Git)</span>
+      </button>
+      <button class="nav-btn" id="btn-export-backup">
+        <i class="fa-solid fa-download"></i>
+        <span>Descargar Respaldo</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="version-tag">
+        <span>Liga Máster Internacional</span>
+        <span class="badge" id="lbl-season">T10</span>
+      </div>
+      <div class="version-tag">
+        <span>Admin Hub</span>
+        <span>v2.0 Pro</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTAINER ==================== -->
+  <main class="admin-main">
+    
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <h1 class="topbar-title" id="topbar-page-title">
+          <i class="fa-solid fa-chart-pie"></i> Resumen General
+        </h1>
+        <div class="status-badge" id="status-badge">
+          <span class="status-dot"></span>
+          <span id="status-text">Listo</span>
+        </div>
+        <div class="dirty-indicator" id="dirty-indicator">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Cambios sin guardar</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <a href="index.html" target="_blank" class="btn btn-secondary" title="Abrir la página web pública">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Ver Web</span>
+        </a>
+        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js">
+          <i class="fa-solid fa-floppy-disk"></i>
+          <span>Guardar Cambios</span>
+        </button>
+        <button class="btn btn-success" id="btn-open-deploy" title="Subir a producción (GitHub Pages)">
+          <i class="fa-solid fa-rocket"></i>
+          <span>Publicar a Producción</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="admin-content">
+
+      <!-- ==================== VIEW 1: DASHBOARD ==================== -->
+      <section class="module-view active" id="view-dashboard">
+        <!-- Stat Widgets -->
+        <div class="grid-4">
+          <div class="stat-widget">
+            <div class="widget-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="widget-info">
+              <span>Clubes Activos</span>
+              <h3 id="stat-teams-count">0</h3>
+            </div>
+          </div>
+          <div class="stat-widget">
+            <div class="widget-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="widget-info">
+              <span>Jugadores Totales</span>
+              <h3 id="stat-players-count">0</h3>
+            </div>
+          </div>
+          <div class="stat-widget">
+            <div class="widget-icon" style="background: rgba(255, 209, 0, 0.15); color: #ffd100;">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div class="widget-info">
+              <span>Balón de Oro</span>
+              <h3 id="stat-bdo-name">Vardy</h3>
+            </div>
+          </div>
+          <div class="stat-widget">
+            <div class="widget-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">
+              <i class="fa-solid fa-arrows-split-up-and-left"></i>
+            </div>
+            <div class="widget-info">
+              <span>Movimientos Mercado</span>
+              <h3 id="stat-market-count">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Recent Updates -->
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-bolt" style="color: var(--lmi-gold);"></i> Acciones Rápidas</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-matches')">
+                <i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i>
+                <span>Registrar resultado de partido y goles</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-teams')">
+                <i class="fa-solid fa-user-plus" style="color: #38bdf8;"></i>
+                <span>Gestionar plantilla, fichar o traspasar jugador</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-market')">
+                <i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i>
+                <span>Registrar movimiento oficial de mercado</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-trophies')">
+                <i class="fa-solid fa-award" style="color: #f59e0b;"></i>
+                <span>Añadir o editar ganador de Balón de Oro</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-circle-info" style="color: #38bdf8;"></i> Estado del Sistema</h2>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+              Todo el flujo de trabajo de la <strong>Liga Máster Internacional</strong> se encuentra centralizado en este panel.
+            </p>
+            <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.9rem;">
+              <li>Edición en vivo de plantillas, presupuestos y estadísticas.</li>
+              <li>Actualización instantánea de goles y asistencias por torneo.</li>
+              <li>Sincronización automática con <code>data.js</code> y <code>Registro Balon de Oro.txt</code>.</li>
+              <li>Publicación con 1 clic hacia GitHub Pages.</li>
+            </ul>
+            <button class="btn btn-gold" onclick="AdminApp.saveData(true)" style="width: 100%;">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Todo Ahora
+            </button>
+          </div>
+        </div>
+
+        <!-- Top Scorers Overview Table -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-futbol"></i> Máximos Goleadores Actuales (Top 5)</h2>
+            <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="AdminApp.switchView('view-teams')">
+              Ver todos los jugadores
+            </button>
+          </div>
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Jugador</th>
+                  <th>Club</th>
+                  <th>Pos</th>
+                  <th>Goles Liga</th>
+                  <th>Goles Champ</th>
+                  <th>Goles Estelar</th>
+                  <th style="color: var(--lmi-gold);">Goles Totales</th>
+                  <th>Asistencias</th>
+                </tr>
+              </thead>
+              <tbody id="top-scorers-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 2: MATCHES & STATS ==================== -->
+      <section class="module-view" id="view-matches">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i> Registro de Partido y Estadísticas</h2>
+              <p class="card-desc">Registra el resultado de un encuentro y asigna goles y asistencias a los jugadores.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+              <select class="form-select" id="match-competition" style="width: 190px; font-weight: 700;">
+                <option value="oro">🥇 División Oro</option>
+                <option value="plata">🥈 División Plata</option>
+                <option value="champions">🏆 Champions League</option>
+                <option value="estelar">⭐ Copa Estelar</option>
+              </select>
+              <select class="form-select" id="match-jornada-select" style="width: 140px; font-weight: 700;">
+                <!-- Filled dynamically with Jornadas -->
+              </select>
+              <select class="form-select" id="match-fixture-item-select" style="width: 270px; font-weight: 700;">
+                <option value="">-- Seleccionar Partido --</option>
+              </select>
+              <select class="form-select" id="match-phase" style="width: 170px; display: none;">
+                <option value="Cuartos 1">Cuartos 1</option>
+                <option value="Cuartos 2">Cuartos 2</option>
+                <option value="Cuartos 3">Cuartos 3</option>
+                <option value="Cuartos 4">Cuartos 4</option>
+                <option value="Semifinal 1">Semifinal 1</option>
+                <option value="Semifinal 2">Semifinal 2</option>
+                <option value="Final">Gran Final</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Duel Box -->
+          <div class="match-duel-box">
+            <!-- Local Team -->
+            <div class="duel-team">
+              <img src="Logos Equipos/intermilan.webp" alt="Local" class="duel-team-logo" id="match-team1-logo">
+              <div class="duel-team-name" id="match-team1-name">Equipo Local</div>
+              <select class="form-select" id="match-team1-select" style="width: 100%; text-align: center;">
+                <!-- Filled dynamically -->
+              </select>
+            </div>
+
+            <!-- Score Center -->
+            <div class="duel-score-center">
+              <div class="duel-inputs">
+                <input type="number" min="0" max="99" value="0" class="duel-score-input" id="match-score1">
+                <span class="duel-vs">-</span>
+                <input type="number" min="0" max="99" value="0" class="duel-score-input" id="match-score2">
+              </div>
+              <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Marcador Final</span>
+            </div>
+
+            <!-- Visitor Team -->
+            <div class="duel-team">
+              <img src="Logos Equipos/bayern.png" alt="Visitante" class="duel-team-logo" id="match-team2-logo">
+              <div class="duel-team-name" id="match-team2-name">Equipo Visitante</div>
+              <select class="form-select" id="match-team2-select" style="width: 100%; text-align: center;">
+                <!-- Filled dynamically -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Goals and Assists Events Studio -->
+          <div class="card-header" style="border: none; padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; font-weight: 700;"><i class="fa-solid fa-stopwatch"></i> Goleadores y Asistidores del Partido</h3>
+              <p class="card-desc">Agrega quién anotó y quién asistió en este partido para actualizar sus estadísticas.</p>
+            </div>
+            <button class="btn btn-secondary" id="btn-add-match-event" style="font-size: 0.85rem;">
+              <i class="fa-solid fa-plus"></i> Añadir Goleador / Asistente
+            </button>
+          </div>
+
+          <div class="events-table-wrapper" id="match-events-list">
+            <p style="color: var(--text-muted); text-align: center; padding: 1rem;" id="match-events-empty">
+              No hay eventos agregados. Haz clic en "Añadir Goleador / Asistente" si hubo anotaciones o pases de gol.
+            </p>
+          </div>
+
+          <!-- Options and Submit -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;">
+                <input type="checkbox" id="chk-auto-stats" checked>
+                <span>Sumar automáticamente los goles y asistencias a las estadísticas del jugador</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;" id="lbl-chk-cup-bracket">
+                <input type="checkbox" id="chk-cup-bracket" checked>
+                <span>Guardar este marcador en el cuadro oficial de Copa / Champions</span>
+              </label>
+            </div>
+
+            <button class="btn btn-success" id="btn-apply-match" style="padding: 0.85rem 1.75rem; font-size: 1rem;">
+              <i class="fa-solid fa-check-double"></i> Registrar y Aplicar Partido
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Tarjeta Oficial de la Jornada y Exportación a Imagen -->
+        <div class="card" id="jornada-card-wrapper" style="margin-top: 1.5rem; background: #0c1220; border: 1px solid rgba(255,209,0,0.35);">
+          <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div>
+              <h3 class="card-title" id="jornada-card-title"><i class="fa-solid fa-calendar-days" style="color: var(--lmi-gold);"></i> Calendario de la Jornada Oficial</h3>
+              <p class="card-desc" id="jornada-card-desc">Partidos programados para esta fecha. Puedes exportarla como imagen para enviarla a los clubes.</p>
+            </div>
+            <button class="btn btn-gold" id="btn-export-jornada-img">
+              <i class="fa-solid fa-camera"></i> <span>Exportar Jornada a Imagen (PNG)</span>
+            </button>
+          </div>
+
+          <!-- Contenedor capturable para exportar a imagen -->
+          <div id="jornada-export-container" style="padding: 1.5rem; background: linear-gradient(135deg, #090e1a 0%, #111a2e 100%); border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--lmi-gold); padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="font-size: 1.8rem; color: var(--lmi-gold);"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                  <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: 0.5px;" id="export-league-title">LIGA MÁSTER INTERNACIONAL</h2>
+                  <span style="font-size: 0.85rem; font-weight: 800; color: var(--lmi-gold); text-transform: uppercase;" id="export-division-title">DIVISIÓN ORO &bull; JORNADA 1</span>
+                </div>
+              </div>
+              <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;">
+                Temporada 10 &bull; eFootball
+              </div>
+            </div>
+
+            <div id="jornada-matches-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <!-- Matches rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Historial de Partidos Registrados -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Historial de Partidos Registrados</h2>
+              <p class="card-desc">Lista de encuentros guardados. Si te equivocaste en algún resultado o jugador, puedes deshacerlo con un clic y restaurar automáticamente las estadísticas.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <select class="form-select" id="history-filter-select" style="width: 170px; font-weight: 700; padding: 0.4rem 0.75rem; font-size: 0.85rem;">
+                <option value="all">Todos los Torneos</option>
+                <option value="oro">🥇 División Oro</option>
+                <option value="plata">🥈 División Plata</option>
+                <option value="champions">🏆 Champions League</option>
+                <option value="estelar">⭐ Copa Estelar</option>
+              </select>
+              <span class="badge" id="lbl-matches-history-count" style="background: var(--border-color); padding: 0.35rem 0.7rem; border-radius: 99px; font-size: 0.8rem; font-weight: 700;">0 partidos</span>
+            </div>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Torneo</th>
+                  <th>Fecha</th>
+                  <th>Partido</th>
+                  <th style="text-align: center;">Marcador</th>
+                  <th>Goles y Asistencias</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="match-history-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3: TEAMS & ROSTERS ==================== -->
+      <section class="module-view" id="view-teams">
+        
+        <!-- Club Selector & Summary Card -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-shield-halved"></i> Gestión de Clubes y Plantillas</h2>
+              <p class="card-desc">Selecciona un club para ver y editar su plantilla de jugadores, DT y presupuesto.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <select class="form-select" id="team-filter-division" style="width: 170px; font-weight: 700;">
+                <option value="all">Todas las Divisiones</option>
+                <option value="oro">🥇 División Oro</option>
+                <option value="plata">🥈 División Plata</option>
+              </select>
+              <select class="form-select" id="team-selector" style="width: 240px; font-weight: 700;">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Team Details Edit Row -->
+          <div class="grid-4" id="team-details-box" style="margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label>Director Técnico (DT)</label>
+              <input type="text" class="form-control" id="team-edit-manager">
+            </div>
+            <div class="form-group">
+              <label>Estadio</label>
+              <input type="text" class="form-control" id="team-edit-stadium">
+            </div>
+            <div class="form-group">
+              <label>División</label>
+              <select class="form-select" id="team-edit-division">
+                <option value="oro">🥇 División Oro</option>
+                <option value="plata">🥈 División Plata</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Presupuesto Actual ($)</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="number" class="form-control" id="team-edit-budget">
+                <button class="btn btn-primary" id="btn-save-team-details" style="white-space: nowrap;">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roster Header & Search -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <h3 style="font-size: 1.15rem; font-weight: 800;">Plantilla de Jugadores</h3>
+              <span class="badge" id="lbl-roster-count" style="background: var(--border-color); padding: 0.25rem 0.6rem; border-radius: 99px; font-size: 0.8rem; font-weight: 700;">0 jugadores</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <input type="text" class="form-control" id="search-player-input" placeholder="Buscar jugador..." style="width: 200px; padding: 0.5rem 0.85rem; font-size: 0.85rem;">
+              <button class="btn btn-secondary" id="btn-reset-club-stats" style="padding: 0.5rem 0.85rem; font-size: 0.85rem;" title="Poner a cero los goles y asistencias de esta plantilla para una nueva temporada">
+                <i class="fa-solid fa-arrows-rotate"></i> Reset Goles
+              </button>
+              <button class="btn btn-success" id="btn-add-player-modal" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                <i class="fa-solid fa-user-plus"></i> Nuevo Jugador
+              </button>
+            </div>
+          </div>
+
+          <!-- Roster Table -->
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Jugador</th>
+                  <th>Posición</th>
+                  <th>Precio</th>
+                  <th>Goles Liga</th>
+                  <th>Goles Champ</th>
+                  <th>Goles Estelar</th>
+                  <th style="color: var(--lmi-gold);">Goles Totales</th>
+                  <th>Asistencias</th>
+                  <th>Carta</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="roster-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 4: MARKET & TRANSFERS ==================== -->
+      <section class="module-view" id="view-market">
+        
+        <!-- Register Market Movement Form -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i> Registrar Movimiento de Mercado</h2>
+              <p class="card-desc">Fichajes, préstamos, intercambios y rescisiones con ajuste automático de plantilla.</p>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label>Jugador</label>
+              <input type="text" class="form-control" id="market-player-name" placeholder="Nombre completo del jugador">
+            </div>
+            <div class="form-group">
+              <label>Tipo de Movimiento</label>
+              <select class="form-select" id="market-type">
+                <option value="Fichaje">Fichaje Definitivo</option>
+                <option value="Prestamo">Préstamo</option>
+                <option value="Intercambio">Intercambio</option>
+                <option value="Rescisión">Rescisión de Contrato</option>
+                <option value="No Renovado">No Renovado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Costo / Precio ($)</label>
+              <input type="number" class="form-control" id="market-price" value="0">
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label>Club Origen (Vendedor / Prestamista)</label>
+              <select class="form-select" id="market-from-team">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Club Destino (Comprador / Receptor)</label>
+              <select class="form-select" id="market-to-team">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Temporadas (para préstamos)</label>
+              <input type="number" class="form-control" id="market-seasons" value="1" min="1" max="5">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Detalles / Cláusulas del Movimiento</label>
+            <input type="text" class="form-control" id="market-details" placeholder="Ej: Compra definitiva por cláusula, préstamo con opción a compra...">
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;">
+                <input type="checkbox" id="market-auto-transfer-roster" checked>
+                <span>Mover automáticamente el jugador al club de destino en la plantilla</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;">
+                <input type="checkbox" id="market-auto-adjust-budget" checked>
+                <span>Descontar dinero al comprador y sumar al vendedor</span>
+              </label>
+            </div>
+            <button class="btn btn-success" id="btn-submit-market-movement">
+              <i class="fa-solid fa-check"></i> Registrar Movimiento
+            </button>
+          </div>
+        </div>
+
+        <!-- History of Market Movements Table -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Historial de Movimientos Registrados</h2>
+            <span class="badge" id="lbl-market-total" style="background: var(--border-color); padding: 0.25rem 0.6rem; border-radius: 99px; font-size: 0.8rem; font-weight: 700;">0</span>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Jugador</th>
+                  <th>Tipo</th>
+                  <th>De</th>
+                  <th>Hacia</th>
+                  <th>Costo</th>
+                  <th>Detalles</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="market-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== VIEW 5: TROPHIES & BALLON D'OR ==================== -->
+      <section class="module-view" id="view-trophies">
+        
+        <!-- Balon de Oro Manager -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Ganadores del Balón de Oro</h2>
+              <p class="card-desc">Sincronizado automáticamente con <code>data.js</code> y <code>Registro Balon de Oro.txt</code>.</p>
+            </div>
+            <button class="btn btn-gold" id="btn-add-bdo-modal">
+              <i class="fa-solid fa-plus"></i> Añadir Ganador de Balón de Oro
+            </button>
+          </div>
+
+          <!-- Cards Grid for Ballon d'Or -->
+          <div class="grid-3" id="bdo-cards-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Hall of Champions -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i> Sala de Campeones Histórica</h2>
+              <p class="card-desc">Registro histórico de títulos ganados por mánager en torneos oficiales.</p>
+            </div>
+            <button class="btn btn-secondary" id="btn-add-champion-row">
+              <i class="fa-solid fa-plus"></i> Añadir Campeón
+            </button>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Torneo</th>
+                  <th>Ganador / Mánager</th>
+                  <th>Cantidad de Títulos</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="champions-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==================== MODAL: DEPLOY TO GITHUB ==================== -->
+  <div class="modal-overlay" id="modal-deploy" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <i class="fa-solid fa-rocket" style="color: #10b981;"></i> Publicar en Producción
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeDeployModal()">✕</button>
+      </div>
+
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+        Esta acción guardará los cambios actuales, ejecutará <code>git add .</code>, creará un commit con tu mensaje y enviará los cambios a la rama <strong>main</strong> de GitHub Pages.
+      </p>
+
+      <div class="form-group" style="margin-top: 1rem;">
+        <label>Mensaje del Commit (Descripción del cambio)</label>
+        <input type="text" class="form-control" id="deploy-commit-msg" value="Actualizacion de datos desde LMI Admin Hub">
+      </div>
+
+      <div class="deploy-console" id="deploy-console">Listo para iniciar despliegue...</div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closeDeployModal()">Cerrar</button>
+        <button class="btn btn-success" id="btn-run-deploy">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Iniciar Despliegue Ahora
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: EDIT / ADD PLAYER ==================== -->
+  <div class="modal-overlay" id="modal-player" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-player-title">
+          <i class="fa-solid fa-user-pen"></i> Editar Jugador
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closePlayerModal()">✕</button>
+      </div>
+
+      <input type="hidden" id="player-modal-id">
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Nombre del Jugador</label>
+          <input type="text" class="form-control" id="player-modal-name">
+        </div>
+        <div class="form-group">
+          <label>Posición</label>
+          <select class="form-select" id="player-modal-pos">
+            <option value="PT">PT (Portero)</option>
+            <option value="DF">DF (Defensa)</option>
+            <option value="MC">MC (Mediocampista)</option>
+            <option value="DL">DL (Delantero)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Club Actual</label>
+          <select class="form-select" id="player-modal-team">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Precio / Valor de Mercado ($)</label>
+          <input type="number" class="form-control" id="player-modal-price">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Goles Liga</label>
+          <input type="number" class="form-control" id="player-modal-goals-liga" min="0">
+        </div>
+        <div class="form-group">
+          <label>Goles Champions</label>
+          <input type="number" class="form-control" id="player-modal-goals-champ" min="0">
+        </div>
+        <div class="form-group">
+          <label>Goles Copa Estelar</label>
+          <input type="number" class="form-control" id="player-modal-goals-estelar" min="0">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Asistencias Totales</label>
+          <input type="number" class="form-control" id="player-modal-assists" min="0">
+        </div>
+        <div class="form-group">
+          <label>Tipo de Carta</label>
+          <select class="form-select" id="player-modal-cardtype">
+            <option value="Normal">Normal</option>
+            <option value="Leyenda">Leyenda</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closePlayerModal()">Cancelar</button>
+        <button class="btn btn-primary" id="btn-save-player-modal">
+          <i class="fa-solid fa-floppy-disk"></i> Guardar Jugador
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ADD / EDIT BALLON D'OR ==================== -->
+  <div class="modal-overlay" id="modal-bdo" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-bdo-title">
+          <i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Ganador de Balón de Oro
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeBdoModal()">✕</button>
+      </div>
+
+      <input type="hidden" id="bdo-modal-index" value="-1">
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Nombre del Jugador</label>
+          <input type="text" class="form-control" id="bdo-modal-name" placeholder="Ej: Jamie Vardy">
+        </div>
+        <div class="form-group">
+          <label>Club</label>
+          <input type="text" class="form-control" id="bdo-modal-club" placeholder="Ej: Como 1907">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Temporada</label>
+          <input type="text" class="form-control" id="bdo-modal-season" placeholder="Ej: Temporada 10">
+        </div>
+        <div class="form-group">
+          <label>Goles Anotados</label>
+          <input type="number" class="form-control" id="bdo-modal-goals" value="0">
+        </div>
+        <div class="form-group">
+          <label>Asistencias</label>
+          <input type="number" class="form-control" id="bdo-modal-assists" value="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Ruta de la Imagen</label>
+        <input type="text" class="form-control" id="bdo-modal-image" placeholder="Ej: Balon de oro/vardybalonoro.jpg">
+      </div>
+
+      <div class="form-group">
+        <label>Descripción / Logros</label>
+        <textarea class="form-control" id="bdo-modal-desc" placeholder="Breve resumen de la temporada histórica..."></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closeBdoModal()">Cancelar</button>
+        <button class="btn btn-gold" id="btn-save-bdo-modal">
+          <i class="fa-solid fa-check"></i> Guardar Registro
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-box" id="toast-box"></div>
+
+  <!-- Application Logic -->
+  <script src="data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
