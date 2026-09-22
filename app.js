@@ -1821,31 +1821,66 @@ function calculateStandings(division) {
 
 function renderWebStandings() {
   const tbody = document.getElementById('web-standings-tbody');
+  const legendEl = document.getElementById('web-standings-legend');
   if (!tbody) return;
 
   const standings = calculateStandings(currentWebDivision);
   if (standings.length === 0) {
     tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; padding: 2rem; color: var(--text-muted);">No hay equipos configurados en esta división.</td></tr>`;
+    if (legendEl) legendEl.innerHTML = '';
     return;
   }
 
   const isOro = currentWebDivision === 'oro';
+  const totalTeams = standings.length;
 
   tbody.innerHTML = standings.map((item, idx) => {
     const pos = idx + 1;
-    let posBadge = `<span style="display:inline-block; width:26px; height:26px; line-height:26px; text-align:center; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(255,255,255,0.06); color:var(--text-muted);">${pos}</span>`;
-    
-    if (pos === 1) {
-      posBadge = `<span style="display:inline-block; width:26px; height:26px; line-height:26px; text-align:center; border-radius:50%; font-weight:800; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 10px rgba(255,215,0,0.5);" title="Líder">${pos}</span>`;
-    } else if (pos <= (isOro ? 3 : 4)) {
-      posBadge = `<span style="display:inline-block; width:26px; height:26px; line-height:26px; text-align:center; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(0, 168, 89, 0.2); border:1px solid var(--lmi-green); color:var(--lmi-green);">${pos}</span>`;
+    let posBadge = '';
+    let rowBorderLeft = '4px solid transparent';
+    let rowBg = 'transparent';
+
+    if (isOro) {
+      if (pos === 1) {
+        // 1° Campeón
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="🏆 Campeón de División Oro">1</span>`;
+        rowBorderLeft = '4px solid #ffd700';
+        rowBg = 'rgba(255, 215, 0, 0.04)';
+      } else if (pos >= totalTeams - 1) {
+        // Últimos 2: Descenso directo (Rojo)
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(239, 68, 68, 0.25); border:1px solid #ef4444; color:#f87171; box-shadow:0 0 8px rgba(239, 68, 68, 0.25);" title="Descenso Directo">${pos}</span>`;
+        rowBorderLeft = '4px solid #ef4444';
+        rowBg = 'rgba(239, 68, 68, 0.04)';
+      } else if (pos === totalTeams - 2) {
+        // 3er último (antepenúltimo): Repechaje de permanencia (Naranja)
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(249, 115, 22, 0.25); border:1px solid #f97316; color:#fb923c; box-shadow:0 0 8px rgba(249, 115, 22, 0.25);" title="Repechaje de Permanencia">${pos}</span>`;
+        rowBorderLeft = '4px solid #f97316';
+        rowBg = 'rgba(249, 115, 22, 0.04)';
+      } else {
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:700; font-size:0.85rem; background:rgba(255,255,255,0.06); color:var(--text-muted);">${pos}</span>`;
+      }
+    } else {
+      // División Plata
+      if (pos === 1 || pos === 2) {
+        // Primeros 2: Ascenso Directo (Verde)
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(16, 185, 129, 0.25); border:1px solid #10b981; color:#4ade80; box-shadow:0 0 10px rgba(16, 185, 129, 0.35);" title="Ascenso Directo a División Oro">${pos}</span>`;
+        rowBorderLeft = '4px solid #10b981';
+        rowBg = 'rgba(16, 185, 129, 0.04)';
+      } else if (pos === 3) {
+        // 3er lugar: Repechaje de ascenso (Naranja)
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(249, 115, 22, 0.25); border:1px solid #f97316; color:#fb923c; box-shadow:0 0 8px rgba(249, 115, 22, 0.25);" title="Repechaje de Ascenso">${pos}</span>`;
+        rowBorderLeft = '4px solid #f97316';
+        rowBg = 'rgba(249, 115, 22, 0.04)';
+      } else {
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:700; font-size:0.85rem; background:rgba(255,255,255,0.06); color:var(--text-muted);">${pos}</span>`;
+      }
     }
 
     const dgFormatted = item.dg > 0 ? `+${item.dg}` : `${item.dg}`;
     const dgColor = item.dg > 0 ? 'var(--lmi-green)' : (item.dg < 0 ? '#ef4444' : 'var(--text-muted)');
 
     return `
-      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); border-left: ${rowBorderLeft}; background: ${rowBg}; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='${rowBg}'">
         <td style="padding: 0.85rem 1rem; text-align: center;">${posBadge}</td>
         <td style="padding: 0.85rem 1rem; text-align: left;">
           <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -1864,6 +1899,41 @@ function renderWebStandings() {
       </tr>
     `;
   }).join('');
+
+  // Render legend
+  if (legendEl) {
+    if (isOro) {
+      legendEl.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; font-weight: 700; color: #94a3b8; padding: 0.4rem 0.5rem;">
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.7);"></span>
+            <strong style="color: #ffd700;">1°</strong> Campeón
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f97316; box-shadow: 0 0 8px rgba(249,115,22,0.7);"></span>
+            <strong style="color: #fb923c;">${totalTeams - 2}°</strong> Repechaje de Permanencia
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.7);"></span>
+            <strong style="color: #f87171;">${totalTeams - 1}° y ${totalTeams}°</strong> Descenso Directo
+          </span>
+        </div>
+      `;
+    } else {
+      legendEl.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; font-weight: 700; color: #94a3b8; padding: 0.4rem 0.5rem;">
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.7);"></span>
+            <strong style="color: #4ade80;">1° y 2°</strong> Ascenso Directo
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f97316; box-shadow: 0 0 8px rgba(249,115,22,0.7);"></span>
+            <strong style="color: #fb923c;">3°</strong> Repechaje de Ascenso
+          </span>
+        </div>
+      `;
+    }
+  }
 }
 
 function populateWebJornadas() {

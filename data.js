@@ -1,7 +1,7 @@
-// Base de datos unificada LMI Temporada 10
+// Base de datos unificada LMI Temporada 11
 
 var INITIAL_LMI_DATA = {
-  "season": "Temporada 10",
+  "season": "Temporada 11",
   "teams": [
     {
       "id": "interdemilan",
