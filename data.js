@@ -1,4 +1,4 @@
-// Base de datos unificada LMI Temporada 10 desde LMI Base.xlsx
+// Base de datos unificada LMI Temporada 10
 
 var INITIAL_LMI_DATA = {
   "season": "Temporada 10",
@@ -799,9 +799,9 @@ var INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "urawareddiamonds",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2159,9 +2159,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "urawareddiamonds",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2447,9 +2447,9 @@ var INITIAL_LMI_DATA = {
       "name": "Fabio Miretti",
       "position": "MP",
       "teamId": "liverpool",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2838,9 +2838,9 @@ var INITIAL_LMI_DATA = {
       "name": "Eden Hazard",
       "position": "EI",
       "teamId": "urawareddiamonds",
-      "goals": 0,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3161,9 +3161,9 @@ var INITIAL_LMI_DATA = {
       "name": "Antonio Nusa",
       "position": "EI",
       "teamId": "brighton",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3178,9 +3178,9 @@ var INITIAL_LMI_DATA = {
       "name": "Jack Grealish",
       "position": "EI",
       "teamId": "urawareddiamonds",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3519,9 +3519,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "urawareddiamonds",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3807,10 +3807,10 @@ var INITIAL_LMI_DATA = {
       "name": "Mame Thiam",
       "position": "DC",
       "teamId": "liverpool",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3841,9 +3841,9 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "brighton",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3858,10 +3858,10 @@ var INITIAL_LMI_DATA = {
       "name": "Serhou Guirassy",
       "position": "DC",
       "teamId": "urawareddiamonds",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 3,
+      "assists": 3,
+      "goals_liga": 3,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4198,10 +4198,10 @@ var INITIAL_LMI_DATA = {
       "name": "Johan Manzambi",
       "position": "MP",
       "teamId": "urawareddiamonds",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 4,
+      "goals_liga": 1,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5558,9 +5558,9 @@ var INITIAL_LMI_DATA = {
       "name": "Antony",
       "position": "ED",
       "teamId": "urawareddiamonds",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6204,9 +6204,9 @@ var INITIAL_LMI_DATA = {
       "name": "Thiago Pitarch",
       "position": "MC",
       "teamId": "riverplate",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6510,9 +6510,9 @@ var INITIAL_LMI_DATA = {
       "name": "Crysencio Summerville",
       "position": "ED",
       "teamId": "interdemilan",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6527,10 +6527,10 @@ var INITIAL_LMI_DATA = {
       "name": "Lazar Samardžić",
       "position": "MP",
       "teamId": "liverpool",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6868,9 +6868,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "liverpool",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8345,7 +8345,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "Real Madrid",
       "toTeamId": "como1907",
       "toTeamName": "Como 1907",
-      "price": 40.0,
+      "price": 40,
       "seasons": 2,
       "details": "Prestamo de jugadores"
     },
@@ -8356,7 +8356,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "Real Madrid",
       "toTeamId": "como1907",
       "toTeamName": "Como 1907",
-      "price": 15.0,
+      "price": 15,
       "seasons": 2,
       "details": "Prestamo de jugadores"
     },
@@ -8367,7 +8367,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "Como 1907",
       "toTeamId": "urawareddiamonds",
       "toTeamName": "Urawa Red Diamonds",
-      "price": 0.0,
+      "price": 0,
       "seasons": 2,
       "details": "Mercado de mitad de temporada"
     },
@@ -8378,7 +8378,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "Bayern Leverkusen",
       "toTeamId": "interdemilan",
       "toTeamName": "Inter de Milan",
-      "price": 0.0,
+      "price": 0,
       "seasons": 2,
       "details": "Mercado de mitad de temporada"
     },
@@ -8389,7 +8389,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "Inter de Milan",
       "toTeamId": "bayernleverkusen",
       "toTeamName": "Bayern Leverkusen",
-      "price": 0.0,
+      "price": 0,
       "seasons": 2,
       "details": "Mercado de mitad de temporada"
     },
@@ -8400,7 +8400,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "AC Milan",
       "toTeamId": "como1907",
       "toTeamName": "Como 1907",
-      "price": 50.0,
+      "price": 50,
       "seasons": 1,
       "details": "Mercado de mitad de temporada"
     },
@@ -8411,7 +8411,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "Bayern Leverkusen",
       "toTeamId": "acmiln",
       "toTeamName": "AC Milan",
-      "price": 0.0,
+      "price": 0,
       "seasons": 1,
       "details": "Mercado de mitad de temporada"
     },
@@ -8422,7 +8422,7 @@ var INITIAL_LMI_DATA = {
       "fromTeamName": "AC Milan",
       "toTeamId": "bayernleverkusen",
       "toTeamName": "Bayern Leverkusen",
-      "price": 0.0,
+      "price": 0,
       "seasons": 1,
       "details": "Mercado de mitad de temporada"
     }
@@ -9181,10 +9181,53 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "interdemilan",
             "team2Id": "liverpool",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_362",
+                "playerName": "Lazar Samardžić",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_382",
+                "playerName": "Brennan Johnson",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_202",
+                "playerName": "Mame Thiam",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_361",
+                "playerName": "Crysencio Summerville",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_122",
+                "playerName": "Fabio Miretti",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_362",
+                "playerName": "Lazar Samardžić",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j1_m2",
@@ -9201,10 +9244,46 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "urawareddiamonds",
             "team2Id": "riverplate",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 5,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_305",
+                "playerName": "Antony",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_225",
+                "playerName": "Johan Manzambi",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 3
+              },
+              {
+                "playerId": "p_145",
+                "playerName": "Eden Hazard",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_205",
+                "playerName": "Serhou Guirassy",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_205",
+                "playerName": "Serhou Guirassy",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 2
+              }
+            ]
           },
           {
             "id": "plata_j1_m4",
@@ -9258,10 +9337,32 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "riverplate",
             "team2Id": "liverpool",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_343",
+                "playerName": "Thiago Pitarch",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_122",
+                "playerName": "Fabio Miretti",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_202",
+                "playerName": "Mame Thiam",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j2_m3",
@@ -9278,10 +9379,88 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "brighton",
             "team2Id": "urawareddiamonds",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 6,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_225",
+                "playerName": "Johan Manzambi",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_205",
+                "playerName": "Serhou Guirassy",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_105",
+                "playerName": "Eduardo Camavinga",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_205",
+                "playerName": "Serhou Guirassy",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_145",
+                "playerName": "Eden Hazard",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_204",
+                "playerName": "Rasmus Højlund",
+                "teamId": "brighton",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_164",
+                "playerName": "Antonio Nusa",
+                "teamId": "brighton",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_165",
+                "playerName": "Jack Grealish",
+                "teamId": "urawareddiamonds",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_185",
+                "playerName": "Neymar",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_225",
+                "playerName": "Johan Manzambi",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_25",
+                "playerName": "Trent Alexander-Arnold",
+                "teamId": "urawareddiamonds",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j2_m5",
@@ -10647,5 +10826,257 @@ var INITIAL_LMI_DATA = {
       }
     ]
   },
-  "matchHistory": []
+  "matchHistory": [
+    {
+      "id": "match_1790036364423",
+      "timestamp": 1790036364423,
+      "date": "21 sep 2026, 06:19 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m2",
+      "phase": "Jornada 2",
+      "team1Id": "riverplate",
+      "team1Name": "River Plate",
+      "team1Logo": "Logos Equipos/riverplate.webp",
+      "score1": 1,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_343",
+          "playerName": "Thiago Pitarch",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_122",
+          "playerName": "Fabio Miretti",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_202",
+          "playerName": "Mame Thiam",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790036287575",
+      "timestamp": 1790036287575,
+      "date": "21 sep 2026, 06:18 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m4",
+      "phase": "Jornada 2",
+      "team1Id": "brighton",
+      "team1Name": "Brighton",
+      "team1Logo": "Logos Equipos/brighton.png",
+      "score1": 2,
+      "team2Id": "urawareddiamonds",
+      "team2Name": "Urawa Red Diamonds",
+      "team2Logo": "Logos Equipos/urawareds.png",
+      "score2": 6,
+      "events": [
+        {
+          "playerId": "p_225",
+          "playerName": "Johan Manzambi",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_205",
+          "playerName": "Serhou Guirassy",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_105",
+          "playerName": "Eduardo Camavinga",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_205",
+          "playerName": "Serhou Guirassy",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_145",
+          "playerName": "Eden Hazard",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_204",
+          "playerName": "Rasmus Højlund",
+          "teamId": "brighton",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_164",
+          "playerName": "Antonio Nusa",
+          "teamId": "brighton",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_165",
+          "playerName": "Jack Grealish",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_185",
+          "playerName": "Neymar",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_225",
+          "playerName": "Johan Manzambi",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_25",
+          "playerName": "Trent Alexander-Arnold",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790035484573",
+      "timestamp": 1790035484573,
+      "date": "21 sep 2026, 06:04 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m1",
+      "phase": "Jornada 1",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 1,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_362",
+          "playerName": "Lazar Samardžić",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_382",
+          "playerName": "Brennan Johnson",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_202",
+          "playerName": "Mame Thiam",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_361",
+          "playerName": "Crysencio Summerville",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_122",
+          "playerName": "Fabio Miretti",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_362",
+          "playerName": "Lazar Samardžić",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790035267063",
+      "timestamp": 1790035267063,
+      "date": "21 sep 2026, 06:01 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m3",
+      "phase": "Jornada 1",
+      "team1Id": "urawareddiamonds",
+      "team1Name": "Urawa Red Diamonds",
+      "team1Logo": "Logos Equipos/urawareds.png",
+      "score1": 5,
+      "team2Id": "riverplate",
+      "team2Name": "River Plate",
+      "team2Logo": "Logos Equipos/riverplate.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_305",
+          "playerName": "Antony",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_225",
+          "playerName": "Johan Manzambi",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_145",
+          "playerName": "Eden Hazard",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_205",
+          "playerName": "Serhou Guirassy",
+          "teamId": "urawareddiamonds",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_205",
+          "playerName": "Serhou Guirassy",
+          "teamId": "urawareddiamonds",
+          "type": "gol",
+          "count": 2
+        }
+      ]
+    }
+  ]
 };
