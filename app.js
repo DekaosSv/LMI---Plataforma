@@ -139,115 +139,424 @@ function switchNav(navId) {
   if (navId === 'balon-oro') renderBalonOro();
 }
 
-// Render Dashboard
-function renderDashboard() {
-  // Top Scorers Preview
-  const scorersContainer = document.getElementById('dashboard-top-scorers');
-  const topPlayers = [...lmiData.players].sort((a, b) => b.goals - a.goals).slice(0, 5);
+// Estado de división para Estadísticas
+let currentStatsDivision = 'oro';
 
-  scorersContainer.innerHTML = topPlayers.map((p, idx) => {
-    const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '' };
-    return `
-      <div class="leader-row">
-        <div class="leader-info">
-          <div class="player-avatar">${idx + 1}</div>
-          <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px;">
-          <div>
-            <div class="player-name">${p.name}</div>
-            <div class="player-meta">${team.name} &bull; <span class="pos-badge pos-${p.position}">${p.position}</span></div>
-          </div>
+function switchStatsDivision(div) {
+  currentStatsDivision = div;
+
+  const tabOro = document.getElementById('tab-stats-oro');
+  const tabPlata = document.getElementById('tab-stats-plata');
+  const tabAmbas = document.getElementById('tab-stats-ambas');
+  const tabGeneral = document.getElementById('tab-stats-general');
+
+  const tabs = [
+    { el: tabOro, id: 'oro', bg: '#fef3c7', border: '#d97706', color: '#92400e', shadow: '0 2px 8px rgba(217, 119, 6, 0.2)' },
+    { el: tabPlata, id: 'plata', bg: '#e2e8f0', border: '#475569', color: '#0f172a', shadow: '0 2px 8px rgba(71, 85, 105, 0.2)' },
+    { el: tabAmbas, id: 'ambas', bg: '#e0f2fe', border: '#0284c7', color: '#0369a1', shadow: '0 2px 8px rgba(2, 132, 199, 0.2)' },
+    { el: tabGeneral, id: 'general', bg: '#d1fae5', border: '#059669', color: '#065f46', shadow: '0 2px 8px rgba(5, 150, 105, 0.2)' }
+  ];
+
+  tabs.forEach(t => {
+    if (!t.el) return;
+    if (t.id === div) {
+      t.el.classList.add('active');
+      t.el.style.background = t.bg;
+      t.el.style.borderColor = t.border;
+      t.el.style.color = t.color;
+      t.el.style.boxShadow = t.shadow;
+    } else {
+      t.el.classList.remove('active');
+      t.el.style.background = '#ffffff';
+      t.el.style.borderColor = '#cbd5e1';
+      t.el.style.color = '#334155';
+      t.el.style.boxShadow = 'none';
+    }
+  });
+
+  renderStats();
+}
+
+// Render Dashboard (Acumuladas Generales de Toda la Liga)
+function renderDashboard() {
+  // Top Scorers Preview (Acumulado General)
+  const scorersContainer = document.getElementById('dashboard-top-scorers');
+  if (scorersContainer) {
+    const topPlayers = [...lmiData.players]
+      .filter(p => (p.goals || 0) > 0)
+      .sort((a, b) => (b.goals || 0) - (a.goals || 0))
+      .slice(0, 5);
+
+    if (topPlayers.length === 0) {
+      scorersContainer.innerHTML = `
+        <div style="padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          <i class="fa-solid fa-futbol" style="opacity: 0.4; margin-right: 0.4rem;"></i>Sin goles acumulados registrados aún
         </div>
-        <div class="stat-value">${p.goals} <span style="font-size: 0.75rem; color: var(--text-muted);">goles</span></div>
+      `;
+    } else {
+      scorersContainer.innerHTML = topPlayers.map((p, idx) => {
+        const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '', division: 'oro' };
+        const isOro = (team.division || 'oro') === 'oro';
+
+        let avatarStyle = 'border-color: #d97706; color: #b45309;';
+        if (idx === 0) {
+          avatarStyle = 'background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: #d97706; color: #92400e; font-weight: 800;';
+        } else if (idx === 1) {
+          avatarStyle = 'background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border-color: #64748b; color: #334155; font-weight: 800;';
+        } else if (idx === 2) {
+          avatarStyle = 'background: linear-gradient(135deg, #ffedd5, #fed7aa); border-color: #b45309; color: #7c2d12; font-weight: 800;';
+        }
+
+        return `
+          <div class="leader-row">
+            <div class="leader-info" style="min-width: 0;">
+              <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
+              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">
+              <div style="min-width: 0;">
+                <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
+                <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                  <span>${team.name}</span>
+                  <span>&bull;</span>
+                  <span class="pos-badge pos-${p.position}">${p.position}</span>
+                  <span style="font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; text-transform: uppercase; ${isOro ? 'background: #fef3c7; color: #92400e; border: 1px solid #d97706;' : 'background: #e2e8f0; color: #0f172a; border: 1px solid #64748b;'}">
+                    ${isOro ? 'Oro' : 'Plata'}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="stat-value" style="flex-shrink: 0; margin-left: 0.5rem;">
+              ${p.goals} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">goles</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // Top Assists Preview (Acumulado General)
+  const assistsContainer = document.getElementById('dashboard-top-assists');
+  if (assistsContainer) {
+    const topAssists = [...lmiData.players]
+      .filter(p => (p.assists || 0) > 0)
+      .sort((a, b) => (b.assists || 0) - (a.assists || 0))
+      .slice(0, 5);
+
+    if (topAssists.length === 0) {
+      assistsContainer.innerHTML = `
+        <div style="padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          <i class="fa-solid fa-hands-clapping" style="opacity: 0.4; margin-right: 0.4rem;"></i>Sin asistencias acumuladas registradas aún
+        </div>
+      `;
+    } else {
+      assistsContainer.innerHTML = topAssists.map((p, idx) => {
+        const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '', division: 'oro' };
+        const isOro = (team.division || 'oro') === 'oro';
+
+        let avatarStyle = 'border-color: var(--neon-cyan); color: #0284c7;';
+        if (idx === 0) {
+          avatarStyle = 'background: linear-gradient(135deg, #e0f2fe, #bae6fd); border-color: #0284c7; color: #0369a1; font-weight: 800;';
+        } else if (idx === 1) {
+          avatarStyle = 'background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border-color: #64748b; color: #334155; font-weight: 800;';
+        } else if (idx === 2) {
+          avatarStyle = 'background: linear-gradient(135deg, #ffedd5, #fed7aa); border-color: #b45309; color: #7c2d12; font-weight: 800;';
+        }
+
+        return `
+          <div class="leader-row">
+            <div class="leader-info" style="min-width: 0;">
+              <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
+              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">
+              <div style="min-width: 0;">
+                <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
+                <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                  <span>${team.name}</span>
+                  <span>&bull;</span>
+                  <span class="pos-badge pos-${p.position}">${p.position}</span>
+                  <span style="font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; text-transform: uppercase; ${isOro ? 'background: #fef3c7; color: #92400e; border: 1px solid #d97706;' : 'background: #e2e8f0; color: #0f172a; border: 1px solid #64748b;'}">
+                    ${isOro ? 'Oro' : 'Plata'}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="stat-value" style="color: var(--neon-cyan); flex-shrink: 0; margin-left: 0.5rem;">
+              ${p.assists} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">asist.</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+}
+
+// Helper para renderizar filas de podio en estadísticas
+function renderLeaderboardHTML(players, valueKey, label, emptyMsg, valueColor, showDivBadge = false) {
+  if (!players || players.length === 0) {
+    return `
+      <div style="padding: 2.2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+        <i class="fa-solid fa-circle-info" style="opacity: 0.4; margin-right: 0.4rem;"></i>${emptyMsg}
       </div>
     `;
-  }).join('');
+  }
 
-  // Top Assists Preview
-  const assistsContainer = document.getElementById('dashboard-top-assists');
-  const topAssists = [...lmiData.players].sort((a, b) => b.assists - a.assists).slice(0, 5);
+  return players.map((p, idx) => {
+    const team = (lmiData && lmiData.teams) ? lmiData.teams.find(t => t.id === p.teamId) : null;
+    const teamName = team ? team.name : 'Libre';
+    const teamLogo = team ? team.logo : '';
+    const teamDiv = team ? (team.division || 'oro') : 'oro';
+    const isOro = teamDiv === 'oro';
 
-  assistsContainer.innerHTML = topAssists.map((p, idx) => {
-    const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '' };
+    let avatarStyle = 'border-color: var(--lmi-blue); color: var(--lmi-blue);';
+    if (idx === 0) {
+      avatarStyle = 'background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: #d97706; color: #92400e; font-weight: 800;';
+    } else if (idx === 1) {
+      avatarStyle = 'background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border-color: #64748b; color: #334155; font-weight: 800;';
+    } else if (idx === 2) {
+      avatarStyle = 'background: linear-gradient(135deg, #ffedd5, #fed7aa); border-color: #b45309; color: #7c2d12; font-weight: 800;';
+    }
+
+    const divBadge = showDivBadge ? `
+      <span style="font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; ${isOro ? 'background: #fef3c7; color: #92400e; border: 1px solid #d97706;' : 'background: #e2e8f0; color: #0f172a; border: 1px solid #64748b;'}">
+        ${isOro ? 'Oro' : 'Plata'}
+      </span>
+    ` : '';
+
     return `
       <div class="leader-row">
-        <div class="leader-info">
-          <div class="player-avatar" style="border-color: var(--neon-cyan);">${idx + 1}</div>
-          <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px;">
-          <div>
-            <div class="player-name">${p.name}</div>
-            <div class="player-meta">${team.name} &bull; <span class="pos-badge pos-${p.position}">${p.position}</span></div>
+        <div class="leader-info" style="min-width: 0;">
+          <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
+          ${teamLogo ? `<img src="${teamLogo}" class="team-logo" alt="${teamName}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">` : ''}
+          <div style="min-width: 0;">
+            <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
+            <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+              <span>${teamName}</span>
+              <span>&bull;</span>
+              <span class="pos-badge pos-${p.position}">${p.position}</span>
+              ${divBadge}
+            </div>
           </div>
         </div>
-        <div class="stat-value" style="color: var(--neon-cyan);">${p.assists} <span style="font-size: 0.75rem; color: var(--text-muted);">asist.</span></div>
+        <div class="stat-value" style="color: ${valueColor}; flex-shrink: 0; margin-left: 0.5rem;">
+          ${p[valueKey]} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${label}</span>
+        </div>
       </div>
     `;
   }).join('');
 }
 
-// Render Stats Page
+// Render Stats Page con soporte de división
 function renderStats() {
-  const goleadoresContainer = document.getElementById('full-goleadores-list');
-  const asistenciasContainer = document.getElementById('full-asistencias-list');
+  const container = document.getElementById('stats-content-area');
+  if (!container) return;
 
   const tSel = document.getElementById('stats-tournament-select');
   const tournament = tSel ? tSel.value : 'liga';
 
   let goalsKey = 'goals_liga';
   let assistsKey = 'assists_liga';
-  let statLabelGoals = 'goles';
-  let statLabelAssists = 'asist.';
+  let tournamentLabel = 'Liga Temporada 11';
 
   if (tournament === 'copa') {
     goalsKey = 'goals_estelar';
     assistsKey = 'assists_estelar';
+    tournamentLabel = 'Copa Estelar';
   } else if (tournament === 'champions') {
     goalsKey = 'goals_champions';
     assistsKey = 'assists_champions';
+    tournamentLabel = 'Champions League';
   }
 
-  const topScorers = [...lmiData.players]
-    .filter(p => p[goalsKey] > 0)
-    .sort((a, b) => b[goalsKey] - a[goalsKey])
-    .slice(0, 10);
+  const allPlayers = (lmiData && lmiData.players) ? lmiData.players : [];
+  const allTeams = (lmiData && lmiData.teams) ? lmiData.teams : [];
 
-  const topAssists = [...lmiData.players]
-    .filter(p => p[assistsKey] > 0)
-    .sort((a, b) => b[assistsKey] - a[assistsKey])
-    .slice(0, 10);
+  const getTeamDivision = (p) => {
+    const t = allTeams.find(tm => tm.id === p.teamId);
+    return t ? (t.division || 'oro') : 'oro';
+  };
 
-  goleadoresContainer.innerHTML = topScorers.length === 0 ? '<div style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Sin goles registrados aún en este torneo</div>' : topScorers.map((p, idx) => {
-    const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '' };
-    return `
-      <div class="leader-row">
-        <div class="leader-info">
-          <div class="player-avatar">${idx + 1}</div>
-          <img src="${team.logo}" class="team-logo" alt="${team.name}">
-          <div>
-            <div class="player-name">${p.name}</div>
-            <div class="player-meta">${team.name} &bull; <span class="pos-badge pos-${p.position}">${p.position}</span></div>
+  const getScorers = (filterDiv) => {
+    return allPlayers
+      .filter(p => (p[goalsKey] || 0) > 0 && (!filterDiv || getTeamDivision(p) === filterDiv))
+      .sort((a, b) => (b[goalsKey] || 0) - (a[goalsKey] || 0))
+      .slice(0, 25);
+  };
+
+  const getAssists = (filterDiv) => {
+    return allPlayers
+      .filter(p => (p[assistsKey] || 0) > 0 && (!filterDiv || getTeamDivision(p) === filterDiv))
+      .sort((a, b) => (b[assistsKey] || 0) - (a[assistsKey] || 0))
+      .slice(0, 25);
+  };
+
+  if (currentStatsDivision === 'oro') {
+    const topScorers = getScorers('oro');
+    const topAssists = getAssists('oro');
+
+    container.innerHTML = `
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: #d97706;"></i> Tabla de Goleadores</h2>
+              <div style="font-size: 0.8rem; color: #92400e; font-weight: 700; margin-top: 0.2rem;">División Oro &bull; ${tournamentLabel}</div>
+            </div>
+            <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">ORO</span>
+          </div>
+          <div id="full-goleadores-list">
+            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', 'Sin goles registrados aún en División Oro para este torneo', 'var(--neon-green)')}
           </div>
         </div>
-        <div class="stat-value">${p[goalsKey]} <span style="font-size: 0.75rem; color: var(--text-muted);">${statLabelGoals}</span></div>
-      </div>
-    `;
-  }).join('');
 
-  asistenciasContainer.innerHTML = topAssists.length === 0 ? '<div style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Sin asistencias registradas aún en este torneo</div>' : topAssists.map((p, idx) => {
-    const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: '' };
-    return `
-      <div class="leader-row">
-        <div class="leader-info">
-          <div class="player-avatar" style="border-color: var(--lmi-blue); color: var(--lmi-blue);">${idx + 1}</div>
-          <img src="${team.logo}" class="team-logo" alt="${team.name}">
-          <div>
-            <div class="player-name">${p.name}</div>
-            <div class="player-meta">${team.name} &bull; <span class="pos-badge pos-${p.position}">${p.position}</span></div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Tabla de Asistidores</h2>
+              <div style="font-size: 0.8rem; color: #92400e; font-weight: 700; margin-top: 0.2rem;">División Oro &bull; ${tournamentLabel}</div>
+            </div>
+            <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">ORO</span>
+          </div>
+          <div id="full-asistencias-list">
+            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', 'Sin asistencias registradas aún en División Oro para este torneo', '#0284c7')}
           </div>
         </div>
-        <div class="stat-value" style="color: var(--lmi-blue);">${p[assistsKey]} <span style="font-size: 0.75rem; color: var(--text-muted);">${statLabelAssists}</span></div>
       </div>
     `;
-  }).join('');
+  } else if (currentStatsDivision === 'plata') {
+    const topScorers = getScorers('plata');
+    const topAssists = getAssists('plata');
+
+    container.innerHTML = `
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: #64748b;"></i> Tabla de Goleadores</h2>
+              <div style="font-size: 0.8rem; color: #475569; font-weight: 700; margin-top: 0.2rem;">División Plata &bull; ${tournamentLabel}</div>
+            </div>
+            <span class="badge" style="background: #e2e8f0; color: #0f172a; border: 1.5px solid #64748b; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">PLATA</span>
+          </div>
+          <div id="full-goleadores-list">
+            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', 'Sin goles registrados aún en División Plata para este torneo', 'var(--neon-green)')}
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Tabla de Asistidores</h2>
+              <div style="font-size: 0.8rem; color: #475569; font-weight: 700; margin-top: 0.2rem;">División Plata &bull; ${tournamentLabel}</div>
+            </div>
+            <span class="badge" style="background: #e2e8f0; color: #0f172a; border: 1.5px solid #64748b; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">PLATA</span>
+          </div>
+          <div id="full-asistencias-list">
+            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', 'Sin asistencias registradas aún en División Plata para este torneo', '#0284c7')}
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (currentStatsDivision === 'ambas') {
+    const oroScorers = getScorers('oro');
+    const oroAssists = getAssists('oro');
+    const plataScorers = getScorers('plata');
+    const plataAssists = getAssists('plata');
+
+    container.innerHTML = `
+      <!-- BLOQUE DIVISIÓN ORO -->
+      <div style="margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid #d97706;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <i class="fa-solid fa-trophy" style="color: #d97706; font-size: 1.25rem;"></i>
+            <h2 style="font-size: 1.25rem; font-weight: 900; color: #92400e; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">Estadísticas &bull; División Oro</h2>
+          </div>
+          <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.75rem; border-radius: 99px; font-weight: 800; font-size: 0.8rem;">8 CLUBES</span>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-futbol" style="color: #d97706;"></i> Goleadores División Oro</h3>
+            </div>
+            <div>
+              ${renderLeaderboardHTML(oroScorers, goalsKey, 'goles', 'Sin goles registrados en División Oro', 'var(--neon-green)')}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Asistidores División Oro</h3>
+            </div>
+            <div>
+              ${renderLeaderboardHTML(oroAssists, assistsKey, 'asist.', 'Sin asistencias registradas en División Oro', '#0284c7')}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE DIVISIÓN PLATA -->
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid #64748b;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <i class="fa-solid fa-medal" style="color: #64748b; font-size: 1.25rem;"></i>
+            <h2 style="font-size: 1.25rem; font-weight: 900; color: #334155; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">Estadísticas &bull; División Plata</h2>
+          </div>
+          <span class="badge" style="background: #e2e8f0; color: #0f172a; border: 1.5px solid #64748b; padding: 0.25rem 0.75rem; border-radius: 99px; font-weight: 800; font-size: 0.8rem;">12 CLUBES</span>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-futbol" style="color: #64748b;"></i> Goleadores División Plata</h3>
+            </div>
+            <div>
+              ${renderLeaderboardHTML(plataScorers, goalsKey, 'goles', 'Sin goles registrados en División Plata', 'var(--neon-green)')}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Asistidores División Plata</h3>
+            </div>
+            <div>
+              ${renderLeaderboardHTML(plataAssists, assistsKey, 'asist.', 'Sin asistencias registradas en División Plata', '#0284c7')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    // general / acumulada
+    const topScorers = getScorers(null);
+    const topAssists = getAssists(null);
+
+    container.innerHTML = `
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: var(--neon-green);"></i> Tabla de Goleadores</h2>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin-top: 0.2rem;">General Acumulada &bull; ${tournamentLabel}</div>
+            </div>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #059669; border: 1.5px solid rgba(5, 150, 105, 0.35); padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">TODAS</span>
+          </div>
+          <div id="full-goleadores-list">
+            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', 'Sin goles registrados aún en este torneo', 'var(--neon-green)', true)}
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Tabla de Asistidores</h2>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin-top: 0.2rem;">General Acumulada &bull; ${tournamentLabel}</div>
+            </div>
+            <span class="badge" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border: 1.5px solid rgba(2, 132, 199, 0.35); padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">TODAS</span>
+          </div>
+          <div id="full-asistencias-list">
+            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', 'Sin asistencias registradas aún en este torneo', '#0284c7', true)}
+          </div>
+        </div>
+      </div>
+    `;
+  }
 }
 
 // Render Bracket dynamically
@@ -2189,6 +2498,8 @@ window.onWebJornadaSelectChange = onWebJornadaSelectChange;
 window.renderWebPosiciones = renderWebPosiciones;
 window.openMatchDetailsModal = openMatchDetailsModal;
 window.closeMatchDetailsModal = closeMatchDetailsModal;
+window.switchStatsDivision = switchStatsDivision;
+window.renderStats = renderStats;
 
 
 

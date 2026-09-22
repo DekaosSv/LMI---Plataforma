@@ -158,7 +158,10 @@
         <div>
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title"><i class="fa-solid fa-fire"></i> Top Goleadores de la Liga</h2>
+              <h2 class="card-title">
+                <i class="fa-solid fa-fire" style="color: #f97316;"></i> Top Goleadores
+                <span class="badge" style="background: rgba(234, 179, 8, 0.15); color: #b45309; border: 1.5px solid rgba(217, 119, 6, 0.35); font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 99px; margin-left: 0.4rem; vertical-align: middle;">Acumulada</span>
+              </h2>
               <button class="btn-secondary" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;"
                 onclick="switchNav('stats')">Ver todos</button>
             </div>
@@ -172,8 +175,10 @@
         <div>
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Top
-                Asistidores</h2>
+              <h2 class="card-title">
+                <i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Top Asistidores
+                <span class="badge" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border: 1.5px solid rgba(2, 132, 199, 0.35); font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 99px; margin-left: 0.4rem; vertical-align: middle;">Acumulada</span>
+              </h2>
               <button class="btn-secondary" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;"
                 onclick="switchNav('stats')">Ver más</button>
             </div>
@@ -297,26 +302,25 @@
         </div>
       </div>
 
-      <div class="dashboard-grid">
-        <div class="card">
-          <div class="card-header">
-            <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: var(--neon-green);"></i> Tabla de
-              Goleadores</h2>
-          </div>
-          <div id="full-goleadores-list">
-            <!-- Rendered via JS -->
-          </div>
-        </div>
+      <!-- Selector de Divisiones en Estadísticas -->
+      <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center;" id="stats-division-tabs-bar">
+        <button class="btn-tab active" id="tab-stats-oro" onclick="switchStatsDivision('oro')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #d97706; background: #fef3c7; color: #92400e; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2); transition: all 0.2s;">
+          <i class="fa-solid fa-trophy" style="color: #b45309;"></i> <span>División Oro</span>
+        </button>
+        <button class="btn-tab" id="tab-stats-plata" onclick="switchStatsDivision('plata')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
+          <i class="fa-solid fa-medal" style="color: #64748b;"></i> <span>División Plata</span>
+        </button>
+        <button class="btn-tab" id="tab-stats-ambas" onclick="switchStatsDivision('ambas')" style="padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
+          <i class="fa-solid fa-table-columns" style="color: #0284c7;"></i> <span>Ver Ambas</span>
+        </button>
+        <button class="btn-tab" id="tab-stats-general" onclick="switchStatsDivision('general')" style="padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
+          <i class="fa-solid fa-globe" style="color: #059669;"></i> <span>General / Acumulada</span>
+        </button>
+      </div>
 
-        <div class="card">
-          <div class="card-header">
-            <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Tabla de
-              Asistidores</h2>
-          </div>
-          <div id="full-asistencias-list">
-            <!-- Rendered via JS -->
-          </div>
-        </div>
+      <!-- Contenedor dinámico de tablas de estadísticas -->
+      <div id="stats-content-area">
+        <!-- Rendered via JS -->
       </div>
     </section>
 
