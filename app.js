@@ -1934,26 +1934,20 @@ function onWebJornadaSelectChange() {
       ? `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(16, 185, 129, 0.25); color: #4ade80; border: 1px solid #10b981; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Finalizado</span>`
       : `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(245, 158, 11, 0.25); color: #fde047; border: 1px solid #f59e0b; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Pendiente</span>`;
 
-    let eventsSummary = '';
-    if (m.events && m.events.length > 0) {
-      const summaryItems = m.events.map(ev => {
-        const icon = ev.type === 'goal' ? '⚽' : '🎯';
-        return `<strong>${icon} ${escapeHTML(ev.playerName)}</strong>${ev.count > 1 ? ` (${ev.count})` : ''}`;
-      }).join(' &bull; ');
-      eventsSummary = `
-        <div style="margin-top: 0.75rem; padding: 0.45rem 0.65rem; border-radius: 4px; background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255,255,255,0.12); font-size: 0.8rem; color: #f8fafc; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          ${summaryItems}
-        </div>
-      `;
-    }
+    const statsBtn = isPlayed
+      ? `<span class="card-stats-btn" title="Clic para ver estadísticas del partido"><i class="fa-solid fa-chart-column"></i> Ficha</span>`
+      : '';
 
     return `
-      <div style="background: #0d1629; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.4); transition: border-color 0.2s, transform 0.2s;" onmouseover="this.style.borderColor='rgba(250,204,21,0.5)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.transform='translateY(0)'">
+      <div class="web-fixture-card" onclick="openMatchDetailsModal('${currentWebDivision}', ${jornadaNum}, '${m.id}')" title="Clic para ver detalles del partido">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
           <span style="font-size: 0.78rem; font-weight: 700; color: #cbd5e1; display: flex; align-items: center; gap: 0.4rem;">
             <i class="fa-solid fa-futbol" style="color: #facc15;"></i> Partido #${idx + 1}
           </span>
-          ${statusPill}
+          <div style="display: flex; align-items: center; gap: 0.45rem;">
+            ${statsBtn}
+            ${statusPill}
+          </div>
         </div>
         
         <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.75rem;">
@@ -1974,12 +1968,148 @@ function onWebJornadaSelectChange() {
             <img src="${escapeHTML(t2.logo)}" alt="${escapeHTML(t2.name)}" style="width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));" onerror="this.src='Logos Equipos/default.png'">
           </div>
         </div>
-
-        ${eventsSummary}
       </div>
     `;
   }).join('');
 }
+
+// Modal de Ficha Técnica / Estadísticas del Partido
+function openMatchDetailsModal(division, jornadaNum, matchId) {
+  const rounds = (lmiData && lmiData.fixtures && lmiData.fixtures[division]) || [];
+  const round = rounds.find(r => r.jornada === jornadaNum);
+  if (!round || !round.matches) return;
+
+  const m = round.matches.find(match => match.id === matchId);
+  if (!m) return;
+
+  const t1 = (lmiData.teams || []).find(t => t.id === m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
+  const t2 = (lmiData.teams || []).find(t => t.id === m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+
+  const isPlayed = m.played && m.score1 !== null && m.score2 !== null;
+
+  // Badges
+  const divBadge = document.getElementById('mm-badge-division');
+  const jorBadge = document.getElementById('mm-badge-jornada');
+  if (divBadge) divBadge.textContent = `DIVISIÓN ${division.toUpperCase()}`;
+  if (jorBadge) jorBadge.textContent = `JORNADA ${jornadaNum}`;
+
+  // Logos y Nombres
+  const homeLogo = document.getElementById('mm-home-logo');
+  const homeName = document.getElementById('mm-home-name');
+  const awayLogo = document.getElementById('mm-away-logo');
+  const awayName = document.getElementById('mm-away-name');
+  if (homeLogo) homeLogo.src = t1.logo || 'Logos Equipos/default.png';
+  if (homeName) homeName.textContent = t1.name;
+  if (awayLogo) awayLogo.src = t2.logo || 'Logos Equipos/default.png';
+  if (awayName) awayName.textContent = t2.name;
+
+  // Marcador y estado
+  const scoreDisp = document.getElementById('mm-score-display');
+  const statusPill = document.getElementById('mm-status-pill');
+  if (scoreDisp) scoreDisp.textContent = isPlayed ? `${m.score1} - ${m.score2}` : 'VS';
+  if (statusPill) {
+    statusPill.textContent = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
+    statusPill.style.background = isPlayed ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)';
+    statusPill.style.color = isPlayed ? '#4ade80' : '#fde047';
+    statusPill.style.borderColor = isPlayed ? '#10b981' : '#f59e0b';
+  }
+
+  // Eventos de Goles y Asistencias
+  const gridContainer = document.getElementById('mm-grid-container');
+  const homeEventsCol = document.getElementById('mm-home-events-col');
+  const awayEventsCol = document.getElementById('mm-away-events-col');
+  const noEventsMsg = document.getElementById('mm-no-events-msg');
+
+  const events = m.events || [];
+  const homeEvents = events.filter(e => e.teamId === m.team1Id);
+  const awayEvents = events.filter(e => e.teamId === m.team2Id);
+
+  const renderTeamEvents = (teamEvents, teamName) => {
+    const goals = teamEvents.filter(e => e.type === 'gol' || e.type === 'goal');
+    const assists = teamEvents.filter(e => e.type === 'asistencia' || e.type === 'assist');
+
+    let html = '';
+
+    // Goles
+    html += `
+      <div>
+        <div class="match-event-section-title" style="color: #60a5fa;">
+          <span>⚽ Goles</span>
+        </div>
+    `;
+    if (goals.length > 0) {
+      goals.forEach(g => {
+        html += `
+          <div class="match-event-item">
+            <span class="match-event-item-name">${escapeHTML(g.playerName)}</span>
+            ${g.count > 1 ? `<span class="match-event-count-badge">${g.count} goles</span>` : ''}
+          </div>
+        `;
+      });
+    } else {
+      html += `<div class="match-modal-empty-stat">Sin goles anotados</div>`;
+    }
+    html += `</div>`;
+
+    // Asistencias
+    html += `
+      <div>
+        <div class="match-event-section-title" style="color: #f43f5e;">
+          <span>🎯 Asistencias</span>
+        </div>
+    `;
+    if (assists.length > 0) {
+      assists.forEach(a => {
+        html += `
+          <div class="match-event-item">
+            <span class="match-event-item-name">${escapeHTML(a.playerName)}</span>
+            ${a.count > 1 ? `<span class="match-event-count-badge" style="background: rgba(244,63,94,0.2); color: #fb7185; border-color: rgba(244,63,94,0.4);">${a.count} asist.</span>` : ''}
+          </div>
+        `;
+      });
+    } else {
+      html += `<div class="match-modal-empty-stat">Sin asistencias registradas</div>`;
+    }
+    html += `</div>`;
+
+    return html;
+  };
+
+  if (isPlayed) {
+    if (events.length > 0) {
+      if (gridContainer) gridContainer.style.display = 'grid';
+      if (noEventsMsg) noEventsMsg.style.display = 'none';
+      if (homeEventsCol) homeEventsCol.innerHTML = renderTeamEvents(homeEvents, t1.name);
+      if (awayEventsCol) awayEventsCol.innerHTML = renderTeamEvents(awayEvents, t2.name);
+    } else {
+      if (gridContainer) gridContainer.style.display = 'none';
+      if (noEventsMsg) {
+        noEventsMsg.style.display = 'block';
+        noEventsMsg.innerHTML = '<i class="fa-solid fa-circle-info" style="color: #facc15; margin-right: 0.4rem;"></i> Partido finalizado sin desglose individual de goleadores ni asistencias.';
+      }
+    }
+  } else {
+    if (gridContainer) gridContainer.style.display = 'none';
+    if (noEventsMsg) {
+      noEventsMsg.style.display = 'block';
+      noEventsMsg.innerHTML = '<i class="fa-solid fa-clock" style="color: #fde047; margin-right: 0.4rem;"></i> Este partido aún no ha sido disputado.';
+    }
+  }
+
+  const modal = document.getElementById('match-details-modal');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeMatchDetailsModal() {
+  const modal = document.getElementById('match-details-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeMatchDetailsModal();
+  }
+});
 
 // Window bindings
 window.switchWebDivision = switchWebDivision;
@@ -1987,5 +2117,8 @@ window.renderWebStandings = renderWebStandings;
 window.populateWebJornadas = populateWebJornadas;
 window.onWebJornadaSelectChange = onWebJornadaSelectChange;
 window.renderWebPosiciones = renderWebPosiciones;
+window.openMatchDetailsModal = openMatchDetailsModal;
+window.closeMatchDetailsModal = closeMatchDetailsModal;
+
 
 

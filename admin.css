@@ -541,16 +541,62 @@ textarea.form-control {
   margin-bottom: 1.5rem;
 }
 
+.events-list-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.5rem 0.65rem 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.5rem;
+}
+
 .event-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.65rem 0;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.015);
+  margin-bottom: 0.35rem;
+  transition: background 0.15s ease;
+}
+
+.event-row:hover {
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .event-row:last-child {
   border-bottom: none;
+  margin-bottom: 0;
+}
+
+.ev-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.4rem;
+}
+
+.ev-stat-box:focus-within {
+  border-color: var(--lmi-gold);
+}
+
+.ev-stat-box input {
+  width: 50px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.ev-stat-box input:focus {
+  outline: none;
 }
 
 /* Tables */

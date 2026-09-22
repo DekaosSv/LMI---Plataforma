@@ -913,6 +913,72 @@
     </div>
   </div>
 
+  <!-- Modal Ficha Técnica / Estadísticas del Partido -->
+  <div id="match-details-modal" class="match-modal-backdrop" style="display: none;" onclick="if(event.target === this) closeMatchDetailsModal()">
+    <div class="match-modal-card">
+      <button class="match-modal-close" onclick="closeMatchDetailsModal()" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      
+      <!-- Encabezado del Partido -->
+      <div class="match-modal-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+          <span class="match-modal-badge" id="mm-badge-division">DIVISIÓN PLATA</span>
+          <span class="match-modal-badge match-modal-badge-gold" id="mm-badge-jornada">JORNADA 1</span>
+        </div>
+        <h3 class="match-modal-title">FICHA TÉCNICA DEL PARTIDO</h3>
+      </div>
+
+      <!-- Marcador Principal -->
+      <div class="match-modal-scoreboard">
+        <!-- Local -->
+        <div class="match-modal-team match-modal-team-home">
+          <img id="mm-home-logo" src="Logos Equipos/default.png" alt="Local" class="match-modal-logo">
+          <span id="mm-home-name" class="match-modal-team-name">Local</span>
+        </div>
+
+        <!-- Score Center -->
+        <div class="match-modal-score-box">
+          <div class="match-modal-score-display" id="mm-score-display">1 - 3</div>
+          <span class="match-modal-status" id="mm-status-pill">FINALIZADO</span>
+        </div>
+
+        <!-- Visitante -->
+        <div class="match-modal-team match-modal-team-away">
+          <img id="mm-away-logo" src="Logos Equipos/default.png" alt="Visitante" class="match-modal-logo">
+          <span id="mm-away-name" class="match-modal-team-name">Visitante</span>
+        </div>
+      </div>
+
+      <!-- Detalle de Estadísticas / Eventos -->
+      <div class="match-modal-body">
+        <div class="match-modal-grid" id="mm-grid-container">
+          <!-- Columna Local -->
+          <div class="match-modal-col" id="mm-home-events-col">
+            <!-- Eventos local -->
+          </div>
+
+          <!-- Divisor Central -->
+          <div class="match-modal-divider"></div>
+
+          <!-- Columna Visitante -->
+          <div class="match-modal-col" id="mm-away-events-col">
+            <!-- Eventos visitante -->
+          </div>
+        </div>
+        
+        <!-- Mensaje si no hay eventos o está pendiente -->
+        <div id="mm-no-events-msg" style="display: none; text-align: center; padding: 1.5rem; color: #94a3b8; font-size: 0.92rem;">
+          <i class="fa-solid fa-circle-info" style="color: #facc15; margin-right: 0.4rem;"></i> No se registraron goleadores ni asistencias para este partido.
+        </div>
+      </div>
+
+      <div class="match-modal-footer">
+        <button class="btn btn-secondary" onclick="closeMatchDetailsModal()" style="padding: 0.5rem 1.5rem; font-size: 0.88rem; font-weight: 700;">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
   </div>
 
 

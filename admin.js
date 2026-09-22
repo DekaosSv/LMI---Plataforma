@@ -443,6 +443,41 @@ const AdminApp = {
     // Score
     document.getElementById('match-score1').value = (foundMatch.score1 !== null) ? foundMatch.score1 : 0;
     document.getElementById('match-score2').value = (foundMatch.score2 !== null) ? foundMatch.score2 : 0;
+
+    // Cargar eventos del partido si ya existen
+    this.matchEvents = [];
+    const container = document.getElementById('match-events-list');
+    const emptyMsg = document.getElementById('match-events-empty');
+    const header = document.getElementById('match-events-header');
+    if (container) {
+      container.querySelectorAll('.event-row').forEach(r => r.remove());
+      if (foundMatch.events && foundMatch.events.length > 0) {
+        const playerMap = {};
+        foundMatch.events.forEach(ev => {
+          const key = `${ev.teamId}_${ev.playerId}`;
+          if (!playerMap[key]) {
+            playerMap[key] = {
+              teamId: ev.teamId,
+              playerId: ev.playerId,
+              goals: 0,
+              assists: 0
+            };
+          }
+          const isGoal = ev.type === 'gol' || ev.type === 'goal';
+          if (isGoal) {
+            playerMap[key].goals += (ev.count || 1);
+          } else {
+            playerMap[key].assists += (ev.count || 1);
+          }
+        });
+        Object.values(playerMap).forEach(item => {
+          this.addMatchEventRow(item);
+        });
+      } else {
+        if (emptyMsg) emptyMsg.style.display = 'block';
+        if (header) header.style.display = 'none';
+      }
+    }
   },
 
   populateMatchTeamsForCompetition(comp) {
@@ -607,25 +642,27 @@ const AdminApp = {
     this.refreshMatchEventPlayerDropdowns();
   },
 
-  addMatchEventRow() {
+  addMatchEventRow(initialData = null) {
     const team1Id = document.getElementById('match-team1-select').value;
     const team2Id = document.getElementById('match-team2-select').value;
     const team1 = this.getTeamById(team1Id);
     const team2 = this.getTeamById(team2Id);
 
-    const eventId = `ev_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+    const eventId = (initialData && initialData.id) ? initialData.id : `ev_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
     const eventObj = {
       id: eventId,
-      teamId: team1Id,
-      playerId: '',
-      type: 'gol',
-      count: 1
+      teamId: (initialData && initialData.teamId) ? initialData.teamId : team1Id,
+      playerId: (initialData && initialData.playerId) ? initialData.playerId : '',
+      goals: (initialData && typeof initialData.goals === 'number') ? initialData.goals : 1,
+      assists: (initialData && typeof initialData.assists === 'number') ? initialData.assists : 0
     };
     this.matchEvents.push(eventObj);
 
     const container = document.getElementById('match-events-list');
     const emptyMsg = document.getElementById('match-events-empty');
+    const header = document.getElementById('match-events-header');
     if (emptyMsg) emptyMsg.style.display = 'none';
+    if (header) header.style.display = 'flex';
 
     const row = document.createElement('div');
     row.className = 'event-row';
@@ -633,8 +670,8 @@ const AdminApp = {
     row.innerHTML = `
       <div style="flex: 2;">
         <select class="form-select ev-team-select" style="width: 100%; padding: 0.5rem 0.75rem; font-size: 0.88rem;">
-          <option value="${team1Id}">${team1 ? team1.name : 'Local'}</option>
-          <option value="${team2Id}">${team2 ? team2.name : 'Visitante'}</option>
+          <option value="${team1Id}" ${eventObj.teamId === team1Id ? 'selected' : ''}>${team1 ? team1.name : 'Local'}</option>
+          <option value="${team2Id}" ${eventObj.teamId === team2Id ? 'selected' : ''}>${team2 ? team2.name : 'Visitante'}</option>
         </select>
       </div>
       <div style="flex: 3;">
@@ -642,18 +679,23 @@ const AdminApp = {
           <!-- Populated dynamically -->
         </select>
       </div>
-      <div style="flex: 2;">
-        <select class="form-select ev-type-select" style="width: 100%; padding: 0.5rem 0.75rem; font-size: 0.88rem;">
-          <option value="gol">⚽ Gol</option>
-          <option value="asistencia">🎯 Asistencia</option>
-        </select>
+      <div style="width: 105px; display: flex; justify-content: center;">
+        <div class="ev-stat-box" title="Goles marcados por el jugador">
+          <span style="font-size: 0.85rem;">⚽</span>
+          <input type="number" min="0" max="15" value="${eventObj.goals}" class="ev-goals-input">
+        </div>
       </div>
-      <div style="width: 80px;">
-        <input type="number" min="1" max="10" value="1" class="form-control ev-count-input" style="padding: 0.5rem; text-align: center;">
+      <div style="width: 105px; display: flex; justify-content: center;">
+        <div class="ev-stat-box" title="Asistencias dadas por el jugador">
+          <span style="font-size: 0.85rem;">🎯</span>
+          <input type="number" min="0" max="15" value="${eventObj.assists}" class="ev-assists-input">
+        </div>
       </div>
-      <button class="btn btn-danger" style="padding: 0.5rem 0.75rem;" onclick="AdminApp.removeMatchEventRow('${eventId}')">
-        <i class="fa-solid fa-trash"></i>
-      </button>
+      <div style="width: 44px; display: flex; justify-content: center;">
+        <button class="btn btn-danger" style="padding: 0.45rem 0.65rem;" onclick="AdminApp.removeMatchEventRow('${eventId}')" title="Eliminar fila">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
     `;
 
     container.appendChild(row);
@@ -661,25 +703,33 @@ const AdminApp = {
     // Event listeners
     const teamSel = row.querySelector('.ev-team-select');
     const playerSel = row.querySelector('.ev-player-select');
-    const typeSel = row.querySelector('.ev-type-select');
-    const countInput = row.querySelector('.ev-count-input');
+    const goalsInput = row.querySelector('.ev-goals-input');
+    const assistsInput = row.querySelector('.ev-assists-input');
 
-    const populatePlayers = (tId) => {
+    const populatePlayers = (tId, selectedPlayerId = null) => {
       playerSel.innerHTML = '<option value="">-- Seleccionar Jugador --</option>';
       const players = this.getPlayersByTeam(tId);
       players.forEach(p => {
         const opt = document.createElement('option');
         opt.value = p.id;
         opt.textContent = `${p.name} (${p.position || 'MC'})`;
+        if (selectedPlayerId && p.id === selectedPlayerId) {
+          opt.selected = true;
+        }
         playerSel.appendChild(opt);
       });
-      if (players[0]) {
+      if (selectedPlayerId && players.some(p => p.id === selectedPlayerId)) {
+        playerSel.value = selectedPlayerId;
+        eventObj.playerId = selectedPlayerId;
+      } else if (players[0]) {
         playerSel.value = players[0].id;
         eventObj.playerId = players[0].id;
+      } else {
+        eventObj.playerId = '';
       }
     };
 
-    populatePlayers(team1Id);
+    populatePlayers(eventObj.teamId, eventObj.playerId);
 
     teamSel.addEventListener('change', (e) => {
       eventObj.teamId = e.target.value;
@@ -690,12 +740,12 @@ const AdminApp = {
       eventObj.playerId = e.target.value;
     });
 
-    typeSel.addEventListener('change', (e) => {
-      eventObj.type = e.target.value;
+    goalsInput.addEventListener('input', (e) => {
+      eventObj.goals = Math.max(0, parseInt(e.target.value, 10) || 0);
     });
 
-    countInput.addEventListener('input', (e) => {
-      eventObj.count = parseInt(e.target.value, 10) || 1;
+    assistsInput.addEventListener('input', (e) => {
+      eventObj.assists = Math.max(0, parseInt(e.target.value, 10) || 0);
     });
   },
 
@@ -705,7 +755,9 @@ const AdminApp = {
     if (row) row.remove();
     if (this.matchEvents.length === 0) {
       const emptyMsg = document.getElementById('match-events-empty');
+      const header = document.getElementById('match-events-header');
       if (emptyMsg) emptyMsg.style.display = 'block';
+      if (header) header.style.display = 'none';
     }
   },
 
@@ -727,6 +779,7 @@ const AdminApp = {
       `;
       teamSel.value = (currentVal === team2Id) ? team2Id : team1Id;
 
+      const currentPlayerVal = playerSel.value;
       playerSel.innerHTML = '<option value="">-- Seleccionar Jugador --</option>';
       const players = this.getPlayersByTeam(teamSel.value);
       players.forEach(p => {
@@ -735,6 +788,11 @@ const AdminApp = {
         opt.textContent = `${p.name} (${p.position || 'MC'})`;
         playerSel.appendChild(opt);
       });
+      if (currentPlayerVal && players.some(p => p.id === currentPlayerVal)) {
+        playerSel.value = currentPlayerVal;
+      } else if (players[0]) {
+        playerSel.value = players[0].id;
+      }
     });
   },
 
@@ -764,21 +822,55 @@ const AdminApp = {
         const player = this.getPlayerById(ev.playerId);
         if (!player) return;
 
-        const count = ev.count || 1;
-        if (ev.type === 'gol') {
-          player.goals = (player.goals || 0) + count;
-          if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.goals_liga = (player.goals_liga || 0) + count;
-          else if (comp === 'champions') player.goals_champions = (player.goals_champions || 0) + count;
-          else if (comp === 'estelar') player.goals_estelar = (player.goals_estelar || 0) + count;
-        } else if (ev.type === 'asistencia') {
-          player.assists = (player.assists || 0) + count;
-          if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.assists_liga = (player.assists_liga || 0) + count;
-          else if (comp === 'champions') player.assists_champions = (player.assists_champions || 0) + count;
-          else if (comp === 'estelar') player.assists_estelar = (player.assists_estelar || 0) + count;
+        const goals = parseInt(ev.goals, 10) || 0;
+        const assists = parseInt(ev.assists, 10) || 0;
+
+        if (goals > 0) {
+          player.goals = (player.goals || 0) + goals;
+          if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.goals_liga = (player.goals_liga || 0) + goals;
+          else if (comp === 'champions') player.goals_champions = (player.goals_champions || 0) + goals;
+          else if (comp === 'estelar') player.goals_estelar = (player.goals_estelar || 0) + goals;
+          updatedStatsCount += goals;
         }
-        updatedStatsCount += count;
+
+        if (assists > 0) {
+          player.assists = (player.assists || 0) + assists;
+          if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.assists_liga = (player.assists_liga || 0) + assists;
+          else if (comp === 'champions') player.assists_champions = (player.assists_champions || 0) + assists;
+          else if (comp === 'estelar') player.assists_estelar = (player.assists_estelar || 0) + assists;
+          updatedStatsCount += assists;
+        }
       });
     }
+
+    // Serializar eventos para guardar en formato estándar compatible
+    const serializedEvents = [];
+    this.matchEvents.forEach(e => {
+      if (!e.playerId) return;
+      const player = this.getPlayerById(e.playerId);
+      const pName = player ? player.name : 'Desconocido';
+      const g = parseInt(e.goals, 10) || 0;
+      const a = parseInt(e.assists, 10) || 0;
+
+      if (g > 0) {
+        serializedEvents.push({
+          playerId: e.playerId,
+          playerName: pName,
+          teamId: e.teamId,
+          type: 'gol',
+          count: g
+        });
+      }
+      if (a > 0) {
+        serializedEvents.push({
+          playerId: e.playerId,
+          playerName: pName,
+          teamId: e.teamId,
+          type: 'asistencia',
+          count: a
+        });
+      }
+    });
 
     // Actualizar cuadro si es Copa / Champions
     if ((comp === 'champions' || comp === 'estelar') && updateBracket) {
@@ -836,13 +928,7 @@ const AdminApp = {
         fMatch.played = true;
         fMatch.score1 = score1;
         fMatch.score2 = score2;
-        fMatch.events = this.matchEvents.map(e => ({
-          playerId: e.playerId,
-          playerName: this.getPlayerById(e.playerId) ? this.getPlayerById(e.playerId).name : 'Desconocido',
-          teamId: e.teamId,
-          type: e.type,
-          count: e.count || 1
-        }));
+        fMatch.events = serializedEvents;
       }
     }
 
@@ -863,13 +949,7 @@ const AdminApp = {
       team2Name: team2.name,
       team2Logo: team2.logo || '',
       score2: score2,
-      events: this.matchEvents.map(e => ({
-        playerId: e.playerId,
-        playerName: this.getPlayerById(e.playerId) ? this.getPlayerById(e.playerId).name : 'Desconocido',
-        teamId: e.teamId,
-        type: e.type,
-        count: e.count || 1
-      }))
+      events: serializedEvents
     };
     if (!this.data.matchHistory) this.data.matchHistory = [];
     this.data.matchHistory.unshift(matchRecord);
@@ -883,11 +963,16 @@ const AdminApp = {
 
     // Limpiar eventos y formulario
     this.matchEvents = [];
-    document.getElementById('match-events-list').innerHTML = `
-      <p style="color: var(--text-muted); text-align: center; padding: 1rem;" id="match-events-empty">
-        No hay eventos agregados. Haz clic en "Añadir Goleador / Asistente" si hubo anotaciones o pases de gol.
-      </p>
-    `;
+    const eventsList = document.getElementById('match-events-list');
+    if (eventsList) {
+      eventsList.innerHTML = `
+        <p style="color: var(--text-muted); text-align: center; padding: 1.25rem;" id="match-events-empty">
+          No hay eventos agregados. Haz clic en "Añadir Goleador / Asistente" si hubo anotaciones o pases de gol.
+        </p>
+      `;
+    }
+    const eventsHeader = document.getElementById('match-events-header');
+    if (eventsHeader) eventsHeader.style.display = 'none';
     document.getElementById('match-score1').value = 0;
     document.getElementById('match-score2').value = 0;
 
