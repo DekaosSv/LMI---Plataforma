@@ -2720,9 +2720,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2975,9 +2975,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3399,9 +3399,9 @@ var INITIAL_LMI_DATA = {
       "name": "Mohammed Kudus",
       "position": "ID",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3994,9 +3994,9 @@ var INITIAL_LMI_DATA = {
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 2,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9416,10 +9416,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 6,
             "team1Id": "realmadrid",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_213",
+                "playerName": "Omar Marmoush",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_153",
+                "playerName": "Orkun Kökçü",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_178",
+                "playerName": "Mohammed Kudus",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_138",
+                "playerName": "Jude Bellingham",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j6_m4",
@@ -12446,6 +12475,53 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1790396399687",
+      "timestamp": 1790396399687,
+      "date": "25 sep 2026, 10:19 p.m.",
+      "competition": "oro",
+      "jornada": 6,
+      "fixtureMatchId": "oro_j6_m3",
+      "phase": "Jornada 6",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid CF",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 2,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_213",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_153",
+          "playerName": "Orkun Kökçü",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_178",
+          "playerName": "Mohammed Kudus",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_138",
+          "playerName": "Jude Bellingham",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1790395608054",
       "timestamp": 1790395608054,
