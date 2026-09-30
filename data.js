@@ -10344,9 +10344,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "atleticodemadrid",
             "team2Id": "clubamerica",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -10566,9 +10566,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "clubamerica",
             "team2Id": "galatasaray",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -10724,9 +10724,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "borussiadortmund",
             "team2Id": "casapiaac",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ]
@@ -13205,6 +13205,60 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1790738592713",
+      "timestamp": 1790738592713,
+      "date": "29 sep 2026, 09:23 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m4",
+      "phase": "Jornada 1",
+      "team1Id": "atleticodemadrid",
+      "team1Name": "Atletico de Madrid",
+      "team1Logo": "Logos Equipos/atleticomadrid.webp",
+      "score1": 0,
+      "team2Id": "clubamerica",
+      "team2Name": "Club America",
+      "team2Logo": "Logos Equipos/clubamerica.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1790738586043",
+      "timestamp": 1790738586043,
+      "date": "29 sep 2026, 09:23 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m3",
+      "phase": "Jornada 2",
+      "team1Id": "clubamerica",
+      "team1Name": "Club America",
+      "team1Logo": "Logos Equipos/clubamerica.png",
+      "score1": 0,
+      "team2Id": "galatasaray",
+      "team2Name": "Galatasaray",
+      "team2Logo": "Logos Equipos/galatasaray.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1790738582183",
+      "timestamp": 1790738582183,
+      "date": "29 sep 2026, 09:23 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m6",
+      "phase": "Jornada 2",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 0,
+      "team2Id": "casapiaac",
+      "team2Name": "Casa Pia AC",
+      "team2Logo": "Logos Equipos/casapia.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1790738103887",
       "timestamp": 1790738103887,
