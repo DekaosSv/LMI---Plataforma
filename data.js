@@ -2022,9 +2022,9 @@ var INITIAL_LMI_DATA = {
       "name": "Cafú",
       "position": "LD",
       "teamId": "manchestercity",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4063,9 +4063,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "manchestercity",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8142,9 +8142,9 @@ var INITIAL_LMI_DATA = {
       "name": "Edinson Cavani",
       "position": "MCD",
       "teamId": "manchestercity",
-      "goals": 3,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8880,25 +8880,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "manchestercity",
             "team2Id": "realmadrid",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_217",
-                "playerName": "Marcus Rashford",
-                "teamId": "manchestercity",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_177",
-                "playerName": "Antoine Griezmann",
-                "teamId": "manchestercity",
-                "type": "asistencia",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "oro_j2_m3",
@@ -9996,10 +9981,32 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "realmadrid",
             "team2Id": "manchestercity",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_97",
+                "playerName": "Cafú",
+                "teamId": "manchestercity",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_217",
+                "playerName": "Marcus Rashford",
+                "teamId": "manchestercity",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_457",
+                "playerName": "Edinson Cavani",
+                "teamId": "manchestercity",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j9_m3",
@@ -15007,6 +15014,46 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1790740181380",
+      "timestamp": 1790740181380,
+      "date": "29 sep 2026, 09:49 p.m.",
+      "competition": "oro",
+      "jornada": 9,
+      "fixtureMatchId": "oro_j9_m2",
+      "phase": "Jornada 9",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid CF",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 1,
+      "team2Id": "manchestercity",
+      "team2Name": "Manchester City",
+      "team2Logo": "Logos Equipos/manchestercity.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_97",
+          "playerName": "Cafú",
+          "teamId": "manchestercity",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_217",
+          "playerName": "Marcus Rashford",
+          "teamId": "manchestercity",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_457",
+          "playerName": "Edinson Cavani",
+          "teamId": "manchestercity",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1790739714364",
       "timestamp": 1790739714364,
