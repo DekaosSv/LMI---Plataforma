@@ -8208,60 +8208,140 @@ var INITIAL_LMI_DATA = {
   ],
   "copaEstelarMatches": [
     {
+      "fase": "Ronda Previa 1",
+      "team1": "Galatasaray",
+      "score1": "",
+      "team2": "Como 1907",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Ronda Previa 2",
+      "team1": "Boca Juniors",
+      "score1": "",
+      "team2": "Bayern Leverkusen",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 1",
+      "team1": "Ganador Previa 1",
+      "score1": "",
+      "team2": "FC Barcelona",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 2",
+      "team1": "Ganador Previa 2",
+      "score1": "",
+      "team2": "Atletico de Madrid",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 3",
+      "team1": "Arsenal",
+      "score1": "",
+      "team2": "Casa Pia AC",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 4",
+      "team1": "PSG",
+      "score1": "",
+      "team2": "Manchester City",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 5",
+      "team1": "Liverpool",
+      "score1": "",
+      "team2": "Real Madrid CF",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 6",
+      "team1": "River Plate",
+      "score1": "",
+      "team2": "LOSC Lille",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 7",
+      "team1": "AC Milan",
+      "score1": "",
+      "team2": "Borussia Dortmund",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 8",
+      "team1": "Inter de Milan",
+      "score1": "",
+      "team2": "Brighton",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
       "fase": "Cuartos 1",
-      "team1": "Bayern Leverkusen",
-      "score1": "3",
-      "team2": "RB Leipzig",
-      "score2": "0",
-      "estado": "Finalizado"
+      "team1": "Ganador Octavos 1",
+      "score1": "",
+      "team2": "Ganador Octavos 2",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 2",
-      "team1": "Terengganu",
-      "score1": "1",
-      "team2": "Tottenham Hotspur",
-      "score2": "5",
-      "estado": "Finalizado"
+      "team1": "Ganador Octavos 3",
+      "score1": "",
+      "team2": "Ganador Octavos 4",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 3",
-      "team1": "FC Barcelona",
-      "score1": "2",
-      "team2": "Galatasaray",
-      "score2": "1",
-      "estado": "Finalizado"
+      "team1": "Ganador Octavos 5",
+      "score1": "",
+      "team2": "Ganador Octavos 6",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 4",
-      "team1": "PSG",
-      "score1": "0",
-      "team2": "Como 1907",
-      "score2": "1",
-      "estado": "Finalizado"
+      "team1": "Ganador Octavos 7",
+      "score1": "",
+      "team2": "Ganador Octavos 8",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Semifinal 1",
-      "team1": "Bayern Leverkusen",
-      "score1": "2 (4)",
-      "team2": "Tottenham Hotspur",
-      "score2": "2 (2)",
-      "estado": "Finalizado"
+      "team1": "Ganador Cuartos 1",
+      "score1": "",
+      "team2": "Ganador Cuartos 2",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Semifinal 2",
-      "team1": "FC Barcelona",
-      "score1": "2",
-      "team2": "Como 1907",
-      "score2": "3",
-      "estado": "Finalizado"
+      "team1": "Ganador Cuartos 3",
+      "score1": "",
+      "team2": "Ganador Cuartos 4",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Final",
-      "team1": "Bayern Leverkusen",
-      "score1": "6",
-      "team2": "Como 1907",
-      "score2": "7",
-      "estado": "Finalizado"
+      "team1": "Ganador Semifinal 1",
+      "score1": "",
+      "team2": "Ganador Semifinal 2",
+      "score2": "",
+      "estado": "Pendiente"
     }
   ],
   "championsLeagueMatches": [
@@ -13266,6 +13346,1657 @@ var INITIAL_LMI_DATA = {
             "jornada": 22,
             "team1Id": "brighton",
             "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      }
+    ],
+    "champions": [
+      {
+        "jornada": 1,
+        "name": "Jornada 1",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j1_m1",
+            "jornada": 1,
+            "team1Id": "interdemilan",
+            "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m2",
+            "jornada": 1,
+            "team1Id": "arsenal",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m3",
+            "jornada": 1,
+            "team1Id": "riverplate",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m4",
+            "jornada": 1,
+            "team1Id": "losclille",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m5",
+            "jornada": 1,
+            "team1Id": "bocajuniors",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m6",
+            "jornada": 1,
+            "team1Id": "como1907",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m7",
+            "jornada": 1,
+            "team1Id": "casapiaac",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m8",
+            "jornada": 1,
+            "team1Id": "psg",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j1_m9",
+            "jornada": 1,
+            "team1Id": "borussiadortmund",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 2,
+        "name": "Jornada 2",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j2_m1",
+            "jornada": 2,
+            "team1Id": "arsenal",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m2",
+            "jornada": 2,
+            "team1Id": "acmiln",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m3",
+            "jornada": 2,
+            "team1Id": "losclille",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m4",
+            "jornada": 2,
+            "team1Id": "riverplate",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m5",
+            "jornada": 2,
+            "team1Id": "como1907",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m6",
+            "jornada": 2,
+            "team1Id": "bocajuniors",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m7",
+            "jornada": 2,
+            "team1Id": "psg",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m8",
+            "jornada": 2,
+            "team1Id": "casapiaac",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j2_m9",
+            "jornada": 2,
+            "team1Id": "borussiadortmund",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 3,
+        "name": "Jornada 3",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j3_m1",
+            "jornada": 3,
+            "team1Id": "interdemilan",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m2",
+            "jornada": 3,
+            "team1Id": "losclille",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m3",
+            "jornada": 3,
+            "team1Id": "acmiln",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m4",
+            "jornada": 3,
+            "team1Id": "como1907",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m5",
+            "jornada": 3,
+            "team1Id": "riverplate",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m6",
+            "jornada": 3,
+            "team1Id": "psg",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m7",
+            "jornada": 3,
+            "team1Id": "bocajuniors",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m8",
+            "jornada": 3,
+            "team1Id": "borussiadortmund",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j3_m9",
+            "jornada": 3,
+            "team1Id": "casapiaac",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 4,
+        "name": "Jornada 4",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j4_m1",
+            "jornada": 4,
+            "team1Id": "losclille",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m2",
+            "jornada": 4,
+            "team1Id": "manchestercity",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m3",
+            "jornada": 4,
+            "team1Id": "como1907",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m4",
+            "jornada": 4,
+            "team1Id": "acmiln",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m5",
+            "jornada": 4,
+            "team1Id": "psg",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m6",
+            "jornada": 4,
+            "team1Id": "riverplate",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m7",
+            "jornada": 4,
+            "team1Id": "borussiadortmund",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m8",
+            "jornada": 4,
+            "team1Id": "bocajuniors",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j4_m9",
+            "jornada": 4,
+            "team1Id": "casapiaac",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 5,
+        "name": "Jornada 5",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j5_m1",
+            "jornada": 5,
+            "team1Id": "interdemilan",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m2",
+            "jornada": 5,
+            "team1Id": "como1907",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m3",
+            "jornada": 5,
+            "team1Id": "manchestercity",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m4",
+            "jornada": 5,
+            "team1Id": "psg",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m5",
+            "jornada": 5,
+            "team1Id": "acmiln",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m6",
+            "jornada": 5,
+            "team1Id": "borussiadortmund",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m7",
+            "jornada": 5,
+            "team1Id": "riverplate",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m8",
+            "jornada": 5,
+            "team1Id": "casapiaac",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j5_m9",
+            "jornada": 5,
+            "team1Id": "bocajuniors",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 6,
+        "name": "Jornada 6",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j6_m1",
+            "jornada": 6,
+            "team1Id": "como1907",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m2",
+            "jornada": 6,
+            "team1Id": "galatasaray",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m3",
+            "jornada": 6,
+            "team1Id": "psg",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m4",
+            "jornada": 6,
+            "team1Id": "manchestercity",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m5",
+            "jornada": 6,
+            "team1Id": "borussiadortmund",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m6",
+            "jornada": 6,
+            "team1Id": "acmiln",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m7",
+            "jornada": 6,
+            "team1Id": "casapiaac",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m8",
+            "jornada": 6,
+            "team1Id": "riverplate",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j6_m9",
+            "jornada": 6,
+            "team1Id": "bocajuniors",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 7,
+        "name": "Jornada 7",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j7_m1",
+            "jornada": 7,
+            "team1Id": "interdemilan",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m2",
+            "jornada": 7,
+            "team1Id": "psg",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m3",
+            "jornada": 7,
+            "team1Id": "galatasaray",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m4",
+            "jornada": 7,
+            "team1Id": "borussiadortmund",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m5",
+            "jornada": 7,
+            "team1Id": "manchestercity",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m6",
+            "jornada": 7,
+            "team1Id": "casapiaac",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m7",
+            "jornada": 7,
+            "team1Id": "acmiln",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m8",
+            "jornada": 7,
+            "team1Id": "bocajuniors",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j7_m9",
+            "jornada": 7,
+            "team1Id": "riverplate",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 8,
+        "name": "Jornada 8",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j8_m1",
+            "jornada": 8,
+            "team1Id": "psg",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m2",
+            "jornada": 8,
+            "team1Id": "realmadrid",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m3",
+            "jornada": 8,
+            "team1Id": "borussiadortmund",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m4",
+            "jornada": 8,
+            "team1Id": "galatasaray",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m5",
+            "jornada": 8,
+            "team1Id": "casapiaac",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m6",
+            "jornada": 8,
+            "team1Id": "manchestercity",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m7",
+            "jornada": 8,
+            "team1Id": "bocajuniors",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m8",
+            "jornada": 8,
+            "team1Id": "acmiln",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j8_m9",
+            "jornada": 8,
+            "team1Id": "riverplate",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 9,
+        "name": "Jornada 9",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j9_m1",
+            "jornada": 9,
+            "team1Id": "interdemilan",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m2",
+            "jornada": 9,
+            "team1Id": "borussiadortmund",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m3",
+            "jornada": 9,
+            "team1Id": "realmadrid",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m4",
+            "jornada": 9,
+            "team1Id": "casapiaac",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m5",
+            "jornada": 9,
+            "team1Id": "galatasaray",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m6",
+            "jornada": 9,
+            "team1Id": "bocajuniors",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m7",
+            "jornada": 9,
+            "team1Id": "manchestercity",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m8",
+            "jornada": 9,
+            "team1Id": "riverplate",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j9_m9",
+            "jornada": 9,
+            "team1Id": "acmiln",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 10,
+        "name": "Jornada 10",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j10_m1",
+            "jornada": 10,
+            "team1Id": "borussiadortmund",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m2",
+            "jornada": 10,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m3",
+            "jornada": 10,
+            "team1Id": "casapiaac",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m4",
+            "jornada": 10,
+            "team1Id": "realmadrid",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m5",
+            "jornada": 10,
+            "team1Id": "bocajuniors",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m6",
+            "jornada": 10,
+            "team1Id": "galatasaray",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m7",
+            "jornada": 10,
+            "team1Id": "riverplate",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m8",
+            "jornada": 10,
+            "team1Id": "manchestercity",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j10_m9",
+            "jornada": 10,
+            "team1Id": "acmiln",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 11,
+        "name": "Jornada 11",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j11_m1",
+            "jornada": 11,
+            "team1Id": "interdemilan",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m2",
+            "jornada": 11,
+            "team1Id": "casapiaac",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m3",
+            "jornada": 11,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m4",
+            "jornada": 11,
+            "team1Id": "bocajuniors",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m5",
+            "jornada": 11,
+            "team1Id": "realmadrid",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m6",
+            "jornada": 11,
+            "team1Id": "riverplate",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m7",
+            "jornada": 11,
+            "team1Id": "galatasaray",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m8",
+            "jornada": 11,
+            "team1Id": "acmiln",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j11_m9",
+            "jornada": 11,
+            "team1Id": "manchestercity",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 12,
+        "name": "Jornada 12",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j12_m1",
+            "jornada": 12,
+            "team1Id": "casapiaac",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m2",
+            "jornada": 12,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m3",
+            "jornada": 12,
+            "team1Id": "bocajuniors",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m4",
+            "jornada": 12,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m5",
+            "jornada": 12,
+            "team1Id": "riverplate",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m6",
+            "jornada": 12,
+            "team1Id": "realmadrid",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m7",
+            "jornada": 12,
+            "team1Id": "acmiln",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m8",
+            "jornada": 12,
+            "team1Id": "galatasaray",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j12_m9",
+            "jornada": 12,
+            "team1Id": "manchestercity",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 13,
+        "name": "Jornada 13",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j13_m1",
+            "jornada": 13,
+            "team1Id": "interdemilan",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m2",
+            "jornada": 13,
+            "team1Id": "bocajuniors",
+            "team2Id": "casapiaac",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m3",
+            "jornada": 13,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m4",
+            "jornada": 13,
+            "team1Id": "riverplate",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m5",
+            "jornada": 13,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m6",
+            "jornada": 13,
+            "team1Id": "acmiln",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m7",
+            "jornada": 13,
+            "team1Id": "realmadrid",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m8",
+            "jornada": 13,
+            "team1Id": "manchestercity",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j13_m9",
+            "jornada": 13,
+            "team1Id": "galatasaray",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 14,
+        "name": "Jornada 14",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j14_m1",
+            "jornada": 14,
+            "team1Id": "bocajuniors",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m2",
+            "jornada": 14,
+            "team1Id": "fcbarcelona",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m3",
+            "jornada": 14,
+            "team1Id": "riverplate",
+            "team2Id": "casapiaac",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m4",
+            "jornada": 14,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m5",
+            "jornada": 14,
+            "team1Id": "acmiln",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m6",
+            "jornada": 14,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m7",
+            "jornada": 14,
+            "team1Id": "manchestercity",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m8",
+            "jornada": 14,
+            "team1Id": "realmadrid",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j14_m9",
+            "jornada": 14,
+            "team1Id": "galatasaray",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 15,
+        "name": "Jornada 15",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j15_m1",
+            "jornada": 15,
+            "team1Id": "interdemilan",
+            "team2Id": "brighton",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m2",
+            "jornada": 15,
+            "team1Id": "riverplate",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m3",
+            "jornada": 15,
+            "team1Id": "fcbarcelona",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m4",
+            "jornada": 15,
+            "team1Id": "acmiln",
+            "team2Id": "casapiaac",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m5",
+            "jornada": 15,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m6",
+            "jornada": 15,
+            "team1Id": "manchestercity",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m7",
+            "jornada": 15,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m8",
+            "jornada": 15,
+            "team1Id": "galatasaray",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j15_m9",
+            "jornada": 15,
+            "team1Id": "realmadrid",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 16,
+        "name": "Jornada 16",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j16_m1",
+            "jornada": 16,
+            "team1Id": "riverplate",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m2",
+            "jornada": 16,
+            "team1Id": "brighton",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m3",
+            "jornada": 16,
+            "team1Id": "acmiln",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m4",
+            "jornada": 16,
+            "team1Id": "fcbarcelona",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m5",
+            "jornada": 16,
+            "team1Id": "manchestercity",
+            "team2Id": "casapiaac",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m6",
+            "jornada": 16,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m7",
+            "jornada": 16,
+            "team1Id": "galatasaray",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m8",
+            "jornada": 16,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j16_m9",
+            "jornada": 16,
+            "team1Id": "realmadrid",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ]
+      },
+      {
+        "jornada": 17,
+        "name": "Jornada 17",
+        "type": "ida",
+        "matches": [
+          {
+            "id": "champions_j17_m1",
+            "jornada": 17,
+            "team1Id": "interdemilan",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m2",
+            "jornada": 17,
+            "team1Id": "acmiln",
+            "team2Id": "riverplate",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m3",
+            "jornada": 17,
+            "team1Id": "brighton",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m4",
+            "jornada": 17,
+            "team1Id": "manchestercity",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m5",
+            "jornada": 17,
+            "team1Id": "fcbarcelona",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m6",
+            "jornada": 17,
+            "team1Id": "galatasaray",
+            "team2Id": "casapiaac",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m7",
+            "jornada": 17,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m8",
+            "jornada": 17,
+            "team1Id": "realmadrid",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "champions_j17_m9",
+            "jornada": 17,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "psg",
             "score1": null,
             "score2": null,
             "played": false,
