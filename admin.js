@@ -643,15 +643,31 @@ const AdminApp = {
     btn.disabled = true;
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generando Imagen...';
 
+    const unlockTimer = setTimeout(() => {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Jornada a Imagen (PNG)</span>';
+      }
+    }, 10000);
+
     try {
       if (typeof html2canvas === 'undefined') {
         throw new Error('La librería html2canvas no está disponible.');
       }
-      const canvas = await html2canvas(target, {
+      const canvasPromise = html2canvas(target, {
         backgroundColor: '#090e1a',
         scale: 2,
-        useCORS: true
+        useCORS: true,
+        allowTaint: true,
+        imageTimeout: 3000,
+        logging: false
       });
+
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Tiempo de espera agotado al generar imagen.')), 9000)
+      );
+
+      const canvas = await Promise.race([canvasPromise, timeoutPromise]);
       const dataUrl = canvas.toDataURL('image/png');
       const a = document.createElement('a');
       a.href = dataUrl;
@@ -664,6 +680,7 @@ const AdminApp = {
       console.error('Error exportando imagen:', err);
       this.showToast(`Error al exportar imagen: ${err.message}`, 'error');
     } finally {
+      clearTimeout(unlockTimer);
       btn.disabled = false;
       btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Jornada a Imagen (PNG)</span>';
     }
@@ -758,18 +775,94 @@ const AdminApp = {
 
     setBusy(true);
 
+    const unlockTimer = setTimeout(() => {
+      setBusy(false);
+    }, 10000);
+
+    // 1. Crear clon aislado fuera de pantalla con ancho fijo
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '0';
+    wrapper.style.left = '-12000px';
+    wrapper.style.width = '1360px';
+    wrapper.style.background = '#0c1220';
+    wrapper.style.zIndex = '-99999';
+    wrapper.style.pointerEvents = 'none';
+
+    const clone = target.cloneNode(true);
+    clone.style.width = '1320px';
+    clone.style.minWidth = '1320px';
+    clone.style.maxWidth = '1320px';
+    clone.style.overflow = 'visible';
+    clone.style.margin = '0 auto';
+    clone.style.boxSizing = 'border-box';
+
+    const innerBracket = clone.querySelector('#copa-estelar-bracket-admin') || clone;
+    if (innerBracket) {
+      innerBracket.style.overflow = 'visible';
+      innerBracket.style.width = '100%';
+      innerBracket.style.display = 'flex';
+      innerBracket.style.gap = '1.25rem';
+      innerBracket.style.justifyContent = 'space-between';
+    }
+
+    // 2. Reemplazar iconos para evitar cuelgues de @font-face en html2canvas
+    clone.querySelectorAll('i').forEach(icon => {
+      const cls = icon.className || '';
+      let emoji = '⚽';
+      if (cls.includes('fa-trophy')) emoji = '🏆';
+      else if (cls.includes('fa-sitemap')) emoji = '🗺️';
+      else if (cls.includes('fa-crown')) emoji = '👑';
+      else if (cls.includes('fa-play')) emoji = '▶️';
+      const span = document.createElement('span');
+      span.style.fontSize = '1.25rem';
+      span.style.verticalAlign = 'middle';
+      span.style.marginRight = '0.35rem';
+      span.textContent = emoji;
+      icon.parentNode.replaceChild(span, icon);
+    });
+
+    // 3. Pre-convertir imágenes ya renderizadas a Data URLs
+    const origImgs = target.querySelectorAll('img');
+    const cloneImgs = clone.querySelectorAll('img');
+    cloneImgs.forEach((cImg, idx) => {
+      try {
+        const oImg = origImgs[idx] || document.querySelector(`img[src="${cImg.getAttribute('src')}"]`);
+        if (oImg && oImg.complete && oImg.naturalWidth > 0) {
+          const c = document.createElement('canvas');
+          c.width = oImg.naturalWidth;
+          c.height = oImg.naturalHeight;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(oImg, 0, 0);
+          cImg.src = c.toDataURL('image/png');
+        }
+      } catch (e) {}
+    });
+
+    wrapper.appendChild(clone);
+    document.body.appendChild(wrapper);
+
     try {
       if (typeof html2canvas === 'undefined') {
         throw new Error('La librería html2canvas no está disponible.');
       }
-      const canvas = await html2canvas(target, {
+
+      const canvasPromise = html2canvas(clone, {
         backgroundColor: '#0c1220',
         scale: 2,
         useCORS: true,
+        allowTaint: true,
+        imageTimeout: 3000,
         logging: false,
-        scrollX: 0,
-        scrollY: 0
+        width: 1320,
+        windowWidth: 1360
       });
+
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('La generación de imagen tardó demasiado. Por favor, reintenta.')), 9000)
+      );
+
+      const canvas = await Promise.race([canvasPromise, timeoutPromise]);
       const dataUrl = canvas.toDataURL('image/png');
       const a = document.createElement('a');
       a.href = dataUrl;
@@ -782,6 +875,8 @@ const AdminApp = {
       console.error('Error exportando imagen de Copa Estelar:', err);
       this.showToast(`Error al exportar imagen: ${err.message}`, 'error');
     } finally {
+      clearTimeout(unlockTimer);
+      wrapper.remove();
       setBusy(false);
     }
   },
