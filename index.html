@@ -312,13 +312,34 @@
                 Sorteo oficial con Ronda Previa, Octavos, Cuartos, Semifinales y Gran Final.
               </p>
             </div>
-            <span class="badge" style="background: rgba(147, 51, 234, 0.15); border: 1.5px solid #9333ea; color: #a855f7; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
-              18 CLUBES OFICIALES
-            </span>
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-primary" id="btn-export-copa-estelar-img" onclick="exportCopaEstelarImage()" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%); border: none; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.15rem; border-radius: var(--radius-md); box-shadow: 0 4px 14px rgba(147, 51, 234, 0.35); cursor: pointer; color: #ffffff; font-size: 0.9rem; transition: transform 0.15s, box-shadow 0.15s;">
+                <i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>
+              </button>
+              <span class="badge" style="background: rgba(147, 51, 234, 0.15); border: 1.5px solid #9333ea; color: #a855f7; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
+                18 CLUBES OFICIALES
+              </span>
+            </div>
           </div>
 
-          <div id="copa-estelar-bracket-pos" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1.5rem 0.5rem;">
-            <!-- Rendered dynamically -->
+          <!-- Contenedor capturable para exportar a imagen -->
+          <div id="copa-estelar-capture-container" style="padding: 1.5rem; background: #0c1220; border-radius: var(--radius-md); border: 1px solid rgba(147, 51, 234, 0.35); margin-top: 0.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #a855f7; padding-bottom: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="font-size: 1.8rem; color: #c084fc;"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                  <h2 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; COPA ESTELAR</h2>
+                  <span style="font-size: 0.88rem; font-weight: 900; color: #c084fc; text-transform: uppercase; letter-spacing: 0.5px;">CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)</span>
+                </div>
+              </div>
+              <div style="text-align: right; color: #cbd5e1; font-size: 0.85rem; font-weight: 700;">
+                Temporada 11 &bull; eFootball
+              </div>
+            </div>
+
+            <div id="copa-estelar-bracket-pos" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1rem 0.5rem;">
+              <!-- Rendered dynamically -->
+            </div>
           </div>
         </div>
       </div>
@@ -1038,8 +1059,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1789878388"></script>
-  <script src="app.js?v=1789878388"></script>
+  <script src="data.js?v=1790740999"></script>
+  <script src="app.js?v=1790740999"></script>
 </body>
 
 </html>

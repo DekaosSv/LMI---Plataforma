@@ -8,7 +8,59 @@ var currentNav = 'dashboard';
 document.addEventListener('DOMContentLoaded', () => {
   loadDataFromStorage();
   initUI();
+  syncLatestDataAsync();
 });
+
+// Sincronización asíncrona en tiempo real (evita problemas de caché de navegador)
+async function syncLatestDataAsync() {
+  if (!window.location.protocol.startsWith('http')) return;
+  try {
+    let freshData = null;
+
+    // 1. Intentar primero con el backend local /api/data si está corriendo
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 1500);
+      const res = await fetch('/api/data', { signal: controller.signal });
+      clearTimeout(timer);
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.teams && Array.isArray(json.teams)) {
+          freshData = json;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Si no hay backend local (ej. en GitHub Pages), descargar data.js con anti-cache timestamp
+    if (!freshData) {
+      const res = await fetch(`data.js?t=${Date.now()}`);
+      if (res.ok) {
+        const text = await res.text();
+        const prefix = 'var INITIAL_LMI_DATA = ';
+        const idx = text.indexOf(prefix);
+        if (idx !== -1) {
+          const endIdx = text.lastIndexOf(';');
+          const jsonStr = text.substring(idx + prefix.length, endIdx !== -1 ? endIdx : text.length).trim();
+          const json = JSON.parse(jsonStr);
+          if (json && json.teams && Array.isArray(json.teams)) {
+            freshData = json;
+          }
+        }
+      }
+    }
+
+    if (freshData) {
+      lmiData = freshData;
+      initUI();
+      if (currentNav === 'posiciones') {
+        renderWebPosiciones();
+      }
+    }
+  } catch (err) {
+    console.warn('Sync asíncrono secundario no completado:', err);
+  }
+}
+
 
 // Funciones Auxiliares Globales
 async function sha256(message) {
@@ -759,6 +811,66 @@ function renderBracket(containerId, matches) {
 
   container.innerHTML = previaHtml + octavosHtml + cuartosHtml + semifinalHtml + finalHtml;
 }
+
+// Exportar Eliminatorias de Copa Estelar a Imagen (PNG)
+async function exportCopaEstelarImage() {
+  const target = document.getElementById('copa-estelar-capture-container') || document.getElementById('copa-estelar-bracket-pos');
+  if (!target) return;
+  const btn = document.getElementById('btn-export-copa-estelar-img');
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generando Imagen...';
+  }
+
+  try {
+    if (typeof html2canvas === 'undefined') {
+      throw new Error('La librería html2canvas no está disponible.');
+    }
+    const canvas = await html2canvas(target, {
+      backgroundColor: '#0c1220',
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      scrollX: 0,
+      scrollY: 0
+    });
+    const dataUrl = canvas.toDataURL('image/png');
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = 'LMI_Copa_Estelar_Eliminatorias_T11.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showWebToast('¡Imagen oficial de Copa Estelar exportada con éxito!', 'success');
+  } catch (err) {
+    console.error('Error exportando imagen de Copa Estelar:', err);
+    alert('Error al exportar imagen: ' + err.message);
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>';
+    }
+  }
+}
+window.exportCopaEstelarImage = exportCopaEstelarImage;
+
+function showWebToast(message, type = 'success') {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.style.cssText = 'background: #0f172a; color: #ffffff; border: 1.5px solid #a855f7; padding: 0.85rem 1.4rem; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.65rem; font-weight: 800; font-size: 0.95rem; z-index: 99999; animation: fadeIn 0.3s ease;';
+  toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #c084fc; font-size: 1.15rem;"></i> <span>${escapeHTML(message)}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-10px)';
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
+}
+window.showWebToast = showWebToast;
 
 // Team Hub
 function initTeamSelect() {

@@ -283,6 +283,9 @@
             <button class="btn btn-secondary" id="btn-draw-copa-estelar" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Realizar un sorteo aleatorio oficial de eliminatorias de Copa Estelar (18 clubes sin Club América ni Urawa)">
               <i class="fa-solid fa-shuffle" style="color: #c084fc;"></i> Sorteo Copa Estelar (18 Clubes)
             </button>
+            <button class="btn btn-secondary" id="btn-export-copa-estelar-img-admin" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Exportar a imagen PNG las llaves actuales de Copa Estelar">
+              <i class="fa-solid fa-camera" style="color: #c084fc;"></i> Exportar Llaves Copa Estelar
+            </button>
             <button class="btn btn-secondary" id="btn-gen-champions-fixture" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar las 17 fechas de Champions League (1 vez vs cada club sin Club América ni Urawa)">
               <i class="fa-solid fa-arrows-rotate" style="color: #38bdf8;"></i> Generar Fechas Champions (17 Fechas)
             </button>
@@ -393,6 +396,39 @@
             </div>
 
             <div id="jornada-matches-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <!-- Matches rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Oficial de Llaves de Copa Estelar y Exportación a Imagen -->
+        <div class="card" id="copa-estelar-card-wrapper" style="display: none; margin-top: 1.5rem; background: #0c1220; border: 1px solid rgba(147, 51, 234, 0.4);">
+          <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 class="card-title" style="color: #c084fc;"><i class="fa-solid fa-sitemap"></i> Cuadro Oficial de Eliminatorias &bull; Copa Estelar</h3>
+              <p class="card-desc">Llaves y resultados actualizados de los 18 clubes oficiales. Puedes exportar el cuadro completo a imagen.</p>
+            </div>
+            <button class="btn btn-primary" id="btn-export-copa-estelar-img" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%); border: none; font-weight: 800;">
+              <i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>
+            </button>
+          </div>
+
+          <!-- Contenedor capturable para exportar a imagen -->
+          <div id="copa-estelar-admin-export-container" style="padding: 1.5rem; background: linear-gradient(135deg, #090e1a 0%, #150d2a 100%); border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #a855f7; padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="font-size: 1.8rem; color: #c084fc;"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                  <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; COPA ESTELAR</h2>
+                  <span style="font-size: 0.85rem; font-weight: 800; color: #c084fc; text-transform: uppercase;">CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)</span>
+                </div>
+              </div>
+              <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;">
+                Temporada 11 &bull; eFootball
+              </div>
+            </div>
+
+            <div id="copa-estelar-bracket-admin" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1rem 0.5rem;">
               <!-- Matches rendered dynamically -->
             </div>
           </div>

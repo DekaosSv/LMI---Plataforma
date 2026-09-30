@@ -42,6 +42,8 @@ const AdminApp = {
     document.getElementById('match-jornada-select').addEventListener('change', () => this.onJornadaChange());
     document.getElementById('match-fixture-item-select').addEventListener('change', (e) => this.onFixtureMatchSelect(e.target.value));
     document.getElementById('btn-export-jornada-img').addEventListener('click', () => this.exportJornadaImage());
+    document.getElementById('btn-export-copa-estelar-img')?.addEventListener('click', () => this.exportCopaEstelarImage());
+    document.getElementById('btn-export-copa-estelar-img-admin')?.addEventListener('click', () => this.exportCopaEstelarImage());
     document.getElementById('btn-draw-copa-estelar').addEventListener('click', () => this.drawCopaEstelar());
     document.getElementById('btn-gen-champions-fixture').addEventListener('click', () => this.generateChampionsFixture());
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
@@ -358,11 +360,13 @@ const AdminApp = {
     const phaseSel = document.getElementById('match-phase');
     const chkCup = document.getElementById('lbl-chk-cup-bracket');
     const jornadaWrapper = document.getElementById('jornada-card-wrapper');
+    const copaWrapper = document.getElementById('copa-estelar-card-wrapper');
 
     if (isFixtureComp) {
       if (jornadaSel) jornadaSel.style.display = 'inline-block';
       if (fixtureSel) fixtureSel.style.display = 'inline-block';
       if (jornadaWrapper) jornadaWrapper.style.display = 'block';
+      if (copaWrapper) copaWrapper.style.display = 'none';
       if (phaseSel) phaseSel.style.display = 'none';
       if (chkCup) chkCup.style.display = 'none';
 
@@ -372,11 +376,13 @@ const AdminApp = {
       if (jornadaSel) jornadaSel.style.display = 'none';
       if (fixtureSel) fixtureSel.style.display = 'none';
       if (jornadaWrapper) jornadaWrapper.style.display = 'none';
+      if (copaWrapper) copaWrapper.style.display = 'block';
       if (phaseSel) phaseSel.style.display = 'inline-block';
       if (chkCup) chkCup.style.display = 'flex';
 
       this.populateMatchTeamsForCompetition(comp);
       this.onPhaseChange();
+      this.renderCopaEstelarAdminBracket();
     }
   },
 
@@ -660,6 +666,123 @@ const AdminApp = {
     } finally {
       btn.disabled = false;
       btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Jornada a Imagen (PNG)</span>';
+    }
+  },
+
+  renderCopaEstelarAdminBracket() {
+    const container = document.getElementById('copa-estelar-bracket-admin');
+    if (!container || !this.data || !this.data.copaEstelarMatches) return;
+
+    const matches = this.data.copaEstelarMatches;
+    const teams = this.data.teams || [];
+
+    const getTeamRow = (teamName, score) => {
+      const isPlaceholder = !teamName || teamName.toLowerCase().startsWith('ganador');
+      const teamObj = teams.find(t => t.name.toLowerCase() === (teamName || '').toLowerCase()) || { logo: 'Logos Equipos/default.png' };
+      return `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0.5rem; background: #0f172a; border-radius: 4px; margin-bottom: 2px;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; max-width: 80%;">
+            <img src="${teamObj.logo}" alt="" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <span style="font-size: 0.85rem; color: ${isPlaceholder ? '#94a3b8' : '#ffffff'}; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${teamName || 'Por clasificar'}</span>
+          </div>
+          <span style="font-size: 0.9rem; font-weight: 900; color: #facc15;">${score !== undefined && score !== null ? score : ''}</span>
+        </div>
+      `;
+    };
+
+    const getMatchBox = (m) => `
+      <div style="background: #1e293b; border: 1px solid rgba(147, 51, 234, 0.3); border-radius: 8px; padding: 0.5rem; margin: 0.4rem 0;">
+        <div style="font-size: 0.7rem; font-weight: 800; color: #c084fc; text-transform: uppercase; margin-bottom: 0.3rem;">${m.fase || ''}</div>
+        ${getTeamRow(m.team1, m.score1)}
+        ${getTeamRow(m.team2, m.score2)}
+      </div>
+    `;
+
+    const previa = matches.filter(m => m.fase && m.fase.toLowerCase().includes('previa'));
+    const octavos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('octavos'));
+    const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
+    const semis = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
+    const finalM = matches.find(m => m.fase && m.fase.toLowerCase() === 'final');
+
+    let html = '';
+    if (previa.length) {
+      html += `<div style="flex: 1; min-width: 210px; display: flex; flex-direction: column; justify-content: space-around;">
+        <h4 style="color: #c084fc; text-align: center; border-bottom: 2px solid #a855f7; padding-bottom: 0.4rem; font-size: 0.9rem;">Ronda Previa</h4>
+        ${previa.map(getMatchBox).join('')}
+      </div>`;
+    }
+    if (octavos.length) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
+        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;">Octavos de Final</h4>
+        ${octavos.map(getMatchBox).join('')}
+      </div>`;
+    }
+    if (cuartos.length) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
+        <h4 style="color: #facc15; text-align: center; border-bottom: 2px solid #eab308; padding-bottom: 0.4rem; font-size: 0.9rem;">Cuartos de Final</h4>
+        ${cuartos.map(getMatchBox).join('')}
+      </div>`;
+    }
+    if (semis.length) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
+        <h4 style="color: #f97316; text-align: center; border-bottom: 2px solid #ea580c; padding-bottom: 0.4rem; font-size: 0.9rem;">Semifinales</h4>
+        ${semis.map(getMatchBox).join('')}
+      </div>`;
+    }
+    if (finalM) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: center;">
+        <h4 style="color: #ffd700; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 0.4rem; font-size: 0.9rem;">Gran Final</h4>
+        ${getMatchBox(finalM)}
+      </div>`;
+    }
+
+    container.innerHTML = html;
+  },
+
+  async exportCopaEstelarImage() {
+    this.renderCopaEstelarAdminBracket();
+    const target = document.getElementById('copa-estelar-admin-export-container') || document.getElementById('copa-estelar-bracket-admin');
+    if (!target) return;
+    const btn = document.getElementById('btn-export-copa-estelar-img');
+    const btnBar = document.getElementById('btn-export-copa-estelar-img-admin');
+
+    const setBusy = (isBusy) => {
+      [btn, btnBar].forEach(b => {
+        if (!b) return;
+        b.disabled = isBusy;
+        b.innerHTML = isBusy 
+          ? '<i class="fa-solid fa-spinner fa-spin"></i> Generando...' 
+          : '<i class="fa-solid fa-camera" style="color: #c084fc;"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>';
+      });
+    };
+
+    setBusy(true);
+
+    try {
+      if (typeof html2canvas === 'undefined') {
+        throw new Error('La librería html2canvas no está disponible.');
+      }
+      const canvas = await html2canvas(target, {
+        backgroundColor: '#0c1220',
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        scrollX: 0,
+        scrollY: 0
+      });
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `LMI_Copa_Estelar_Eliminatorias_T11.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      this.showToast('¡Imagen de eliminatorias de Copa Estelar exportada con éxito!', 'success');
+    } catch (err) {
+      console.error('Error exportando imagen de Copa Estelar:', err);
+      this.showToast(`Error al exportar imagen: ${err.message}`, 'error');
+    } finally {
+      setBusy(false);
     }
   },
 
@@ -1121,6 +1244,8 @@ const AdminApp = {
     this.renderMatchHistory();
     if (comp === 'oro' || comp === 'plata') {
       this.onJornadaChange();
+    } else if (comp === 'estelar') {
+      this.renderCopaEstelarAdminBracket();
     }
 
     // Limpiar eventos y formulario

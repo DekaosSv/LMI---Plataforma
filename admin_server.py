@@ -68,8 +68,27 @@ def write_data_js(data_obj):
         f.write(header + json_str + footer)
     print("✅ 'data.js' actualizado correctamente.")
     
+    # Actualizar cache-buster en index.html
+    update_index_cache_buster()
+    
     # Sincronizar Registro Balon de Oro.txt si hay entradas
     sync_balon_oro_txt(data_obj.get("balonOro", []))
+
+def update_index_cache_buster():
+    import time
+    index_path = os.path.join(BASE_DIR, "index.html")
+    if not os.path.exists(index_path):
+        return
+    try:
+        with open(index_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        new_v = str(int(time.time()))
+        updated = re.sub(r'data\.js(?:\?v=[^"\'\s>]+)?', f'data.js?v={new_v}', content)
+        with open(index_path, "w", encoding="utf-8") as f:
+            f.write(updated)
+        print(f"✅ 'index.html' cache buster actualizado a v={new_v}")
+    except Exception as e:
+        print(f"Error actualizando cache buster en index.html: {e}")
 
 def sync_balon_oro_txt(balon_oro_list):
     if not balon_oro_list:
