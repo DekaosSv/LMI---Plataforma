@@ -2465,9 +2465,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "riverplate",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2550,9 +2550,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "casapiaac",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2889,9 +2889,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lee Kang-in",
       "position": "ED",
       "teamId": "casapiaac",
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2924,9 +2924,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "borussiadortmund",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2975,9 +2975,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3110,9 +3110,9 @@ var INITIAL_LMI_DATA = {
       "name": "Wayne Rooney",
       "position": "SD",
       "teamId": "interdemilan",
-      "goals": 4,
+      "goals": 5,
       "assists": 2,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3144,9 +3144,9 @@ var INITIAL_LMI_DATA = {
       "name": "Moussa Diaby",
       "position": "ED",
       "teamId": "riverplate",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3161,9 +3161,9 @@ var INITIAL_LMI_DATA = {
       "name": "Antonio Nusa",
       "position": "EI",
       "teamId": "brighton",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3501,9 +3501,9 @@ var INITIAL_LMI_DATA = {
       "name": "Adama Traoré",
       "position": "ED",
       "teamId": "brighton",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3570,9 +3570,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "casapiaac",
       "goals": 2,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 2,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3689,9 +3689,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3791,9 +3791,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "interdemilan",
       "goals": 2,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 2,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3875,9 +3875,9 @@ var INITIAL_LMI_DATA = {
       "name": "Rodrigo De Paul",
       "position": "MC",
       "teamId": "bocajuniors",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3909,9 +3909,9 @@ var INITIAL_LMI_DATA = {
       "name": "Randal Kolo Muani",
       "position": "DC",
       "teamId": "casapiaac",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3943,9 +3943,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ismael Saibari",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 3,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3994,9 +3994,9 @@ var INITIAL_LMI_DATA = {
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 4,
+      "goals": 5,
       "assists": 0,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4028,10 +4028,10 @@ var INITIAL_LMI_DATA = {
       "name": "Semih Kılıçsoy",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 3,
-      "assists": 0,
-      "goals_liga": 3,
-      "assists_liga": 0,
+      "goals": 5,
+      "assists": 1,
+      "goals_liga": 5,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4096,9 +4096,9 @@ var INITIAL_LMI_DATA = {
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 6,
+      "goals": 7,
       "assists": 1,
-      "goals_liga": 6,
+      "goals_liga": 7,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4216,9 +4216,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "bocajuniors",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4368,9 +4368,9 @@ var INITIAL_LMI_DATA = {
       "name": "Viktor Gyökeres",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4708,9 +4708,9 @@ var INITIAL_LMI_DATA = {
       "name": "Samu Omorodion",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5049,9 +5049,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5576,9 +5576,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "bocajuniors",
       "goals": 4,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 4,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6205,9 +6205,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "riverplate",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6273,9 +6273,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "fcbarcelona",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6510,9 +6510,9 @@ var INITIAL_LMI_DATA = {
       "name": "Crysencio Summerville",
       "position": "ED",
       "teamId": "interdemilan",
-      "goals": 3,
+      "goals": 4,
       "assists": 1,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6595,9 +6595,9 @@ var INITIAL_LMI_DATA = {
       "name": "Donyell Malen",
       "position": "ED",
       "teamId": "bocajuniors",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6714,9 +6714,9 @@ var INITIAL_LMI_DATA = {
       "name": "Justin Kluivert",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6851,9 +6851,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7530,9 +7530,9 @@ var INITIAL_LMI_DATA = {
       "name": "Hugo Ekitiké (P)",
       "position": "DC",
       "teamId": "interdemilan",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7564,10 +7564,10 @@ var INITIAL_LMI_DATA = {
       "name": "Pierre-Emerick Aubameyang",
       "position": "DC",
       "teamId": "riverplate",
-      "goals": 0,
-      "assists": 1,
-      "goals_liga": 0,
-      "assists_liga": 1,
+      "goals": 3,
+      "assists": 2,
+      "goals_liga": 3,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7904,9 +7904,9 @@ var INITIAL_LMI_DATA = {
       "name": "Alexander Sørloth",
       "position": "DC",
       "teamId": "riverplate",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7972,9 +7972,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ferran Torres",
       "position": "DC",
       "teamId": "fcbarcelona",
-      "goals": 5,
+      "goals": 6,
       "assists": 1,
-      "goals_liga": 5,
+      "goals_liga": 6,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9548,20 +9548,85 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "psg",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_213",
+                "playerName": "Omar Marmoush",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_153",
+                "playerName": "Orkun Kökçü",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_373",
+                "playerName": "Justin Kluivert",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j7_m3",
             "jornada": 7,
             "team1Id": "fcbarcelona",
             "team2Id": "bocajuniors",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_206",
+                "playerName": "Rodrigo De Paul",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_306",
+                "playerName": "Kylian Mbappé",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_447",
+                "playerName": "Ferran Torres",
+                "teamId": "fcbarcelona",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_347",
+                "playerName": "N'Golo Kanté",
+                "teamId": "fcbarcelona",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_366",
+                "playerName": "Donyell Malen",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_226",
+                "playerName": "Marc Bernal",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j7_m4",
@@ -11880,19 +11945,69 @@ var INITIAL_LMI_DATA = {
             "jornada": 11,
             "team1Id": "interdemilan",
             "team2Id": "galatasaray",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_235",
+                "playerName": "Viktor Gyökeres",
+                "teamId": "galatasaray",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_215",
+                "playerName": "Semih Kılıçsoy",
+                "teamId": "galatasaray",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_161",
+                "playerName": "Wayne Rooney",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_255",
+                "playerName": "Samu Omorodion",
+                "teamId": "galatasaray",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_275",
+                "playerName": "Charles De Ketelaere",
+                "teamId": "galatasaray",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_421",
+                "playerName": "Hugo Ekitiké (P)",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_381",
+                "playerName": "Eldor Shomurodov",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j11_m2",
             "jornada": 11,
             "team1Id": "urawareddiamonds",
             "team2Id": "liverpool",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -11910,10 +12025,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 11,
             "team1Id": "casapiaac",
             "team2Id": "riverplate",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_208",
+                "playerName": "Randal Kolo Muani",
+                "teamId": "casapiaac",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_188",
+                "playerName": "Cody Gakpo",
+                "teamId": "casapiaac",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_423",
+                "playerName": "Pierre-Emerick Aubameyang",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_343",
+                "playerName": "Thiago Pitarch",
+                "teamId": "riverplate",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j11_m5",
@@ -11967,9 +12111,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 12,
             "team1Id": "riverplate",
             "team2Id": "urawareddiamonds",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -11997,10 +12141,32 @@ var INITIAL_LMI_DATA = {
             "jornada": 12,
             "team1Id": "acmiln",
             "team2Id": "borussiadortmund",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_210",
+                "playerName": "Ismael Saibari",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_150",
+                "playerName": "Isco",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_219",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ]
       },
@@ -12044,9 +12210,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 13,
             "team1Id": "urawareddiamonds",
             "team2Id": "brighton",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -12081,10 +12247,53 @@ var INITIAL_LMI_DATA = {
             "jornada": 14,
             "team1Id": "riverplate",
             "team2Id": "interdemilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_423",
+                "playerName": "Pierre-Emerick Aubameyang",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_423",
+                "playerName": "Pierre-Emerick Aubameyang",
+                "teamId": "riverplate",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_123",
+                "playerName": "Johnny Cardoso",
+                "teamId": "riverplate",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_361",
+                "playerName": "Crysencio Summerville",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_201",
+                "playerName": "Julián Álvarez (P)",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_163",
+                "playerName": "Moussa Diaby",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j14_m2",
@@ -12121,9 +12330,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 14,
             "team1Id": "borussiadortmund",
             "team2Id": "urawareddiamonds",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -12158,10 +12367,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "riverplate",
             "team2Id": "brighton",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_423",
+                "playerName": "Pierre-Emerick Aubameyang",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_443",
+                "playerName": "Alexander Sørloth",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_184",
+                "playerName": "Adama Traoré",
+                "teamId": "brighton",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_164",
+                "playerName": "Antonio Nusa",
+                "teamId": "brighton",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j15_m3",
@@ -12188,19 +12426,48 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "galatasaray",
             "team2Id": "casapiaac",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_148",
+                "playerName": "Lee Kang-in",
+                "teamId": "casapiaac",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_128",
+                "playerName": "João Neves",
+                "teamId": "casapiaac",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_215",
+                "playerName": "Semih Kılıçsoy",
+                "teamId": "galatasaray",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_195",
+                "playerName": "Alexander Isak",
+                "teamId": "galatasaray",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j15_m6",
             "jornada": 15,
             "team1Id": "urawareddiamonds",
             "team2Id": "atleticodemadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           }
         ]
@@ -12677,6 +12944,507 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1790733078254",
+      "timestamp": 1790733078254,
+      "date": "29 sep 2026, 07:51 p.m.",
+      "competition": "oro",
+      "jornada": 7,
+      "fixtureMatchId": "oro_j7_m2",
+      "phase": "Jornada 7",
+      "team1Id": "psg",
+      "team1Name": "PSG",
+      "team1Logo": "Logos Equipos/psg.png",
+      "score1": 0,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid CF",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_213",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_153",
+          "playerName": "Orkun Kökçü",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_373",
+          "playerName": "Justin Kluivert",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790733007247",
+      "timestamp": 1790733007247,
+      "date": "29 sep 2026, 07:50 p.m.",
+      "competition": "oro",
+      "jornada": 7,
+      "fixtureMatchId": "oro_j7_m3",
+      "phase": "Jornada 7",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 1,
+      "team2Id": "bocajuniors",
+      "team2Name": "Boca Juniors",
+      "team2Logo": "Logos Equipos/boca.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_206",
+          "playerName": "Rodrigo De Paul",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_306",
+          "playerName": "Kylian Mbappé",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_447",
+          "playerName": "Ferran Torres",
+          "teamId": "fcbarcelona",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_347",
+          "playerName": "N'Golo Kanté",
+          "teamId": "fcbarcelona",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_366",
+          "playerName": "Donyell Malen",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_226",
+          "playerName": "Marc Bernal",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732806493",
+      "timestamp": 1790732806493,
+      "date": "29 sep 2026, 07:46 p.m.",
+      "competition": "plata",
+      "jornada": 15,
+      "fixtureMatchId": "plata_j15_m5",
+      "phase": "Jornada 15",
+      "team1Id": "galatasaray",
+      "team1Name": "Galatasaray",
+      "team1Logo": "Logos Equipos/galatasaray.png",
+      "score1": 2,
+      "team2Id": "casapiaac",
+      "team2Name": "Casa Pia AC",
+      "team2Logo": "Logos Equipos/casapia.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_148",
+          "playerName": "Lee Kang-in",
+          "teamId": "casapiaac",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_128",
+          "playerName": "João Neves",
+          "teamId": "casapiaac",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_215",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_195",
+          "playerName": "Alexander Isak",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732743039",
+      "timestamp": 1790732743039,
+      "date": "29 sep 2026, 07:45 p.m.",
+      "competition": "plata",
+      "jornada": 15,
+      "fixtureMatchId": "plata_j15_m2",
+      "phase": "Jornada 15",
+      "team1Id": "riverplate",
+      "team1Name": "River Plate",
+      "team1Logo": "Logos Equipos/riverplate.webp",
+      "score1": 2,
+      "team2Id": "brighton",
+      "team2Name": "Brighton",
+      "team2Logo": "Logos Equipos/brighton.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_423",
+          "playerName": "Pierre-Emerick Aubameyang",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_443",
+          "playerName": "Alexander Sørloth",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_184",
+          "playerName": "Adama Traoré",
+          "teamId": "brighton",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_164",
+          "playerName": "Antonio Nusa",
+          "teamId": "brighton",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732680150",
+      "timestamp": 1790732680150,
+      "date": "29 sep 2026, 07:44 p.m.",
+      "competition": "plata",
+      "jornada": 14,
+      "fixtureMatchId": "plata_j14_m1",
+      "phase": "Jornada 14",
+      "team1Id": "riverplate",
+      "team1Name": "River Plate",
+      "team1Logo": "Logos Equipos/riverplate.webp",
+      "score1": 2,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_423",
+          "playerName": "Pierre-Emerick Aubameyang",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_423",
+          "playerName": "Pierre-Emerick Aubameyang",
+          "teamId": "riverplate",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_123",
+          "playerName": "Johnny Cardoso",
+          "teamId": "riverplate",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_361",
+          "playerName": "Crysencio Summerville",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_201",
+          "playerName": "Julián Álvarez (P)",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_163",
+          "playerName": "Moussa Diaby",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732607296",
+      "timestamp": 1790732607296,
+      "date": "29 sep 2026, 07:43 p.m.",
+      "competition": "plata",
+      "jornada": 12,
+      "fixtureMatchId": "plata_j12_m6",
+      "phase": "Jornada 12",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 1,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_210",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_150",
+          "playerName": "Isco",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_219",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732552047",
+      "timestamp": 1790732552047,
+      "date": "29 sep 2026, 07:42 p.m.",
+      "competition": "plata",
+      "jornada": 11,
+      "fixtureMatchId": "plata_j11_m1",
+      "phase": "Jornada 11",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 2,
+      "team2Id": "galatasaray",
+      "team2Name": "Galatasaray",
+      "team2Logo": "Logos Equipos/galatasaray.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_235",
+          "playerName": "Viktor Gyökeres",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_215",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_161",
+          "playerName": "Wayne Rooney",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_255",
+          "playerName": "Samu Omorodion",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_275",
+          "playerName": "Charles De Ketelaere",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_421",
+          "playerName": "Hugo Ekitiké (P)",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_381",
+          "playerName": "Eldor Shomurodov",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732457409",
+      "timestamp": 1790732457409,
+      "date": "29 sep 2026, 07:40 p.m.",
+      "competition": "plata",
+      "jornada": 11,
+      "fixtureMatchId": "plata_j11_m4",
+      "phase": "Jornada 11",
+      "team1Id": "casapiaac",
+      "team1Name": "Casa Pia AC",
+      "team1Logo": "Logos Equipos/casapia.webp",
+      "score1": 1,
+      "team2Id": "riverplate",
+      "team2Name": "River Plate",
+      "team2Logo": "Logos Equipos/riverplate.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_208",
+          "playerName": "Randal Kolo Muani",
+          "teamId": "casapiaac",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_188",
+          "playerName": "Cody Gakpo",
+          "teamId": "casapiaac",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_423",
+          "playerName": "Pierre-Emerick Aubameyang",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_343",
+          "playerName": "Thiago Pitarch",
+          "teamId": "riverplate",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1790732110913",
+      "timestamp": 1790732110913,
+      "date": "29 sep 2026, 07:35 p.m.",
+      "competition": "plata",
+      "jornada": 15,
+      "fixtureMatchId": "plata_j15_m6",
+      "phase": "Jornada 15",
+      "team1Id": "urawareddiamonds",
+      "team1Name": "Urawa Red Diamonds",
+      "team1Logo": "Logos Equipos/urawareds.png",
+      "score1": 0,
+      "team2Id": "atleticodemadrid",
+      "team2Name": "Atletico de Madrid",
+      "team2Logo": "Logos Equipos/atleticomadrid.webp",
+      "score2": 1,
+      "events": []
+    },
+    {
+      "id": "match_1790732098651",
+      "timestamp": 1790732098651,
+      "date": "29 sep 2026, 07:34 p.m.",
+      "competition": "plata",
+      "jornada": 14,
+      "fixtureMatchId": "plata_j14_m5",
+      "phase": "Jornada 14",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 1,
+      "team2Id": "urawareddiamonds",
+      "team2Name": "Urawa Red Diamonds",
+      "team2Logo": "Logos Equipos/urawareds.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1790732086780",
+      "timestamp": 1790732086780,
+      "date": "29 sep 2026, 07:34 p.m.",
+      "competition": "plata",
+      "jornada": 13,
+      "fixtureMatchId": "plata_j13_m4",
+      "phase": "Jornada 13",
+      "team1Id": "urawareddiamonds",
+      "team1Name": "Urawa Red Diamonds",
+      "team1Logo": "Logos Equipos/urawareds.png",
+      "score1": 0,
+      "team2Id": "brighton",
+      "team2Name": "Brighton",
+      "team2Logo": "Logos Equipos/brighton.png",
+      "score2": 1,
+      "events": []
+    },
+    {
+      "id": "match_1790732075158",
+      "timestamp": 1790732075158,
+      "date": "29 sep 2026, 07:34 p.m.",
+      "competition": "plata",
+      "jornada": 12,
+      "fixtureMatchId": "plata_j12_m3",
+      "phase": "Jornada 12",
+      "team1Id": "riverplate",
+      "team1Name": "River Plate",
+      "team1Logo": "Logos Equipos/riverplate.webp",
+      "score1": 1,
+      "team2Id": "urawareddiamonds",
+      "team2Name": "Urawa Red Diamonds",
+      "team2Logo": "Logos Equipos/urawareds.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1790732056529",
+      "timestamp": 1790732056529,
+      "date": "29 sep 2026, 07:34 p.m.",
+      "competition": "plata",
+      "jornada": 11,
+      "fixtureMatchId": "plata_j11_m2",
+      "phase": "Jornada 11",
+      "team1Id": "urawareddiamonds",
+      "team1Name": "Urawa Red Diamonds",
+      "team1Logo": "Logos Equipos/urawareds.png",
+      "score1": 0,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1790480367913",
       "timestamp": 1790480367913,
