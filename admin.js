@@ -38,9 +38,12 @@ const AdminApp = {
     const chkCup = document.getElementById('lbl-chk-cup-bracket');
     
     compSelect.addEventListener('change', () => this.onCompetitionChange());
+    phaseSelect.addEventListener('change', () => this.onPhaseChange());
     document.getElementById('match-jornada-select').addEventListener('change', () => this.onJornadaChange());
     document.getElementById('match-fixture-item-select').addEventListener('change', (e) => this.onFixtureMatchSelect(e.target.value));
     document.getElementById('btn-export-jornada-img').addEventListener('click', () => this.exportJornadaImage());
+    document.getElementById('btn-draw-copa-estelar').addEventListener('click', () => this.drawCopaEstelar());
+    document.getElementById('btn-gen-champions-fixture').addEventListener('click', () => this.generateChampionsFixture());
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
 
     document.getElementById('match-team1-select').addEventListener('change', (e) => this.onMatchTeamChange(1, e.target.value));
@@ -348,7 +351,7 @@ const AdminApp = {
 
   onCompetitionChange() {
     const comp = document.getElementById('match-competition').value;
-    const isDivision = comp === 'oro' || comp === 'plata';
+    const isFixtureComp = comp === 'oro' || comp === 'plata' || comp === 'champions';
     
     const jornadaSel = document.getElementById('match-jornada-select');
     const fixtureSel = document.getElementById('match-fixture-item-select');
@@ -356,7 +359,7 @@ const AdminApp = {
     const chkCup = document.getElementById('lbl-chk-cup-bracket');
     const jornadaWrapper = document.getElementById('jornada-card-wrapper');
 
-    if (isDivision) {
+    if (isFixtureComp) {
       if (jornadaSel) jornadaSel.style.display = 'inline-block';
       if (fixtureSel) fixtureSel.style.display = 'inline-block';
       if (jornadaWrapper) jornadaWrapper.style.display = 'block';
@@ -372,7 +375,34 @@ const AdminApp = {
       if (phaseSel) phaseSel.style.display = 'inline-block';
       if (chkCup) chkCup.style.display = 'flex';
 
-      this.populateMatchTeamsForCompetition('all');
+      this.populateMatchTeamsForCompetition(comp);
+      this.onPhaseChange();
+    }
+  },
+
+  onPhaseChange() {
+    const comp = document.getElementById('match-competition').value;
+    if (comp !== 'estelar') return;
+    const phaseSel = document.getElementById('match-phase');
+    if (!phaseSel) return;
+    const phase = phaseSel.value;
+    const cupMatches = this.data.copaEstelarMatches || [];
+    const targetMatch = cupMatches.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+    if (targetMatch && this.data.teams) {
+      const t1 = this.data.teams.find(t => t.name.toLowerCase() === (targetMatch.team1 || '').toLowerCase());
+      const t2 = this.data.teams.find(t => t.name.toLowerCase() === (targetMatch.team2 || '').toLowerCase());
+      if (t1) {
+        document.getElementById('match-team1-select').value = t1.id;
+        this.onMatchTeamChange(1, t1.id);
+      }
+      if (t2) {
+        document.getElementById('match-team2-select').value = t2.id;
+        this.onMatchTeamChange(2, t2.id);
+      }
+      const s1 = parseInt(targetMatch.score1, 10);
+      const s2 = parseInt(targetMatch.score2, 10);
+      document.getElementById('match-score1').value = !isNaN(s1) ? s1 : 0;
+      document.getElementById('match-score2').value = !isNaN(s2) ? s2 : 0;
     }
   },
 
@@ -385,7 +415,8 @@ const AdminApp = {
     rounds.forEach(r => {
       const opt = document.createElement('option');
       opt.value = r.jornada;
-      opt.textContent = `${r.name} (${r.type === 'ida' ? 'Ida' : 'Vuelta'})`;
+      const typeLabel = comp === 'champions' ? 'Fecha' : (r.type === 'ida' ? 'Ida' : 'Vuelta');
+      opt.textContent = `${r.name} (${typeLabel})`;
       jornadaSel.appendChild(opt);
     });
 
@@ -490,6 +521,8 @@ const AdminApp = {
       teams = teams.filter(t => t.division === 'oro');
     } else if (comp === 'plata') {
       teams = teams.filter(t => t.division === 'plata');
+    } else if (comp === 'champions' || comp === 'estelar') {
+      teams = teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
     }
 
     const fill = (el, defaultIdx) => {
@@ -516,7 +549,7 @@ const AdminApp = {
     const descEl = document.getElementById('jornada-card-desc');
     if (!container || !this.data || !this.data.fixtures) return;
 
-    const divName = comp === 'oro' ? 'DIVISIÓN ORO' : (comp === 'plata' ? 'DIVISIÓN PLATA' : 'TORNEO');
+    const divName = comp === 'oro' ? 'DIVISIÓN ORO' : (comp === 'plata' ? 'DIVISIÓN PLATA' : (comp === 'champions' ? 'UEFA CHAMPIONS LEAGUE' : 'TORNEO'));
     if (titleEl) titleEl.textContent = `${divName} • JORNADA ${jornadaNum}`;
     if (descEl) descEl.textContent = `Partidos programados para la Jornada ${jornadaNum} de ${divName}.`;
 
@@ -628,6 +661,105 @@ const AdminApp = {
       btn.disabled = false;
       btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Jornada a Imagen (PNG)</span>';
     }
+  },
+
+  async drawCopaEstelar() {
+    if (!this.data || !this.data.teams) return;
+    if (!confirm('¿Deseas realizar un nuevo sorteo aleatorio oficial de la Copa Estelar para los 18 clubes (excluyendo Club América y Urawa Red Diamonds)?\\n\\nEsto reseteará los partidos de Copa Estelar a estado Pendiente con el nuevo cuadro sorteado.')) {
+      return;
+    }
+
+    const eligibleTeams = this.data.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
+    if (eligibleTeams.length < 18) {
+      this.showToast('No se encontraron suficientes equipos elegibles para el sorteo', 'error');
+      return;
+    }
+
+    const shuffled = [...eligibleTeams].map(t => t.name).sort(() => Math.random() - 0.5);
+
+    const matches = [
+      { fase: 'Ronda Previa 1', team1: shuffled[0], score1: '', team2: shuffled[1], score2: '', estado: 'Pendiente' },
+      { fase: 'Ronda Previa 2', team1: shuffled[2], score1: '', team2: shuffled[3], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 1', team1: 'Ganador Previa 1', score1: '', team2: shuffled[4], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 2', team1: 'Ganador Previa 2', score1: '', team2: shuffled[5], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 3', team1: shuffled[6], score1: '', team2: shuffled[7], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 4', team1: shuffled[8], score1: '', team2: shuffled[9], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 5', team1: shuffled[10], score1: '', team2: shuffled[11], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 6', team1: shuffled[12], score1: '', team2: shuffled[13], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 7', team1: shuffled[14], score1: '', team2: shuffled[15], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 8', team1: shuffled[16], score1: '', team2: shuffled[17], score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 1', team1: 'Ganador Octavos 1', score1: '', team2: 'Ganador Octavos 2', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 2', team1: 'Ganador Octavos 3', score1: '', team2: 'Ganador Octavos 4', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 3', team1: 'Ganador Octavos 5', score1: '', team2: 'Ganador Octavos 6', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 4', team1: 'Ganador Octavos 7', score1: '', team2: 'Ganador Octavos 8', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 1', team1: 'Ganador Cuartos 1', score1: '', team2: 'Ganador Cuartos 2', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 2', team1: 'Ganador Cuartos 3', score1: '', team2: 'Ganador Cuartos 4', score2: '', estado: 'Pendiente' },
+      { fase: 'Final', team1: 'Ganador Semifinal 1', score1: '', team2: 'Ganador Semifinal 2', score2: '', estado: 'Pendiente' }
+    ];
+
+    this.data.copaEstelarMatches = matches;
+    await this.saveData(true);
+    this.onCompetitionChange();
+    this.showToast('¡Sorteo aleatorio oficial de Copa Estelar realizado con éxito!', 'success');
+  },
+
+  async generateChampionsFixture() {
+    if (!this.data || !this.data.teams) return;
+    if (!confirm('¿Deseas generar las 17 fechas oficiales de UEFA Champions League (1 partido contra cada club para los 18 equipos, excluyendo Club América y Urawa)?\\n\\nEsto regenerará el fixture oficial de Champions League.')) {
+      return;
+    }
+
+    const eligible = this.data.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
+    const teamIds = eligible.map(t => t.id);
+    const n = teamIds.length;
+    if (n < 18) {
+      this.showToast('No se encontraron los 18 clubes elegibles', 'error');
+      return;
+    }
+
+    const roundsCount = n - 1;
+    const matchesPerRound = n / 2;
+    const fixed = teamIds[0];
+    let rotating = teamIds.slice(1);
+
+    const fixtures = [];
+    for (let r = 0; r < roundsCount; r++) {
+      const currentTeams = [fixed, ...rotating];
+      const matches = [];
+      for (let m = 0; m < matchesPerRound; m++) {
+        let t1 = currentTeams[m];
+        let t2 = currentTeams[n - 1 - m];
+        if (m === 0 && r % 2 === 1) {
+          const tmp = t1; t1 = t2; t2 = tmp;
+        } else if (m > 0 && (r + m) % 2 === 1) {
+          const tmp = t1; t1 = t2; t2 = tmp;
+        }
+        matches.push({
+          id: `champions_j${r + 1}_m${m + 1}`,
+          jornada: r + 1,
+          team1Id: t1,
+          team2Id: t2,
+          score1: null,
+          score2: null,
+          played: false,
+          events: []
+        });
+      }
+      fixtures.push({
+        jornada: r + 1,
+        name: `Jornada ${r + 1}`,
+        type: 'ida',
+        matches: matches
+      });
+      rotating = [rotating[rotating.length - 1], ...rotating.slice(0, rotating.length - 1)];
+    }
+
+    if (!this.data.fixtures) this.data.fixtures = {};
+    this.data.fixtures['champions'] = fixtures;
+
+    await this.saveData(true);
+    this.onCompetitionChange();
+    this.showToast('¡Calendario oficial de Champions League (17 Jornadas) generado exitosamente!', 'success');
   },
 
   onMatchTeamChange(teamIndex, teamId) {
@@ -872,9 +1004,9 @@ const AdminApp = {
       }
     });
 
-    // Actualizar cuadro si es Copa / Champions
-    if ((comp === 'champions' || comp === 'estelar') && updateBracket) {
-      const matchArray = comp === 'champions' ? this.data.championsLeagueMatches : this.data.copaEstelarMatches;
+    // Actualizar cuadro si es Copa Estelar
+    if (comp === 'estelar' && updateBracket) {
+      const matchArray = this.data.copaEstelarMatches;
       if (matchArray) {
         let targetMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
         if (!targetMatch) {
@@ -900,13 +1032,43 @@ const AdminApp = {
             estado: 'Finalizado'
           });
         }
+
+        // Auto-avanzar ganador al siguiente cruce en Copa Estelar
+        if (score1 !== score2) {
+          const winnerName = score1 > score2 ? team1.name : team2.name;
+          const nextMapping = {
+            'ronda previa 1': { phase: 'octavos 1', teamSlot: 'team1' },
+            'ronda previa 2': { phase: 'octavos 2', teamSlot: 'team1' },
+            'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
+            'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
+            'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
+            'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
+            'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
+            'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
+            'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
+            'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
+            'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
+            'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
+            'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
+            'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
+            'semifinal 1': { phase: 'final', teamSlot: 'team1' },
+            'semifinal 2': { phase: 'final', teamSlot: 'team2' }
+          };
+          const target = nextMapping[phase.toLowerCase()];
+          if (target) {
+            const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === target.phase);
+            if (nextMatch) {
+              nextMatch[target.teamSlot] = winnerName;
+            }
+          }
+        }
       }
     }
 
-    // Actualizar partido del fixture si es División Oro o Plata
+    // Actualizar partido del fixture si es División Oro, Plata o Champions League
     let fixtureMatchId = null;
     let jornadaNumber = null;
-    if (comp === 'oro' || comp === 'plata') {
+    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
       jornadaNumber = parseInt(document.getElementById('match-jornada-select').value, 10) || 1;
       fixtureMatchId = document.getElementById('match-fixture-item-select').value;
       const rounds = (this.data && this.data.fixtures) ? (this.data.fixtures[comp] || []) : [];
@@ -940,7 +1102,7 @@ const AdminApp = {
       competition: comp,
       jornada: jornadaNumber,
       fixtureMatchId: fixtureMatchId,
-      phase: (comp === 'champions' || comp === 'estelar') ? phase : (jornadaNumber ? `Jornada ${jornadaNumber}` : ''),
+      phase: comp === 'estelar' ? phase : (jornadaNumber ? `Jornada ${jornadaNumber}` : ''),
       team1Id: team1.id,
       team1Name: team1.name,
       team1Logo: team1.logo || '',
@@ -1085,7 +1247,7 @@ const AdminApp = {
     }
 
     // Revertir fixture si aplica
-    if (match.competition === 'oro' || match.competition === 'plata') {
+    if (match.competition === 'oro' || match.competition === 'plata' || match.competition === 'champions') {
       const rounds = (this.data && this.data.fixtures) ? (this.data.fixtures[match.competition] || []) : [];
       for (const r of rounds) {
         const fm = r.matches.find(m => m.id === match.fixtureMatchId || ((m.team1Id === match.team1Id && m.team2Id === match.team2Id) || (m.team1Id === match.team2Id && m.team2Id === match.team1Id)));

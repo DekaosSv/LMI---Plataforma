@@ -95,6 +95,7 @@ function initUI() {
   
   // Render direct elimination brackets
   renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
+  renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
   renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
 
   // Initialize Balon de Oro Gallery
@@ -110,6 +111,16 @@ function initUI() {
 function switchNav(navId) {
   if (navId === 'renovaciones' || navId === 'rules') {
     navId = 'dashboard';
+  }
+  if (navId === 'copa-estelar') {
+    switchNav('posiciones');
+    switchWebDivision('estelar');
+    return;
+  }
+  if (navId === 'uefa-champions') {
+    switchNav('posiciones');
+    switchWebDivision('champions');
+    return;
   }
   currentNav = navId;
   document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active'));
@@ -569,37 +580,40 @@ function renderBracket(containerId, matches) {
     return;
   }
 
-  const normalizedTeams = lmiData.teams.map(t => ({
+  const normalizedTeams = (lmiData && lmiData.teams) ? lmiData.teams.map(t => ({
     ...t,
     normName: normalizeSearchString(t.name)
-  }));
+  })) : [];
 
   // Group matches by phase
-  const cuartos = matches.filter(m => m.fase.toLowerCase().includes('cuartos'));
-  const semifinales = matches.filter(m => m.fase.toLowerCase().includes('semifinal'));
-  const finalMatch = matches.find(m => m.fase.toLowerCase() === 'final');
+  const previa = matches.filter(m => m.fase && (m.fase.toLowerCase().includes('previa') || m.fase.toLowerCase().includes('preliminar')));
+  const octavos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('octavos'));
+  const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
+  const semifinales = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
+  const finalMatch = matches.find(m => m.fase && m.fase.toLowerCase() === 'final');
 
   // helper function to render a team row in match box
   const getTeamRowHtml = (teamName, score, isWinner, isOpponentWinner) => {
+    const isPlaceholder = !teamName || teamName.toLowerCase().startsWith('ganador') || teamName.toLowerCase().startsWith('por ');
     const normSearchName = normalizeSearchString(teamName);
     const teamObj = normalizedTeams.find(t => t.normName === normSearchName) || { logo: 'Imagenes/lmi logo original.jpg' };
-    const nameStyle = isWinner ? 'font-weight: 700; color: var(--text-primary);' : (isOpponentWinner ? 'color: var(--text-muted);' : 'color: var(--text-primary);');
-    const scoreStyle = isWinner ? 'font-weight: 700; color: var(--lmi-blue);' : 'color: var(--text-muted);';
+    const nameStyle = isWinner ? 'font-weight: 700; color: var(--text-primary);' : (isOpponentWinner ? 'color: var(--text-muted);' : (isPlaceholder ? 'color: var(--text-muted); font-style: italic;' : 'font-weight: 600; color: var(--text-primary);'));
+    const scoreStyle = isWinner ? 'font-weight: 800; color: var(--lmi-blue);' : 'color: var(--text-muted);';
     return `
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0.5rem; ${isOpponentWinner ? 'opacity: 0.75;' : ''}">
         <div style="display: flex; align-items: center; gap: 0.5rem; max-width: 80%;">
-          <img src="${teamObj.logo}" alt="${teamName}" style="width: 20px; height: 20px; object-fit: contain;">
-          <span style="font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ${nameStyle}">${teamName || 'Por clasificar'}</span>
+          <img src="${teamObj.logo}" alt="${teamName}" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+          <span style="font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="${nameStyle}" title="${teamName || 'Por clasificar'}">${teamName || 'Por clasificar'}</span>
         </div>
-        <span style="font-family: var(--font-heading); font-size: 0.85rem; ${scoreStyle}">${score !== undefined ? score : ''}</span>
+        <span style="font-family: var(--font-heading); font-size: 0.85rem; ${scoreStyle}">${score !== undefined && score !== null ? score : ''}</span>
       </div>
     `;
   };
 
   const getMatchBoxHtml = (match) => {
-    const score1Str = String(match.score1 || '');
-    const score2Str = String(match.score2 || '');
-    const isFinished = match.estado.toLowerCase() === 'finalizado';
+    const score1Str = String(match.score1 !== null && match.score1 !== undefined ? match.score1 : '');
+    const score2Str = String(match.score2 !== null && match.score2 !== undefined ? match.score2 : '');
+    const isFinished = match.estado && match.estado.toLowerCase() === 'finalizado';
     
     // Determine winner
     let isT1Winner = false;
@@ -616,36 +630,65 @@ function renderBracket(containerId, matches) {
     }
 
     return `
-      <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.4rem 0.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); margin: 0.5rem 0; width: 100%;">
+      <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.4rem 0.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.03); margin: 0.4rem 0; width: 100%;">
+        <div style="font-size: 0.68rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; padding: 0.1rem 0.5rem; letter-spacing: 0.5px;">${escapeHTML(match.fase || '')}</div>
         ${getTeamRowHtml(match.team1, match.score1, isT1Winner, isT2Winner)}
-        <div style="border-top: 1px solid rgba(0,0,0,0.05); margin: 0.15rem 0;"></div>
+        <div style="border-top: 1px solid rgba(0,0,0,0.06); margin: 0.15rem 0;"></div>
         ${getTeamRowHtml(match.team2, match.score2, isT2Winner, isT1Winner)}
       </div>
     `;
   };
 
+  // Render Previa Column (if any)
+  let previaHtml = '';
+  if (previa.length > 0) {
+    previaHtml = `
+      <div style="flex: 1; min-width: 210px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.75rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: #9333ea; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-play"></i> Ronda Previa</h3>
+        ${previa.map(getMatchBoxHtml).join('')}
+      </div>
+    `;
+  }
+
+  // Render Octavos Column (if any)
+  let octavosHtml = '';
+  if (octavos.length > 0) {
+    octavosHtml = `
+      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.6rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: #2563eb; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Octavos de Final</h3>
+        ${octavos.map(getMatchBoxHtml).join('')}
+      </div>
+    `;
+  }
+
   // Render Cuartos Column
-  let cuartosHtml = `
-    <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
-      <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-gamepad"></i> Cuartos de Final</h3>
-      ${cuartos.map(getMatchBoxHtml).join('')}
-    </div>
-  `;
+  let cuartosHtml = '';
+  if (cuartos.length > 0) {
+    cuartosHtml = `
+      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-gamepad"></i> Cuartos de Final</h3>
+        ${cuartos.map(getMatchBoxHtml).join('')}
+      </div>
+    `;
+  }
 
   // Render Semifinal Column
-  let semifinalHtml = `
-    <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem;">
-      <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield"></i> Semifinales</h3>
-      ${semifinales.map(getMatchBoxHtml).join('')}
-    </div>
-  `;
+  let semifinalHtml = '';
+  if (semifinales.length > 0) {
+    semifinalHtml = `
+      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield"></i> Semifinales</h3>
+        ${semifinales.map(getMatchBoxHtml).join('')}
+      </div>
+    `;
+  }
 
   // Render Final Column
   let finalHtml = '';
   if (finalMatch) {
-    const isFinished = finalMatch.estado.toLowerCase() === 'finalizado';
-    const score1Str = String(finalMatch.score1 || '');
-    const score2Str = String(finalMatch.score2 || '');
+    const isFinished = finalMatch.estado && finalMatch.estado.toLowerCase() === 'finalizado';
+    const score1Str = String(finalMatch.score1 !== null && finalMatch.score1 !== undefined ? finalMatch.score1 : '');
+    const score2Str = String(finalMatch.score2 !== null && finalMatch.score2 !== undefined ? finalMatch.score2 : '');
     
     // Determine winner
     let isT1Winner = false;
@@ -672,18 +715,16 @@ function renderBracket(containerId, matches) {
 
     let finalGraphicHtml = '';
     if (isFinished) {
-      // Champion! Show only the champion logo
       finalGraphicHtml = `
         <div style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.15) 0%, rgba(0, 168, 89, 0.1) 100%); border: 2px solid var(--lmi-yellow); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: 0 8px 20px rgba(255, 209, 0, 0.15); text-align: center;">
           <i class="fa-solid fa-trophy" style="font-size: 2.5rem; color: var(--lmi-yellow); margin-bottom: 0.75rem; display: inline-block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));"></i>
           <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem;">¡CAMPEÓN OFICIAL!</div>
-          <img src="${championLogo}" alt="${championName}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));">
+          <img src="${championLogo}" alt="${championName}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));" onerror="this.src='Logos Equipos/default.png'">
           <div style="font-size: 1.25rem; font-weight: 800; color: var(--lmi-blue); line-height: 1.2;">${championName}</div>
           <div style="font-size: 0.85rem; font-weight: 700; color: var(--lmi-green); margin-top: 0.5rem;">Marcador: ${finalMatch.score1} - ${finalMatch.score2}</div>
         </div>
       `;
     } else {
-      // By play! Show both team logos next to each other
       finalGraphicHtml = `
         <div style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.05) 0%, rgba(0, 51, 160, 0.03) 100%); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: center;">
           <i class="fa-solid fa-trophy" style="font-size: 2.2rem; color: #cbd5e1; margin-bottom: 0.75rem;"></i>
@@ -691,14 +732,14 @@ function renderBracket(containerId, matches) {
           
           <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.75rem;">
             <div style="text-align: center; width: 75px;">
-              <img src="${t1Obj.logo}" alt="${finalMatch.team1}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+              <img src="${t1Obj.logo}" alt="${finalMatch.team1}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" onerror="this.src='Logos Equipos/default.png'">
               <div style="font-size: 0.7rem; font-weight: 700; margin-top: 0.25rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${finalMatch.team1 || 'Por Clasificar'}</div>
             </div>
             
             <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted);">VS</span>
             
             <div style="text-align: center; width: 75px;">
-              <img src="${t2Obj.logo}" alt="${finalMatch.team2}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+              <img src="${t2Obj.logo}" alt="${finalMatch.team2}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" onerror="this.src='Logos Equipos/default.png'">
               <div style="font-size: 0.7rem; font-weight: 700; margin-top: 0.25rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${finalMatch.team2 || 'Por Clasificar'}</div>
             </div>
           </div>
@@ -716,7 +757,7 @@ function renderBracket(containerId, matches) {
     `;
   }
 
-  container.innerHTML = cuartosHtml + semifinalHtml + finalHtml;
+  container.innerHTML = previaHtml + octavosHtml + cuartosHtml + semifinalHtml + finalHtml;
 }
 
 // Team Hub
@@ -1946,6 +1987,8 @@ function updateDynamicClubsCounts() {
   if (!lmiData || !lmiData.teams) return;
   const oroCount = lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length;
   const plataCount = lmiData.teams.filter(t => t.division === 'plata').length;
+  const championsCount = lmiData.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds').length;
+  const estelarCount = championsCount;
   const totalCount = lmiData.teams.length;
 
   // Header division bar
@@ -1965,10 +2008,19 @@ function updateDynamicClubsCounts() {
   const lblTabPlata = document.getElementById('lbl-tab-count-plata');
   if (lblTabPlata) lblTabPlata.textContent = plataCount;
 
+  const lblTabChampions = document.getElementById('lbl-tab-count-champions');
+  if (lblTabChampions) lblTabChampions.textContent = championsCount;
+
+  const lblTabEstelar = document.getElementById('lbl-tab-count-estelar');
+  if (lblTabEstelar) lblTabEstelar.textContent = estelarCount;
+
   // Standings badge
   const badgeEl = document.getElementById('lbl-web-division-badge');
   if (badgeEl) {
-    const currentCount = currentWebDivision === 'oro' ? oroCount : plataCount;
+    let currentCount = oroCount;
+    if (currentWebDivision === 'plata') currentCount = plataCount;
+    else if (currentWebDivision === 'champions') currentCount = championsCount;
+    else if (currentWebDivision === 'estelar') currentCount = estelarCount;
     badgeEl.textContent = `${currentCount} CLUBES`;
   }
 }
@@ -1980,8 +2032,13 @@ function initWebPosiciones() {
 
 function renderWebPosiciones() {
   updateDynamicClubsCounts();
-  renderWebStandings();
-  populateWebJornadas();
+  if (currentWebDivision === 'estelar') {
+    renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
+    renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
+  } else {
+    renderWebStandings();
+    populateWebJornadas();
+  }
 }
 
 function switchWebDivision(div) {
@@ -1989,57 +2046,85 @@ function switchWebDivision(div) {
   
   const tabOro = document.getElementById('tab-web-oro');
   const tabPlata = document.getElementById('tab-web-plata');
+  const tabChampions = document.getElementById('tab-web-champions');
+  const tabEstelar = document.getElementById('tab-web-estelar');
+
   const titleEl = document.getElementById('web-standings-card-title');
   const badgeEl = document.getElementById('lbl-web-division-badge');
 
-  const isOro = div === 'oro';
+  const standingsCard = document.getElementById('web-standings-card');
+  const jornadasCard = document.getElementById('web-jornadas-card');
+  const estelarContainer = document.getElementById('web-copa-estelar-container');
+
   const oroCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length : 8;
   const plataCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.division === 'plata').length : 12;
+  const championsCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds').length : 18;
 
-  if (tabOro && tabPlata) {
-    if (isOro) {
-      tabOro.classList.add('active');
-      tabOro.style.background = '#fef3c7';
-      tabOro.style.borderColor = '#d97706';
-      tabOro.style.color = '#92400e';
-      tabOro.style.boxShadow = '0 2px 8px rgba(217, 119, 6, 0.2)';
+  const tabsConfig = [
+    { el: tabOro, id: 'oro', bg: '#fef3c7', border: '#d97706', color: '#92400e', shadow: '0 2px 8px rgba(217, 119, 6, 0.2)' },
+    { el: tabPlata, id: 'plata', bg: '#e2e8f0', border: '#475569', color: '#0f172a', shadow: '0 2px 8px rgba(71, 85, 105, 0.2)' },
+    { el: tabChampions, id: 'champions', bg: '#e0f2fe', border: '#0284c7', color: '#0369a1', shadow: '0 2px 8px rgba(2, 132, 199, 0.25)' },
+    { el: tabEstelar, id: 'estelar', bg: '#f3e8ff', border: '#9333ea', color: '#6b21a8', shadow: '0 2px 8px rgba(147, 51, 234, 0.25)' }
+  ];
 
-      tabPlata.classList.remove('active');
-      tabPlata.style.background = '#ffffff';
-      tabPlata.style.borderColor = '#cbd5e1';
-      tabPlata.style.color = '#334155';
-      tabPlata.style.boxShadow = 'none';
+  tabsConfig.forEach(t => {
+    if (!t.el) return;
+    if (t.id === div) {
+      t.el.classList.add('active');
+      t.el.style.background = t.bg;
+      t.el.style.borderColor = t.border;
+      t.el.style.color = t.color;
+      t.el.style.boxShadow = t.shadow;
     } else {
-      tabPlata.classList.add('active');
-      tabPlata.style.background = '#e2e8f0';
-      tabPlata.style.borderColor = '#475569';
-      tabPlata.style.color = '#0f172a';
-      tabPlata.style.boxShadow = '0 2px 8px rgba(71, 85, 105, 0.2)';
+      t.el.classList.remove('active');
+      t.el.style.background = '#ffffff';
+      t.el.style.borderColor = '#cbd5e1';
+      t.el.style.color = '#334155';
+      t.el.style.boxShadow = 'none';
+    }
+  });
 
-      tabOro.classList.remove('active');
-      tabOro.style.background = '#ffffff';
-      tabOro.style.borderColor = '#cbd5e1';
-      tabOro.style.color = '#334155';
-      tabOro.style.boxShadow = 'none';
+  if (div === 'estelar') {
+    if (standingsCard) standingsCard.style.display = 'none';
+    if (jornadasCard) jornadasCard.style.display = 'none';
+    if (estelarContainer) estelarContainer.style.display = 'block';
+    renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
+    renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
+    updateDynamicClubsCounts();
+    return;
+  }
+
+  // Div is 'oro', 'plata', or 'champions'
+  if (standingsCard) standingsCard.style.display = 'block';
+  if (jornadasCard) jornadasCard.style.display = 'block';
+  if (estelarContainer) estelarContainer.style.display = 'none';
+
+  if (titleEl) {
+    if (div === 'oro') {
+      titleEl.innerHTML = `<i class="fa-solid fa-table-list" style="color: #b45309;"></i> Tabla de Posiciones Tradicional &bull; División Oro`;
+    } else if (div === 'plata') {
+      titleEl.innerHTML = `<i class="fa-solid fa-table-list" style="color: #475569;"></i> Tabla de Posiciones Tradicional &bull; División Plata`;
+    } else if (div === 'champions') {
+      titleEl.innerHTML = `<i class="fa-solid fa-star" style="color: #0284c7;"></i> Tabla de Posiciones Oficial &bull; UEFA Champions League`;
     }
   }
 
-  if (titleEl) {
-    const iconColor = isOro ? '#b45309' : '#475569';
-    titleEl.innerHTML = `<i class="fa-solid fa-table-list" style="color: ${iconColor};"></i> Tabla de Posiciones Tradicional &bull; División ${isOro ? 'Oro' : 'Plata'}`;
-  }
-
   if (badgeEl) {
-    const count = isOro ? oroCount : plataCount;
-    badgeEl.textContent = `${count} CLUBES`;
-    if (isOro) {
+    if (div === 'oro') {
+      badgeEl.textContent = `${oroCount} CLUBES`;
       badgeEl.style.color = '#92400e';
       badgeEl.style.borderColor = '#d97706';
       badgeEl.style.background = '#fef3c7';
-    } else {
+    } else if (div === 'plata') {
+      badgeEl.textContent = `${plataCount} CLUBES`;
       badgeEl.style.color = '#0f172a';
       badgeEl.style.borderColor = '#64748b';
       badgeEl.style.background = '#f1f5f9';
+    } else if (div === 'champions') {
+      badgeEl.textContent = `${championsCount} CLUBES`;
+      badgeEl.style.color = '#0369a1';
+      badgeEl.style.borderColor = '#0284c7';
+      badgeEl.style.background = '#e0f2fe';
     }
   }
 
@@ -2051,7 +2136,13 @@ function switchWebDivision(div) {
 function calculateStandings(division) {
   if (!lmiData || !lmiData.teams) return [];
   
-  const divTeams = lmiData.teams.filter(t => (t.division || 'oro') === division);
+  let divTeams = [];
+  if (division === 'champions') {
+    divTeams = lmiData.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
+  } else {
+    divTeams = lmiData.teams.filter(t => (t.division || 'oro') === division);
+  }
+
   const stats = {};
   divTeams.forEach(t => {
     stats[t.id] = {
@@ -2141,6 +2232,7 @@ function renderWebStandings() {
   }
 
   const isOro = currentWebDivision === 'oro';
+  const isChampions = currentWebDivision === 'champions';
   const totalTeams = standings.length;
 
   tbody.innerHTML = standings.map((item, idx) => {
@@ -2149,7 +2241,21 @@ function renderWebStandings() {
     let rowBorderLeft = '4px solid transparent';
     let rowBg = 'transparent';
 
-    if (isOro) {
+    if (isChampions) {
+      if (pos === 1) {
+        // 1° Campeón
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="🏆 Campeón UEFA Champions League">1</span>`;
+        rowBorderLeft = '4px solid #ffd700';
+        rowBg = 'rgba(255, 215, 0, 0.04)';
+      } else if (pos >= 2 && pos <= 8) {
+        // 2° al 8°: Clasificación a Fase Eliminatoria (Azul/Cian)
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(2, 132, 199, 0.25); border:1px solid #0284c7; color:#38bdf8; box-shadow:0 0 8px rgba(2, 132, 199, 0.25);" title="Clasificado a Fase Final de Campeones">${pos}</span>`;
+        rowBorderLeft = '4px solid #0284c7';
+        rowBg = 'rgba(2, 132, 199, 0.04)';
+      } else {
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:700; font-size:0.85rem; background:rgba(255,255,255,0.06); color:var(--text-muted);">${pos}</span>`;
+      }
+    } else if (isOro) {
       if (pos === 1) {
         // 1° Campeón
         posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="🏆 Campeón de División Oro">1</span>`;
@@ -2211,7 +2317,24 @@ function renderWebStandings() {
 
   // Render legend
   if (legendEl) {
-    if (isOro) {
+    if (isChampions) {
+      legendEl.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; font-weight: 700; color: #94a3b8; padding: 0.4rem 0.5rem;">
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.7);"></span>
+            <strong style="color: #ffd700;">1°</strong> Campeón UEFA Champions League
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #0284c7; box-shadow: 0 0 8px rgba(2, 132, 199, 0.7);"></span>
+            <strong style="color: #38bdf8;">2° al 8°</strong> Clasificación a Fase Final de Campeones
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #64748b;"></span>
+            <strong style="color: #cbd5e1;">9° al 18°</strong> Fase de Liga
+          </span>
+        </div>
+      `;
+    } else if (isOro) {
       legendEl.innerHTML = `
         <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; font-weight: 700; color: #94a3b8; padding: 0.4rem 0.5rem;">
           <span style="display: flex; align-items: center; gap: 0.4rem;">
@@ -2258,7 +2381,7 @@ function populateWebJornadas() {
 
   const prevValue = parseInt(sel.value, 10);
   sel.innerHTML = rounds.map(r => {
-    const roundLabel = r.type === 'ida' ? 'Ida' : 'Vuelta';
+    const roundLabel = currentWebDivision === 'champions' ? 'Fecha' : (r.type === 'ida' ? 'Ida' : 'Vuelta');
     return `<option value="${r.jornada}">Jornada ${r.jornada} (${roundLabel})</option>`;
   }).join('');
 
@@ -2288,10 +2411,11 @@ function onWebJornadaSelectChange() {
   const round = rounds.find(r => r.jornada === jornadaNum);
   const matches = round ? (round.matches || []) : [];
 
-  const roundLabel = (round && round.type === 'vuelta') ? 'VUELTA' : 'IDA';
+  const compTitle = currentWebDivision === 'champions' ? 'UEFA CHAMPIONS LEAGUE' : `DIVISIÓN ${currentWebDivision.toUpperCase()}`;
+  const roundLabel = (round && round.type === 'vuelta') ? 'VUELTA' : (currentWebDivision === 'champions' ? 'FECHA ' + jornadaNum : 'IDA');
   if (subTitle) {
-    subTitle.innerHTML = `DIVISIÓN ${currentWebDivision.toUpperCase()} &bull; JORNADA ${jornadaNum} (${roundLabel})`;
-    subTitle.style.color = '#facc15';
+    subTitle.innerHTML = `${compTitle} &bull; JORNADA ${jornadaNum} (${roundLabel})`;
+    subTitle.style.color = currentWebDivision === 'champions' ? '#38bdf8' : '#facc15';
     subTitle.style.fontWeight = '900';
   }
 

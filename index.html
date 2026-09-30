@@ -200,10 +200,16 @@
         <button class="btn-tab" id="tab-web-plata" onclick="switchWebDivision('plata')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
           <i class="fa-solid fa-medal" style="color: #64748b;"></i> <span>División Plata (<span id="lbl-tab-count-plata">12</span> Clubes)</span>
         </button>
+        <button class="btn-tab" id="tab-web-champions" onclick="switchWebDivision('champions')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
+          <i class="fa-solid fa-star" style="color: #0284c7;"></i> <span>UEFA Champions League (<span id="lbl-tab-count-champions">18</span> Clubes)</span>
+        </button>
+        <button class="btn-tab" id="tab-web-estelar" onclick="switchWebDivision('estelar')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
+          <i class="fa-solid fa-shield-halved" style="color: #9333ea;"></i> <span>Copa Estelar (<span id="lbl-tab-count-estelar">18</span> Clubes)</span>
+        </button>
       </div>
 
       <!-- Tabla de Posiciones Tradicional -->
-      <div class="card" style="margin-bottom: 2rem;">
+      <div class="card" id="web-standings-card" style="margin-bottom: 2rem;">
         <div class="card-header">
           <div>
             <h2 class="card-title" id="web-standings-card-title">
@@ -245,7 +251,7 @@
       </div>
 
       <!-- Calendario y Resultados por Jornada -->
-      <div class="card">
+      <div class="card" id="web-jornadas-card">
         <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
           <div>
             <h2 class="card-title">
@@ -280,6 +286,39 @@
 
           <div id="web-jornada-matches-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <!-- Matches rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Apartado Exclusivo: Copa Estelar (Eliminatoria Directa) -->
+      <div id="web-copa-estelar-container" style="display: none;">
+        <!-- Banner Oficial Copa Estelar -->
+        <div class="hero-banner" style="background-image: linear-gradient(135deg, rgba(0, 51, 160, 0.85) 0%, rgba(124, 58, 237, 0.8) 100%), url('Imagenes/copa estelar.jpeg'); border-radius: var(--radius-lg); margin-bottom: 2rem;">
+          <div class="hero-content">
+            <span class="hero-tag" style="background: rgba(255, 209, 0, 0.2); color: var(--lmi-yellow); border-color: var(--lmi-yellow);">Torneo Oficial &bull; 18 Clubes</span>
+            <h1 class="hero-title" style="color: #ffffff; margin-bottom: 0.5rem;">COPA ESTELAR LMI</h1>
+            <p class="hero-desc" style="color: rgba(255,255,255,0.92); max-width: 750px;">
+              El torneo de copa más prestigioso de la Liga Master Internacional. Los 18 mejores clubes compitiendo en sorteo aleatorio oficial por la gloria estelar en eliminación directa.
+            </p>
+          </div>
+        </div>
+
+        <!-- Árbol de Eliminación Directa -->
+        <div class="card">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-sitemap" style="color: #9333ea;"></i> Cuadro de Eliminación Directa Oficial</h2>
+              <p class="card-desc" style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">
+                Sorteo oficial con Ronda Previa, Octavos, Cuartos, Semifinales y Gran Final.
+              </p>
+            </div>
+            <span class="badge" style="background: rgba(147, 51, 234, 0.15); border: 1.5px solid #9333ea; color: #a855f7; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
+              18 CLUBES OFICIALES
+            </span>
+          </div>
+
+          <div id="copa-estelar-bracket-pos" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1.5rem 0.5rem;">
+            <!-- Rendered dynamically -->
           </div>
         </div>
       </div>

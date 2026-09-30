@@ -2175,9 +2175,9 @@ var INITIAL_LMI_DATA = {
       "name": "Joelinton",
       "position": "MC",
       "teamId": "bocajuniors",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2294,9 +2294,9 @@ var INITIAL_LMI_DATA = {
       "name": "Vinícius Júnior",
       "position": "EI",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3314,9 +3314,9 @@ var INITIAL_LMI_DATA = {
       "name": "Estêvão",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3536,9 +3536,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "bocajuniors",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 1,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5236,9 +5236,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "bocajuniors",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5575,10 +5575,10 @@ var INITIAL_LMI_DATA = {
       "name": "Kylian Mbappé",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 7,
-      "assists": 1,
-      "goals_liga": 7,
-      "assists_liga": 1,
+      "goals": 8,
+      "assists": 2,
+      "goals_liga": 8,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6715,9 +6715,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "realmadrid",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 1,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6936,9 +6936,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "bocajuniors",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7955,9 +7955,9 @@ var INITIAL_LMI_DATA = {
       "name": "Sergio Agüero",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 2,
+      "goals": 4,
       "assists": 3,
-      "goals_liga": 2,
+      "goals_liga": 4,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9387,10 +9387,81 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "bocajuniors",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 4,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_446",
+                "playerName": "Sergio Agüero",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_186",
+                "playerName": "Leroy Sané",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_113",
+                "playerName": "Vinícius Júnior",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_373",
+                "playerName": "Justin Kluivert",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_306",
+                "playerName": "Kylian Mbappé",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_306",
+                "playerName": "Kylian Mbappé",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_286",
+                "playerName": "Luka Modrić",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_106",
+                "playerName": "Joelinton",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_386",
+                "playerName": "Manuel Locatelli",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_173",
+                "playerName": "Estêvão",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ]
       },
@@ -13205,6 +13276,95 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1790739714364",
+      "timestamp": 1790739714364,
+      "date": "29 sep 2026, 09:41 p.m.",
+      "competition": "oro",
+      "jornada": 5,
+      "fixtureMatchId": "oro_j5_m4",
+      "phase": "Jornada 5",
+      "team1Id": "bocajuniors",
+      "team1Name": "Boca Juniors",
+      "team1Logo": "Logos Equipos/boca.png",
+      "score1": 4,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid CF",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_446",
+          "playerName": "Sergio Agüero",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_186",
+          "playerName": "Leroy Sané",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_113",
+          "playerName": "Vinícius Júnior",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_373",
+          "playerName": "Justin Kluivert",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_306",
+          "playerName": "Kylian Mbappé",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_306",
+          "playerName": "Kylian Mbappé",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_286",
+          "playerName": "Luka Modrić",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_106",
+          "playerName": "Joelinton",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_386",
+          "playerName": "Manuel Locatelli",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_173",
+          "playerName": "Estêvão",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1790738592713",
       "timestamp": 1790738592713,

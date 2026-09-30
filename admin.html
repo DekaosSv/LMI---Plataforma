@@ -256,7 +256,17 @@
               <select class="form-select" id="match-fixture-item-select" style="width: 270px; font-weight: 700;">
                 <option value="">-- Seleccionar Partido --</option>
               </select>
-              <select class="form-select" id="match-phase" style="width: 170px; display: none;">
+              <select class="form-select" id="match-phase" style="width: 200px; display: none; font-weight: 700;">
+                <option value="Ronda Previa 1">Ronda Previa 1</option>
+                <option value="Ronda Previa 2">Ronda Previa 2</option>
+                <option value="Octavos 1">Octavos 1</option>
+                <option value="Octavos 2">Octavos 2</option>
+                <option value="Octavos 3">Octavos 3</option>
+                <option value="Octavos 4">Octavos 4</option>
+                <option value="Octavos 5">Octavos 5</option>
+                <option value="Octavos 6">Octavos 6</option>
+                <option value="Octavos 7">Octavos 7</option>
+                <option value="Octavos 8">Octavos 8</option>
                 <option value="Cuartos 1">Cuartos 1</option>
                 <option value="Cuartos 2">Cuartos 2</option>
                 <option value="Cuartos 3">Cuartos 3</option>
@@ -266,6 +276,16 @@
                 <option value="Final">Gran Final</option>
               </select>
             </div>
+          </div>
+
+          <!-- Tournament Actions Bar -->
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin: 1rem 0; flex-wrap: wrap;">
+            <button class="btn btn-secondary" id="btn-draw-copa-estelar" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Realizar un sorteo aleatorio oficial de eliminatorias de Copa Estelar (18 clubes sin Club América ni Urawa)">
+              <i class="fa-solid fa-shuffle" style="color: #c084fc;"></i> Sorteo Copa Estelar (18 Clubes)
+            </button>
+            <button class="btn btn-secondary" id="btn-gen-champions-fixture" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar las 17 fechas de Champions League (1 vez vs cada club sin Club América ni Urawa)">
+              <i class="fa-solid fa-arrows-rotate" style="color: #38bdf8;"></i> Generar Fechas Champions (17 Fechas)
+            </button>
           </div>
 
           <!-- Duel Box -->
