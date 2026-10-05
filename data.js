@@ -14717,9 +14717,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 12,
             "team1Id": "atleticodemadrid",
             "team2Id": "fcbarcelona",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -15598,6 +15598,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1791168873242",
+      "timestamp": 1791168873242,
+      "date": "04 oct 2026, 08:54 p.m.",
+      "competition": "champions",
+      "jornada": 12,
+      "fixtureMatchId": "champions_j12_m2",
+      "phase": "Jornada 12",
+      "team1Id": "atleticodemadrid",
+      "team1Name": "Atletico de Madrid",
+      "team1Logo": "Logos Equipos/atleticomadrid.webp",
+      "score1": 0,
+      "team2Id": "fcbarcelona",
+      "team2Name": "FC Barcelona",
+      "team2Logo": "Logos Equipos/fcbarcelona.png",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1791168850139",
       "timestamp": 1791168850139,
