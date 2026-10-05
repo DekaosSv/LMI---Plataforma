@@ -450,6 +450,60 @@ function renderStats() {
       .slice(0, 25);
   };
 
+  const divTabsBar = document.getElementById('stats-division-tabs-bar');
+
+  // Si es Copa Estelar o Champions League, mostrar estadísticas exclusivas del torneo para todos los clubes
+  if (tournament === 'copa' || tournament === 'champions') {
+    if (divTabsBar) divTabsBar.style.display = 'none';
+
+    const isCopa = tournament === 'copa';
+    const topScorers = getScorers(null);
+    const topAssists = getAssists(null);
+
+    const themeColor = isCopa ? '#9333ea' : '#0284c7';
+    const iconClass = isCopa ? 'fa-shield-halved' : 'fa-star';
+    const badgeBg = isCopa ? 'rgba(147, 51, 234, 0.15)' : 'rgba(2, 132, 199, 0.15)';
+    const badgeText = isCopa ? '#9333ea' : '#0284c7';
+    const badgeLabel = isCopa ? 'COPA ESTELAR' : 'CHAMPIONS LEAGUE';
+    const emptyScorers = isCopa ? 'Sin goles registrados aún en Copa Estelar' : 'Sin goles registrados aún en UEFA Champions League';
+    const emptyAssists = isCopa ? 'Sin asistencias registradas aún en Copa Estelar' : 'Sin asistencias registradas aún en UEFA Champions League';
+    const subLabel = isCopa ? 'Torneo Oficial • Eliminatorias Directas (18 Clubes)' : 'UEFA Champions League LMI (18 Clubes)';
+
+    container.innerHTML = `
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid ${iconClass}" style="color: ${themeColor};"></i> Tabla de Goleadores</h2>
+              <div style="font-size: 0.8rem; color: ${themeColor}; font-weight: 700; margin-top: 0.2rem;">${tournamentLabel} &bull; ${subLabel}</div>
+            </div>
+            <span class="badge" style="background: ${badgeBg}; color: ${badgeText}; border: 1.5px solid ${themeColor}; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">${badgeLabel}</span>
+          </div>
+          <div id="full-goleadores-list">
+            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', emptyScorers, themeColor, true)}
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: ${themeColor};"></i> Tabla de Asistidores</h2>
+              <div style="font-size: 0.8rem; color: ${themeColor}; font-weight: 700; margin-top: 0.2rem;">${tournamentLabel} &bull; ${subLabel}</div>
+            </div>
+            <span class="badge" style="background: ${badgeBg}; color: ${badgeText}; border: 1.5px solid ${themeColor}; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">${badgeLabel}</span>
+          </div>
+          <div id="full-asistencias-list">
+            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', emptyAssists, themeColor, true)}
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Si es Liga (Temporada 11), mostrar la barra de tabs de división
+  if (divTabsBar) divTabsBar.style.display = 'flex';
+
   if (currentStatsDivision === 'oro') {
     const topScorers = getScorers('oro');
     const topAssists = getAssists('oro');
@@ -623,9 +677,13 @@ function renderStats() {
 }
 
 // Render Bracket dynamically
-function renderBracket(containerId, matches) {
+function renderBracket(containerId, matches, phaseFilter = null) {
   const container = document.getElementById(containerId);
   if (!container) return;
+
+  if (!phaseFilter) {
+    phaseFilter = document.getElementById('copa-phase-filter-web')?.value || 'all';
+  }
 
   if (!matches || matches.length === 0) {
     container.innerHTML = `<div style="text-align: center; width: 100%; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para esta fase.</div>`;
@@ -809,11 +867,69 @@ function renderBracket(containerId, matches) {
     `;
   }
 
+  if (phaseFilter && phaseFilter !== 'all') {
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+    container.style.gap = '1rem';
+    container.style.overflowX = 'visible';
+
+    if (phaseFilter === 'previa') {
+      container.innerHTML = previa.length ? previa.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Ronda Previa.</div>';
+    } else if (phaseFilter === 'octavos') {
+      container.innerHTML = octavos.length ? octavos.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Octavos de Final.</div>';
+    } else if (phaseFilter === 'cuartos') {
+      container.innerHTML = cuartos.length ? cuartos.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Cuartos de Final.</div>';
+    } else if (phaseFilter === 'semis') {
+      container.innerHTML = semifinales.length ? semifinales.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Semifinales.</div>';
+    } else if (phaseFilter === 'final') {
+      container.style.display = 'flex';
+      container.style.justifyContent = 'center';
+      container.innerHTML = finalMatch ? `<div style="max-width: 460px; width: 100%;">${finalGraphicHtml}</div>` : '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay partido de Gran Final registrado aún.</div>';
+    }
+    return;
+  }
+
+  // Cuadro Completo ('all')
+  container.style.display = 'flex';
+  container.style.gridTemplateColumns = '';
+  container.style.gap = '1.5rem';
+  container.style.justifyContent = 'space-between';
+  container.style.overflowX = 'auto';
   container.innerHTML = previaHtml + octavosHtml + cuartosHtml + semifinalHtml + finalHtml;
 }
 
+function onCopaPhaseFilterChange(phase) {
+  const subtitleEl = document.getElementById('copa-estelar-web-subtitle');
+  const phaseLabels = {
+    'all': 'CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)',
+    'previa': 'RONDA PREVIA • RESULTADOS OFICIALES',
+    'octavos': 'OCTAVOS DE FINAL (16 CLUBES) • RESULTADOS OFICIALES',
+    'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
+    'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
+    'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
+  };
+  if (subtitleEl) subtitleEl.textContent = phaseLabels[phase] || phaseLabels['all'];
+
+  renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches, phase);
+  renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches, phase);
+}
+window.onCopaPhaseFilterChange = onCopaPhaseFilterChange;
+
+function viewTournamentStats(tournament) {
+  switchNav('stats');
+  const sel = document.getElementById('stats-tournament-select');
+  if (sel) {
+    sel.value = tournament;
+  }
+  renderStats();
+}
+window.viewTournamentStats = viewTournamentStats;
+
 // Exportar Eliminatorias de Copa Estelar a Imagen (PNG)
 async function exportCopaEstelarImage() {
+  const phaseFilter = document.getElementById('copa-phase-filter-web')?.value || 'all';
+  onCopaPhaseFilterChange(phaseFilter);
+
   const target = document.getElementById('copa-estelar-capture-container') || document.getElementById('copa-estelar-bracket-pos');
   if (!target) return;
   const btn = document.getElementById('btn-export-copa-estelar-img');
@@ -828,24 +944,28 @@ async function exportCopaEstelarImage() {
   const unlockTimer = setTimeout(() => {
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>';
+      btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>';
     }
   }, 10000);
+
+  const isSinglePhase = phaseFilter !== 'all';
+  const targetWidth = isSinglePhase ? 1100 : 1320;
+  const wrapperWidth = targetWidth + 40;
 
   // 1. Crear clon aislado fuera de pantalla con ancho fijo
   const wrapper = document.createElement('div');
   wrapper.style.position = 'fixed';
   wrapper.style.top = '0';
   wrapper.style.left = '-12000px';
-  wrapper.style.width = '1360px';
+  wrapper.style.width = `${wrapperWidth}px`;
   wrapper.style.background = '#0c1220';
   wrapper.style.zIndex = '-99999';
   wrapper.style.pointerEvents = 'none';
 
   const clone = target.cloneNode(true);
-  clone.style.width = '1320px';
-  clone.style.minWidth = '1320px';
-  clone.style.maxWidth = '1320px';
+  clone.style.width = `${targetWidth}px`;
+  clone.style.minWidth = `${targetWidth}px`;
+  clone.style.maxWidth = `${targetWidth}px`;
   clone.style.overflow = 'visible';
   clone.style.margin = '0 auto';
   clone.style.boxSizing = 'border-box';
@@ -854,9 +974,20 @@ async function exportCopaEstelarImage() {
   if (innerBracket) {
     innerBracket.style.overflow = 'visible';
     innerBracket.style.width = '100%';
-    innerBracket.style.display = 'flex';
-    innerBracket.style.gap = '1.25rem';
-    innerBracket.style.justifyContent = 'space-between';
+    if (isSinglePhase) {
+      if (phaseFilter === 'final') {
+        innerBracket.style.display = 'flex';
+        innerBracket.style.justifyContent = 'center';
+      } else {
+        innerBracket.style.display = 'grid';
+        innerBracket.style.gridTemplateColumns = '1fr 1fr';
+        innerBracket.style.gap = '1rem';
+      }
+    } else {
+      innerBracket.style.display = 'flex';
+      innerBracket.style.gap = '1.25rem';
+      innerBracket.style.justifyContent = 'space-between';
+    }
   }
 
   // 2. Reemplazar iconos para evitar cuelgues de @font-face en html2canvas
@@ -907,8 +1038,8 @@ async function exportCopaEstelarImage() {
       allowTaint: true,
       imageTimeout: 3000,
       logging: false,
-      width: 1320,
-      windowWidth: 1360
+      width: targetWidth,
+      windowWidth: wrapperWidth
     });
 
     const timeoutPromise = new Promise((_, reject) =>
@@ -919,11 +1050,12 @@ async function exportCopaEstelarImage() {
     const dataUrl = canvas.toDataURL('image/png');
     const a = document.createElement('a');
     a.href = dataUrl;
-    a.download = 'LMI_Copa_Estelar_Eliminatorias_T11.png';
+    const fileSuffix = isSinglePhase ? phaseFilter.toUpperCase() : 'Eliminatorias_Completo';
+    a.download = `LMI_Copa_Estelar_${fileSuffix}_T11.png`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    showWebToast('¡Imagen oficial de Copa Estelar exportada con éxito!', 'success');
+    showWebToast(`¡Imagen oficial de Copa Estelar (${isSinglePhase ? phaseFilter.toUpperCase() : 'Cuadro Completo'}) exportada con éxito!`, 'success');
   } catch (err) {
     console.error('Error exportando imagen de Copa Estelar:', err);
     alert('Error al exportar imagen: ' + (err.message || err));
@@ -932,7 +1064,7 @@ async function exportCopaEstelarImage() {
     wrapper.remove();
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>';
+      btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>';
     }
   }
 }
@@ -2819,6 +2951,9 @@ window.openMatchDetailsModal = openMatchDetailsModal;
 window.closeMatchDetailsModal = closeMatchDetailsModal;
 window.switchStatsDivision = switchStatsDivision;
 window.renderStats = renderStats;
+window.onCopaPhaseFilterChange = onCopaPhaseFilterChange;
+window.viewTournamentStats = viewTournamentStats;
+window.exportCopaEstelarImage = exportCopaEstelarImage;
 
 
 

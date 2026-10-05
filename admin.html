@@ -326,7 +326,7 @@
           <div class="card-header" style="border: none; padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
             <div>
               <h3 style="font-size: 1.1rem; font-weight: 700;"><i class="fa-solid fa-stopwatch"></i> Goleadores y Asistidores del Partido</h3>
-              <p class="card-desc">Agrega quién anotó y quién asistió en este partido para actualizar sus estadísticas.</p>
+              <p class="card-desc">Al ingresar el marcador se asignan anotadores por defecto sin repetir. Si un jugador ya fue seleccionado en otra fila, se marcará como repetido.</p>
             </div>
             <button class="btn btn-secondary" id="btn-add-match-event" style="font-size: 0.85rem;">
               <i class="fa-solid fa-plus"></i> Añadir Goleador / Asistente
@@ -408,9 +408,22 @@
               <h3 class="card-title" style="color: #c084fc;"><i class="fa-solid fa-sitemap"></i> Cuadro Oficial de Eliminatorias &bull; Copa Estelar</h3>
               <p class="card-desc">Llaves y resultados actualizados de los 18 clubes oficiales. Puedes exportar el cuadro completo a imagen.</p>
             </div>
-            <button class="btn btn-primary" id="btn-export-copa-estelar-img" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%); border: none; font-weight: 800;">
-              <i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>
-            </button>
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <label for="copa-phase-filter-admin" style="font-size: 0.85rem; font-weight: 700; color: #c084fc;">Fase a ver / exportar:</label>
+                <select id="copa-phase-filter-admin" class="form-select" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-md); background: #170f2f; color: #f3e8ff; border: 1.5px solid #9333ea; cursor: pointer;">
+                  <option value="all">Todas las Fases (Cuadro Completo)</option>
+                  <option value="previa">Solo Ronda Previa</option>
+                  <option value="octavos">Solo Octavos de Final</option>
+                  <option value="cuartos">Solo Cuartos de Final</option>
+                  <option value="semis">Solo Semifinales</option>
+                  <option value="final">Solo Gran Final</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" id="btn-export-copa-estelar-img" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%); border: none; font-weight: 800;">
+                <i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>
+              </button>
+            </div>
           </div>
 
           <!-- Contenedor capturable para exportar a imagen -->
@@ -420,7 +433,7 @@
                 <div style="font-size: 1.8rem; color: #c084fc;"><i class="fa-solid fa-trophy"></i></div>
                 <div>
                   <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; COPA ESTELAR</h2>
-                  <span style="font-size: 0.85rem; font-weight: 800; color: #c084fc; text-transform: uppercase;">CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)</span>
+                  <span id="copa-estelar-admin-subtitle" style="font-size: 0.85rem; font-weight: 800; color: #c084fc; text-transform: uppercase;">CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)</span>
                 </div>
               </div>
               <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;">

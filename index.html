@@ -313,8 +313,22 @@
               </p>
             </div>
             <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <label for="copa-phase-filter-web" style="font-size: 0.85rem; font-weight: 700; color: #c084fc;">Fase a ver / exportar:</label>
+                <select id="copa-phase-filter-web" class="form-select" onchange="onCopaPhaseFilterChange(this.value)" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-md); background: #170f2f; color: #f3e8ff; border: 1.5px solid #9333ea; cursor: pointer;">
+                  <option value="all">Todas las Fases (Cuadro Completo)</option>
+                  <option value="previa">Solo Ronda Previa</option>
+                  <option value="octavos">Solo Octavos de Final</option>
+                  <option value="cuartos">Solo Cuartos de Final</option>
+                  <option value="semis">Solo Semifinales</option>
+                  <option value="final">Solo Gran Final</option>
+                </select>
+              </div>
               <button class="btn btn-primary" id="btn-export-copa-estelar-img" onclick="exportCopaEstelarImage()" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%); border: none; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.15rem; border-radius: var(--radius-md); box-shadow: 0 4px 14px rgba(147, 51, 234, 0.35); cursor: pointer; color: #ffffff; font-size: 0.9rem; transition: transform 0.15s, box-shadow 0.15s;">
-                <i class="fa-solid fa-camera"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>
+                <i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>
+              </button>
+              <button class="btn btn-secondary" onclick="viewTournamentStats('copa')" style="font-size: 0.85rem; padding: 0.5rem 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                <i class="fa-solid fa-chart-line" style="color: #c084fc;"></i> <span>Goleadores Copa</span>
               </button>
               <span class="badge" style="background: rgba(147, 51, 234, 0.15); border: 1.5px solid #9333ea; color: #a855f7; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
                 18 CLUBES OFICIALES
@@ -329,7 +343,7 @@
                 <div style="font-size: 1.8rem; color: #c084fc;"><i class="fa-solid fa-trophy"></i></div>
                 <div>
                   <h2 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; COPA ESTELAR</h2>
-                  <span style="font-size: 0.88rem; font-weight: 900; color: #c084fc; text-transform: uppercase; letter-spacing: 0.5px;">CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)</span>
+                  <span id="copa-estelar-web-subtitle" style="font-size: 0.88rem; font-weight: 900; color: #c084fc; text-transform: uppercase; letter-spacing: 0.5px;">CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)</span>
                 </div>
               </div>
               <div style="text-align: right; color: #cbd5e1; font-size: 0.85rem; font-weight: 700;">
@@ -1059,7 +1073,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1790914581"></script>
+  <script src="data.js?v=1791161246"></script>
   <script src="app.js?v=1790740999"></script>
 </body>
 

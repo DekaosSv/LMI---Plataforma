@@ -44,12 +44,26 @@ const AdminApp = {
     document.getElementById('btn-export-jornada-img').addEventListener('click', () => this.exportJornadaImage());
     document.getElementById('btn-export-copa-estelar-img')?.addEventListener('click', () => this.exportCopaEstelarImage());
     document.getElementById('btn-export-copa-estelar-img-admin')?.addEventListener('click', () => this.exportCopaEstelarImage());
+    document.getElementById('copa-phase-filter-admin')?.addEventListener('change', (e) => this.onCopaPhaseFilterChange(e.target.value));
     document.getElementById('btn-draw-copa-estelar').addEventListener('click', () => this.drawCopaEstelar());
     document.getElementById('btn-gen-champions-fixture').addEventListener('click', () => this.generateChampionsFixture());
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
 
     document.getElementById('match-team1-select').addEventListener('change', (e) => this.onMatchTeamChange(1, e.target.value));
     document.getElementById('match-team2-select').addEventListener('change', (e) => this.onMatchTeamChange(2, e.target.value));
+    
+    // Auto-sincronizar goleadores y asistidores según marcador ingresado
+    const score1Input = document.getElementById('match-score1');
+    const score2Input = document.getElementById('match-score2');
+    if (score1Input) {
+      score1Input.addEventListener('input', () => this.syncEventsWithScores());
+      score1Input.addEventListener('change', () => this.syncEventsWithScores());
+    }
+    if (score2Input) {
+      score2Input.addEventListener('input', () => this.syncEventsWithScores());
+      score2Input.addEventListener('change', () => this.syncEventsWithScores());
+    }
+
     document.getElementById('btn-add-match-event').addEventListener('click', () => this.addMatchEventRow());
     document.getElementById('btn-apply-match').addEventListener('click', () => this.applyMatchResults());
 
@@ -513,6 +527,9 @@ const AdminApp = {
       } else {
         if (emptyMsg) emptyMsg.style.display = 'block';
         if (header) header.style.display = 'none';
+        if ((foundMatch.score1 > 0 || foundMatch.score2 > 0)) {
+          this.syncEventsWithScores();
+        }
       }
     }
   },
@@ -686,9 +703,28 @@ const AdminApp = {
     }
   },
 
-  renderCopaEstelarAdminBracket() {
+  onCopaPhaseFilterChange(phase) {
+    this.renderCopaEstelarAdminBracket(phase);
+  },
+
+  renderCopaEstelarAdminBracket(phaseFilter = null) {
     const container = document.getElementById('copa-estelar-bracket-admin');
     if (!container || !this.data || !this.data.copaEstelarMatches) return;
+
+    if (!phaseFilter) {
+      phaseFilter = document.getElementById('copa-phase-filter-admin')?.value || 'all';
+    }
+
+    const subtitleEl = document.getElementById('copa-estelar-admin-subtitle');
+    const phaseTitles = {
+      'all': 'CUADRO OFICIAL DE ELIMINATORIAS (18 CLUBES)',
+      'previa': 'RONDA PREVIA • RESULTADOS OFICIALES',
+      'octavos': 'OCTAVOS DE FINAL (16 CLUBES) • RESULTADOS OFICIALES',
+      'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
+      'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
+      'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
+    };
+    if (subtitleEl) subtitleEl.textContent = phaseTitles[phaseFilter] || phaseTitles['all'];
 
     const matches = this.data.copaEstelarMatches;
     const teams = this.data.teams || [];
@@ -697,29 +733,58 @@ const AdminApp = {
       const isPlaceholder = !teamName || teamName.toLowerCase().startsWith('ganador');
       const teamObj = teams.find(t => t.name.toLowerCase() === (teamName || '').toLowerCase()) || { logo: 'Logos Equipos/default.png' };
       return `
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0.5rem; background: #0f172a; border-radius: 4px; margin-bottom: 2px;">
-          <div style="display: flex; align-items: center; gap: 0.5rem; max-width: 80%;">
-            <img src="${teamObj.logo}" alt="" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
-            <span style="font-size: 0.85rem; color: ${isPlaceholder ? '#94a3b8' : '#ffffff'}; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${teamName || 'Por clasificar'}</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.38rem 0.6rem; background: #0f172a; border-radius: 6px; margin-bottom: 3px;">
+          <div style="display: flex; align-items: center; gap: 0.55rem; max-width: 80%;">
+            <img src="${teamObj.logo}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <span style="font-size: 0.86rem; color: ${isPlaceholder ? '#94a3b8' : '#ffffff'}; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${teamName || 'Por clasificar'}</span>
           </div>
-          <span style="font-size: 0.9rem; font-weight: 900; color: #facc15;">${score !== undefined && score !== null ? score : ''}</span>
+          <span style="font-size: 0.95rem; font-weight: 900; color: #facc15;">${score !== undefined && score !== null ? score : ''}</span>
         </div>
       `;
     };
 
     const getMatchBox = (m) => `
-      <div style="background: #1e293b; border: 1px solid rgba(147, 51, 234, 0.3); border-radius: 8px; padding: 0.5rem; margin: 0.4rem 0;">
-        <div style="font-size: 0.7rem; font-weight: 800; color: #c084fc; text-transform: uppercase; margin-bottom: 0.3rem;">${m.fase || ''}</div>
+      <div style="background: #1e293b; border: 1px solid rgba(147, 51, 234, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.4rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <div style="font-size: 0.72rem; font-weight: 800; color: #c084fc; text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.5px;">${m.fase || ''}</div>
         ${getTeamRow(m.team1, m.score1)}
         ${getTeamRow(m.team2, m.score2)}
       </div>
     `;
 
-    const previa = matches.filter(m => m.fase && m.fase.toLowerCase().includes('previa'));
+    const previa = matches.filter(m => m.fase && (m.fase.toLowerCase().includes('previa') || m.fase.toLowerCase().includes('preliminar')));
     const octavos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('octavos'));
     const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
     const semis = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
     const finalM = matches.find(m => m.fase && m.fase.toLowerCase() === 'final');
+
+    if (phaseFilter !== 'all') {
+      container.style.display = 'grid';
+      container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+      container.style.gap = '1rem';
+      container.style.overflowX = 'visible';
+
+      if (phaseFilter === 'previa') {
+        container.innerHTML = previa.length ? previa.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Ronda Previa registrados.</div>';
+      } else if (phaseFilter === 'octavos') {
+        container.innerHTML = octavos.length ? octavos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Octavos de Final registrados.</div>';
+      } else if (phaseFilter === 'cuartos') {
+        container.innerHTML = cuartos.length ? cuartos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Cuartos de Final registrados.</div>';
+      } else if (phaseFilter === 'semis') {
+        container.innerHTML = semis.length ? semis.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Semifinales registrados.</div>';
+      } else if (phaseFilter === 'final') {
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        container.innerHTML = finalM ? `<div style="max-width: 440px; width: 100%;">${getMatchBox(finalM)}</div>` : '<div style="color: var(--text-muted); text-align: center; padding: 2rem;">No hay partido de Gran Final registrado aún.</div>';
+      }
+      return;
+    }
+
+    // Default: 'all' (Cuadro Completo)
+    container.style.display = 'flex';
+    container.style.gridTemplateColumns = '';
+    container.style.justifyContent = 'space-between';
+    container.style.gap = '1.25rem';
+    container.style.overflowX = 'auto';
 
     let html = '';
     if (previa.length) {
@@ -757,7 +822,9 @@ const AdminApp = {
   },
 
   async exportCopaEstelarImage() {
-    this.renderCopaEstelarAdminBracket();
+    const phaseFilter = document.getElementById('copa-phase-filter-admin')?.value || 'all';
+    this.renderCopaEstelarAdminBracket(phaseFilter);
+
     const target = document.getElementById('copa-estelar-admin-export-container') || document.getElementById('copa-estelar-bracket-admin');
     if (!target) return;
     const btn = document.getElementById('btn-export-copa-estelar-img');
@@ -769,7 +836,7 @@ const AdminApp = {
         b.disabled = isBusy;
         b.innerHTML = isBusy 
           ? '<i class="fa-solid fa-spinner fa-spin"></i> Generando...' 
-          : '<i class="fa-solid fa-camera" style="color: #c084fc;"></i> <span>Exportar Eliminatorias a Imagen (PNG)</span>';
+          : '<i class="fa-solid fa-camera" style="color: #c084fc;"></i> <span>Exportar a Imagen (PNG)</span>';
       });
     };
 
@@ -779,20 +846,24 @@ const AdminApp = {
       setBusy(false);
     }, 10000);
 
+    const isSinglePhase = phaseFilter !== 'all';
+    const targetWidth = isSinglePhase ? 1100 : 1320;
+    const wrapperWidth = targetWidth + 40;
+
     // 1. Crear clon aislado fuera de pantalla con ancho fijo
     const wrapper = document.createElement('div');
     wrapper.style.position = 'fixed';
     wrapper.style.top = '0';
     wrapper.style.left = '-12000px';
-    wrapper.style.width = '1360px';
+    wrapper.style.width = `${wrapperWidth}px`;
     wrapper.style.background = '#0c1220';
     wrapper.style.zIndex = '-99999';
     wrapper.style.pointerEvents = 'none';
 
     const clone = target.cloneNode(true);
-    clone.style.width = '1320px';
-    clone.style.minWidth = '1320px';
-    clone.style.maxWidth = '1320px';
+    clone.style.width = `${targetWidth}px`;
+    clone.style.minWidth = `${targetWidth}px`;
+    clone.style.maxWidth = `${targetWidth}px`;
     clone.style.overflow = 'visible';
     clone.style.margin = '0 auto';
     clone.style.boxSizing = 'border-box';
@@ -801,9 +872,20 @@ const AdminApp = {
     if (innerBracket) {
       innerBracket.style.overflow = 'visible';
       innerBracket.style.width = '100%';
-      innerBracket.style.display = 'flex';
-      innerBracket.style.gap = '1.25rem';
-      innerBracket.style.justifyContent = 'space-between';
+      if (isSinglePhase) {
+        if (phaseFilter === 'final') {
+          innerBracket.style.display = 'flex';
+          innerBracket.style.justifyContent = 'center';
+        } else {
+          innerBracket.style.display = 'grid';
+          innerBracket.style.gridTemplateColumns = '1fr 1fr';
+          innerBracket.style.gap = '1rem';
+        }
+      } else {
+        innerBracket.style.display = 'flex';
+        innerBracket.style.gap = '1.25rem';
+        innerBracket.style.justifyContent = 'space-between';
+      }
     }
 
     // 2. Reemplazar iconos para evitar cuelgues de @font-face en html2canvas
@@ -854,8 +936,8 @@ const AdminApp = {
         allowTaint: true,
         imageTimeout: 3000,
         logging: false,
-        width: 1320,
-        windowWidth: 1360
+        width: targetWidth,
+        windowWidth: wrapperWidth
       });
 
       const timeoutPromise = new Promise((_, reject) =>
@@ -866,11 +948,12 @@ const AdminApp = {
       const dataUrl = canvas.toDataURL('image/png');
       const a = document.createElement('a');
       a.href = dataUrl;
-      a.download = `LMI_Copa_Estelar_Eliminatorias_T11.png`;
+      const fileSuffix = isSinglePhase ? phaseFilter.toUpperCase() : 'Eliminatorias_Completo';
+      a.download = `LMI_Copa_Estelar_${fileSuffix}_T11.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      this.showToast('¡Imagen de eliminatorias de Copa Estelar exportada con éxito!', 'success');
+      this.showToast(`¡Imagen oficial de Copa Estelar (${isSinglePhase ? phaseFilter.toUpperCase() : 'Cuadro Completo'}) exportada con éxito!`, 'success');
     } catch (err) {
       console.error('Error exportando imagen de Copa Estelar:', err);
       this.showToast(`Error al exportar imagen: ${err.message}`, 'error');
@@ -990,6 +1073,7 @@ const AdminApp = {
 
     // Refresh player selects in existing match event rows
     this.refreshMatchEventPlayerDropdowns();
+    this.syncEventsWithScores();
   },
 
   addMatchEventRow(initialData = null) {
@@ -998,11 +1082,25 @@ const AdminApp = {
     const team1 = this.getTeamById(team1Id);
     const team2 = this.getTeamById(team2Id);
 
+    const targetTeamId = (initialData && initialData.teamId) ? initialData.teamId : team1Id;
+
+    // Buscar jugador por defecto que aún no esté seleccionado para evitar repeticiones
+    let defaultPlayerId = (initialData && initialData.playerId) ? initialData.playerId : '';
+    if (!defaultPlayerId) {
+      const usedIds = new Set(this.matchEvents.map(e => e.playerId).filter(Boolean));
+      const teamPlayers = this.getPlayersByTeam(targetTeamId).slice().sort((a, b) => {
+        const order = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
+        return (order[a.position] || 99) - (order[b.position] || 99);
+      });
+      const nonUsed = teamPlayers.find(p => !usedIds.has(p.id));
+      defaultPlayerId = nonUsed ? nonUsed.id : (teamPlayers[0] ? teamPlayers[0].id : '');
+    }
+
     const eventId = (initialData && initialData.id) ? initialData.id : `ev_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
     const eventObj = {
       id: eventId,
-      teamId: (initialData && initialData.teamId) ? initialData.teamId : team1Id,
-      playerId: (initialData && initialData.playerId) ? initialData.playerId : '',
+      teamId: targetTeamId,
+      playerId: defaultPlayerId,
       goals: (initialData && typeof initialData.goals === 'number') ? initialData.goals : 1,
       assists: (initialData && typeof initialData.assists === 'number') ? initialData.assists : 0
     };
@@ -1024,10 +1122,13 @@ const AdminApp = {
           <option value="${team2Id}" ${eventObj.teamId === team2Id ? 'selected' : ''}>${team2 ? team2.name : 'Visitante'}</option>
         </select>
       </div>
-      <div style="flex: 3;">
+      <div style="flex: 3; display: flex; flex-direction: column;">
         <select class="form-select ev-player-select" style="width: 100%; padding: 0.5rem 0.75rem; font-size: 0.88rem;">
           <!-- Populated dynamically -->
         </select>
+        <div class="duplicate-player-warning" style="display: none; color: #ef4444; font-size: 0.76rem; font-weight: 700; margin-top: 3px; align-items: center; gap: 4px;">
+          <i class="fa-solid fa-triangle-exclamation"></i> ¡Jugador repetido! Ya está asignado en otra fila.
+        </div>
       </div>
       <div style="width: 105px; display: flex; justify-content: center;">
         <div class="ev-stat-box" title="Goles marcados por el jugador">
@@ -1084,10 +1185,12 @@ const AdminApp = {
     teamSel.addEventListener('change', (e) => {
       eventObj.teamId = e.target.value;
       populatePlayers(e.target.value);
+      this.validateDuplicatePlayers();
     });
 
     playerSel.addEventListener('change', (e) => {
       eventObj.playerId = e.target.value;
+      this.validateDuplicatePlayers();
     });
 
     goalsInput.addEventListener('input', (e) => {
@@ -1097,6 +1200,8 @@ const AdminApp = {
     assistsInput.addEventListener('input', (e) => {
       eventObj.assists = Math.max(0, parseInt(e.target.value, 10) || 0);
     });
+
+    this.validateDuplicatePlayers();
   },
 
   removeMatchEventRow(eventId) {
@@ -1109,6 +1214,7 @@ const AdminApp = {
       if (emptyMsg) emptyMsg.style.display = 'block';
       if (header) header.style.display = 'none';
     }
+    this.validateDuplicatePlayers();
   },
 
   refreshMatchEventPlayerDropdowns() {
@@ -1144,6 +1250,127 @@ const AdminApp = {
         playerSel.value = players[0].id;
       }
     });
+
+    this.validateDuplicatePlayers();
+  },
+
+  validateDuplicatePlayers() {
+    // Contar ocurrencias de cada jugador en los eventos actuales
+    const counts = {};
+    this.matchEvents.forEach(e => {
+      if (e.playerId) {
+        counts[e.playerId] = (counts[e.playerId] || 0) + 1;
+      }
+    });
+
+    const duplicateIds = new Set(
+      Object.keys(counts).filter(id => counts[id] > 1)
+    );
+
+    // Actualizar advertencias visuales en cada fila
+    document.querySelectorAll('.event-row').forEach(row => {
+      const rowId = row.id.replace('row-', '');
+      const eventObj = this.matchEvents.find(e => e.id === rowId);
+      const playerSel = row.querySelector('.ev-player-select');
+      const warningEl = row.querySelector('.duplicate-player-warning');
+      const isDuplicate = eventObj && eventObj.playerId && duplicateIds.has(eventObj.playerId);
+
+      if (warningEl) {
+        warningEl.style.display = isDuplicate ? 'flex' : 'none';
+      }
+      if (playerSel) {
+        if (isDuplicate) {
+          playerSel.style.borderColor = '#ef4444';
+          playerSel.style.backgroundColor = 'rgba(239, 68, 68, 0.08)';
+          playerSel.style.color = '#fca5a5';
+        } else {
+          playerSel.style.borderColor = '';
+          playerSel.style.backgroundColor = '';
+          playerSel.style.color = '';
+        }
+
+        // Actualizar opciones para indicar si ya está seleccionado en otra fila
+        const currentSelectedId = eventObj ? eventObj.playerId : '';
+        Array.from(playerSel.options).forEach(opt => {
+          if (!opt.value) return;
+          const p = this.getPlayerById(opt.value);
+          const baseName = p ? `${p.name} (${p.position || 'MC'})` : opt.textContent.replace(/^⚠️ \[Repetido\] /, '');
+          const isUsedElsewhere = (counts[opt.value] || 0) > (opt.value === currentSelectedId ? 1 : 0);
+          if (isUsedElsewhere) {
+            opt.textContent = `⚠️ [Repetido] ${baseName}`;
+            opt.style.color = '#ef4444';
+            opt.style.fontWeight = '700';
+          } else {
+            opt.textContent = baseName;
+            opt.style.color = '';
+            opt.style.fontWeight = '';
+          }
+        });
+      }
+    });
+
+    return duplicateIds;
+  },
+
+  syncEventsWithScores() {
+    const score1Input = document.getElementById('match-score1');
+    const score2Input = document.getElementById('match-score2');
+    if (!score1Input || !score2Input) return;
+
+    const team1Id = document.getElementById('match-team1-select')?.value;
+    const team2Id = document.getElementById('match-team2-select')?.value;
+    if (!team1Id || !team2Id) return;
+
+    const desiredScore1 = Math.max(0, parseInt(score1Input.value, 10) || 0);
+    const desiredScore2 = Math.max(0, parseInt(score2Input.value, 10) || 0);
+
+    const syncTeam = (tId, desiredGoals) => {
+      const teamPlayers = this.getPlayersByTeam(tId).slice().sort((a, b) => {
+        const order = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
+        return (order[a.position] || 99) - (order[b.position] || 99);
+      });
+
+      let teamEvents = this.matchEvents.filter(e => e.teamId === tId);
+      let currentGoals = teamEvents.reduce((s, e) => s + (parseInt(e.goals, 10) || 0), 0);
+
+      // Si faltan goles, añadir filas asignando jugadores no repetidos
+      while (currentGoals < desiredGoals) {
+        const usedPlayerIds = new Set(this.matchEvents.map(e => e.playerId).filter(Boolean));
+        const availablePlayer = teamPlayers.find(p => !usedPlayerIds.has(p.id)) || teamPlayers[0];
+        const newEvent = {
+          teamId: tId,
+          playerId: availablePlayer ? availablePlayer.id : '',
+          goals: 1,
+          assists: 0
+        };
+        this.addMatchEventRow(newEvent);
+        teamEvents = this.matchEvents.filter(e => e.teamId === tId);
+        currentGoals += 1;
+      }
+
+      // Si sobran goles, reducir o eliminar filas sobrantes del equipo
+      while (currentGoals > desiredGoals && teamEvents.length > 0) {
+        const lastEv = teamEvents[teamEvents.length - 1];
+        if (lastEv.goals > 1 && (currentGoals - desiredGoals) >= 1) {
+          lastEv.goals -= 1;
+          const row = document.getElementById(`row-${lastEv.id}`);
+          if (row) {
+            const gInput = row.querySelector('.ev-goals-input');
+            if (gInput) gInput.value = lastEv.goals;
+          }
+          currentGoals -= 1;
+        } else {
+          currentGoals -= lastEv.goals;
+          this.removeMatchEventRow(lastEv.id);
+          teamEvents = this.matchEvents.filter(e => e.teamId === tId);
+        }
+      }
+    };
+
+    syncTeam(team1Id, desiredScore1);
+    syncTeam(team2Id, desiredScore2);
+
+    this.validateDuplicatePlayers();
   },
 
   async applyMatchResults() {
@@ -1158,6 +1385,16 @@ const AdminApp = {
 
     if (team1Id === team2Id) {
       this.showToast('El equipo local y visitante no pueden ser el mismo', 'error');
+      return;
+    }
+
+    const duplicateIds = this.validateDuplicatePlayers();
+    if (duplicateIds && duplicateIds.size > 0) {
+      const dupNames = Array.from(duplicateIds).map(id => {
+        const p = this.getPlayerById(id);
+        return p ? p.name : id;
+      }).join(', ');
+      this.showToast(`No se puede guardar: El jugador ${dupNames} aparece repetido en más de una fila. Asigna jugadores diferentes o ajusta las cifras en una sola fila.`, 'error');
       return;
     }
 
@@ -1340,7 +1577,17 @@ const AdminApp = {
     if (comp === 'oro' || comp === 'plata') {
       this.onJornadaChange();
     } else if (comp === 'estelar') {
-      this.renderCopaEstelarAdminBracket();
+      let targetFilter = 'all';
+      const pl = phase.toLowerCase();
+      if (pl.includes('previa') || pl.includes('preliminar')) targetFilter = 'previa';
+      else if (pl.includes('octavos')) targetFilter = 'octavos';
+      else if (pl.includes('cuartos')) targetFilter = 'cuartos';
+      else if (pl.includes('semifinal') || pl.includes('semis')) targetFilter = 'semis';
+      else if (pl.includes('final')) targetFilter = 'final';
+
+      const filterSel = document.getElementById('copa-phase-filter-admin');
+      if (filterSel) filterSel.value = targetFilter;
+      this.renderCopaEstelarAdminBracket(targetFilter);
     }
 
     // Limpiar eventos y formulario
