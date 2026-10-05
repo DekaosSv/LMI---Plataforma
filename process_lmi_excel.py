@@ -864,29 +864,45 @@ def process_excel():
                             is_legend = True
                             price = matched_renov["price"]
                         else:
-                            # Preservar precio, isLegend y cardType si existía en data.js
+                            # Preservar precio, isLegend, cardType y estadísticas si existían en data.js
                             is_legend = False
                             card_type = "Normal"
                             price = 5000000
+                            old_goals = 0
+                            old_assists = 0
+                            old_g_liga = 0
+                            old_a_liga = 0
+                            old_g_champ = 0
+                            old_a_champ = 0
+                            old_g_estelar = 0
+                            old_a_estelar = 0
                             if norm_pname in old_players_by_norm:
                                 old_p = old_players_by_norm[norm_pname]
                                 is_legend = old_p.get("isLegend", False)
                                 card_type = old_p.get("cardType", "Normal")
                                 price = old_p.get("price", 5000000)
+                                old_goals = old_p.get("goals", 0)
+                                old_assists = old_p.get("assists", 0)
+                                old_g_liga = old_p.get("goals_liga", 0)
+                                old_a_liga = old_p.get("assists_liga", 0)
+                                old_g_champ = old_p.get("goals_champions", 0)
+                                old_a_champ = old_p.get("assists_champions", 0)
+                                old_g_estelar = old_p.get("goals_estelar", 0)
+                                old_a_estelar = old_p.get("assists_estelar", 0)
 
                         players_list.append({
                             "id": f"p_{player_id_counter}",
                             "name": player_name,
                             "position": pos,
                             "teamId": team_id,
-                            "goals": 0,
-                            "assists": 0,
-                            "goals_liga": 0,
-                            "assists_liga": 0,
-                            "goals_champions": 0,
-                            "assists_champions": 0,
-                            "goals_estelar": 0,
-                            "assists_estelar": 0,
+                            "goals": old_goals,
+                            "assists": old_assists,
+                            "goals_liga": old_g_liga,
+                            "assists_liga": old_a_liga,
+                            "goals_champions": old_g_champ,
+                            "assists_champions": old_a_champ,
+                            "goals_estelar": old_g_estelar,
+                            "assists_estelar": old_a_estelar,
                             "price": price,
                             "cardType": card_type,
                             "isLegend": is_legend
@@ -1011,14 +1027,32 @@ def process_excel():
                         "sheet": sheet_name
                     })
 
-        print("📈 Importando estadísticas de goles y asistencias desde 'Registro Liga'...")
-        map_tournament_stats(registro_data, "goals_liga", "assists_liga", "Registro Liga")
-        
-        print("📈 Importando estadísticas de goles y asistencias desde 'Registro Champions'...")
-        map_tournament_stats(registro_champions, "goals_champions", "assists_champions", "Registro Champions")
-        
-        print("📈 Importando estadísticas de goles y asistencias desde 'RegistroEstelar'...")
-        map_tournament_stats(registro_estelar, "goals_estelar", "assists_estelar", "RegistroEstelar")
+        if len(registro_data) > 1:
+            print("📈 Importando estadísticas de goles y asistencias desde 'Registro Liga'...")
+            for p in players_list:
+                p["goals_liga"] = 0
+                p["assists_liga"] = 0
+            map_tournament_stats(registro_data, "goals_liga", "assists_liga", "Registro Liga")
+        else:
+            print("ℹ️ 'Registro Liga' en Excel no contiene partidos nuevos. Se conservan las estadísticas registradas de data.js.")
+
+        if len(registro_champions) > 1:
+            print("📈 Importando estadísticas de goles y asistencias desde 'Registro Champions'...")
+            for p in players_list:
+                p["goals_champions"] = 0
+                p["assists_champions"] = 0
+            map_tournament_stats(registro_champions, "goals_champions", "assists_champions", "Registro Champions")
+        else:
+            print("ℹ️ 'Registro Champions' en Excel no contiene partidos nuevos. Se conservan las estadísticas registradas de data.js.")
+
+        if len(registro_estelar) > 1:
+            print("📈 Importando estadísticas de goles y asistencias desde 'RegistroEstelar'...")
+            for p in players_list:
+                p["goals_estelar"] = 0
+                p["assists_estelar"] = 0
+            map_tournament_stats(registro_estelar, "goals_estelar", "assists_estelar", "RegistroEstelar")
+        else:
+            print("ℹ️ 'RegistroEstelar' en Excel no contiene partidos nuevos. Se conservan las estadísticas registradas de data.js.")
 
         # Sum total goals and assists
         for p in players_list:
@@ -1050,24 +1084,37 @@ def process_excel():
             return matches
 
         copa_matches = []
+        excel_copa = []
         if 'CopaEstelar' in sheet_xml_paths:
             print("🏆 Cargando datos de eliminación directa para Copa Estelar...")
             copa_sheet = parse_sheet_cells(z, sheet_xml_paths['CopaEstelar'], strings)
-            copa_matches = parse_bracket_sheet(copa_sheet)
-        else:
-            print("ℹ️ Hoja 'CopaEstelar' no encontrada en Excel, se conservarán los valores preestablecidos.")
-            if old_data and "copaEstelarMatches" in old_data:
-                copa_matches = old_data["copaEstelarMatches"]
+            excel_copa = parse_bracket_sheet(copa_sheet)
+
+        if old_data and old_data.get("copaEstelarMatches") and len(old_data["copaEstelarMatches"]) > 0:
+            copa_matches = old_data["copaEstelarMatches"]
+            # Sincronizar si el excel tiene el mismo número de cruces oficiales y cambios en marcadores
+            if excel_copa and len(excel_copa) == len(copa_matches):
+                for idx_m, m in enumerate(copa_matches):
+                    em = excel_copa[idx_m]
+                    if em.get("score1") != "" or em.get("score2") != "":
+                        if m.get("estado") != "Finalizado" and em.get("estado") == "Finalizado":
+                            m["score1"] = em.get("score1", "")
+                            m["score2"] = em.get("score2", "")
+                            m["estado"] = em.get("estado", "Finalizado")
+        elif excel_copa:
+            copa_matches = excel_copa
 
         champions_matches = []
+        excel_champ = []
         if 'ChampionsLeague' in sheet_xml_paths:
             print("🏆 Cargando datos de eliminación directa para Champions League...")
             champ_sheet = parse_sheet_cells(z, sheet_xml_paths['ChampionsLeague'], strings)
-            champions_matches = parse_bracket_sheet(champ_sheet)
-        else:
-            print("ℹ️ Hoja 'ChampionsLeague' no encontrada en Excel, se conservarán los valores preestablecidos.")
-            if old_data and "championsLeagueMatches" in old_data:
-                champions_matches = old_data["championsLeagueMatches"]
+            excel_champ = parse_bracket_sheet(champ_sheet)
+
+        if old_data and old_data.get("championsLeagueMatches") and len(old_data["championsLeagueMatches"]) > 0:
+            champions_matches = old_data["championsLeagueMatches"]
+        elif excel_champ:
+            champions_matches = excel_champ
 
         # Default fallback values for Copa Estelar if empty
         if not copa_matches:
@@ -1257,7 +1304,7 @@ def process_excel():
             balon_oro_list = old_data.get("balonOro", [])
 
         # 6. Rebuild final LMI Data object
-        season = "Temporada 10"
+        season = old_data.get("season", "Temporada 11") if old_data else "Temporada 11"
         
         # Load rules from old data if present, and update 11-16 to 11-17
         rules = old_data.get("rules", []) if old_data else []
