@@ -47,7 +47,21 @@ const AdminApp = {
     document.getElementById('copa-phase-filter-admin')?.addEventListener('change', (e) => this.onCopaPhaseFilterChange(e.target.value));
     document.getElementById('btn-draw-copa-estelar').addEventListener('click', () => this.drawCopaEstelar());
     document.getElementById('btn-gen-champions-fixture').addEventListener('click', () => this.generateChampionsFixture());
+    document.getElementById('btn-gen-champions-playoffs')?.addEventListener('click', () => this.generateChampionsPlayoffs());
+    document.getElementById('btn-export-champions-img')?.addEventListener('click', () => this.exportChampionsAdminImage());
+    document.getElementById('btn-export-champions-img-admin')?.addEventListener('click', () => this.exportChampionsAdminImage());
+    document.getElementById('champions-phase-filter-admin')?.addEventListener('change', (e) => this.onChampionsPhaseFilterChange(e.target.value));
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
+
+    // Buscador y Filtro de Pendientes por Club
+    document.getElementById('pending-filter-competition')?.addEventListener('change', () => this.onPendingFilterChange());
+    document.getElementById('pending-filter-team')?.addEventListener('change', () => this.onPendingFilterChange());
+    document.getElementById('pending-filter-status')?.addEventListener('change', () => this.onPendingFilterChange());
+    document.getElementById('btn-clear-pending-filter')?.addEventListener('click', () => {
+      const sel = document.getElementById('pending-filter-team');
+      if (sel) sel.value = '';
+      this.onPendingFilterChange();
+    });
 
     document.getElementById('match-team1-select').addEventListener('change', (e) => this.onMatchTeamChange(1, e.target.value));
     document.getElementById('match-team2-select').addEventListener('change', (e) => this.onMatchTeamChange(2, e.target.value));
@@ -316,6 +330,7 @@ const AdminApp = {
     if (!this.data || !this.data.teams) return;
     this.populateTeamSelectorByDivision('all');
     this.populateMarketAndModalTeams();
+    this.populatePendingFilterTeams();
     this.onCompetitionChange();
   },
 
@@ -375,24 +390,48 @@ const AdminApp = {
     const chkCup = document.getElementById('lbl-chk-cup-bracket');
     const jornadaWrapper = document.getElementById('jornada-card-wrapper');
     const copaWrapper = document.getElementById('copa-estelar-card-wrapper');
+    const championsWrapper = document.getElementById('champions-card-wrapper');
 
     if (isFixtureComp) {
       if (jornadaSel) jornadaSel.style.display = 'inline-block';
       if (fixtureSel) fixtureSel.style.display = 'inline-block';
       if (jornadaWrapper) jornadaWrapper.style.display = 'block';
       if (copaWrapper) copaWrapper.style.display = 'none';
+      if (championsWrapper) championsWrapper.style.display = 'none';
       if (phaseSel) phaseSel.style.display = 'none';
       if (chkCup) chkCup.style.display = 'none';
 
       this.populateJornadasForDivision(comp);
       this.populateMatchTeamsForCompetition(comp);
+    } else if (comp === 'champions_ko') {
+      if (jornadaSel) jornadaSel.style.display = 'none';
+      if (fixtureSel) fixtureSel.style.display = 'none';
+      if (jornadaWrapper) jornadaWrapper.style.display = 'none';
+      if (copaWrapper) copaWrapper.style.display = 'none';
+      if (championsWrapper) championsWrapper.style.display = 'block';
+      if (phaseSel) phaseSel.style.display = 'inline-block';
+      if (chkCup) {
+        chkCup.style.display = 'flex';
+        const spanText = chkCup.querySelector('span');
+        if (spanText) spanText.textContent = 'Guardar este marcador en el cuadro oficial de Champions League';
+      }
+
+      this.populateMatchTeamsForCompetition(comp);
+      this.onPhaseChange();
+      this.renderChampionsAdminBracket();
     } else {
+      // Copa Estelar
       if (jornadaSel) jornadaSel.style.display = 'none';
       if (fixtureSel) fixtureSel.style.display = 'none';
       if (jornadaWrapper) jornadaWrapper.style.display = 'none';
       if (copaWrapper) copaWrapper.style.display = 'block';
+      if (championsWrapper) championsWrapper.style.display = 'none';
       if (phaseSel) phaseSel.style.display = 'inline-block';
-      if (chkCup) chkCup.style.display = 'flex';
+      if (chkCup) {
+        chkCup.style.display = 'flex';
+        const spanText = chkCup.querySelector('span');
+        if (spanText) spanText.textContent = 'Guardar este marcador en el cuadro oficial de Copa / Champions';
+      }
 
       this.populateMatchTeamsForCompetition(comp);
       this.onPhaseChange();
@@ -402,12 +441,15 @@ const AdminApp = {
 
   onPhaseChange() {
     const comp = document.getElementById('match-competition').value;
-    if (comp !== 'estelar') return;
+    if (comp !== 'estelar' && comp !== 'champions_ko') return;
     const phaseSel = document.getElementById('match-phase');
     if (!phaseSel) return;
     const phase = phaseSel.value;
-    const cupMatches = this.data.copaEstelarMatches || [];
-    const targetMatch = cupMatches.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+    const matchArray = comp === 'champions_ko' ? (this.data.championsLeagueMatches || []) : (this.data.copaEstelarMatches || []);
+    let targetMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+    if (!targetMatch) {
+      targetMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(phase.toLowerCase()));
+    }
     if (targetMatch && this.data.teams) {
       const t1 = this.data.teams.find(t => t.name.toLowerCase() === (targetMatch.team1 || '').toLowerCase());
       const t2 = this.data.teams.find(t => t.name.toLowerCase() === (targetMatch.team2 || '').toLowerCase());
@@ -544,7 +586,7 @@ const AdminApp = {
       teams = teams.filter(t => t.division === 'oro');
     } else if (comp === 'plata') {
       teams = teams.filter(t => t.division === 'plata');
-    } else if (comp === 'champions' || comp === 'estelar') {
+    } else if (comp === 'champions' || comp === 'champions_ko' || comp === 'estelar') {
       teams = teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
     }
 
@@ -564,6 +606,339 @@ const AdminApp = {
 
     if (teams[0]) this.onMatchTeamChange(1, teams[0].id);
     if (teams.length > 1) this.onMatchTeamChange(2, teams[1].id);
+  },
+
+  populatePendingFilterTeams() {
+    const sel = document.getElementById('pending-filter-team');
+    if (!sel || !this.data || !this.data.teams) return;
+    const currentVal = sel.value;
+    sel.innerHTML = '<option value="">-- Elige un Club (ej. FC Barcelona) --</option>';
+
+    // Ordenar alfabéticamente los clubes
+    const sortedTeams = [...this.data.teams].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    sortedTeams.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.id;
+      opt.textContent = `${t.name} (${(t.division || 'oro').toUpperCase()})`;
+      sel.appendChild(opt);
+    });
+
+    if (currentVal && sortedTeams.some(t => t.id === currentVal)) {
+      sel.value = currentVal;
+    }
+  },
+
+  onPendingFilterChange() {
+    const teamSelect = document.getElementById('pending-filter-team');
+    const compFilter = document.getElementById('pending-filter-competition')?.value || 'all';
+    const statusFilter = document.getElementById('pending-filter-status')?.value || 'pending';
+    const resultsContainer = document.getElementById('pending-filter-results');
+    if (!teamSelect || !resultsContainer) return;
+
+    const teamId = teamSelect.value;
+    if (!teamId) {
+      resultsContainer.style.display = 'none';
+      resultsContainer.innerHTML = '';
+      return;
+    }
+
+    const team = this.getTeamById(teamId);
+    if (!team) return;
+
+    const matches = [];
+
+    // 1. Champions League
+    if (compFilter === 'all' || compFilter === 'champions') {
+      const champRounds = (this.data && this.data.fixtures) ? (this.data.fixtures.champions || []) : [];
+      champRounds.forEach(r => {
+        const m = (r.matches || []).find(match => match.team1Id === teamId || match.team2Id === teamId);
+        if (m) {
+          const t1 = this.getTeamById(m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
+          const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+          matches.push({
+            competition: 'champions',
+            compName: 'Champions League',
+            compColor: '#38bdf8',
+            compBg: 'rgba(56, 189, 248, 0.15)',
+            badgeText: `🏆 Champions • ${r.name || ('Fecha ' + r.jornada)}`,
+            jornadaNumber: r.jornada,
+            fechaLabel: r.name || `Fecha ${r.jornada}`,
+            fixtureMatchId: m.id,
+            phase: null,
+            team1Id: m.team1Id,
+            team1Name: t1.name,
+            team1Logo: t1.logo || 'Logos Equipos/default.png',
+            team2Id: m.team2Id,
+            team2Name: t2.name,
+            team2Logo: t2.logo || 'Logos Equipos/default.png',
+            score1: m.score1,
+            score2: m.score2,
+            played: !!m.played
+          });
+        }
+      });
+    }
+
+    // 2. Copa Estelar
+    if (compFilter === 'all' || compFilter === 'estelar') {
+      const copaMatches = this.data.copaEstelarMatches || [];
+      copaMatches.forEach(m => {
+        const t1Match = (m.team1 || '').toLowerCase() === team.name.toLowerCase();
+        const t2Match = (m.team2 || '').toLowerCase() === team.name.toLowerCase();
+        if (t1Match || t2Match) {
+          const isPlayed = m.estado === 'Finalizado';
+          const t1Obj = (this.data.teams || []).find(t => t.name.toLowerCase() === (m.team1 || '').toLowerCase()) || { name: m.team1, logo: 'Logos Equipos/default.png' };
+          const t2Obj = (this.data.teams || []).find(t => t.name.toLowerCase() === (m.team2 || '').toLowerCase()) || { name: m.team2, logo: 'Logos Equipos/default.png' };
+          matches.push({
+            competition: 'estelar',
+            compName: 'Copa Estelar',
+            compColor: '#c084fc',
+            compBg: 'rgba(192, 132, 252, 0.15)',
+            badgeText: `⭐ Copa Estelar • ${m.fase}`,
+            jornadaNumber: null,
+            fechaLabel: m.fase,
+            fixtureMatchId: null,
+            phase: m.fase,
+            team1Id: t1Obj.id || null,
+            team1Name: m.team1,
+            team1Logo: t1Obj.logo || 'Logos Equipos/default.png',
+            team2Id: t2Obj.id || null,
+            team2Name: m.team2,
+            team2Logo: t2Obj.logo || 'Logos Equipos/default.png',
+            score1: m.score1,
+            score2: m.score2,
+            played: isPlayed
+          });
+        }
+      });
+    }
+
+    // 3. División Oro
+    if (compFilter === 'all' || compFilter === 'oro') {
+      const oroRounds = (this.data && this.data.fixtures) ? (this.data.fixtures.oro || []) : [];
+      oroRounds.forEach(r => {
+        const m = (r.matches || []).find(match => match.team1Id === teamId || match.team2Id === teamId);
+        if (m) {
+          const t1 = this.getTeamById(m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
+          const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+          matches.push({
+            competition: 'oro',
+            compName: 'División Oro',
+            compColor: '#eab308',
+            compBg: 'rgba(234, 179, 8, 0.15)',
+            badgeText: `🥇 Oro • Jornada ${r.jornada}`,
+            jornadaNumber: r.jornada,
+            fechaLabel: `Jornada ${r.jornada}`,
+            fixtureMatchId: m.id,
+            phase: null,
+            team1Id: m.team1Id,
+            team1Name: t1.name,
+            team1Logo: t1.logo || 'Logos Equipos/default.png',
+            team2Id: m.team2Id,
+            team2Name: t2.name,
+            team2Logo: t2.logo || 'Logos Equipos/default.png',
+            score1: m.score1,
+            score2: m.score2,
+            played: !!m.played
+          });
+        }
+      });
+    }
+
+    // 4. División Plata
+    if (compFilter === 'all' || compFilter === 'plata') {
+      const plataRounds = (this.data && this.data.fixtures) ? (this.data.fixtures.plata || []) : [];
+      plataRounds.forEach(r => {
+        const m = (r.matches || []).find(match => match.team1Id === teamId || match.team2Id === teamId);
+        if (m) {
+          const t1 = this.getTeamById(m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
+          const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+          matches.push({
+            competition: 'plata',
+            compName: 'División Plata',
+            compColor: '#94a3b8',
+            compBg: 'rgba(148, 163, 184, 0.15)',
+            badgeText: `🥈 Plata • Jornada ${r.jornada}`,
+            jornadaNumber: r.jornada,
+            fechaLabel: `Jornada ${r.jornada}`,
+            fixtureMatchId: m.id,
+            phase: null,
+            team1Id: m.team1Id,
+            team1Name: t1.name,
+            team1Logo: t1.logo || 'Logos Equipos/default.png',
+            team2Id: m.team2Id,
+            team2Name: t2.name,
+            team2Logo: t2.logo || 'Logos Equipos/default.png',
+            score1: m.score1,
+            score2: m.score2,
+            played: !!m.played
+          });
+        }
+      });
+    }
+
+    const totalMatches = matches.length;
+    const pendingMatches = matches.filter(m => !m.played);
+    const playedMatches = matches.filter(m => m.played);
+
+    let displayMatches = matches;
+    if (statusFilter === 'pending') {
+      displayMatches = pendingMatches;
+    } else if (statusFilter === 'played') {
+      displayMatches = playedMatches;
+    }
+
+    resultsContainer.style.display = 'block';
+
+    let html = `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <img src="${team.logo || 'Logos Equipos/default.png'}" alt="" style="width: 28px; height: 28px; object-fit: contain;">
+          <span style="font-size: 1rem; font-weight: 800; color: #fff;">${team.name}</span>
+          <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-weight: 700; font-size: 0.78rem;">
+            ${pendingMatches.length} Pendiente${pendingMatches.length === 1 ? '' : 's'}
+          </span>
+          <span class="badge" style="background: rgba(74, 222, 128, 0.15); color: #4ade80; font-weight: 700; font-size: 0.78rem;">
+            ${playedMatches.length} Jugado${playedMatches.length === 1 ? '' : 's'}
+          </span>
+        </div>
+        <div style="font-size: 0.8rem; color: #94a3b8;">
+          Mostrando <strong>${displayMatches.length}</strong> de ${totalMatches} partidos
+        </div>
+      </div>
+    `;
+
+    if (displayMatches.length === 0) {
+      const msg = statusFilter === 'pending'
+        ? `¡Al día! ${team.name} no tiene partidos pendientes con los filtros actuales.`
+        : `No se encontraron partidos para ${team.name} con los filtros seleccionados.`;
+      html += `
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          <i class="fa-regular fa-calendar-check" style="font-size: 1.6rem; margin-bottom: 0.5rem; color: #38bdf8; display: block;"></i>
+          ${msg}
+        </div>
+      `;
+    } else {
+      html += `<div class="pending-matches-grid">`;
+      displayMatches.forEach(m => {
+        const isCurrentTeam1 = (m.team1Id === teamId) || ((m.team1Name || '').toLowerCase() === team.name.toLowerCase());
+        const isCurrentTeam2 = (m.team2Id === teamId) || ((m.team2Name || '').toLowerCase() === team.name.toLowerCase());
+
+        const t1Display = isCurrentTeam1
+          ? `<span style="color: #ffd100; font-weight: 800;">${this.escape(m.team1Name)}</span>`
+          : `<span style="color: #cbd5e1;">${this.escape(m.team1Name)}</span>`;
+
+        const t2Display = isCurrentTeam2
+          ? `<span style="color: #ffd100; font-weight: 800;">${this.escape(m.team2Name)}</span>`
+          : `<span style="color: #cbd5e1;">${this.escape(m.team2Name)}</span>`;
+
+        const scoreText = m.played ? `${m.score1 !== null && m.score1 !== undefined ? m.score1 : ''} - ${m.score2 !== null && m.score2 !== undefined ? m.score2 : ''}` : 'vs';
+
+        const statusBadge = m.played
+          ? `<span style="font-size: 0.72rem; font-weight: 800; color: #4ade80; background: rgba(74, 222, 128, 0.15); padding: 0.15rem 0.45rem; border-radius: 4px;">✓ JUGADO (${m.score1} - ${m.score2})</span>`
+          : `<span style="font-size: 0.72rem; font-weight: 800; color: #facc15; background: rgba(250, 204, 21, 0.15); padding: 0.15rem 0.45rem; border-radius: 4px;">⏳ PENDIENTE</span>`;
+
+        const actionBtnLabel = m.played ? 'Cargar / Editar' : 'Cargar para Registrar';
+        const actionBtnClass = m.played ? 'btn-secondary' : 'btn-primary';
+        const actionBtnIcon = m.played ? 'fa-pen-to-square' : 'fa-bolt';
+
+        const compArg = m.competition;
+        const jArg = m.jornadaNumber !== null && m.jornadaNumber !== undefined ? m.jornadaNumber : 'null';
+        const fixArg = m.fixtureMatchId ? `'${m.fixtureMatchId}'` : 'null';
+        const phaseArg = m.phase ? `'${m.phase}'` : 'null';
+
+        html += `
+          <div class="pending-match-item ${m.played ? 'is-played' : 'is-pending'}">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+              <span class="badge" style="background: ${m.compBg}; color: ${m.compColor}; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.3px;">
+                ${m.badgeText}
+              </span>
+              ${statusBadge}
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.2rem; font-size: 0.86rem;">
+              <div style="display: flex; align-items: center; gap: 0.45rem; flex: 1; overflow: hidden;">
+                <img src="${m.team1Logo}" alt="" style="width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+                <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${t1Display}</div>
+              </div>
+              <div style="padding: 0 0.5rem; font-weight: 900; color: ${m.played ? '#facc15' : 'var(--text-muted)'}; font-size: 0.9rem; flex-shrink: 0;">
+                ${scoreText}
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.45rem; flex: 1; justify-content: flex-end; overflow: hidden;">
+                <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">${t2Display}</div>
+                <img src="${m.team2Logo}" alt="" style="width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 0.2rem;">
+              <button class="btn ${actionBtnClass} btn-sm" onclick="AdminApp.loadMatchToRegister('${compArg}', ${jArg}, ${fixArg}, ${phaseArg})" style="font-size: 0.78rem; padding: 0.3rem 0.7rem; font-weight: 700;">
+                <i class="fa-solid ${actionBtnIcon}"></i> ${actionBtnLabel}
+              </button>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+    }
+
+    resultsContainer.innerHTML = html;
+  },
+
+  loadMatchToRegister(comp, jornada, fixtureMatchId, phase) {
+    if (!comp) return;
+
+    // 1. Cambiar selector de competencia
+    const compSelect = document.getElementById('match-competition');
+    if (compSelect) {
+      compSelect.value = comp;
+      this.onCompetitionChange();
+    }
+
+    // 2. Cargar jornada y partido si es de fixture (champions, oro, plata)
+    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
+      if (jornada) {
+        const jornadaSel = document.getElementById('match-jornada-select');
+        if (jornadaSel) {
+          jornadaSel.value = jornada;
+          this.onJornadaChange();
+        }
+      }
+      if (fixtureMatchId) {
+        const fixtureSel = document.getElementById('match-fixture-item-select');
+        if (fixtureSel) {
+          fixtureSel.value = fixtureMatchId;
+          this.onFixtureMatchSelect(fixtureMatchId);
+        }
+      }
+    } else if (comp === 'estelar') {
+      // 3. Cargar fase si es Copa Estelar
+      if (phase) {
+        const phaseSel = document.getElementById('match-phase');
+        if (phaseSel) {
+          phaseSel.value = phase;
+          this.onPhaseChange();
+        }
+      }
+    }
+
+    // 4. Scroll fluido y animación de resalte al cuadro de duelo
+    const duelBox = document.querySelector('.match-duel-box');
+    if (duelBox) {
+      duelBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      duelBox.classList.remove('duel-box-glow');
+      void duelBox.offsetWidth; // Forzar reflow para reiniciar animación
+      duelBox.classList.add('duel-box-glow');
+    }
+
+    const compLabels = {
+      'champions': 'Champions League',
+      'estelar': 'Copa Estelar',
+      'oro': 'División Oro',
+      'plata': 'División Plata'
+    };
+    const cLabel = compLabels[comp] || comp;
+    const fechaLabel = jornada ? `Fecha ${jornada}` : (phase || '');
+    this.showToast(`⚡ Partido cargado: ${cLabel} (${fechaLabel}). Listo para registrar resultado y eventos.`, 'success');
   },
 
   renderJornadaCard(comp, jornadaNum) {
@@ -962,6 +1337,264 @@ const AdminApp = {
       wrapper.remove();
       setBusy(false);
     }
+  },
+
+  onChampionsPhaseFilterChange(phase) {
+    this.renderChampionsAdminBracket(phase);
+  },
+
+  renderChampionsAdminBracket(phaseFilter = null) {
+    const container = document.getElementById('champions-bracket-admin');
+    if (!container || !this.data || !this.data.championsLeagueMatches) return;
+
+    if (!phaseFilter) {
+      phaseFilter = document.getElementById('champions-phase-filter-admin')?.value || 'all';
+    }
+
+    const subtitleEl = document.getElementById('champions-admin-subtitle');
+    const phaseTitles = {
+      'all': 'CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)',
+      'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
+      'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
+      'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
+    };
+    if (subtitleEl) subtitleEl.textContent = phaseTitles[phaseFilter] || phaseTitles['all'];
+
+    const matches = this.data.championsLeagueMatches;
+    const teams = this.data.teams || [];
+
+    const getTeamRow = (teamName, score) => {
+      const isPlaceholder = !teamName || teamName.toLowerCase().startsWith('ganador');
+      const teamObj = teams.find(t => t.name.toLowerCase() === (teamName || '').toLowerCase()) || { logo: 'Logos Equipos/default.png' };
+      return `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.38rem 0.6rem; background: #0c1c38; border-radius: 6px; margin-bottom: 3px;">
+          <div style="display: flex; align-items: center; gap: 0.55rem; max-width: 80%;">
+            <img src="${teamObj.logo}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <span style="font-size: 0.86rem; color: ${isPlaceholder ? '#94a3b8' : '#ffffff'}; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${teamName || 'Por clasificar'}</span>
+          </div>
+          <span style="font-size: 0.95rem; font-weight: 900; color: #38bdf8;">${score !== undefined && score !== null ? score : ''}</span>
+        </div>
+      `;
+    };
+
+    const getMatchBox = (m) => `
+      <div style="background: #0f274a; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.4rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.25);">
+        <div style="font-size: 0.72rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.5px;">${m.fase || ''}</div>
+        ${getTeamRow(m.team1, m.score1)}
+        ${getTeamRow(m.team2, m.score2)}
+      </div>
+    `;
+
+    const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
+    const semis = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
+    const finalM = matches.find(m => m.fase && m.fase.toLowerCase() === 'final');
+
+    if (phaseFilter !== 'all') {
+      container.style.display = 'grid';
+      container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+      container.style.gap = '1rem';
+      container.style.overflowX = 'visible';
+
+      if (phaseFilter === 'cuartos') {
+        container.innerHTML = cuartos.length ? cuartos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Cuartos de Final registrados.</div>';
+      } else if (phaseFilter === 'semis') {
+        container.innerHTML = semis.length ? semis.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Semifinales registrados.</div>';
+      } else if (phaseFilter === 'final') {
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        container.innerHTML = finalM ? `<div style="max-width: 440px; width: 100%;">${getMatchBox(finalM)}</div>` : '<div style="color: var(--text-muted); text-align: center; padding: 2rem;">No hay partido de Gran Final registrado aún.</div>';
+      }
+      return;
+    }
+
+    // Default: 'all' (Cuadro Completo)
+    container.style.display = 'flex';
+    container.style.gridTemplateColumns = '';
+    container.style.justifyContent = 'space-between';
+    container.style.gap = '1.25rem';
+    container.style.overflowX = 'auto';
+
+    let html = '';
+    if (cuartos.length) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
+        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;">Cuartos de Final</h4>
+        ${cuartos.map(getMatchBox).join('')}
+      </div>`;
+    }
+    if (semis.length) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
+        <h4 style="color: #60a5fa; text-align: center; border-bottom: 2px solid #3b82f6; padding-bottom: 0.4rem; font-size: 0.9rem;">Semifinales</h4>
+        ${semis.map(getMatchBox).join('')}
+      </div>`;
+    }
+    if (finalM) {
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: center;">
+        <h4 style="color: #ffd700; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 0.4rem; font-size: 0.9rem;">Gran Final</h4>
+        ${getMatchBox(finalM)}
+      </div>`;
+    }
+
+    container.innerHTML = html;
+  },
+
+  async exportChampionsAdminImage() {
+    const phaseFilter = document.getElementById('champions-phase-filter-admin')?.value || 'all';
+    this.renderChampionsAdminBracket(phaseFilter);
+
+    const target = document.getElementById('champions-admin-export-container') || document.getElementById('champions-bracket-admin');
+    if (!target) return;
+    const btn = document.getElementById('btn-export-champions-img');
+    const btnBar = document.getElementById('btn-export-champions-img-admin');
+
+    const setBusy = (isBusy) => {
+      [btn, btnBar].forEach(b => {
+        if (!b) return;
+        b.disabled = isBusy;
+        b.innerHTML = isBusy 
+          ? '<i class="fa-solid fa-spinner fa-spin"></i> Generando...' 
+          : '<i class="fa-solid fa-camera" style="color: #38bdf8;"></i> <span>Exportar Llaves Champions</span>';
+      });
+    };
+
+    setBusy(true);
+
+    const unlockTimer = setTimeout(() => {
+      setBusy(false);
+    }, 10000);
+
+    const isSinglePhase = phaseFilter !== 'all';
+    const targetWidth = isSinglePhase ? 1100 : 1320;
+    const wrapperWidth = targetWidth + 40;
+
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '0';
+    wrapper.style.left = '-12000px';
+    wrapper.style.width = `${wrapperWidth}px`;
+    wrapper.style.background = '#050e1d';
+    wrapper.style.zIndex = '-99999';
+    wrapper.style.pointerEvents = 'none';
+
+    const clone = target.cloneNode(true);
+    clone.style.width = `${targetWidth}px`;
+    clone.style.minWidth = `${targetWidth}px`;
+    clone.style.maxWidth = `${targetWidth}px`;
+    clone.style.overflow = 'visible';
+    clone.style.margin = '0 auto';
+
+    wrapper.appendChild(clone);
+    document.body.appendChild(wrapper);
+
+    try {
+      if (typeof html2canvas === 'undefined') {
+        throw new Error('html2canvas no está disponible.');
+      }
+
+      const canvas = await html2canvas(clone, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#050e1d',
+        logging: false,
+        width: targetWidth,
+        windowWidth: wrapperWidth
+      });
+
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      const fileSuffix = isSinglePhase ? phaseFilter.toUpperCase() : 'Eliminatorias_Top8';
+      a.download = `LMI_Champions_League_${fileSuffix}_T11.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      this.showToast(`¡Imagen oficial de Champions League (${isSinglePhase ? phaseFilter.toUpperCase() : 'Cuadro Completo'}) exportada con éxito!`, 'success');
+    } catch (err) {
+      console.error('Error exportando imagen de Champions:', err);
+      this.showToast(`Error al exportar imagen: ${err.message}`, 'error');
+    } finally {
+      clearTimeout(unlockTimer);
+      wrapper.remove();
+      setBusy(false);
+    }
+  },
+
+  async generateChampionsPlayoffs() {
+    if (!this.data || !this.data.teams || !this.data.fixtures) return;
+    if (!confirm('¿Deseas sincronizar las llaves de Cuartos de Final con los 8 clasificados oficiales de la tabla de Champions League (1° vs 8°, 2° vs 7°, 3° vs 6°, 4° vs 5°)?\\n\\nEsto actualizará el cuadro oficial de eliminatorias de Champions League.')) {
+      return;
+    }
+
+    const eligible = this.data.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
+    const stats = {};
+    eligible.forEach(t => {
+      stats[t.id] = { team: t, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0 };
+    });
+
+    const rounds = (this.data.fixtures && this.data.fixtures.champions) || [];
+    rounds.forEach(r => {
+      (r.matches || []).forEach(m => {
+        if (m.played && m.score1 !== null && m.score2 !== null) {
+          const s1 = parseInt(m.score1, 10);
+          const s2 = parseInt(m.score2, 10);
+          if (isNaN(s1) || isNaN(s2)) return;
+          const t1 = m.team1Id;
+          const t2 = m.team2Id;
+          if (stats[t1] && stats[t2]) {
+            stats[t1].pj++;
+            stats[t2].pj++;
+            stats[t1].gf += s1;
+            stats[t1].gc += s2;
+            stats[t2].gf += s2;
+            stats[t2].gc += s1;
+            if (s1 > s2) {
+              stats[t1].g++; stats[t1].pts += 3; stats[t2].p++;
+            } else if (s1 === s2) {
+              stats[t1].e++; stats[t1].pts += 1; stats[t2].e++; stats[t2].pts += 1;
+            } else {
+              stats[t2].g++; stats[t2].pts += 3; stats[t1].p++;
+            }
+          }
+        }
+      });
+    });
+
+    const standings = Object.values(stats);
+    standings.forEach(item => { item.dg = item.gf - item.gc; });
+    standings.sort((a, b) => {
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      if (b.dg !== a.dg) return b.dg - a.dg;
+      if (b.gf !== a.gf) return b.gf - a.gf;
+      return (a.team.name || '').localeCompare(b.team.name || '');
+    });
+
+    if (standings.length < 8) {
+      this.showToast('No hay suficientes clubes para formar el Top 8', 'error');
+      return;
+    }
+
+    const t1 = standings[0].team.name;
+    const t2 = standings[1].team.name;
+    const t3 = standings[2].team.name;
+    const t4 = standings[3].team.name;
+    const t5 = standings[4].team.name;
+    const t6 = standings[5].team.name;
+    const t7 = standings[6].team.name;
+    const t8 = standings[7].team.name;
+
+    this.data.championsLeagueMatches = [
+      { fase: 'Cuartos 1', team1: t1, score1: '', team2: t8, score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 2', team1: t2, score1: '', team2: t7, score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 3', team1: t3, score1: '', team2: t6, score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 4', team1: t4, score1: '', team2: t5, score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 1', team1: 'Ganador Cuartos 1', score1: '', team2: 'Ganador Cuartos 4', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 2', team1: 'Ganador Cuartos 2', score1: '', team2: 'Ganador Cuartos 3', score2: '', estado: 'Pendiente' },
+      { fase: 'Final', team1: 'Ganador Semifinal 1', score1: '', team2: 'Ganador Semifinal 2', score2: '', estado: 'Pendiente' }
+    ];
+
+    await this.saveData(true);
+    this.onCompetitionChange();
+    this.showToast('¡Eliminatorias de Champions League sincronizadas con el Top 8 (1° vs 8°, 2° vs 7°, 3° vs 6°, 4° vs 5°)!', 'success');
   },
 
   async drawCopaEstelar() {
@@ -1415,7 +2048,7 @@ const AdminApp = {
         if (goals > 0) {
           player.goals = (player.goals || 0) + goals;
           if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.goals_liga = (player.goals_liga || 0) + goals;
-          else if (comp === 'champions') player.goals_champions = (player.goals_champions || 0) + goals;
+          else if (comp === 'champions' || comp === 'champions_ko') player.goals_champions = (player.goals_champions || 0) + goals;
           else if (comp === 'estelar') player.goals_estelar = (player.goals_estelar || 0) + goals;
           updatedStatsCount += goals;
         }
@@ -1423,7 +2056,7 @@ const AdminApp = {
         if (assists > 0) {
           player.assists = (player.assists || 0) + assists;
           if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.assists_liga = (player.assists_liga || 0) + assists;
-          else if (comp === 'champions') player.assists_champions = (player.assists_champions || 0) + assists;
+          else if (comp === 'champions' || comp === 'champions_ko') player.assists_champions = (player.assists_champions || 0) + assists;
           else if (comp === 'estelar') player.assists_estelar = (player.assists_estelar || 0) + assists;
           updatedStatsCount += assists;
         }
@@ -1459,11 +2092,14 @@ const AdminApp = {
       }
     });
 
-    // Actualizar cuadro si es Copa Estelar
-    if (comp === 'estelar' && updateBracket) {
-      const matchArray = this.data.copaEstelarMatches;
+    // Actualizar cuadro si es Copa Estelar o Eliminatorias de Champions League
+    if ((comp === 'estelar' || comp === 'champions_ko') && updateBracket) {
+      const matchArray = comp === 'champions_ko' ? this.data.championsLeagueMatches : this.data.copaEstelarMatches;
       if (matchArray) {
         let targetMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+        if (!targetMatch) {
+          targetMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(phase.toLowerCase()));
+        }
         if (!targetMatch) {
           targetMatch = matchArray.find(m => 
             (m.team1 === team1.name && m.team2 === team2.name) ||
@@ -1488,10 +2124,10 @@ const AdminApp = {
           });
         }
 
-        // Auto-avanzar ganador al siguiente cruce en Copa Estelar
+        // Auto-avanzar ganador al siguiente cruce
         if (score1 !== score2) {
           const winnerName = score1 > score2 ? team1.name : team2.name;
-          const nextMapping = {
+          const copaMapping = {
             'ronda previa 1': { phase: 'octavos 1', teamSlot: 'team1' },
             'ronda previa 2': { phase: 'octavos 2', teamSlot: 'team1' },
             'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
@@ -1509,9 +2145,23 @@ const AdminApp = {
             'semifinal 1': { phase: 'final', teamSlot: 'team1' },
             'semifinal 2': { phase: 'final', teamSlot: 'team2' }
           };
-          const target = nextMapping[phase.toLowerCase()];
+
+          const champMapping = {
+            'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
+            'cuartos 4': { phase: 'semifinal 1', teamSlot: 'team2' },
+            'cuartos 2': { phase: 'semifinal 2', teamSlot: 'team1' },
+            'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team2' },
+            'semifinal 1': { phase: 'final', teamSlot: 'team1' },
+            'semifinal 2': { phase: 'final', teamSlot: 'team2' }
+          };
+
+          const mapping = comp === 'champions_ko' ? champMapping : copaMapping;
+          const pLower = phase.toLowerCase();
+          const targetKey = Object.keys(mapping).find(k => pLower.startsWith(k));
+          const target = targetKey ? mapping[targetKey] : null;
+
           if (target) {
-            const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === target.phase);
+            const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(target.phase));
             if (nextMatch) {
               nextMatch[target.teamSlot] = winnerName;
             }
@@ -1574,6 +2224,7 @@ const AdminApp = {
     this.renderTopScorers();
     this.renderTeamsView();
     this.renderMatchHistory();
+    this.onPendingFilterChange();
     if (comp === 'oro' || comp === 'plata') {
       this.onJornadaChange();
     } else if (comp === 'estelar') {
@@ -1634,7 +2285,8 @@ const AdminApp = {
       'oro': '<span style="color: var(--lmi-gold); font-weight: 800;"><i class="fa-solid fa-trophy"></i> Div. Oro</span>',
       'plata': '<span style="color: #cbd5e1; font-weight: 800;"><i class="fa-solid fa-medal"></i> Div. Plata</span>',
       'liga': '<span style="color: #60a5fa; font-weight: 700;">Liga LMI</span>',
-      'champions': '<span style="color: #38bdf8; font-weight: 700;"><i class="fa-solid fa-star"></i> Champions</span>',
+      'champions': '<span style="color: #38bdf8; font-weight: 700;"><i class="fa-solid fa-star"></i> Champions (Liga)</span>',
+      'champions_ko': '<span style="color: #38bdf8; font-weight: 800;"><i class="fa-solid fa-trophy"></i> Champions (Eliminatoria)</span>',
       'estelar': '<span style="color: #c084fc; font-weight: 700;"><i class="fa-solid fa-shield"></i> Copa Estelar</span>'
     };
 
@@ -1694,7 +2346,7 @@ const AdminApp = {
           player.goals = Math.max(0, (player.goals || 0) - count);
           if (match.competition === 'oro' || match.competition === 'plata' || match.competition === 'liga') {
             player.goals_liga = Math.max(0, (player.goals_liga || 0) - count);
-          } else if (match.competition === 'champions') {
+          } else if (match.competition === 'champions' || match.competition === 'champions_ko') {
             player.goals_champions = Math.max(0, (player.goals_champions || 0) - count);
           } else if (match.competition === 'estelar') {
             player.goals_estelar = Math.max(0, (player.goals_estelar || 0) - count);
@@ -1703,7 +2355,7 @@ const AdminApp = {
           player.assists = Math.max(0, (player.assists || 0) - count);
           if (match.competition === 'oro' || match.competition === 'plata' || match.competition === 'liga') {
             player.assists_liga = Math.max(0, (player.assists_liga || 0) - count);
-          } else if (match.competition === 'champions') {
+          } else if (match.competition === 'champions' || match.competition === 'champions_ko') {
             player.assists_champions = Math.max(0, (player.assists_champions || 0) - count);
           } else if (match.competition === 'estelar') {
             player.assists_estelar = Math.max(0, (player.assists_estelar || 0) - count);
@@ -1734,6 +2386,7 @@ const AdminApp = {
     this.renderMatchHistory();
     this.renderTopScorers();
     this.renderTeamsView();
+    this.onPendingFilterChange();
     if (match.competition === 'oro' || match.competition === 'plata') {
       this.onJornadaChange();
     }

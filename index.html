@@ -40,8 +40,8 @@
             Sala de Trofeos</button></li>
         <!-- <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
             Estelar</button></li> -->
-        <!--<li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions
-            League</button></li> -->
+        <li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions
+            League</button></li>
         <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i>
             Mercado</button></li>
         <!-- <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T10</button></li> -->
@@ -286,6 +286,72 @@
 
           <div id="web-jornada-matches-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <!-- Matches rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Apartado Exclusivo: UEFA Champions League (Eliminatorias Fase Final) -->
+      <div id="web-champions-container" style="display: none; margin-bottom: 2rem;">
+        <!-- Banner Oficial UEFA Champions League -->
+        <div class="hero-banner" style="background-image: linear-gradient(135deg, rgba(0, 20, 80, 0.9) 0%, rgba(0, 51, 160, 0.82) 100%), url('Imagenes/uefa portada.webp'); border-radius: var(--radius-lg); margin-bottom: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">
+          <div class="hero-content">
+            <span class="hero-tag" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border-color: #0284c7;"><i class="fa-solid fa-star"></i> Fase Final de Eliminatorias &bull; Top 8</span>
+            <h1 class="hero-title" style="color: #ffffff; margin-bottom: 0.5rem;">UEFA CHAMPIONS LEAGUE</h1>
+            <p class="hero-desc" style="color: rgba(255,255,255,0.92); max-width: 780px;">
+              Los 8 clubes clasificados de la Fase Regular se enfrentan en la lucha directa por la gloria europea: 1° vs 8°, 2° vs 7°, 3° vs 6° y 4° vs 5° a partido definitivo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Árbol de Eliminación Directa Champions League -->
+        <div class="card" style="background: #07142b; border: 1px solid rgba(2, 132, 199, 0.35);">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div>
+              <h2 class="card-title" style="color: #38bdf8;"><i class="fa-solid fa-sitemap"></i> Cuadro Oficial de Eliminatorias &bull; Champions League</h2>
+              <p class="card-desc" style="color: #94a3b8; font-size: 0.88rem; margin-top: 0.25rem;">
+                Enfrentamientos directos: Cuartos de Final (Top 8), Semifinales y Gran Final.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <label for="champions-phase-filter-web" style="font-size: 0.85rem; font-weight: 700; color: #38bdf8;">Fase a ver / exportar:</label>
+                <select id="champions-phase-filter-web" class="form-select" onchange="onChampionsPhaseFilterChange(this.value)" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-md); background: #0c1c38; color: #e0f2fe; border: 1.5px solid #0284c7; cursor: pointer;">
+                  <option value="all">Todas las Fases (Cuadro Completo)</option>
+                  <option value="cuartos">Solo Cuartos de Final</option>
+                  <option value="semis">Solo Semifinales</option>
+                  <option value="final">Solo Gran Final</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" id="btn-export-champions-img" onclick="exportChampionsImage()" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.15rem; border-radius: var(--radius-md); box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35); cursor: pointer; color: #ffffff; font-size: 0.9rem; transition: transform 0.15s, box-shadow 0.15s;">
+                <i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>
+              </button>
+              <button class="btn btn-secondary" onclick="viewTournamentStats('champions')" style="font-size: 0.85rem; padding: 0.5rem 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+                <i class="fa-solid fa-chart-line" style="color: #38bdf8;"></i> <span>Goleadores Champions</span>
+              </button>
+              <span class="badge" style="background: rgba(2, 132, 199, 0.15); border: 1.5px solid #0284c7; color: #38bdf8; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
+                8 CLUBES CLASIFICADOS
+              </span>
+            </div>
+          </div>
+
+          <!-- Contenedor capturable para exportar a imagen -->
+          <div id="champions-capture-container" style="padding: 1.5rem; background: #061124; border-radius: var(--radius-md); border: 1px solid rgba(2, 132, 199, 0.35); margin-top: 0.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #0284c7; padding-bottom: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="font-size: 1.8rem; color: #38bdf8;"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                  <h2 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; UEFA CHAMPIONS LEAGUE</h2>
+                  <span id="champions-web-subtitle" style="font-size: 0.88rem; font-weight: 900; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px;">CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)</span>
+                </div>
+              </div>
+              <div style="text-align: right; color: #cbd5e1; font-size: 0.85rem; font-weight: 700;">
+                Temporada 11 &bull; eFootball
+              </div>
+            </div>
+
+            <div id="uefa-champions-bracket-pos" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1rem 0.5rem;">
+              <!-- Rendered dynamically via JS -->
+            </div>
           </div>
         </div>
       </div>
@@ -1073,8 +1139,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1791175706"></script>
-  <script src="app.js?v=1791167490"></script>
+  <script src="data.js?v=1791343149"></script>
+  <script src="app.js?v=1791176315"></script>
 </body>
 
 </html>

@@ -149,6 +149,7 @@ function initUI() {
   renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
   renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
   renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
+  renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches);
 
   // Initialize Balon de Oro Gallery
   initBalonOro();
@@ -172,6 +173,10 @@ function switchNav(navId) {
   if (navId === 'uefa-champions') {
     switchNav('posiciones');
     switchWebDivision('champions');
+    setTimeout(() => {
+      const container = document.getElementById('web-champions-container');
+      if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
     return;
   }
   currentNav = navId;
@@ -923,6 +928,172 @@ function viewTournamentStats(tournament) {
   }
   renderStats();
 }
+window.viewTournamentStats = viewTournamentStats;
+
+function onChampionsPhaseFilterChange(phase) {
+  const subtitleEl = document.getElementById('champions-web-subtitle');
+  const phaseLabels = {
+    'all': 'CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)',
+    'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
+    'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
+    'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
+  };
+  if (subtitleEl) subtitleEl.textContent = phaseLabels[phase] || phaseLabels['all'];
+
+  renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches, phase);
+  renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches, phase);
+}
+window.onChampionsPhaseFilterChange = onChampionsPhaseFilterChange;
+
+// Exportar Eliminatorias de UEFA Champions League a Imagen (PNG)
+async function exportChampionsImage() {
+  const phaseFilter = document.getElementById('champions-phase-filter-web')?.value || 'all';
+  onChampionsPhaseFilterChange(phaseFilter);
+
+  const target = document.getElementById('champions-capture-container') || document.getElementById('uefa-champions-bracket-pos');
+  if (!target) return;
+  const btn = document.getElementById('btn-export-champions-img');
+
+  if (btn) {
+    if (btn.disabled) return;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generando Imagen...';
+  }
+
+  const unlockTimer = setTimeout(() => {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>';
+    }
+  }, 10000);
+
+  const isSinglePhase = phaseFilter !== 'all';
+  const targetWidth = isSinglePhase ? 1100 : 1320;
+  const wrapperWidth = targetWidth + 40;
+
+  const wrapper = document.createElement('div');
+  wrapper.style.position = 'fixed';
+  wrapper.style.top = '0';
+  wrapper.style.left = '-12000px';
+  wrapper.style.width = `${wrapperWidth}px`;
+  wrapper.style.background = '#061124';
+  wrapper.style.zIndex = '-99999';
+  wrapper.style.pointerEvents = 'none';
+
+  const clone = target.cloneNode(true);
+  clone.style.width = `${targetWidth}px`;
+  clone.style.minWidth = `${targetWidth}px`;
+  clone.style.maxWidth = `${targetWidth}px`;
+  clone.style.overflow = 'visible';
+  clone.style.margin = '0 auto';
+
+  const innerBracket = clone.querySelector('#uefa-champions-bracket-pos');
+  if (innerBracket) {
+    innerBracket.style.overflowX = 'visible';
+    innerBracket.style.padding = '1.25rem 0.5rem';
+    innerBracket.style.width = '100%';
+    if (isSinglePhase) {
+      if (phaseFilter === 'final') {
+        innerBracket.style.display = 'flex';
+        innerBracket.style.justifyContent = 'center';
+      } else {
+        innerBracket.style.display = 'grid';
+        innerBracket.style.gridTemplateColumns = '1fr 1fr';
+        innerBracket.style.gap = '1rem';
+      }
+    } else {
+      innerBracket.style.display = 'flex';
+      innerBracket.style.gap = '1.25rem';
+      innerBracket.style.justifyContent = 'space-between';
+    }
+  }
+
+  clone.querySelectorAll('i').forEach(icon => {
+    const cls = icon.className || '';
+    let emoji = '⚽';
+    if (cls.includes('fa-trophy')) emoji = '🏆';
+    else if (cls.includes('fa-sitemap')) emoji = '🗺️';
+    else if (cls.includes('fa-crown')) emoji = '👑';
+    else if (cls.includes('fa-star')) emoji = '⭐';
+    const span = document.createElement('span');
+    span.style.fontSize = '1.25rem';
+    span.style.verticalAlign = 'middle';
+    span.style.marginRight = '0.35rem';
+    span.textContent = emoji;
+    icon.parentNode.replaceChild(span, icon);
+  });
+
+  const origImgs = target.querySelectorAll('img');
+  const cloneImgs = clone.querySelectorAll('img');
+  cloneImgs.forEach((cImg, idx) => {
+    try {
+      const oImg = origImgs[idx] || document.querySelector(`img[src="${cImg.getAttribute('src')}"]`);
+      if (oImg && oImg.complete && oImg.naturalWidth > 0) {
+        const c = document.createElement('canvas');
+        c.width = oImg.naturalWidth;
+        c.height = oImg.naturalHeight;
+        const ctx = c.getContext('2d');
+        ctx.drawImage(oImg, 0, 0);
+        cImg.src = c.toDataURL('image/png');
+      }
+    } catch (e) {}
+  });
+
+  wrapper.appendChild(clone);
+  document.body.appendChild(wrapper);
+
+  try {
+    if (typeof html2canvas === 'undefined') {
+      alert('html2canvas no está cargado');
+      clearTimeout(unlockTimer);
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>';
+      }
+      document.body.removeChild(wrapper);
+      return;
+    }
+
+    const canvas = await html2canvas(clone, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#061124',
+      logging: false,
+      width: targetWidth,
+      windowWidth: wrapperWidth
+    });
+
+    clearTimeout(unlockTimer);
+    document.body.removeChild(wrapper);
+
+    const link = document.createElement('a');
+    const phaseSuffix = phaseFilter !== 'all' ? `_${phaseFilter}` : '_completo';
+    link.download = `LMI_Champions_League${phaseSuffix}_T11.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>¡Imagen Descargada!</span>';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>';
+      }, 3000);
+    }
+  } catch (err) {
+    console.error('Error exportando Champions a imagen:', err);
+    clearTimeout(unlockTimer);
+    if (document.body.contains(wrapper)) document.body.removeChild(wrapper);
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <span>Reintentar</span>';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>';
+      }, 3000);
+    }
+  }
+}
+window.exportChampionsImage = exportChampionsImage;
 window.viewTournamentStats = viewTournamentStats;
 
 // Exportar Eliminatorias de Copa Estelar a Imagen (PNG)
@@ -2411,9 +2582,12 @@ function switchWebDivision(div) {
     }
   });
 
+  const championsContainer = document.getElementById('web-champions-container');
+
   if (div === 'estelar') {
     if (standingsCard) standingsCard.style.display = 'none';
     if (jornadasCard) jornadasCard.style.display = 'none';
+    if (championsContainer) championsContainer.style.display = 'none';
     if (estelarContainer) estelarContainer.style.display = 'block';
     renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
     renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
@@ -2421,10 +2595,20 @@ function switchWebDivision(div) {
     return;
   }
 
-  // Div is 'oro', 'plata', or 'champions'
-  if (standingsCard) standingsCard.style.display = 'block';
-  if (jornadasCard) jornadasCard.style.display = 'block';
-  if (estelarContainer) estelarContainer.style.display = 'none';
+  if (div === 'champions') {
+    if (standingsCard) standingsCard.style.display = 'block';
+    if (jornadasCard) jornadasCard.style.display = 'block';
+    if (championsContainer) championsContainer.style.display = 'block';
+    if (estelarContainer) estelarContainer.style.display = 'none';
+    renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches);
+    renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
+  } else {
+    // Div is 'oro' or 'plata'
+    if (standingsCard) standingsCard.style.display = 'block';
+    if (jornadasCard) jornadasCard.style.display = 'block';
+    if (championsContainer) championsContainer.style.display = 'none';
+    if (estelarContainer) estelarContainer.style.display = 'none';
+  }
 
   if (titleEl) {
     if (div === 'oro') {
@@ -2570,13 +2754,13 @@ function renderWebStandings() {
 
     if (isChampions) {
       if (pos === 1) {
-        // 1° Campeón
-        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="🏆 Campeón UEFA Champions League">1</span>`;
+        // 1° Líder de Liga & Clasificado a Cuartos
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="1° Líder de Liga & Clasificado a Cuartos de Final">1</span>`;
         rowBorderLeft = '4px solid #ffd700';
         rowBg = 'rgba(255, 215, 0, 0.04)';
       } else if (pos >= 2 && pos <= 8) {
-        // 2° al 8°: Clasificación a Fase Eliminatoria (Azul/Cian)
-        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(2, 132, 199, 0.25); border:1px solid #0284c7; color:#38bdf8; box-shadow:0 0 8px rgba(2, 132, 199, 0.25);" title="Clasificado a Fase Final de Campeones">${pos}</span>`;
+        // 2° al 8°: Clasificación a Cuartos de Final (Azul/Cian)
+        posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(2, 132, 199, 0.25); border:1px solid #0284c7; color:#38bdf8; box-shadow:0 0 8px rgba(2, 132, 199, 0.25);" title="Clasificado a Cuartos de Final (Top 8)">${pos}</span>`;
         rowBorderLeft = '4px solid #0284c7';
         rowBg = 'rgba(2, 132, 199, 0.04)';
       } else {
@@ -2649,15 +2833,15 @@ function renderWebStandings() {
         <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; font-weight: 700; color: #94a3b8; padding: 0.4rem 0.5rem;">
           <span style="display: flex; align-items: center; gap: 0.4rem;">
             <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.7);"></span>
-            <strong style="color: #ffd700;">1°</strong> Campeón UEFA Champions League
+            <strong style="color: #ffd700;">1°</strong> Líder de Liga & Clasificado a Cuartos
           </span>
           <span style="display: flex; align-items: center; gap: 0.4rem;">
             <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #0284c7; box-shadow: 0 0 8px rgba(2, 132, 199, 0.7);"></span>
-            <strong style="color: #38bdf8;">2° al 8°</strong> Clasificación a Fase Final de Campeones
+            <strong style="color: #38bdf8;">2° al 8°</strong> Clasificados a Cuartos de Final (Top 8)
           </span>
           <span style="display: flex; align-items: center; gap: 0.4rem;">
             <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #64748b;"></span>
-            <strong style="color: #cbd5e1;">9° al 18°</strong> Fase de Liga
+            <strong style="color: #cbd5e1;">9° al 18°</strong> Fase Regular de Liga
           </span>
         </div>
       `;
@@ -2954,6 +3138,8 @@ window.renderStats = renderStats;
 window.onCopaPhaseFilterChange = onCopaPhaseFilterChange;
 window.viewTournamentStats = viewTournamentStats;
 window.exportCopaEstelarImage = exportCopaEstelarImage;
+window.onChampionsPhaseFilterChange = onChampionsPhaseFilterChange;
+window.exportChampionsImage = exportChampionsImage;
 
 
 

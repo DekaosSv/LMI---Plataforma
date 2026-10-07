@@ -247,7 +247,8 @@
               <select class="form-select" id="match-competition" style="width: 190px; font-weight: 700;">
                 <option value="oro">🥇 División Oro</option>
                 <option value="plata">🥈 División Plata</option>
-                <option value="champions">🏆 Champions League</option>
+                <option value="champions">🏆 Champions League (Fase de Liga)</option>
+                <option value="champions_ko">⭐ Champions League (Eliminatorias)</option>
                 <option value="estelar">⭐ Copa Estelar</option>
               </select>
               <select class="form-select" id="match-jornada-select" style="width: 140px; font-weight: 700;">
@@ -289,6 +290,62 @@
             <button class="btn btn-secondary" id="btn-gen-champions-fixture" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar las 17 fechas de Champions League (1 vez vs cada club sin Club América ni Urawa)">
               <i class="fa-solid fa-arrows-rotate" style="color: #38bdf8;"></i> Generar Fechas Champions (17 Fechas)
             </button>
+            <button class="btn btn-secondary" id="btn-gen-champions-playoffs" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar o sincronizar llaves de Cuartos de Final con los 8 clasificados de Champions (1° vs 8°, 2° vs 7°, etc.)">
+              <i class="fa-solid fa-sitemap" style="color: #38bdf8;"></i> Sincronizar Eliminatorias Champions (Top 8)
+            </button>
+            <button class="btn btn-secondary" id="btn-export-champions-img-admin" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Exportar a imagen PNG las llaves actuales de Champions League">
+              <i class="fa-solid fa-camera" style="color: #38bdf8;"></i> Exportar Llaves Champions
+            </button>
+          </div>
+
+          <!-- Buscador y Filtro Rápido de Partidos Pendientes por Club -->
+          <div class="pending-filter-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.65rem;">
+                <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(56, 189, 248, 0.35);">
+                  <i class="fa-solid fa-magnifying-glass" style="color: #38bdf8; font-size: 1rem;"></i>
+                </div>
+                <div>
+                  <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #fff; letter-spacing: 0.3px;">
+                    Buscador de Partidos y Fechas por Club
+                  </h4>
+                  <p style="margin: 0; font-size: 0.78rem; color: #94a3b8;">
+                    Filtra cualquier club en Champions, Copa Estelar o Liga para ver sus números de fecha y cargarlos con 1 clic.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Filtros en línea -->
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                <select class="form-select" id="pending-filter-competition" style="width: auto; min-width: 165px; padding: 0.4rem 0.75rem; font-size: 0.85rem; font-weight: 700; background: #0b1120; border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
+                  <option value="all">🌐 Todas las Competencias</option>
+                  <option value="champions">🏆 Champions League</option>
+                  <option value="estelar">⭐ Copa Estelar</option>
+                  <option value="oro">🥇 División Oro</option>
+                  <option value="plata">🥈 División Plata</option>
+                </select>
+
+                <select class="form-select" id="pending-filter-team" style="width: auto; min-width: 230px; padding: 0.4rem 0.85rem; font-size: 0.85rem; font-weight: 700; background: #0b1120; border-color: #38bdf8; color: #fff;">
+                  <option value="">-- Selecciona un Club (ej. FC Barcelona) --</option>
+                  <!-- Llenado dinámicamente con todos los clubes -->
+                </select>
+
+                <select class="form-select" id="pending-filter-status" style="width: auto; padding: 0.4rem 0.75rem; font-size: 0.85rem; font-weight: 700; background: #0b1120; border-color: rgba(56, 189, 248, 0.4); color: #facc15;">
+                  <option value="pending">⏳ Solo Pendientes</option>
+                  <option value="all">📋 Todos (Pendientes y Jugados)</option>
+                  <option value="played">✓ Solo Jugados</option>
+                </select>
+
+                <button class="btn btn-secondary btn-sm" id="btn-clear-pending-filter" style="padding: 0.4rem 0.75rem; font-size: 0.82rem;" title="Limpiar filtro">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Resultados del Filtro de Pendientes -->
+            <div id="pending-filter-results" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
+              <!-- Renderizado dinámicamente -->
+            </div>
           </div>
 
           <!-- Duel Box -->
@@ -442,6 +499,50 @@
             </div>
 
             <div id="copa-estelar-bracket-admin" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1rem 0.5rem;">
+              <!-- Matches rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Oficial de Llaves de Champions League y Exportación a Imagen -->
+        <div class="card" id="champions-card-wrapper" style="display: none; margin-top: 1.5rem; background: #07142b; border: 1px solid rgba(2, 132, 199, 0.4);">
+          <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 class="card-title" style="color: #38bdf8;"><i class="fa-solid fa-sitemap"></i> Cuadro Oficial de Eliminatorias &bull; Champions League</h3>
+              <p class="card-desc">Llaves y resultados actualizados de los 8 mejores clubes clasificados de la Fase Regular (1° vs 8°, 2° vs 7°, 3° vs 6°, 4° vs 5°). Puedes exportar el cuadro completo a imagen.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <label for="champions-phase-filter-admin" style="font-size: 0.85rem; font-weight: 700; color: #38bdf8;">Fase a ver / exportar:</label>
+                <select id="champions-phase-filter-admin" class="form-select" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-md); background: #0c1c38; color: #e0f2fe; border: 1.5px solid #0284c7; cursor: pointer;">
+                  <option value="all">Todas las Fases (Cuadro Completo)</option>
+                  <option value="cuartos">Solo Cuartos de Final</option>
+                  <option value="semis">Solo Semifinales</option>
+                  <option value="final">Solo Gran Final</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" id="btn-export-champions-img" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800;">
+                <i class="fa-solid fa-camera"></i> <span>Exportar a Imagen (PNG)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Contenedor capturable para exportar a imagen -->
+          <div id="champions-admin-export-container" style="padding: 1.5rem; background: linear-gradient(135deg, #050e1d 0%, #0c1b33 100%); border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #0284c7; padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="font-size: 1.8rem; color: #38bdf8;"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                  <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; UEFA CHAMPIONS LEAGUE</h2>
+                  <span id="champions-admin-subtitle" style="font-size: 0.85rem; font-weight: 800; color: #38bdf8; text-transform: uppercase;">CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)</span>
+                </div>
+              </div>
+              <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;">
+                Temporada 11 &bull; eFootball
+              </div>
+            </div>
+
+            <div id="champions-bracket-admin" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1rem 0.5rem;">
               <!-- Matches rendered dynamically -->
             </div>
           </div>
