@@ -8290,10 +8290,10 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Cuartos 1",
       "team1": "Como 1907",
-      "score1": "",
+      "score1": "0",
       "team2": "Bayern Leverkusen",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado"
     },
     {
       "fase": "Cuartos 2",
@@ -8321,7 +8321,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "fase": "Semifinal 1",
-      "team1": "Ganador Cuartos 1",
+      "team1": "Bayern Leverkusen",
       "score1": "",
       "team2": "Manchester City",
       "score2": "",
@@ -17043,6 +17043,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1791430900326",
+      "timestamp": 1791430900326,
+      "date": "07 oct 2026, 09:41 p.m.",
+      "competition": "estelar",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 1",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 0,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1791426592963",
       "timestamp": 1791426592963,
