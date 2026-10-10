@@ -798,9 +798,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gabriel Magalhães",
       "position": "CT",
       "teamId": "bocajuniors",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2822,9 +2822,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "bayernleverkusen",
       "goals": 2,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 1,
       "goals_estelar": 1,
@@ -3144,9 +3144,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ousmane Dembélé (P)",
       "position": "EI",
       "teamId": "bayernleverkusen",
-      "goals": 3,
+      "goals": 4,
       "assists": 5,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 3,
@@ -3383,9 +3383,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "bocajuniors",
       "goals": 3,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 1,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 2,
       "assists_champions": 2,
       "goals_estelar": 0,
@@ -3467,9 +3467,9 @@ var INITIAL_LMI_DATA = {
       "name": "Karim Adeyemi (P)",
       "position": "ED",
       "teamId": "bayernleverkusen",
-      "goals": 3,
+      "goals": 4,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 3,
       "assists_champions": 0,
@@ -3484,9 +3484,9 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Díaz",
       "position": "EI",
       "teamId": "psg",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -3569,9 +3569,9 @@ var INITIAL_LMI_DATA = {
       "name": "Robert Lewandowski",
       "position": "DC",
       "teamId": "manchestercity",
-      "goals": 12,
+      "goals": 13,
       "assists": 6,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 0,
       "goals_champions": 7,
       "assists_champions": 5,
@@ -4029,9 +4029,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "bocajuniors",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -5320,9 +5320,9 @@ var INITIAL_LMI_DATA = {
       "name": "Kylian Mbappé",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 18,
+      "goals": 20,
       "assists": 2,
-      "goals_liga": 8,
+      "goals_liga": 10,
       "assists_liga": 2,
       "goals_champions": 10,
       "assists_champions": 0,
@@ -5984,9 +5984,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "fcbarcelona",
       "goals": 0,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 0,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6477,9 +6477,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "manchestercity",
       "goals": 6,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 5,
       "assists_champions": 3,
       "goals_estelar": 1,
@@ -6629,9 +6629,9 @@ var INITIAL_LMI_DATA = {
       "name": "Dani Olmo",
       "position": "MP",
       "teamId": "fcbarcelona",
-      "goals": 4,
+      "goals": 5,
       "assists": 3,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 2,
       "goals_champions": 3,
       "assists_champions": 1,
@@ -6952,9 +6952,9 @@ var INITIAL_LMI_DATA = {
       "name": "Fermín López",
       "position": "MP",
       "teamId": "fcbarcelona",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7581,10 +7581,10 @@ var INITIAL_LMI_DATA = {
       "name": "Sergio Agüero",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7599,9 +7599,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "fcbarcelona",
       "goals": 11,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 10,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7666,9 +7666,9 @@ var INITIAL_LMI_DATA = {
       "name": "Pio Esposito",
       "position": "DC",
       "teamId": "bayernleverkusen",
-      "goals": 9,
+      "goals": 10,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 8,
       "assists_champions": 0,
@@ -9837,20 +9837,64 @@ var INITIAL_LMI_DATA = {
             "jornada": 11,
             "team1Id": "manchestercity",
             "team2Id": "fcbarcelona",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_407",
+                "playerName": "Fermín López",
+                "teamId": "fcbarcelona",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_447",
+                "playerName": "Ferran Torres",
+                "teamId": "fcbarcelona",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_387",
+                "playerName": "Dani Olmo",
+                "teamId": "fcbarcelona",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_347",
+                "playerName": "N'Golo Kanté",
+                "teamId": "fcbarcelona",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j11_m3",
             "jornada": 11,
             "team1Id": "bocajuniors",
             "team2Id": "psg",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_192",
+                "playerName": "Luis Díaz",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_26",
+                "playerName": "Gabriel Magalhães",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j11_m4",
@@ -9874,9 +9918,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 12,
             "team1Id": "fcbarcelona",
             "team2Id": "como1907",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -9931,10 +9975,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 13,
             "team1Id": "fcbarcelona",
             "team2Id": "bayernleverkusen",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_191",
+                "playerName": "Karim Adeyemi (P)",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_151",
+                "playerName": "Nico Paz",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_451",
+                "playerName": "Pio Esposito",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_171",
+                "playerName": "Ousmane Dembélé (P)",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j13_m3",
@@ -9951,10 +10024,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 13,
             "team1Id": "manchestercity",
             "team2Id": "bocajuniors",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_197",
+                "playerName": "Robert Lewandowski",
+                "teamId": "manchestercity",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_377",
+                "playerName": "Bradley Barcola",
+                "teamId": "manchestercity",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_446",
+                "playerName": "Sergio Agüero",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_186",
+                "playerName": "Leroy Sané",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           }
         ]
       },
@@ -9968,9 +10070,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 14,
             "team1Id": "bayernleverkusen",
             "team2Id": "como1907",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -9988,10 +10090,32 @@ var INITIAL_LMI_DATA = {
             "jornada": 14,
             "team1Id": "bocajuniors",
             "team2Id": "fcbarcelona",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_306",
+                "playerName": "Kylian Mbappé",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_226",
+                "playerName": "Marc Bernal",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_446",
+                "playerName": "Sergio Agüero",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j14_m4",
@@ -16739,6 +16863,256 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1791598303534",
+      "timestamp": 1791598303534,
+      "date": "09 oct 2026, 08:11 p.m.",
+      "competition": "oro",
+      "jornada": 14,
+      "fixtureMatchId": "oro_j14_m1",
+      "phase": "Jornada 14",
+      "team1Id": "bayernleverkusen",
+      "team1Name": "Bayern Leverkusen",
+      "team1Logo": "Logos Equipos/bayernleverkusen.png",
+      "score1": 0,
+      "team2Id": "como1907",
+      "team2Name": "Como 1907",
+      "team2Logo": "Logos Equipos/como.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1791598289133",
+      "timestamp": 1791598289133,
+      "date": "09 oct 2026, 08:11 p.m.",
+      "competition": "oro",
+      "jornada": 14,
+      "fixtureMatchId": "oro_j14_m3",
+      "phase": "Jornada 14",
+      "team1Id": "bocajuniors",
+      "team1Name": "Boca Juniors",
+      "team1Logo": "Logos Equipos/boca.png",
+      "score1": 2,
+      "team2Id": "fcbarcelona",
+      "team2Name": "FC Barcelona",
+      "team2Logo": "Logos Equipos/fcbarcelona.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_306",
+          "playerName": "Kylian Mbappé",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_226",
+          "playerName": "Marc Bernal",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_446",
+          "playerName": "Sergio Agüero",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1791598064441",
+      "timestamp": 1791598064441,
+      "date": "09 oct 2026, 08:07 p.m.",
+      "competition": "oro",
+      "jornada": 13,
+      "fixtureMatchId": "oro_j13_m4",
+      "phase": "Jornada 13",
+      "team1Id": "manchestercity",
+      "team1Name": "Manchester City",
+      "team1Logo": "Logos Equipos/manchestercity.png",
+      "score1": 1,
+      "team2Id": "bocajuniors",
+      "team2Name": "Boca Juniors",
+      "team2Logo": "Logos Equipos/boca.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_197",
+          "playerName": "Robert Lewandowski",
+          "teamId": "manchestercity",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_377",
+          "playerName": "Bradley Barcola",
+          "teamId": "manchestercity",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_446",
+          "playerName": "Sergio Agüero",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_186",
+          "playerName": "Leroy Sané",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1791597899673",
+      "timestamp": 1791597899673,
+      "date": "09 oct 2026, 08:04 p.m.",
+      "competition": "oro",
+      "jornada": 13,
+      "fixtureMatchId": "oro_j13_m2",
+      "phase": "Jornada 13",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 0,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_191",
+          "playerName": "Karim Adeyemi (P)",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_151",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_451",
+          "playerName": "Pio Esposito",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_171",
+          "playerName": "Ousmane Dembélé (P)",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1791597526847",
+      "timestamp": 1791597526847,
+      "date": "09 oct 2026, 07:58 p.m.",
+      "competition": "oro",
+      "jornada": 12,
+      "fixtureMatchId": "oro_j12_m1",
+      "phase": "Jornada 12",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 0,
+      "team2Id": "como1907",
+      "team2Name": "Como 1907",
+      "team2Logo": "Logos Equipos/como.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1791597505641",
+      "timestamp": 1791597505641,
+      "date": "09 oct 2026, 07:58 p.m.",
+      "competition": "oro",
+      "jornada": 11,
+      "fixtureMatchId": "oro_j11_m3",
+      "phase": "Jornada 11",
+      "team1Id": "bocajuniors",
+      "team1Name": "Boca Juniors",
+      "team1Logo": "Logos Equipos/boca.png",
+      "score1": 1,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_192",
+          "playerName": "Luis Díaz",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_26",
+          "playerName": "Gabriel Magalhães",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1791597469514",
+      "timestamp": 1791597469514,
+      "date": "09 oct 2026, 07:57 p.m.",
+      "competition": "oro",
+      "jornada": 11,
+      "fixtureMatchId": "oro_j11_m2",
+      "phase": "Jornada 11",
+      "team1Id": "manchestercity",
+      "team1Name": "Manchester City",
+      "team1Logo": "Logos Equipos/manchestercity.png",
+      "score1": 0,
+      "team2Id": "fcbarcelona",
+      "team2Name": "FC Barcelona",
+      "team2Logo": "Logos Equipos/fcbarcelona.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_407",
+          "playerName": "Fermín López",
+          "teamId": "fcbarcelona",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_447",
+          "playerName": "Ferran Torres",
+          "teamId": "fcbarcelona",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_387",
+          "playerName": "Dani Olmo",
+          "teamId": "fcbarcelona",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_347",
+          "playerName": "N'Golo Kanté",
+          "teamId": "fcbarcelona",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1791597195267",
       "timestamp": 1791597195267,
