@@ -2958,9 +2958,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "acmiln",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3297,9 +3297,9 @@ var INITIAL_LMI_DATA = {
       "name": "Barış Alper Yılmaz",
       "position": "DC",
       "teamId": "interdemilan",
-      "goals": 7,
+      "goals": 8,
       "assists": 2,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 2,
       "goals_champions": 3,
       "assists_champions": 0,
@@ -3417,9 +3417,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "casapiaac",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3603,9 +3603,9 @@ var INITIAL_LMI_DATA = {
       "name": "Erling Haaland",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 5,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 3,
       "assists_champions": 0,
@@ -3620,9 +3620,9 @@ var INITIAL_LMI_DATA = {
       "name": "Julián Álvarez (P)",
       "position": "DC",
       "teamId": "interdemilan",
-      "goals": 4,
+      "goals": 5,
       "assists": 4,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 3,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -3739,9 +3739,9 @@ var INITIAL_LMI_DATA = {
       "name": "Dimitar Berbatov",
       "position": "DC",
       "teamId": "casapiaac",
-      "goals": 5,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 4,
       "assists_champions": 0,
@@ -3926,9 +3926,9 @@ var INITIAL_LMI_DATA = {
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5236,9 +5236,9 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 2,
+      "assists": 4,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -5558,9 +5558,9 @@ var INITIAL_LMI_DATA = {
       "name": "Piotr Zieliński",
       "position": "MC",
       "teamId": "interdemilan",
-      "goals": 1,
+      "goals": 2,
       "assists": 2,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 2,
@@ -6204,9 +6204,9 @@ var INITIAL_LMI_DATA = {
       "name": "Crysencio Summerville",
       "position": "ED",
       "teamId": "interdemilan",
-      "goals": 5,
+      "goals": 6,
       "assists": 1,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -6680,9 +6680,9 @@ var INITIAL_LMI_DATA = {
       "name": "Pedro Neto",
       "position": "MP",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 1,
@@ -12592,10 +12592,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 17,
             "team1Id": "interdemilan",
             "team2Id": "acmiln",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_321",
+                "playerName": "Piotr Zieliński",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_301",
+                "playerName": "Marco Palestra",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_361",
+                "playerName": "Crysencio Summerville",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_201",
+                "playerName": "Julián Álvarez (P)",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j17_m2",
@@ -12659,20 +12688,78 @@ var INITIAL_LMI_DATA = {
             "jornada": 18,
             "team1Id": "borussiadortmund",
             "team2Id": "interdemilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_390",
+                "playerName": "Pedro Neto",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_181",
+                "playerName": "Barış Alper Yılmaz",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_301",
+                "playerName": "Marco Palestra",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j18_m2",
             "jornada": 18,
             "team1Id": "casapiaac",
             "team2Id": "acmiln",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_199",
+                "playerName": "Erling Haaland",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_159",
+                "playerName": "Lionel Messi",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_208",
+                "playerName": "Dimitar Berbatov",
+                "teamId": "casapiaac",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_219",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_188",
+                "playerName": "Folarin Balogun",
+                "teamId": "casapiaac",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j18_m3",
@@ -16652,6 +16739,147 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1791597195267",
+      "timestamp": 1791597195267,
+      "date": "09 oct 2026, 07:53 p.m.",
+      "competition": "plata",
+      "jornada": 18,
+      "fixtureMatchId": "plata_j18_m1",
+      "phase": "Jornada 18",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 1,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_390",
+          "playerName": "Pedro Neto",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_181",
+          "playerName": "Barış Alper Yılmaz",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_301",
+          "playerName": "Marco Palestra",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1791597150579",
+      "timestamp": 1791597150579,
+      "date": "09 oct 2026, 07:52 p.m.",
+      "competition": "plata",
+      "jornada": 18,
+      "fixtureMatchId": "plata_j18_m2",
+      "phase": "Jornada 18",
+      "team1Id": "casapiaac",
+      "team1Name": "Casa Pia AC",
+      "team1Logo": "Logos Equipos/casapia.webp",
+      "score1": 1,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_199",
+          "playerName": "Erling Haaland",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_159",
+          "playerName": "Lionel Messi",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_208",
+          "playerName": "Dimitar Berbatov",
+          "teamId": "casapiaac",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_219",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_188",
+          "playerName": "Folarin Balogun",
+          "teamId": "casapiaac",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1791597087103",
+      "timestamp": 1791597087103,
+      "date": "09 oct 2026, 07:51 p.m.",
+      "competition": "plata",
+      "jornada": 17,
+      "fixtureMatchId": "plata_j17_m1",
+      "phase": "Jornada 17",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 3,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_321",
+          "playerName": "Piotr Zieliński",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_301",
+          "playerName": "Marco Palestra",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_361",
+          "playerName": "Crysencio Summerville",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_201",
+          "playerName": "Julián Álvarez (P)",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1791430900326",
       "timestamp": 1791430900326,
