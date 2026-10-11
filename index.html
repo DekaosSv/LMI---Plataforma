@@ -767,7 +767,7 @@
           <div>
             <h2 class="card-title"><i class="fa-solid fa-file-signature" style="color: var(--neon-green);"></i>
               Calculadora de Renovaciones - Temporada 11</h2>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Calcula el costo de renovación de tu plantilla con suma directa restado automáticamente al presupuesto del club.</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Calcula el costo de renovación de tu plantilla con suma directa de los montos ingresados para cada jugador.</p>
           </div>
           <button class="btn-secondary" onclick="exportRenewalReport()"><i class="fa-solid fa-copy"></i> Copiar
             Resumen</button>
@@ -812,7 +812,7 @@
           <div class="card"
             style="background: var(--lmi-blue); border-color: var(--lmi-blue); color: #ffffff; box-shadow: var(--shadow-card);">
             <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: #ffffff; margin-bottom: 1rem;">
-              <i class="fa-solid fa-calculator"></i> Desglose de Presupuesto y Renovación
+              <i class="fa-solid fa-calculator"></i> Desglose de Renovaciones
             </h3>
             <div
               style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
@@ -821,16 +821,13 @@
                 style="font-family: var(--font-heading); color: var(--neon-gold); font-weight: 800;">$0.0M USD</strong>
             </div>
             <div
-              style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
-              <span>Total a Pagar (Suma de Renovaciones):</span>
-              <strong id="renovation-total-final"
-                style="font-family: var(--font-heading); color: #ff6b6b; font-weight: 800;">-$0.0M USD</strong>
-            </div>
-            <div
               style="display: flex; justify-content: space-between; padding: 0.75rem 0; font-size: 1.2rem; font-weight: 700;">
-              <span>Presupuesto Restante:</span>
-              <strong id="renovation-budget-remaining"
+              <span>Total Renovaciones (Suma):</span>
+              <strong id="renovation-total-final"
                 style="font-family: var(--font-heading); color: var(--lmi-green); font-size: 1.4rem; font-weight: 800; text-shadow: 0 0 10px rgba(0,255,136,0.2);">$0.0M USD</strong>
+            </div>
+            <div id="renovation-budget-remaining-container" style="display: none;">
+              <strong id="renovation-budget-remaining">$0.0M USD</strong>
             </div>
           </div>
 
@@ -1112,7 +1109,7 @@
 
   <!-- Scripts -->
   <script src="data.js?v=1791682020"></script>
-  <script src="app.js?v=1791176315"></script>
+  <script src="app.js?v=1791682500"></script>
 </body>
 
 </html>

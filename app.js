@@ -1364,11 +1364,19 @@ function loadTeamHub(teamId) {
   `;
 }
 
-// RENOVACIONES TEMPORADA 10 ENGINE
+// RENOVACIONES TEMPORADA 11 ENGINE
+function formatRenewalValue(val) {
+  if (val === undefined || val === null || isNaN(val)) return '0';
+  const num = Number(val);
+  if (num === 0) return '0';
+  const rounded = Math.round(num * 100) / 100;
+  return (rounded % 1 === 0) ? rounded.toFixed(0) : rounded.toString();
+}
+
 function initRenovationSelect() {
   const sel = document.getElementById('renovation-team-select');
   if (!sel) return;
-  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name} (Presupuesto: $${((t.budget || 100000000) / 1000000).toFixed(1)}M)</option>`).join('');
+  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name} (Presupuesto: $${formatRenewalValue((t.budget || 100000000) / 1000000)}M)</option>`).join('');
   if (lmiData.teams.length > 0) {
     loadRenovationsForTeam(lmiData.teams[0].id);
   }
@@ -1382,12 +1390,14 @@ function loadRenovationsForTeam(teamId) {
 
   // Render Budget Badge
   const badgeContainer = document.getElementById('renovation-discount-badge');
-  badgeContainer.innerHTML = `
-    <span style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85);">Presupuesto Club:</span>
-    <span class="discount-pill discount-50" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4);">
-      <i class="fa-solid fa-wallet"></i> $${teamBudgetM.toFixed(1)}M USD
-    </span>
-  `;
+  if (badgeContainer) {
+    badgeContainer.innerHTML = `
+      <span style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85);">Presupuesto Club:</span>
+      <span class="discount-pill discount-50" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4);">
+        <i class="fa-solid fa-wallet"></i> $${formatRenewalValue(teamBudgetM)}M USD
+      </span>
+    `;
+  }
 
   // Render Players Renewal Table
   const tbody = document.getElementById('renovation-tbody');
@@ -1439,7 +1449,7 @@ function loadRenovationsForTeam(teamId) {
               id="renovation-input-${p.id}"
               class="form-control renewal-val-input" 
               style="width: 95px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right; font-weight: 700;" 
-              value="${(priceVal % 1 === 0) ? priceVal.toFixed(0) : priceVal.toFixed(1)}" 
+              value="${formatRenewalValue(priceVal)}" 
               onkeydown="handleRenewalPriceKeydown(event)"
               oninput="handleRenewalPriceInput(this, '${p.id}', '${teamId}')"
               onpaste="handleRenewalPricePaste(event, this, '${p.id}', '${teamId}')"
@@ -1453,8 +1463,10 @@ function loadRenovationsForTeam(teamId) {
   }
 
   // Load Notes
-  document.getElementById('renovation-note-change').value = team.legendChangeNote || '';
-  document.getElementById('renovation-note-remove').value = team.legendRemoveNote || '';
+  const noteChangeEl = document.getElementById('renovation-note-change');
+  const noteRemoveEl = document.getElementById('renovation-note-remove');
+  if (noteChangeEl) noteChangeEl.value = team.legendChangeNote || '';
+  if (noteRemoveEl) noteRemoveEl.value = team.legendRemoveNote || '';
 
   recalculateRenovationTotals(teamId);
 }
@@ -1501,16 +1513,21 @@ function handleRenewalPriceInput(input, playerId, teamId) {
     input.value = clean;
   }
 
+  const player = lmiData.players.find(p => p.id === playerId);
+  if (!player) return;
+
   if (clean !== '') {
     const val = parseFloat(clean);
     if (!isNaN(val) && val >= 0) {
-      const player = lmiData.players.find(p => p.id === playerId);
-      if (player) {
-        player.price = val * 1000000;
-        recalculateRenovationTotals(teamId);
-        updateRowVisualsForRenewal(playerId, val);
-      }
+      player.price = Math.round(val * 1000000);
+      recalculateRenovationTotals(teamId);
+      updateRowVisualsForRenewal(playerId, val);
     }
+  } else {
+    // Si borra el texto temporalmente, reflejar 0 en tiempo real
+    player.price = 0;
+    recalculateRenovationTotals(teamId);
+    updateRowVisualsForRenewal(playerId, 0);
   }
 }
 
@@ -1522,11 +1539,11 @@ function handleRenewalPriceBlur(input, playerId, teamId) {
   }
   let val = parseFloat(clean);
   if (val < 0) val = 0;
-  input.value = (val % 1 === 0) ? val.toFixed(0) : val.toFixed(1);
+  input.value = formatRenewalValue(val);
 
   const player = lmiData.players.find(p => p.id === playerId);
   if (player) {
-    player.price = val * 1000000;
+    player.price = Math.round(val * 1000000);
     saveDataToStorage();
     recalculateRenovationTotals(teamId);
     updateRowVisualsForRenewal(playerId, val);
@@ -1574,23 +1591,30 @@ function recalculateRenovationTotals(teamId) {
   let totalRenovations = 0;
 
   teamPlayers.forEach(p => {
-    let pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
-    if (pVal > 0 && pVal <= 0.6) pVal = 1.0;
+    // Si el input está montado en el DOM, sincronizar con su valor exacto
+    const inputEl = document.getElementById(`renovation-input-${p.id}`);
+    let pVal = 0;
+    if (inputEl) {
+      const parsed = parseFloat(inputEl.value.replace(/[^0-9.]/g, ''));
+      pVal = (!isNaN(parsed) && parsed >= 0) ? parsed : 0;
+    } else {
+      pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
+    }
     totalRenovations += pVal;
   });
 
+  totalRenovations = Math.round(totalRenovations * 100) / 100;
   const teamBudgetM = ((team.budget || 100000000) / 1000000);
-  const remainingBudgetM = teamBudgetM - totalRenovations;
 
   const teamBudgetEl = document.getElementById('renovation-team-budget');
   const totalFinalEl = document.getElementById('renovation-total-final');
   const remainingEl = document.getElementById('renovation-budget-remaining');
 
-  if (teamBudgetEl) teamBudgetEl.innerText = `$${teamBudgetM.toFixed(1)}M USD`;
-  if (totalFinalEl) totalFinalEl.innerText = `-$${totalRenovations.toFixed(1)}M USD`;
+  if (teamBudgetEl) teamBudgetEl.innerText = `$${formatRenewalValue(teamBudgetM)}M USD`;
+  // Solo suma directa del monto ingresado, sin restar al presupuesto ni signo negativo
+  if (totalFinalEl) totalFinalEl.innerText = `$${formatRenewalValue(totalRenovations)}M USD`;
   if (remainingEl) {
-    remainingEl.innerText = `$${remainingBudgetM.toFixed(1)}M USD`;
-    remainingEl.style.color = remainingBudgetM >= 0 ? 'var(--lmi-green)' : '#ff6b6b';
+    remainingEl.innerText = `$${formatRenewalValue(teamBudgetM)}M USD`;
   }
 }
 
@@ -1615,7 +1639,7 @@ function exportRenewalReport() {
   if (!team) return;
 
   const teamPlayers = lmiData.players.filter(p => p.teamId === sel.value);
-  let summary = `📋 INFORME DE RENOVACIONES - TEMPORADA 10\n`;
+  let summary = `📋 INFORME DE RENOVACIONES - TEMPORADA 11\n`;
   summary += `Club: ${team.name}\n`;
   summary += `--------------------------------------------------\n`;
   
@@ -1624,8 +1648,16 @@ function exportRenewalReport() {
   let nonRenewedCount = 0;
 
   teamPlayers.forEach((p, idx) => {
-    let pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
-    if (pVal > 0 && pVal <= 0.6) pVal = 1.0;
+    // Sincronizar con el input si está presente en pantalla
+    const inputEl = document.getElementById(`renovation-input-${p.id}`);
+    let pVal = 0;
+    if (inputEl) {
+      const parsed = parseFloat(inputEl.value.replace(/[^0-9.]/g, ''));
+      pVal = (!isNaN(parsed) && parsed >= 0) ? parsed : 0;
+      p.price = Math.round(pVal * 1000000);
+    } else {
+      pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
+    }
 
     let typeText = "";
     if (p.cardType === 'Epico') typeText = ' (Épico)';
@@ -1638,29 +1670,53 @@ function exportRenewalReport() {
     } else {
       renewedCount++;
       totalRenovations += pVal;
-      summary += `${idx + 1}. [${p.position}] ${p.name} - $${pVal.toFixed(1)}M${typeText}\n`;
+      summary += `${idx + 1}. [${p.position}] ${p.name} - $${formatRenewalValue(pVal)}M${typeText}\n`;
     }
   });
 
+  totalRenovations = Math.round(totalRenovations * 100) / 100;
   const teamBudgetM = ((team.budget || 100000000) / 1000000);
-  const remainingBudgetM = teamBudgetM - totalRenovations;
 
   summary += `--------------------------------------------------\n`;
   if (nonRenewedCount > 0) {
     summary += `Jugadores Renovados: ${renewedCount} | No Renovados: ${nonRenewedCount}\n`;
   }
-  summary += `Presupuesto del Club: $${teamBudgetM.toFixed(1)}M USD\n`;
-  summary += `Total Renovaciones: -$${totalRenovations.toFixed(1)}M USD\n`;
-  summary += `Presupuesto Restante: $${remainingBudgetM.toFixed(1)}M USD\n`;
+  summary += `Presupuesto del Club: $${formatRenewalValue(teamBudgetM)}M USD\n`;
+  summary += `Total Renovaciones (Suma): $${formatRenewalValue(totalRenovations)}M USD\n`;
 
   if (team.legendChangeNote) summary += `\n📌 Cambio Leyenda / Épico / Big Time: ${team.legendChangeNote}\n`;
   if (team.legendRemoveNote) summary += `📌 Elimino Leyenda / Épico / Big Time: ${team.legendRemoveNote}\n`;
 
-  navigator.clipboard.writeText(summary).then(() => {
-    showToast("¡Resumen copiado al portapapeles!", "fa-copy");
-  }).catch(() => {
-    alert(summary);
-  });
+  // Copiar al portapapeles con fallback robusto
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(summary).then(() => {
+      showToast("¡Resumen copiado al portapapeles!", "fa-copy");
+    }).catch(() => {
+      fallbackCopyToClipboard(summary);
+    });
+  } else {
+    fallbackCopyToClipboard(summary);
+  }
+}
+
+function fallbackCopyToClipboard(text) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const successful = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (successful) {
+      showToast("¡Resumen copiado al portapapeles!", "fa-copy");
+      return;
+    }
+  } catch (err) {}
+  alert(text);
 }
 
 // Rules Page
