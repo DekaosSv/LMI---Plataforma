@@ -7845,7 +7845,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_1",
+      "id": "p_1791747531221_1",
       "name": "Bento",
       "position": "PT",
       "teamId": "santosfutebolclube",
@@ -7862,7 +7862,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_2",
+      "id": "p_1791747531221_2",
       "name": "Alex Meret",
       "position": "PT",
       "teamId": "santosfutebolclube",
@@ -7879,7 +7879,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_3",
+      "id": "p_1791747531221_3",
       "name": "Murillo",
       "position": "CT",
       "teamId": "santosfutebolclube",
@@ -7896,7 +7896,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_4",
+      "id": "p_1791747531221_4",
       "name": "Dávid Hancko",
       "position": "CT",
       "teamId": "santosfutebolclube",
@@ -7913,7 +7913,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_5",
+      "id": "p_1791747531221_5",
       "name": "Andreas Christensen",
       "position": "CT",
       "teamId": "santosfutebolclube",
@@ -7930,7 +7930,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_6",
+      "id": "p_1791747531221_6",
       "name": "Iñigo Martínez",
       "position": "CT",
       "teamId": "santosfutebolclube",
@@ -7947,7 +7947,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_7",
+      "id": "p_1791747531221_7",
       "name": "João Marcelo",
       "position": "CT",
       "teamId": "santosfutebolclube",
@@ -7964,7 +7964,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_8",
+      "id": "p_1791747531221_8",
       "name": "Ayrton Lucas",
       "position": "LI",
       "teamId": "santosfutebolclube",
@@ -7981,7 +7981,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_9",
+      "id": "p_1791747531221_9",
       "name": "Jorrel Hato",
       "position": "LI",
       "teamId": "santosfutebolclube",
@@ -7998,7 +7998,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_10",
+      "id": "p_1791747531221_10",
       "name": "Pedro Porro",
       "position": "LD",
       "teamId": "santosfutebolclube",
@@ -8015,7 +8015,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_11",
+      "id": "p_1791747531221_11",
       "name": "Matheuzinho",
       "position": "LD",
       "teamId": "santosfutebolclube",
@@ -8032,7 +8032,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_12",
+      "id": "p_1791747531221_12",
       "name": "Xabi Alonso",
       "position": "MCD",
       "teamId": "santosfutebolclube",
@@ -8049,7 +8049,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_13",
+      "id": "p_1791747531221_13",
       "name": "Saúl Ñíguez",
       "position": "MC",
       "teamId": "santosfutebolclube",
@@ -8066,7 +8066,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_14",
+      "id": "p_1791747531221_14",
       "name": "Stanislav Lobotka",
       "position": "MCD",
       "teamId": "santosfutebolclube",
@@ -8083,7 +8083,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_15",
+      "id": "p_1791747531221_15",
       "name": "Aleix García",
       "position": "MC",
       "teamId": "santosfutebolclube",
@@ -8100,7 +8100,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_16",
+      "id": "p_1791747531221_16",
       "name": "Lucas Paquetá",
       "position": "MP",
       "teamId": "santosfutebolclube",
@@ -8117,7 +8117,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_17",
+      "id": "p_1791747531221_17",
       "name": "Carlos Eduardo",
       "position": "MC",
       "teamId": "santosfutebolclube",
@@ -8134,7 +8134,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_18",
+      "id": "p_1791747531221_18",
       "name": "Manu Koné",
       "position": "MC",
       "teamId": "santosfutebolclube",
@@ -8151,7 +8151,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_19",
+      "id": "p_1791747531221_19",
       "name": "Pape Matar Sarr",
       "position": "MC",
       "teamId": "santosfutebolclube",
@@ -8168,7 +8168,24 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_21",
+      "id": "p_1791747531221_20",
+      "name": "Ollie Watkins",
+      "position": "DC",
+      "teamId": "santosfutebolclube",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "price": 5000000,
+      "cardType": "Normal",
+      "isLegend": false
+    },
+    {
+      "id": "p_1791747531221_21",
       "name": "Darwin Núñez",
       "position": "DC",
       "teamId": "santosfutebolclube",
@@ -8185,7 +8202,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_22",
+      "id": "p_1791747531221_22",
       "name": "Samuel Eto'o",
       "position": "DC",
       "teamId": "santosfutebolclube",
@@ -8202,7 +8219,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791747141469_23",
+      "id": "p_1791747531221_23",
       "name": "Igor Jesus",
       "position": "DC",
       "teamId": "santosfutebolclube",
