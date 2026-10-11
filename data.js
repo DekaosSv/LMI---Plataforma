@@ -4814,13 +4814,13 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 0,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 1,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "price": 5000000,
       "cardType": "Normal",
       "isLegend": false
@@ -5102,13 +5102,13 @@ var INITIAL_LMI_DATA = {
       "name": "Piotr Zieliński",
       "position": "MC",
       "teamId": "interdemilan",
-      "goals": 2,
+      "goals": 4,
       "assists": 2,
       "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 2,
-      "goals_estelar": 0,
+      "goals_estelar": 2,
       "assists_estelar": 0,
       "price": 5000000,
       "cardType": "Normal",
@@ -6276,13 +6276,13 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "liverpool",
       "goals": 2,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
       "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 1,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "price": 5000000,
       "cardType": "Normal",
       "isLegend": false
@@ -6853,13 +6853,13 @@ var INITIAL_LMI_DATA = {
       "name": "Niclas Füllkrug",
       "position": "DC",
       "teamId": "liverpool",
-      "goals": 7,
+      "goals": 8,
       "assists": 0,
       "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 5,
       "assists_champions": 0,
-      "goals_estelar": 1,
+      "goals_estelar": 2,
       "assists_estelar": 0,
       "price": 5000000,
       "cardType": "Normal",
@@ -9183,16 +9183,16 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Semifinal 2",
       "team1": "Liverpool",
-      "score1": "",
+      "score1": "1",
       "team2": "Inter de Milan",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "2",
+      "estado": "Finalizado"
     },
     {
       "fase": "Final",
       "team1": "Bayern Leverkusen",
       "score1": "",
-      "team2": "Ganador Semifinal 2",
+      "team2": "Inter de Milan",
       "score2": "",
       "estado": "Pendiente"
     }
@@ -18252,6 +18252,53 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1791754219575",
+      "timestamp": 1791754219575,
+      "date": "11 oct 2026, 03:30 p.m.",
+      "competition": "estelar",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Semifinal 2",
+      "team1Id": "liverpool",
+      "team1Name": "Liverpool",
+      "team1Logo": "Logos Equipos/liverpool.png",
+      "score1": 1,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_442",
+          "playerName": "Niclas Füllkrug",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_321",
+          "playerName": "Piotr Zieliński",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_301",
+          "playerName": "Marco Palestra",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_402",
+          "playerName": "Gonzalo Plata",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1791694601200",
       "timestamp": 1791694601200,
