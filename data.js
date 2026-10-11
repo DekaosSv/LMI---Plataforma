@@ -412,6 +412,64 @@ var INITIAL_LMI_DATA = {
         "goalDiff": 0,
         "points": 0
       }
+    },
+    {
+      "id": "ajaxdeamsterdam",
+      "name": "Ajax de Ámsterdam",
+      "shortName": "AJX",
+      "colors": {
+        "primary": "#3b82f6",
+        "secondary": "#ffffff",
+        "bgGradient": "linear-gradient(135deg, #3b82f6 0%, #000000 100%)"
+      },
+      "stadium": "Johan Cruyff Arena",
+      "manager": "J Castillo",
+      "budget": 500000000,
+      "initialBudget": 500000000,
+      "legendChangeNote": "",
+      "legendRemoveNote": "",
+      "leagueRank": 21,
+      "logo": "Logos Equipos/ajax.png",
+      "division": "plata",
+      "stats": {
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    },
+    {
+      "id": "parisfootballclub",
+      "name": "Paris Football Club",
+      "shortName": "PFC",
+      "colors": {
+        "primary": "#3b82f6",
+        "secondary": "#ffffff",
+        "bgGradient": "linear-gradient(135deg, #3b82f6 0%, #000000 100%)"
+      },
+      "stadium": "Estadio Jean-Bouin",
+      "manager": "Jor",
+      "budget": 500000000,
+      "initialBudget": 500000000,
+      "legendChangeNote": "",
+      "legendRemoveNote": "",
+      "leagueRank": 22,
+      "logo": "Logos Equipos/parisfc.webp",
+      "division": "plata",
+      "stats": {
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
     }
   ],
   "players": [
