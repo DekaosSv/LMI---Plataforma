@@ -614,6 +614,12 @@
               <select class="form-select" id="team-selector" style="width: 240px; font-weight: 700;">
                 <!-- Populated dynamically -->
               </select>
+              <button class="btn btn-primary" id="btn-open-create-club" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Crear un nuevo club en la liga">
+                <i class="fa-solid fa-shield-plus"></i> Nuevo Club
+              </button>
+              <button class="btn btn-danger" id="btn-delete-team" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Eliminar este club">
+                <i class="fa-solid fa-trash"></i> Eliminar Club
+              </button>
             </div>
           </div>
 
@@ -652,9 +658,12 @@
               <span class="badge" id="lbl-roster-count" style="background: var(--border-color); padding: 0.25rem 0.6rem; border-radius: 99px; font-size: 0.8rem; font-weight: 700;">0 jugadores</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-              <input type="text" class="form-control" id="search-player-input" placeholder="Buscar jugador..." style="width: 200px; padding: 0.5rem 0.85rem; font-size: 0.85rem;">
+              <input type="text" class="form-control" id="search-player-input" placeholder="Buscar jugador..." style="width: 170px; padding: 0.5rem 0.85rem; font-size: 0.85rem;">
               <button class="btn btn-secondary" id="btn-reset-club-stats" style="padding: 0.5rem 0.85rem; font-size: 0.85rem;" title="Poner a cero los goles y asistencias de esta plantilla para una nueva temporada">
                 <i class="fa-solid fa-arrows-rotate"></i> Reset Goles
+              </button>
+              <button class="btn btn-gold" id="btn-open-plaintext-roster" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Importar lista de jugadores copiando y pegando texto plano">
+                <i class="fa-solid fa-file-import"></i> Importar Plantilla (Texto Plano)
               </button>
               <button class="btn btn-success" id="btn-add-player-modal" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
                 <i class="fa-solid fa-user-plus"></i> Nuevo Jugador
@@ -1066,6 +1075,181 @@
         <button class="btn btn-secondary" onclick="AdminApp.closeAdvanceTeamModal()">Cancelar</button>
         <button class="btn btn-primary" id="btn-confirm-advance-team" onclick="AdminApp.confirmAdvanceTeam()" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800;">
           <i class="fa-solid fa-forward-step"></i> Confirmar y Avanzar a Siguiente Fase
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: CREAR NUEVO CLUB ==================== -->
+  <div class="modal-overlay" id="modal-create-club" style="display: none;">
+    <div class="modal-dialog" style="max-width: 620px;">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <i class="fa-solid fa-shield-plus" style="color: var(--lmi-accent);"></i> Añadir Nuevo Club a la Liga
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeCreateClubModal()">✕</button>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+        Registra un club oficial. Una vez creado, podrás importarle su plantilla completa mediante texto plano.
+      </p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Nombre del Club *</label>
+          <input type="text" class="form-control" id="new-club-name" placeholder="Ej: Wolverhampton Wanderers" required>
+        </div>
+        <div class="form-group">
+          <label>Siglas / Abreviatura (3-4 letras)</label>
+          <input type="text" class="form-control" id="new-club-shortname" placeholder="Ej: WOL" maxlength="5">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>División</label>
+          <select class="form-select" id="new-club-division">
+            <option value="oro">🥇 División Oro</option>
+            <option value="plata" selected>🥈 División Plata</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Presupuesto Inicial ($ USD)</label>
+          <input type="number" class="form-control" id="new-club-budget" value="100000000">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Director Técnico (DT)</label>
+          <input type="text" class="form-control" id="new-club-manager" placeholder="Ej: Entrenador">
+        </div>
+        <div class="form-group">
+          <label>Estadio</label>
+          <input type="text" class="form-control" id="new-club-stadium" placeholder="Ej: Estadio Oficial">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Color Primario</label>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="color" class="form-control" id="new-club-color1" value="#3b82f6" style="width: 50px; padding: 0.2rem; height: 38px; cursor: pointer;" oninput="document.getElementById('lbl-color1').textContent=this.value">
+            <span style="font-size: 0.8rem; color: var(--text-muted);" id="lbl-color1">#3b82f6</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Color Secundario</label>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="color" class="form-control" id="new-club-color2" value="#ffffff" style="width: 50px; padding: 0.2rem; height: 38px; cursor: pointer;" oninput="document.getElementById('lbl-color2').textContent=this.value">
+            <span style="font-size: 0.8rem; color: var(--text-muted);" id="lbl-color2">#ffffff</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Escudo / Logo</label>
+          <input type="text" class="form-control" id="new-club-logo" placeholder="Ej: Logos Equipos/club.png">
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closeCreateClubModal()">Cancelar</button>
+        <button class="btn btn-primary" id="btn-save-new-club" onclick="AdminApp.confirmCreateClub()">
+          <i class="fa-solid fa-plus"></i> Crear Club
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: IMPORTAR PLANTILLA PLAINTEXT ==================== -->
+  <div class="modal-overlay" id="modal-plaintext-roster" style="display: none;">
+    <div class="modal-dialog" style="max-width: 840px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <i class="fa-solid fa-file-import" style="color: var(--lmi-gold);"></i> Importar Plantilla con Texto Plano
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closePlaintextRosterModal()">✕</button>
+      </div>
+
+      <div style="overflow-y: auto; padding-right: 4px; flex: 1;">
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.5;">
+          Club destino: <strong id="plaintext-modal-target-club" style="color: var(--lmi-gold);"></strong>. Pega tu lista de jugadores directamente. El sistema detecta automáticamente posiciones, nombres y formatos.
+        </p>
+
+        <!-- Selector de formato -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+          <button class="btn btn-secondary" id="btn-mode-unified" style="background: rgba(255,209,0,0.15); color: var(--lmi-gold); border-color: var(--lmi-gold); font-size: 0.85rem;" onclick="AdminApp.setPlaintextMode('unified')">
+            <i class="fa-solid fa-list-check"></i> Lista Unificada (Posición + Jugador)
+          </button>
+          <button class="btn btn-secondary" id="btn-mode-split" style="font-size: 0.85rem;" onclick="AdminApp.setPlaintextMode('split')">
+            <i class="fa-solid fa-table-columns"></i> Dos Listas (Jugadores | Posiciones)
+          </button>
+        </div>
+
+        <!-- Vista modo 1: Lista unificada -->
+        <div id="plaintext-container-unified">
+          <label style="font-size: 0.85rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.4rem; display: block;">
+            Pega tu lista (Línea por línea, ej: <code>PT José Sá</code> o <code>PT: José Sá</code> o <code>José Sá (PT)</code>):
+          </label>
+          <textarea id="plaintext-input-unified" class="form-control" rows="8" style="font-family: monospace; font-size: 0.88rem; line-height: 1.4;" placeholder="PT José Sá&#10;PT Guglielmo Vicario&#10;CT Eric Dier&#10;CT Konstantinos Mavropanos&#10;CT Gianluca Mancini&#10;CT Nehuén Pérez&#10;LD Konrad Laimer&#10;LI Miguel Gutiérrez&#10;LI Ben Chilwell&#10;MC Leon Goretzka&#10;MCD Manuel Ugarte&#10;MC Luis Alberto&#10;MCD Hugo Moura&#10;MP Lovro Majer&#10;MP Thiago Almada&#10;EXI Leozinho&#10;EI Neymar Jr.&#10;DC Diego Forlán&#10;MP Rafa Silva&#10;LD Juan Cuadrado&#10;EXD Federico Chiesa&#10;EXD Yang Hyun-jun&#10;DC Terem Moffi" oninput="AdminApp.onPlaintextInputChange()"></textarea>
+        </div>
+
+        <!-- Vista modo 2: Dos listas separadas -->
+        <div id="plaintext-container-split" style="display: none;">
+          <div class="grid-2">
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.4rem; display: block;">
+                Lista de Jugadores (Nombres):
+              </label>
+              <textarea id="plaintext-input-names" class="form-control" rows="8" style="font-family: monospace; font-size: 0.88rem; line-height: 1.4;" placeholder="José Sá&#10;Guglielmo Vicario&#10;Eric Dier&#10;..." oninput="AdminApp.onPlaintextInputChange()"></textarea>
+            </div>
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.4rem; display: block;">
+                Lista de Posiciones (Mismo orden):
+              </label>
+              <textarea id="plaintext-input-positions" class="form-control" rows="8" style="font-family: monospace; font-size: 0.88rem; line-height: 1.4;" placeholder="PT&#10;PT&#10;CT&#10;..." oninput="AdminApp.onPlaintextInputChange()"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opciones -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); flex-wrap: wrap; gap: 0.5rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; color: #cbd5e1;">
+            <input type="checkbox" id="plaintext-chk-replace" checked>
+            <span><strong>Reemplazar plantilla actual</strong> (elimina los jugadores anteriores de este club)</span>
+          </label>
+          <div id="plaintext-preview-badge" style="font-size: 0.85rem; font-weight: 700; color: var(--lmi-gold);">
+            0 jugadores detectados
+          </div>
+        </div>
+
+        <!-- Tabla de vista previa -->
+        <div style="margin-top: 1rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">
+            Vista Previa de Jugadores a Importar:
+          </h4>
+          <div class="admin-table-container" style="max-height: 220px; overflow-y: auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">#</th>
+                  <th style="width: 80px;">Pos</th>
+                  <th>Jugador</th>
+                  <th style="width: 100px;">Precio</th>
+                  <th style="width: 100px;">Carta</th>
+                </tr>
+              </thead>
+              <tbody id="plaintext-preview-tbody">
+                <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Pega texto en el cuadro superior para previsualizar.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <button class="btn btn-secondary" onclick="AdminApp.closePlaintextRosterModal()">Cancelar</button>
+        <button class="btn btn-gold" id="btn-confirm-import-plaintext" onclick="AdminApp.applyPlaintextRoster()" disabled>
+          <i class="fa-solid fa-check"></i> Importar Plantilla al Club
         </button>
       </div>
     </div>

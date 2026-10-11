@@ -8,6 +8,8 @@ const AdminApp = {
   isDirty: false,
   selectedTeamId: null,
   matchEvents: [],
+  plaintextMode: 'unified',
+  cachedParsedPlayers: [],
 
   // ==================== INICIALIZACIÓN ====================
   async init() {
@@ -90,9 +92,12 @@ const AdminApp = {
     // Teams Studio
     document.getElementById('team-filter-division').addEventListener('change', (e) => this.populateTeamSelectorByDivision(e.target.value));
     document.getElementById('team-selector').addEventListener('change', (e) => this.onTeamSelected(e.target.value));
+    document.getElementById('btn-open-create-club')?.addEventListener('click', () => this.openCreateClubModal());
+    document.getElementById('btn-delete-team')?.addEventListener('click', () => this.deleteCurrentTeam());
     document.getElementById('btn-save-team-details').addEventListener('click', () => this.saveTeamDetails());
     document.getElementById('search-player-input').addEventListener('input', (e) => this.filterRosterTable(e.target.value));
     document.getElementById('btn-add-player-modal').addEventListener('click', () => this.openPlayerModal(null));
+    document.getElementById('btn-open-plaintext-roster')?.addEventListener('click', () => this.openPlaintextRosterModal());
     document.getElementById('btn-reset-club-stats').addEventListener('click', () => this.resetCurrentClubSeasonStats());
 
     // Player Modal
@@ -2494,6 +2499,360 @@ const AdminApp = {
 
     await this.saveData(true);
     this.showToast(`Datos actualizados y guardados para ${team.name}.`, 'success');
+  },
+
+  // ==================== GESTIÓN DE CLUBES (NUEVO / ELIMINAR) ====================
+  openCreateClubModal() {
+    document.getElementById('new-club-name').value = '';
+    document.getElementById('new-club-shortname').value = '';
+    document.getElementById('new-club-division').value = 'plata';
+    document.getElementById('new-club-budget').value = '100000000';
+    document.getElementById('new-club-manager').value = '';
+    document.getElementById('new-club-stadium').value = '';
+    document.getElementById('new-club-color1').value = '#3b82f6';
+    document.getElementById('new-club-color2').value = '#ffffff';
+    const lbl1 = document.getElementById('lbl-color1');
+    const lbl2 = document.getElementById('lbl-color2');
+    if (lbl1) lbl1.textContent = '#3b82f6';
+    if (lbl2) lbl2.textContent = '#ffffff';
+    document.getElementById('new-club-logo').value = '';
+    document.getElementById('modal-create-club').style.display = 'flex';
+  },
+
+  closeCreateClubModal() {
+    document.getElementById('modal-create-club').style.display = 'none';
+  },
+
+  async confirmCreateClub() {
+    const name = document.getElementById('new-club-name').value.trim();
+    if (!name) {
+      this.showToast('Por favor, ingresa el nombre del club.', 'error');
+      return;
+    }
+
+    // Generar ID normalizado
+    let id = name.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '');
+    if (!id) id = 'club_' + Date.now();
+
+    if (this.data.teams.some(t => t.id === id)) {
+      id = id + '_' + Math.floor(Math.random() * 1000);
+    }
+
+    const shortName = document.getElementById('new-club-shortname').value.trim().toUpperCase() || name.substring(0, 3).toUpperCase();
+    const division = document.getElementById('new-club-division').value || 'plata';
+    const budget = parseInt(document.getElementById('new-club-budget').value, 10) || 100000000;
+    const manager = document.getElementById('new-club-manager').value.trim() || 'Por definir';
+    const stadium = document.getElementById('new-club-stadium').value.trim() || 'Estadio Oficial';
+    const c1 = document.getElementById('new-club-color1').value || '#3b82f6';
+    const c2 = document.getElementById('new-club-color2').value || '#ffffff';
+    let logo = document.getElementById('new-club-logo').value.trim();
+    if (!logo) {
+      logo = `Logos Equipos/${id}.png`;
+    }
+
+    const newTeam = {
+      id: id,
+      name: name,
+      shortName: shortName,
+      colors: {
+        primary: c1,
+        secondary: c2,
+        bgGradient: `linear-gradient(135deg, ${c1} 0%, #000000 100%)`
+      },
+      stadium: stadium,
+      manager: manager,
+      budget: budget,
+      initialBudget: budget,
+      legendChangeNote: '',
+      legendRemoveNote: '',
+      leagueRank: this.data.teams.length + 1,
+      logo: logo,
+      division: division,
+      stats: {
+        played: 0,
+        won: 0,
+        drawn: 0,
+        lost: 0,
+        goalsFor: 0,
+        goalsAgainst: 0,
+        goalDiff: 0,
+        points: 0
+      }
+    };
+
+    this.data.teams.push(newTeam);
+    this.selectedTeamId = id;
+    this.isDirty = true;
+    this.closeCreateClubModal();
+
+    this.populateTeamSelectorByDivision('all');
+    const sel = document.getElementById('team-selector');
+    if (sel) sel.value = id;
+    this.onTeamSelected(id);
+    this.updateDashboardStats();
+
+    await this.saveData(true);
+    this.showToast(`Club "${name}" creado exitosamente. ¡Ahora puedes importarle su plantilla!`, 'success');
+  },
+
+  async deleteCurrentTeam() {
+    if (!this.selectedTeamId) return;
+    const team = this.getTeamById(this.selectedTeamId);
+    if (!team) return;
+
+    const countPlayers = this.getPlayersByTeam(this.selectedTeamId).length;
+    const confirmMsg = `¿Estás seguro de que deseas eliminar al club "${team.name}" de la liga?\n\nEsta acción también dará de baja a sus ${countPlayers} jugadores registrados.`;
+    if (!confirm(confirmMsg)) return;
+
+    this.data.players = this.data.players.filter(p => p.teamId !== this.selectedTeamId);
+    this.data.teams = this.data.teams.filter(t => t.id !== this.selectedTeamId);
+    this.isDirty = true;
+
+    this.selectedTeamId = this.data.teams[0]?.id || null;
+    this.populateTeamSelectorByDivision('all');
+    if (this.selectedTeamId) {
+      this.onTeamSelected(this.selectedTeamId);
+    }
+    this.updateDashboardStats();
+
+    await this.saveData(true);
+    this.showToast(`Club "${team.name}" eliminado correctamente.`, 'info');
+  },
+
+  // ==================== IMPORTADOR DE PLANTILLAS PLAINTEXT ====================
+  openPlaintextRosterModal() {
+    if (!this.selectedTeamId) {
+      this.showToast('Primero selecciona un club.', 'error');
+      return;
+    }
+    const team = this.getTeamById(this.selectedTeamId);
+    if (!team) return;
+
+    document.getElementById('plaintext-modal-target-club').textContent = `${team.name} (${(team.division || 'ORO').toUpperCase()})`;
+    document.getElementById('plaintext-input-unified').value = '';
+    document.getElementById('plaintext-input-names').value = '';
+    document.getElementById('plaintext-input-positions').value = '';
+    this.setPlaintextMode('unified');
+    this.onPlaintextInputChange();
+    document.getElementById('modal-plaintext-roster').style.display = 'flex';
+  },
+
+  closePlaintextRosterModal() {
+    document.getElementById('modal-plaintext-roster').style.display = 'none';
+  },
+
+  setPlaintextMode(mode) {
+    this.plaintextMode = mode;
+    const btnUni = document.getElementById('btn-mode-unified');
+    const btnSplit = document.getElementById('btn-mode-split');
+    const contUni = document.getElementById('plaintext-container-unified');
+    const contSplit = document.getElementById('plaintext-container-split');
+
+    if (mode === 'unified') {
+      if (btnUni) {
+        btnUni.style.background = 'rgba(255,209,0,0.15)';
+        btnUni.style.color = 'var(--lmi-gold)';
+        btnUni.style.borderColor = 'var(--lmi-gold)';
+      }
+      if (btnSplit) {
+        btnSplit.style.background = '';
+        btnSplit.style.color = '';
+        btnSplit.style.borderColor = '';
+      }
+      if (contUni) contUni.style.display = 'block';
+      if (contSplit) contSplit.style.display = 'none';
+    } else {
+      if (btnSplit) {
+        btnSplit.style.background = 'rgba(255,209,0,0.15)';
+        btnSplit.style.color = 'var(--lmi-gold)';
+        btnSplit.style.borderColor = 'var(--lmi-gold)';
+      }
+      if (btnUni) {
+        btnUni.style.background = '';
+        btnUni.style.color = '';
+        btnUni.style.borderColor = '';
+      }
+      if (contSplit) contSplit.style.display = 'block';
+      if (contUni) contUni.style.display = 'none';
+    }
+    this.onPlaintextInputChange();
+  },
+
+  normalizePosition(rawPos) {
+    if (!rawPos) return 'MC';
+    const clean = rawPos.trim().toUpperCase().replace(/[^A-Z]/g, '');
+    const map = {
+      'POR': 'PT', 'GK': 'PT', 'PO': 'PT', 'ARQ': 'PT', 'PT': 'PT',
+      'CT': 'CT', 'CB': 'CT', 'DFC': 'CT', 'C': 'CT',
+      'LD': 'LD', 'RB': 'LD', 'LTD': 'LD',
+      'LI': 'LI', 'LB': 'LI', 'LTI': 'LI',
+      'MCD': 'MCD', 'DMF': 'MCD', 'DM': 'MCD', 'PVO': 'MCD',
+      'MC': 'MC', 'CMF': 'MC', 'CM': 'MC', 'CC': 'MC',
+      'MD': 'MD', 'RMF': 'MD', 'RM': 'MD', 'ID': 'MD',
+      'MI': 'MI', 'LMF': 'MI', 'LM': 'MI', 'II': 'MI',
+      'MP': 'MP', 'AMF': 'MP', 'CAM': 'MP', 'MO': 'MP', 'AM': 'MP',
+      'EXD': 'EXD', 'ED': 'EXD', 'RWF': 'EXD', 'RW': 'EXD',
+      'EXI': 'EXI', 'EI': 'EXI', 'LWF': 'EXI', 'LW': 'EXI',
+      'SD': 'SD', 'SS': 'SD', 'SP': 'SD',
+      'DC': 'DC', 'CF': 'DC', 'ST': 'DC', 'DL': 'DC'
+    };
+    return map[clean] || (['PT','CT','LD','LI','MCD','MC','MD','MI','MP','EXD','EXI','SD','DC'].includes(clean) ? clean : 'MC');
+  },
+
+  parsePlaintextRoster() {
+    const parsed = [];
+    if (this.plaintextMode === 'unified') {
+      const text = document.getElementById('plaintext-input-unified')?.value || '';
+      const lines = text.split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(l => l.length > 0 && !l.startsWith('##') && !l.startsWith('---') && !l.startsWith('```'));
+      
+      const posStartRegex = /^(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)[\s:\-]+(.+)$/i;
+      const posEndRegex = /^(.+?)\s*[\(\[]\s*(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)\s*[\)\]]$/i;
+
+      lines.forEach(line => {
+        let pos = 'MC';
+        let name = line;
+
+        const mStart = line.match(posStartRegex);
+        if (mStart) {
+          pos = this.normalizePosition(mStart[1]);
+          name = mStart[2].trim();
+        } else {
+          const mEnd = line.match(posEndRegex);
+          if (mEnd) {
+            name = mEnd[1].trim();
+            pos = this.normalizePosition(mEnd[2]);
+          } else {
+            const parts = line.split(/[\t]+/).map(p => p.trim()).filter(Boolean);
+            if (parts.length >= 2) {
+              if (/^(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)$/i.test(parts[0])) {
+                pos = this.normalizePosition(parts[0]);
+                name = parts.slice(1).join(' ').trim();
+              } else if (/^(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)$/i.test(parts[parts.length - 1])) {
+                pos = this.normalizePosition(parts[parts.length - 1]);
+                name = parts.slice(0, -1).join(' ').trim();
+              }
+            }
+          }
+        }
+
+        // Limpiar comillas o viñetas si las hubiese
+        name = name.replace(/^[\s\-\*\•\d\.\)]+/, '').trim();
+
+        if (name) {
+          parsed.push({ name: name, position: pos });
+        }
+      });
+    } else {
+      const namesText = document.getElementById('plaintext-input-names')?.value || '';
+      const posText = document.getElementById('plaintext-input-positions')?.value || '';
+      const nameLines = namesText.split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(l => l.length > 0 && !l.startsWith('##') && !l.startsWith('---') && !l.startsWith('```'));
+      const posLines = posText.split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(l => l.length > 0 && !l.startsWith('##') && !l.startsWith('---') && !l.startsWith('```'));
+
+      nameLines.forEach((name, idx) => {
+        const cleanName = name.replace(/^[\s\-\*\•\d\.\)]+/, '').trim();
+        const rawPos = posLines[idx] || 'MC';
+        if (cleanName) {
+          parsed.push({
+            name: cleanName,
+            position: this.normalizePosition(rawPos)
+          });
+        }
+      });
+    }
+
+    return parsed;
+  },
+
+  onPlaintextInputChange() {
+    const parsed = this.parsePlaintextRoster();
+    this.cachedParsedPlayers = parsed;
+    this.renderPlaintextPreview(parsed);
+  },
+
+  renderPlaintextPreview(players) {
+    const tbody = document.getElementById('plaintext-preview-tbody');
+    const badge = document.getElementById('plaintext-preview-badge');
+    const btnConfirm = document.getElementById('btn-confirm-import-plaintext');
+
+    if (!tbody || !badge || !btnConfirm) return;
+
+    if (!players || players.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Pega texto en el cuadro superior para previsualizar.</td></tr>`;
+      badge.textContent = '0 jugadores detectados';
+      btnConfirm.disabled = true;
+      return;
+    }
+
+    const ptCount = players.filter(p => p.position === 'PT').length;
+    const fieldCount = players.length - ptCount;
+    badge.innerHTML = `<strong>${players.length}</strong> jugadores detectados <span style="color: #60a5fa;">(${ptCount} PT, ${fieldCount} Campo)</span>`;
+    btnConfirm.disabled = false;
+
+    tbody.innerHTML = players.map((p, idx) => `
+      <tr>
+        <td style="color: var(--text-muted); font-size: 0.8rem; font-weight: 700;">${idx + 1}</td>
+        <td><span class="pos-badge pos-${p.position}">${p.position}</span></td>
+        <td style="font-weight: 700; color: #fff;">${this.escape(p.name)}</td>
+        <td style="color: var(--text-secondary);">$5.0M</td>
+        <td><span class="badge" style="background: rgba(255,255,255,0.08); font-size: 0.72rem; padding: 0.15rem 0.4rem; border-radius: 4px;">Normal</span></td>
+      </tr>
+    `).join('');
+  },
+
+  async applyPlaintextRoster() {
+    if (!this.selectedTeamId) return;
+    const team = this.getTeamById(this.selectedTeamId);
+    if (!team) return;
+
+    const playersToImport = this.cachedParsedPlayers;
+    if (!playersToImport || playersToImport.length === 0) {
+      this.showToast('No se han detectado jugadores para importar.', 'error');
+      return;
+    }
+
+    const replaceExisting = document.getElementById('plaintext-chk-replace')?.checked;
+    if (replaceExisting) {
+      this.data.players = this.data.players.filter(p => p.teamId !== this.selectedTeamId);
+    }
+
+    const timestamp = Date.now();
+    playersToImport.forEach((p, idx) => {
+      const newPlayer = {
+        id: `p_${timestamp}_${idx + 1}`,
+        name: p.name,
+        position: p.position || 'MC',
+        teamId: this.selectedTeamId,
+        goals: 0,
+        assists: 0,
+        goals_liga: 0,
+        assists_liga: 0,
+        goals_champions: 0,
+        assists_champions: 0,
+        goals_estelar: 0,
+        assists_estelar: 0,
+        price: 5000000,
+        cardType: 'Normal',
+        isLegend: false
+      };
+      this.data.players.push(newPlayer);
+    });
+
+    this.isDirty = true;
+    this.closePlaintextRosterModal();
+
+    this.renderRosterTable();
+    this.updateDashboardStats();
+
+    await this.saveData(true);
+    this.showToast(`¡Se importaron exitosamente ${playersToImport.length} jugadores a ${team.name}!`, 'success');
   },
 
   renderTeamsView() {
