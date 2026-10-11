@@ -50,6 +50,12 @@ const AdminApp = {
     document.getElementById('btn-gen-champions-playoffs')?.addEventListener('click', () => this.generateChampionsPlayoffs());
     document.getElementById('btn-export-champions-img')?.addEventListener('click', () => this.exportChampionsAdminImage());
     document.getElementById('btn-export-champions-img-admin')?.addEventListener('click', () => this.exportChampionsAdminImage());
+    document.getElementById('btn-advance-bracket-team')?.addEventListener('click', () => this.openAdvanceTeamModal());
+    document.getElementById('btn-advance-match-studio')?.addEventListener('click', () => {
+      const comp = document.getElementById('match-competition')?.value;
+      const phase = document.getElementById('match-phase')?.value;
+      this.openAdvanceTeamModal(comp, phase);
+    });
     document.getElementById('champions-phase-filter-admin')?.addEventListener('change', (e) => this.onChampionsPhaseFilterChange(e.target.value));
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
 
@@ -392,6 +398,8 @@ const AdminApp = {
     const copaWrapper = document.getElementById('copa-estelar-card-wrapper');
     const championsWrapper = document.getElementById('champions-card-wrapper');
 
+    const btnAdvStudio = document.getElementById('btn-advance-match-studio');
+
     if (isFixtureComp) {
       if (jornadaSel) jornadaSel.style.display = 'inline-block';
       if (fixtureSel) fixtureSel.style.display = 'inline-block';
@@ -400,6 +408,7 @@ const AdminApp = {
       if (championsWrapper) championsWrapper.style.display = 'none';
       if (phaseSel) phaseSel.style.display = 'none';
       if (chkCup) chkCup.style.display = 'none';
+      if (btnAdvStudio) btnAdvStudio.style.display = 'none';
 
       this.populateJornadasForDivision(comp);
       this.populateMatchTeamsForCompetition(comp);
@@ -410,6 +419,7 @@ const AdminApp = {
       if (copaWrapper) copaWrapper.style.display = 'none';
       if (championsWrapper) championsWrapper.style.display = 'block';
       if (phaseSel) phaseSel.style.display = 'inline-block';
+      if (btnAdvStudio) btnAdvStudio.style.display = 'inline-flex';
       if (chkCup) {
         chkCup.style.display = 'flex';
         const spanText = chkCup.querySelector('span');
@@ -427,6 +437,7 @@ const AdminApp = {
       if (copaWrapper) copaWrapper.style.display = 'block';
       if (championsWrapper) championsWrapper.style.display = 'none';
       if (phaseSel) phaseSel.style.display = 'inline-block';
+      if (btnAdvStudio) btnAdvStudio.style.display = 'inline-flex';
       if (chkCup) {
         chkCup.style.display = 'flex';
         const spanText = chkCup.querySelector('span');
@@ -1118,13 +1129,26 @@ const AdminApp = {
       `;
     };
 
-    const getMatchBox = (m) => `
-      <div style="background: #1e293b; border: 1px solid rgba(147, 51, 234, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.4rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-        <div style="font-size: 0.72rem; font-weight: 800; color: #c084fc; text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.5px;">${m.fase || ''}</div>
-        ${getTeamRow(m.team1, m.score1)}
-        ${getTeamRow(m.team2, m.score2)}
-      </div>
-    `;
+    const getMatchBox = (m) => {
+      const isFinal = m.fase && (m.fase.toLowerCase() === 'final' || m.fase.toLowerCase().includes('gran final'));
+      const advanceBtn = !isFinal ? `
+        <button class="btn btn-secondary" onclick="AdminApp.openAdvanceTeamModal('estelar', '${m.fase}')" style="padding: 0.22rem 0.5rem; font-size: 0.73rem; font-weight: 700; width: 100%; margin-top: 0.4rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(147, 51, 234, 0.15); border: 1px solid rgba(147, 51, 234, 0.35); color: #c084fc;" title="Pasar un equipo de esta llave a la siguiente fase (Sin rival asignado o por W.O.)">
+          <i class="fa-solid fa-forward-step" style="color: #c084fc;"></i> Pasar a Siguiente Fase
+        </button>
+      ` : '';
+
+      return `
+        <div style="background: #1e293b; border: 1px solid rgba(147, 51, 234, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.4rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span style="font-size: 0.72rem; font-weight: 800; color: #c084fc; text-transform: uppercase; letter-spacing: 0.5px;">${m.fase || ''}</span>
+            ${m.estado ? `<span style="font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px; background: ${m.estado.toLowerCase() === 'finalizado' ? 'rgba(74, 222, 128, 0.2); color: #4ade80;' : 'rgba(250, 204, 21, 0.2); color: #facc15;'}">${m.estado}</span>` : ''}
+          </div>
+          ${getTeamRow(m.team1, m.score1)}
+          ${getTeamRow(m.team2, m.score2)}
+          ${advanceBtn}
+        </div>
+      `;
+    };
 
     const previa = matches.filter(m => m.fase && (m.fase.toLowerCase().includes('previa') || m.fase.toLowerCase().includes('preliminar')));
     const octavos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('octavos'));
@@ -1377,13 +1401,26 @@ const AdminApp = {
       `;
     };
 
-    const getMatchBox = (m) => `
-      <div style="background: #0f274a; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.4rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.25);">
-        <div style="font-size: 0.72rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.5px;">${m.fase || ''}</div>
-        ${getTeamRow(m.team1, m.score1)}
-        ${getTeamRow(m.team2, m.score2)}
-      </div>
-    `;
+    const getMatchBox = (m) => {
+      const isFinal = m.fase && (m.fase.toLowerCase() === 'final' || m.fase.toLowerCase().includes('gran final'));
+      const advanceBtn = !isFinal ? `
+        <button class="btn btn-secondary" onclick="AdminApp.openAdvanceTeamModal('champions_ko', '${m.fase}')" style="padding: 0.22rem 0.5rem; font-size: 0.73rem; font-weight: 700; width: 100%; margin-top: 0.4rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); color: #38bdf8;" title="Pasar un equipo de esta llave a la siguiente fase (Sin rival asignado o por W.O.)">
+          <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pasar a Siguiente Fase
+        </button>
+      ` : '';
+
+      return `
+        <div style="background: #0f274a; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.4rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span style="font-size: 0.72rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px;">${m.fase || ''}</span>
+            ${m.estado ? `<span style="font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px; background: ${m.estado.toLowerCase() === 'finalizado' ? 'rgba(74, 222, 128, 0.2); color: #4ade80;' : 'rgba(250, 204, 21, 0.2); color: #facc15;'}">${m.estado}</span>` : ''}
+          </div>
+          ${getTeamRow(m.team1, m.score1)}
+          ${getTeamRow(m.team2, m.score2)}
+          ${advanceBtn}
+        </div>
+      `;
+    };
 
     const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
     const semis = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
@@ -3160,6 +3197,202 @@ const AdminApp = {
       toast.style.transition = 'opacity 0.3s ease';
       setTimeout(() => toast.remove(), 300);
     }, 4000);
+  },
+
+  // ==================== AVANZAR EQUIPO EN CUADROS ELIMINATORIOS ====================
+  openAdvanceTeamModal(comp = null, phase = null, teamName = null) {
+    const modal = document.getElementById('modal-advance-bracket-team');
+    if (!modal) return;
+
+    if (!comp) {
+      const currentComp = document.getElementById('match-competition')?.value;
+      comp = (currentComp === 'estelar') ? 'estelar' : 'champions_ko';
+    }
+
+    const compSel = document.getElementById('advance-modal-competition');
+    if (compSel) compSel.value = comp;
+
+    this.populateAdvanceModalPhases(comp, phase, teamName);
+    modal.style.display = 'flex';
+  },
+
+  closeAdvanceTeamModal() {
+    const modal = document.getElementById('modal-advance-bracket-team');
+    if (modal) modal.style.display = 'none';
+  },
+
+  populateAdvanceModalPhases(comp, selectedPhase = null, selectedTeam = null) {
+    const phaseSel = document.getElementById('advance-modal-phase');
+    const teamSel = document.getElementById('advance-modal-team');
+    if (!phaseSel || !teamSel || !this.data) return;
+
+    const matchArray = comp === 'champions_ko' ? (this.data.championsLeagueMatches || []) : (this.data.copaEstelarMatches || []);
+    const nonFinalMatches = matchArray.filter(m => m.fase && m.fase.toLowerCase() !== 'final' && !m.fase.toLowerCase().includes('gran final'));
+
+    phaseSel.innerHTML = '';
+    nonFinalMatches.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.fase;
+      const t1 = m.team1 || 'Por clasificar';
+      const t2 = m.team2 || 'Por clasificar';
+      opt.textContent = `${m.fase}: ${t1} vs ${t2}`;
+      phaseSel.appendChild(opt);
+    });
+
+    if (selectedPhase && nonFinalMatches.some(m => m.fase.toLowerCase() === selectedPhase.toLowerCase())) {
+      const found = nonFinalMatches.find(m => m.fase.toLowerCase() === selectedPhase.toLowerCase());
+      if (found) phaseSel.value = found.fase;
+    } else if (nonFinalMatches.length > 0) {
+      phaseSel.value = nonFinalMatches[0].fase;
+    }
+
+    this.onAdvanceModalPhaseChange(selectedTeam);
+  },
+
+  onAdvanceModalPhaseChange(selectedTeam = null) {
+    const compSel = document.getElementById('advance-modal-competition');
+    const phaseSel = document.getElementById('advance-modal-phase');
+    const teamSel = document.getElementById('advance-modal-team');
+    const destInfo = document.getElementById('advance-modal-dest-info');
+    if (!compSel || !phaseSel || !teamSel || !this.data) return;
+
+    const comp = compSel.value;
+    const phase = phaseSel.value;
+    const matchArray = comp === 'champions_ko' ? (this.data.championsLeagueMatches || []) : (this.data.copaEstelarMatches || []);
+    const match = matchArray.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+
+    teamSel.innerHTML = '';
+    if (match) {
+      const teams = [match.team1, match.team2].filter(Boolean);
+      teams.forEach(tName => {
+        const isPlaceholder = tName.toLowerCase().startsWith('ganador') || tName.toLowerCase().startsWith('por ');
+        const opt = document.createElement('option');
+        opt.value = tName;
+        opt.textContent = isPlaceholder ? `${tName} (Placeholder)` : tName;
+        teamSel.appendChild(opt);
+      });
+
+      if (selectedTeam && teams.includes(selectedTeam)) {
+        teamSel.value = selectedTeam;
+      } else {
+        const realTeam = teams.find(t => !t.toLowerCase().startsWith('ganador') && !t.toLowerCase().startsWith('por '));
+        if (realTeam) teamSel.value = realTeam;
+      }
+    }
+
+    const mapping = this.getBracketPhaseMapping(comp, phase);
+    if (destInfo) {
+      if (mapping) {
+        destInfo.innerHTML = `El equipo avanzará a: <strong style="color: #38bdf8;">${mapping.phase.toUpperCase()}</strong> (como <em>${mapping.teamSlot === 'team1' ? 'Local' : 'Visitante'}</em>)`;
+      } else {
+        destInfo.innerHTML = `<span style="color: #fca5a5;">No se encontró fase siguiente para esta llave.</span>`;
+      }
+    }
+  },
+
+  getBracketPhaseMapping(comp, phase) {
+    const copaMapping = {
+      'ronda previa 1': { phase: 'octavos 1', teamSlot: 'team1' },
+      'ronda previa 2': { phase: 'octavos 2', teamSlot: 'team1' },
+      'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
+      'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
+      'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
+      'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
+      'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
+      'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
+      'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
+      'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
+      'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
+      'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
+      'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
+      'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
+      'semifinal 1': { phase: 'final', teamSlot: 'team1' },
+      'semifinal 2': { phase: 'final', teamSlot: 'team2' }
+    };
+
+    const champMapping = {
+      'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
+      'cuartos 4': { phase: 'semifinal 1', teamSlot: 'team2' },
+      'cuartos 2': { phase: 'semifinal 2', teamSlot: 'team1' },
+      'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team2' },
+      'semifinal 1': { phase: 'final', teamSlot: 'team1' },
+      'semifinal 2': { phase: 'final', teamSlot: 'team2' }
+    };
+
+    const mapping = comp === 'champions_ko' ? champMapping : copaMapping;
+    const pLower = (phase || '').toLowerCase();
+    const targetKey = Object.keys(mapping).find(k => pLower.startsWith(k));
+    return targetKey ? mapping[targetKey] : null;
+  },
+
+  async confirmAdvanceTeam() {
+    const compSel = document.getElementById('advance-modal-competition');
+    const phaseSel = document.getElementById('advance-modal-phase');
+    const teamSel = document.getElementById('advance-modal-team');
+    const reasonSel = document.getElementById('advance-modal-reason');
+    if (!compSel || !phaseSel || !teamSel || !this.data) return;
+
+    const comp = compSel.value;
+    const phase = phaseSel.value;
+    const teamName = teamSel.value;
+    const reason = reasonSel ? reasonSel.value : 'Pase Directo';
+
+    if (!teamName) {
+      this.showToast('Selecciona un equipo para avanzar', 'error');
+      return;
+    }
+
+    const mapping = this.getBracketPhaseMapping(comp, phase);
+    if (!mapping) {
+      this.showToast('No se encontró llave de destino para esta fase', 'error');
+      return;
+    }
+
+    const matchArray = comp === 'champions_ko' ? this.data.championsLeagueMatches : this.data.copaEstelarMatches;
+    const currentMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+    if (!currentMatch) {
+      this.showToast('No se encontró el partido actual', 'error');
+      return;
+    }
+
+    const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(mapping.phase.toLowerCase()));
+    if (!nextMatch) {
+      this.showToast(`No se encontró el partido de destino (${mapping.phase})`, 'error');
+      return;
+    }
+
+    if (!confirm(`¿Confirmas avanzar a ${teamName} a ${mapping.phase.toUpperCase()} (${mapping.teamSlot === 'team1' ? 'Local' : 'Visitante'}) por ${reason}?`)) {
+      return;
+    }
+
+    nextMatch[mapping.teamSlot] = teamName;
+
+    currentMatch.estado = 'Finalizado';
+    currentMatch.winner = teamName;
+    if (currentMatch.team1 === teamName) {
+      currentMatch.score1 = 'Pase';
+      currentMatch.score2 = currentMatch.score2 || '-';
+      if (!currentMatch.team2 || currentMatch.team2.toLowerCase().startsWith('ganador')) {
+        currentMatch.team2 = 'Sin Rival (No jugaron)';
+      }
+    } else {
+      currentMatch.score2 = 'Pase';
+      currentMatch.score1 = currentMatch.score1 || '-';
+      if (!currentMatch.team1 || currentMatch.team1.toLowerCase().startsWith('ganador')) {
+        currentMatch.team1 = 'Sin Rival (No jugaron)';
+      }
+    }
+
+    this.closeAdvanceTeamModal();
+
+    if (comp === 'champions_ko') {
+      this.renderChampionsAdminBracket();
+    } else {
+      this.renderCopaEstelarAdminBracket();
+    }
+
+    await this.saveData(true);
+    this.showToast(`¡${teamName} avanzó con éxito a ${mapping.phase.toUpperCase()}!`, 'success');
   }
 };
 

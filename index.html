@@ -40,37 +40,15 @@
             Sala de Trofeos</button></li>
         <!-- <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
             Estelar</button></li> -->
-        <li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions
-            League</button></li>
         <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i>
             Mercado</button></li>
-        <!-- <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T10</button></li> -->
+        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones</button></li>
         <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar
             Jugadores</button></li>
         <!-- <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li> -->
       </ul>
     </nav>
   </header>
-
-  <!-- Sub Navigation / Season Bar -->
-  <div class="division-bar">
-    <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-      <span class="hero-tag" id="bar-badge-oro"
-        style="margin-bottom:0; background: #fef3c7; border: 1.5px solid #d97706; color: #92400e; font-weight: 800; font-size: 0.82rem; padding: 0.35rem 0.8rem; border-radius: 99px;">
-        <i class="fa-solid fa-trophy" style="color: #b45309;"></i> DIVISIÓN ORO &bull; <strong id="lbl-bar-count-oro">8</strong> CLUBES
-      </span>
-      <span class="hero-tag" id="bar-badge-plata"
-        style="margin-bottom:0; background: #f1f5f9; border: 1.5px solid #64748b; color: #1e293b; font-weight: 800; font-size: 0.82rem; padding: 0.35rem 0.8rem; border-radius: 99px;">
-        <i class="fa-solid fa-medal" style="color: #475569;"></i> DIVISIÓN PLATA &bull; <strong id="lbl-bar-count-plata">12</strong> CLUBES
-      </span>
-      <span style="font-family: var(--font-heading); font-weight: 700; color: #0f172a;">Temporada 11</span>
-    </div>
-
-    <div class="league-status" style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #1e293b;">
-      <span class="status-dot"></span>
-      <span><strong id="lbl-bar-count-total">20</strong> Clubes Oficiales &bull; eFootball v4.x</span>
-    </div>
-  </div>
 
   <!-- Main Application Container -->
   <main class="app-container">
@@ -201,7 +179,7 @@
           <i class="fa-solid fa-medal" style="color: #64748b;"></i> <span>División Plata (<span id="lbl-tab-count-plata">12</span> Clubes)</span>
         </button>
         <button class="btn-tab" id="tab-web-champions" onclick="switchWebDivision('champions')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
-          <i class="fa-solid fa-star" style="color: #0284c7;"></i> <span>UEFA Champions League (<span id="lbl-tab-count-champions">18</span> Clubes)</span>
+          <i class="fa-solid fa-star" style="color: #0284c7;"></i> <span>UEFA Champions League (<span id="lbl-tab-count-champions">8</span> Clubes)</span>
         </button>
         <button class="btn-tab" id="tab-web-estelar" onclick="switchWebDivision('estelar')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
           <i class="fa-solid fa-shield-halved" style="color: #9333ea;"></i> <span>Copa Estelar (<span id="lbl-tab-count-estelar">18</span> Clubes)</span>
@@ -449,12 +427,6 @@
         </button>
         <button class="btn-tab" id="tab-stats-plata" onclick="switchStatsDivision('plata')" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
           <i class="fa-solid fa-medal" style="color: #64748b;"></i> <span>División Plata</span>
-        </button>
-        <button class="btn-tab" id="tab-stats-ambas" onclick="switchStatsDivision('ambas')" style="padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
-          <i class="fa-solid fa-table-columns" style="color: #0284c7;"></i> <span>Ver Ambas</span>
-        </button>
-        <button class="btn-tab" id="tab-stats-general" onclick="switchStatsDivision('general')" style="padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 800; border-radius: var(--radius-md); cursor: pointer; border: 1.5px solid #cbd5e1; background: #ffffff; color: #334155; display: flex; align-items: center; gap: 0.5rem; box-shadow: none; transition: all 0.2s;">
-          <i class="fa-solid fa-globe" style="color: #059669;"></i> <span>General / Acumulada</span>
         </button>
       </div>
 
@@ -788,8 +760,8 @@
       </div>
     </section>
 
-    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 10 (OCULTO TEMPORALMENTE) -->
-    <section id="sec-renovaciones" class="page-section" style="display: none !important;">
+    <!-- 4. CALCULADORA DE RENOVACIONES TEMPORADA 11 -->
+    <section id="sec-renovaciones" class="page-section">
       <div class="card">
         <div class="card-header">
           <div>
@@ -1139,7 +1111,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1791598316"></script>
+  <script src="data.js?v=1791682020"></script>
   <script src="app.js?v=1791176315"></script>
 </body>
 

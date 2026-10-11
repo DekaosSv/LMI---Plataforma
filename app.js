@@ -162,7 +162,7 @@ function initUI() {
 }
 
 function switchNav(navId) {
-  if (navId === 'renovaciones' || navId === 'rules') {
+  if (navId === 'rules') {
     navId = 'dashboard';
   }
   if (navId === 'copa-estelar') {
@@ -211,18 +211,17 @@ function switchNav(navId) {
 let currentStatsDivision = 'oro';
 
 function switchStatsDivision(div) {
+  if (div !== 'oro' && div !== 'plata') {
+    div = 'oro';
+  }
   currentStatsDivision = div;
 
   const tabOro = document.getElementById('tab-stats-oro');
   const tabPlata = document.getElementById('tab-stats-plata');
-  const tabAmbas = document.getElementById('tab-stats-ambas');
-  const tabGeneral = document.getElementById('tab-stats-general');
 
   const tabs = [
     { el: tabOro, id: 'oro', bg: '#fef3c7', border: '#d97706', color: '#92400e', shadow: '0 2px 8px rgba(217, 119, 6, 0.2)' },
-    { el: tabPlata, id: 'plata', bg: '#e2e8f0', border: '#475569', color: '#0f172a', shadow: '0 2px 8px rgba(71, 85, 105, 0.2)' },
-    { el: tabAmbas, id: 'ambas', bg: '#e0f2fe', border: '#0284c7', color: '#0369a1', shadow: '0 2px 8px rgba(2, 132, 199, 0.2)' },
-    { el: tabGeneral, id: 'general', bg: '#d1fae5', border: '#059669', color: '#065f46', shadow: '0 2px 8px rgba(5, 150, 105, 0.2)' }
+    { el: tabPlata, id: 'plata', bg: '#e2e8f0', border: '#475569', color: '#0f172a', shadow: '0 2px 8px rgba(71, 85, 105, 0.2)' }
   ];
 
   tabs.forEach(t => {
@@ -445,14 +444,14 @@ function renderStats() {
     return allPlayers
       .filter(p => (p[goalsKey] || 0) > 0 && (!filterDiv || getTeamDivision(p) === filterDiv))
       .sort((a, b) => (b[goalsKey] || 0) - (a[goalsKey] || 0))
-      .slice(0, 25);
+      .slice(0, 10);
   };
 
   const getAssists = (filterDiv) => {
     return allPlayers
       .filter(p => (p[assistsKey] || 0) > 0 && (!filterDiv || getTeamDivision(p) === filterDiv))
       .sort((a, b) => (b[assistsKey] || 0) - (a[assistsKey] || 0))
-      .slice(0, 25);
+      .slice(0, 10);
   };
 
   const divTabsBar = document.getElementById('stats-division-tabs-bar');
@@ -472,14 +471,14 @@ function renderStats() {
     const badgeLabel = isCopa ? 'COPA ESTELAR' : 'CHAMPIONS LEAGUE';
     const emptyScorers = isCopa ? 'Sin goles registrados aún en Copa Estelar' : 'Sin goles registrados aún en UEFA Champions League';
     const emptyAssists = isCopa ? 'Sin asistencias registradas aún en Copa Estelar' : 'Sin asistencias registradas aún en UEFA Champions League';
-    const subLabel = isCopa ? 'Torneo Oficial • Eliminatorias Directas (18 Clubes)' : 'UEFA Champions League LMI (18 Clubes)';
+    const subLabel = isCopa ? 'Torneo Oficial • Eliminatorias Directas' : 'UEFA Champions League LMI';
 
     container.innerHTML = `
       <div class="dashboard-grid">
         <div class="card">
           <div class="card-header">
             <div>
-              <h2 class="card-title"><i class="fa-solid ${iconClass}" style="color: ${themeColor};"></i> Tabla de Goleadores</h2>
+              <h2 class="card-title"><i class="fa-solid ${iconClass}" style="color: ${themeColor};"></i> Tabla de Goleadores (Top 10)</h2>
               <div style="font-size: 0.8rem; color: ${themeColor}; font-weight: 700; margin-top: 0.2rem;">${tournamentLabel} &bull; ${subLabel}</div>
             </div>
             <span class="badge" style="background: ${badgeBg}; color: ${badgeText}; border: 1.5px solid ${themeColor}; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">${badgeLabel}</span>
@@ -492,7 +491,7 @@ function renderStats() {
         <div class="card">
           <div class="card-header">
             <div>
-              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: ${themeColor};"></i> Tabla de Asistidores</h2>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: ${themeColor};"></i> Tabla de Asistidores (Top 10)</h2>
               <div style="font-size: 0.8rem; color: ${themeColor}; font-weight: 700; margin-top: 0.2rem;">${tournamentLabel} &bull; ${subLabel}</div>
             </div>
             <span class="badge" style="background: ${badgeBg}; color: ${badgeText}; border: 1.5px solid ${themeColor}; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">${badgeLabel}</span>
@@ -509,40 +508,7 @@ function renderStats() {
   // Si es Liga (Temporada 11), mostrar la barra de tabs de división
   if (divTabsBar) divTabsBar.style.display = 'flex';
 
-  if (currentStatsDivision === 'oro') {
-    const topScorers = getScorers('oro');
-    const topAssists = getAssists('oro');
-
-    container.innerHTML = `
-      <div class="dashboard-grid">
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: #d97706;"></i> Tabla de Goleadores</h2>
-              <div style="font-size: 0.8rem; color: #92400e; font-weight: 700; margin-top: 0.2rem;">División Oro &bull; ${tournamentLabel}</div>
-            </div>
-            <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">ORO</span>
-          </div>
-          <div id="full-goleadores-list">
-            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', 'Sin goles registrados aún en División Oro para este torneo', 'var(--neon-green)')}
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Tabla de Asistidores</h2>
-              <div style="font-size: 0.8rem; color: #92400e; font-weight: 700; margin-top: 0.2rem;">División Oro &bull; ${tournamentLabel}</div>
-            </div>
-            <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">ORO</span>
-          </div>
-          <div id="full-asistencias-list">
-            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', 'Sin asistencias registradas aún en División Oro para este torneo', '#0284c7')}
-          </div>
-        </div>
-      </div>
-    `;
-  } else if (currentStatsDivision === 'plata') {
+  if (currentStatsDivision === 'plata') {
     const topScorers = getScorers('plata');
     const topAssists = getAssists('plata');
 
@@ -551,7 +517,7 @@ function renderStats() {
         <div class="card">
           <div class="card-header">
             <div>
-              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: #64748b;"></i> Tabla de Goleadores</h2>
+              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: #64748b;"></i> Tabla de Goleadores (Top 10)</h2>
               <div style="font-size: 0.8rem; color: #475569; font-weight: 700; margin-top: 0.2rem;">División Plata &bull; ${tournamentLabel}</div>
             </div>
             <span class="badge" style="background: #e2e8f0; color: #0f172a; border: 1.5px solid #64748b; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">PLATA</span>
@@ -564,7 +530,7 @@ function renderStats() {
         <div class="card">
           <div class="card-header">
             <div>
-              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Tabla de Asistidores</h2>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Tabla de Asistidores (Top 10)</h2>
               <div style="font-size: 0.8rem; color: #475569; font-weight: 700; margin-top: 0.2rem;">División Plata &bull; ${tournamentLabel}</div>
             </div>
             <span class="badge" style="background: #e2e8f0; color: #0f172a; border: 1.5px solid #64748b; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">PLATA</span>
@@ -575,105 +541,36 @@ function renderStats() {
         </div>
       </div>
     `;
-  } else if (currentStatsDivision === 'ambas') {
-    const oroScorers = getScorers('oro');
-    const oroAssists = getAssists('oro');
-    const plataScorers = getScorers('plata');
-    const plataAssists = getAssists('plata');
-
-    container.innerHTML = `
-      <!-- BLOQUE DIVISIÓN ORO -->
-      <div style="margin-bottom: 2.5rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid #d97706;">
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <i class="fa-solid fa-trophy" style="color: #d97706; font-size: 1.25rem;"></i>
-            <h2 style="font-size: 1.25rem; font-weight: 900; color: #92400e; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">Estadísticas &bull; División Oro</h2>
-          </div>
-          <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.75rem; border-radius: 99px; font-weight: 800; font-size: 0.8rem;">8 CLUBES</span>
-        </div>
-
-        <div class="dashboard-grid">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-futbol" style="color: #d97706;"></i> Goleadores División Oro</h3>
-            </div>
-            <div>
-              ${renderLeaderboardHTML(oroScorers, goalsKey, 'goles', 'Sin goles registrados en División Oro', 'var(--neon-green)')}
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Asistidores División Oro</h3>
-            </div>
-            <div>
-              ${renderLeaderboardHTML(oroAssists, assistsKey, 'asist.', 'Sin asistencias registradas en División Oro', '#0284c7')}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- BLOQUE DIVISIÓN PLATA -->
-      <div>
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid #64748b;">
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <i class="fa-solid fa-medal" style="color: #64748b; font-size: 1.25rem;"></i>
-            <h2 style="font-size: 1.25rem; font-weight: 900; color: #334155; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">Estadísticas &bull; División Plata</h2>
-          </div>
-          <span class="badge" style="background: #e2e8f0; color: #0f172a; border: 1.5px solid #64748b; padding: 0.25rem 0.75rem; border-radius: 99px; font-weight: 800; font-size: 0.8rem;">12 CLUBES</span>
-        </div>
-
-        <div class="dashboard-grid">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-futbol" style="color: #64748b;"></i> Goleadores División Plata</h3>
-            </div>
-            <div>
-              ${renderLeaderboardHTML(plataScorers, goalsKey, 'goles', 'Sin goles registrados en División Plata', 'var(--neon-green)')}
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" style="font-size: 1.05rem;"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Asistidores División Plata</h3>
-            </div>
-            <div>
-              ${renderLeaderboardHTML(plataAssists, assistsKey, 'asist.', 'Sin asistencias registradas en División Plata', '#0284c7')}
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
   } else {
-    // general / acumulada
-    const topScorers = getScorers(null);
-    const topAssists = getAssists(null);
+    // Default: División Oro
+    const topScorers = getScorers('oro');
+    const topAssists = getAssists('oro');
 
     container.innerHTML = `
       <div class="dashboard-grid">
         <div class="card">
           <div class="card-header">
             <div>
-              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: var(--neon-green);"></i> Tabla de Goleadores</h2>
-              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin-top: 0.2rem;">General Acumulada &bull; ${tournamentLabel}</div>
+              <h2 class="card-title"><i class="fa-solid fa-futbol" style="color: #d97706;"></i> Tabla de Goleadores (Top 10)</h2>
+              <div style="font-size: 0.8rem; color: #92400e; font-weight: 700; margin-top: 0.2rem;">División Oro &bull; ${tournamentLabel}</div>
             </div>
-            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #059669; border: 1.5px solid rgba(5, 150, 105, 0.35); padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">TODAS</span>
+            <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">ORO</span>
           </div>
           <div id="full-goleadores-list">
-            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', 'Sin goles registrados aún en este torneo', 'var(--neon-green)', true)}
+            ${renderLeaderboardHTML(topScorers, goalsKey, 'goles', 'Sin goles registrados aún en División Oro para este torneo', 'var(--neon-green)')}
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
             <div>
-              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: var(--neon-cyan);"></i> Tabla de Asistidores</h2>
-              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin-top: 0.2rem;">General Acumulada &bull; ${tournamentLabel}</div>
+              <h2 class="card-title"><i class="fa-solid fa-hands-clapping" style="color: #0284c7;"></i> Tabla de Asistidores (Top 10)</h2>
+              <div style="font-size: 0.8rem; color: #92400e; font-weight: 700; margin-top: 0.2rem;">División Oro &bull; ${tournamentLabel}</div>
             </div>
-            <span class="badge" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border: 1.5px solid rgba(2, 132, 199, 0.35); padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">TODAS</span>
+            <span class="badge" style="background: #fef3c7; color: #92400e; border: 1.5px solid #d97706; padding: 0.25rem 0.65rem; border-radius: 99px; font-weight: 800; font-size: 0.78rem;">ORO</span>
           </div>
           <div id="full-asistencias-list">
-            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', 'Sin asistencias registradas aún en este torneo', '#0284c7', true)}
+            ${renderLeaderboardHTML(topAssists, assistsKey, 'asist.', 'Sin asistencias registradas aún en División Oro para este torneo', '#0284c7')}
           </div>
         </div>
       </div>
@@ -742,6 +639,16 @@ function renderBracket(containerId, matches, phaseFilter = null) {
       const n2 = getNumericVal(score2Str);
       if (n1 > n2) isT1Winner = true;
       else if (n2 > n1) isT2Winner = true;
+      else {
+        const s1Lower = score1Str.toLowerCase();
+        const s2Lower = score2Str.toLowerCase();
+        if (s1Lower.includes('pase') || s1Lower.includes('w.o') || s1Lower.includes('clasif')) isT1Winner = true;
+        else if (s2Lower.includes('pase') || s2Lower.includes('w.o') || s2Lower.includes('clasif')) isT2Winner = true;
+        else if (match.winner) {
+          if (match.winner.toLowerCase() === (match.team1 || '').toLowerCase()) isT1Winner = true;
+          else if (match.winner.toLowerCase() === (match.team2 || '').toLowerCase()) isT2Winner = true;
+        }
+      }
     }
 
     return `
@@ -2507,7 +2414,7 @@ function updateDynamicClubsCounts() {
   if (lblTabPlata) lblTabPlata.textContent = plataCount;
 
   const lblTabChampions = document.getElementById('lbl-tab-count-champions');
-  if (lblTabChampions) lblTabChampions.textContent = championsCount;
+  if (lblTabChampions) lblTabChampions.textContent = 8;
 
   const lblTabEstelar = document.getElementById('lbl-tab-count-estelar');
   if (lblTabEstelar) lblTabEstelar.textContent = estelarCount;
@@ -2517,7 +2424,7 @@ function updateDynamicClubsCounts() {
   if (badgeEl) {
     let currentCount = oroCount;
     if (currentWebDivision === 'plata') currentCount = plataCount;
-    else if (currentWebDivision === 'champions') currentCount = championsCount;
+    else if (currentWebDivision === 'champions') currentCount = 8;
     else if (currentWebDivision === 'estelar') currentCount = estelarCount;
     badgeEl.textContent = `${currentCount} CLUBES`;
   }
@@ -2533,6 +2440,9 @@ function renderWebPosiciones() {
   if (currentWebDivision === 'estelar') {
     renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
     renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
+  } else if (currentWebDivision === 'champions') {
+    renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches);
+    renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
   } else {
     renderWebStandings();
     populateWebJornadas();
@@ -2596,12 +2506,14 @@ function switchWebDivision(div) {
   }
 
   if (div === 'champions') {
-    if (standingsCard) standingsCard.style.display = 'block';
-    if (jornadasCard) jornadasCard.style.display = 'block';
+    if (standingsCard) standingsCard.style.display = 'none';
+    if (jornadasCard) jornadasCard.style.display = 'none';
     if (championsContainer) championsContainer.style.display = 'block';
     if (estelarContainer) estelarContainer.style.display = 'none';
     renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches);
     renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
+    updateDynamicClubsCounts();
+    return;
   } else {
     // Div is 'oro' or 'plata'
     if (standingsCard) standingsCard.style.display = 'block';

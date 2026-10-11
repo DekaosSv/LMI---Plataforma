@@ -7988,11 +7988,12 @@ var INITIAL_LMI_DATA = {
     },
     {
       "fase": "Semifinal 1",
-      "team1": "Ganador Cuartos 1",
-      "score1": "",
+      "team1": "Sin Rival (No jugaron)",
+      "score1": "-",
       "team2": "Manchester City",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "Pase",
+      "estado": "Finalizado",
+      "winner": "Manchester City"
     },
     {
       "fase": "Semifinal 2",
@@ -8004,7 +8005,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "fase": "Final",
-      "team1": "Ganador Semifinal 1",
+      "team1": "Manchester City",
       "score1": "",
       "team2": "Ganador Semifinal 2",
       "score2": "",

@@ -293,6 +293,9 @@
             <button class="btn btn-secondary" id="btn-gen-champions-playoffs" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar o sincronizar llaves de Cuartos de Final con los 8 clasificados de Champions (1° vs 8°, 2° vs 7°, etc.)">
               <i class="fa-solid fa-sitemap" style="color: #38bdf8;"></i> Sincronizar Eliminatorias Champions (Top 8)
             </button>
+            <button class="btn btn-secondary" id="btn-advance-bracket-team" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Pasar un equipo directamente a la siguiente fase si no tiene rival asignado o por W.O.">
+              <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pasar Equipo de Fase (Sin Rival / W.O.)
+            </button>
             <button class="btn btn-secondary" id="btn-export-champions-img-admin" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Exportar a imagen PNG las llaves actuales de Champions League">
               <i class="fa-solid fa-camera" style="color: #38bdf8;"></i> Exportar Llaves Champions
             </button>
@@ -418,9 +421,14 @@
               </label>
             </div>
 
-            <button class="btn btn-success" id="btn-apply-match" style="padding: 0.85rem 1.75rem; font-size: 1rem;">
-              <i class="fa-solid fa-check-double"></i> Registrar y Aplicar Partido
-            </button>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary" id="btn-advance-match-studio" style="padding: 0.85rem 1.25rem; font-size: 0.95rem; display: none;" title="Pasar equipo a la siguiente fase sin rival asignado o por W.O.">
+                <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pase Directo / Sin Rival
+              </button>
+              <button class="btn btn-success" id="btn-apply-match" style="padding: 0.85rem 1.75rem; font-size: 1rem;">
+                <i class="fa-solid fa-check-double"></i> Registrar y Aplicar Partido
+              </button>
+            </div>
           </div>
 
         </div>
@@ -999,6 +1007,65 @@
         <button class="btn btn-secondary" onclick="AdminApp.closeBdoModal()">Cancelar</button>
         <button class="btn btn-gold" id="btn-save-bdo-modal">
           <i class="fa-solid fa-check"></i> Guardar Registro
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: AVANZAR EQUIPO DE FASE (SIN RIVAL / W.O.) ==================== -->
+  <div class="modal-overlay" id="modal-advance-bracket-team" style="display: none;">
+    <div class="modal-dialog" style="max-width: 560px;">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pasar Equipo a Siguiente Fase
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeAdvanceTeamModal()">✕</button>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem; line-height: 1.5;">
+        Permite clasificar a un equipo directamente a la siguiente ronda cuando no tiene rival asignado, sus rivales no jugaron o por victoria por W.O. / descalificación.
+      </p>
+
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label style="font-weight: 700; color: #cbd5e1; font-size: 0.88rem; margin-bottom: 0.35rem; display: block;">Torneo / Cuadro:</label>
+        <select class="form-select" id="advance-modal-competition" style="width: 100%; font-weight: 700;" onchange="AdminApp.populateAdvanceModalPhases(this.value)">
+          <option value="champions_ko">🏆 UEFA Champions League (Eliminatorias)</option>
+          <option value="estelar">⭐ Copa Estelar</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label style="font-weight: 700; color: #cbd5e1; font-size: 0.88rem; margin-bottom: 0.35rem; display: block;">Partido / Llave Actual:</label>
+        <select class="form-select" id="advance-modal-phase" style="width: 100%; font-weight: 700;" onchange="AdminApp.onAdvanceModalPhaseChange()">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label style="font-weight: 700; color: #cbd5e1; font-size: 0.88rem; margin-bottom: 0.35rem; display: block;">Equipo a Avanzar:</label>
+        <select class="form-select" id="advance-modal-team" style="width: 100%; font-weight: 700; color: #38bdf8; border-color: #0284c7;">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label style="font-weight: 700; color: #cbd5e1; font-size: 0.88rem; margin-bottom: 0.35rem; display: block;">Motivo / Tipo de Pase:</label>
+        <select class="form-select" id="advance-modal-reason" style="width: 100%;">
+          <option value="Sin rival asignado / Rivales no jugaron">Sin rival asignado / Rivales no jugaron</option>
+          <option value="Victoria por W.O. (Default)">Victoria por W.O. (Default)</option>
+          <option value="Descalificación de rival">Descalificación de rival</option>
+          <option value="Pase Directo">Pase Directo</option>
+        </select>
+      </div>
+
+      <div id="advance-modal-dest-info" style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: 0.86rem; color: #cbd5e1; margin-bottom: 1.5rem;">
+        <!-- Destination info rendered dynamically -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closeAdvanceTeamModal()">Cancelar</button>
+        <button class="btn btn-primary" id="btn-confirm-advance-team" onclick="AdminApp.confirmAdvanceTeam()" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800;">
+          <i class="fa-solid fa-forward-step"></i> Confirmar y Avanzar a Siguiente Fase
         </button>
       </div>
     </div>
