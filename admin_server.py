@@ -39,12 +39,13 @@ def read_data_js():
     idx = content.find(prefix)
     if idx == -1:
         return {}
-    end_idx = content.rfind(";")
-    if end_idx == -1:
-        end_idx = len(content)
-    json_str = content[idx + len(prefix):end_idx].strip()
+    start_json = idx + len(prefix)
+    fb = content.find("{", start_json)
+    if fb == -1:
+        return {}
     try:
-        return json.loads(json_str)
+        data_obj, _ = json.JSONDecoder().raw_decode(content[fb:])
+        return data_obj
     except Exception as e:
         print(f"Error al decodificar JSON de data.js: {e}")
         return {}
@@ -62,7 +63,7 @@ def write_data_js(data_obj):
             
     header = "// Base de datos unificada LMI Temporada 10\n\nvar INITIAL_LMI_DATA = "
     json_str = json.dumps(data_obj, ensure_ascii=False, indent=2)
-    footer = ";\n"
+    footer = ";\n\nif (typeof window !== 'undefined') {\n  window.lmiData = INITIAL_LMI_DATA;\n}\n"
     
     with open(data_path, "w", encoding="utf-8") as f:
         f.write(header + json_str + footer)

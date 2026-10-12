@@ -261,7 +261,8 @@ const AdminApp = {
       'view-matches': '<i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i> Registrar Partido',
       'view-teams': '<i class="fa-solid fa-shield-halved"></i> Clubes y Plantillas',
       'view-market': '<i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i> Mercado de Fichajes',
-      'view-trophies': '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Trofeos & Balón de Oro'
+      'view-trophies': '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Trofeos & Balón de Oro',
+      'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web'
     };
     document.getElementById('topbar-page-title').innerHTML = titleMap[viewId] || 'Panel de Control';
   },
@@ -275,6 +276,7 @@ const AdminApp = {
     this.renderMarketView();
     this.renderTrophiesView();
     this.renderMatchHistory();
+    this.renderWebControlView();
   },
 
   renderAll() {
@@ -285,6 +287,7 @@ const AdminApp = {
     this.renderMarketView();
     this.renderTrophiesView();
     this.renderMatchHistory();
+    this.renderWebControlView();
   },
 
   // ==================== DASHBOARD ====================
@@ -345,10 +348,10 @@ const AdminApp = {
     this.onCompetitionChange();
   },
 
-  populateTeamSelectorByDivision(filterDiv = 'all') {
+  populateTeamSelectorByDivision(filterDiv = 'all', targetTeamId = null) {
     const sel = document.getElementById('team-selector');
     if (!sel || !this.data || !this.data.teams) return;
-    const currentVal = sel.value;
+    const currentVal = targetTeamId || sel.value;
     sel.innerHTML = '';
     
     let teams = this.data.teams;
@@ -2523,10 +2526,16 @@ const AdminApp = {
     document.getElementById('modal-create-club').style.display = 'none';
   },
 
+  updateDashboardStats() {
+    this.renderDashboard();
+  },
+
   async confirmCreateClub() {
-    const name = document.getElementById('new-club-name').value.trim();
+    const nameInput = document.getElementById('new-club-name');
+    const name = nameInput ? nameInput.value.trim() : '';
     if (!name) {
       this.showToast('Por favor, ingresa el nombre del club.', 'error');
+      if (nameInput) nameInput.focus();
       return;
     }
 
@@ -2540,14 +2549,14 @@ const AdminApp = {
       id = id + '_' + Math.floor(Math.random() * 1000);
     }
 
-    const shortName = document.getElementById('new-club-shortname').value.trim().toUpperCase() || name.substring(0, 3).toUpperCase();
-    const division = document.getElementById('new-club-division').value || 'plata';
-    const budget = parseInt(document.getElementById('new-club-budget').value, 10) || 100000000;
-    const manager = document.getElementById('new-club-manager').value.trim() || 'Por definir';
-    const stadium = document.getElementById('new-club-stadium').value.trim() || 'Estadio Oficial';
-    const c1 = document.getElementById('new-club-color1').value || '#3b82f6';
-    const c2 = document.getElementById('new-club-color2').value || '#ffffff';
-    let logo = document.getElementById('new-club-logo').value.trim();
+    const shortName = document.getElementById('new-club-shortname')?.value.trim().toUpperCase() || name.substring(0, 3).toUpperCase();
+    const division = document.getElementById('new-club-division')?.value || 'plata';
+    const budget = parseInt(document.getElementById('new-club-budget')?.value, 10) || 100000000;
+    const manager = document.getElementById('new-club-manager')?.value.trim() || 'Por definir';
+    const stadium = document.getElementById('new-club-stadium')?.value.trim() || 'Estadio Oficial';
+    const c1 = document.getElementById('new-club-color1')?.value || '#3b82f6';
+    const c2 = document.getElementById('new-club-color2')?.value || '#ffffff';
+    let logo = document.getElementById('new-club-logo')?.value.trim();
     if (!logo) {
       logo = `Logos Equipos/${id}.png`;
     }
@@ -2587,14 +2596,14 @@ const AdminApp = {
     this.isDirty = true;
     this.closeCreateClubModal();
 
-    this.populateTeamSelectorByDivision('all');
-    const sel = document.getElementById('team-selector');
-    if (sel) sel.value = id;
-    this.onTeamSelected(id);
-    this.updateDashboardStats();
+    // Actualizar selectores y vistas
+    this.populateTeamSelectorByDivision('all', id);
+    this.populateMarketAndModalTeams();
+    this.populatePendingFilterTeams();
+    this.renderDashboard();
 
     await this.saveData(true);
-    this.showToast(`Club "${name}" creado exitosamente. ¡Ahora puedes importarle su plantilla!`, 'success');
+    this.showToast(`¡Club "${name}" creado exitosamente! Ahora puedes importarle su plantilla.`, 'success');
   },
 
   async deleteCurrentTeam() {
@@ -3752,6 +3761,278 @@ const AdminApp = {
 
     await this.saveData(true);
     this.showToast(`¡${teamName} avanzó con éxito a ${mapping.phase.toUpperCase()}!`, 'success');
+  },
+
+  // ==================== CENTRO DE CONTROL WEB ====================
+  ensureWebConfig() {
+    if (!this.data) return;
+    if (!this.data.webConfig) {
+      this.data.webConfig = {
+        seasonTitle: this.data.season || 'Temporada 11',
+        leagueSubtitle: 'Liga Máster Internacional • Fútbol Competitivo',
+        bannerAnnouncement: {
+          enabled: false,
+          text: '¡Período de Renovaciones Abierto! Envía tu informe al administrador',
+          type: 'info'
+        },
+        tabs: [
+          { id: 'dashboard', label: 'Resumen', icon: 'fa-chart-pie', enabled: true },
+          { id: 'posiciones', label: 'Clasificación', icon: 'fa-table-list', enabled: true },
+          { id: 'stats', label: 'Estadísticas', icon: 'fa-chart-column', enabled: true },
+          { id: 'teams', label: 'Equipos', icon: 'fa-shield-halved', enabled: true },
+          { id: 'sala-campeones', label: 'Palmarés', icon: 'fa-crown', enabled: true },
+          { id: 'copa-estelar', label: 'Copa Estelar', icon: 'fa-star', enabled: true },
+          { id: 'uefa-champions', label: 'Champions League', icon: 'fa-trophy', enabled: true },
+          { id: 'mercado', label: 'Mercado', icon: 'fa-arrow-right-arrow-left', enabled: true },
+          { id: 'renovaciones', label: 'Renovaciones', icon: 'fa-calculator', enabled: true },
+          { id: 'buscador', label: 'Buscador de Jugadores', icon: 'fa-magnifying-glass', enabled: true },
+          { id: 'rules', label: 'Reglamento', icon: 'fa-book-open', enabled: true }
+        ],
+        calculatorSettings: {
+          defaultRenovationPrice: 5000000,
+          currencySymbol: '$',
+          allowCustomPrices: true
+        }
+      };
+    }
+  },
+
+  renderWebControlView() {
+    if (!this.data) return;
+    this.ensureWebConfig();
+    const cfg = this.data.webConfig;
+
+    // Campos generales
+    const seasonInput = document.getElementById('web-config-season');
+    if (seasonInput && document.activeElement !== seasonInput) {
+      seasonInput.value = cfg.seasonTitle || this.data.season || '';
+    }
+
+    const subtitleInput = document.getElementById('web-config-subtitle');
+    if (subtitleInput && document.activeElement !== subtitleInput) {
+      subtitleInput.value = cfg.leagueSubtitle || '';
+    }
+
+    const bannerChk = document.getElementById('web-config-announcement-enabled');
+    if (bannerChk) {
+      bannerChk.checked = !!(cfg.bannerAnnouncement && cfg.bannerAnnouncement.enabled);
+    }
+
+    const bannerTxt = document.getElementById('web-config-announcement-text');
+    if (bannerTxt && document.activeElement !== bannerTxt) {
+      bannerTxt.value = (cfg.bannerAnnouncement && cfg.bannerAnnouncement.text) || '';
+    }
+
+    const bannerType = document.getElementById('web-config-announcement-type');
+    if (bannerType) {
+      bannerType.value = (cfg.bannerAnnouncement && cfg.bannerAnnouncement.type) || 'info';
+    }
+
+    // Contadores de clubes para generadores de fechas
+    const oroCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'oro').length;
+    const plataCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'plata').length;
+    const elOro = document.getElementById('gen-oro-count');
+    if (elOro) elOro.textContent = oroCount;
+    const elPlata = document.getElementById('gen-plata-count');
+    if (elPlata) elPlata.textContent = plataCount;
+
+    // Renderizar tarjetas de pestañas
+    const grid = document.getElementById('web-tabs-control-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    (cfg.tabs || []).forEach(tab => {
+      const card = document.createElement('div');
+      card.className = `web-tab-item ${tab.enabled ? 'active' : ''}`;
+      card.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(56, 189, 248, 0.12); display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+              <i class="fa-solid ${tab.icon || 'fa-circle'}"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.88rem; font-weight: 700; color: #fff;">${this.escape(tab.label)}</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-family: monospace;">#${tab.id}</div>
+            </div>
+          </div>
+          <label class="lmi-switch">
+            <input type="checkbox" ${tab.enabled ? 'checked' : ''} onchange="AdminApp.toggleWebTab('${tab.id}', this.checked)">
+            <span class="lmi-slider"></span>
+          </label>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+          <input type="text" class="form-control" style="font-size: 0.8rem; padding: 0.35rem 0.6rem; height: auto;" value="${this.escape(tab.label)}" placeholder="Nombre de pestaña" onchange="AdminApp.updateWebTabLabel('${tab.id}', this.value)">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; font-size: 0.75rem;">
+          <span style="color: ${tab.enabled ? 'var(--lmi-green)' : 'var(--text-muted)'}; font-weight: 600;">
+            <i class="fa-solid ${tab.enabled ? 'fa-eye' : 'fa-eye-slash'}"></i> ${tab.enabled ? 'Visible en la Web' : 'Oculta al Público'}
+          </span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  },
+
+  toggleWebTab(tabId, enabled) {
+    this.ensureWebConfig();
+    const tab = (this.data.webConfig.tabs || []).find(t => t.id === tabId);
+    if (tab) {
+      tab.enabled = !!enabled;
+      this.markDirty();
+      this.renderWebControlView();
+      this.showToast(`Pestaña "${tab.label}" ${tab.enabled ? 'activada' : 'desactivada'} en la web`, 'info');
+    }
+  },
+
+  updateWebTabLabel(tabId, newLabel) {
+    this.ensureWebConfig();
+    const tab = (this.data.webConfig.tabs || []).find(t => t.id === tabId);
+    if (tab && newLabel && newLabel.trim()) {
+      tab.label = newLabel.trim();
+      this.markDirty();
+      this.renderWebControlView();
+      this.showToast(`Nombre de pestaña actualizado a "${tab.label}"`, 'info');
+    }
+  },
+
+  toggleAllWebTabs(enabled) {
+    this.ensureWebConfig();
+    (this.data.webConfig.tabs || []).forEach(t => {
+      t.enabled = enabled;
+    });
+    this.markDirty();
+    this.renderWebControlView();
+    this.showToast(enabled ? 'Todas las pestañas de la web han sido activadas.' : 'Todas las pestañas han sido desactivadas.', 'info');
+  },
+
+  onWebConfigChange() {
+    this.ensureWebConfig();
+    const seasonInput = document.getElementById('web-config-season');
+    if (seasonInput) {
+      this.data.webConfig.seasonTitle = seasonInput.value.trim();
+      this.data.season = seasonInput.value.trim();
+    }
+
+    const subtitleInput = document.getElementById('web-config-subtitle');
+    if (subtitleInput) {
+      this.data.webConfig.leagueSubtitle = subtitleInput.value.trim();
+    }
+
+    const bannerChk = document.getElementById('web-config-announcement-enabled');
+    const bannerTxt = document.getElementById('web-config-announcement-text');
+    const bannerType = document.getElementById('web-config-announcement-type');
+    if (bannerChk && bannerTxt && bannerType) {
+      this.data.webConfig.bannerAnnouncement = {
+        enabled: bannerChk.checked,
+        text: bannerTxt.value.trim(),
+        type: bannerType.value
+      };
+    }
+    this.markDirty();
+  },
+
+  buildRoundRobin(teamIds, twoLegs = false) {
+    const teams = [...teamIds];
+    const hasOdd = teams.length % 2 !== 0;
+    if (hasOdd) {
+      teams.push('__BYE__');
+    }
+    const n = teams.length;
+    const roundsCount = n - 1;
+    const matchesPerRound = n / 2;
+    const fixed = teams[0];
+    let rotating = teams.slice(1);
+
+    const rounds = [];
+    for (let r = 0; r < roundsCount; r++) {
+      const current = [fixed, ...rotating];
+      const matches = [];
+      for (let m = 0; m < matchesPerRound; m++) {
+        let t1 = current[m];
+        let t2 = current[n - 1 - m];
+        if (m === 0 && r % 2 === 1) {
+          const tmp = t1; t1 = t2; t2 = tmp;
+        } else if (m > 0 && (r + m) % 2 === 1) {
+          const tmp = t1; t1 = t2; t2 = tmp;
+        }
+        if (t1 !== '__BYE__' && t2 !== '__BYE__') {
+          matches.push({
+            id: `match_r${r + 1}_m${matches.length + 1}`,
+            jornada: r + 1,
+            team1Id: t1,
+            team2Id: t2,
+            score1: null,
+            score2: null,
+            played: false,
+            events: []
+          });
+        }
+      }
+      rounds.push({
+        jornada: r + 1,
+        name: `Jornada ${r + 1}`,
+        type: 'ida',
+        matches: matches
+      });
+      rotating = [rotating[rotating.length - 1], ...rotating.slice(0, rotating.length - 1)];
+    }
+
+    if (twoLegs) {
+      for (let r = 0; r < roundsCount; r++) {
+        const idaRound = rounds[r];
+        const vueltaMatches = idaRound.matches.map((m, idx) => ({
+          id: `match_r${roundsCount + r + 1}_m${idx + 1}`,
+          jornada: roundsCount + r + 1,
+          team1Id: m.team2Id,
+          team2Id: m.team1Id,
+          score1: null,
+          score2: null,
+          played: false,
+          events: []
+        }));
+        rounds.push({
+          jornada: roundsCount + r + 1,
+          name: `Jornada ${roundsCount + r + 1}`,
+          type: 'vuelta',
+          matches: vueltaMatches
+        });
+      }
+    }
+
+    return rounds;
+  },
+
+  async generateDivisionFixture(divisionKey, twoLegs = false) {
+    if (!this.data || !this.data.teams) return;
+    const divName = divisionKey === 'oro' ? 'División Oro' : 'División Plata';
+    const legText = twoLegs ? 'Ida y Vuelta' : 'Solo Ida';
+
+    if (!confirm(`¿Deseas generar el calendario oficial de ${divName} (${legText})?\n\nEsto creará las fechas oficiales round-robin para todos los clubes de esta división y guardará los cambios.`)) {
+      return;
+    }
+
+    const eligible = this.data.teams.filter(t => (t.division || '').toLowerCase() === divisionKey.toLowerCase());
+    if (eligible.length < 2) {
+      this.showToast(`No hay suficientes clubes en ${divName} para generar calendario`, 'error');
+      return;
+    }
+
+    const teamIds = eligible.map(t => t.id);
+    const fixtureRounds = this.buildRoundRobin(teamIds, twoLegs);
+
+    // Formatear IDs oficiales
+    fixtureRounds.forEach(round => {
+      round.matches.forEach((m, idx) => {
+        m.id = `${divisionKey}_j${round.jornada}_m${idx + 1}`;
+      });
+    });
+
+    if (!this.data.fixtures) this.data.fixtures = {};
+    this.data.fixtures[divisionKey] = fixtureRounds;
+
+    await this.saveData(true);
+    this.onCompetitionChange();
+    this.showToast(`¡Calendario oficial de ${divName} (${fixtureRounds.length} Jornadas) generado y guardado exitosamente!`, 'success');
   }
 };
 

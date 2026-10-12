@@ -27,7 +27,7 @@
     </a>
 
     <nav>
-      <ul class="nav-menu">
+      <ul class="nav-menu" id="main-nav-menu">
         <li><button class="nav-link active" onclick="switchNav('dashboard')"><i class="fa-solid fa-house"></i>
             Inicio</button></li>
         <li><button class="nav-link" onclick="switchNav('posiciones')"><i class="fa-solid fa-trophy"></i>
@@ -38,17 +38,22 @@
             Equipos</button></li>
         <li><button class="nav-link" onclick="switchNav('sala-campeones')"><i class="fa-solid fa-award"></i>
             Sala de Trofeos</button></li>
-        <!-- <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
-            Estelar</button></li> -->
+        <li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa
+            Estelar</button></li>
+        <li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i>
+            Champions League</button></li>
         <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i>
             Mercado</button></li>
-        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones</button></li>
+        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-calculator"></i> Renovaciones</button></li>
         <li><button class="nav-link" onclick="switchNav('buscador')"><i class="fa-solid fa-magnifying-glass"></i> Buscar
             Jugadores</button></li>
-        <!-- <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li> -->
+        <li><button class="nav-link" onclick="switchNav('rules')"><i class="fa-solid fa-book"></i> Reglamento</button></li>
       </ul>
     </nav>
   </header>
+
+  <!-- Global Announcement Banner Controlled via Admin Hub -->
+  <div id="web-banner-announcement" class="web-banner-announcement" style="display: none;"></div>
 
   <!-- Main Application Container -->
   <main class="app-container">
@@ -878,54 +883,88 @@
 
         <!-- Search Controls -->
         <div
-          style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; box-shadow: var(--shadow-card);">
-          <div style="flex: 1; min-width: 280px; position: relative;">
+          style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--shadow-card);">
+          
+          <!-- Top Row: Main Search Input -->
+          <div style="position: relative; width: 100%;">
             <i class="fa-solid fa-magnifying-glass"
-              style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.7);"></i>
+              style="position: absolute; left: 1.15rem; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.7); font-size: 1rem;"></i>
             <input type="text" id="player-search-input" class="form-control"
-              style="padding-left: 2.75rem; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
-              placeholder="Buscar jugador por nombre exacto o aproximado (ej. Mbappé, Oblak, Pedri, Bastoni...)"
+              style="padding-left: 2.85rem; padding-right: 2.5rem; height: 48px; font-size: 1rem; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
+              placeholder="Buscar jugador por nombre exacto o aproximado (ej. Mbappé, Messi, Oblak, Pedri, Vardy...)"
               oninput="filterPlayersDatabase()">
+            <button type="button" onclick="document.getElementById('player-search-input').value=''; filterPlayersDatabase();"
+              style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-size: 0.95rem;">
+              ✕
+            </button>
           </div>
 
-          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            <select id="player-search-pos-filter" class="form-control"
-              style="width: auto; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
-              onchange="filterPlayersDatabase()">
-              <option value="" style="background-color: var(--lmi-blue); color: #ffffff;">Todas las Posiciones</option>
-              <option value="PT" style="background-color: var(--lmi-blue); color: #ffffff;">PT (Portero)</option>
-              <option value="CT" style="background-color: var(--lmi-blue); color: #ffffff;">CT (Defensa Central)
-              </option>
-              <option value="LI" style="background-color: var(--lmi-blue); color: #ffffff;">LI (Lateral Izquierdo)
-              </option>
-              <option value="LD" style="background-color: var(--lmi-blue); color: #ffffff;">LD (Lateral Derecho)
-              </option>
-              <option value="MCD" style="background-color: var(--lmi-blue); color: #ffffff;">MCD (Contención)</option>
-              <option value="MC" style="background-color: var(--lmi-blue); color: #ffffff;">MC (Mediocampista)</option>
-              <option value="ID" style="background-color: var(--lmi-blue); color: #ffffff;">ID (Interior Derecho)
-              </option>
-              <option value="II" style="background-color: var(--lmi-blue); color: #ffffff;">II (Interior Izquierdo)
-              </option>
-              <option value="MP" style="background-color: var(--lmi-blue); color: #ffffff;">MP (Mediapunta)</option>
-              <option value="SD" style="background-color: var(--lmi-blue); color: #ffffff;">SD (Segundo Delantero)
-              </option>
-              <option value="EI" style="background-color: var(--lmi-blue); color: #ffffff;">EI (Extremo Izquierdo)
-              </option>
-              <option value="ED" style="background-color: var(--lmi-blue); color: #ffffff;">ED (Extremo Derecho)
-              </option>
-              <option value="DC" style="background-color: var(--lmi-blue); color: #ffffff;">DC (Delantero Centro)
-              </option>
-            </select>
+          <!-- Bottom Row: Multi-Filters and Sort Controls -->
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; flex: 1;">
+              
+              <!-- Position Filter (Grouped) -->
+              <select id="player-search-pos-filter" class="form-control"
+                style="width: auto; min-width: 175px; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
+                onchange="filterPlayersDatabase()">
+                <option value="" style="background-color: var(--lmi-blue); color: #ffffff;">Todas las Posiciones</option>
+                <optgroup label="🧤 Porteros" style="background-color: #0b1528; color: #facc15;">
+                  <option value="PT">PT (Portero)</option>
+                </optgroup>
+                <optgroup label="🛡️ Defensas" style="background-color: #0b1528; color: #38bdf8;">
+                  <option value="CT">CT (Defensa Central)</option>
+                  <option value="LI">LI (Lateral Izquierdo)</option>
+                  <option value="LD">LD (Lateral Derecho)</option>
+                </optgroup>
+                <optgroup label="⚙️ Mediocampistas" style="background-color: #0b1528; color: #34d399;">
+                  <option value="MCD">MCD (Contención)</option>
+                  <option value="MC">MC (Mediocampista)</option>
+                  <option value="MP">MP (Mediapunta)</option>
+                  <option value="II">II (Interior Izquierdo)</option>
+                  <option value="ID">ID (Interior Derecho)</option>
+                </optgroup>
+                <optgroup label="⚡ Delanteros" style="background-color: #0b1528; color: #f87171;">
+                  <option value="DC">DC (Delantero Centro)</option>
+                  <option value="SD">SD (Segundo Delantero)</option>
+                  <option value="EI">EI (Extremo Izquierdo)</option>
+                  <option value="ED">ED (Extremo Derecho)</option>
+                </optgroup>
+              </select>
 
-            <select id="player-search-team-filter" class="form-control"
-              style="width: auto; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
-              onchange="filterPlayersDatabase()">
-              <!-- Populated via JS -->
-            </select>
+              <!-- Card Type Filter -->
+              <select id="player-search-card-type-filter" class="form-control"
+                style="width: auto; min-width: 165px; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
+                onchange="filterPlayersDatabase()">
+                <option value="" style="background-color: var(--lmi-blue); color: #ffffff;">Todas las Cartas</option>
+                <option value="Normal" style="background-color: #0b1528; color: #ffffff;">Normales</option>
+                <option value="Epico" style="background-color: #0b1528; color: #ffd700;">⭐ Solo Épicos</option>
+                <option value="Big Time" style="background-color: #0b1528; color: #00e5ff;">⚡ Solo Big Time</option>
+                <option value="SpecialOnly" style="background-color: #0b1528; color: #e879f9;">👑 Épicos y Big Time</option>
+              </select>
+
+              <!-- Club Filter -->
+              <select id="player-search-team-filter" class="form-control"
+                style="width: auto; min-width: 180px; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
+                onchange="filterPlayersDatabase()">
+                <!-- Populated via JS -->
+              </select>
+
+              <!-- Sorting Order -->
+              <select id="player-search-sort-filter" class="form-control"
+                style="width: auto; min-width: 175px; background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
+                onchange="filterPlayersDatabase()">
+                <option value="name_asc" style="background-color: #0b1528; color: #ffffff;">Ordenar: Nombre (A-Z)</option>
+                <option value="goals_desc" style="background-color: #0b1528; color: #34d399;">Ordenar: Más Goles</option>
+                <option value="assists_desc" style="background-color: #0b1528; color: #38bdf8;">Ordenar: Más Asistencias</option>
+                <option value="price_desc" style="background-color: #0b1528; color: #facc15;">Ordenar: Mayor Valor ($)</option>
+                <option value="price_asc" style="background-color: #0b1528; color: #cbd5e1;">Ordenar: Menor Valor ($)</option>
+              </select>
+
+            </div>
 
             <button class="btn-secondary"
-              style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25);"
-              onclick="resetPlayerSearchFilters()"><i class="fa-solid fa-rotate-left"></i> Limpiar</button>
+              style="background-color: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.25); white-space: nowrap;"
+              onclick="resetPlayerSearchFilters()"><i class="fa-solid fa-rotate-left"></i> Restablecer Filtros</button>
           </div>
         </div>
 
@@ -1108,8 +1147,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1791770389"></script>
-  <script src="app.js?v=1791682500"></script>
+  <script src="data.js?v=1791780807"></script>
+  <script src="app.js?v=1791777900"></script>
 </body>
 
 </html>

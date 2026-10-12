@@ -814,3 +814,119 @@ textarea.form-control {
   70% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); border-color: #38bdf8; }
   100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: var(--border-color); }
 }
+
+/* ==================== CENTRO DE CONTROL WEB ==================== */
+.web-tab-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.web-tab-card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.web-tab-card.disabled {
+  opacity: 0.6;
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.web-tab-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.web-tab-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.web-tab-card.disabled .web-tab-card-icon {
+  background: rgba(100, 116, 139, 0.2);
+  color: #94a3b8;
+}
+
+/* Toggle Switch */
+.lmi-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.lmi-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.lmi-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #334155;
+  transition: var(--transition);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lmi-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: var(--transition);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.lmi-switch input:checked + .lmi-slider {
+  background-color: #10b981;
+}
+
+.lmi-switch input:checked + .lmi-slider:before {
+  transform: translateX(22px);
+}
+
+/* Fixture Generator Action Cards */
+.fixture-generator-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.fixture-generator-card h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+

@@ -136,7 +136,57 @@ function saveDataToStorage() {
 // UI Initialization & Navigation
 let currentSearchPageSize = 24;
 
+function renderMainNavMenu() {
+  const navContainer = document.getElementById('main-nav-menu');
+  if (!navContainer) return;
+
+  // Si existe configuración de pestañas desde Admin Hub, usarla dinámicamente
+  if (lmiData && lmiData.webConfig && Array.isArray(lmiData.webConfig.tabs)) {
+    const enabledTabs = lmiData.webConfig.tabs.filter(t => t.enabled !== false);
+    if (enabledTabs.length > 0) {
+      navContainer.innerHTML = enabledTabs.map(tab => {
+        const isActive = (currentNav === tab.id);
+        return `
+          <li>
+            <button class="nav-link ${isActive ? 'active' : ''}" onclick="switchNav('${tab.id}')">
+              <i class="fa-solid ${tab.icon || 'fa-circle'}"></i> ${tab.label}
+            </button>
+          </li>
+        `;
+      }).join('');
+    }
+  }
+}
+
+function renderWebAnnouncementBanner() {
+  const bannerEl = document.getElementById('web-banner-announcement');
+  if (!bannerEl) return;
+
+  const cfg = lmiData && lmiData.webConfig && lmiData.webConfig.bannerAnnouncement;
+  if (cfg && cfg.enabled && cfg.text && cfg.text.trim()) {
+    const type = cfg.type || 'info';
+    const iconMap = {
+      'info': 'fa-circle-info',
+      'warning': 'fa-triangle-exclamation',
+      'success': 'fa-circle-check'
+    };
+    bannerEl.className = `web-banner-announcement banner-${type}`;
+    bannerEl.style.display = 'flex';
+    bannerEl.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <i class="fa-solid ${iconMap[type] || 'fa-bullhorn'}"></i>
+        <span>${cfg.text.trim()}</span>
+      </div>
+      <button type="button" onclick="document.getElementById('web-banner-announcement').style.display='none'" style="background: transparent; border: none; color: inherit; cursor: pointer; opacity: 0.7; font-size: 0.95rem; padding: 0.2rem 0.5rem;" title="Cerrar aviso">✕</button>
+    `;
+  } else {
+    bannerEl.style.display = 'none';
+  }
+}
+
 function initUI() {
+  renderMainNavMenu();
+  renderWebAnnouncementBanner();
   renderDashboard();
   renderStats();
   initTeamSelect();
@@ -162,9 +212,17 @@ function initUI() {
 }
 
 function switchNav(navId) {
-  if (navId === 'rules') {
-    navId = 'dashboard';
+  // Comprobar si la pestaña está deshabilitada en la configuración del Admin Hub
+  if (lmiData && lmiData.webConfig && Array.isArray(lmiData.webConfig.tabs)) {
+    const tabObj = lmiData.webConfig.tabs.find(t => t.id === navId);
+    if (tabObj && tabObj.enabled === false) {
+      const firstEnabled = lmiData.webConfig.tabs.find(t => t.enabled !== false);
+      if (firstEnabled) {
+        navId = firstEnabled.id;
+      }
+    }
   }
+
   if (navId === 'copa-estelar') {
     switchNav('posiciones');
     switchWebDivision('estelar');
@@ -199,6 +257,10 @@ function switchNav(navId) {
   if (navId === 'mercado') renderMercado();
   if (navId === 'renovaciones') {
     const sel = document.getElementById('renovation-team-select');
+    const teamSel = document.getElementById('team-select');
+    if (teamSel && teamSel.value && sel && !sel.value) {
+      sel.value = teamSel.value;
+    }
     if (sel && sel.value) loadRenovationsForTeam(sel.value);
   }
   if (navId === 'buscador') filterPlayersDatabase();
@@ -1193,6 +1255,11 @@ function loadTeamHub(teamId) {
   const team = lmiData.teams.find(t => t.id === teamId);
   if (!team) return;
 
+  const renSel = document.getElementById('renovation-team-select');
+  if (renSel) {
+    renSel.value = teamId;
+  }
+
   const headerBox = document.getElementById('team-hub-header');
   const rosterTbody = document.getElementById('team-roster-tbody');
   const statsBox = document.getElementById('team-hub-stats-box');
@@ -1411,9 +1478,12 @@ function formatRenewalValue(val) {
 function initRenovationSelect() {
   const sel = document.getElementById('renovation-team-select');
   if (!sel) return;
-  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name} (Presupuesto: $${formatRenewalValue((t.budget || 100000000) / 1000000)}M)</option>`).join('');
-  if (lmiData.teams.length > 0) {
-    loadRenovationsForTeam(lmiData.teams[0].id);
+  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}" style="background-color: #0b1528; color: #ffffff;">${t.name} (Presupuesto: $${formatRenewalValue((t.budget || 100000000) / 1000000)}M)</option>`).join('');
+  const teamSel = document.getElementById('team-select');
+  const targetId = (teamSel && teamSel.value) ? teamSel.value : (lmiData.teams.length > 0 ? lmiData.teams[0].id : null);
+  if (targetId) {
+    sel.value = targetId;
+    loadRenovationsForTeam(targetId);
   }
 }
 
@@ -1452,12 +1522,12 @@ function loadRenovationsForTeam(teamId) {
           <td>
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
               <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                <span id="player-name-${p.id}" style="font-weight: 600; ${isNotRenewed ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${p.name}</span>
+                <span id="player-name-${p.id}" style="font-weight: 600; color: #0f172a; ${isNotRenewed ? 'text-decoration: line-through; color: #64748b !important;' : ''}">${p.name}</span>
                 <span id="player-status-badge-${p.id}">
-                  ${isNotRenewed ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' : ''}
+                  ${isNotRenewed ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ef4444; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">No Renovado</span>' : ''}
                 </span>
-                ${cardType === 'Epico' ? '<span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.4); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;"><i class="fa-solid fa-crown"></i> ÉPICO</span>' : ''}
-                ${cardType === 'Big Time' ? '<span class="badge" style="background: rgba(0, 229, 255, 0.15); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.4); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;"><i class="fa-solid fa-bolt"></i> BIG TIME</span>' : ''}
+                ${cardType === 'Epico' ? '<span class="badge" style="background: rgba(255, 215, 0, 0.2); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.4); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;"><i class="fa-solid fa-crown"></i> ÉPICO</span>' : ''}
+                ${cardType === 'Big Time' ? '<span class="badge" style="background: rgba(2, 132, 199, 0.18); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.4); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;"><i class="fa-solid fa-bolt"></i> BIG TIME</span>' : ''}
               </div>
               <div style="display: flex; gap: 0.3rem;">
                 <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom">F.COM</a>
@@ -1467,14 +1537,14 @@ function loadRenovationsForTeam(teamId) {
           <td style="text-align: center;">
             <select class="form-control card-type-select" onchange="changePlayerCardType('${p.id}', this.value, '${teamId}')" style="display: inline-block; width: auto; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 6px; text-align: center; cursor: pointer; ${
               cardType === 'Epico' 
-                ? 'background: rgba(255, 215, 0, 0.18); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.5);' 
+                ? 'background: rgba(255, 215, 0, 0.18); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.4);' 
                 : cardType === 'Big Time' 
-                  ? 'background: rgba(0, 229, 255, 0.18); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.5);' 
-                  : 'background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255, 255, 255, 0.15);'
+                  ? 'background: rgba(2, 132, 199, 0.15); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.4);' 
+                  : 'background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;'
             }">
-              <option value="Normal" ${cardType === 'Normal' ? 'selected' : ''} style="background: #111827; color: #ffffff;">Normal</option>
-              <option value="Epico" ${cardType === 'Epico' ? 'selected' : ''} style="background: #111827; color: #ffd700; font-weight: 700;">⭐ Épico</option>
-              <option value="Big Time" ${cardType === 'Big Time' ? 'selected' : ''} style="background: #111827; color: #00e5ff; font-weight: 700;">⚡ Big Time</option>
+              <option value="Normal" ${cardType === 'Normal' ? 'selected' : ''}>Normal</option>
+              <option value="Epico" ${cardType === 'Epico' ? 'selected' : ''}>⭐ Épico</option>
+              <option value="Big Time" ${cardType === 'Big Time' ? 'selected' : ''}>⚡ Big Time</option>
             </select>
           </td>
           <td style="text-align: right; white-space: nowrap;">
@@ -1483,7 +1553,7 @@ function loadRenovationsForTeam(teamId) {
               inputmode="decimal" 
               id="renovation-input-${p.id}"
               class="form-control renewal-val-input" 
-              style="width: 95px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right; font-weight: 700;" 
+              style="width: 95px; display: inline-block; padding: 0.2rem 0.4rem; text-align: right; font-weight: 700; background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;" 
               value="${formatRenewalValue(priceVal)}" 
               onkeydown="handleRenewalPriceKeydown(event)"
               oninput="handleRenewalPriceInput(this, '${p.id}', '${teamId}')"
@@ -1594,11 +1664,11 @@ function updateRowVisualsForRenewal(playerId, val) {
 
   if (nameEl) {
     nameEl.style.textDecoration = isNotRenewed ? 'line-through' : 'none';
-    nameEl.style.color = isNotRenewed ? 'var(--text-muted)' : 'inherit';
+    nameEl.style.color = isNotRenewed ? '#64748b' : '#0f172a';
   }
   if (statusEl) {
     statusEl.innerHTML = isNotRenewed 
-      ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px;">No Renovado</span>' 
+      ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ef4444; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">No Renovado</span>' 
       : '';
   }
   if (trEl) {
@@ -1624,6 +1694,8 @@ function recalculateRenovationTotals(teamId) {
 
   const teamPlayers = lmiData.players.filter(p => p.teamId === teamId);
   let totalRenovations = 0;
+  let renewedCount = 0;
+  let nonRenewedCount = 0;
 
   teamPlayers.forEach(p => {
     // Si el input está montado en el DOM, sincronizar con su valor exacto
@@ -1635,21 +1707,49 @@ function recalculateRenovationTotals(teamId) {
     } else {
       pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
     }
+
+    if (pVal > 0) {
+      renewedCount++;
+    } else {
+      nonRenewedCount++;
+    }
     totalRenovations += pVal;
   });
 
   totalRenovations = Math.round(totalRenovations * 100) / 100;
   const teamBudgetM = ((team.budget || 100000000) / 1000000);
+  const remainingM = Math.round((teamBudgetM - totalRenovations) * 100) / 100;
 
   const teamBudgetEl = document.getElementById('renovation-team-budget');
   const totalFinalEl = document.getElementById('renovation-total-final');
   const remainingEl = document.getElementById('renovation-budget-remaining');
+  const balanceStatusEl = document.getElementById('renovation-balance-status');
+  const rosterSummaryEl = document.getElementById('renovation-roster-summary');
+  const rosterSubEl = document.getElementById('renovation-roster-sub');
 
   if (teamBudgetEl) teamBudgetEl.innerText = `$${formatRenewalValue(teamBudgetM)}M USD`;
-  // Solo suma directa del monto ingresado, sin restar al presupuesto ni signo negativo
   if (totalFinalEl) totalFinalEl.innerText = `$${formatRenewalValue(totalRenovations)}M USD`;
+  
   if (remainingEl) {
-    remainingEl.innerText = `$${formatRenewalValue(teamBudgetM)}M USD`;
+    remainingEl.innerText = `$${formatRenewalValue(remainingM)}M USD`;
+    if (remainingM >= 0) {
+      remainingEl.className = 'renovation-metric-value balance-positive';
+      if (balanceStatusEl) {
+        balanceStatusEl.innerHTML = '<span style="color: #34d399;"><i class="fa-solid fa-check"></i> Superávit disponible</span>';
+      }
+    } else {
+      remainingEl.className = 'renovation-metric-value balance-negative';
+      if (balanceStatusEl) {
+        balanceStatusEl.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> Déficit de -$${formatRenewalValue(Math.abs(remainingM))}M</span>`;
+      }
+    }
+  }
+
+  if (rosterSummaryEl) {
+    rosterSummaryEl.innerText = `${renewedCount} / ${teamPlayers.length}`;
+  }
+  if (rosterSubEl) {
+    rosterSubEl.innerText = `${renewedCount} renovados • ${nonRenewedCount} bajas`;
   }
 }
 
@@ -1674,9 +1774,9 @@ function exportRenewalReport() {
   if (!team) return;
 
   const teamPlayers = lmiData.players.filter(p => p.teamId === sel.value);
-  let summary = `📋 INFORME DE RENOVACIONES - TEMPORADA 11\n`;
-  summary += `Club: ${team.name}\n`;
-  summary += `--------------------------------------------------\n`;
+  let summary = `📋 *INFORME DE RENOVACIONES - LMI TEMPORADA 11*\n`;
+  summary += `🛡️ *Club:* ${team.name}\n`;
+  summary += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
   
   let totalRenovations = 0;
   let renewedCount = 0;
@@ -1694,38 +1794,47 @@ function exportRenewalReport() {
       pVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5.0;
     }
 
-    let typeText = "";
-    if (p.cardType === 'Epico') typeText = ' (Épico)';
-    else if (p.cardType === 'Big Time') typeText = ' (Big Time)';
-    else if (p.isLegend) typeText = ' (Leyenda)';
+    let typeTag = "";
+    if (p.cardType === 'Epico') typeTag = ' ⭐ [Épico]';
+    else if (p.cardType === 'Big Time') typeTag = ' ⚡ [Big Time]';
+    else if (p.isLegend) typeTag = ' 👑 [Leyenda]';
 
     if (pVal === 0) {
       nonRenewedCount++;
-      summary += `${idx + 1}. [${p.position}] ${p.name} - NO RENOVADO ($0M)${typeText}\n`;
+      summary += `❌ ${idx + 1}. [${p.position}] ${p.name} - *NO RENOVADO ($0M)*${typeTag}\n`;
     } else {
       renewedCount++;
       totalRenovations += pVal;
-      summary += `${idx + 1}. [${p.position}] ${p.name} - $${formatRenewalValue(pVal)}M${typeText}\n`;
+      summary += `✅ ${idx + 1}. [${p.position}] ${p.name} - *$${formatRenewalValue(pVal)}M*${typeTag}\n`;
     }
   });
 
   totalRenovations = Math.round(totalRenovations * 100) / 100;
   const teamBudgetM = ((team.budget || 100000000) / 1000000);
+  const remainingM = Math.round((teamBudgetM - totalRenovations) * 100) / 100;
 
-  summary += `--------------------------------------------------\n`;
-  if (nonRenewedCount > 0) {
-    summary += `Jugadores Renovados: ${renewedCount} | No Renovados: ${nonRenewedCount}\n`;
+  summary += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+  summary += `📊 *RESUMEN FINANCIERO Y PLANTILLA:*\n`;
+  summary += `• Jugadores Renovados: ${renewedCount}\n`;
+  summary += `• Bajas (No Renovados): ${nonRenewedCount}\n`;
+  summary += `• Total Plantilla: ${teamPlayers.length}\n`;
+  summary += `• Presupuesto Oficial: $${formatRenewalValue(teamBudgetM)}M USD\n`;
+  summary += `• Gasto en Renovaciones: $${formatRenewalValue(totalRenovations)}M USD\n`;
+  summary += `• *Saldo Neto Restante:* $${formatRenewalValue(remainingM)}M USD ${remainingM >= 0 ? '🟢 (Superávit)' : '🔴 (Déficit)'}\n`;
+
+  if (team.legendChangeNote && team.legendChangeNote.trim()) {
+    summary += `\n🔄 *Cambio de Carta Especial:* ${team.legendChangeNote.trim()}\n`;
   }
-  summary += `Presupuesto del Club: $${formatRenewalValue(teamBudgetM)}M USD\n`;
-  summary += `Total Renovaciones (Suma): $${formatRenewalValue(totalRenovations)}M USD\n`;
+  if (team.legendRemoveNote && team.legendRemoveNote.trim()) {
+    summary += `🗑️ *Baja de Carta Especial:* ${team.legendRemoveNote.trim()}\n`;
+  }
 
-  if (team.legendChangeNote) summary += `\n📌 Cambio Leyenda / Épico / Big Time: ${team.legendChangeNote}\n`;
-  if (team.legendRemoveNote) summary += `📌 Elimino Leyenda / Épico / Big Time: ${team.legendRemoveNote}\n`;
+  summary += `\n_Generado automáticamente desde la plataforma oficial LMI_`;
 
   // Copiar al portapapeles con fallback robusto
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(summary).then(() => {
-      showToast("¡Resumen copiado al portapapeles!", "fa-copy");
+      showToast("¡Informe para WhatsApp copiado con éxito!", "fa-copy");
     }).catch(() => {
       fallbackCopyToClipboard(summary);
     });
@@ -1808,6 +1917,8 @@ function filterPlayersDatabase(resetLimit = true) {
   const queryInput = document.getElementById('player-search-input');
   const posFilter = document.getElementById('player-search-pos-filter');
   const teamFilter = document.getElementById('player-search-team-filter');
+  const cardTypeFilter = document.getElementById('player-search-card-type-filter');
+  const sortFilter = document.getElementById('player-search-sort-filter');
   const resultsContainer = document.getElementById('player-search-results-grid');
   const countBadge = document.getElementById('search-count-badge');
 
@@ -1821,15 +1932,26 @@ function filterPlayersDatabase(resetLimit = true) {
   const normQuery = normalizeSearchString(rawQuery);
   const selectedPos = posFilter ? posFilter.value : '';
   const selectedTeam = teamFilter ? teamFilter.value : '';
+  const selectedCardType = cardTypeFilter ? cardTypeFilter.value : '';
+  const selectedSort = sortFilter ? sortFilter.value : 'name_asc';
 
   let filtered = lmiData.players.filter(p => {
-    // 1. Position Filter
+    // 1. Filtro de Posición
     if (selectedPos && p.position !== selectedPos) return false;
     
-    // 2. Team Filter
+    // 2. Filtro de Club
     if (selectedTeam && p.teamId !== selectedTeam) return false;
 
-    // 3. Search Query (Exact & Approximate Fuzzy Matching)
+    // 3. Filtro de Tipo de Carta
+    if (selectedCardType) {
+      const pCard = p.cardType || (p.isLegend ? 'Epico' : 'Normal');
+      if (selectedCardType === 'Normal' && pCard !== 'Normal') return false;
+      if (selectedCardType === 'Epico' && pCard !== 'Epico') return false;
+      if (selectedCardType === 'Big Time' && pCard !== 'Big Time') return false;
+      if (selectedCardType === 'SpecialOnly' && pCard !== 'Epico' && pCard !== 'Big Time') return false;
+    }
+
+    // 4. Búsqueda por Nombre (Normalizada y Aproximada)
     if (normQuery) {
       const normPlayerName = normalizeSearchString(p.name);
       if (!normPlayerName.includes(normQuery)) return false;
@@ -1837,6 +1959,20 @@ function filterPlayersDatabase(resetLimit = true) {
 
     return true;
   });
+
+  // Ordenamiento dinámico
+  if (selectedSort === 'goals_desc') {
+    filtered.sort((a, b) => (b.goals || 0) - (a.goals || 0) || (b.assists || 0) - (a.assists || 0));
+  } else if (selectedSort === 'assists_desc') {
+    filtered.sort((a, b) => (b.assists || 0) - (a.assists || 0) || (b.goals || 0) - (a.goals || 0));
+  } else if (selectedSort === 'price_desc') {
+    filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+  } else if (selectedSort === 'price_asc') {
+    filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+  } else {
+    // name_asc por defecto
+    filtered.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+  }
 
   if (countBadge) {
     countBadge.innerText = `${filtered.length} Jugadores Encontrados`;
@@ -1846,39 +1982,52 @@ function filterPlayersDatabase(resetLimit = true) {
     resultsContainer.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted); background: rgba(0,0,0,0.3); border-radius: var(--radius-md);">
         <i class="fa-solid fa-user-slash" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--neon-gold);"></i>
-        <h3>No se encontraron jugadores</h3>
-        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Intenta buscar por otro nombre o limpia los filtros de búsqueda.</p>
+        <h3 style="color: #ffffff;">No se encontraron jugadores</h3>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-muted);">Intenta ajustar o restablecer los filtros de búsqueda.</p>
+        <button class="btn-secondary" onclick="resetPlayerSearchFilters()" style="margin-top: 1rem;">
+          <i class="fa-solid fa-rotate-left"></i> Restablecer Filtros
+        </button>
       </div>
     `;
   } else {
     const sliced = filtered.slice(0, currentSearchPageSize);
 
     let html = sliced.map(p => {
-      const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: 'Logos Equipos/Real_Madrid.png' };
-      const priceVal = (p.price || 5000000) / 1000000;
+      const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: 'Logos Equipos/Real_Madrid.png', division: '' };
+      const priceVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5;
+      const cardType = p.cardType || (p.isLegend ? 'Epico' : 'Normal');
+      const divName = (team.division || '').toLowerCase() === 'oro' ? 'Oro' : ((team.division || '').toLowerCase() === 'plata' ? 'Plata' : '');
 
       return `
-        <div class="card" style="margin-bottom: 0; background: var(--lmi-blue); border-color: var(--lmi-blue); box-shadow: var(--shadow-card); transition: transform 0.2s, border-color 0.2s;">
-          <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem;">
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <div class="player-search-card" style="box-shadow: var(--shadow-card);">
+          <div class="player-card-header">
+            <div class="player-card-name-box">
               <span class="pos-badge pos-${p.position}">${p.position}</span>
-              <span style="font-weight: 700; font-size: 1.05rem; color: #fff;">${p.name}</span>
+              <span class="player-card-name">${p.name}</span>
+              ${cardType === 'Epico' ? '<span class="badge" style="background: rgba(255, 215, 0, 0.18); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.45); font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 800;"><i class="fa-solid fa-crown"></i> ÉPICO</span>' : ''}
+              ${cardType === 'Big Time' ? '<span class="badge" style="background: rgba(0, 229, 255, 0.18); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.45); font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 800;"><i class="fa-solid fa-bolt"></i> BIG TIME</span>' : ''}
             </div>
-            <div style="display: flex; gap: 0.3rem;">
+            <div style="display: flex; gap: 0.35rem;">
               <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm" title="Buscar en Transfermarkt">TM</a>
               <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom" title="Buscar perfil en Fichajes.com">F.COM</a>
             </div>
           </div>
 
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.15);">
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 24px; height: 24px; object-fit: contain;">
-              <span style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">${team.name}</span>
+          <div class="player-card-club-row">
+            <div class="player-card-club">
+              <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 22px; height: 22px; object-fit: contain;">
+              <span>${team.name}</span>
+              ${divName ? `<span class="badge" style="font-size: 0.65rem; padding: 0.1rem 0.35rem; background: rgba(255,255,255,0.08); color: #94a3b8; border-radius: 3px;">${divName}</span>` : ''}
             </div>
 
-            <div style="font-size: 0.8rem; text-align: right;">
-              <span style="color: #00ff88; font-weight: 700;">${p.goals}G</span> &bull; 
-              <span style="color: #00e5ff; font-weight: 700;">${p.assists}A</span>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="player-card-stats">
+                <span class="stat-pill-goals" title="Goles oficiales"><i class="fa-solid fa-futbol"></i> ${p.goals || 0}</span>
+                <span class="stat-pill-assists" title="Asistencias oficiales"><i class="fa-solid fa-handshake"></i> ${p.assists || 0}</span>
+              </div>
+              <span style="font-size: 0.8rem; font-weight: 800; color: #facc15; background: rgba(250, 204, 21, 0.1); border: 1px solid rgba(250, 204, 21, 0.25); padding: 0.15rem 0.45rem; border-radius: 4px;">
+                $${formatRenewalValue(priceVal)}M
+              </span>
             </div>
           </div>
         </div>
@@ -1888,9 +2037,12 @@ function filterPlayersDatabase(resetLimit = true) {
     if (filtered.length > currentSearchPageSize) {
       const remaining = filtered.length - currentSearchPageSize;
       html += `
-        <div style="grid-column: 1 / -1; text-align: center; margin-top: 1rem;">
-          <button class="btn-primary" onclick="loadMoreSearchResults()" style="padding: 0.7rem 1.8rem; font-size: 0.95rem;">
-            <i class="fa-solid fa-angles-down"></i> Mostrar más (${remaining} restantes)
+        <div style="grid-column: 1 / -1; display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.25rem;">
+          <button class="btn-primary" onclick="loadMoreSearchResults()" style="padding: 0.65rem 1.6rem; font-size: 0.92rem; font-weight: 700;">
+            <i class="fa-solid fa-angles-down"></i> Cargar más (${remaining} restantes)
+          </button>
+          <button class="btn-secondary" onclick="loadAllSearchResults(${filtered.length})" style="padding: 0.65rem 1.25rem; font-size: 0.92rem;">
+            Mostrar Todos (${filtered.length})
           </button>
         </div>
       `;
@@ -1948,14 +2100,23 @@ function loadMoreSearchResults() {
   filterPlayersDatabase(false);
 }
 
+function loadAllSearchResults(total) {
+  currentSearchPageSize = total;
+  filterPlayersDatabase(false);
+}
+
 function resetPlayerSearchFilters() {
   const queryInput = document.getElementById('player-search-input');
   const posFilter = document.getElementById('player-search-pos-filter');
   const teamFilter = document.getElementById('player-search-team-filter');
+  const cardTypeFilter = document.getElementById('player-search-card-type-filter');
+  const sortFilter = document.getElementById('player-search-sort-filter');
 
   if (queryInput) queryInput.value = '';
   if (posFilter) posFilter.value = '';
   if (teamFilter) teamFilter.value = '';
+  if (cardTypeFilter) cardTypeFilter.value = '';
+  if (sortFilter) sortFilter.value = 'name_asc';
 
   filterPlayersDatabase();
 }

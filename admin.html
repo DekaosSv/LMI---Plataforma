@@ -56,6 +56,10 @@
         <i class="fa-solid fa-award"></i>
         <span>Trofeos & Balón de Oro</span>
       </button>
+      <button class="nav-btn" data-view="view-web-control" style="border-left: 3px solid #38bdf8;">
+        <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i>
+        <span>Centro de Control Web</span>
+      </button>
 
       <span class="nav-section-title">Sistema</span>
       <button class="nav-btn" id="btn-quick-deploy">
@@ -614,7 +618,7 @@
               <select class="form-select" id="team-selector" style="width: 240px; font-weight: 700;">
                 <!-- Populated dynamically -->
               </select>
-              <button class="btn btn-primary" id="btn-open-create-club" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Crear un nuevo club en la liga">
+              <button class="btn btn-primary" id="btn-open-create-club" onclick="AdminApp.openCreateClubModal()" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Crear un nuevo club en la liga">
                 <i class="fa-solid fa-shield-plus"></i> Nuevo Club
               </button>
               <button class="btn btn-danger" id="btn-delete-team" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Eliminar este club">
@@ -852,6 +856,161 @@
 
       </section>
 
+      <!-- ==================== VIEW 6: CENTRO DE CONTROL WEB ==================== -->
+      <section class="module-view" id="view-web-control">
+
+        <!-- Top Overview -->
+        <div class="card" style="border-left: 4px solid #38bdf8;">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control y Personalización Web</h2>
+              <p class="card-desc">Controla la visibilidad de cada pestaña pública, configura textos y anuncios de la liga, y genera calendarios oficiales sin tocar código.</p>
+            </div>
+            <button class="btn btn-gold" onclick="AdminApp.saveData(true)">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Todo Ahora
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. Pestañas de la Web (Mostrar / Ocultar) -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-layer-group" style="color: var(--lmi-gold);"></i> Pestañas y Apartados de la Web</h2>
+              <p class="card-desc">Activa o desactiva en tiempo real las pestañas que ven los usuarios en la barra de navegación pública.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.toggleAllWebTabs(true)">
+                <i class="fa-solid fa-check"></i> Activar Todas
+              </button>
+              <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.toggleAllWebTabs(false)">
+                <i class="fa-solid fa-ban"></i> Desactivar Opcionales
+              </button>
+            </div>
+          </div>
+
+          <div class="grid-3" id="web-tabs-control-grid">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- 2. Información General y Anuncios de la Web -->
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-pen-to-square" style="color: #38bdf8;"></i> Títulos y Temporada</h2>
+            </div>
+            <div class="form-group">
+              <label>Título de la Temporada</label>
+              <input type="text" class="form-control" id="web-config-season" placeholder="Ej: Temporada 11" oninput="AdminApp.onWebConfigChange()">
+            </div>
+            <div class="form-group">
+              <label>Subtítulo Oficial de la Liga</label>
+              <input type="text" class="form-control" id="web-config-subtitle" placeholder="Subtítulo visible en portada..." oninput="AdminApp.onWebConfigChange()">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-bullhorn" style="color: #f59e0b;"></i> Barra de Anuncio en Portada</h2>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Mostrar aviso en la parte superior</span>
+              <label class="lmi-switch">
+                <input type="checkbox" id="web-config-announcement-enabled" onchange="AdminApp.onWebConfigChange()">
+                <span class="lmi-slider"></span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Mensaje del Anuncio</label>
+              <input type="text" class="form-control" id="web-config-announcement-text" placeholder="Ej: ¡Período de Renovaciones Abierto! Envía tu informe al administrador" oninput="AdminApp.onWebConfigChange()">
+            </div>
+            <div class="form-group">
+              <label>Tipo de Aviso</label>
+              <select class="form-select" id="web-config-announcement-type" onchange="AdminApp.onWebConfigChange()">
+                <option value="info">🔵 Informativo (Azul)</option>
+                <option value="warning">🟡 Alerta / Recordatorio (Amarillo)</option>
+                <option value="success">🟢 Éxito / Especial (Verde)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Generador Centralizado de Fechas / Fixtures -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-calendar-plus" style="color: #10b981;"></i> Generador Oficial de Fechas y Torneos</h2>
+              <p class="card-desc">Genera y regenera los calendarios oficiales directamente desde el panel. En la web pública se mostrarán exclusivamente para consulta de los usuarios.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- División Oro -->
+            <div class="fixture-generator-card">
+              <h4><i class="fa-solid fa-crown" style="color: #ffd700;"></i> División Oro (<span id="gen-oro-count">8</span> Clubes)</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                Genera los partidos de liga entre los clubes asignados a División Oro con algoritmo oficial round-robin.
+              </p>
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="AdminApp.generateDivisionFixture('oro', false)">
+                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (7 Jornadas)
+                </button>
+                <button class="btn btn-secondary" onclick="AdminApp.generateDivisionFixture('oro', true)">
+                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (14 Jornadas)
+                </button>
+              </div>
+            </div>
+
+            <!-- División Plata -->
+            <div class="fixture-generator-card">
+              <h4><i class="fa-solid fa-shield-halved" style="color: #94a3b8;"></i> División Plata (<span id="gen-plata-count">15</span> Clubes)</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                Genera los partidos de liga entre los clubes de División Plata. Incluye descanso rotativo por jornada.
+              </p>
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="AdminApp.generateDivisionFixture('plata', false)">
+                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (15 Jornadas)
+                </button>
+                <button class="btn btn-secondary" onclick="AdminApp.generateDivisionFixture('plata', true)">
+                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (30 Jornadas)
+                </button>
+              </div>
+            </div>
+
+            <!-- UEFA Champions League -->
+            <div class="fixture-generator-card">
+              <h4><i class="fa-solid fa-trophy" style="color: #38bdf8;"></i> UEFA Champions League (18 Clubes)</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                Genera las 17 fechas oficiales round-robin de Champions League o sincroniza los cuartos de final con el Top 8.
+              </p>
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn btn-gold" onclick="AdminApp.generateChampionsFixture()">
+                  <i class="fa-solid fa-calendar-check"></i> Generar 17 Fechas
+                </button>
+                <button class="btn btn-secondary" onclick="AdminApp.generateChampionsPlayoffs()">
+                  <i class="fa-solid fa-sitemap"></i> Sincronizar Top 8 a Cuartos
+                </button>
+              </div>
+            </div>
+
+            <!-- Copa Estelar -->
+            <div class="fixture-generator-card">
+              <h4><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Copa Estelar LMI</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                Realiza un nuevo sorteo oficial aleatorio para el cuadro de eliminación directa de Copa Estelar.
+              </p>
+              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn btn-gold" onclick="AdminApp.drawCopaEstelar()">
+                  <i class="fa-solid fa-shuffle"></i> Realizar Sorteo Oficial
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
     </div>
   </main>
 
@@ -1081,7 +1240,7 @@
   </div>
 
   <!-- ==================== MODAL: CREAR NUEVO CLUB ==================== -->
-  <div class="modal-overlay" id="modal-create-club" style="display: none;">
+  <div class="modal-overlay" id="modal-create-club" style="display: none;" onclick="if(event.target===this) AdminApp.closeCreateClubModal()">
     <div class="modal-dialog" style="max-width: 620px;">
       <div class="modal-header">
         <h2 class="modal-title">
@@ -1097,7 +1256,7 @@
       <div class="grid-2">
         <div class="form-group">
           <label>Nombre del Club *</label>
-          <input type="text" class="form-control" id="new-club-name" placeholder="Ej: Wolverhampton Wanderers" required>
+          <input type="text" class="form-control" id="new-club-name" placeholder="Ej: Wolverhampton Wanderers" required onkeydown="if(event.key==='Enter') AdminApp.confirmCreateClub()">
         </div>
         <div class="form-group">
           <label>Siglas / Abreviatura (3-4 letras)</label>
