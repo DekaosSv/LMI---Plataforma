@@ -9746,39 +9746,6 @@ var INITIAL_LMI_DATA = {
       "price": 0,
       "seasons": 2,
       "details": "Mercado de mitad de temporada"
-    },
-    {
-      "player": "Elliot Anderson",
-      "type": "Prestamo",
-      "fromTeamId": "acmiln",
-      "fromTeamName": "AC Milan",
-      "toTeamId": "como1907",
-      "toTeamName": "Como 1907",
-      "price": 50,
-      "seasons": 1,
-      "details": "Mercado de mitad de temporada"
-    },
-    {
-      "player": "Brahim Diaz",
-      "type": "Prestamo",
-      "fromTeamId": "bayernleverkusen",
-      "fromTeamName": "Bayern Leverkusen",
-      "toTeamId": "acmiln",
-      "toTeamName": "AC Milan",
-      "price": 0,
-      "seasons": 1,
-      "details": "Mercado de mitad de temporada"
-    },
-    {
-      "player": "Lionel Messi",
-      "type": "Prestamo",
-      "fromTeamId": "acmiln",
-      "fromTeamName": "AC Milan",
-      "toTeamId": "bayernleverkusen",
-      "toTeamName": "Bayern Leverkusen",
-      "price": 0,
-      "seasons": 1,
-      "details": "Mercado de mitad de temporada"
     }
   ],
   "champions": [

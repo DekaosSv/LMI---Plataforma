@@ -1175,6 +1175,20 @@ function initTeamSelect() {
   }
 }
 
+function getManagerFlagHtml(team) {
+  if (!team) return '';
+  const code = (team.managerCountry || team.managerFlag || '').trim().toLowerCase();
+  if (code) {
+    if (code.length === 2) {
+      return `<img src="https://flagcdn.com/28x21/${code}.png" alt="${code.toUpperCase()}" title="${code.toUpperCase()}" style="width: 22px; height: 16px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.4); flex-shrink: 0; vertical-align: middle;">`;
+    }
+    if (code.startsWith('http') || code.includes('/') || code.endsWith('.png') || code.endsWith('.svg') || code.endsWith('.webp')) {
+      return `<img src="${code}" alt="Bandera" style="width: 22px; height: 16px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.4); flex-shrink: 0; vertical-align: middle;">`;
+    }
+  }
+  return `<span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 16px; background: rgba(255,255,255,0.18); border-radius: 3px; font-size: 0.72rem; color: #93c5fd; box-shadow: inset 0 0 2px rgba(0,0,0,0.2); flex-shrink: 0;" title="Nacionalidad del DT por definir"><i class="fa-solid fa-flag"></i></span>`;
+}
+
 function loadTeamHub(teamId) {
   const team = lmiData.teams.find(t => t.id === teamId);
   if (!team) return;
@@ -1185,25 +1199,41 @@ function loadTeamHub(teamId) {
 
   const bgStyle = team.colors.bgGradient || `linear-gradient(135deg, ${team.colors.primary} 0%, #050515 100%)`;
   headerBox.style.background = bgStyle;
-  headerBox.style.borderColor = team.colors.secondary || 'var(--border-color)';
+  headerBox.style.borderColor = team.colors.secondary || 'rgba(255, 255, 255, 0.2)';
+  const primaryGlow = team.colors.primary ? `${team.colors.primary}33` : 'transparent';
+  headerBox.style.boxShadow = `0 12px 35px rgba(0, 0, 0, 0.4), 0 0 25px ${primaryGlow}`;
+
+  const isOro = (team.division || 'plata').toLowerCase() === 'oro';
+  const divisionLabel = isOro ? 'División Oro' : 'División Plata';
+  const divisionClass = isOro ? 'oro' : 'plata';
+  const divisionIcon = isOro ? 'fa-crown' : 'fa-shield-halved';
 
   headerBox.innerHTML = `
+    <img src="${team.logo}" class="team-hub-watermark" alt="" aria-hidden="true">
+
     <div class="team-hub-info">
-      <img src="${team.logo}" class="team-logo-lg" alt="${team.name}" style="width: 90px; height: 90px;">
+      <div class="team-hub-crest-container">
+        <img src="${team.logo}" class="team-logo-lg" alt="${team.name}">
+      </div>
       <div class="team-hub-details">
-        <span class="hero-tag" style="background: rgba(0, 255, 136, 0.2); border-color: var(--neon-green); color: var(--neon-green);">
-          Posición Oficial en Liga: #${team.leagueRank || 1}
-        </span>
-        <h2 style="color: ${team.colors.secondary || '#fff'}">${team.name}</h2>
+        <div class="team-hub-badges">
+          <span class="team-badge-division ${divisionClass}">
+            <i class="fa-solid ${divisionIcon}"></i> ${divisionLabel}
+          </span>
+          <span class="team-badge-rank">
+            <i class="fa-solid fa-ranking-star"></i> Puesto #${team.leagueRank || 1}
+          </span>
+        </div>
+        <h2>${team.name}</h2>
         <div class="team-hub-meta">
-          <span><i class="fa-solid fa-stadium"></i> ${team.stadium}</span>
-          <span><i class="fa-solid fa-user-tie"></i> DT: ${team.manager}</span>
+          <span><i class="fa-solid fa-landmark"></i> ${team.stadium}</span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-user-tie"></i> DT: ${getManagerFlagHtml(team)} ${team.manager}</span>
         </div>
       </div>
     </div>
 
     <div class="team-hub-budget">
-      <div class="budget-label">Presupuesto del Club</div>
+      <div class="budget-label"><i class="fa-solid fa-vault"></i> Presupuesto del Club</div>
       <div class="budget-amount">$${((team.budget || 100000000) / 1000000).toFixed(1)}M USD</div>
     </div>
   `;
@@ -1297,14 +1327,19 @@ function loadTeamHub(teamId) {
   }
 
   statsBox.innerHTML = `
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; margin-bottom: 1.25rem;">
-      <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); padding: 0.85rem; border-radius: var(--radius-md); color: #ffffff; box-shadow: var(--shadow-card);">
-        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.85); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Posición Asignada</div>
-        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: #fde047; margin-top: 0.25rem;">#${rank}</div>
+    <div class="hub-stats-top-grid">
+      <div class="hub-stat-card">
+        <div class="hub-stat-label">Posición Asignada</div>
+        <div class="hub-stat-rank-val">#${rank}</div>
       </div>
-      <div style="background: var(--lmi-blue); border: 1px solid var(--lmi-blue); padding: 0.85rem; border-radius: var(--radius-md); color: #ffffff; box-shadow: var(--shadow-card);">
-        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.85); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Jugadores en Plantilla</div>
-        <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: #4ade80; margin-top: 0.25rem;">${teamPlayers.length}</div>
+      <div class="hub-stat-card">
+        <div class="hub-stat-label">
+          <i class="fa-solid fa-user-tie" style="color: #93c5fd;"></i> Director Técnico
+        </div>
+        <div class="hub-stat-manager-content">
+          ${getManagerFlagHtml(team)}
+          <span class="hub-stat-manager-name">${escapeHTML(team.manager || 'Sin DT')}</span>
+        </div>
       </div>
     </div>
 
