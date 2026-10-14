@@ -9841,16 +9841,25 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "bdo-2",
-      "season": "Temporada 12",
+      "season": "Temporada 11",
       "player": "Jamie Vardy",
       "manager": "Jose Encinas",
       "team": "Como 1907",
       "teamLogo": "Logos Equipos/como.webp",
       "image": "Balon de oro/vardy_balon_oro_t12.jpg",
       "goals": 18,
-      "assists": 4,
+      "assists": 0,
       "trophies": "Campeón de Liga LMI",
-      "description": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles."
+      "description": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles.",
+      "temporada": "Temporada 11",
+      "jugador": "Jamie Vardy",
+      "club": "Como 1907",
+      "dt": "Jose Encinas",
+      "imagen": "Balon de oro/vardy_balon_oro_t12.jpg",
+      "goles": 18,
+      "asistencias": 0,
+      "titulos": "Campeón de Liga LMI",
+      "descripcion": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles."
     }
   ],
   "fixtures": {
