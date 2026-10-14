@@ -15,5 +15,5 @@ DT: Jose Encinas
 Imagen: vardy_balon_oro_t12.jpg
 Goles: 18
 Asistencias: 0
-Titulos: Campeón de Liga LMI
+Titulos: Campeón de Liga LMI & UEFA Champions League
 Descripcion: Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles.

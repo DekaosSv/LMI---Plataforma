@@ -9849,7 +9849,7 @@ var INITIAL_LMI_DATA = {
       "image": "Balon de oro/vardy_balon_oro_t12.jpg",
       "goals": 18,
       "assists": 0,
-      "trophies": "Campeón de Liga LMI",
+      "trophies": "Campeón de Liga LMI & UEFA Champions League",
       "description": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles.",
       "temporada": "Temporada 11",
       "jugador": "Jamie Vardy",
@@ -9858,7 +9858,7 @@ var INITIAL_LMI_DATA = {
       "imagen": "Balon de oro/vardy_balon_oro_t12.jpg",
       "goles": 18,
       "asistencias": 0,
-      "titulos": "Campeón de Liga LMI",
+      "titulos": "Campeón de Liga LMI & UEFA Champions League",
       "descripcion": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles."
     }
   ],
