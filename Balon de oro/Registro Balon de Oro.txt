@@ -8,7 +8,6 @@ Asistencias: 2
 Titulos: Campeon Liga LMI & Champions League
 Descripcion: Máximo goleador y referente del Como 1907, ganador indiscutible del Balón de Oro tras una temporada histórica.
 
----
 Temporada: Temporada 12
 Jugador: Jamie Vardy
 Club: Como 1907
