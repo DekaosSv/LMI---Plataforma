@@ -327,7 +327,7 @@ const AdminApp = {
             <span>${team ? this.escape(team.name) : 'Libre'}</span>
           </span>
         </td>
-        <td><span class="pos-badge">${p.position || 'MC'}</span></td>
+        <td><span class="pos-badge pos-${p.position || 'MC'}">${p.position || 'MC'}</span></td>
         <td>${p.goals_liga || 0}</td>
         <td>${p.goals_champions || 0}</td>
         <td>${p.goals_estelar || 0}</td>
@@ -2694,20 +2694,20 @@ const AdminApp = {
     const clean = rawPos.trim().toUpperCase().replace(/[^A-Z]/g, '');
     const map = {
       'POR': 'PT', 'GK': 'PT', 'PO': 'PT', 'ARQ': 'PT', 'PT': 'PT',
-      'CT': 'CT', 'CB': 'CT', 'DFC': 'CT', 'C': 'CT',
+      'CT': 'CT', 'CB': 'CT', 'DFC': 'CT', 'C': 'CT', 'DF': 'CT',
       'LD': 'LD', 'RB': 'LD', 'LTD': 'LD',
       'LI': 'LI', 'LB': 'LI', 'LTI': 'LI',
-      'MCD': 'MCD', 'DMF': 'MCD', 'DM': 'MCD', 'PVO': 'MCD',
-      'MC': 'MC', 'CMF': 'MC', 'CM': 'MC', 'CC': 'MC',
-      'MD': 'MD', 'RMF': 'MD', 'RM': 'MD', 'ID': 'MD',
-      'MI': 'MI', 'LMF': 'MI', 'LM': 'MI', 'II': 'MI',
-      'MP': 'MP', 'AMF': 'MP', 'CAM': 'MP', 'MO': 'MP', 'AM': 'MP',
-      'EXD': 'EXD', 'ED': 'EXD', 'RWF': 'EXD', 'RW': 'EXD',
-      'EXI': 'EXI', 'EI': 'EXI', 'LWF': 'EXI', 'LW': 'EXI',
+      'MCD': 'MCD', 'DMF': 'MCD', 'DM': 'MCD', 'PVO': 'MCD', 'CD': 'MCD',
+      'MC': 'MC', 'CMF': 'MC', 'CM': 'MC', 'CC': 'MC', 'MED': 'MC', 'VOL': 'MC',
+      'MD': 'ID', 'RMF': 'ID', 'RM': 'ID', 'ID': 'ID', 'MDD': 'ID',
+      'MI': 'II', 'LMF': 'II', 'LM': 'II', 'II': 'II', 'MDI': 'II',
+      'MP': 'MP', 'AMF': 'MP', 'CAM': 'MP', 'MO': 'MP', 'AM': 'MP', 'MCO': 'MP',
+      'EXD': 'ED', 'ED': 'ED', 'RWF': 'ED', 'RW': 'ED', 'EF': 'ED',
+      'EXI': 'EI', 'EI': 'EI', 'LWF': 'EI', 'LW': 'EI', 'EL': 'EI',
       'SD': 'SD', 'SS': 'SD', 'SP': 'SD',
-      'DC': 'DC', 'CF': 'DC', 'ST': 'DC', 'DL': 'DC'
+      'DC': 'DC', 'CF': 'DC', 'ST': 'DC', 'DL': 'DC', 'DEL': 'DC'
     };
-    return map[clean] || (['PT','CT','LD','LI','MCD','MC','MD','MI','MP','EXD','EXI','SD','DC'].includes(clean) ? clean : 'MC');
+    return map[clean] || (['PT','CT','LD','LI','MCD','MC','ID','II','MP','SD','ED','EI','DC'].includes(clean) ? clean : 'MC');
   },
 
   parsePlaintextRoster() {
@@ -2718,8 +2718,8 @@ const AdminApp = {
         .map(l => l.trim())
         .filter(l => l.length > 0 && !l.startsWith('##') && !l.startsWith('---') && !l.startsWith('```'));
       
-      const posStartRegex = /^(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)[\s:\-]+(.+)$/i;
-      const posEndRegex = /^(.+?)\s*[\(\[]\s*(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)\s*[\)\]]$/i;
+      const posStartRegex = /^(PT|POR|PO|GK|CT|CB|DFC|DF|LD|RB|LI|LB|MCD|DMF|DM|CD|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|ID|II|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)[\s:\-]+(.+)$/i;
+      const posEndRegex = /^(.+?)\s*[\(\[]\s*(PT|POR|PO|GK|CT|CB|DFC|DF|LD|RB|LI|LB|MCD|DMF|DM|CD|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|ID|II|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)\s*[\)\]]$/i;
 
       lines.forEach(line => {
         let pos = 'MC';
@@ -2737,10 +2737,10 @@ const AdminApp = {
           } else {
             const parts = line.split(/[\t]+/).map(p => p.trim()).filter(Boolean);
             if (parts.length >= 2) {
-              if (/^(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)$/i.test(parts[0])) {
+              if (/^(PT|POR|PO|GK|CT|CB|DFC|DF|LD|RB|LI|LB|MCD|DMF|DM|CD|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|ID|II|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)$/i.test(parts[0])) {
                 pos = this.normalizePosition(parts[0]);
                 name = parts.slice(1).join(' ').trim();
-              } else if (/^(PT|POR|PO|GK|CT|CB|DFC|LD|RB|LI|LB|MCD|DMF|DM|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)$/i.test(parts[parts.length - 1])) {
+              } else if (/^(PT|POR|PO|GK|CT|CB|DFC|DF|LD|RB|LI|LB|MCD|DMF|DM|CD|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|ID|II|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)$/i.test(parts[parts.length - 1])) {
                 pos = this.normalizePosition(parts[parts.length - 1]);
                 name = parts.slice(0, -1).join(' ').trim();
               }
@@ -2898,7 +2898,7 @@ const AdminApp = {
           ${this.escape(p.name)}
           ${p.isLegend ? '<span style="color: var(--lmi-gold); font-size: 0.75rem; margin-left: 0.3rem;">★ Leyenda</span>' : ''}
         </td>
-        <td><span class="pos-badge">${p.position || 'MC'}</span></td>
+        <td><span class="pos-badge pos-${p.position || 'MC'}">${p.position || 'MC'}</span></td>
         <td>${this.formatMoney(p.price || 0)}</td>
         <td>${p.goals_liga || 0}</td>
         <td>${p.goals_champions || 0}</td>
@@ -3098,7 +3098,7 @@ const AdminApp = {
     document.getElementById('lbl-market-total').textContent = `${movements.length} movimientos`;
 
     if (movements.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay movimientos de mercado registrados.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay movimientos de mercado registrados.</td></tr>`;
       return;
     }
 
@@ -3113,16 +3113,105 @@ const AdminApp = {
         </td>
         <td>${this.escape(m.fromTeamName || '-')}</td>
         <td>${this.escape(m.toTeamName || '-')}</td>
-        <td>${this.formatMoney(m.price || 0)}</td>
+        <td style="font-weight: 700; color: var(--lmi-gold);">${this.formatMoney(m.price || 0)}</td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <input type="number" min="1" max="10" value="${m.seasons || 1}" class="form-control" style="width: 58px; padding: 0.25rem 0.4rem; font-weight: 700; text-align: center;" onchange="AdminApp.quickUpdateMarketSeasons(${idx}, this.value)" title="Modificar temporadas del préstamo">
+            <span style="font-size: 0.78rem; color: var(--text-muted);">${(m.seasons || 1) === 1 ? 'temp' : 'temps'}</span>
+          </div>
+        </td>
         <td style="color: var(--text-secondary); font-size: 0.85rem;">${this.escape(m.details || '')}</td>
-        <td style="text-align: right;">
-          <button class="btn btn-danger" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" onclick="AdminApp.deleteMarketMovement(${idx})">
-            <i class="fa-solid fa-trash"></i>
-          </button>
+        <td style="text-align: right; white-space: nowrap;">
+          <div style="display: flex; gap: 0.35rem; justify-content: flex-end;">
+            <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" onclick="AdminApp.openEditMarketModal(${idx})" title="Editar movimiento">
+              <i class="fa-solid fa-pen"></i> Editar
+            </button>
+            <button class="btn btn-danger" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" onclick="AdminApp.deleteMarketMovement(${idx})" title="Eliminar">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
         </td>
       `;
       tbody.appendChild(tr);
     });
+  },
+
+  async quickUpdateMarketSeasons(idx, val) {
+    if (!this.data.marketMovements || !this.data.marketMovements[idx]) return;
+    const num = parseInt(val, 10) || 1;
+    this.data.marketMovements[idx].seasons = num;
+    this.markDirty();
+    await this.saveData(true);
+    this.showToast(`Temporadas de "${this.data.marketMovements[idx].player}" actualizadas a ${num}.`, 'success');
+  },
+
+  openEditMarketModal(index) {
+    const m = this.data.marketMovements ? this.data.marketMovements[index] : null;
+    if (!m) return;
+
+    document.getElementById('edit-market-index').value = index;
+    document.getElementById('edit-market-player').value = m.player || '';
+    document.getElementById('edit-market-type').value = m.type || 'Fichaje';
+    document.getElementById('edit-market-price').value = m.price !== undefined ? m.price : 0;
+    document.getElementById('edit-market-seasons').value = m.seasons || 1;
+    document.getElementById('edit-market-details').value = m.details || '';
+
+    // Populate team selects
+    const fromSel = document.getElementById('edit-market-from-team');
+    const toSel = document.getElementById('edit-market-to-team');
+    if (fromSel && toSel && this.data.teams) {
+      const opts = '<option value="">(Sin club / Libre)</option>' + this.data.teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+      fromSel.innerHTML = opts;
+      toSel.innerHTML = opts;
+      fromSel.value = m.fromTeamId || '';
+      toSel.value = m.toTeamId || '';
+    }
+
+    const modal = document.getElementById('modal-edit-market');
+    if (modal) modal.style.display = 'flex';
+  },
+
+  closeEditMarketModal() {
+    const modal = document.getElementById('modal-edit-market');
+    if (modal) modal.style.display = 'none';
+  },
+
+  async saveEditMarketModal() {
+    const idx = parseInt(document.getElementById('edit-market-index').value, 10);
+    if (isNaN(idx) || idx < 0 || !this.data.marketMovements || !this.data.marketMovements[idx]) return;
+
+    const player = document.getElementById('edit-market-player').value.trim();
+    if (!player) {
+      this.showToast('El nombre del jugador es requerido.', 'error');
+      return;
+    }
+
+    const type = document.getElementById('edit-market-type').value;
+    const price = parseInt(document.getElementById('edit-market-price').value, 10) || 0;
+    const fromTeamId = document.getElementById('edit-market-from-team').value;
+    const toTeamId = document.getElementById('edit-market-to-team').value;
+    const seasons = parseInt(document.getElementById('edit-market-seasons').value, 10) || 1;
+    const details = document.getElementById('edit-market-details').value.trim();
+
+    const fromTeam = this.getTeamById(fromTeamId);
+    const toTeam = this.getTeamById(toTeamId);
+
+    const m = this.data.marketMovements[idx];
+    m.player = player;
+    m.type = type;
+    m.price = price;
+    m.fromTeamId = fromTeamId;
+    m.fromTeamName = fromTeam ? fromTeam.name : (fromTeamId ? fromTeamId : '');
+    m.toTeamId = toTeamId;
+    m.toTeamName = toTeam ? toTeam.name : (toTeamId ? toTeamId : '');
+    m.seasons = seasons;
+    m.details = details;
+
+    this.closeEditMarketModal();
+    this.renderMarketView();
+    this.markDirty();
+    await this.saveData(true);
+    this.showToast(`Movimiento de "${player}" actualizado correctamente.`, 'success');
   },
 
   submitMarketMovement() {
@@ -3202,6 +3291,7 @@ const AdminApp = {
 
   renderBdoCards() {
     const container = document.getElementById('bdo-cards-container');
+    if (!container) return;
     container.innerHTML = '';
     if (!this.data || !this.data.balonOro) return;
 
@@ -3216,8 +3306,10 @@ const AdminApp = {
       const seasonName = bdo.season || bdo.temporada || 'Temporada 10';
       const goalsCount = (bdo.goals !== undefined) ? bdo.goals : (bdo.goles || 0);
       const assistsCount = (bdo.assists !== undefined) ? bdo.assists : (bdo.asistencias || 0);
-      const imgPath = bdo.image || bdo.imagen || 'Balon de oro/vardybalonoro.jpg';
+      const imgPath = bdo.image || bdo.imagen || 'Balon de oro/vardy_balon_oro_t12.jpg';
       const descText = bdo.description || bdo.descripcion || '';
+      const managerName = bdo.manager || bdo.dt || '';
+      const trophiesText = bdo.trophies || bdo.titulos || '';
 
       const card = document.createElement('div');
       card.className = 'card';
@@ -3229,8 +3321,8 @@ const AdminApp = {
       card.style.position = 'relative';
 
       card.innerHTML = `
-        <div style="position: relative; width: 100%; height: 180px; border-radius: var(--radius-md); overflow: hidden; background: #000;">
-          <img src="${this.escape(imgPath)}" alt="${this.escape(playerName)}" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: relative; width: 100%; height: 210px; border-radius: var(--radius-md); overflow: hidden; background: #000;">
+          <img src="${this.escape(imgPath)}" alt="${this.escape(playerName)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
           <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.75); border: 1px solid var(--lmi-gold); color: var(--lmi-gold); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 99px;">
             ${this.escape(seasonName)}
           </div>
@@ -3238,8 +3330,9 @@ const AdminApp = {
 
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
           <div>
-            <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff;">${this.escape(playerName)}</h3>
-            <span style="color: var(--lmi-gold); font-weight: 700; font-size: 0.85rem;">${this.escape(teamName)}</span>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem;">${this.escape(playerName)}</h3>
+            <span style="color: var(--lmi-gold); font-weight: 700; font-size: 0.85rem;"><i class="fa-solid fa-shield-halved"></i> ${this.escape(teamName)}</span>
+            ${managerName ? `<span style="color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 0.2rem;"><i class="fa-solid fa-user-tie"></i> DT: ${this.escape(managerName)}</span>` : ''}
           </div>
         </div>
 
@@ -3250,19 +3343,15 @@ const AdminApp = {
           </div>
           <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
           <div style="flex: 1; text-align: center;">
-        <div style="display: flex; gap: 1rem;">
-          <img src="${img}" alt="${player}" style="width: 70px; height: 90px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid rgba(255, 209, 0, 0.4);" onerror="this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
-          <div style="flex: 1; min-width: 0;">
-            <span class="badge" style="background: rgba(255,209,0,0.15); color: var(--lmi-gold); margin-bottom: 0.35rem; display: inline-block;">${season}</span>
-            <h3 style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${player}</h3>
-            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${team}</p>
-            <div style="display: flex; gap: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
-              <span>⚽ <strong>${goals}</strong> G</span>
-              <span>🎯 <strong>${assists}</strong> A</span>
-            </div>
+            <span style="display: block; color: var(--text-muted); font-size: 0.75rem;">ASISTENCIAS</span>
+            <strong style="color: #60a5fa; font-size: 1.1rem;">${assistsCount}</strong>
           </div>
         </div>
-        <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+
+        ${trophiesText ? `<div style="font-size: 0.8rem; color: var(--text-secondary);"><i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i> ${this.escape(trophiesText)}</div>` : ''}
+        ${descText ? `<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">${this.escape(descText)}</p>` : ''}
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
           <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" onclick="AdminApp.openBdoModal(${idx})">
             <i class="fa-solid fa-pen"></i> Editar
           </button>
@@ -3271,39 +3360,41 @@ const AdminApp = {
           </button>
         </div>
       `;
-      grid.appendChild(card);
+      container.appendChild(card);
     });
   },
 
   openBdoModal(index = null) {
     const modal = document.getElementById('modal-bdo');
     const title = document.getElementById('modal-bdo-title');
-    const idxInput = document.getElementById('modal-bdo-idx');
-    if (idxInput) idxInput.value = index !== null ? index : '';
+    const idxInput = document.getElementById('bdo-modal-index');
+    if (idxInput) idxInput.value = (index !== null && index !== undefined) ? index : -1;
 
-    if (index !== null && this.data.balonOro && this.data.balonOro[index]) {
+    const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+
+    if (index !== null && index !== undefined && this.data.balonOro && this.data.balonOro[index]) {
       const bdo = this.data.balonOro[index];
-      if (title) title.innerHTML = '<i class="fa-solid fa-pen"></i> Editar Ganador de Balón de Oro';
-      const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
-      setVal('bdo-temporada', bdo.season || bdo.temporada || '');
-      setVal('bdo-jugador', bdo.player || bdo.jugador || '');
-      setVal('bdo-club', bdo.team || bdo.club || '');
-      setVal('bdo-dt', bdo.manager || bdo.dt || '');
-      setVal('bdo-imagen', bdo.image || bdo.imagen || '');
-      setVal('bdo-goles', bdo.goals !== undefined ? bdo.goals : (bdo.goles || 0));
-      setVal('bdo-asistencias', bdo.assists !== undefined ? bdo.assists : (bdo.asistencias || 0));
-      setVal('bdo-descripcion', bdo.description || bdo.descripcion || '');
+      if (title) title.innerHTML = '<i class="fa-solid fa-pen" style="color: var(--lmi-gold);"></i> Editar Ganador de Balón de Oro';
+      setVal('bdo-modal-name', bdo.player || bdo.jugador || '');
+      setVal('bdo-modal-club', bdo.team || bdo.club || '');
+      setVal('bdo-modal-manager', bdo.manager || bdo.dt || '');
+      setVal('bdo-modal-season', bdo.season || bdo.temporada || '');
+      setVal('bdo-modal-goals', (bdo.goals !== undefined) ? bdo.goals : (bdo.goles || 0));
+      setVal('bdo-modal-assists', (bdo.assists !== undefined) ? bdo.assists : (bdo.asistencias || 0));
+      setVal('bdo-modal-image', bdo.image || bdo.imagen || '');
+      setVal('bdo-modal-trophies', bdo.trophies || bdo.titulos || '');
+      setVal('bdo-modal-desc', bdo.description || bdo.descripcion || '');
     } else {
-      if (title) title.innerHTML = '<i class="fa-solid fa-award"></i> Añadir Ganador de Balón de Oro';
-      const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
-      setVal('bdo-temporada', 'Temporada 10');
-      setVal('bdo-jugador', '');
-      setVal('bdo-club', '');
-      setVal('bdo-dt', '');
-      setVal('bdo-imagen', 'Sala de campeones/Balon de oro/trofeo_balon_oro.jpg');
-      setVal('bdo-goles', 0);
-      setVal('bdo-asistencias', 0);
-      setVal('bdo-descripcion', '');
+      if (title) title.innerHTML = '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Añadir Ganador de Balón de Oro';
+      setVal('bdo-modal-name', '');
+      setVal('bdo-modal-club', '');
+      setVal('bdo-modal-manager', '');
+      setVal('bdo-modal-season', 'Temporada 12');
+      setVal('bdo-modal-goals', 0);
+      setVal('bdo-modal-assists', 0);
+      setVal('bdo-modal-image', 'Balon de oro/vardy_balon_oro_t12.jpg');
+      setVal('bdo-modal-trophies', '');
+      setVal('bdo-modal-desc', '');
     }
 
     if (modal) modal.style.display = 'flex';
@@ -3315,32 +3406,44 @@ const AdminApp = {
   },
 
   async saveBdoFromModal() {
-    const idxEl = document.getElementById('modal-bdo-idx');
-    const idxStr = idxEl ? idxEl.value : '';
-    const idx = idxStr !== '' ? parseInt(idxStr, 10) : -1;
+    const idxEl = document.getElementById('bdo-modal-index');
+    const idx = idxEl ? parseInt(idxEl.value, 10) : -1;
 
     const getVal = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
-    const temporada = getVal('bdo-temporada');
-    const jugador = getVal('bdo-jugador');
-    const club = getVal('bdo-club');
-    const dt = getVal('bdo-dt');
-    const imagen = getVal('bdo-imagen');
-    const goles = parseInt(getVal('bdo-goles'), 10) || 0;
-    const asistencias = parseInt(getVal('bdo-asistencias'), 10) || 0;
-    const descripcion = getVal('bdo-descripcion');
+    const jugador = getVal('bdo-modal-name');
+    const club = getVal('bdo-modal-club');
+    const dt = getVal('bdo-modal-manager');
+    const temporada = getVal('bdo-modal-season');
+    const goles = parseInt(getVal('bdo-modal-goals'), 10) || 0;
+    const asistencias = parseInt(getVal('bdo-modal-assists'), 10) || 0;
+    const imagen = getVal('bdo-modal-image') || 'Balon de oro/vardy_balon_oro_t12.jpg';
+    const trofeos = getVal('bdo-modal-trophies');
+    const descripcion = getVal('bdo-modal-desc');
 
     if (!jugador) {
       this.showToast('El nombre del jugador es requerido.', 'error');
       return;
     }
 
+    // Auto match teamLogo
+    let teamLogo = '';
+    if (this.data && this.data.teams) {
+      const matchTeam = this.data.teams.find(t => t.name.toLowerCase() === club.toLowerCase() || t.id === club.toLowerCase().replace(/\s+/g, ''));
+      if (matchTeam) teamLogo = matchTeam.logo;
+    }
+    if (!teamLogo && club.toLowerCase().includes('como')) {
+      teamLogo = 'Logos Equipos/como.webp';
+    }
+
     const bdoObj = {
+      id: (idx >= 0 && this.data.balonOro[idx]?.id) ? this.data.balonOro[idx].id : ('bdo-' + Date.now()),
       season: temporada,
       temporada: temporada,
       player: jugador,
       jugador: jugador,
       team: club,
       club: club,
+      teamLogo: teamLogo,
       manager: dt,
       dt: dt,
       image: imagen,
@@ -3349,6 +3452,8 @@ const AdminApp = {
       goles: goles,
       assists: asistencias,
       asistencias: asistencias,
+      trophies: trofeos,
+      titulos: trofeos,
       description: descripcion,
       descripcion: descripcion
     };
@@ -3364,6 +3469,7 @@ const AdminApp = {
     this.closeBdoModal();
     this.renderBdoCards();
     this.renderDashboard();
+    this.markDirty();
     await this.saveData(true);
     this.showToast(`Registro de Balón de Oro guardado para ${jugador}.`, 'success');
   },

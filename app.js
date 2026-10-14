@@ -1538,13 +1538,10 @@ function loadRenovationsForTeam(teamId) {
             <select class="form-control card-type-select" onchange="changePlayerCardType('${p.id}', this.value, '${teamId}')" style="display: inline-block; width: auto; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 6px; text-align: center; cursor: pointer; ${
               cardType === 'Epico' 
                 ? 'background: rgba(255, 215, 0, 0.18); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.4);' 
-                : cardType === 'Big Time' 
-                  ? 'background: rgba(2, 132, 199, 0.15); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.4);' 
-                  : 'background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;'
+                : 'background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;'
             }">
               <option value="Normal" ${cardType === 'Normal' ? 'selected' : ''}>Normal</option>
               <option value="Epico" ${cardType === 'Epico' ? 'selected' : ''}>⭐ Épico</option>
-              <option value="Big Time" ${cardType === 'Big Time' ? 'selected' : ''}>⚡ Big Time</option>
             </select>
           </td>
           <td style="text-align: right; white-space: nowrap;">
@@ -1677,13 +1674,13 @@ function updateRowVisualsForRenewal(playerId, val) {
   }
 }
 
-// Cambiar tipo de carta de jugador
+// Cambiar tipo de carta de jugador (Normal o Épico)
 function changePlayerCardType(playerId, newType, teamId) {
   const player = lmiData.players.find(p => p.id === playerId);
   if (!player) return;
 
-  player.cardType = newType;
-  player.isLegend = (newType === 'Epico' || newType === 'Big Time');
+  player.cardType = (newType === 'Epico') ? 'Epico' : 'Normal';
+  player.isLegend = (newType === 'Epico');
   saveDataToStorage();
   loadRenovationsForTeam(teamId);
 }
@@ -1795,9 +1792,9 @@ function exportRenewalReport() {
     }
 
     let typeTag = "";
-    if (p.cardType === 'Epico') typeTag = ' ⭐ [Épico]';
-    else if (p.cardType === 'Big Time') typeTag = ' ⚡ [Big Time]';
-    else if (p.isLegend) typeTag = ' 👑 [Leyenda]';
+    if (p.cardType === 'Epico' || p.isLegend) {
+      typeTag = ' ⭐ [Épico]';
+    }
 
     if (pVal === 0) {
       nonRenewedCount++;
@@ -1810,26 +1807,19 @@ function exportRenewalReport() {
   });
 
   totalRenovations = Math.round(totalRenovations * 100) / 100;
-  const teamBudgetM = ((team.budget || 100000000) / 1000000);
-  const remainingM = Math.round((teamBudgetM - totalRenovations) * 100) / 100;
 
   summary += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
   summary += `📊 *RESUMEN FINANCIERO Y PLANTILLA:*\n`;
   summary += `• Jugadores Renovados: ${renewedCount}\n`;
   summary += `• Bajas (No Renovados): ${nonRenewedCount}\n`;
-  summary += `• Total Plantilla: ${teamPlayers.length}\n`;
-  summary += `• Presupuesto Oficial: $${formatRenewalValue(teamBudgetM)}M USD\n`;
-  summary += `• Gasto en Renovaciones: $${formatRenewalValue(totalRenovations)}M USD\n`;
-  summary += `• *Saldo Neto Restante:* $${formatRenewalValue(remainingM)}M USD ${remainingM >= 0 ? '🟢 (Superávit)' : '🔴 (Déficit)'}\n`;
+  summary += `• Gasto en Renovaciones: $${formatRenewalValue(totalRenovations)} M\n`;
 
   if (team.legendChangeNote && team.legendChangeNote.trim()) {
-    summary += `\n🔄 *Cambio de Carta Especial:* ${team.legendChangeNote.trim()}\n`;
+    summary += `\n🔄 *Cambio de Épico:* ${team.legendChangeNote.trim()}\n`;
   }
   if (team.legendRemoveNote && team.legendRemoveNote.trim()) {
-    summary += `🗑️ *Baja de Carta Especial:* ${team.legendRemoveNote.trim()}\n`;
+    summary += `🗑️ *Baja de Épico:* ${team.legendRemoveNote.trim()}\n`;
   }
-
-  summary += `\n_Generado automáticamente desde la plataforma oficial LMI_`;
 
   // Copiar al portapapeles con fallback robusto
   if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1994,40 +1984,18 @@ function filterPlayersDatabase(resetLimit = true) {
 
     let html = sliced.map(p => {
       const team = lmiData.teams.find(t => t.id === p.teamId) || { name: 'Libre', logo: 'Logos Equipos/Real_Madrid.png', division: '' };
-      const priceVal = (p.price !== undefined && p.price !== null) ? p.price / 1000000 : 5;
-      const cardType = p.cardType || (p.isLegend ? 'Epico' : 'Normal');
-      const divName = (team.division || '').toLowerCase() === 'oro' ? 'Oro' : ((team.division || '').toLowerCase() === 'plata' ? 'Plata' : '');
 
       return `
-        <div class="player-search-card" style="box-shadow: var(--shadow-card);">
+        <div class="player-search-card">
           <div class="player-card-header">
-            <div class="player-card-name-box">
-              <span class="pos-badge pos-${p.position}">${p.position}</span>
-              <span class="player-card-name">${p.name}</span>
-              ${cardType === 'Epico' ? '<span class="badge" style="background: rgba(255, 215, 0, 0.18); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.45); font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 800;"><i class="fa-solid fa-crown"></i> ÉPICO</span>' : ''}
-              ${cardType === 'Big Time' ? '<span class="badge" style="background: rgba(0, 229, 255, 0.18); color: #00e5ff; border: 1px solid rgba(0, 229, 255, 0.45); font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 800;"><i class="fa-solid fa-bolt"></i> BIG TIME</span>' : ''}
-            </div>
-            <div style="display: flex; gap: 0.35rem;">
-              <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm" title="Buscar en Transfermarkt">TM</a>
-              <a href="${getFichajesUrl(p.name)}" target="_blank" class="ext-link-btn ext-fcom" title="Buscar perfil en Fichajes.com">F.COM</a>
-            </div>
+            <span class="pos-badge pos-${p.position}">${p.position}</span>
+            <span class="player-card-name">${p.name}</span>
           </div>
 
           <div class="player-card-club-row">
             <div class="player-card-club">
               <img src="${team.logo}" alt="${team.name}" loading="lazy" style="width: 22px; height: 22px; object-fit: contain;">
-              <span>${team.name}</span>
-              ${divName ? `<span class="badge" style="font-size: 0.65rem; padding: 0.1rem 0.35rem; background: rgba(255,255,255,0.08); color: #94a3b8; border-radius: 3px;">${divName}</span>` : ''}
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <div class="player-card-stats">
-                <span class="stat-pill-goals" title="Goles oficiales"><i class="fa-solid fa-futbol"></i> ${p.goals || 0}</span>
-                <span class="stat-pill-assists" title="Asistencias oficiales"><i class="fa-solid fa-handshake"></i> ${p.assists || 0}</span>
-              </div>
-              <span style="font-size: 0.8rem; font-weight: 800; color: #facc15; background: rgba(250, 204, 21, 0.1); border: 1px solid rgba(250, 204, 21, 0.25); padding: 0.15rem 0.45rem; border-radius: 4px;">
-                $${formatRenewalValue(priceVal)}M
-              </span>
+              <span class="player-card-club-name">${team.name}</span>
             </div>
           </div>
         </div>
@@ -2077,14 +2045,15 @@ function filterPlayersDatabase(resetLimit = true) {
           nonRenewedCountBadge.innerText = `${filteredNonRenewed.length} Jugadores`;
         }
         nonRenewedGrid.innerHTML = filteredNonRenewed.map(p => `
-          <div style="background: var(--lmi-blue); border: 1px solid rgba(231, 76, 60, 0.3); border-radius: var(--radius-sm); padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; box-shadow: var(--shadow-card);">
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div class="player-search-card" style="border-color: rgba(239, 68, 68, 0.4);">
+            <div class="player-card-header">
               <span class="pos-badge pos-${p.position}">${p.position}</span>
-              <span style="font-weight: 700; color: #fff; font-size: 0.95rem;">${p.name}</span>
+              <span class="player-card-name">${p.name}</span>
             </div>
-            <div style="display: flex; gap: 0.3rem;">
-              <a href="https://www.transfermarkt.es/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-tm" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;" title="Buscar en Transfermarkt">TM</a>
-              <a href="https://www.fichajes.com/schnellsuche?query=${encodeURIComponent(p.name)}" target="_blank" class="ext-link-btn ext-fcom" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;" title="Buscar perfil en Fichajes.com">F.COM</a>
+            <div class="player-card-club-row">
+              <div class="player-card-club">
+                <span class="player-card-club-name" style="color: #fca5a5; font-size: 0.85rem;"><i class="fa-solid fa-user-xmark"></i> Sin Club / No Renovado</span>
+              </div>
             </div>
           </div>
         `).join('');

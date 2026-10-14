@@ -6125,7 +6125,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743073659_9",
       "name": "Takefusa Kubo",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "fctwente",
       "goals": 0,
       "assists": 0,
@@ -6142,7 +6142,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743073659_10",
       "name": "Mika Godts",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "fctwente",
       "goals": 0,
       "assists": 0,
@@ -6193,7 +6193,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743073659_13",
       "name": "Iñaki Williams",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "fctwente",
       "goals": 0,
       "assists": 0,
@@ -6227,7 +6227,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743073659_15",
       "name": "Diogo Jota",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "fctwente",
       "goals": 0,
       "assists": 0,
@@ -6363,7 +6363,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743073659_23",
       "name": "Jack Grealish",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "fctwente",
       "goals": 0,
       "assists": 0,
@@ -6635,7 +6635,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743242946_16",
       "name": "Leozinho",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "manchesterunited",
       "goals": 0,
       "assists": 0,
@@ -6720,7 +6720,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743242946_21",
       "name": "Federico Chiesa",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "manchesterunited",
       "goals": 0,
       "assists": 0,
@@ -6737,7 +6737,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791743242946_22",
       "name": "Yang Hyun-jun",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "manchesterunited",
       "goals": 0,
       "assists": 0,
@@ -7094,7 +7094,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791751421313_20",
       "name": "Tyler Dibling",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "ajaxdeamsterdam",
       "goals": 0,
       "assists": 0,
@@ -7281,7 +7281,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791780792740_9",
       "name": "Antonio Nusa",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "feyenoordrotterdam",
       "goals": 0,
       "assists": 0,
@@ -7298,7 +7298,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791780792740_10",
       "name": "Kaoru Mitoma",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "feyenoordrotterdam",
       "goals": 0,
       "assists": 0,
@@ -7468,7 +7468,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791780792740_20",
       "name": "Angel Di Maria",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "feyenoordrotterdam",
       "goals": 0,
       "assists": 0,
@@ -7672,7 +7672,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791781189967_9",
       "name": "Luiz Araújo",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "chelseafc",
       "goals": 0,
       "assists": 0,
@@ -7774,7 +7774,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791781189967_15",
       "name": "Lucas Moura",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "chelseafc",
       "goals": 0,
       "assists": 0,
@@ -8063,7 +8063,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791810513718_9",
       "name": "Atep",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "brightonhovealbion",
       "goals": 0,
       "assists": 0,
@@ -8097,7 +8097,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791810513718_11",
       "name": "Antony",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "brightonhovealbion",
       "goals": 0,
       "assists": 0,
@@ -8148,7 +8148,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791810513718_14",
       "name": "Riyad Mahrez",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "brightonhovealbion",
       "goals": 0,
       "assists": 0,
@@ -8165,7 +8165,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791810513718_15",
       "name": "Geovany Quenda",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "brightonhovealbion",
       "goals": 0,
       "assists": 0,
@@ -8182,7 +8182,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791810513718_16",
       "name": "Cody Gakpo",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "brightonhovealbion",
       "goals": 0,
       "assists": 0,
@@ -8437,7 +8437,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791942315073_8",
       "name": "Kingsley Coman",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "realmadrid",
       "goals": 0,
       "assists": 0,
@@ -8607,7 +8607,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791942315073_18",
       "name": "Désiré Doué",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "realmadrid",
       "goals": 0,
       "assists": 0,
@@ -8624,7 +8624,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791942315073_19",
       "name": "Khvicha Kvaratskhelia",
-      "position": "EXI",
+      "position": "EI",
       "teamId": "realmadrid",
       "goals": 0,
       "assists": 0,
@@ -8641,7 +8641,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791942315073_20",
       "name": "Franco Mastantuono",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "realmadrid",
       "goals": 0,
       "assists": 0,
@@ -8658,7 +8658,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791942315073_21",
       "name": "Francisco Conceição",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "realmadrid",
       "goals": 0,
       "assists": 0,
@@ -9236,7 +9236,7 @@ var INITIAL_LMI_DATA = {
     {
       "id": "p_1791943050582_9",
       "name": "Facundo Torres",
-      "position": "EXD",
+      "position": "ED",
       "teamId": "acffiorentina",
       "goals": 0,
       "assists": 0,
@@ -9710,7 +9710,7 @@ var INITIAL_LMI_DATA = {
       "toTeamId": "como1907",
       "toTeamName": "Como 1907",
       "price": 40,
-      "seasons": 2,
+      "seasons": 1,
       "details": "Prestamo de jugadores"
     },
     {
@@ -9721,7 +9721,7 @@ var INITIAL_LMI_DATA = {
       "toTeamId": "como1907",
       "toTeamName": "Como 1907",
       "price": 15,
-      "seasons": 2,
+      "seasons": 1,
       "details": "Prestamo de jugadores"
     },
     {
@@ -9732,7 +9732,7 @@ var INITIAL_LMI_DATA = {
       "toTeamId": "urawareddiamonds",
       "toTeamName": "Urawa Red Diamonds",
       "price": 0,
-      "seasons": 2,
+      "seasons": 1,
       "details": "Mercado de mitad de temporada"
     },
     {
@@ -9743,7 +9743,7 @@ var INITIAL_LMI_DATA = {
       "toTeamId": "interdemilan",
       "toTeamName": "Inter de Milan",
       "price": 0,
-      "seasons": 2,
+      "seasons": 1,
       "details": "Mercado de mitad de temporada"
     },
     {
@@ -9754,7 +9754,7 @@ var INITIAL_LMI_DATA = {
       "toTeamId": "bayernleverkusen",
       "toTeamName": "Bayern Leverkusen",
       "price": 0,
-      "seasons": 2,
+      "seasons": 1,
       "details": "Mercado de mitad de temporada"
     }
   ],
@@ -9782,7 +9782,7 @@ var INITIAL_LMI_DATA = {
     {
       "torneo": "Liga LMI",
       "ganador": "Jose Encinas",
-      "cantidad": 5
+      "cantidad": 6
     },
     {
       "torneo": "Champions League",
@@ -9797,7 +9797,7 @@ var INITIAL_LMI_DATA = {
     {
       "torneo": "Champions League",
       "ganador": "Jose Encinas",
-      "cantidad": 2
+      "cantidad": 3
     },
     {
       "torneo": "Champions League",
@@ -9822,7 +9822,7 @@ var INITIAL_LMI_DATA = {
     {
       "torneo": "Copa Estelar",
       "ganador": "Santiago Encinas",
-      "cantidad": 2
+      "cantidad": 3
     }
   ],
   "balonOro": [
@@ -9838,6 +9838,19 @@ var INITIAL_LMI_DATA = {
       "assists": 2,
       "trophies": "Campeon Liga LMI & Champions League",
       "description": "Máximo goleador y referente del Como 1907, ganador indiscutible del Balón de Oro tras una temporada histórica."
+    },
+    {
+      "id": "bdo-2",
+      "season": "Temporada 12",
+      "player": "Jamie Vardy",
+      "manager": "Jose Encinas",
+      "team": "Como 1907",
+      "teamLogo": "Logos Equipos/como.webp",
+      "image": "Balon de oro/vardy_balon_oro_t12.jpg",
+      "goals": 18,
+      "assists": 4,
+      "trophies": "Campeón de Liga LMI",
+      "description": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles."
     }
   ],
   "fixtures": {
@@ -30803,7 +30816,3 @@ var INITIAL_LMI_DATA = {
     }
   }
 };
-
-if (typeof window !== 'undefined') {
-  window.lmiData = INITIAL_LMI_DATA;
-}

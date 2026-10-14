@@ -656,13 +656,24 @@ textarea.form-control {
 
 .pos-badge {
   display: inline-block;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 800;
   background: var(--border-color);
-  color: var(--text-primary);
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
+.pos-PT { background: #eab308; color: #000; } /* Portero */
+.pos-CT { background: #3b82f6; color: #fff; } /* Central */
+.pos-LI, .pos-LD { background: #06b6d4; color: #fff; } /* Laterales */
+.pos-MCD { background: #8b5cf6; color: #fff; } /* Contención */
+.pos-MC, .pos-ID, .pos-II { background: #10b981; color: #000; } /* Mediocampo */
+.pos-MP { background: #ec4899; color: #fff; } /* Mediapunta */
+.pos-SD, .pos-EI, .pos-ED, .pos-EXI, .pos-EXD { background: #f97316; color: #fff; } /* Delanteros/Extremos */
+.pos-DC { background: #ef4444; color: #fff; } /* Delantero centro */
+
 
 /* Modals */
 .modal-overlay {
