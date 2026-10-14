@@ -9002,7 +9002,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1791942361929_20",
-      "name": "ID Jarrod Bowen",
+      "name": "Jarrod Bowen",
       "position": "MC",
       "teamId": "arsenal",
       "goals": 0,
