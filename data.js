@@ -9269,7 +9269,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1791943050582_11",
-      "name": "Diego Costa",
+      "name": "Michael Owen",
       "position": "DC",
       "teamId": "acffiorentina",
       "goals": 0,
