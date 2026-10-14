@@ -9098,7 +9098,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_1",
+      "id": "p_1791943050582_1",
       "name": "Bart Verbruggen",
       "position": "PT",
       "teamId": "acffiorentina",
@@ -9115,7 +9115,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_2",
+      "id": "p_1791943050582_2",
       "name": "Lewis Dunk",
       "position": "CT",
       "teamId": "acffiorentina",
@@ -9132,8 +9132,8 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_3",
-      "name": "Ramy Bensebaini",
+      "id": "p_1791943050582_3",
+      "name": "Maxence Lacroix",
       "position": "CT",
       "teamId": "acffiorentina",
       "goals": 0,
@@ -9149,7 +9149,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_4",
+      "id": "p_1791943050582_4",
       "name": "Arnau Martínez",
       "position": "LD",
       "teamId": "acffiorentina",
@@ -9166,7 +9166,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_5",
+      "id": "p_1791943050582_5",
       "name": "Archie Brown",
       "position": "LI",
       "teamId": "acffiorentina",
@@ -9183,7 +9183,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_6",
+      "id": "p_1791943050582_6",
       "name": "Aleksandar Pavlović",
       "position": "MCD",
       "teamId": "acffiorentina",
@@ -9200,7 +9200,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_7",
+      "id": "p_1791943050582_7",
       "name": "Andrey Santos",
       "position": "MC",
       "teamId": "acffiorentina",
@@ -9217,7 +9217,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_8",
+      "id": "p_1791943050582_8",
       "name": "Carlos Soler",
       "position": "MC",
       "teamId": "acffiorentina",
@@ -9234,7 +9234,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_9",
+      "id": "p_1791943050582_9",
       "name": "Facundo Torres",
       "position": "EXD",
       "teamId": "acffiorentina",
@@ -9251,7 +9251,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_10",
+      "id": "p_1791943050582_10",
       "name": "Samuel Eto'o",
       "position": "DC",
       "teamId": "acffiorentina",
@@ -9268,7 +9268,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_11",
+      "id": "p_1791943050582_11",
       "name": "Diego Costa",
       "position": "DC",
       "teamId": "acffiorentina",
@@ -9285,7 +9285,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_12",
+      "id": "p_1791943050582_12",
       "name": "Zion Suzuki",
       "position": "PT",
       "teamId": "acffiorentina",
@@ -9302,7 +9302,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_13",
+      "id": "p_1791943050582_13",
       "name": "Lucas Hernández",
       "position": "CT",
       "teamId": "acffiorentina",
@@ -9319,7 +9319,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_14",
+      "id": "p_1791943050582_14",
       "name": "Jérémy Jacquet",
       "position": "CT",
       "teamId": "acffiorentina",
@@ -9336,7 +9336,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_15",
+      "id": "p_1791943050582_15",
       "name": "Rayan Aït-Nouri",
       "position": "LI",
       "teamId": "acffiorentina",
@@ -9353,7 +9353,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_16",
+      "id": "p_1791943050582_16",
       "name": "Nordi Mukiele",
       "position": "LD",
       "teamId": "acffiorentina",
@@ -9370,9 +9370,9 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_17",
-      "name": "Wilmar Barrios",
-      "position": "MCD",
+      "id": "p_1791943050582_17",
+      "name": "Seksan Ratree",
+      "position": "MC",
       "teamId": "acffiorentina",
       "goals": 0,
       "assists": 0,
@@ -9387,7 +9387,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_18",
+      "id": "p_1791943050582_18",
       "name": "Franck Kessié",
       "position": "MC",
       "teamId": "acffiorentina",
@@ -9404,8 +9404,8 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_19",
-      "name": "II Farès Chaïbi",
+      "id": "p_1791943050582_19",
+      "name": "Farès Chaïbi",
       "position": "MC",
       "teamId": "acffiorentina",
       "goals": 0,
@@ -9421,7 +9421,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_20",
+      "id": "p_1791943050582_20",
       "name": "Raheem Sterling",
       "position": "MP",
       "teamId": "acffiorentina",
@@ -9438,9 +9438,9 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_21",
-      "name": "ID Alexis Sánchez",
-      "position": "MC",
+      "id": "p_1791943050582_21",
+      "name": "Rasmus Højlund",
+      "position": "DC",
       "teamId": "acffiorentina",
       "goals": 0,
       "assists": 0,
@@ -9455,7 +9455,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_22",
+      "id": "p_1791943050582_22",
       "name": "Mohamed Amoura",
       "position": "DC",
       "teamId": "acffiorentina",
@@ -9472,7 +9472,7 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1791942843153_23",
+      "id": "p_1791943050582_23",
       "name": "Carlos Espí",
       "position": "DC",
       "teamId": "acffiorentina",
