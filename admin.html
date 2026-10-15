@@ -70,6 +70,10 @@
         <i class="fa-solid fa-download"></i>
         <span>Descargar Respaldo</span>
       </button>
+      <button class="nav-btn" id="btn-season-reset" style="color: #fca5a5;">
+        <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i>
+        <span>Reiniciar Temporada</span>
+      </button>
     </nav>
 
     <div class="sidebar-footer">
@@ -186,6 +190,10 @@
               <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-trophies')">
                 <i class="fa-solid fa-award" style="color: #f59e0b;"></i>
                 <span>Añadir o editar ganador de Balón de Oro</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08); color: #fca5a5;" onclick="AdminApp.openSeasonResetModal()">
+                <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i>
+                <span>Reiniciar estadísticas de temporada (Comenzar Temporada 12)</span>
               </button>
             </div>
           </div>
@@ -682,7 +690,6 @@
                 <tr>
                   <th>Jugador</th>
                   <th>Posición</th>
-                  <th>Precio</th>
                   <th>Goles Liga</th>
                   <th>Goles Champ</th>
                   <th>Goles Estelar</th>
@@ -895,6 +902,25 @@
           </div>
         </div>
 
+        <!-- Reinicio de Estadísticas para Nueva Temporada -->
+        <div class="card" style="border-left: 4px solid #ef4444; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="card-title" style="color: #f87171;">
+                <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i> Reiniciar Estadísticas de Temporada (Comenzar T12)
+              </h2>
+              <p class="card-desc">
+                Restablece a 0 únicamente los torneos, goles y estadísticas de la temporada para comenzar la <strong>Temporada 12</strong>.
+                <br>
+                <strong style="color: #34d399;"><i class="fa-solid fa-shield-halved"></i> El registro histórico (Sala de Campeones, Balón de Oro y plantillas) NO SE TOCA.</strong>
+              </p>
+            </div>
+            <button class="btn btn-danger" style="background: #dc2626; border-color: #ef4444; color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);" onclick="AdminApp.openSeasonResetModal()">
+              <i class="fa-solid fa-rotate"></i> Reiniciar Temporada
+            </button>
+          </div>
+        </div>
+
         <!-- 2. Información General y Anuncios de la Web -->
         <div class="grid-2">
           <div class="card">
@@ -1082,17 +1108,11 @@
         </div>
       </div>
 
-      <div class="grid-2">
-        <div class="form-group">
-          <label>Club Actual</label>
-          <select class="form-select" id="player-modal-team">
-            <!-- Populated dynamically -->
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Precio / Valor de Mercado ($)</label>
-          <input type="number" class="form-control" id="player-modal-price">
-        </div>
+      <div class="form-group">
+        <label>Club Actual</label>
+        <select class="form-select" id="player-modal-team">
+          <!-- Populated dynamically -->
+        </select>
       </div>
 
       <div class="grid-3">
@@ -1478,12 +1498,11 @@
                   <th style="width: 40px;">#</th>
                   <th style="width: 80px;">Pos</th>
                   <th>Jugador</th>
-                  <th style="width: 100px;">Precio</th>
                   <th style="width: 100px;">Carta</th>
                 </tr>
               </thead>
               <tbody id="plaintext-preview-tbody">
-                <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Pega texto en el cuadro superior para previsualizar.</td></tr>
+                <tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Pega texto en el cuadro superior para previsualizar.</td></tr>
               </tbody>
             </table>
           </div>
@@ -1494,6 +1513,60 @@
         <button class="btn btn-secondary" onclick="AdminApp.closePlaintextRosterModal()">Cancelar</button>
         <button class="btn btn-gold" id="btn-confirm-import-plaintext" onclick="AdminApp.applyPlaintextRoster()" disabled>
           <i class="fa-solid fa-check"></i> Importar Plantilla al Club
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: REINICIAR TEMPORADA ==================== -->
+  <div class="modal-overlay" id="modal-season-reset" style="display: none;">
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header" style="border-bottom: 1px solid rgba(239, 68, 68, 0.3);">
+        <h2 class="modal-title" style="color: #f87171;">
+          <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> Reiniciar Estadísticas de Temporada
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeSeasonResetModal()">✕</button>
+      </div>
+
+      <div style="margin: 1.25rem 0;">
+        <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem;">
+          Esta herramienta prepara la base de datos para comenzar la <strong>Temporada 12</strong>, restableciendo únicamente las estadísticas y torneos de la temporada 11.
+        </p>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label style="font-weight: 600; color: #f87171;">Título de la Nueva Temporada:</label>
+          <input type="text" class="form-control" id="reset-modal-season-name" value="Temporada 12" style="font-weight: bold; font-size: 1rem;">
+        </div>
+
+        <!-- Lo que se reinicia -->
+        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1rem;">
+          <div style="font-weight: 700; color: #fca5a5; font-size: 0.88rem; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-trash-can"></i> Lo que se REINICIA para la nueva temporada:
+          </div>
+          <ul style="margin: 0 0 0 1.25rem; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6;">
+            <li><strong>Goles y Asistencias:</strong> Se restablecen a CERO (0) en todos los jugadores de los 24 clubes (Liga, Champions y Copa Estelar).</li>
+            <li><strong>Torneos y Fixtures:</strong> Marcadores, eventos y estados de partidos de liga y copas se limpian para la nueva temporada.</li>
+            <li><strong>Historial de Partidos:</strong> Se reinicia para registrar únicamente los juegos oficiales de la Temporada 12.</li>
+          </ul>
+        </div>
+
+        <!-- Lo que NO se toca -->
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 0.85rem 1rem;">
+          <div style="font-weight: 700; color: #6ee7b7; font-size: 0.88rem; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-shield-halved"></i> REGISTRO HISTÓRICO PROTEGIDO (NO SE TOCA):
+          </div>
+          <ul style="margin: 0 0 0 1.25rem; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6;">
+            <li><strong>Sala de Campeones:</strong> Todos los campeones históricos (T1 a T11) se mantienen 100% intactos.</li>
+            <li><strong>Historial Balón de Oro:</strong> Todos los ganadores de temporadas anteriores se mantienen 100% intactos.</li>
+            <li><strong>Clubes y Plantillas:</strong> Los 24 clubes con sus 23 jugadores, posiciones, presupuestos y notas permanecen intactos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closeSeasonResetModal()">Cancelar</button>
+        <button class="btn btn-danger" id="btn-execute-season-reset" style="background: #dc2626; border-color: #ef4444; color: #fff; font-weight: 700;" onclick="AdminApp.executeSeasonReset()">
+          <i class="fa-solid fa-arrows-rotate"></i> Confirmar e Iniciar Temporada 12
         </button>
       </div>
     </div>

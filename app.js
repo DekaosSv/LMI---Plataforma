@@ -1955,10 +1955,6 @@ function filterPlayersDatabase(resetLimit = true) {
     filtered.sort((a, b) => (b.goals || 0) - (a.goals || 0) || (b.assists || 0) - (a.assists || 0));
   } else if (selectedSort === 'assists_desc') {
     filtered.sort((a, b) => (b.assists || 0) - (a.assists || 0) || (b.goals || 0) - (a.goals || 0));
-  } else if (selectedSort === 'price_desc') {
-    filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
-  } else if (selectedSort === 'price_asc') {
-    filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
   } else {
     // name_asc por defecto
     filtered.sort((a, b) => (a.name || '').localeCompare(b.name || ''));

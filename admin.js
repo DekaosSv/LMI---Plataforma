@@ -33,6 +33,7 @@ const AdminApp = {
     document.getElementById('btn-quick-deploy').addEventListener('click', () => this.openDeployModal());
     document.getElementById('btn-run-deploy').addEventListener('click', () => this.runDeploy());
     document.getElementById('btn-export-backup').addEventListener('click', () => this.exportBackup());
+    document.getElementById('btn-season-reset')?.addEventListener('click', () => this.openSeasonResetModal());
 
     // Matches Studio
     const compSelect = document.getElementById('match-competition');
@@ -2467,6 +2468,112 @@ const AdminApp = {
     this.showToast(`Goles y asistencias de ${team.name} reiniciados a 0 para la nueva temporada.`, 'success');
   },
 
+  openSeasonResetModal() {
+    const modal = document.getElementById('modal-season-reset');
+    if (modal) {
+      modal.style.display = 'flex';
+      const input = document.getElementById('reset-modal-season-name');
+      if (input) input.value = 'Temporada 12';
+    }
+  },
+
+  closeSeasonResetModal() {
+    const modal = document.getElementById('modal-season-reset');
+    if (modal) modal.style.display = 'none';
+  },
+
+  async executeSeasonReset() {
+    const targetSeason = (document.getElementById('reset-modal-season-name')?.value || 'Temporada 12').trim();
+    if (!targetSeason) {
+      this.showToast('Ingresa un nombre para la nueva temporada', 'warning');
+      return;
+    }
+
+    if (!confirm(`¿Confirmas reiniciar las estadísticas de temporada y torneos para comenzar ${targetSeason}?\n\n- Goles y asistencias de todos los jugadores pasarán a 0.\n- Partidos, marcadores y fixtures de la temporada se reiniciarán.\n- EL REGISTRO HISTÓRICO (Sala de Campeones y Balón de Oro) NO SE TOCARÁ.`)) {
+      return;
+    }
+
+    // 1. Temporada
+    this.data.season = targetSeason;
+    this.ensureWebConfig();
+    this.data.webConfig.seasonTitle = targetSeason;
+
+    // 2. Reiniciar estadísticas individuales a 0 (solo temporada)
+    let playersCount = 0;
+    (this.data.players || []).forEach(p => {
+      p.goals = 0;
+      p.assists = 0;
+      p.goals_liga = 0;
+      p.assists_liga = 0;
+      p.goals_champions = 0;
+      p.assists_champions = 0;
+      p.goals_estelar = 0;
+      p.assists_estelar = 0;
+      playersCount++;
+    });
+
+    // 3. Reiniciar torneos de la temporada
+    // Copa Estelar
+    (this.data.copaEstelarMatches || []).forEach(m => {
+      m.score1 = null;
+      m.score2 = null;
+      m.estado = 'Pendiente';
+      m.winner = null;
+      m.played = false;
+      m.events = [];
+    });
+
+    // Champions League
+    (this.data.championsLeagueMatches || []).forEach(m => {
+      m.score1 = null;
+      m.score2 = null;
+      m.estado = 'Pendiente';
+      m.winner = null;
+      m.played = false;
+      m.events = [];
+    });
+
+    // Fixtures de Liga (Oro, Plata, Champions)
+    if (this.data.fixtures) {
+      ['oro', 'plata', 'champions'].forEach(comp => {
+        const rounds = this.data.fixtures[comp] || [];
+        rounds.forEach(r => {
+          (r.matches || []).forEach(m => {
+            m.played = false;
+            m.score1 = null;
+            m.score2 = null;
+            m.events = [];
+          });
+        });
+      });
+    }
+
+    // Limpiar historial de partidos de la temporada finalizada
+    this.data.matchHistory = [];
+
+    // 4. Actualizar interfaz y cerrar modal
+    this.closeSeasonResetModal();
+
+    const lblSeason = document.getElementById('lbl-season');
+    if (lblSeason) lblSeason.textContent = targetSeason.replace(/Temporada\s*/i, 'T');
+    const inputSeason = document.getElementById('web-config-season');
+    if (inputSeason) inputSeason.value = targetSeason;
+
+    this.renderDashboard();
+    this.renderTopScorers();
+    this.renderMatchHistory();
+    this.renderTeamsView();
+    this.renderWebControlView();
+    if (document.getElementById('match-jornada-select')) {
+      this.onJornadaChange();
+    }
+
+    // 5. Guardar inmediatamente
+    await this.saveData(true);
+
+    this.showToast(`¡${targetSeason} iniciada con éxito! Estadísticas de ${playersCount} jugadores y torneos reiniciados. Registro histórico 100% protegido.`, 'success');
+  },
+
   // ==================== TEAMS & ROSTERS STUDIO ====================
   onTeamSelected(teamId) {
     this.selectedTeamId = teamId;
@@ -2794,7 +2901,7 @@ const AdminApp = {
     if (!tbody || !badge || !btnConfirm) return;
 
     if (!players || players.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Pega texto en el cuadro superior para previsualizar.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Pega texto en el cuadro superior para previsualizar.</td></tr>`;
       badge.textContent = '0 jugadores detectados';
       btnConfirm.disabled = true;
       return;
@@ -2810,7 +2917,6 @@ const AdminApp = {
         <td style="color: var(--text-muted); font-size: 0.8rem; font-weight: 700;">${idx + 1}</td>
         <td><span class="pos-badge pos-${p.position}">${p.position}</span></td>
         <td style="font-weight: 700; color: #fff;">${this.escape(p.name)}</td>
-        <td style="color: var(--text-secondary);">$5.0M</td>
         <td><span class="badge" style="background: rgba(255,255,255,0.08); font-size: 0.72rem; padding: 0.15rem 0.4rem; border-radius: 4px;">Normal</span></td>
       </tr>
     `).join('');
@@ -2847,7 +2953,6 @@ const AdminApp = {
         assists_champions: 0,
         goals_estelar: 0,
         assists_estelar: 0,
-        price: 5000000,
         cardType: 'Normal',
         isLegend: false
       };
@@ -2887,7 +2992,7 @@ const AdminApp = {
     }
 
     if (players.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay jugadores que coincidan con la búsqueda.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay jugadores que coincidan con la búsqueda.</td></tr>`;
       return;
     }
 
@@ -2899,7 +3004,6 @@ const AdminApp = {
           ${p.isLegend ? '<span style="color: var(--lmi-gold); font-size: 0.75rem; margin-left: 0.3rem;">★ Leyenda</span>' : ''}
         </td>
         <td><span class="pos-badge pos-${p.position || 'MC'}">${p.position || 'MC'}</span></td>
-        <td>${this.formatMoney(p.price || 0)}</td>
         <td>${p.goals_liga || 0}</td>
         <td>${p.goals_champions || 0}</td>
         <td>${p.goals_estelar || 0}</td>
@@ -2945,7 +3049,6 @@ const AdminApp = {
       document.getElementById('player-modal-name').value = player.name;
       document.getElementById('player-modal-pos').value = player.position || 'MC';
       document.getElementById('player-modal-team').value = player.teamId || this.selectedTeamId;
-      document.getElementById('player-modal-price').value = player.price || 0;
       document.getElementById('player-modal-goals-liga').value = player.goals_liga || 0;
       document.getElementById('player-modal-goals-champ').value = player.goals_champions || 0;
       document.getElementById('player-modal-goals-estelar').value = player.goals_estelar || 0;
@@ -2958,7 +3061,6 @@ const AdminApp = {
       document.getElementById('player-modal-name').value = '';
       document.getElementById('player-modal-pos').value = 'MC';
       document.getElementById('player-modal-team').value = this.selectedTeamId || '';
-      document.getElementById('player-modal-price').value = 5000000;
       document.getElementById('player-modal-goals-liga').value = 0;
       document.getElementById('player-modal-goals-champ').value = 0;
       document.getElementById('player-modal-goals-estelar').value = 0;
@@ -2983,7 +3085,6 @@ const AdminApp = {
 
     const pos = document.getElementById('player-modal-pos').value;
     const teamId = document.getElementById('player-modal-team').value;
-    const price = parseInt(document.getElementById('player-modal-price').value, 10) || 0;
     const gLiga = parseInt(document.getElementById('player-modal-goals-liga').value, 10) || 0;
     const gChamp = parseInt(document.getElementById('player-modal-goals-champ').value, 10) || 0;
     const gEstelar = parseInt(document.getElementById('player-modal-goals-estelar').value, 10) || 0;
@@ -2999,7 +3100,6 @@ const AdminApp = {
         player.name = name;
         player.position = pos;
         player.teamId = teamId;
-        player.price = price;
         player.goals_liga = gLiga;
         player.goals_champions = gChamp;
         player.goals_estelar = gEstelar;
@@ -3016,7 +3116,6 @@ const AdminApp = {
         name: name,
         position: pos,
         teamId: teamId || this.selectedTeamId,
-        price: price,
         goals_liga: gLiga,
         goals_champions: gChamp,
         goals_estelar: gEstelar,
@@ -3077,7 +3176,7 @@ const AdminApp = {
       fromTeamName: oldTeam ? oldTeam.name : 'Libre',
       toTeamId: newTeam.id,
       toTeamName: newTeam.name,
-      price: player.price || 0,
+      price: 0,
       seasons: 1,
       details: 'Traspaso directo de plantilla'
     });

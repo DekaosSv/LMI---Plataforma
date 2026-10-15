@@ -83,26 +83,45 @@ TEAM_ID_MAP = {
 }
 
 TEAM_DIVISION_MAP = {
+    # DIVISIÓN ORO
     "como1907": "oro",
     "bayernleverkusen": "oro",
     "psg": "oro",
-    "fcbarcelona": "oro",
-    "arsenal": "oro",
-    "manchestercity": "oro",
     "bocajuniors": "oro",
-    "realmadrid": "oro",
-    "interdemilan": "plata",
-    "galatasaray": "plata",
-    "urawareddiamonds": "plata",
-    "atleticodemadrid": "plata",
-    "casapiaac": "plata",
-    "borussiadortmund": "plata",
+    "manchestercity": "oro",
+    "interdemilan": "oro",
+    "galatasaray": "oro",
+    "borussiadortmund": "oro",
+    "liverpool": "oro",
+    "atleticodemadrid": "oro",
+    "riverplate": "oro",
+
+    # DIVISIÓN PLATA
     "acmiln": "plata",
-    "brighton": "plata",
-    "clubamerica": "plata",
-    "riverplate": "plata",
+    "acmilan": "plata",
     "losclille": "plata",
-    "liverpool": "plata"
+    "lille": "plata",
+    "ajaxdeamsterdam": "plata",
+    "ajax": "plata",
+    "brightonhovealbion": "plata",
+    "brighton": "plata",
+    "chelseafc": "plata",
+    "chelsea": "plata",
+    "fctwente": "plata",
+    "twente": "plata",
+    "feyenoordrotterdam": "plata",
+    "feyenoord": "plata",
+    "manchesterunited": "plata",
+    "realmadrid": "plata",
+    "fcbarcelona": "plata",
+    "barcelona": "plata",
+    "arsenal": "plata",
+    "acffiorentina": "plata",
+    "fiorentina": "plata",
+    "staderennais": "plata",
+    "rennais": "plata",
+    "rennes": "plata",
+    "casapiaac": "plata"
 }
 
 def normalize_key(name):
