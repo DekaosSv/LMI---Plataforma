@@ -79,7 +79,9 @@ TEAM_ID_MAP = {
     "clubatleticoriverplate": "riverplate",
     "losclille": "losclille",
     "lille": "losclille",
-    "realmadridcf": "realmadrid"
+    "realmadridcf": "realmadrid",
+    "vascodagama": "vascodagama",
+    "vasco": "vascodagama"
 }
 
 TEAM_DIVISION_MAP = {
@@ -121,7 +123,9 @@ TEAM_DIVISION_MAP = {
     "staderennais": "plata",
     "rennais": "plata",
     "rennes": "plata",
-    "casapiaac": "plata"
+    "casapiaac": "plata",
+    "vascodagama": "plata",
+    "vasco": "plata"
 }
 
 def normalize_key(name):

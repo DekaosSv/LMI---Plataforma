@@ -9414,9 +9414,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "vascodagama",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9670,9 +9670,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "vascodagama",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9686,9 +9686,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "vascodagama",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9749,9 +9749,9 @@ var INITIAL_LMI_DATA = {
       "name": "Julián Quiñones",
       "position": "DC",
       "teamId": "vascodagama",
-      "goals": 0,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -11658,9 +11658,47 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j1_m7",
+            "jornada": 1,
+            "team1Id": "fcbarcelona",
+            "team2Id": "vascodagama",
+            "score1": 1,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792126304381_19",
+                "playerName": "Gabriel Sara",
+                "teamId": "vascodagama",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792126304381_18",
+                "playerName": "Conor Gallagher",
+                "teamId": "vascodagama",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792126304381_23",
+                "playerName": "Julián Quiñones",
+                "teamId": "vascodagama",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792126304381_2",
+                "playerName": "Javier Zanetti",
+                "teamId": "vascodagama",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           }
-        ],
-        "restingTeamId": "fcbarcelona"
+        ]
       },
       {
         "jornada": 2,
@@ -11791,9 +11829,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j2_m7",
+            "jornada": 2,
+            "team1Id": "vascodagama",
+            "team2Id": "brightonhovealbion",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "brightonhovealbion"
+        ]
       },
       {
         "jornada": 3,
@@ -11952,9 +11999,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j3_m7",
+            "jornada": 3,
+            "team1Id": "vascodagama",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "feyenoordrotterdam"
+        ]
       },
       {
         "jornada": 4,
@@ -12035,9 +12091,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j4_m7",
+            "jornada": 4,
+            "team1Id": "vascodagama",
+            "team2Id": "manchesterunited",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "manchesterunited"
+        ]
       },
       {
         "jornada": 5,
@@ -12139,9 +12204,18 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
+          },
+          {
+            "id": "plata_j5_m7",
+            "jornada": 5,
+            "team1Id": "vascodagama",
+            "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "acmiln"
+        ]
       },
       {
         "jornada": 6,
@@ -12207,9 +12281,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j6_m7",
+            "jornada": 6,
+            "team1Id": "vascodagama",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "losclille"
+        ]
       },
       {
         "jornada": 7,
@@ -12275,9 +12358,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j7_m7",
+            "jornada": 7,
+            "team1Id": "vascodagama",
+            "team2Id": "staderennais",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "staderennais"
+        ]
       },
       {
         "jornada": 8,
@@ -12343,9 +12435,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j8_m7",
+            "jornada": 8,
+            "team1Id": "vascodagama",
+            "team2Id": "acffiorentina",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "acffiorentina"
+        ]
       },
       {
         "jornada": 9,
@@ -12411,9 +12512,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j9_m7",
+            "jornada": 9,
+            "team1Id": "vascodagama",
+            "team2Id": "chelseafc",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "chelseafc"
+        ]
       },
       {
         "jornada": 10,
@@ -12479,9 +12589,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j10_m7",
+            "jornada": 10,
+            "team1Id": "vascodagama",
+            "team2Id": "ajaxdeamsterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "ajaxdeamsterdam"
+        ]
       },
       {
         "jornada": 11,
@@ -12547,9 +12666,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j11_m7",
+            "jornada": 11,
+            "team1Id": "vascodagama",
+            "team2Id": "fctwente",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "fctwente"
+        ]
       },
       {
         "jornada": 12,
@@ -12615,9 +12743,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j12_m7",
+            "jornada": 12,
+            "team1Id": "vascodagama",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "arsenal"
+        ]
       },
       {
         "jornada": 13,
@@ -12683,9 +12820,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j13_m7",
+            "jornada": 13,
+            "team1Id": "vascodagama",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "realmadrid"
+        ]
       },
       {
         "jornada": 14,
@@ -12751,9 +12897,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j14_m7",
+            "jornada": 14,
+            "team1Id": "vascodagama",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "fcbarcelona"
+        ]
       },
       {
         "jornada": 15,
@@ -12819,9 +12974,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j15_m7",
+            "jornada": 15,
+            "team1Id": "brightonhovealbion",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "brightonhovealbion"
+        ]
       },
       {
         "jornada": 16,
@@ -12887,9 +13051,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j16_m7",
+            "jornada": 16,
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "feyenoordrotterdam"
+        ]
       },
       {
         "jornada": 17,
@@ -12955,9 +13128,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j17_m7",
+            "jornada": 17,
+            "team1Id": "manchesterunited",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "manchesterunited"
+        ]
       },
       {
         "jornada": 18,
@@ -13023,9 +13205,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j18_m7",
+            "jornada": 18,
+            "team1Id": "acmiln",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "acmiln"
+        ]
       },
       {
         "jornada": 19,
@@ -13091,9 +13282,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j19_m7",
+            "jornada": 19,
+            "team1Id": "losclille",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "losclille"
+        ]
       },
       {
         "jornada": 20,
@@ -13159,9 +13359,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j20_m7",
+            "jornada": 20,
+            "team1Id": "staderennais",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "staderennais"
+        ]
       },
       {
         "jornada": 21,
@@ -13227,9 +13436,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j21_m7",
+            "jornada": 21,
+            "team1Id": "acffiorentina",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "acffiorentina"
+        ]
       },
       {
         "jornada": 22,
@@ -13295,9 +13513,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j22_m7",
+            "jornada": 22,
+            "team1Id": "chelseafc",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "chelseafc"
+        ]
       },
       {
         "jornada": 23,
@@ -13363,9 +13590,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j23_m7",
+            "jornada": 23,
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "ajaxdeamsterdam"
+        ]
       },
       {
         "jornada": 24,
@@ -13431,9 +13667,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j24_m7",
+            "jornada": 24,
+            "team1Id": "fctwente",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "fctwente"
+        ]
       },
       {
         "jornada": 25,
@@ -13499,9 +13744,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j25_m7",
+            "jornada": 25,
+            "team1Id": "arsenal",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "arsenal"
+        ]
       },
       {
         "jornada": 26,
@@ -13567,9 +13821,18 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "plata_j26_m7",
+            "jornada": 26,
+            "team1Id": "realmadrid",
+            "team2Id": "vascodagama",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
-        ],
-        "restingTeamId": "realmadrid"
+        ]
       }
     ],
     "champions": [
@@ -15225,6 +15488,53 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792127380725",
+      "timestamp": 1792127380725,
+      "date": "15 oct 2026, 11:09 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m7",
+      "phase": "Jornada 1",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 1,
+      "team2Id": "vascodagama",
+      "team2Name": "Vasco da Gama",
+      "team2Logo": "Logos Equipos/vasco.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792126304381_19",
+          "playerName": "Gabriel Sara",
+          "teamId": "vascodagama",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792126304381_18",
+          "playerName": "Conor Gallagher",
+          "teamId": "vascodagama",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792126304381_23",
+          "playerName": "Julián Quiñones",
+          "teamId": "vascodagama",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792126304381_2",
+          "playerName": "Javier Zanetti",
+          "teamId": "vascodagama",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792126067026",
       "timestamp": 1792126067026,
