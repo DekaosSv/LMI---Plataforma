@@ -498,7 +498,9 @@ const AdminApp = {
       const opt = document.createElement('option');
       opt.value = r.jornada;
       const typeLabel = comp === 'champions' ? 'Fecha' : (r.type === 'ida' ? 'Ida' : 'Vuelta');
-      opt.textContent = `${r.name} (${typeLabel})`;
+      const restTeam = r.restingTeamId ? this.getTeamById(r.restingTeamId) : null;
+      const restText = restTeam ? ` • 💤 ${restTeam.name}` : '';
+      opt.textContent = `${r.name} (${typeLabel})${restText}`;
       jornadaSel.appendChild(opt);
     });
 
@@ -965,14 +967,44 @@ const AdminApp = {
     const container = document.getElementById('jornada-matches-grid');
     const titleEl = document.getElementById('export-division-title');
     const descEl = document.getElementById('jornada-card-desc');
+    const restingEl = document.getElementById('export-resting-container');
+    const seasonEl = document.getElementById('export-season-badge');
     if (!container || !this.data || !this.data.fixtures) return;
 
     const divName = comp === 'oro' ? 'DIVISIÓN ORO' : (comp === 'plata' ? 'DIVISIÓN PLATA' : (comp === 'champions' ? 'UEFA CHAMPIONS LEAGUE' : 'TORNEO'));
-    if (titleEl) titleEl.textContent = `${divName} • JORNADA ${jornadaNum}`;
-    if (descEl) descEl.textContent = `Partidos programados para la Jornada ${jornadaNum} de ${divName}.`;
-
     const rounds = this.data.fixtures[comp] || [];
     const round = rounds.find(r => r.jornada === jornadaNum);
+    const legLabel = round && round.type === 'vuelta' ? 'VUELTA' : (comp === 'champions' ? 'FECHA ' + jornadaNum : 'IDA');
+
+    if (titleEl) titleEl.textContent = `${divName} • JORNADA ${jornadaNum} (${legLabel})`;
+    if (seasonEl) seasonEl.textContent = `${this.data.season || 'Temporada 12'} • eFootball`;
+
+    const restingTeam = (round && round.restingTeamId) ? this.getTeamById(round.restingTeamId) : null;
+    if (descEl) {
+      if (restingTeam) {
+        descEl.innerHTML = `Partidos programados para la Jornada ${jornadaNum} de ${divName}. <span style="display:inline-flex; align-items:center; gap:0.35rem; color:#facc15; font-weight:700;"><i class="fa-solid fa-moon"></i> Descansa: ${this.escape(restingTeam.name)}</span>`;
+      } else {
+        descEl.textContent = `Partidos programados para la Jornada ${jornadaNum} de ${divName}.`;
+      }
+    }
+
+    if (restingEl) {
+      if (restingTeam) {
+        restingEl.style.display = 'block';
+        restingEl.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.65rem; padding: 0.65rem 1rem; background: rgba(250, 204, 21, 0.1); border: 1px dashed rgba(250, 204, 21, 0.4); border-radius: 8px;">
+            <i class="fa-solid fa-bed" style="color: #facc15; font-size: 0.95rem;"></i>
+            <span style="font-size: 0.85rem; color: #cbd5e1; font-weight: 600;">Descansa esta jornada:</span>
+            <img src="${this.escape(restingTeam.logo || 'Logos Equipos/default.png')}" alt="" style="width: 24px; height: 24px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <strong style="color: #ffd100; font-size: 0.92rem;">${this.escape(restingTeam.name)}</strong>
+          </div>
+        `;
+      } else {
+        restingEl.style.display = 'none';
+        restingEl.innerHTML = '';
+      }
+    }
+
     container.innerHTML = '';
 
     if (!round || !round.matches || round.matches.length === 0) {
@@ -1016,7 +1048,7 @@ const AdminApp = {
 
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.5rem 0;">
           <div style="flex: 1; display: flex; align-items: center; gap: 0.5rem;">
-            ${t1Logo ? `<img src="${this.escape(t1Logo)}" style="width: 30px; height: 30px; object-fit: contain;">` : ''}
+            ${t1Logo ? `<img src="${this.escape(t1Logo)}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">` : ''}
             <span style="font-weight: 700; font-size: 0.9rem; color: #fff;">${this.escape(t1Name)}</span>
           </div>
 
@@ -1026,7 +1058,7 @@ const AdminApp = {
 
           <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem;">
             <span style="font-weight: 700; font-size: 0.9rem; color: #fff; text-align: right;">${this.escape(t2Name)}</span>
-            ${t2Logo ? `<img src="${this.escape(t2Logo)}" style="width: 30px; height: 30px; object-fit: contain;">` : ''}
+            ${t2Logo ? `<img src="${this.escape(t2Logo)}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">` : ''}
           </div>
         </div>
       `;
@@ -1062,17 +1094,68 @@ const AdminApp = {
       }
     }, 10000);
 
+    // Clon limpio para renderizado sin cortes ni bloqueos
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'fixed';
+    wrapper.style.left = '-9999px';
+    wrapper.style.top = '0';
+    wrapper.style.zIndex = '-100';
+    wrapper.style.width = '960px';
+
+    const clone = target.cloneNode(true);
+    clone.style.width = '960px';
+    clone.style.maxWidth = '960px';
+    clone.style.boxSizing = 'border-box';
+    clone.style.margin = '0';
+
+    // 1. Reemplazar iconos font-awesome con emojis para evitar cuelgues de @font-face en html2canvas
+    clone.querySelectorAll('i').forEach(icon => {
+      const cls = icon.className || '';
+      let emoji = '⚽';
+      if (cls.includes('fa-trophy')) emoji = '🏆';
+      else if (cls.includes('fa-bed') || cls.includes('fa-moon')) emoji = '💤';
+      else if (cls.includes('fa-calendar')) emoji = '📅';
+      const span = document.createElement('span');
+      span.style.fontSize = '1.2rem';
+      span.style.verticalAlign = 'middle';
+      span.style.marginRight = '0.35rem';
+      span.textContent = emoji;
+      icon.parentNode.replaceChild(span, icon);
+    });
+
+    // 2. Pre-convertir imágenes ya renderizadas a Data URLs
+    const origImgs = target.querySelectorAll('img');
+    const cloneImgs = clone.querySelectorAll('img');
+    cloneImgs.forEach((cImg, idx) => {
+      try {
+        const oImg = origImgs[idx] || document.querySelector(`img[src="${cImg.getAttribute('src')}"]`);
+        if (oImg && oImg.complete && oImg.naturalWidth > 0) {
+          const c = document.createElement('canvas');
+          c.width = oImg.naturalWidth;
+          c.height = oImg.naturalHeight;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(oImg, 0, 0);
+          cImg.src = c.toDataURL('image/png');
+        }
+      } catch (e) {}
+    });
+
+    wrapper.appendChild(clone);
+    document.body.appendChild(wrapper);
+
     try {
       if (typeof html2canvas === 'undefined') {
         throw new Error('La librería html2canvas no está disponible.');
       }
-      const canvasPromise = html2canvas(target, {
+      const canvasPromise = html2canvas(clone, {
         backgroundColor: '#090e1a',
         scale: 2,
         useCORS: true,
         allowTaint: true,
         imageTimeout: 3000,
-        logging: false
+        logging: false,
+        width: 960,
+        windowWidth: 960
       });
 
       const timeoutPromise = new Promise((_, reject) =>
@@ -1093,6 +1176,7 @@ const AdminApp = {
       this.showToast(`Error al exportar imagen: ${err.message}`, 'error');
     } finally {
       clearTimeout(unlockTimer);
+      wrapper.remove();
       btn.disabled = false;
       btn.innerHTML = '<i class="fa-solid fa-camera"></i> <span>Exportar Jornada a Imagen (PNG)</span>';
     }
@@ -4041,6 +4125,17 @@ const AdminApp = {
     const elPlata = document.getElementById('gen-plata-count');
     if (elPlata) elPlata.textContent = plataCount;
 
+    const oroJornadasIda = oroCount % 2 === 0 ? oroCount - 1 : oroCount;
+    const plataJornadasIda = plataCount % 2 === 0 ? plataCount - 1 : plataCount;
+    const btnOroIda = document.getElementById('btn-gen-oro-ida');
+    const btnOroDoble = document.getElementById('btn-gen-oro-doble');
+    const btnPlataIda = document.getElementById('btn-gen-plata-ida');
+    const btnPlataDoble = document.getElementById('btn-gen-plata-doble');
+    if (btnOroIda) btnOroIda.innerHTML = `<i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (${oroJornadasIda} Jornadas)`;
+    if (btnOroDoble) btnOroDoble.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (${oroJornadasIda * 2} Jornadas)`;
+    if (btnPlataIda) btnPlataIda.innerHTML = `<i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (${plataJornadasIda} Jornadas)`;
+    if (btnPlataDoble) btnPlataDoble.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (${plataJornadasIda * 2} Jornadas)`;
+
     // Renderizar tarjetas de pestañas
     const grid = document.getElementById('web-tabs-control-grid');
     if (!grid) return;
@@ -4152,6 +4247,7 @@ const AdminApp = {
     for (let r = 0; r < roundsCount; r++) {
       const current = [fixed, ...rotating];
       const matches = [];
+      let restingTeamId = null;
       for (let m = 0; m < matchesPerRound; m++) {
         let t1 = current[m];
         let t2 = current[n - 1 - m];
@@ -4160,7 +4256,11 @@ const AdminApp = {
         } else if (m > 0 && (r + m) % 2 === 1) {
           const tmp = t1; t1 = t2; t2 = tmp;
         }
-        if (t1 !== '__BYE__' && t2 !== '__BYE__') {
+        if (t1 === '__BYE__') {
+          restingTeamId = t2;
+        } else if (t2 === '__BYE__') {
+          restingTeamId = t1;
+        } else {
           matches.push({
             id: `match_r${r + 1}_m${matches.length + 1}`,
             jornada: r + 1,
@@ -4173,12 +4273,14 @@ const AdminApp = {
           });
         }
       }
-      rounds.push({
+      const roundObj = {
         jornada: r + 1,
         name: `Jornada ${r + 1}`,
         type: 'ida',
         matches: matches
-      });
+      };
+      if (restingTeamId) roundObj.restingTeamId = restingTeamId;
+      rounds.push(roundObj);
       rotating = [rotating[rotating.length - 1], ...rotating.slice(0, rotating.length - 1)];
     }
 
@@ -4195,12 +4297,14 @@ const AdminApp = {
           played: false,
           events: []
         }));
-        rounds.push({
+        const vueltaRoundObj = {
           jornada: roundsCount + r + 1,
           name: `Jornada ${roundsCount + r + 1}`,
           type: 'vuelta',
           matches: vueltaMatches
-        });
+        };
+        if (idaRound.restingTeamId) vueltaRoundObj.restingTeamId = idaRound.restingTeamId;
+        rounds.push(vueltaRoundObj);
       }
     }
 

@@ -3022,7 +3022,9 @@ function populateWebJornadas() {
   const prevValue = parseInt(sel.value, 10);
   sel.innerHTML = rounds.map(r => {
     const roundLabel = currentWebDivision === 'champions' ? 'Fecha' : (r.type === 'ida' ? 'Ida' : 'Vuelta');
-    return `<option value="${r.jornada}">Jornada ${r.jornada} (${roundLabel})</option>`;
+    const restTeam = r.restingTeamId ? (lmiData.teams || []).find(t => t.id === r.restingTeamId) : null;
+    const restText = restTeam ? ` • 💤 ${restTeam.name}` : '';
+    return `<option value="${r.jornada}">Jornada ${r.jornada} (${roundLabel})${restText}</option>`;
   }).join('');
 
   const jornadas = rounds.map(r => r.jornada);
@@ -3039,11 +3041,14 @@ function onWebJornadaSelectChange() {
   const sel = document.getElementById('web-jornada-select');
   const grid = document.getElementById('web-jornada-matches-grid');
   const subTitle = document.getElementById('web-export-sub');
+  const restingContainer = document.getElementById('web-resting-container');
+  const seasonBadge = document.getElementById('web-export-season');
   if (!sel || !grid) return;
 
   const jornadaNum = parseInt(sel.value, 10);
   if (!jornadaNum) {
     grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">Selecciona una jornada</div>';
+    if (restingContainer) restingContainer.style.display = 'none';
     return;
   }
 
@@ -3057,6 +3062,28 @@ function onWebJornadaSelectChange() {
     subTitle.innerHTML = `${compTitle} &bull; JORNADA ${jornadaNum} (${roundLabel})`;
     subTitle.style.color = currentWebDivision === 'champions' ? '#38bdf8' : '#facc15';
     subTitle.style.fontWeight = '900';
+  }
+
+  if (seasonBadge) {
+    seasonBadge.innerHTML = `${(lmiData && lmiData.season) || 'Temporada 12'} &bull; eFootball`;
+  }
+
+  const restTeam = (round && round.restingTeamId) ? (lmiData.teams || []).find(t => t.id === round.restingTeamId) : null;
+  if (restingContainer) {
+    if (restTeam) {
+      restingContainer.style.display = 'block';
+      restingContainer.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.65rem; padding: 0.6rem 1rem; background: rgba(250, 204, 21, 0.1); border: 1px dashed rgba(250, 204, 21, 0.4); border-radius: 8px;">
+          <i class="fa-solid fa-bed" style="color: #facc15; font-size: 0.95rem;"></i>
+          <span style="font-size: 0.85rem; color: #cbd5e1; font-weight: 600;">Descansa esta jornada:</span>
+          <img src="${escapeHTML(restTeam.logo || 'Logos Equipos/default.png')}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+          <strong style="color: #ffd100; font-size: 0.92rem;">${escapeHTML(restTeam.name)}</strong>
+        </div>
+      `;
+    } else {
+      restingContainer.style.display = 'none';
+      restingContainer.innerHTML = '';
+    }
   }
 
   if (matches.length === 0) {

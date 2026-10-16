@@ -467,10 +467,13 @@
                   <span style="font-size: 0.85rem; font-weight: 800; color: var(--lmi-gold); text-transform: uppercase;" id="export-division-title">DIVISIÓN ORO &bull; JORNADA 1</span>
                 </div>
               </div>
-              <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;">
-                Temporada 11 &bull; eFootball
+              <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;" id="export-season-badge">
+                Temporada 12 &bull; eFootball
               </div>
             </div>
+
+            <!-- Descanso oficial de la Jornada -->
+            <div id="export-resting-container" style="display: none; margin-bottom: 1rem;"></div>
 
             <div id="jornada-matches-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               <!-- Matches rendered dynamically -->
@@ -975,32 +978,32 @@
           <div class="grid-2">
             <!-- División Oro -->
             <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-crown" style="color: #ffd700;"></i> División Oro (<span id="gen-oro-count">8</span> Clubes)</h4>
+              <h4><i class="fa-solid fa-crown" style="color: #ffd700;"></i> División Oro (<span id="gen-oro-count">11</span> Clubes)</h4>
               <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                Genera los partidos de liga entre los clubes asignados a División Oro con algoritmo oficial round-robin.
+                Genera los partidos de liga entre los clubes asignados a División Oro con algoritmo oficial round-robin y descanso rotativo.
               </p>
               <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <button class="btn btn-primary" onclick="AdminApp.generateDivisionFixture('oro', false)">
-                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (7 Jornadas)
+                <button class="btn btn-primary" id="btn-gen-oro-ida" onclick="AdminApp.generateDivisionFixture('oro', false)">
+                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (11 Jornadas)
                 </button>
-                <button class="btn btn-secondary" onclick="AdminApp.generateDivisionFixture('oro', true)">
-                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (14 Jornadas)
+                <button class="btn btn-secondary" id="btn-gen-oro-doble" onclick="AdminApp.generateDivisionFixture('oro', true)">
+                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (22 Jornadas)
                 </button>
               </div>
             </div>
 
             <!-- División Plata -->
             <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-shield-halved" style="color: #94a3b8;"></i> División Plata (<span id="gen-plata-count">15</span> Clubes)</h4>
+              <h4><i class="fa-solid fa-shield-halved" style="color: #94a3b8;"></i> División Plata (<span id="gen-plata-count">13</span> Clubes)</h4>
               <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
                 Genera los partidos de liga entre los clubes de División Plata. Incluye descanso rotativo por jornada.
               </p>
               <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <button class="btn btn-primary" onclick="AdminApp.generateDivisionFixture('plata', false)">
-                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (15 Jornadas)
+                <button class="btn btn-primary" id="btn-gen-plata-ida" onclick="AdminApp.generateDivisionFixture('plata', false)">
+                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (13 Jornadas)
                 </button>
-                <button class="btn btn-secondary" onclick="AdminApp.generateDivisionFixture('plata', true)">
-                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (30 Jornadas)
+                <button class="btn btn-secondary" id="btn-gen-plata-doble" onclick="AdminApp.generateDivisionFixture('plata', true)">
+                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (26 Jornadas)
                 </button>
               </div>
             </div>

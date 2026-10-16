@@ -1800,9 +1800,9 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Forlán",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1928,9 +1928,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lovro Majer",
       "position": "MP",
       "teamId": "manchesterunited",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1945,9 +1945,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "manchesterunited",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2105,9 +2105,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2120,9 +2120,9 @@ var INITIAL_LMI_DATA = {
       "name": "Vinícius Júnior",
       "position": "EI",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2152,9 +2152,9 @@ var INITIAL_LMI_DATA = {
       "name": "Viktor Gyökeres",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2297,9 +2297,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2521,9 +2521,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "bocajuniors",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2616,9 +2616,9 @@ var INITIAL_LMI_DATA = {
       "name": "Kylian Mbappé",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2728,9 +2728,9 @@ var INITIAL_LMI_DATA = {
       "name": "Sergio Agüero",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3497,9 +3497,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "bayernleverkusen",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3592,10 +3592,10 @@ var INITIAL_LMI_DATA = {
       "name": "Nico Paz",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3608,9 +3608,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ousmane Dembélé",
       "position": "EI",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3897,9 +3897,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "como1907",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4008,9 +4008,9 @@ var INITIAL_LMI_DATA = {
       "name": "Jamie Vardy",
       "position": "DC",
       "teamId": "como1907",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4345,9 +4345,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4360,10 +4360,10 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 2,
+      "assists": 1,
+      "goals_liga": 2,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4376,10 +4376,10 @@ var INITIAL_LMI_DATA = {
       "name": "Andriy Shevchenko",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 2,
+      "assists": 1,
+      "goals_liga": 2,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5417,9 +5417,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "fcbarcelona",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5640,9 +5640,9 @@ var INITIAL_LMI_DATA = {
       "name": "Fermín López",
       "position": "MP",
       "teamId": "fcbarcelona",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6184,9 +6184,9 @@ var INITIAL_LMI_DATA = {
       "name": "George Best",
       "position": "ED",
       "teamId": "staderennais",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6217,9 +6217,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "staderennais",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6520,10 +6520,10 @@ var INITIAL_LMI_DATA = {
       "name": "Jude Bellingham",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6537,9 +6537,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6553,9 +6553,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6584,9 +6584,9 @@ var INITIAL_LMI_DATA = {
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6760,9 +6760,9 @@ var INITIAL_LMI_DATA = {
       "name": "Victor Osimhen",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7673,9 +7673,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7688,9 +7688,9 @@ var INITIAL_LMI_DATA = {
       "name": "Julián Álvarez",
       "position": "DC",
       "teamId": "interdemilan",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8361,9 +8361,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "acffiorentina",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8376,9 +8376,9 @@ var INITIAL_LMI_DATA = {
       "name": "Kevin De Bruyne",
       "position": "MP",
       "teamId": "acffiorentina",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8409,9 +8409,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "acffiorentina",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8424,9 +8424,9 @@ var INITIAL_LMI_DATA = {
       "name": "Michael Owen",
       "position": "DC",
       "teamId": "acffiorentina",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8712,10 +8712,10 @@ var INITIAL_LMI_DATA = {
       "name": "İlkay Gündoğan",
       "position": "MCD",
       "teamId": "ajaxdeamsterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8744,9 +8744,9 @@ var INITIAL_LMI_DATA = {
       "name": "Martin Ødegaard",
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8761,9 +8761,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8776,9 +8776,9 @@ var INITIAL_LMI_DATA = {
       "name": "Samuel Lino",
       "position": "II",
       "teamId": "ajaxdeamsterdam",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8793,9 +8793,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "ajaxdeamsterdam",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9818,8 +9818,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j1_m1",
             "jornada": 1,
-            "team1Id": "como1907",
-            "team2Id": "realmadrid",
+            "team1Id": "riverplate",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9828,18 +9828,40 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j1_m2",
             "jornada": 1,
-            "team1Id": "bayernleverkusen",
-            "team2Id": "bocajuniors",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "bocajuniors",
+            "team2Id": "manchestercity",
+            "score1": 2,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039864584_23",
+                "playerName": "Sergio Agüero",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039864584_10",
+                "playerName": "Leroy Sané",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039864584_16",
+                "playerName": "Kylian Mbappé",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j1_m3",
             "jornada": 1,
-            "team1Id": "psg",
-            "team2Id": "manchestercity",
+            "team1Id": "galatasaray",
+            "team2Id": "atleticodemadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9848,14 +9870,54 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j1_m4",
             "jornada": 1,
-            "team1Id": "fcbarcelona",
-            "team2Id": "arsenal",
+            "team1Id": "borussiadortmund",
+            "team2Id": "como1907",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
+          },
+          {
+            "id": "oro_j1_m5",
+            "jornada": 1,
+            "team1Id": "psg",
+            "team2Id": "bayernleverkusen",
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039977160_9",
+                "playerName": "Ousmane Dembélé",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_8",
+                "playerName": "Nico Paz",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_8",
+                "playerName": "Nico Paz",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_2",
+                "playerName": "Nuno Mendes",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           }
-        ]
+        ],
+        "restingTeamId": "interdemilan"
       },
       {
         "jornada": 2,
@@ -9865,8 +9927,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j2_m1",
             "jornada": 2,
-            "team1Id": "bocajuniors",
-            "team2Id": "como1907",
+            "team1Id": "riverplate",
+            "team2Id": "interdemilan",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9875,8 +9937,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j2_m2",
             "jornada": 2,
-            "team1Id": "manchestercity",
-            "team2Id": "realmadrid",
+            "team1Id": "galatasaray",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9885,8 +9947,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j2_m3",
             "jornada": 2,
-            "team1Id": "arsenal",
-            "team2Id": "bayernleverkusen",
+            "team1Id": "bocajuniors",
+            "team2Id": "como1907",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9895,14 +9957,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j2_m4",
             "jornada": 2,
-            "team1Id": "fcbarcelona",
-            "team2Id": "psg",
+            "team1Id": "psg",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j2_m5",
+            "jornada": 2,
+            "team1Id": "borussiadortmund",
+            "team2Id": "bayernleverkusen",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "manchestercity"
       },
       {
         "jornada": 3,
@@ -9912,7 +9985,7 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j3_m1",
             "jornada": 3,
-            "team1Id": "como1907",
+            "team1Id": "interdemilan",
             "team2Id": "manchestercity",
             "score1": null,
             "score2": null,
@@ -9922,8 +9995,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j3_m2",
             "jornada": 3,
-            "team1Id": "bocajuniors",
-            "team2Id": "arsenal",
+            "team1Id": "galatasaray",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9932,8 +10005,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j3_m3",
             "jornada": 3,
-            "team1Id": "realmadrid",
-            "team2Id": "fcbarcelona",
+            "team1Id": "psg",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9942,14 +10015,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j3_m4",
             "jornada": 3,
-            "team1Id": "bayernleverkusen",
-            "team2Id": "psg",
+            "team1Id": "bocajuniors",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j3_m5",
+            "jornada": 3,
+            "team1Id": "borussiadortmund",
+            "team2Id": "atleticodemadrid",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "como1907"
       },
       {
         "jornada": 4,
@@ -9959,18 +10043,47 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j4_m1",
             "jornada": 4,
-            "team1Id": "arsenal",
-            "team2Id": "como1907",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "galatasaray",
+            "team2Id": "interdemilan",
+            "score1": 5,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039794983_8",
+                "playerName": "Vinícius Júnior",
+                "teamId": "galatasaray",
+                "type": "gol",
+                "count": 4
+              },
+              {
+                "playerId": "p_1792039794983_7",
+                "playerName": "Weston McKennie",
+                "teamId": "galatasaray",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039794983_10",
+                "playerName": "Viktor Gyökeres",
+                "teamId": "galatasaray",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039794983_19",
+                "playerName": "Julio Enciso",
+                "teamId": "galatasaray",
+                "type": "asistencia",
+                "count": 2
+              }
+            ]
           },
           {
             "id": "oro_j4_m2",
             "jornada": 4,
-            "team1Id": "fcbarcelona",
-            "team2Id": "manchestercity",
+            "team1Id": "manchestercity",
+            "team2Id": "como1907",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9980,7 +10093,7 @@ var INITIAL_LMI_DATA = {
             "id": "oro_j4_m3",
             "jornada": 4,
             "team1Id": "psg",
-            "team2Id": "bocajuniors",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
@@ -9989,14 +10102,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j4_m4",
             "jornada": 4,
-            "team1Id": "bayernleverkusen",
-            "team2Id": "realmadrid",
+            "team1Id": "borussiadortmund",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j4_m5",
+            "jornada": 4,
+            "team1Id": "bocajuniors",
+            "team2Id": "atleticodemadrid",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "bayernleverkusen"
       },
       {
         "jornada": 5,
@@ -10006,18 +10130,47 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j5_m1",
             "jornada": 5,
-            "team1Id": "como1907",
-            "team2Id": "fcbarcelona",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "interdemilan",
+            "team2Id": "como1907",
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040483217_10",
+                "playerName": "Khvicha Kvaratskhelia",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040483217_11",
+                "playerName": "Julián Álvarez",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040014502_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_4",
+                "playerName": "Riccardo Calafiori",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j5_m2",
             "jornada": 5,
-            "team1Id": "arsenal",
-            "team2Id": "psg",
+            "team1Id": "psg",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10036,14 +10189,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j5_m4",
             "jornada": 5,
+            "team1Id": "borussiadortmund",
+            "team2Id": "riverplate",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j5_m5",
+            "jornada": 5,
             "team1Id": "bocajuniors",
-            "team2Id": "realmadrid",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "atleticodemadrid"
       },
       {
         "jornada": 6,
@@ -10054,7 +10218,7 @@ var INITIAL_LMI_DATA = {
             "id": "oro_j6_m1",
             "jornada": 6,
             "team1Id": "psg",
-            "team2Id": "como1907",
+            "team2Id": "interdemilan",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10063,8 +10227,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j6_m2",
             "jornada": 6,
-            "team1Id": "bayernleverkusen",
-            "team2Id": "fcbarcelona",
+            "team1Id": "como1907",
+            "team2Id": "bayernleverkusen",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10073,8 +10237,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j6_m3",
             "jornada": 6,
-            "team1Id": "realmadrid",
-            "team2Id": "arsenal",
+            "team1Id": "borussiadortmund",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10083,14 +10247,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j6_m4",
             "jornada": 6,
+            "team1Id": "manchestercity",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j6_m5",
+            "jornada": 6,
             "team1Id": "bocajuniors",
-            "team2Id": "manchestercity",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "liverpool"
       },
       {
         "jornada": 7,
@@ -10100,7 +10275,7 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j7_m1",
             "jornada": 7,
-            "team1Id": "como1907",
+            "team1Id": "interdemilan",
             "team2Id": "bayernleverkusen",
             "score1": null,
             "score2": null,
@@ -10110,8 +10285,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j7_m2",
             "jornada": 7,
-            "team1Id": "psg",
-            "team2Id": "realmadrid",
+            "team1Id": "borussiadortmund",
+            "team2Id": "psg",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10120,8 +10295,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j7_m3",
             "jornada": 7,
-            "team1Id": "fcbarcelona",
-            "team2Id": "bocajuniors",
+            "team1Id": "como1907",
+            "team2Id": "atleticodemadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10130,25 +10305,36 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j7_m4",
             "jornada": 7,
-            "team1Id": "arsenal",
-            "team2Id": "manchestercity",
+            "team1Id": "bocajuniors",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j7_m5",
+            "jornada": 7,
+            "team1Id": "manchestercity",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "riverplate"
       },
       {
         "jornada": 8,
         "name": "Jornada 8",
-        "type": "vuelta",
+        "type": "ida",
         "matches": [
           {
             "id": "oro_j8_m1",
             "jornada": 8,
-            "team1Id": "realmadrid",
-            "team2Id": "como1907",
+            "team1Id": "borussiadortmund",
+            "team2Id": "interdemilan",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10157,8 +10343,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j8_m2",
             "jornada": 8,
-            "team1Id": "bocajuniors",
-            "team2Id": "bayernleverkusen",
+            "team1Id": "bayernleverkusen",
+            "team2Id": "atleticodemadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10167,7 +10353,7 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j8_m3",
             "jornada": 8,
-            "team1Id": "manchestercity",
+            "team1Id": "bocajuniors",
             "team2Id": "psg",
             "score1": null,
             "score2": null,
@@ -10177,25 +10363,36 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j8_m4",
             "jornada": 8,
-            "team1Id": "arsenal",
-            "team2Id": "fcbarcelona",
+            "team1Id": "como1907",
+            "team2Id": "liverpool",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j8_m5",
+            "jornada": 8,
+            "team1Id": "manchestercity",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "galatasaray"
       },
       {
         "jornada": 9,
         "name": "Jornada 9",
-        "type": "vuelta",
+        "type": "ida",
         "matches": [
           {
             "id": "oro_j9_m1",
             "jornada": 9,
-            "team1Id": "como1907",
-            "team2Id": "bocajuniors",
+            "team1Id": "interdemilan",
+            "team2Id": "atleticodemadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10204,8 +10401,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j9_m2",
             "jornada": 9,
-            "team1Id": "realmadrid",
-            "team2Id": "manchestercity",
+            "team1Id": "bocajuniors",
+            "team2Id": "borussiadortmund",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10215,7 +10412,7 @@ var INITIAL_LMI_DATA = {
             "id": "oro_j9_m3",
             "jornada": 9,
             "team1Id": "bayernleverkusen",
-            "team2Id": "arsenal",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10224,25 +10421,36 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j9_m4",
             "jornada": 9,
-            "team1Id": "psg",
-            "team2Id": "fcbarcelona",
+            "team1Id": "como1907",
+            "team2Id": "riverplate",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j9_m5",
+            "jornada": 9,
+            "team1Id": "manchestercity",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "psg"
       },
       {
         "jornada": 10,
         "name": "Jornada 10",
-        "type": "vuelta",
+        "type": "ida",
         "matches": [
           {
             "id": "oro_j10_m1",
             "jornada": 10,
-            "team1Id": "manchestercity",
-            "team2Id": "como1907",
+            "team1Id": "bocajuniors",
+            "team2Id": "interdemilan",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10251,8 +10459,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j10_m2",
             "jornada": 10,
-            "team1Id": "arsenal",
-            "team2Id": "bocajuniors",
+            "team1Id": "atleticodemadrid",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10261,8 +10469,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j10_m3",
             "jornada": 10,
-            "team1Id": "fcbarcelona",
-            "team2Id": "realmadrid",
+            "team1Id": "bayernleverkusen",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10271,25 +10479,36 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j10_m4",
             "jornada": 10,
-            "team1Id": "psg",
-            "team2Id": "bayernleverkusen",
+            "team1Id": "manchestercity",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j10_m5",
+            "jornada": 10,
+            "team1Id": "como1907",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "borussiadortmund"
       },
       {
         "jornada": 11,
         "name": "Jornada 11",
-        "type": "vuelta",
+        "type": "ida",
         "matches": [
           {
             "id": "oro_j11_m1",
             "jornada": 11,
-            "team1Id": "como1907",
-            "team2Id": "arsenal",
+            "team1Id": "interdemilan",
+            "team2Id": "liverpool",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10298,8 +10517,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j11_m2",
             "jornada": 11,
-            "team1Id": "manchestercity",
-            "team2Id": "fcbarcelona",
+            "team1Id": "atleticodemadrid",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10308,8 +10527,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j11_m3",
             "jornada": 11,
-            "team1Id": "bocajuniors",
-            "team2Id": "psg",
+            "team1Id": "manchestercity",
+            "team2Id": "borussiadortmund",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10318,14 +10537,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j11_m4",
             "jornada": 11,
-            "team1Id": "realmadrid",
-            "team2Id": "bayernleverkusen",
+            "team1Id": "bayernleverkusen",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j11_m5",
+            "jornada": 11,
+            "team1Id": "como1907",
+            "team2Id": "psg",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "bocajuniors"
       },
       {
         "jornada": 12,
@@ -10335,8 +10565,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j12_m1",
             "jornada": 12,
-            "team1Id": "fcbarcelona",
-            "team2Id": "como1907",
+            "team1Id": "liverpool",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10345,8 +10575,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j12_m2",
             "jornada": 12,
-            "team1Id": "psg",
-            "team2Id": "arsenal",
+            "team1Id": "manchestercity",
+            "team2Id": "bocajuniors",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10355,8 +10585,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j12_m3",
             "jornada": 12,
-            "team1Id": "bayernleverkusen",
-            "team2Id": "manchestercity",
+            "team1Id": "atleticodemadrid",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10365,14 +10595,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j12_m4",
             "jornada": 12,
-            "team1Id": "realmadrid",
-            "team2Id": "bocajuniors",
+            "team1Id": "como1907",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j12_m5",
+            "jornada": 12,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "psg",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "interdemilan"
       },
       {
         "jornada": 13,
@@ -10382,8 +10623,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j13_m1",
             "jornada": 13,
-            "team1Id": "como1907",
-            "team2Id": "psg",
+            "team1Id": "interdemilan",
+            "team2Id": "riverplate",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10392,8 +10633,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j13_m2",
             "jornada": 13,
-            "team1Id": "fcbarcelona",
-            "team2Id": "bayernleverkusen",
+            "team1Id": "liverpool",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10402,8 +10643,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j13_m3",
             "jornada": 13,
-            "team1Id": "arsenal",
-            "team2Id": "realmadrid",
+            "team1Id": "como1907",
+            "team2Id": "bocajuniors",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10412,14 +10653,25 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j13_m4",
             "jornada": 13,
-            "team1Id": "manchestercity",
-            "team2Id": "bocajuniors",
+            "team1Id": "atleticodemadrid",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j13_m5",
+            "jornada": 13,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "borussiadortmund",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "manchestercity"
       },
       {
         "jornada": 14,
@@ -10429,8 +10681,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j14_m1",
             "jornada": 14,
-            "team1Id": "bayernleverkusen",
-            "team2Id": "como1907",
+            "team1Id": "manchestercity",
+            "team2Id": "interdemilan",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10439,8 +10691,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j14_m2",
             "jornada": 14,
-            "team1Id": "realmadrid",
-            "team2Id": "psg",
+            "team1Id": "riverplate",
+            "team2Id": "galatasaray",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10449,8 +10701,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j14_m3",
             "jornada": 14,
-            "team1Id": "bocajuniors",
-            "team2Id": "fcbarcelona",
+            "team1Id": "liverpool",
+            "team2Id": "psg",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10459,14 +10711,489 @@ var INITIAL_LMI_DATA = {
           {
             "id": "oro_j14_m4",
             "jornada": 14,
-            "team1Id": "manchestercity",
-            "team2Id": "arsenal",
+            "team1Id": "bayernleverkusen",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j14_m5",
+            "jornada": 14,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "borussiadortmund",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "como1907"
+      },
+      {
+        "jornada": 15,
+        "name": "Jornada 15",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j15_m1",
+            "jornada": 15,
+            "team1Id": "interdemilan",
+            "team2Id": "galatasaray",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j15_m2",
+            "jornada": 15,
+            "team1Id": "como1907",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j15_m3",
+            "jornada": 15,
+            "team1Id": "riverplate",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j15_m4",
+            "jornada": 15,
+            "team1Id": "liverpool",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j15_m5",
+            "jornada": 15,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "bayernleverkusen"
+      },
+      {
+        "jornada": 16,
+        "name": "Jornada 16",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j16_m1",
+            "jornada": 16,
+            "team1Id": "como1907",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j16_m2",
+            "jornada": 16,
+            "team1Id": "galatasaray",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j16_m3",
+            "jornada": 16,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j16_m4",
+            "jornada": 16,
+            "team1Id": "riverplate",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j16_m5",
+            "jornada": 16,
+            "team1Id": "liverpool",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "atleticodemadrid"
+      },
+      {
+        "jornada": 17,
+        "name": "Jornada 17",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j17_m1",
+            "jornada": 17,
+            "team1Id": "interdemilan",
+            "team2Id": "psg",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j17_m2",
+            "jornada": 17,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j17_m3",
+            "jornada": 17,
+            "team1Id": "galatasaray",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j17_m4",
+            "jornada": 17,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j17_m5",
+            "jornada": 17,
+            "team1Id": "riverplate",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "liverpool"
+      },
+      {
+        "jornada": 18,
+        "name": "Jornada 18",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j18_m1",
+            "jornada": 18,
+            "team1Id": "bayernleverkusen",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j18_m2",
+            "jornada": 18,
+            "team1Id": "psg",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j18_m3",
+            "jornada": 18,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j18_m4",
+            "jornada": 18,
+            "team1Id": "galatasaray",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j18_m5",
+            "jornada": 18,
+            "team1Id": "liverpool",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "riverplate"
+      },
+      {
+        "jornada": 19,
+        "name": "Jornada 19",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j19_m1",
+            "jornada": 19,
+            "team1Id": "interdemilan",
+            "team2Id": "borussiadortmund",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j19_m2",
+            "jornada": 19,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j19_m3",
+            "jornada": 19,
+            "team1Id": "psg",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j19_m4",
+            "jornada": 19,
+            "team1Id": "liverpool",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j19_m5",
+            "jornada": 19,
+            "team1Id": "riverplate",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "galatasaray"
+      },
+      {
+        "jornada": 20,
+        "name": "Jornada 20",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j20_m1",
+            "jornada": 20,
+            "team1Id": "atleticodemadrid",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j20_m2",
+            "jornada": 20,
+            "team1Id": "borussiadortmund",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j20_m3",
+            "jornada": 20,
+            "team1Id": "liverpool",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j20_m4",
+            "jornada": 20,
+            "team1Id": "riverplate",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j20_m5",
+            "jornada": 20,
+            "team1Id": "galatasaray",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "psg"
+      },
+      {
+        "jornada": 21,
+        "name": "Jornada 21",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j21_m1",
+            "jornada": 21,
+            "team1Id": "interdemilan",
+            "team2Id": "bocajuniors",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j21_m2",
+            "jornada": 21,
+            "team1Id": "liverpool",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j21_m3",
+            "jornada": 21,
+            "team1Id": "riverplate",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j21_m4",
+            "jornada": 21,
+            "team1Id": "psg",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j21_m5",
+            "jornada": 21,
+            "team1Id": "galatasaray",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "borussiadortmund"
+      },
+      {
+        "jornada": 22,
+        "name": "Jornada 22",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "oro_j22_m1",
+            "jornada": 22,
+            "team1Id": "liverpool",
+            "team2Id": "interdemilan",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j22_m2",
+            "jornada": 22,
+            "team1Id": "riverplate",
+            "team2Id": "atleticodemadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j22_m3",
+            "jornada": 22,
+            "team1Id": "borussiadortmund",
+            "team2Id": "manchestercity",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j22_m4",
+            "jornada": 22,
+            "team1Id": "galatasaray",
+            "team2Id": "bayernleverkusen",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "oro_j22_m5",
+            "jornada": 22,
+            "team1Id": "psg",
+            "team2Id": "como1907",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "bocajuniors"
       }
     ],
     "plata": [
@@ -10478,8 +11205,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j1_m1",
             "jornada": 1,
-            "team1Id": "interdemilan",
-            "team2Id": "liverpool",
+            "team1Id": "acffiorentina",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10488,8 +11215,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j1_m2",
             "jornada": 1,
-            "team1Id": "galatasaray",
-            "team2Id": "losclille",
+            "team1Id": "realmadrid",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10498,8 +11225,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j1_m3",
             "jornada": 1,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "riverplate",
+            "team1Id": "chelseafc",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10508,8 +11235,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j1_m4",
             "jornada": 1,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "clubamerica",
+            "team1Id": "arsenal",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10518,8 +11245,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j1_m5",
             "jornada": 1,
-            "team1Id": "casapiaac",
-            "team2Id": "brighton",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10528,14 +11255,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j1_m6",
             "jornada": 1,
-            "team1Id": "borussiadortmund",
-            "team2Id": "acmiln",
+            "team1Id": "fctwente",
+            "team2Id": "manchesterunited",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "fcbarcelona"
       },
       {
         "jornada": 2,
@@ -10545,18 +11273,47 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j2_m1",
             "jornada": 2,
-            "team1Id": "losclille",
-            "team2Id": "interdemilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "acffiorentina",
+            "team2Id": "fcbarcelona",
+            "score1": 2,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040551310_7",
+                "playerName": "Leandro Paredes",
+                "teamId": "acffiorentina",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040551310_11",
+                "playerName": "Michael Owen",
+                "teamId": "acffiorentina",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040551310_8",
+                "playerName": "Kevin De Bruyne",
+                "teamId": "acffiorentina",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040551310_10",
+                "playerName": "Samuel Eto'o",
+                "teamId": "acffiorentina",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j2_m2",
             "jornada": 2,
-            "team1Id": "riverplate",
-            "team2Id": "liverpool",
+            "team1Id": "chelseafc",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10565,8 +11322,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j2_m3",
             "jornada": 2,
-            "team1Id": "clubamerica",
-            "team2Id": "galatasaray",
+            "team1Id": "realmadrid",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10575,8 +11332,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j2_m4",
             "jornada": 2,
-            "team1Id": "brighton",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10585,24 +11342,61 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j2_m5",
             "jornada": 2,
-            "team1Id": "acmiln",
-            "team2Id": "atleticodemadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "arsenal",
+            "team2Id": "manchesterunited",
+            "score1": 4,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_11",
+                "playerName": "Andriy Shevchenko",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040054246_11",
+                "playerName": "Andriy Shevchenko",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_9",
+                "playerName": "Memphis Depay",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 2
+              }
+            ]
           },
           {
             "id": "plata_j2_m6",
             "jornada": 2,
-            "team1Id": "borussiadortmund",
-            "team2Id": "casapiaac",
+            "team1Id": "fctwente",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "brightonhovealbion"
       },
       {
         "jornada": 3,
@@ -10612,8 +11406,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j3_m1",
             "jornada": 3,
-            "team1Id": "interdemilan",
-            "team2Id": "riverplate",
+            "team1Id": "fcbarcelona",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10622,8 +11416,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j3_m2",
             "jornada": 3,
-            "team1Id": "losclille",
-            "team2Id": "clubamerica",
+            "team1Id": "chelseafc",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10632,28 +11426,121 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j3_m3",
             "jornada": 3,
-            "team1Id": "liverpool",
-            "team2Id": "brighton",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "staderennais",
+            "score1": 3,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040586949_6",
+                "playerName": "İlkay Gündoğan",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040586949_6",
+                "playerName": "İlkay Gündoğan",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040586949_9",
+                "playerName": "Johan Manzambi",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040586949_10",
+                "playerName": "Samuel Lino",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040586949_8",
+                "playerName": "Martin Ødegaard",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040586949_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j3_m4",
             "jornada": 3,
-            "team1Id": "galatasaray",
-            "team2Id": "acmiln",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "realmadrid",
+            "team2Id": "manchesterunited",
+            "score1": 1,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039745455_19",
+                "playerName": "Lovro Majer",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039745455_20",
+                "playerName": "Thiago Almada",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792039745455_11",
+                "playerName": "Diego Forlán",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040371541_11",
+                "playerName": "Omar Marmoush",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_8",
+                "playerName": "Désiré Doué",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j3_m5",
             "jornada": 3,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "borussiadortmund",
+            "team1Id": "fctwente",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10662,14 +11549,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j3_m6",
             "jornada": 3,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "casapiaac",
+            "team1Id": "arsenal",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "feyenoordrotterdam"
       },
       {
         "jornada": 4,
@@ -10679,18 +11567,33 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m1",
             "jornada": 4,
-            "team1Id": "clubamerica",
-            "team2Id": "interdemilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "chelseafc",
+            "team2Id": "fcbarcelona",
+            "score1": 0,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040239414_21",
+                "playerName": "Fermín López",
+                "teamId": "fcbarcelona",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040239414_7",
+                "playerName": "Daniele De Rossi",
+                "teamId": "fcbarcelona",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j4_m2",
             "jornada": 4,
-            "team1Id": "brighton",
-            "team2Id": "riverplate",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10699,8 +11602,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m3",
             "jornada": 4,
-            "team1Id": "acmiln",
-            "team2Id": "losclille",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10709,8 +11612,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m4",
             "jornada": 4,
-            "team1Id": "borussiadortmund",
-            "team2Id": "liverpool",
+            "team1Id": "fctwente",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10719,8 +11622,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m5",
             "jornada": 4,
-            "team1Id": "casapiaac",
-            "team2Id": "galatasaray",
+            "team1Id": "realmadrid",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10729,14 +11632,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m6",
             "jornada": 4,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "arsenal",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "manchesterunited"
       },
       {
         "jornada": 5,
@@ -10746,8 +11650,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m1",
             "jornada": 5,
-            "team1Id": "interdemilan",
-            "team2Id": "brighton",
+            "team1Id": "fcbarcelona",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10756,8 +11660,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m2",
             "jornada": 5,
-            "team1Id": "clubamerica",
-            "team2Id": "acmiln",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10766,8 +11670,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m3",
             "jornada": 5,
-            "team1Id": "riverplate",
-            "team2Id": "borussiadortmund",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "manchesterunited",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10776,8 +11680,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m4",
             "jornada": 5,
-            "team1Id": "losclille",
-            "team2Id": "casapiaac",
+            "team1Id": "fctwente",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10786,8 +11690,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m5",
             "jornada": 5,
-            "team1Id": "liverpool",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "arsenal",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10796,14 +11700,51 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m6",
             "jornada": 5,
-            "team1Id": "galatasaray",
-            "team2Id": "urawareddiamonds",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "team1Id": "realmadrid",
+            "team2Id": "losclille",
+            "score1": 4,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040371541_7",
+                "playerName": "Jude Bellingham",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_7",
+                "playerName": "Jude Bellingham",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_11",
+                "playerName": "Omar Marmoush",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040371541_9",
+                "playerName": "Kingsley Coman",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040371541_22",
+                "playerName": "Victor Osimhen",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
-        ]
+        ],
+        "restingTeamId": "acmiln"
       },
       {
         "jornada": 6,
@@ -10813,8 +11754,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m1",
             "jornada": 6,
-            "team1Id": "acmiln",
-            "team2Id": "interdemilan",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10823,8 +11764,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m2",
             "jornada": 6,
-            "team1Id": "borussiadortmund",
-            "team2Id": "brighton",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "manchesterunited",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10833,8 +11774,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m3",
             "jornada": 6,
-            "team1Id": "casapiaac",
-            "team2Id": "clubamerica",
+            "team1Id": "fctwente",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10843,8 +11784,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m4",
             "jornada": 6,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "riverplate",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10853,8 +11794,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m5",
             "jornada": 6,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "losclille",
+            "team1Id": "arsenal",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10863,14 +11804,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m6",
             "jornada": 6,
-            "team1Id": "galatasaray",
-            "team2Id": "liverpool",
+            "team1Id": "realmadrid",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "losclille"
       },
       {
         "jornada": 7,
@@ -10880,8 +11822,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m1",
             "jornada": 7,
-            "team1Id": "interdemilan",
-            "team2Id": "borussiadortmund",
+            "team1Id": "fcbarcelona",
+            "team2Id": "manchesterunited",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10890,8 +11832,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m2",
             "jornada": 7,
-            "team1Id": "acmiln",
-            "team2Id": "casapiaac",
+            "team1Id": "fctwente",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10900,8 +11842,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m3",
             "jornada": 7,
-            "team1Id": "brighton",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10910,8 +11852,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m4",
             "jornada": 7,
-            "team1Id": "clubamerica",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "arsenal",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10920,8 +11862,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m5",
             "jornada": 7,
-            "team1Id": "riverplate",
-            "team2Id": "galatasaray",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10930,14 +11872,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m6",
             "jornada": 7,
-            "team1Id": "losclille",
-            "team2Id": "liverpool",
+            "team1Id": "realmadrid",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "staderennais"
       },
       {
         "jornada": 8,
@@ -10947,8 +11890,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m1",
             "jornada": 8,
-            "team1Id": "casapiaac",
-            "team2Id": "interdemilan",
+            "team1Id": "fctwente",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10957,8 +11900,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m2",
             "jornada": 8,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "borussiadortmund",
+            "team1Id": "manchesterunited",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10967,8 +11910,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m3",
             "jornada": 8,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "acmiln",
+            "team1Id": "arsenal",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10977,8 +11920,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m4",
             "jornada": 8,
-            "team1Id": "galatasaray",
-            "team2Id": "brighton",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10987,8 +11930,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m5",
             "jornada": 8,
-            "team1Id": "liverpool",
-            "team2Id": "clubamerica",
+            "team1Id": "realmadrid",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -10997,14 +11940,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m6",
             "jornada": 8,
-            "team1Id": "losclille",
-            "team2Id": "riverplate",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acffiorentina"
       },
       {
         "jornada": 9,
@@ -11014,8 +11958,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m1",
             "jornada": 9,
-            "team1Id": "interdemilan",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "fcbarcelona",
+            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11024,8 +11968,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m2",
             "jornada": 9,
-            "team1Id": "casapiaac",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "arsenal",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11034,8 +11978,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m3",
             "jornada": 9,
-            "team1Id": "borussiadortmund",
-            "team2Id": "galatasaray",
+            "team1Id": "manchesterunited",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11044,8 +11988,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m4",
             "jornada": 9,
-            "team1Id": "acmiln",
-            "team2Id": "liverpool",
+            "team1Id": "realmadrid",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11054,8 +11998,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m5",
             "jornada": 9,
-            "team1Id": "brighton",
-            "team2Id": "losclille",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11064,14 +12008,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m6",
             "jornada": 9,
-            "team1Id": "clubamerica",
-            "team2Id": "riverplate",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "chelseafc"
       },
       {
         "jornada": 10,
@@ -11081,8 +12026,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m1",
             "jornada": 10,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "interdemilan",
+            "team1Id": "arsenal",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11091,8 +12036,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m2",
             "jornada": 10,
-            "team1Id": "galatasaray",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "acmiln",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11101,8 +12046,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m3",
             "jornada": 10,
-            "team1Id": "liverpool",
-            "team2Id": "casapiaac",
+            "team1Id": "realmadrid",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11111,8 +12056,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m4",
             "jornada": 10,
-            "team1Id": "losclille",
-            "team2Id": "borussiadortmund",
+            "team1Id": "manchesterunited",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11121,8 +12066,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m5",
             "jornada": 10,
-            "team1Id": "riverplate",
-            "team2Id": "acmiln",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11131,14 +12076,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m6",
             "jornada": 10,
-            "team1Id": "clubamerica",
-            "team2Id": "brighton",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "ajaxdeamsterdam"
       },
       {
         "jornada": 11,
@@ -11148,8 +12094,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m1",
             "jornada": 11,
-            "team1Id": "interdemilan",
-            "team2Id": "galatasaray",
+            "team1Id": "fcbarcelona",
+            "team2Id": "losclille",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11158,8 +12104,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m2",
             "jornada": 11,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "liverpool",
+            "team1Id": "realmadrid",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11168,8 +12114,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m3",
             "jornada": 11,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "losclille",
+            "team1Id": "acmiln",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11178,8 +12124,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m4",
             "jornada": 11,
-            "team1Id": "casapiaac",
-            "team2Id": "riverplate",
+            "team1Id": "manchesterunited",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11188,8 +12134,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m5",
             "jornada": 11,
-            "team1Id": "borussiadortmund",
-            "team2Id": "clubamerica",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11198,25 +12144,26 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m6",
             "jornada": 11,
-            "team1Id": "acmiln",
-            "team2Id": "brighton",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "fctwente"
       },
       {
         "jornada": 12,
         "name": "Jornada 12",
-        "type": "vuelta",
+        "type": "ida",
         "matches": [
           {
             "id": "plata_j12_m1",
             "jornada": 12,
-            "team1Id": "liverpool",
-            "team2Id": "interdemilan",
+            "team1Id": "realmadrid",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11226,7 +12173,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j12_m2",
             "jornada": 12,
             "team1Id": "losclille",
-            "team2Id": "galatasaray",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11235,8 +12182,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j12_m3",
             "jornada": 12,
-            "team1Id": "riverplate",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "acmiln",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11245,8 +12192,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j12_m4",
             "jornada": 12,
-            "team1Id": "clubamerica",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11255,8 +12202,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j12_m5",
             "jornada": 12,
-            "team1Id": "brighton",
-            "team2Id": "casapiaac",
+            "team1Id": "manchesterunited",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11265,25 +12212,26 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j12_m6",
             "jornada": 12,
-            "team1Id": "acmiln",
-            "team2Id": "borussiadortmund",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "arsenal"
       },
       {
         "jornada": 13,
         "name": "Jornada 13",
-        "type": "vuelta",
+        "type": "ida",
         "matches": [
           {
             "id": "plata_j13_m1",
             "jornada": 13,
-            "team1Id": "interdemilan",
-            "team2Id": "losclille",
+            "team1Id": "fcbarcelona",
+            "team2Id": "staderennais",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11292,8 +12240,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m2",
             "jornada": 13,
-            "team1Id": "liverpool",
-            "team2Id": "riverplate",
+            "team1Id": "losclille",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11302,8 +12250,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m3",
             "jornada": 13,
-            "team1Id": "galatasaray",
-            "team2Id": "clubamerica",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11312,8 +12260,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m4",
             "jornada": 13,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "brighton",
+            "team1Id": "acmiln",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11322,8 +12270,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m5",
             "jornada": 13,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "acmiln",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11332,14 +12280,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m6",
             "jornada": 13,
-            "team1Id": "casapiaac",
-            "team2Id": "borussiadortmund",
+            "team1Id": "manchesterunited",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "realmadrid"
       },
       {
         "jornada": 14,
@@ -11349,8 +12298,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m1",
             "jornada": 14,
-            "team1Id": "riverplate",
-            "team2Id": "interdemilan",
+            "team1Id": "staderennais",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11359,8 +12308,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m2",
             "jornada": 14,
-            "team1Id": "clubamerica",
-            "team2Id": "losclille",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11369,8 +12318,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m3",
             "jornada": 14,
-            "team1Id": "brighton",
-            "team2Id": "liverpool",
+            "team1Id": "losclille",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11379,8 +12328,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m4",
             "jornada": 14,
-            "team1Id": "acmiln",
-            "team2Id": "galatasaray",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11389,8 +12338,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m5",
             "jornada": 14,
-            "team1Id": "borussiadortmund",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "acmiln",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11399,14 +12348,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m6",
             "jornada": 14,
-            "team1Id": "casapiaac",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "manchesterunited",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "fcbarcelona"
       },
       {
         "jornada": 15,
@@ -11416,8 +12366,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m1",
             "jornada": 15,
-            "team1Id": "interdemilan",
-            "team2Id": "clubamerica",
+            "team1Id": "fcbarcelona",
+            "team2Id": "acffiorentina",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11426,8 +12376,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m2",
             "jornada": 15,
-            "team1Id": "riverplate",
-            "team2Id": "brighton",
+            "team1Id": "staderennais",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11436,8 +12386,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m3",
             "jornada": 15,
-            "team1Id": "losclille",
-            "team2Id": "acmiln",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11446,8 +12396,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m4",
             "jornada": 15,
-            "team1Id": "liverpool",
-            "team2Id": "borussiadortmund",
+            "team1Id": "losclille",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11456,8 +12406,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m5",
             "jornada": 15,
-            "team1Id": "galatasaray",
-            "team2Id": "casapiaac",
+            "team1Id": "manchesterunited",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11466,14 +12416,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m6",
             "jornada": 15,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "acmiln",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "brightonhovealbion"
       },
       {
         "jornada": 16,
@@ -11483,8 +12434,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m1",
             "jornada": 16,
-            "team1Id": "brighton",
-            "team2Id": "interdemilan",
+            "team1Id": "brightonhovealbion",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11493,8 +12444,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m2",
             "jornada": 16,
-            "team1Id": "acmiln",
-            "team2Id": "clubamerica",
+            "team1Id": "acffiorentina",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11503,8 +12454,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m3",
             "jornada": 16,
-            "team1Id": "borussiadortmund",
-            "team2Id": "riverplate",
+            "team1Id": "staderennais",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11513,8 +12464,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m4",
             "jornada": 16,
-            "team1Id": "casapiaac",
-            "team2Id": "losclille",
+            "team1Id": "manchesterunited",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11523,8 +12474,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m5",
             "jornada": 16,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "liverpool",
+            "team1Id": "losclille",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11533,14 +12484,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m6",
             "jornada": 16,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "galatasaray",
+            "team1Id": "acmiln",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "feyenoordrotterdam"
       },
       {
         "jornada": 17,
@@ -11550,8 +12502,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j17_m1",
             "jornada": 17,
-            "team1Id": "interdemilan",
-            "team2Id": "acmiln",
+            "team1Id": "fcbarcelona",
+            "team2Id": "chelseafc",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11560,8 +12512,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j17_m2",
             "jornada": 17,
-            "team1Id": "brighton",
-            "team2Id": "borussiadortmund",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11570,8 +12522,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j17_m3",
             "jornada": 17,
-            "team1Id": "clubamerica",
-            "team2Id": "casapiaac",
+            "team1Id": "acffiorentina",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11580,8 +12532,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j17_m4",
             "jornada": 17,
-            "team1Id": "riverplate",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "staderennais",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11590,8 +12542,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j17_m5",
             "jornada": 17,
-            "team1Id": "losclille",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "acmiln",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11600,14 +12552,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j17_m6",
             "jornada": 17,
-            "team1Id": "liverpool",
-            "team2Id": "galatasaray",
+            "team1Id": "losclille",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "manchesterunited"
       },
       {
         "jornada": 18,
@@ -11617,8 +12570,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j18_m1",
             "jornada": 18,
-            "team1Id": "borussiadortmund",
-            "team2Id": "interdemilan",
+            "team1Id": "feyenoordrotterdam",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11627,8 +12580,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j18_m2",
             "jornada": 18,
-            "team1Id": "casapiaac",
-            "team2Id": "acmiln",
+            "team1Id": "chelseafc",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11637,8 +12590,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j18_m3",
             "jornada": 18,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "brighton",
+            "team1Id": "manchesterunited",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11647,8 +12600,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j18_m4",
             "jornada": 18,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "clubamerica",
+            "team1Id": "acffiorentina",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11657,8 +12610,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j18_m5",
             "jornada": 18,
-            "team1Id": "galatasaray",
-            "team2Id": "riverplate",
+            "team1Id": "staderennais",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11667,14 +12620,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j18_m6",
             "jornada": 18,
-            "team1Id": "liverpool",
-            "team2Id": "losclille",
+            "team1Id": "losclille",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acmiln"
       },
       {
         "jornada": 19,
@@ -11684,8 +12638,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j19_m1",
             "jornada": 19,
-            "team1Id": "interdemilan",
-            "team2Id": "casapiaac",
+            "team1Id": "fcbarcelona",
+            "team2Id": "ajaxdeamsterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11694,8 +12648,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j19_m2",
             "jornada": 19,
-            "team1Id": "borussiadortmund",
-            "team2Id": "atleticodemadrid",
+            "team1Id": "manchesterunited",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11704,8 +12658,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j19_m3",
             "jornada": 19,
-            "team1Id": "acmiln",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "chelseafc",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11714,8 +12668,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j19_m4",
             "jornada": 19,
-            "team1Id": "brighton",
-            "team2Id": "galatasaray",
+            "team1Id": "acmiln",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11724,8 +12678,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j19_m5",
             "jornada": 19,
-            "team1Id": "clubamerica",
-            "team2Id": "liverpool",
+            "team1Id": "acffiorentina",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11734,14 +12688,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j19_m6",
             "jornada": 19,
-            "team1Id": "riverplate",
-            "team2Id": "losclille",
+            "team1Id": "staderennais",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "losclille"
       },
       {
         "jornada": 20,
@@ -11751,8 +12706,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j20_m1",
             "jornada": 20,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "interdemilan",
+            "team1Id": "manchesterunited",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11761,8 +12716,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j20_m2",
             "jornada": 20,
-            "team1Id": "urawareddiamonds",
-            "team2Id": "casapiaac",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11771,8 +12726,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j20_m3",
             "jornada": 20,
-            "team1Id": "galatasaray",
-            "team2Id": "borussiadortmund",
+            "team1Id": "acmiln",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11781,8 +12736,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j20_m4",
             "jornada": 20,
-            "team1Id": "liverpool",
-            "team2Id": "acmiln",
+            "team1Id": "chelseafc",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11792,7 +12747,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j20_m5",
             "jornada": 20,
             "team1Id": "losclille",
-            "team2Id": "brighton",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11801,14 +12756,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j20_m6",
             "jornada": 20,
-            "team1Id": "riverplate",
-            "team2Id": "clubamerica",
+            "team1Id": "acffiorentina",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "staderennais"
       },
       {
         "jornada": 21,
@@ -11818,8 +12774,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j21_m1",
             "jornada": 21,
-            "team1Id": "interdemilan",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "fcbarcelona",
+            "team2Id": "fctwente",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11828,8 +12784,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j21_m2",
             "jornada": 21,
-            "team1Id": "atleticodemadrid",
-            "team2Id": "galatasaray",
+            "team1Id": "acmiln",
+            "team2Id": "manchesterunited",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11838,8 +12794,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j21_m3",
             "jornada": 21,
-            "team1Id": "casapiaac",
-            "team2Id": "liverpool",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11848,8 +12804,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j21_m4",
             "jornada": 21,
-            "team1Id": "borussiadortmund",
-            "team2Id": "losclille",
+            "team1Id": "losclille",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11858,8 +12814,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j21_m5",
             "jornada": 21,
-            "team1Id": "acmiln",
-            "team2Id": "riverplate",
+            "team1Id": "chelseafc",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11868,14 +12824,15 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j21_m6",
             "jornada": 21,
-            "team1Id": "brighton",
-            "team2Id": "clubamerica",
+            "team1Id": "staderennais",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acffiorentina"
       },
       {
         "jornada": 22,
@@ -11885,8 +12842,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j22_m1",
             "jornada": 22,
-            "team1Id": "galatasaray",
-            "team2Id": "interdemilan",
+            "team1Id": "acmiln",
+            "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11895,8 +12852,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j22_m2",
             "jornada": 22,
-            "team1Id": "liverpool",
-            "team2Id": "urawareddiamonds",
+            "team1Id": "fctwente",
+            "team2Id": "arsenal",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11906,7 +12863,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j22_m3",
             "jornada": 22,
             "team1Id": "losclille",
-            "team2Id": "atleticodemadrid",
+            "team2Id": "manchesterunited",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11915,8 +12872,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j22_m4",
             "jornada": 22,
-            "team1Id": "riverplate",
-            "team2Id": "casapiaac",
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11925,8 +12882,8 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j22_m5",
             "jornada": 22,
-            "team1Id": "clubamerica",
-            "team2Id": "borussiadortmund",
+            "team1Id": "staderennais",
+            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -11935,14 +12892,287 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j22_m6",
             "jornada": 22,
-            "team1Id": "brighton",
-            "team2Id": "acmiln",
+            "team1Id": "acffiorentina",
+            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "chelseafc"
+      },
+      {
+        "jornada": 23,
+        "name": "Jornada 23",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "plata_j23_m1",
+            "jornada": 23,
+            "team1Id": "fcbarcelona",
+            "team2Id": "arsenal",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j23_m2",
+            "jornada": 23,
+            "team1Id": "losclille",
+            "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j23_m3",
+            "jornada": 23,
+            "team1Id": "fctwente",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j23_m4",
+            "jornada": 23,
+            "team1Id": "staderennais",
+            "team2Id": "manchesterunited",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j23_m5",
+            "jornada": 23,
+            "team1Id": "acffiorentina",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j23_m6",
+            "jornada": 23,
+            "team1Id": "chelseafc",
+            "team2Id": "brightonhovealbion",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "ajaxdeamsterdam"
+      },
+      {
+        "jornada": 24,
+        "name": "Jornada 24",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "plata_j24_m1",
+            "jornada": 24,
+            "team1Id": "losclille",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j24_m2",
+            "jornada": 24,
+            "team1Id": "arsenal",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j24_m3",
+            "jornada": 24,
+            "team1Id": "staderennais",
+            "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j24_m4",
+            "jornada": 24,
+            "team1Id": "acffiorentina",
+            "team2Id": "manchesterunited",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j24_m5",
+            "jornada": 24,
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "brightonhovealbion",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j24_m6",
+            "jornada": 24,
+            "team1Id": "chelseafc",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "fctwente"
+      },
+      {
+        "jornada": 25,
+        "name": "Jornada 25",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "plata_j25_m1",
+            "jornada": 25,
+            "team1Id": "fcbarcelona",
+            "team2Id": "realmadrid",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j25_m2",
+            "jornada": 25,
+            "team1Id": "staderennais",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j25_m3",
+            "jornada": 25,
+            "team1Id": "acffiorentina",
+            "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j25_m4",
+            "jornada": 25,
+            "team1Id": "fctwente",
+            "team2Id": "brightonhovealbion",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j25_m5",
+            "jornada": 25,
+            "team1Id": "chelseafc",
+            "team2Id": "manchesterunited",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j25_m6",
+            "jornada": 25,
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "arsenal"
+      },
+      {
+        "jornada": 26,
+        "name": "Jornada 26",
+        "type": "vuelta",
+        "matches": [
+          {
+            "id": "plata_j26_m1",
+            "jornada": 26,
+            "team1Id": "staderennais",
+            "team2Id": "fcbarcelona",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j26_m2",
+            "jornada": 26,
+            "team1Id": "acffiorentina",
+            "team2Id": "losclille",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j26_m3",
+            "jornada": 26,
+            "team1Id": "arsenal",
+            "team2Id": "brightonhovealbion",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j26_m4",
+            "jornada": 26,
+            "team1Id": "chelseafc",
+            "team2Id": "acmiln",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j26_m5",
+            "jornada": 26,
+            "team1Id": "fctwente",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          },
+          {
+            "id": "plata_j26_m6",
+            "jornada": 26,
+            "team1Id": "ajaxdeamsterdam",
+            "team2Id": "manchesterunited",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
+          }
+        ],
+        "restingTeamId": "realmadrid"
       }
     ],
     "champions": [
@@ -13597,7 +14827,506 @@ var INITIAL_LMI_DATA = {
       }
     ]
   },
-  "matchHistory": [],
+  "matchHistory": [
+    {
+      "id": "match_1792126067026",
+      "timestamp": 1792126067026,
+      "date": "15 oct 2026, 10:47 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m6",
+      "phase": "Jornada 5",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 4,
+      "team2Id": "losclille",
+      "team2Name": "LOSC Lille",
+      "team2Logo": "Logos Equipos/lille.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040371541_7",
+          "playerName": "Jude Bellingham",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_7",
+          "playerName": "Jude Bellingham",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_11",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040371541_9",
+          "playerName": "Kingsley Coman",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040371541_22",
+          "playerName": "Victor Osimhen",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125987508",
+      "timestamp": 1792125987508,
+      "date": "15 oct 2026, 10:46 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m1",
+      "phase": "Jornada 4",
+      "team1Id": "chelseafc",
+      "team1Name": "Chelsea FC",
+      "team1Logo": "Logos Equipos/chelsea.webp",
+      "score1": 0,
+      "team2Id": "fcbarcelona",
+      "team2Name": "FC Barcelona",
+      "team2Logo": "Logos Equipos/fcbarcelona.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040239414_21",
+          "playerName": "Fermín López",
+          "teamId": "fcbarcelona",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040239414_7",
+          "playerName": "Daniele De Rossi",
+          "teamId": "fcbarcelona",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125931189",
+      "timestamp": 1792125931189,
+      "date": "15 oct 2026, 10:45 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m4",
+      "phase": "Jornada 3",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 1,
+      "team2Id": "manchesterunited",
+      "team2Name": "Manchester United",
+      "team2Logo": "Logos Equipos/manchesterunited.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792039745455_19",
+          "playerName": "Lovro Majer",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039745455_20",
+          "playerName": "Thiago Almada",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039745455_11",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040371541_11",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_8",
+          "playerName": "Désiré Doué",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125849883",
+      "timestamp": 1792125849883,
+      "date": "15 oct 2026, 10:44 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m3",
+      "phase": "Jornada 3",
+      "team1Id": "ajaxdeamsterdam",
+      "team1Name": "Ajax de Ámsterdam",
+      "team1Logo": "Logos Equipos/ajax.png",
+      "score1": 3,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040586949_6",
+          "playerName": "İlkay Gündoğan",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_6",
+          "playerName": "İlkay Gündoğan",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_9",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_10",
+          "playerName": "Samuel Lino",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_8",
+          "playerName": "Martin Ødegaard",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125743474",
+      "timestamp": 1792125743474,
+      "date": "15 oct 2026, 10:42 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m1",
+      "phase": "Jornada 2",
+      "team1Id": "acffiorentina",
+      "team1Name": "ACF Fiorentina",
+      "team1Logo": "Logos Equipos/fiorentina.webp",
+      "score1": 2,
+      "team2Id": "fcbarcelona",
+      "team2Name": "FC Barcelona",
+      "team2Logo": "Logos Equipos/fcbarcelona.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040551310_7",
+          "playerName": "Leandro Paredes",
+          "teamId": "acffiorentina",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040551310_11",
+          "playerName": "Michael Owen",
+          "teamId": "acffiorentina",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040551310_8",
+          "playerName": "Kevin De Bruyne",
+          "teamId": "acffiorentina",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040551310_10",
+          "playerName": "Samuel Eto'o",
+          "teamId": "acffiorentina",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125667298",
+      "timestamp": 1792125667298,
+      "date": "15 oct 2026, 10:41 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m5",
+      "phase": "Jornada 2",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 4,
+      "team2Id": "manchesterunited",
+      "team2Name": "Manchester United",
+      "team2Logo": "Logos Equipos/manchesterunited.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_11",
+          "playerName": "Andriy Shevchenko",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040054246_11",
+          "playerName": "Andriy Shevchenko",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "match_1792125547572",
+      "timestamp": 1792125547572,
+      "date": "15 oct 2026, 10:39 p.m.",
+      "competition": "oro",
+      "jornada": 5,
+      "fixtureMatchId": "oro_j5_m1",
+      "phase": "Jornada 5",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 2,
+      "team2Id": "como1907",
+      "team2Name": "Como 1907",
+      "team2Logo": "Logos Equipos/como.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040483217_10",
+          "playerName": "Khvicha Kvaratskhelia",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040483217_11",
+          "playerName": "Julián Álvarez",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040014502_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_4",
+          "playerName": "Riccardo Calafiori",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125452472",
+      "timestamp": 1792125452472,
+      "date": "15 oct 2026, 10:37 p.m.",
+      "competition": "oro",
+      "jornada": 4,
+      "fixtureMatchId": "oro_j4_m1",
+      "phase": "Jornada 4",
+      "team1Id": "galatasaray",
+      "team1Name": "Galatasaray",
+      "team1Logo": "Logos Equipos/galatasaray.png",
+      "score1": 5,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792039794983_8",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792039794983_7",
+          "playerName": "Weston McKennie",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_10",
+          "playerName": "Viktor Gyökeres",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_19",
+          "playerName": "Julio Enciso",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "match_1792125284462",
+      "timestamp": 1792125284462,
+      "date": "15 oct 2026, 10:34 p.m.",
+      "competition": "oro",
+      "jornada": 1,
+      "fixtureMatchId": "oro_j1_m2",
+      "phase": "Jornada 1",
+      "team1Id": "bocajuniors",
+      "team1Name": "Boca Juniors",
+      "team1Logo": "Logos Equipos/boca.png",
+      "score1": 2,
+      "team2Id": "manchestercity",
+      "team2Name": "Manchester City",
+      "team2Logo": "Logos Equipos/manchestercity.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792039864584_23",
+          "playerName": "Sergio Agüero",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039864584_10",
+          "playerName": "Leroy Sané",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039864584_16",
+          "playerName": "Kylian Mbappé",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792125197196",
+      "timestamp": 1792125197196,
+      "date": "15 oct 2026, 10:33 p.m.",
+      "competition": "oro",
+      "jornada": 1,
+      "fixtureMatchId": "oro_j1_m5",
+      "phase": "Jornada 1",
+      "team1Id": "psg",
+      "team1Name": "PSG",
+      "team1Logo": "Logos Equipos/psg.png",
+      "score1": 0,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_2",
+          "playerName": "Nuno Mendes",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    }
+  ],
   "webConfig": {
     "seasonTitle": "Temporada 12",
     "leagueSubtitle": "Plataforma Oficial de la Liga Master Internacional (LMI) eFootball",
