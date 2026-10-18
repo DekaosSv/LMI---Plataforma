@@ -11700,9 +11700,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "arsenal",
             "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -16047,6 +16047,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792289792051",
+      "timestamp": 1792289792051,
+      "date": "17 oct 2026, 08:16 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m4",
+      "phase": "Jornada 1",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1792289737290",
       "timestamp": 1792289737290,
