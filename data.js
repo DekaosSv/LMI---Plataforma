@@ -4358,9 +4358,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4389,9 +4389,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 3,
+      "goals": 5,
       "assists": 1,
-      "goals_liga": 3,
+      "goals_liga": 5,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4566,9 +4566,9 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7301,10 +7301,10 @@ var INITIAL_LMI_DATA = {
       "name": "Park Ji-sung",
       "position": "II",
       "teamId": "acmiln",
-      "goals": 1,
-      "assists": 2,
-      "goals_liga": 1,
-      "assists_liga": 2,
+      "goals": 2,
+      "assists": 4,
+      "goals_liga": 2,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7333,9 +7333,9 @@ var INITIAL_LMI_DATA = {
       "name": "Erling Haaland",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7350,9 +7350,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "acmiln",
       "goals": 1,
-      "assists": 3,
+      "assists": 6,
       "goals_liga": 1,
-      "assists_liga": 3,
+      "assists_liga": 6,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7429,9 +7429,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ayyoub Bouaddi",
       "position": "MC",
       "teamId": "acmiln",
-      "goals": 3,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 3,
+      "goals_liga": 6,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -12255,11 +12255,18 @@ var INITIAL_LMI_DATA = {
                 "playerName": "Gareth Bale",
                 "teamId": "arsenal",
                 "type": "gol",
-                "count": 1
+                "count": 2
               },
               {
                 "playerId": "p_1792040054246_22",
                 "playerName": "Jarrod Bowen",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_8",
+                "playerName": "Talisca",
                 "teamId": "arsenal",
                 "type": "asistencia",
                 "count": 1
@@ -16040,6 +16047,81 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792289737290",
+      "timestamp": 1792289737290,
+      "date": "17 oct 2026, 08:15 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m6",
+      "phase": "Jornada 3",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 2,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 5,
+      "events": [
+        {
+          "playerId": "p_1792040438881_10",
+          "playerName": "Erling Haaland",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040438881_16",
+          "playerName": "Ayyoub Bouaddi",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040438881_8",
+          "playerName": "Park Ji-sung",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_8",
+          "playerName": "Park Ji-sung",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040054246_22",
+          "playerName": "Jarrod Bowen",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_8",
+          "playerName": "Talisca",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792288317173",
       "timestamp": 1792288317173,
