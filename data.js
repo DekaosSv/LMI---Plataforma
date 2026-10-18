@@ -11904,9 +11904,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "realmadrid",
             "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -16040,6 +16040,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792288317173",
+      "timestamp": 1792288317173,
+      "date": "17 oct 2026, 07:51 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m3",
+      "phase": "Jornada 2",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1792288047892",
       "timestamp": 1792288047892,
