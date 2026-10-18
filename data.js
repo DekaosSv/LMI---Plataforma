@@ -3606,9 +3606,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "bayernleverkusen",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3669,9 +3669,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lautaro Martínez",
       "position": "DC",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3781,9 +3781,9 @@ var INITIAL_LMI_DATA = {
       "name": "Brahim Díaz",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3797,9 +3797,9 @@ var INITIAL_LMI_DATA = {
       "name": "James Maddison",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6549,10 +6549,10 @@ var INITIAL_LMI_DATA = {
       "name": "Jude Bellingham",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 1,
-      "assists": 1,
-      "goals_liga": 1,
-      "assists_liga": 1,
+      "goals": 2,
+      "assists": 2,
+      "goals_liga": 2,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6566,9 +6566,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 0,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6581,9 +6581,9 @@ var INITIAL_LMI_DATA = {
       "name": "Kingsley Coman",
       "position": "EI",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6613,9 +6613,9 @@ var INITIAL_LMI_DATA = {
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 5,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 5,
+      "goals_liga": 6,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6709,10 +6709,10 @@ var INITIAL_LMI_DATA = {
       "name": "Cole Palmer",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9173,9 +9173,9 @@ var INITIAL_LMI_DATA = {
       "name": "Romário",
       "position": "DC",
       "teamId": "brightonhovealbion",
-      "goals": 4,
+      "goals": 5,
       "assists": 0,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9253,9 +9253,9 @@ var INITIAL_LMI_DATA = {
       "name": "Geovany Quenda",
       "position": "ED",
       "teamId": "brightonhovealbion",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9302,9 +9302,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "brightonhovealbion",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9318,9 +9318,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "brightonhovealbion",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -10381,10 +10381,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "borussiadortmund",
             "team2Id": "bayernleverkusen",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039977160_18",
+                "playerName": "Brahim Díaz",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_11",
+                "playerName": "Lautaro Martínez",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_7",
+                "playerName": "Youri Tielemans",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_19",
+                "playerName": "James Maddison",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ],
         "restingTeamId": "manchestercity"
@@ -11680,10 +11709,88 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "realmadrid",
             "team2Id": "brightonhovealbion",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 4,
+            "score2": 5,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040623974_10",
+                "playerName": "Romário",
+                "teamId": "brightonhovealbion",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040623974_18",
+                "playerName": "Zico",
+                "teamId": "brightonhovealbion",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040623974_15",
+                "playerName": "Geovany Quenda",
+                "teamId": "brightonhovealbion",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040623974_19",
+                "playerName": "Frank Lampard",
+                "teamId": "brightonhovealbion",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_11",
+                "playerName": "Omar Marmoush",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_8",
+                "playerName": "Désiré Doué",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_7",
+                "playerName": "Jude Bellingham",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_7",
+                "playerName": "Jude Bellingham",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_17",
+                "playerName": "Cole Palmer",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_17",
+                "playerName": "Cole Palmer",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_9",
+                "playerName": "Kingsley Coman",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j1_m3",
@@ -16047,6 +16154,149 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792291117920",
+      "timestamp": 1792291117920,
+      "date": "17 oct 2026, 08:38 p.m.",
+      "competition": "oro",
+      "jornada": 2,
+      "fixtureMatchId": "oro_j2_m5",
+      "phase": "Jornada 2",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 0,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792039977160_18",
+          "playerName": "Brahim Díaz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_7",
+          "playerName": "Youri Tielemans",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_19",
+          "playerName": "James Maddison",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792290984572",
+      "timestamp": 1792290984572,
+      "date": "17 oct 2026, 08:36 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m2",
+      "phase": "Jornada 1",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 4,
+      "team2Id": "brightonhovealbion",
+      "team2Name": "Brighton & Hove Albion",
+      "team2Logo": "Logos Equipos/brighton.png",
+      "score2": 5,
+      "events": [
+        {
+          "playerId": "p_1792040623974_10",
+          "playerName": "Romário",
+          "teamId": "brightonhovealbion",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040623974_18",
+          "playerName": "Zico",
+          "teamId": "brightonhovealbion",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040623974_15",
+          "playerName": "Geovany Quenda",
+          "teamId": "brightonhovealbion",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040623974_19",
+          "playerName": "Frank Lampard",
+          "teamId": "brightonhovealbion",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_11",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_8",
+          "playerName": "Désiré Doué",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_7",
+          "playerName": "Jude Bellingham",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_7",
+          "playerName": "Jude Bellingham",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_17",
+          "playerName": "Cole Palmer",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_17",
+          "playerName": "Cole Palmer",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_9",
+          "playerName": "Kingsley Coman",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792289792051",
       "timestamp": 1792289792051,
