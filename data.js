@@ -12739,9 +12739,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 3,
             "team1Id": "vascodagama",
             "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ]
@@ -16580,6 +16580,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792376370490",
+      "timestamp": 1792376370490,
+      "date": "18 oct 2026, 08:19 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m7",
+      "phase": "Jornada 3",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1792375525016",
       "timestamp": 1792375525016,
