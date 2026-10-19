@@ -191,6 +191,14 @@
                 <i class="fa-solid fa-award" style="color: #f59e0b;"></i>
                 <span>Añadir o editar ganador de Balón de Oro</span>
               </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(250, 204, 21, 0.4); background: rgba(250, 204, 21, 0.08);" onclick="AdminApp.exportStandingsImage('oro')">
+                <i class="fa-solid fa-camera" style="color: #ffd100;"></i>
+                <span>Descargar Tabla Oficial División Oro (PNG)</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(148, 163, 184, 0.4); background: rgba(148, 163, 184, 0.08);" onclick="AdminApp.exportStandingsImage('plata')">
+                <i class="fa-solid fa-camera" style="color: #cbd5e1;"></i>
+                <span>Descargar Tabla Oficial División Plata (PNG)</span>
+              </button>
               <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08); color: #fca5a5;" onclick="AdminApp.openSeasonResetModal()">
                 <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i>
                 <span>Reiniciar estadísticas de temporada (Comenzar Temporada 12)</span>
@@ -293,6 +301,12 @@
 
           <!-- Tournament Actions Bar -->
           <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin: 1rem 0; flex-wrap: wrap;">
+            <button class="btn btn-secondary" id="btn-export-standings-oro" onclick="AdminApp.exportStandingsImage('oro')" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; border-color: rgba(217, 119, 6, 0.5); background: rgba(217, 119, 6, 0.12);" title="Descargar en imagen PNG la tabla de posiciones oficial de División Oro">
+              <i class="fa-solid fa-camera" style="color: #ffd100;"></i> <span>Tabla Oro (PNG)</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-export-standings-plata" onclick="AdminApp.exportStandingsImage('plata')" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; border-color: rgba(148, 163, 184, 0.5); background: rgba(148, 163, 184, 0.12);" title="Descargar en imagen PNG la tabla de posiciones oficial de División Plata">
+              <i class="fa-solid fa-camera" style="color: #cbd5e1;"></i> <span>Tabla Plata (PNG)</span>
+            </button>
             <button class="btn btn-secondary" id="btn-draw-copa-estelar" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Realizar un sorteo aleatorio oficial de eliminatorias de Copa Estelar (18 clubes sin Club América ni Urawa)">
               <i class="fa-solid fa-shuffle" style="color: #c084fc;"></i> Sorteo Copa Estelar (18 Clubes)
             </button>
@@ -567,6 +581,76 @@
 
             <div id="champions-bracket-admin" style="display: flex; gap: 1.5rem; justify-content: space-between; overflow-x: auto; padding: 1rem 0.5rem;">
               <!-- Matches rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Oficial de Tablas de Posiciones y Descarga a Imagen -->
+        <div class="card" id="standings-card-wrapper" style="margin-top: 1.5rem; background: #0c1220; border: 1px solid rgba(250, 204, 21, 0.35);">
+          <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 class="card-title" style="color: var(--lmi-gold);"><i class="fa-solid fa-table-list"></i> Tablas de Posiciones Oficiales (Descarga en Imagen)</h3>
+              <p class="card-desc">Consulta la tabla de posiciones en vivo de cada división y expórtala en alta calidad (PNG) con 1 clic para compartir en redes y grupos.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="display: flex; gap: 0.35rem; background: rgba(255,255,255,0.05); padding: 0.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                <button type="button" class="btn btn-secondary active" id="btn-admin-tab-oro" onclick="AdminApp.switchAdminStandingsDivision('oro')" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; font-weight: 800; background: linear-gradient(135deg, #d97706, #b45309); color: #fff; border: none; cursor: pointer;">
+                  🥇 División Oro
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-admin-tab-plata" onclick="AdminApp.switchAdminStandingsDivision('plata')" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; font-weight: 800; background: transparent; color: #94a3b8; border: none; cursor: pointer;">
+                  🥈 División Plata
+                </button>
+              </div>
+              <button class="btn btn-primary" id="btn-download-standings-img" onclick="AdminApp.exportStandingsImage()" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); border: none; font-weight: 800; box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35); cursor: pointer;">
+                <i class="fa-solid fa-camera"></i> <span>Descargar Tabla en Imagen (PNG)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Contenedor capturable para exportar a imagen -->
+          <div id="standings-admin-export-container" style="padding: 1.5rem; background: linear-gradient(135deg, #070d18 0%, #0f172a 100%); border-radius: var(--radius-md); border: 1px solid rgba(250, 204, 21, 0.25); margin-top: 0.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #facc15; padding-bottom: 0.85rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <div style="font-size: 2rem; color: #facc15;"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                  <h2 id="admin-standings-title" style="font-size: 1.35rem; font-weight: 900; color: #ffffff; letter-spacing: 0.5px; margin: 0;">LIGA MÁSTER INTERNACIONAL &bull; DIVISIÓN ORO</h2>
+                  <span id="admin-standings-subtitle" style="font-size: 0.85rem; font-weight: 800; color: #facc15; text-transform: uppercase; letter-spacing: 0.5px;">TABLA OFICIAL DE POSICIONES &bull; 11 CLUBES</span>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span class="badge" id="admin-standings-badge" style="background: rgba(217, 119, 6, 0.2); border: 1.5px solid #d97706; color: #fde047; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
+                  11 CLUBES
+                </span>
+                <div style="text-align: right; color: #cbd5e1; font-size: 0.85rem; font-weight: 700;">
+                  Temporada 12 &bull; eFootball
+                </div>
+              </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-family: inherit;">
+                <thead>
+                  <tr style="border-bottom: 2px solid rgba(255,255,255,0.12); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; background: rgba(0,0,0,0.25);">
+                    <th style="padding: 0.75rem 0.5rem; text-align: center; width: 55px;">Pos</th>
+                    <th style="padding: 0.75rem 0.85rem; text-align: left;">Club</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 45px;" title="Partidos Jugados">PJ</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 45px;" title="Partidos Ganados">G</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 45px;" title="Partidos Empatados">E</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 45px;" title="Partidos Perdidos">P</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 45px;" title="Goles a Favor">GF</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 45px;" title="Goles en Contra">GC</th>
+                    <th style="padding: 0.75rem 0.65rem; text-align: center; width: 50px;" title="Diferencia de Goles">DG</th>
+                    <th style="padding: 0.75rem 0.85rem; text-align: center; width: 60px; color: #ffd100; font-size: 0.95rem;" title="Puntos Totales">PTS</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-standings-tbody">
+                  <!-- Rendered dynamically via AdminApp.renderAdminStandings() -->
+                </tbody>
+              </table>
+            </div>
+
+            <div id="admin-standings-legend" style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
+              <!-- Dynamic legend -->
             </div>
           </div>
         </div>

@@ -2807,36 +2807,33 @@ function calculateStandings(division) {
         const s2 = parseInt(m.score2, 10);
         if (isNaN(s1) || isNaN(s2)) return;
 
-        if (!stats[m.team1Id]) {
-          const found = lmiData.teams.find(t => t.id === m.team1Id);
-          if (found) stats[m.team1Id] = { team: found, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0 };
-        }
-        if (!stats[m.team2Id]) {
-          const found = lmiData.teams.find(t => t.id === m.team2Id);
-          if (found) stats[m.team2Id] = { team: found, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0 };
-        }
-
-        if (stats[m.team1Id] && stats[m.team2Id]) {
+        if (stats[m.team1Id]) {
           stats[m.team1Id].pj++;
-          stats[m.team2Id].pj++;
           stats[m.team1Id].gf += s1;
           stats[m.team1Id].gc += s2;
-          stats[m.team2Id].gf += s2;
-          stats[m.team2Id].gc += s1;
-
           if (s1 > s2) {
             stats[m.team1Id].g++;
             stats[m.team1Id].pts += 3;
-            stats[m.team2Id].p++;
           } else if (s1 === s2) {
             stats[m.team1Id].e++;
             stats[m.team1Id].pts += 1;
+          } else {
+            stats[m.team1Id].p++;
+          }
+        }
+
+        if (stats[m.team2Id]) {
+          stats[m.team2Id].pj++;
+          stats[m.team2Id].gf += s2;
+          stats[m.team2Id].gc += s1;
+          if (s2 > s1) {
+            stats[m.team2Id].g++;
+            stats[m.team2Id].pts += 3;
+          } else if (s1 === s2) {
             stats[m.team2Id].e++;
             stats[m.team2Id].pts += 1;
           } else {
-            stats[m.team2Id].g++;
-            stats[m.team2Id].pts += 3;
-            stats[m.team1Id].p++;
+            stats[m.team2Id].p++;
           }
         }
       }
@@ -3092,8 +3089,8 @@ function onWebJornadaSelectChange() {
   }
 
   grid.innerHTML = matches.map((m, idx) => {
-    const t1 = (lmiData.teams || []).find(t => t.id === m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
-    const t2 = (lmiData.teams || []).find(t => t.id === m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+    const t1 = (lmiData.teams || []).find(t => t.id === m.team1Id) || (m.team1Id === 'feyenoordrotterdam' ? { name: 'Feyenoord Rotterdam (Baja)', logo: 'Logos Equipos/feyenoord.webp' } : { name: m.team1Id, logo: 'Logos Equipos/default.png' });
+    const t2 = (lmiData.teams || []).find(t => t.id === m.team2Id) || (m.team2Id === 'feyenoordrotterdam' ? { name: 'Feyenoord Rotterdam (Baja)', logo: 'Logos Equipos/feyenoord.webp' } : { name: m.team2Id, logo: 'Logos Equipos/default.png' });
 
     const isPlayed = m.played && m.score1 !== null && m.score2 !== null;
     const scoreDisplay = isPlayed 
@@ -3152,8 +3149,8 @@ function openMatchDetailsModal(division, jornadaNum, matchId) {
   const m = round.matches.find(match => match.id === matchId);
   if (!m) return;
 
-  const t1 = (lmiData.teams || []).find(t => t.id === m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
-  const t2 = (lmiData.teams || []).find(t => t.id === m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+  const t1 = (lmiData.teams || []).find(t => t.id === m.team1Id) || (m.team1Id === 'feyenoordrotterdam' ? { name: 'Feyenoord Rotterdam (Baja)', logo: 'Logos Equipos/feyenoord.webp' } : { name: m.team1Id, logo: 'Logos Equipos/default.png' });
+  const t2 = (lmiData.teams || []).find(t => t.id === m.team2Id) || (m.team2Id === 'feyenoordrotterdam' ? { name: 'Feyenoord Rotterdam (Baja)', logo: 'Logos Equipos/feyenoord.webp' } : { name: m.team2Id, logo: 'Logos Equipos/default.png' });
 
   const isPlayed = m.played && m.score1 !== null && m.score2 !== null;
 

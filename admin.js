@@ -61,6 +61,11 @@ const AdminApp = {
     });
     document.getElementById('champions-phase-filter-admin')?.addEventListener('change', (e) => this.onChampionsPhaseFilterChange(e.target.value));
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
+    document.getElementById('btn-export-standings-oro')?.addEventListener('click', () => this.exportStandingsImage('oro'));
+    document.getElementById('btn-export-standings-plata')?.addEventListener('click', () => this.exportStandingsImage('plata'));
+    document.getElementById('btn-download-standings-img')?.addEventListener('click', () => this.exportStandingsImage());
+    document.getElementById('btn-admin-tab-oro')?.addEventListener('click', () => this.switchAdminStandingsDivision('oro'));
+    document.getElementById('btn-admin-tab-plata')?.addEventListener('click', () => this.switchAdminStandingsDivision('plata'));
 
     // Buscador y Filtro de Pendientes por Club
     document.getElementById('pending-filter-competition')?.addEventListener('change', () => this.onPendingFilterChange());
@@ -266,6 +271,9 @@ const AdminApp = {
       'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web'
     };
     document.getElementById('topbar-page-title').innerHTML = titleMap[viewId] || 'Panel de Control';
+    if (viewId === 'view-matches') {
+      this.renderAdminStandings();
+    }
   },
 
   initViews() {
@@ -278,6 +286,7 @@ const AdminApp = {
     this.renderTrophiesView();
     this.renderMatchHistory();
     this.renderWebControlView();
+    this.renderAdminStandings();
   },
 
   renderAll() {
@@ -289,6 +298,7 @@ const AdminApp = {
     this.renderTrophiesView();
     this.renderMatchHistory();
     this.renderWebControlView();
+    this.renderAdminStandings();
   },
 
   // ==================== DASHBOARD ====================
@@ -1649,6 +1659,369 @@ const AdminApp = {
     }
   },
 
+  // ==================== TABLAS DE POSICIONES Y EXPORTACIÓN A IMAGEN ====================
+  currentAdminStandingsDivision: 'oro',
+
+  calculateDivisionStandings(division) {
+    if (!this.data || !this.data.teams) return [];
+    
+    // Equipos activos de la división
+    const divTeams = this.data.teams.filter(t => (t.division || 'oro') === division);
+    const stats = {};
+    divTeams.forEach(t => {
+      stats[t.id] = {
+        team: t,
+        pj: 0,
+        g: 0,
+        e: 0,
+        p: 0,
+        gf: 0,
+        gc: 0,
+        dg: 0,
+        pts: 0
+      };
+    });
+
+    const rounds = (this.data.fixtures && this.data.fixtures[division]) || [];
+    rounds.forEach(r => {
+      (r.matches || []).forEach(m => {
+        if (m.played && m.score1 !== null && m.score2 !== null) {
+          const s1 = parseInt(m.score1, 10);
+          const s2 = parseInt(m.score2, 10);
+          if (isNaN(s1) || isNaN(s2)) return;
+
+          if (stats[m.team1Id]) {
+            stats[m.team1Id].pj++;
+            stats[m.team1Id].gf += s1;
+            stats[m.team1Id].gc += s2;
+            if (s1 > s2) {
+              stats[m.team1Id].g++;
+              stats[m.team1Id].pts += 3;
+            } else if (s1 === s2) {
+              stats[m.team1Id].e++;
+              stats[m.team1Id].pts += 1;
+            } else {
+              stats[m.team1Id].p++;
+            }
+          }
+
+          if (stats[m.team2Id]) {
+            stats[m.team2Id].pj++;
+            stats[m.team2Id].gf += s2;
+            stats[m.team2Id].gc += s1;
+            if (s2 > s1) {
+              stats[m.team2Id].g++;
+              stats[m.team2Id].pts += 3;
+            } else if (s1 === s2) {
+              stats[m.team2Id].e++;
+              stats[m.team2Id].pts += 1;
+            } else {
+              stats[m.team2Id].p++;
+            }
+          }
+        }
+      });
+    });
+
+    const list = Object.values(stats);
+    list.forEach(item => { item.dg = item.gf - item.gc; });
+    list.sort((a, b) => {
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      if (b.dg !== a.dg) return b.dg - a.dg;
+      if (b.gf !== a.gf) return b.gf - a.gf;
+      return (a.team.name || '').localeCompare(b.team.name || '');
+    });
+
+    return list;
+  },
+
+  switchAdminStandingsDivision(division) {
+    this.currentAdminStandingsDivision = division;
+    const btnOro = document.getElementById('btn-admin-tab-oro');
+    const btnPlata = document.getElementById('btn-admin-tab-plata');
+    if (btnOro && btnPlata) {
+      if (division === 'oro') {
+        btnOro.classList.add('active');
+        btnOro.style.background = 'linear-gradient(135deg, #d97706, #b45309)';
+        btnOro.style.color = '#ffffff';
+        btnPlata.classList.remove('active');
+        btnPlata.style.background = 'transparent';
+        btnPlata.style.color = '#94a3b8';
+      } else {
+        btnPlata.classList.add('active');
+        btnPlata.style.background = 'linear-gradient(135deg, #475569, #334155)';
+        btnPlata.style.color = '#ffffff';
+        btnOro.classList.remove('active');
+        btnOro.style.background = 'transparent';
+        btnOro.style.color = '#94a3b8';
+      }
+    }
+    this.renderAdminStandings(division);
+  },
+
+  renderAdminStandings(division) {
+    const div = division || this.currentAdminStandingsDivision || 'oro';
+    const standings = this.calculateDivisionStandings(div);
+    const tbody = document.getElementById('admin-standings-tbody');
+    const titleEl = document.getElementById('admin-standings-title');
+    const subEl = document.getElementById('admin-standings-subtitle');
+    const badgeEl = document.getElementById('admin-standings-badge');
+    const legendEl = document.getElementById('admin-standings-legend');
+
+    const isOro = div === 'oro';
+    const divName = isOro ? 'DIVISIÓN ORO' : 'DIVISIÓN PLATA';
+    const totalTeams = standings.length;
+
+    if (titleEl) {
+      titleEl.innerHTML = `LIGA MÁSTER INTERNACIONAL &bull; ${divName}`;
+    }
+    if (subEl) {
+      subEl.innerHTML = `TABLA OFICIAL DE POSICIONES &bull; ${totalTeams} CLUBES`;
+    }
+    if (badgeEl) {
+      badgeEl.textContent = `${totalTeams} CLUBES`;
+      badgeEl.style.background = isOro ? 'rgba(217, 119, 6, 0.2)' : 'rgba(148, 163, 184, 0.2)';
+      badgeEl.style.borderColor = isOro ? '#d97706' : '#94a3b8';
+      badgeEl.style.color = isOro ? '#fde047' : '#e2e8f0';
+    }
+
+    if (!tbody) return;
+
+    if (standings.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; padding: 2rem; color: #94a3b8;">No hay clubes registrados para esta división</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = standings.map((item, idx) => {
+      const pos = idx + 1;
+      let posBadge = '';
+      let rowBorderLeft = '4px solid transparent';
+      let rowBg = idx % 2 === 0 ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.04)';
+
+      if (isOro) {
+        if (pos === 1) {
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="1° Campeón">1</span>`;
+          rowBorderLeft = '4px solid #ffd700';
+          rowBg = 'rgba(255, 215, 0, 0.06)';
+        } else if (pos >= totalTeams - 1) {
+          // Últimos 2: Descenso directo (Rojo)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(239, 68, 68, 0.25); border:1px solid #ef4444; color:#f87171; box-shadow:0 0 8px rgba(239, 68, 68, 0.25);" title="Descenso Directo">${pos}</span>`;
+          rowBorderLeft = '4px solid #ef4444';
+          rowBg = 'rgba(239, 68, 68, 0.05)';
+        } else if (pos === totalTeams - 2) {
+          // Antepenúltimo: Repechaje (Naranja)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(249, 115, 22, 0.25); border:1px solid #f97316; color:#fb923c; box-shadow:0 0 8px rgba(249, 115, 22, 0.25);" title="Repechaje de Permanencia">${pos}</span>`;
+          rowBorderLeft = '4px solid #f97316';
+          rowBg = 'rgba(249, 115, 22, 0.05)';
+        } else {
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:700; font-size:0.85rem; background:rgba(255,255,255,0.08); color:#cbd5e1;">${pos}</span>`;
+        }
+      } else {
+        // Plata
+        if (pos === 1 || pos === 2) {
+          // Primeros 2: Ascenso Directo (Verde)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(16, 185, 129, 0.25); border:1px solid #10b981; color:#4ade80; box-shadow:0 0 10px rgba(16, 185, 129, 0.35);" title="Ascenso Directo">${pos}</span>`;
+          rowBorderLeft = '4px solid #10b981';
+          rowBg = 'rgba(16, 185, 129, 0.05)';
+        } else if (pos === 3) {
+          // 3° lugar: Repechaje de Ascenso (Naranja)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(249, 115, 22, 0.25); border:1px solid #f97316; color:#fb923c; box-shadow:0 0 8px rgba(249, 115, 22, 0.25);" title="Repechaje de Ascenso">${pos}</span>`;
+          rowBorderLeft = '4px solid #f97316';
+          rowBg = 'rgba(249, 115, 22, 0.05)';
+        } else {
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:700; font-size:0.85rem; background:rgba(255,255,255,0.08); color:#cbd5e1;">${pos}</span>`;
+        }
+      }
+
+      const dgFormatted = item.dg > 0 ? `+${item.dg}` : `${item.dg}`;
+      const dgColor = item.dg > 0 ? '#4ade80' : (item.dg < 0 ? '#f87171' : '#94a3b8');
+
+      return `
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); border-left: ${rowBorderLeft}; background: ${rowBg};">
+          <td style="padding: 0.65rem 0.5rem; text-align: center;">${posBadge}</td>
+          <td style="padding: 0.65rem 0.85rem; text-align: left;">
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <img src="${this.escape(item.team.logo || 'Logos Equipos/default.png')}" alt="${this.escape(item.team.name)}" style="width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.src='Logos Equipos/default.png'">
+              <span style="font-weight: 800; font-size: 0.92rem; color: #ffffff;">${this.escape(item.team.name)}</span>
+            </div>
+          </td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #cbd5e1;">${item.pj}</td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #ffffff;">${item.g}</td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #cbd5e1;">${item.e}</td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #cbd5e1;">${item.p}</td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #cbd5e1;">${item.gf}</td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #cbd5e1;">${item.gc}</td>
+          <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 800; color: ${dgColor};">${dgFormatted}</td>
+          <td style="padding: 0.65rem 0.85rem; text-align: center; font-weight: 900; font-size: 1.05rem; color: #ffd100; background: rgba(255,209,0,0.05);">${item.pts}</td>
+        </tr>
+      `;
+    }).join('');
+
+    // Render legend
+    if (legendEl) {
+      if (isOro) {
+        legendEl.innerHTML = `
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: #94a3b8; padding-top: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #ffd700; display: inline-block;"></span>
+              <span>1° Campeón de División Oro</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #f97316; display: inline-block;"></span>
+              <span>${totalTeams - 2}° Repechaje de Permanencia</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #ef4444; display: inline-block;"></span>
+              <span>${totalTeams - 1}° y ${totalTeams}° Descenso Directo a División Plata</span>
+            </div>
+          </div>
+        `;
+      } else {
+        legendEl.innerHTML = `
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: #94a3b8; padding-top: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #10b981; display: inline-block;"></span>
+              <span>1° y 2° Ascenso Directo a División Oro</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #f97316; display: inline-block;"></span>
+              <span>3° Repechaje de Ascenso</span>
+            </div>
+          </div>
+        `;
+      }
+    }
+  },
+
+  async exportStandingsImage(division) {
+    const div = division || this.currentAdminStandingsDivision || 'oro';
+    this.switchAdminStandingsDivision(div);
+
+    const target = document.getElementById('standings-admin-export-container');
+    if (!target) {
+      this.showToast('No se encontró el contenedor de la tabla para exportar', 'error');
+      return;
+    }
+
+    const isOro = div === 'oro';
+    const divName = isOro ? 'Division_Oro' : 'Division_Plata';
+    const seasonTag = (this.data && this.data.season ? this.data.season.replace(/\s+/g, '_') : 'Temporada_12');
+    const filename = `LMI_Tabla_Posiciones_${divName}_${seasonTag}.png`;
+
+    const btn = document.getElementById('btn-download-standings-img');
+    const btnOro = document.getElementById('btn-export-standings-oro');
+    const btnPlata = document.getElementById('btn-export-standings-plata');
+
+    const setBusy = (isBusy) => {
+      [btn, btnOro, btnPlata].forEach(b => {
+        if (!b) return;
+        b.disabled = isBusy;
+        if (isBusy) {
+          b.dataset.prevHtml = b.innerHTML;
+          b.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generando...';
+        } else if (b.dataset.prevHtml) {
+          b.innerHTML = b.dataset.prevHtml;
+        }
+      });
+    };
+
+    setBusy(true);
+    const unlockTimer = setTimeout(() => setBusy(false), 10000);
+
+    const targetWidth = 1000;
+    const wrapperWidth = targetWidth + 40;
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '0';
+    wrapper.style.left = '-12000px';
+    wrapper.style.width = `${wrapperWidth}px`;
+    wrapper.style.background = '#0c1220';
+    wrapper.style.zIndex = '-99999';
+    wrapper.style.pointerEvents = 'none';
+
+    const clone = target.cloneNode(true);
+    clone.style.width = `${targetWidth}px`;
+    clone.style.minWidth = `${targetWidth}px`;
+    clone.style.maxWidth = `${targetWidth}px`;
+    clone.style.margin = '0 auto';
+    clone.style.boxSizing = 'border-box';
+    clone.style.overflow = 'visible';
+
+    // 1. Reemplazar iconos con emojis o símbolos para evitar cuelgues de fuentes en html2canvas
+    clone.querySelectorAll('i').forEach(icon => {
+      const cls = icon.className || '';
+      let emoji = '⚽';
+      if (cls.includes('fa-trophy')) emoji = '🏆';
+      else if (cls.includes('fa-medal')) emoji = '🥈';
+      else if (cls.includes('fa-star')) emoji = '⭐';
+      else if (cls.includes('fa-table')) emoji = '📊';
+      const span = document.createElement('span');
+      span.style.fontSize = '1.3rem';
+      span.style.verticalAlign = 'middle';
+      span.style.marginRight = '0.35rem';
+      span.textContent = emoji;
+      icon.parentNode.replaceChild(span, icon);
+    });
+
+    // 2. Pre-convertir imágenes ya cargadas a Data URLs
+    const origImgs = target.querySelectorAll('img');
+    const cloneImgs = clone.querySelectorAll('img');
+    cloneImgs.forEach((cImg, idx) => {
+      try {
+        const oImg = origImgs[idx] || document.querySelector(`img[src="${cImg.getAttribute('src')}"]`);
+        if (oImg && oImg.complete && oImg.naturalWidth > 0) {
+          const c = document.createElement('canvas');
+          c.width = oImg.naturalWidth;
+          c.height = oImg.naturalHeight;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(oImg, 0, 0);
+          cImg.src = c.toDataURL('image/png');
+        }
+      } catch (e) {}
+    });
+
+    wrapper.appendChild(clone);
+    document.body.appendChild(wrapper);
+
+    try {
+      if (typeof html2canvas === 'undefined') {
+        throw new Error('La librería html2canvas no está disponible.');
+      }
+
+      const canvasPromise = html2canvas(clone, {
+        backgroundColor: '#070d18',
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        imageTimeout: 3000,
+        logging: false,
+        width: targetWidth,
+        windowWidth: wrapperWidth
+      });
+
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('La generación de imagen tardó demasiado. Por favor, reintenta.')), 9000)
+      );
+
+      const canvas = await Promise.race([canvasPromise, timeoutPromise]);
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      this.showToast(`¡Tabla oficial de ${isOro ? 'División Oro' : 'División Plata'} exportada en imagen (PNG) con éxito!`, 'success');
+    } catch (err) {
+      console.error('Error exportando tabla a imagen:', err);
+      this.showToast(`Error al exportar tabla: ${err.message}`, 'error');
+    } finally {
+      clearTimeout(unlockTimer);
+      wrapper.remove();
+      setBusy(false);
+    }
+  },
+
   async generateChampionsPlayoffs() {
     if (!this.data || !this.data.teams || !this.data.fixtures) return;
     if (!confirm('¿Deseas sincronizar las llaves de Cuartos de Final con los 8 clasificados oficiales de la tabla de Champions League (1° vs 8°, 2° vs 7°, 3° vs 6°, 4° vs 5°)?\\n\\nEsto actualizará el cuadro oficial de eliminatorias de Champions League.')) {
@@ -2388,6 +2761,7 @@ const AdminApp = {
 
     // Guardar inmediatamente en data.js
     await this.saveData(true);
+    this.renderAdminStandings();
     this.showToast(`¡Partido registrado y guardado exitosamente! ${team1.name} ${score1} - ${score2} ${team2.name}.`, 'success');
   },
 
@@ -2520,6 +2894,7 @@ const AdminApp = {
     if (match.competition === 'oro' || match.competition === 'plata') {
       this.onJornadaChange();
     }
+    this.renderAdminStandings();
 
     // Guardar inmediatamente en data.js
     await this.saveData(true);

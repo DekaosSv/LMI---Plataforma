@@ -395,35 +395,6 @@ var INITIAL_LMI_DATA = {
       }
     },
     {
-      "id": "feyenoordrotterdam",
-      "name": "Feyenoord Rotterdam",
-      "shortName": "FYN",
-      "colors": {
-        "primary": "#000000",
-        "secondary": "#a6926d",
-        "bgGradient": "linear-gradient(135deg, #000000 0%, #000000 100%)"
-      },
-      "stadium": "Stadion Feijenoord",
-      "manager": "Aderson Valverde",
-      "budget": 500000000,
-      "initialBudget": 500000000,
-      "legendChangeNote": "",
-      "legendRemoveNote": "",
-      "leagueRank": 24,
-      "logo": "Logos Equipos/feyenoord.webp",
-      "division": "plata",
-      "stats": {
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "goalsFor": 0,
-        "goalsAgainst": 0,
-        "goalDiff": 0,
-        "points": 0
-      }
-    },
-    {
       "id": "chelseafc",
       "name": "Chelsea FC",
       "shortName": "CHE",
@@ -564,359 +535,7 @@ var INITIAL_LMI_DATA = {
       "id": "p_1791780792740_1",
       "name": "Jan Oblak",
       "position": "PT",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_2",
-      "name": "José Gayà",
-      "position": "LI",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_3",
-      "name": "Martín Cáceres",
-      "position": "CT",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_4",
-      "name": "Harry Maguire",
-      "position": "CT",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_5",
-      "name": "Josip Stanišić",
-      "position": "LD",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_6",
-      "name": "Carlos Baleba",
-      "position": "MCD",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_7",
-      "name": "Adam Wharton",
-      "position": "MCD",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_8",
-      "name": "Oihan Sancet",
-      "position": "MC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_9",
-      "name": "Antonio Nusa",
-      "position": "ED",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_10",
-      "name": "Kaoru Mitoma",
-      "position": "EI",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_11",
-      "name": "Didier Drogba",
-      "position": "DC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_12",
-      "name": "Leny Yoro",
-      "position": "CT",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_13",
-      "name": "Kim Min-jae",
-      "position": "CT",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_14",
-      "name": "Sofyan Amrabat",
-      "position": "MCD",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_15",
-      "name": "ID Riccardo Orsolini",
-      "position": "MC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_16",
-      "name": "Martin Baturina",
-      "position": "MP",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_17",
-      "name": "Alex Scott",
-      "position": "MC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_18",
-      "name": "II Diogo Dalot",
-      "position": "MC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_19",
-      "name": "Sander Berge",
-      "position": "MC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_20",
-      "name": "Angel Di Maria",
-      "position": "ED",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_21",
-      "name": "Joshua Zirkzee",
-      "position": "DC",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_22",
-      "name": "Juan Foyth",
-      "position": "LD",
-      "teamId": "feyenoordrotterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1791780792740_23",
-      "name": "Can Uzun",
-      "position": "MP",
-      "teamId": "feyenoordrotterdam",
+      "teamId": "chelseafc",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -2820,22 +2439,6 @@ var INITIAL_LMI_DATA = {
       "id": "p_1792039904071_4",
       "name": "Fabrício Bruno",
       "position": "CT",
-      "teamId": "chelseafc",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1792039904071_5",
-      "name": "Alessandro Costacurta",
-      "position": "LD",
       "teamId": "chelseafc",
       "goals": 0,
       "assists": 0,
@@ -10705,9 +10308,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "borussiadortmund",
             "team2Id": "liverpool",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -13325,16 +12928,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j6_m2",
-            "jornada": 6,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "manchesterunited",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j6_m3",
             "jornada": 6,
             "team1Id": "fctwente",
@@ -13384,7 +12977,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "manchesterunited"
       },
       {
         "jornada": 7,
@@ -13406,16 +13000,6 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "fctwente",
             "team2Id": "ajaxdeamsterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
-            "id": "plata_j7_m3",
-            "jornada": 7,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "acmiln",
             "score1": null,
             "score2": null,
             "played": false,
@@ -13461,7 +13045,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acmiln"
       },
       {
         "jornada": 8,
@@ -13499,16 +13084,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j8_m4",
-            "jornada": 8,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "losclille",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j8_m5",
             "jornada": 8,
             "team1Id": "realmadrid",
@@ -13538,7 +13113,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "losclille"
       },
       {
         "jornada": 9,
@@ -13586,16 +13162,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j9_m5",
-            "jornada": 9,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j9_m6",
             "jornada": 9,
             "team1Id": "brightonhovealbion",
@@ -13615,7 +13181,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "staderennais"
       },
       {
         "jornada": 10,
@@ -13663,16 +13230,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j10_m5",
-            "jornada": 10,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "acffiorentina",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j10_m6",
             "jornada": 10,
             "team1Id": "brightonhovealbion",
@@ -13692,7 +13249,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acffiorentina"
       },
       {
         "jornada": 11,
@@ -13750,16 +13308,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j11_m6",
-            "jornada": 11,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j11_m7",
             "jornada": 11,
             "team1Id": "vascodagama",
@@ -13769,7 +13317,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "chelseafc"
       },
       {
         "jornada": 12,
@@ -13827,16 +13376,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j12_m6",
-            "jornada": 12,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "ajaxdeamsterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j12_m7",
             "jornada": 12,
             "team1Id": "vascodagama",
@@ -13846,7 +13385,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "ajaxdeamsterdam"
       },
       {
         "jornada": 13,
@@ -13894,16 +13434,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j13_m5",
-            "jornada": 13,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "fctwente",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j13_m6",
             "jornada": 13,
             "team1Id": "manchesterunited",
@@ -13923,7 +13453,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "fctwente"
       },
       {
         "jornada": 14,
@@ -13961,16 +13492,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j14_m4",
-            "jornada": 14,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j14_m5",
             "jornada": 14,
             "team1Id": "acmiln",
@@ -14000,7 +13521,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "arsenal"
       },
       {
         "jornada": 15,
@@ -14022,16 +13544,6 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "staderennais",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
-            "id": "plata_j15_m3",
-            "jornada": 15,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "realmadrid",
             "score1": null,
             "score2": null,
             "played": false,
@@ -14077,7 +13589,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "realmadrid"
       },
       {
         "jornada": 16,
@@ -14143,18 +13656,9 @@ var INITIAL_LMI_DATA = {
             "score2": null,
             "played": false,
             "events": []
-          },
-          {
-            "id": "plata_j16_m7",
-            "jornada": 16,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "vascodagama",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
           }
-        ]
+        ],
+        "restingTeamId": "vascodagama"
       },
       {
         "jornada": 17,
@@ -14166,16 +13670,6 @@ var INITIAL_LMI_DATA = {
             "jornada": 17,
             "team1Id": "fcbarcelona",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
-            "id": "plata_j17_m2",
-            "jornada": 17,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "brightonhovealbion",
             "score1": null,
             "score2": null,
             "played": false,
@@ -14231,23 +13725,14 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "brightonhovealbion"
       },
       {
         "jornada": 18,
         "name": "Jornada 18",
         "type": "vuelta",
         "matches": [
-          {
-            "id": "plata_j18_m1",
-            "jornada": 18,
-            "team1Id": "feyenoordrotterdam",
-            "team2Id": "fcbarcelona",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
           {
             "id": "plata_j18_m2",
             "jornada": 18,
@@ -14308,7 +13793,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "fcbarcelona"
       },
       {
         "jornada": 19,
@@ -14320,16 +13806,6 @@ var INITIAL_LMI_DATA = {
             "jornada": 19,
             "team1Id": "fcbarcelona",
             "team2Id": "ajaxdeamsterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
-            "id": "plata_j19_m2",
-            "jornada": 19,
-            "team1Id": "manchesterunited",
-            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -14385,7 +13861,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "manchesterunited"
       },
       {
         "jornada": 20,
@@ -14407,16 +13884,6 @@ var INITIAL_LMI_DATA = {
             "jornada": 20,
             "team1Id": "ajaxdeamsterdam",
             "team2Id": "fctwente",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
-            "id": "plata_j20_m3",
-            "jornada": 20,
-            "team1Id": "acmiln",
-            "team2Id": "feyenoordrotterdam",
             "score1": null,
             "score2": null,
             "played": false,
@@ -14462,7 +13929,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acmiln"
       },
       {
         "jornada": 21,
@@ -14500,16 +13968,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j21_m4",
-            "jornada": 21,
-            "team1Id": "losclille",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j21_m5",
             "jornada": 21,
             "team1Id": "chelseafc",
@@ -14539,7 +13997,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "losclille"
       },
       {
         "jornada": 22,
@@ -14587,16 +14046,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j22_m5",
-            "jornada": 22,
-            "team1Id": "staderennais",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j22_m6",
             "jornada": 22,
             "team1Id": "acffiorentina",
@@ -14616,7 +14065,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "staderennais"
       },
       {
         "jornada": 23,
@@ -14664,16 +14114,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j23_m5",
-            "jornada": 23,
-            "team1Id": "acffiorentina",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j23_m6",
             "jornada": 23,
             "team1Id": "chelseafc",
@@ -14693,7 +14133,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "acffiorentina"
       },
       {
         "jornada": 24,
@@ -14751,16 +14192,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j24_m6",
-            "jornada": 24,
-            "team1Id": "chelseafc",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j24_m7",
             "jornada": 24,
             "team1Id": "fctwente",
@@ -14770,7 +14201,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "chelseafc"
       },
       {
         "jornada": 25,
@@ -14828,16 +14260,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j25_m6",
-            "jornada": 25,
-            "team1Id": "ajaxdeamsterdam",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j25_m7",
             "jornada": 25,
             "team1Id": "arsenal",
@@ -14847,7 +14269,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "ajaxdeamsterdam"
       },
       {
         "jornada": 26,
@@ -14895,16 +14318,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j26_m5",
-            "jornada": 26,
-            "team1Id": "fctwente",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
-          },
-          {
             "id": "plata_j26_m6",
             "jornada": 26,
             "team1Id": "ajaxdeamsterdam",
@@ -14924,7 +14337,8 @@ var INITIAL_LMI_DATA = {
             "played": false,
             "events": []
           }
-        ]
+        ],
+        "restingTeamId": "fctwente"
       }
     ],
     "champions": [
@@ -16580,6 +15994,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792379860154",
+      "timestamp": 1792379860154,
+      "date": "18 oct 2026, 09:17 p.m.",
+      "competition": "oro",
+      "jornada": 4,
+      "fixtureMatchId": "oro_j4_m4",
+      "phase": "Jornada 4",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 0,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1792376370490",
       "timestamp": 1792376370490,
