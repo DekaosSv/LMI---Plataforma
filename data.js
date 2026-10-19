@@ -10673,9 +10673,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "psg",
             "team2Id": "riverplate",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -10856,9 +10856,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "borussiadortmund",
             "team2Id": "riverplate",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -16558,6 +16558,42 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792371313973",
+      "timestamp": 1792371313973,
+      "date": "18 oct 2026, 06:55 p.m.",
+      "competition": "oro",
+      "jornada": 5,
+      "fixtureMatchId": "oro_j5_m4",
+      "phase": "Jornada 5",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 0,
+      "team2Id": "riverplate",
+      "team2Name": "River Plate",
+      "team2Logo": "Logos Equipos/riverplate.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792371220990",
+      "timestamp": 1792371220990,
+      "date": "18 oct 2026, 06:53 p.m.",
+      "competition": "oro",
+      "jornada": 4,
+      "fixtureMatchId": "oro_j4_m3",
+      "phase": "Jornada 4",
+      "team1Id": "psg",
+      "team1Name": "PSG",
+      "team1Logo": "Logos Equipos/psg.png",
+      "score1": 0,
+      "team2Id": "riverplate",
+      "team2Name": "River Plate",
+      "team2Logo": "Logos Equipos/riverplate.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1792369487531",
       "timestamp": 1792369487531,
