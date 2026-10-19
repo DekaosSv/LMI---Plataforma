@@ -2134,9 +2134,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2197,9 +2197,9 @@ var INITIAL_LMI_DATA = {
       "name": "Semih Kılıçsoy",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 4,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 4,
+      "goals_liga": 6,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4789,9 +4789,9 @@ var INITIAL_LMI_DATA = {
       "name": "Nicolas Jackson",
       "position": "DC",
       "teamId": "riverplate",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -10540,10 +10540,32 @@ var INITIAL_LMI_DATA = {
             "jornada": 3,
             "team1Id": "galatasaray",
             "team2Id": "riverplate",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039794983_7",
+                "playerName": "Weston McKennie",
+                "teamId": "galatasaray",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039794983_11",
+                "playerName": "Semih Kılıçsoy",
+                "teamId": "galatasaray",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040163150_12",
+                "playerName": "Nicolas Jackson",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j3_m3",
@@ -12383,9 +12405,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "vascodagama",
             "team2Id": "brightonhovealbion",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ]
@@ -12759,9 +12781,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "brightonhovealbion",
             "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -13019,9 +13041,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "fcbarcelona",
             "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -13280,9 +13302,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "vascodagama",
             "team2Id": "acmiln",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ]
@@ -16558,6 +16580,118 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792375525016",
+      "timestamp": 1792375525016,
+      "date": "18 oct 2026, 08:05 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m7",
+      "phase": "Jornada 5",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 0,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792375517221",
+      "timestamp": 1792375517221,
+      "date": "18 oct 2026, 08:05 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m1",
+      "phase": "Jornada 5",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792375505827",
+      "timestamp": 1792375505827,
+      "date": "18 oct 2026, 08:05 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m2",
+      "phase": "Jornada 4",
+      "team1Id": "brightonhovealbion",
+      "team1Name": "Brighton & Hove Albion",
+      "team1Logo": "Logos Equipos/brighton.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792375489426",
+      "timestamp": 1792375489426,
+      "date": "18 oct 2026, 08:04 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m7",
+      "phase": "Jornada 2",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 0,
+      "team2Id": "brightonhovealbion",
+      "team2Name": "Brighton & Hove Albion",
+      "team2Logo": "Logos Equipos/brighton.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792375411860",
+      "timestamp": 1792375411860,
+      "date": "18 oct 2026, 08:03 p.m.",
+      "competition": "oro",
+      "jornada": 3,
+      "fixtureMatchId": "oro_j3_m2",
+      "phase": "Jornada 3",
+      "team1Id": "galatasaray",
+      "team1Name": "Galatasaray",
+      "team1Logo": "Logos Equipos/galatasaray.png",
+      "score1": 2,
+      "team2Id": "riverplate",
+      "team2Name": "River Plate",
+      "team2Logo": "Logos Equipos/riverplate.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792039794983_7",
+          "playerName": "Weston McKennie",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_11",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040163150_12",
+          "playerName": "Nicolas Jackson",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792371313973",
       "timestamp": 1792371313973,
