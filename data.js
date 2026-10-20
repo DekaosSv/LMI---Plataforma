@@ -9439,8 +9439,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792466085252_2",
-      "name": "Raphinha",
-      "position": "ED",
+      "name": "Fikayo Tomori",
+      "position": "CT",
       "teamId": "carabobofutbolclub",
       "goals": 0,
       "assists": 0,
