@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 *.backup.js
 scratch/
+.env
+agent_config.json

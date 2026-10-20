@@ -1,22 +1,22 @@
-¿Cómo ocultar y activar estos apartados cuando desees?
-Para manejar la visibilidad de los botones en la barra de navegación, la forma más sencilla y recomendada es usar Comentarios HTML (<!-- contenido -->).
+¿Cómo ocultar y activar apartados cuando desees?
+Para manejar la visibilidad de los botones en la barra de navegación y en las pestañas de posiciones, la forma más sencilla y recomendada es usar Comentarios HTML (<!-- contenido -->) y la configuración del Centro de Control Web en Admin Hub.
 
-1. Estado Actual (Oculto)
-En este momento, el código en 
+1. Estado Actual (Ocultos Momentáneamente: Copa Estelar y UEFA Champions League)
+En index.html, tanto en la barra de navegación superior como en el selector de pestañas de "Tabla y Partidos", los botones han sido comentados:
 
-index.html
- tiene este aspecto:
+--- En el Menú Principal (index.html): ---
+<!-- Habilitar para mostrar: Copa Estelar y Champions League
+<li><button class="nav-link" onclick="switchNav('copa-estelar')"><i class="fa-solid fa-star"></i> Copa Estelar</button></li>
+<li><button class="nav-link" onclick="switchNav('uefa-champions')"><i class="fa-solid fa-trophy"></i> Champions League</button></li>
+-->
 
-html
-<!-- Habilitar para mostrar: Mercado y Renovaciones T9
-        <li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i> Mercado</button></li>
-        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
-        -->
-(El navegador ignora todo lo que esté envuelto entre <!-- y --> por lo que no se renderiza en la web).
+--- En Pestañas de Posiciones (index.html): ---
+<!-- Habilitar para mostrar pestañas de copas en posiciones:
+<button class="btn-tab" id="tab-web-champions" onclick="switchWebDivision('champions')" ...>UEFA Champions League</button>
+<button class="btn-tab" id="tab-web-estelar" onclick="switchWebDivision('estelar')" ...>Copa Estelar</button>
+-->
 
 2. Cómo Activarlos (Mostrar en la Web)
-Para volver a mostrarlos, simplemente elimina las etiquetas de comentarios inicial (<!-- ...) y de cierre (-->). El código debe quedar así:
-
-html
-<li><button class="nav-link" onclick="switchNav('mercado')"><i class="fa-solid fa-arrow-right-arrow-left"></i> Mercado</button></li>
-        <li><button class="nav-link" onclick="switchNav('renovaciones')"><i class="fa-solid fa-file-signature"></i> Renovaciones T9</button></li>
+Para volver a mostrarlos cuando comience la fase de copas:
+1. Elimina las etiquetas de comentarios <!-- y --> en index.html.
+2. En Admin Hub -> Centro de Control Web, activa los interruptores de "Copa Estelar" y "Champions League", y haz clic en "Guardar Cambios".

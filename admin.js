@@ -66,6 +66,7 @@ const AdminApp = {
     document.getElementById('btn-download-standings-img')?.addEventListener('click', () => this.exportStandingsImage());
     document.getElementById('btn-admin-tab-oro')?.addEventListener('click', () => this.switchAdminStandingsDivision('oro'));
     document.getElementById('btn-admin-tab-plata')?.addEventListener('click', () => this.switchAdminStandingsDivision('plata'));
+    document.getElementById('btn-admin-tab-champions')?.addEventListener('click', () => this.switchAdminStandingsDivision('champions'));
 
     // Buscador y Filtro de Pendientes por Club
     document.getElementById('pending-filter-competition')?.addEventListener('change', () => this.onPendingFilterChange());
@@ -507,9 +508,17 @@ const AdminApp = {
     rounds.forEach(r => {
       const opt = document.createElement('option');
       opt.value = r.jornada;
-      const typeLabel = comp === 'champions' ? 'Fecha' : (r.type === 'ida' ? 'Ida' : 'Vuelta');
-      const restTeam = r.restingTeamId ? this.getTeamById(r.restingTeamId) : null;
-      const restText = restTeam ? ` • 💤 ${restTeam.name}` : '';
+      const typeLabel = comp === 'champions' ? 'Fecha Oficial' : (r.type === 'ida' ? 'Ida' : 'Vuelta');
+      let restText = '';
+      if (r.restingTeams && Array.isArray(r.restingTeams) && r.restingTeams.length > 0) {
+        restText = ' • 💤 ' + r.restingTeams.map(item => {
+          const t = this.getTeamById(item.teamId);
+          return `${item.group ? item.group + ': ' : ''}${t ? t.name : item.teamId}`;
+        }).join(' | 💤 ');
+      } else if (r.restingTeamId) {
+        const restTeam = this.getTeamById(r.restingTeamId);
+        if (restTeam) restText = ` • 💤 ${restTeam.name}`;
+      }
       opt.textContent = `${r.name} (${typeLabel})${restText}`;
       jornadaSel.appendChild(opt);
     });
@@ -537,7 +546,8 @@ const AdminApp = {
         const opt = document.createElement('option');
         opt.value = m.id;
         const scoreLabel = m.played ? ` [${m.score1} - ${m.score2}] ✓` : ' [Pendiente]';
-        opt.textContent = `${t1Name} vs ${t2Name}${scoreLabel}`;
+        const groupLabel = m.group ? `[${m.group}] ` : '';
+        opt.textContent = `${groupLabel}${t1Name} vs ${t2Name}${scoreLabel}`;
         fixtureSel.appendChild(opt);
       });
     }
@@ -981,32 +991,51 @@ const AdminApp = {
     const seasonEl = document.getElementById('export-season-badge');
     if (!container || !this.data || !this.data.fixtures) return;
 
-    const divName = comp === 'oro' ? 'DIVISIÓN ORO' : (comp === 'plata' ? 'DIVISIÓN PLATA' : (comp === 'champions' ? 'UEFA CHAMPIONS LEAGUE' : 'TORNEO'));
+    const isChampions = comp === 'champions';
+    const divName = comp === 'oro' ? 'DIVISIÓN ORO' : (comp === 'plata' ? 'DIVISIÓN PLATA' : (isChampions ? 'UEFA CHAMPIONS LEAGUE' : 'TORNEO'));
     const rounds = this.data.fixtures[comp] || [];
     const round = rounds.find(r => r.jornada === jornadaNum);
-    const legLabel = round && round.type === 'vuelta' ? 'VUELTA' : (comp === 'champions' ? 'FECHA ' + jornadaNum : 'IDA');
+    const legLabel = round && round.type === 'vuelta' ? 'VUELTA' : (isChampions ? 'FASE DE GRUPOS' : 'IDA');
 
-    if (titleEl) titleEl.textContent = `${divName} • JORNADA ${jornadaNum} (${legLabel})`;
+    if (titleEl) {
+      titleEl.textContent = `${divName} • JORNADA ${jornadaNum} (${legLabel})`;
+      titleEl.style.color = isChampions ? '#38bdf8' : (comp === 'plata' ? '#94a3b8' : 'var(--lmi-gold)');
+    }
     if (seasonEl) seasonEl.textContent = `${this.data.season || 'Temporada 12'} • eFootball`;
 
-    const restingTeam = (round && round.restingTeamId) ? this.getTeamById(round.restingTeamId) : null;
+    const restingList = [];
+    if (round && round.restingTeams && Array.isArray(round.restingTeams) && round.restingTeams.length > 0) {
+      round.restingTeams.forEach(item => {
+        const t = this.getTeamById(item.teamId);
+        if (t) restingList.push({ team: t, group: item.group || '' });
+      });
+    } else if (round && round.restingTeamId) {
+      const t = this.getTeamById(round.restingTeamId);
+      if (t) restingList.push({ team: t, group: '' });
+    }
+
     if (descEl) {
-      if (restingTeam) {
-        descEl.innerHTML = `Partidos programados para la Jornada ${jornadaNum} de ${divName}. <span style="display:inline-flex; align-items:center; gap:0.35rem; color:#facc15; font-weight:700;"><i class="fa-solid fa-moon"></i> Descansa: ${this.escape(restingTeam.name)}</span>`;
+      if (restingList.length > 0) {
+        descEl.innerHTML = `Partidos programados para la Jornada ${jornadaNum} de ${divName}. ` +
+          restingList.map(r => `<span style="display:inline-flex; align-items:center; gap:0.35rem; color:#facc15; font-weight:700;"><i class="fa-solid fa-moon"></i> Descansa ${r.group ? `(${r.group})` : ''}: ${this.escape(r.team.name)}</span>`).join(' &bull; ');
       } else {
         descEl.textContent = `Partidos programados para la Jornada ${jornadaNum} de ${divName}.`;
       }
     }
 
     if (restingEl) {
-      if (restingTeam) {
+      if (restingList.length > 0) {
         restingEl.style.display = 'block';
         restingEl.innerHTML = `
-          <div style="display: flex; align-items: center; justify-content: center; gap: 0.65rem; padding: 0.65rem 1rem; background: rgba(250, 204, 21, 0.1); border: 1px dashed rgba(250, 204, 21, 0.4); border-radius: 8px;">
-            <i class="fa-solid fa-bed" style="color: #facc15; font-size: 0.95rem;"></i>
-            <span style="font-size: 0.85rem; color: #cbd5e1; font-weight: 600;">Descansa esta jornada:</span>
-            <img src="${this.escape(restingTeam.logo || 'Logos Equipos/default.png')}" alt="" style="width: 24px; height: 24px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
-            <strong style="color: #ffd100; font-size: 0.92rem;">${this.escape(restingTeam.name)}</strong>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; padding: 0.65rem 1rem; background: rgba(250, 204, 21, 0.1); border: 1px dashed rgba(250, 204, 21, 0.4); border-radius: 8px;">
+            <span style="font-size: 0.85rem; color: #cbd5e1; font-weight: 600;"><i class="fa-solid fa-bed" style="color: #facc15;"></i> Descansan esta jornada:</span>
+            ${restingList.map(r => `
+              <div style="display: flex; align-items: center; gap: 0.45rem;">
+                ${r.group ? `<span style="font-size: 0.72rem; font-weight: 800; padding: 0.12rem 0.45rem; border-radius: 4px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${this.escape(r.group)}</span>` : ''}
+                <img src="${this.escape(r.team.logo || 'Logos Equipos/default.png')}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <strong style="color: #ffd100; font-size: 0.92rem;">${this.escape(r.team.name)}</strong>
+              </div>
+            `).join('')}
           </div>
         `;
       } else {
@@ -1036,10 +1065,11 @@ const AdminApp = {
         ? 'background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4);'
         : 'background: rgba(255, 209, 0, 0.15); color: var(--lmi-gold); border: 1px solid rgba(255, 209, 0, 0.3);';
       const statusText = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
+      const groupBadge = m.group ? `<span style="font-size: 0.72rem; font-weight: 800; padding: 0.12rem 0.45rem; border-radius: 99px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${this.escape(m.group)}</span>` : '';
 
       const matchBox = document.createElement('div');
       matchBox.style.background = '#0d1629';
-      matchBox.style.border = '1px solid var(--border-color)';
+      matchBox.style.border = isChampions ? '1px solid rgba(56, 189, 248, 0.25)' : '1px solid var(--border-color)';
       matchBox.style.borderRadius = 'var(--radius-md)';
       matchBox.style.padding = '1rem';
       matchBox.style.display = 'flex';
@@ -1048,9 +1078,12 @@ const AdminApp = {
 
       matchBox.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 99px; ${badgeStyle}">
-            ${statusText}
-          </span>
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            ${groupBadge}
+            <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 99px; ${badgeStyle}">
+              ${statusText}
+            </span>
+          </div>
           <button class="btn btn-secondary" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="AdminApp.loadFixtureMatchToForm('${m.id}')" title="Cargar este partido en el marcador">
             <i class="fa-solid fa-pen-to-square"></i> Cargar
           </button>
@@ -1666,7 +1699,9 @@ const AdminApp = {
     if (!this.data || !this.data.teams) return [];
     
     // Equipos activos de la división
-    const divTeams = this.data.teams.filter(t => (t.division || 'oro') === division);
+    const divTeams = division === 'champions' 
+      ? this.data.teams 
+      : this.data.teams.filter(t => (t.division || 'oro') === division);
     const stats = {};
     divTeams.forEach(t => {
       stats[t.id] = {
@@ -1739,23 +1774,25 @@ const AdminApp = {
     this.currentAdminStandingsDivision = division;
     const btnOro = document.getElementById('btn-admin-tab-oro');
     const btnPlata = document.getElementById('btn-admin-tab-plata');
-    if (btnOro && btnPlata) {
-      if (division === 'oro') {
-        btnOro.classList.add('active');
-        btnOro.style.background = 'linear-gradient(135deg, #d97706, #b45309)';
-        btnOro.style.color = '#ffffff';
-        btnPlata.classList.remove('active');
-        btnPlata.style.background = 'transparent';
-        btnPlata.style.color = '#94a3b8';
+    const btnChampions = document.getElementById('btn-admin-tab-champions');
+    
+    [
+      { btn: btnOro, id: 'oro', bg: 'linear-gradient(135deg, #d97706, #b45309)', color: '#fff' },
+      { btn: btnPlata, id: 'plata', bg: 'linear-gradient(135deg, #475569, #334155)', color: '#fff' },
+      { btn: btnChampions, id: 'champions', bg: 'linear-gradient(135deg, #0284c7, #0369a1)', color: '#fff' }
+    ].forEach(item => {
+      if (!item.btn) return;
+      if (item.id === division) {
+        item.btn.classList.add('active');
+        item.btn.style.background = item.bg;
+        item.btn.style.color = item.color;
       } else {
-        btnPlata.classList.add('active');
-        btnPlata.style.background = 'linear-gradient(135deg, #475569, #334155)';
-        btnPlata.style.color = '#ffffff';
-        btnOro.classList.remove('active');
-        btnOro.style.background = 'transparent';
-        btnOro.style.color = '#94a3b8';
+        item.btn.classList.remove('active');
+        item.btn.style.background = 'transparent';
+        item.btn.style.color = item.id === 'champions' ? '#38bdf8' : '#94a3b8';
       }
-    }
+    });
+
     this.renderAdminStandings(division);
   },
 
@@ -1769,7 +1806,10 @@ const AdminApp = {
     const legendEl = document.getElementById('admin-standings-legend');
 
     const isOro = div === 'oro';
-    const divName = isOro ? 'DIVISIÓN ORO' : 'DIVISIÓN PLATA';
+    const isChampions = div === 'champions';
+    let divName = 'DIVISIÓN ORO';
+    if (div === 'plata') divName = 'DIVISIÓN PLATA';
+    if (isChampions) divName = 'CHAMPIONS LEAGUE &bull; GRUPOS';
     const totalTeams = standings.length;
 
     if (titleEl) {
@@ -1780,9 +1820,19 @@ const AdminApp = {
     }
     if (badgeEl) {
       badgeEl.textContent = `${totalTeams} CLUBES`;
-      badgeEl.style.background = isOro ? 'rgba(217, 119, 6, 0.2)' : 'rgba(148, 163, 184, 0.2)';
-      badgeEl.style.borderColor = isOro ? '#d97706' : '#94a3b8';
-      badgeEl.style.color = isOro ? '#fde047' : '#e2e8f0';
+      if (isChampions) {
+        badgeEl.style.background = 'rgba(2, 132, 199, 0.2)';
+        badgeEl.style.borderColor = '#0284c7';
+        badgeEl.style.color = '#38bdf8';
+      } else if (isOro) {
+        badgeEl.style.background = 'rgba(217, 119, 6, 0.2)';
+        badgeEl.style.borderColor = '#d97706';
+        badgeEl.style.color = '#fde047';
+      } else {
+        badgeEl.style.background = 'rgba(148, 163, 184, 0.2)';
+        badgeEl.style.borderColor = '#94a3b8';
+        badgeEl.style.color = '#e2e8f0';
+      }
     }
 
     if (!tbody) return;
@@ -1798,7 +1848,21 @@ const AdminApp = {
       let rowBorderLeft = '4px solid transparent';
       let rowBg = idx % 2 === 0 ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.04)';
 
-      if (isOro) {
+      if (isChampions) {
+        const groupTag = item.group ? `<span style="font-size:0.7rem; padding:1px 5px; border-radius:4px; background:rgba(2,132,199,0.25); color:#38bdf8; border:1px solid rgba(2,132,199,0.4); margin-left:6px;">Gr.${item.group}</span>` : '';
+        if (pos <= 12) {
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(16, 185, 129, 0.25); border:1px solid #10b981; color:#4ade80;" title="Puesto ${pos}">${pos}</span>`;
+          rowBorderLeft = '4px solid #10b981';
+          rowBg = 'rgba(16, 185, 129, 0.04)';
+        } else if (pos <= 16) {
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:800; font-size:0.85rem; background:rgba(245, 158, 11, 0.25); border:1px solid #f59e0b; color:#fbbf24;" title="Puesto ${pos}">${pos}</span>`;
+          rowBorderLeft = '4px solid #f59e0b';
+          rowBg = 'rgba(245, 158, 11, 0.04)';
+        } else {
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:700; font-size:0.85rem; background:rgba(255,255,255,0.08); color:#cbd5e1;">${pos}</span>`;
+        }
+        item._groupBadge = groupTag;
+      } else if (isOro) {
         if (pos === 1) {
           posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; font-weight:900; font-size:0.85rem; background:linear-gradient(135deg, #ffd700, #b8860b); color:#000; box-shadow:0 0 12px rgba(255,215,0,0.6);" title="1° Campeón">1</span>`;
           rowBorderLeft = '4px solid #ffd700';
@@ -1835,6 +1899,7 @@ const AdminApp = {
 
       const dgFormatted = item.dg > 0 ? `+${item.dg}` : `${item.dg}`;
       const dgColor = item.dg > 0 ? '#4ade80' : (item.dg < 0 ? '#f87171' : '#94a3b8');
+      const extraGroup = item._groupBadge || '';
 
       return `
         <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); border-left: ${rowBorderLeft}; background: ${rowBg};">
@@ -1843,6 +1908,7 @@ const AdminApp = {
             <div style="display: flex; align-items: center; gap: 0.65rem;">
               <img src="${this.escape(item.team.logo || 'Logos Equipos/default.png')}" alt="${this.escape(item.team.name)}" style="width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.src='Logos Equipos/default.png'">
               <span style="font-weight: 800; font-size: 0.92rem; color: #ffffff;">${this.escape(item.team.name)}</span>
+              ${extraGroup}
             </div>
           </td>
           <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 700; color: #cbd5e1;">${item.pj}</td>
@@ -1859,7 +1925,20 @@ const AdminApp = {
 
     // Render legend
     if (legendEl) {
-      if (isOro) {
+      if (isChampions) {
+        legendEl.innerHTML = `
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: #94a3b8; padding-top: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #10b981; display: inline-block;"></span>
+              <span>1° y 2° de cada grupo (Clasifican directo a Octavos)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span style="width: 12px; height: 12px; border-radius: 3px; background: #f59e0b; display: inline-block;"></span>
+              <span>Top 4 mejores terceros de la fase de grupos (Clasifican a Octavos)</span>
+            </div>
+          </div>
+        `;
+      } else if (isOro) {
         legendEl.innerHTML = `
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: #94a3b8; padding-top: 0.5rem;">
             <div style="display: flex; align-items: center; gap: 0.45rem;">
@@ -1903,8 +1982,9 @@ const AdminApp = {
       return;
     }
 
-    const isOro = div === 'oro';
-    const divName = isOro ? 'Division_Oro' : 'Division_Plata';
+    let divName = 'Division_Oro';
+    if (div === 'plata') divName = 'Division_Plata';
+    if (div === 'champions') divName = 'Champions_League_Grupos';
     const seasonTag = (this.data && this.data.season ? this.data.season.replace(/\s+/g, '_') : 'Temporada_12');
     const filename = `LMI_Tabla_Posiciones_${divName}_${seasonTag}.png`;
 
@@ -2023,81 +2103,129 @@ const AdminApp = {
   },
 
   async generateChampionsPlayoffs() {
-    if (!this.data || !this.data.teams || !this.data.fixtures) return;
-    if (!confirm('¿Deseas sincronizar las llaves de Cuartos de Final con los 8 clasificados oficiales de la tabla de Champions League (1° vs 8°, 2° vs 7°, 3° vs 6°, 4° vs 5°)?\\n\\nEsto actualizará el cuadro oficial de eliminatorias de Champions League.')) {
+    if (!this.data || !this.data.teams || !this.data.fixtures || !this.data.fixtures.champions) return;
+    if (!confirm('¿Deseas sincronizar los 16 clubes clasificados a los Octavos de Final de la UEFA Champions League (los 2 primeros de cada grupo + los 4 mejores terceros)?\\n\\nEsto calculará las posiciones de los 6 grupos y armará las llaves oficiales de Octavos de Final.')) {
       return;
     }
 
-    const eligible = this.data.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
-    const stats = {};
-    eligible.forEach(t => {
-      stats[t.id] = { team: t, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0 };
+    const groupsConfig = this.data.championsGroups;
+    if (!groupsConfig) {
+      this.showToast('No se encontró la configuración de grupos de Champions League', 'error');
+      return;
+    }
+
+    const groupStandings = {};
+    const teamToGroup = {};
+
+    Object.entries(groupsConfig).forEach(([gName, gData]) => {
+      groupStandings[gName] = [];
+      (gData.teams || []).forEach(teamId => {
+        const t = this.getTeamById(teamId);
+        if (t) {
+          teamToGroup[teamId] = gName;
+          groupStandings[gName].push({
+            team: t,
+            group: gName,
+            pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0
+          });
+        }
+      });
     });
 
-    const rounds = (this.data.fixtures && this.data.fixtures.champions) || [];
+    const rounds = this.data.fixtures.champions || [];
     rounds.forEach(r => {
       (r.matches || []).forEach(m => {
         if (m.played && m.score1 !== null && m.score2 !== null) {
           const s1 = parseInt(m.score1, 10);
           const s2 = parseInt(m.score2, 10);
           if (isNaN(s1) || isNaN(s2)) return;
-          const t1 = m.team1Id;
-          const t2 = m.team2Id;
-          if (stats[t1] && stats[t2]) {
-            stats[t1].pj++;
-            stats[t2].pj++;
-            stats[t1].gf += s1;
-            stats[t1].gc += s2;
-            stats[t2].gf += s2;
-            stats[t2].gc += s1;
-            if (s1 > s2) {
-              stats[t1].g++; stats[t1].pts += 3; stats[t2].p++;
-            } else if (s1 === s2) {
-              stats[t1].e++; stats[t1].pts += 1; stats[t2].e++; stats[t2].pts += 1;
-            } else {
-              stats[t2].g++; stats[t2].pts += 3; stats[t1].p++;
+
+          const gName = m.group || teamToGroup[m.team1Id];
+          if (gName && groupStandings[gName]) {
+            const item1 = groupStandings[gName].find(x => x.team.id === m.team1Id);
+            const item2 = groupStandings[gName].find(x => x.team.id === m.team2Id);
+            if (item1 && item2) {
+              item1.pj++; item2.pj++;
+              item1.gf += s1; item1.gc += s2;
+              item2.gf += s2; item2.gc += s1;
+              if (s1 > s2) { item1.g++; item1.pts += 3; item2.p++; }
+              else if (s1 === s2) { item1.e++; item1.pts += 1; item2.e++; item2.pts += 1; }
+              else { item2.g++; item2.pts += 3; item1.p++; }
             }
           }
         }
       });
     });
 
-    const standings = Object.values(stats);
-    standings.forEach(item => { item.dg = item.gf - item.gc; });
-    standings.sort((a, b) => {
+    Object.keys(groupStandings).forEach(gName => {
+      groupStandings[gName].forEach(item => { item.dg = item.gf - item.gc; });
+      groupStandings[gName].sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        if (b.dg !== a.dg) return b.dg - a.dg;
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return (a.team.name || '').localeCompare(b.team.name || '');
+      });
+    });
+
+    // 1° y 2° de cada grupo
+    const firsts = {};
+    const seconds = {};
+    const thirds = [];
+
+    const groupNames = ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D', 'Grupo E', 'Grupo F'];
+    groupNames.forEach(gn => {
+      const list = groupStandings[gn] || [];
+      if (list[0]) firsts[gn] = list[0].team.name;
+      if (list[1]) seconds[gn] = list[1].team.name;
+      if (list[2]) thirds.push({ ...list[2], originGroup: gn });
+    });
+
+    thirds.sort((a, b) => {
       if (b.pts !== a.pts) return b.pts - a.pts;
       if (b.dg !== a.dg) return b.dg - a.dg;
       if (b.gf !== a.gf) return b.gf - a.gf;
       return (a.team.name || '').localeCompare(b.team.name || '');
     });
 
-    if (standings.length < 8) {
-      this.showToast('No hay suficientes clubes para formar el Top 8', 'error');
+    const best4Thirds = thirds.slice(0, 4);
+    if (Object.keys(firsts).length < 6 || Object.keys(seconds).length < 6 || best4Thirds.length < 4) {
+      this.showToast('No se pudieron obtener los 16 clubes clasificados de los grupos', 'error');
       return;
     }
 
-    const t1 = standings[0].team.name;
-    const t2 = standings[1].team.name;
-    const t3 = standings[2].team.name;
-    const t4 = standings[3].team.name;
-    const t5 = standings[4].team.name;
-    const t6 = standings[5].team.name;
-    const t7 = standings[6].team.name;
-    const t8 = standings[7].team.name;
+    const t3_1 = best4Thirds[0].team.name;
+    const t3_2 = best4Thirds[1].team.name;
+    const t3_3 = best4Thirds[2].team.name;
+    const t3_4 = best4Thirds[3].team.name;
 
     this.data.championsLeagueMatches = [
-      { fase: 'Cuartos 1', team1: t1, score1: '', team2: t8, score2: '', estado: 'Pendiente' },
-      { fase: 'Cuartos 2', team1: t2, score1: '', team2: t7, score2: '', estado: 'Pendiente' },
-      { fase: 'Cuartos 3', team1: t3, score1: '', team2: t6, score2: '', estado: 'Pendiente' },
-      { fase: 'Cuartos 4', team1: t4, score1: '', team2: t5, score2: '', estado: 'Pendiente' },
-      { fase: 'Semifinal 1', team1: 'Ganador Cuartos 1', score1: '', team2: 'Ganador Cuartos 4', score2: '', estado: 'Pendiente' },
-      { fase: 'Semifinal 2', team1: 'Ganador Cuartos 2', score1: '', team2: 'Ganador Cuartos 3', score2: '', estado: 'Pendiente' },
+      // Octavos de Final (16 Clubes, 8 Partidos)
+      { fase: 'Octavos 1', team1: firsts['Grupo A'], score1: '', team2: t3_4, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 2', team1: firsts['Grupo B'], score1: '', team2: t3_3, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 3', team1: firsts['Grupo C'], score1: '', team2: seconds['Grupo D'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 4', team1: firsts['Grupo D'], score1: '', team2: seconds['Grupo C'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 5', team1: firsts['Grupo E'], score1: '', team2: t3_2, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 6', team1: firsts['Grupo F'], score1: '', team2: t3_1, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 7', team1: seconds['Grupo A'], score1: '', team2: seconds['Grupo F'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 8', team1: seconds['Grupo B'], score1: '', team2: seconds['Grupo E'], score2: '', estado: 'Pendiente' },
+
+      // Cuartos de Final (8 Clubes, 4 Partidos)
+      { fase: 'Cuartos 1', team1: 'Ganador Octavos 1', score1: '', team2: 'Ganador Octavos 2', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 2', team1: 'Ganador Octavos 3', score1: '', team2: 'Ganador Octavos 4', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 3', team1: 'Ganador Octavos 5', score1: '', team2: 'Ganador Octavos 6', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 4', team1: 'Ganador Octavos 7', score1: '', team2: 'Ganador Octavos 8', score2: '', estado: 'Pendiente' },
+
+      // Semifinales (4 Clubes, 2 Partidos)
+      { fase: 'Semifinal 1', team1: 'Ganador Cuartos 1', score1: '', team2: 'Ganador Cuartos 2', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 2', team1: 'Ganador Cuartos 3', score1: '', team2: 'Ganador Cuartos 4', score2: '', estado: 'Pendiente' },
+
+      // Gran Final
       { fase: 'Final', team1: 'Ganador Semifinal 1', score1: '', team2: 'Ganador Semifinal 2', score2: '', estado: 'Pendiente' }
     ];
 
     await this.saveData(true);
     this.onCompetitionChange();
-    this.showToast('¡Eliminatorias de Champions League sincronizadas con el Top 8 (1° vs 8°, 2° vs 7°, 3° vs 6°, 4° vs 5°)!', 'success');
+    this.showToast('¡16 Clasificados sincronizados a Octavos de Final de Champions League con éxito!', 'success');
   },
 
   async drawCopaEstelar() {
@@ -2142,61 +2270,126 @@ const AdminApp = {
 
   async generateChampionsFixture() {
     if (!this.data || !this.data.teams) return;
-    if (!confirm('¿Deseas generar las 17 fechas oficiales de UEFA Champions League (1 partido contra cada club para los 18 equipos, excluyendo Club América y Urawa)?\\n\\nEsto regenerará el fixture oficial de Champions League.')) {
+    if (!confirm('¿Deseas realizar un nuevo sorteo 100% aleatorio y generar las 5 fechas oficiales de UEFA Champions League para los 26 clubes (2 grupos de 5 y 4 grupos de 4)?\\n\\nEsto regenerará los grupos y el fixture oficial de Champions League.')) {
       return;
     }
 
-    const eligible = this.data.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
-    const teamIds = eligible.map(t => t.id);
-    const n = teamIds.length;
-    if (n < 18) {
-      this.showToast('No se encontraron los 18 clubes elegibles', 'error');
+    const teams = [...this.data.teams];
+    if (teams.length < 26) {
+      this.showToast('No se encontraron los 26 clubes en la base de datos', 'error');
       return;
     }
 
-    const roundsCount = n - 1;
-    const matchesPerRound = n / 2;
-    const fixed = teamIds[0];
-    let rotating = teamIds.slice(1);
+    // 100% random shuffle
+    const shuffled = [...teams].sort(() => Math.random() - 0.5);
+
+    const championsGroups = {
+      "Grupo A": { name: "Grupo A", size: 5, teams: shuffled.slice(0, 5).map(t => t.id) },
+      "Grupo B": { name: "Grupo B", size: 5, teams: shuffled.slice(5, 10).map(t => t.id) },
+      "Grupo C": { name: "Grupo C", size: 4, teams: shuffled.slice(10, 14).map(t => t.id) },
+      "Grupo D": { name: "Grupo D", size: 4, teams: shuffled.slice(14, 18).map(t => t.id) },
+      "Grupo E": { name: "Grupo E", size: 4, teams: shuffled.slice(18, 22).map(t => t.id) },
+      "Grupo F": { name: "Grupo F", size: 4, teams: shuffled.slice(22, 26).map(t => t.id) }
+    };
+
+    // Helper for 5-team round robin
+    const genRR5 = (teamIds) => {
+      const fixed = teamIds[0];
+      let rotating = [...teamIds.slice(1), 'BYE'];
+      const rounds = [];
+      for (let r = 0; r < 5; r++) {
+        const curr = [fixed, ...rotating];
+        const matches = [];
+        let resting = null;
+        for (let i = 0; i < 3; i++) {
+          let t1 = curr[i];
+          let t2 = curr[5 - i];
+          if (t1 === 'BYE') resting = t2;
+          else if (t2 === 'BYE') resting = t1;
+          else {
+            if ((r + i) % 2 === 1) { const tmp = t1; t1 = t2; t2 = tmp; }
+            matches.push([t1, t2]);
+          }
+        }
+        rounds.push({ matches, resting });
+        rotating = [rotating[rotating.length - 1], ...rotating.slice(0, rotating.length - 1)];
+      }
+      return rounds;
+    };
+
+    // Helper for 4-team round robin
+    const genRR4 = (teamIds) => {
+      const fixed = teamIds[0];
+      let rotating = teamIds.slice(1);
+      const rounds = [];
+      for (let r = 0; r < 3; r++) {
+        const curr = [fixed, ...rotating];
+        const matches = [];
+        for (let i = 0; i < 2; i++) {
+          let t1 = curr[i];
+          let t2 = curr[3 - i];
+          if ((r + i) % 2 === 1) { const tmp = t1; t1 = t2; t2 = tmp; }
+          matches.push([t1, t2]);
+        }
+        rounds.push(matches);
+        rotating = [rotating[rotating.length - 1], ...rotating.slice(0, rotating.length - 1)];
+      }
+      return rounds;
+    };
+
+    const rrA = genRR5(championsGroups["Grupo A"].teams);
+    const rrB = genRR5(championsGroups["Grupo B"].teams);
+    const rrC = genRR4(championsGroups["Grupo C"].teams);
+    const rrD = genRR4(championsGroups["Grupo D"].teams);
+    const rrE = genRR4(championsGroups["Grupo E"].teams);
+    const rrF = genRR4(championsGroups["Grupo F"].teams);
+
+    const plan = [
+      { j: 1, groups: [["Grupo A", rrA[0].matches, rrA[0].resting], ["Grupo B", rrB[0].matches, rrB[0].resting], ["Grupo C", rrC[0], null], ["Grupo D", rrD[0], null]] },
+      { j: 2, groups: [["Grupo A", rrA[1].matches, rrA[1].resting], ["Grupo B", rrB[1].matches, rrB[1].resting], ["Grupo E", rrE[0], null], ["Grupo F", rrF[0], null]] },
+      { j: 3, groups: [["Grupo A", rrA[2].matches, rrA[2].resting], ["Grupo B", rrB[2].matches, rrB[2].resting], ["Grupo C", rrC[1], null], ["Grupo E", rrE[1], null]] },
+      { j: 4, groups: [["Grupo A", rrA[3].matches, rrA[3].resting], ["Grupo B", rrB[3].matches, rrB[3].resting], ["Grupo D", rrD[1], null], ["Grupo F", rrF[1], null]] },
+      { j: 5, groups: [["Grupo A", rrA[4].matches, rrA[4].resting], ["Grupo B", rrB[4].matches, rrB[4].resting], ["Grupo C", rrC[2], null], ["Grupo D", rrD[2], null], ["Grupo E", rrE[2], null], ["Grupo F", rrF[2], null]] }
+    ];
 
     const fixtures = [];
-    for (let r = 0; r < roundsCount; r++) {
-      const currentTeams = [fixed, ...rotating];
+    plan.forEach(p => {
+      const restingList = [];
       const matches = [];
-      for (let m = 0; m < matchesPerRound; m++) {
-        let t1 = currentTeams[m];
-        let t2 = currentTeams[n - 1 - m];
-        if (m === 0 && r % 2 === 1) {
-          const tmp = t1; t1 = t2; t2 = tmp;
-        } else if (m > 0 && (r + m) % 2 === 1) {
-          const tmp = t1; t1 = t2; t2 = tmp;
-        }
-        matches.push({
-          id: `champions_j${r + 1}_m${m + 1}`,
-          jornada: r + 1,
-          team1Id: t1,
-          team2Id: t2,
-          score1: null,
-          score2: null,
-          played: false,
-          events: []
+      p.groups.forEach(([gName, gMatches, restingTeam]) => {
+        if (restingTeam) restingList.push({ group: gName, teamId: restingTeam });
+        gMatches.forEach(([t1, t2]) => {
+          matches.push({
+            id: `champions_j${p.j}_m${matches.length + 1}`,
+            jornada: p.j,
+            group: gName,
+            team1Id: t1,
+            team2Id: t2,
+            score1: null,
+            score2: null,
+            played: false,
+            events: []
+          });
         });
-      }
+      });
       fixtures.push({
-        jornada: r + 1,
-        name: `Jornada ${r + 1}`,
+        jornada: p.j,
+        name: `Jornada ${p.j}`,
         type: 'ida',
+        restingTeams: restingList,
+        restingTeamId: restingList[0]?.teamId || null,
         matches: matches
       });
-      rotating = [rotating[rotating.length - 1], ...rotating.slice(0, rotating.length - 1)];
-    }
+    });
 
+    this.data.championsGroups = championsGroups;
     if (!this.data.fixtures) this.data.fixtures = {};
     this.data.fixtures['champions'] = fixtures;
+    this.data.championsLeagueMatches = []; // Eliminatorias pending until groups finish
 
     await this.saveData(true);
     this.onCompetitionChange();
-    this.showToast('¡Calendario oficial de Champions League (17 Jornadas) generado exitosamente!', 'success');
+    this.showToast('¡Sorteo aleatorio oficial y 5 Fechas de Champions League generadas con éxito (26 Clubes, 44 Partidos)!', 'success');
   },
 
   onMatchTeamChange(teamIndex, teamId) {

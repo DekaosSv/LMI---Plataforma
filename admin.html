@@ -267,7 +267,7 @@
               <select class="form-select" id="match-competition" style="width: 190px; font-weight: 700;">
                 <option value="oro">🥇 División Oro</option>
                 <option value="plata">🥈 División Plata</option>
-                <option value="champions">🏆 Champions League (Fase de Liga)</option>
+                <option value="champions">🏆 Champions League (Fase de Grupos)</option>
                 <option value="champions_ko">⭐ Champions League (Eliminatorias)</option>
                 <option value="estelar">⭐ Copa Estelar</option>
               </select>
@@ -313,11 +313,11 @@
             <button class="btn btn-secondary" id="btn-export-copa-estelar-img-admin" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Exportar a imagen PNG las llaves actuales de Copa Estelar">
               <i class="fa-solid fa-camera" style="color: #c084fc;"></i> Exportar Llaves Copa Estelar
             </button>
-            <button class="btn btn-secondary" id="btn-gen-champions-fixture" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar las 17 fechas de Champions League (1 vez vs cada club sin Club América ni Urawa)">
-              <i class="fa-solid fa-arrows-rotate" style="color: #38bdf8;"></i> Generar Fechas Champions (17 Fechas)
+            <button class="btn btn-secondary" id="btn-gen-champions-fixture" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar Fase de Grupos Champions League (26 clubes: 2 grupos de 5 y 4 de 4, 5 fechas)">
+              <i class="fa-solid fa-arrows-rotate" style="color: #38bdf8;"></i> Generar Grupos Champions (26 Clubes)
             </button>
-            <button class="btn btn-secondary" id="btn-gen-champions-playoffs" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Generar o sincronizar llaves de Cuartos de Final con los 8 clasificados de Champions (1° vs 8°, 2° vs 7°, etc.)">
-              <i class="fa-solid fa-sitemap" style="color: #38bdf8;"></i> Sincronizar Eliminatorias Champions (Top 8)
+            <button class="btn btn-secondary" id="btn-gen-champions-playoffs" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Sincronizar Octavos de Final con los 16 clasificados de Champions (12 mejores + 4 mejores terceros)">
+              <i class="fa-solid fa-sitemap" style="color: #38bdf8;"></i> Sincronizar Octavos Champions (16 Clasificados)
             </button>
             <button class="btn btn-secondary" id="btn-advance-bracket-team" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" title="Pasar un equipo directamente a la siguiente fase si no tiene rival asignado o por W.O.">
               <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pasar Equipo de Fase (Sin Rival / W.O.)
@@ -599,6 +599,9 @@
                 </button>
                 <button type="button" class="btn btn-secondary" id="btn-admin-tab-plata" onclick="AdminApp.switchAdminStandingsDivision('plata')" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; font-weight: 800; background: transparent; color: #94a3b8; border: none; cursor: pointer;">
                   🥈 División Plata
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-admin-tab-champions" onclick="AdminApp.switchAdminStandingsDivision('champions')" style="font-size: 0.82rem; padding: 0.4rem 0.85rem; font-weight: 800; background: transparent; color: #38bdf8; border: none; cursor: pointer;">
+                  🏆 Champions League
                 </button>
               </div>
               <button class="btn btn-primary" id="btn-download-standings-img" onclick="AdminApp.exportStandingsImage()" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); border: none; font-weight: 800; box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35); cursor: pointer;">
@@ -1094,16 +1097,16 @@
 
             <!-- UEFA Champions League -->
             <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-trophy" style="color: #38bdf8;"></i> UEFA Champions League (18 Clubes)</h4>
+              <h4><i class="fa-solid fa-trophy" style="color: #38bdf8;"></i> UEFA Champions League (26 Clubes)</h4>
               <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                Genera las 17 fechas oficiales round-robin de Champions League o sincroniza los cuartos de final con el Top 8.
+                Formato Oficial: 2 grupos de 5 clubes y 4 grupos de 4 clubes (5 fechas oficiales, 44 partidos). Clasifican 16 a Octavos de Final (Top 2 de cada grupo + 4 mejores terceros).
               </p>
               <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
                 <button class="btn btn-gold" onclick="AdminApp.generateChampionsFixture()">
-                  <i class="fa-solid fa-calendar-check"></i> Generar 17 Fechas
+                  <i class="fa-solid fa-shuffle"></i> Sorteo y Generar 5 Fechas (26 Clubes)
                 </button>
                 <button class="btn btn-secondary" onclick="AdminApp.generateChampionsPlayoffs()">
-                  <i class="fa-solid fa-sitemap"></i> Sincronizar Top 8 a Cuartos
+                  <i class="fa-solid fa-sitemap"></i> Sincronizar 16 a Octavos de Final
                 </button>
               </div>
             </div>

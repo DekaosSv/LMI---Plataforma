@@ -899,18 +899,442 @@ function viewTournamentStats(tournament) {
 }
 window.viewTournamentStats = viewTournamentStats;
 
-function onChampionsPhaseFilterChange(phase) {
-  const subtitleEl = document.getElementById('champions-web-subtitle');
-  const phaseLabels = {
-    'all': 'CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)',
-    'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
-    'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
-    'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
-  };
-  if (subtitleEl) subtitleEl.textContent = phaseLabels[phase] || phaseLabels['all'];
+window.viewTournamentStats = viewTournamentStats;
 
-  renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches, phase);
-  renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches, phase);
+let currentChampionsSubTab = 'groups';
+
+function switchChampionsSubTab(tab) {
+  currentChampionsSubTab = tab;
+  const btnGroups = document.getElementById('btn-subtab-champions-groups');
+  const btnThirds = document.getElementById('btn-subtab-champions-thirds');
+  const btnFixtures = document.getElementById('btn-subtab-champions-fixtures');
+
+  const viewGroups = document.getElementById('champions-view-groups');
+  const viewThirds = document.getElementById('champions-view-thirds');
+  const viewFixtures = document.getElementById('champions-view-fixtures');
+
+  const tabButtons = [
+    { el: btnGroups, id: 'groups' },
+    { el: btnThirds, id: 'thirds' },
+    { el: btnFixtures, id: 'fixtures' }
+  ];
+
+  tabButtons.forEach(b => {
+    if (!b.el) return;
+    if (b.id === tab) {
+      b.el.classList.add('active');
+      b.el.style.background = 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)';
+      b.el.style.color = '#ffffff';
+      b.el.style.border = 'none';
+      b.el.style.boxShadow = '0 4px 12px rgba(2, 132, 199, 0.3)';
+    } else {
+      b.el.classList.remove('active');
+      b.el.style.background = '#0c1c38';
+      b.el.style.color = '#94a3b8';
+      b.el.style.border = '1.5px solid rgba(56, 189, 248, 0.3)';
+      b.el.style.boxShadow = 'none';
+    }
+  });
+
+  if (viewGroups) viewGroups.style.display = (tab === 'groups') ? 'block' : 'none';
+  if (viewThirds) viewThirds.style.display = (tab === 'thirds') ? 'block' : 'none';
+  if (viewFixtures) viewFixtures.style.display = (tab === 'fixtures') ? 'block' : 'none';
+}
+window.switchChampionsSubTab = switchChampionsSubTab;
+
+function calculateChampionsGroupStandings() {
+  if (!lmiData || !lmiData.teams) return { groups: {}, thirds: [] };
+
+  const groupsConfig = lmiData.championsGroups || {
+    "Grupo A": { name: "Grupo A", size: 5, teams: ["fctwente", "losclille", "realmadrid", "carabobofutbolclub", "chelseafc"] },
+    "Grupo B": { name: "Grupo B", size: 5, teams: ["borussiadortmund", "atleticodemadrid", "como1907", "acmiln", "riverplate"] },
+    "Grupo C": { name: "Grupo C", size: 4, teams: ["galatasaray", "ajaxdeamsterdam", "liverpool", "arsenal"] },
+    "Grupo D": { name: "Grupo D", size: 4, teams: ["vascodagama", "manchestercity", "bocajuniors", "manchesterunited"] },
+    "Grupo E": { name: "Grupo E", size: 4, teams: ["rangersfootballclub", "staderennais", "acffiorentina", "bayernleverkusen"] },
+    "Grupo F": { name: "Grupo F", size: 4, teams: ["psg", "interdemilan", "fcbarcelona", "brightonhovealbion"] }
+  };
+
+  const groupStandings = {};
+  const teamToGroup = {};
+
+  Object.entries(groupsConfig).forEach(([gName, gData]) => {
+    groupStandings[gName] = [];
+    (gData.teams || []).forEach(teamId => {
+      const t = lmiData.teams.find(tm => tm.id === teamId);
+      if (t) {
+        teamToGroup[teamId] = gName;
+        groupStandings[gName].push({
+          team: t,
+          group: gName,
+          pj: 0,
+          g: 0,
+          e: 0,
+          p: 0,
+          gf: 0,
+          gc: 0,
+          dg: 0,
+          pts: 0
+        });
+      }
+    });
+  });
+
+  const rounds = (lmiData.fixtures && lmiData.fixtures.champions) || [];
+  rounds.forEach(r => {
+    (r.matches || []).forEach(m => {
+      if (m.played && m.score1 !== null && m.score2 !== null) {
+        const s1 = parseInt(m.score1, 10);
+        const s2 = parseInt(m.score2, 10);
+        if (isNaN(s1) || isNaN(s2)) return;
+
+        const gName = m.group || teamToGroup[m.team1Id];
+        if (gName && groupStandings[gName]) {
+          const item1 = groupStandings[gName].find(x => x.team.id === m.team1Id);
+          const item2 = groupStandings[gName].find(x => x.team.id === m.team2Id);
+          if (item1 && item2) {
+            item1.pj++;
+            item2.pj++;
+            item1.gf += s1;
+            item1.gc += s2;
+            item2.gf += s2;
+            item2.gc += s1;
+            if (s1 > s2) {
+              item1.g++;
+              item1.pts += 3;
+              item2.p++;
+            } else if (s1 === s2) {
+              item1.e++;
+              item1.pts += 1;
+              item2.e++;
+              item2.pts += 1;
+            } else {
+              item2.g++;
+              item2.pts += 3;
+              item1.p++;
+            }
+          }
+        }
+      }
+    });
+  });
+
+  Object.keys(groupStandings).forEach(gName => {
+    groupStandings[gName].forEach(item => { item.dg = item.gf - item.gc; });
+    groupStandings[gName].sort((a, b) => {
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      if (b.dg !== a.dg) return b.dg - a.dg;
+      if (b.gf !== a.gf) return b.gf - a.gf;
+      return (a.team.name || '').localeCompare(b.team.name || '');
+    });
+  });
+
+  const thirds = [];
+  Object.keys(groupStandings).forEach(gName => {
+    const list = groupStandings[gName];
+    if (list.length >= 3) {
+      thirds.push({ ...list[2], originGroup: gName });
+    }
+  });
+
+  thirds.sort((a, b) => {
+    if (b.pts !== a.pts) return b.pts - a.pts;
+    if (b.dg !== a.dg) return b.dg - a.dg;
+    if (b.gf !== a.gf) return b.gf - a.gf;
+    return (a.team.name || '').localeCompare(b.team.name || '');
+  });
+
+  return { groups: groupStandings, thirds: thirds };
+}
+window.calculateChampionsGroupStandings = calculateChampionsGroupStandings;
+
+function renderWebChampionsView() {
+  const container = document.getElementById('champions-groups-grid');
+  const thirdsTbody = document.getElementById('champions-thirds-tbody');
+  if (!container && !thirdsTbody) return;
+
+  const data = calculateChampionsGroupStandings();
+
+  // 1. Render all 6 groups
+  if (container) {
+    const groupOrder = ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D', 'Grupo E', 'Grupo F'];
+    container.innerHTML = groupOrder.map(gName => {
+      const gTeams = data.groups[gName] || [];
+      const teamCount = gTeams.length;
+
+      const rowsHtml = gTeams.map((item, idx) => {
+        const pos = idx + 1;
+        let posBadge = '';
+        let rowBorderLeft = '4px solid transparent';
+        let rowBg = 'transparent';
+
+        if (pos === 1 || pos === 2) {
+          // Top 2: Direct qualification to Round of 16 (Green/Cyan)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-weight:800; font-size:0.8rem; background:rgba(16, 185, 129, 0.25); border:1px solid #10b981; color:#34d399; box-shadow:0 0 8px rgba(16,185,129,0.3);" title="Clasificado a Octavos de Final">${pos}</span>`;
+          rowBorderLeft = '4px solid #10b981';
+          rowBg = 'rgba(16, 185, 129, 0.04)';
+        } else if (pos === 3) {
+          // 3rd place: Contending for Best 3rd (Amber/Gold)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-weight:800; font-size:0.8rem; background:rgba(245, 158, 11, 0.25); border:1px solid #f59e0b; color:#fbbf24; box-shadow:0 0 8px rgba(245,158,11,0.3);" title="Zona de Mejor Tercero (Pelea por Octavos)">${pos}</span>`;
+          rowBorderLeft = '4px solid #f59e0b';
+          rowBg = 'rgba(245, 158, 11, 0.04)';
+        } else {
+          // 4th or 5th: Eliminated (Grey)
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-weight:700; font-size:0.8rem; background:rgba(255,255,255,0.06); color:var(--text-muted);">${pos}</span>`;
+        }
+
+        const dgFormatted = item.dg > 0 ? `+${item.dg}` : `${item.dg}`;
+        const dgColor = item.dg > 0 ? 'var(--lmi-green)' : (item.dg < 0 ? '#ef4444' : 'var(--text-muted)');
+
+        return `
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); border-left: ${rowBorderLeft}; background: ${rowBg}; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='${rowBg}'">
+            <td style="padding: 0.65rem 0.5rem; text-align: center;">${posBadge}</td>
+            <td style="padding: 0.65rem 0.75rem; text-align: left;">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <img src="${escapeHTML(item.team.logo)}" alt="" style="width: 24px; height: 24px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <span style="font-weight: 700; font-size: 0.9rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;">${escapeHTML(item.team.name)}</span>
+              </div>
+            </td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.pj}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #ffffff;">${item.g}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.e}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.p}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gf}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gc}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 700; color: ${dgColor};">${dgFormatted}</td>
+            <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 900; font-size: 0.98rem; color: var(--lmi-gold); background: rgba(255,209,0,0.04);">${item.pts}</td>
+          </tr>
+        `;
+      }).join('');
+
+      return `
+        <div class="card" style="background: #07142b; border: 1px solid rgba(2, 132, 199, 0.35); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.35);">
+          <div style="background: linear-gradient(135deg, #0c1c38 0%, #061124 100%); padding: 0.85rem 1.25rem; border-bottom: 2px solid #0284c7; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <i class="fa-solid fa-shield-halved" style="color: #38bdf8; font-size: 1.1rem;"></i>
+              <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem; font-weight: 900; letter-spacing: 0.5px;">${gName.toUpperCase()}</h4>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 0.75rem; font-weight: 800; padding: 0.18rem 0.55rem; border-radius: 99px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">
+                ${teamCount} Clubes
+              </span>
+            </div>
+          </div>
+          <div class="table-responsive" style="overflow-x: auto; padding: 0 0.25rem 0.5rem;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.86rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); color: #94a3b8; font-size: 0.72rem; text-transform: uppercase;">
+                  <th style="padding: 0.55rem 0.5rem; text-align: center;">Pos</th>
+                  <th style="padding: 0.55rem 0.75rem; text-align: left;">Club</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">PJ</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">G</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">E</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">P</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">GF</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">GC</th>
+                  <th style="padding: 0.55rem 0.4rem; text-align: center;">DG</th>
+                  <th style="padding: 0.55rem 0.65rem; text-align: center; color: var(--lmi-gold);">PTS</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rowsHtml}
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 1rem; background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.74rem; color: #94a3b8;">
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem;"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span> 1°-2° Octavos</span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem;"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#f59e0b;"></span> 3° Pelea Cupo</span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem;"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#64748b;"></span> 4°-5° Eliminado</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // 2. Render Best Thirds
+  if (thirdsTbody) {
+    if (data.thirds.length === 0) {
+      thirdsTbody.innerHTML = `<tr><td colspan="12" style="text-align:center; padding:1.5rem; color:#94a3b8;">Sin datos de terceros puestos.</td></tr>`;
+    } else {
+      thirdsTbody.innerHTML = data.thirds.map((item, idx) => {
+        const pos = idx + 1;
+        const isQualified = pos <= 4;
+        const rowBorder = isQualified ? '4px solid #10b981' : '4px solid #ef4444';
+        const rowBg = isQualified ? 'rgba(16, 185, 129, 0.04)' : 'rgba(239, 68, 68, 0.04)';
+        const statusBadge = isQualified
+          ? `<span style="font-size:0.75rem; font-weight:800; padding:0.25rem 0.65rem; border-radius:99px; background:rgba(16, 185, 129, 0.2); color:#34d399; border:1px solid #10b981;"><i class="fa-solid fa-check"></i> CLASIFICA A OCTAVOS</span>`
+          : `<span style="font-size:0.75rem; font-weight:800; padding:0.25rem 0.65rem; border-radius:99px; background:rgba(239, 68, 68, 0.2); color:#f87171; border:1px solid #ef4444;"><i class="fa-solid fa-xmark"></i> ELIMINADO</span>`;
+
+        const dgFormatted = item.dg > 0 ? `+${item.dg}` : `${item.dg}`;
+        const dgColor = item.dg > 0 ? 'var(--lmi-green)' : (item.dg < 0 ? '#ef4444' : 'var(--text-muted)');
+
+        return `
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); border-left: ${rowBorder}; background: ${rowBg};">
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 900; color: ${isQualified ? '#34d399' : '#f87171'};">${pos}°</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center;">
+              <span style="font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${item.originGroup}</span>
+            </td>
+            <td style="padding: 0.75rem 1rem; text-align: left;">
+              <div style="display: flex; align-items: center; gap: 0.65rem;">
+                <img src="${escapeHTML(item.team.logo)}" alt="" style="width: 26px; height: 26px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;">${escapeHTML(item.team.name)}</span>
+              </div>
+            </td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.pj}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #ffffff;">${item.g}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.e}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.p}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gf}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gc}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 700; color: ${dgColor};">${dgFormatted}</td>
+            <td style="padding: 0.75rem 0.75rem; text-align: center; font-weight: 900; font-size: 1.05rem; color: var(--lmi-gold); background: rgba(255,209,0,0.04);">${item.pts}</td>
+            <td style="padding: 0.75rem 0.75rem; text-align: center;">${statusBadge}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+
+  // 3. Render Fixtures
+  const sel = document.getElementById('champions-web-jornada-select');
+  const jVal = sel ? sel.value : '1';
+  renderChampionsWebFixtures(jVal);
+}
+window.renderWebChampionsView = renderWebChampionsView;
+
+function renderChampionsWebFixtures(jornadaVal) {
+  const container = document.getElementById('champions-web-matches-grid');
+  const restingContainer = document.getElementById('champions-web-resting-container');
+  if (!container || !lmiData || !lmiData.fixtures) return;
+
+  const rounds = lmiData.fixtures.champions || [];
+  let roundsToRender = [];
+
+  if (jornadaVal === 'all') {
+    roundsToRender = rounds;
+    if (restingContainer) {
+      restingContainer.style.display = 'none';
+      restingContainer.innerHTML = '';
+    }
+  } else {
+    const jNum = parseInt(jornadaVal, 10) || 1;
+    const r = rounds.find(rd => rd.jornada === jNum);
+    if (r) roundsToRender = [r];
+
+    // Resting teams
+    if (restingContainer && r) {
+      const restingList = [];
+      if (r.restingTeams && Array.isArray(r.restingTeams)) {
+        r.restingTeams.forEach(item => {
+          const t = lmiData.teams.find(tm => tm.id === item.teamId);
+          if (t) restingList.push({ team: t, group: item.group });
+        });
+      } else if (r.restingTeamId) {
+        const t = lmiData.teams.find(tm => tm.id === r.restingTeamId);
+        if (t) restingList.push({ team: t, group: '' });
+      }
+
+      if (restingList.length > 0) {
+        restingContainer.style.display = 'block';
+        restingContainer.innerHTML = `
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem; padding: 0.75rem 1rem; background: rgba(250, 204, 21, 0.08); border: 1px dashed rgba(250, 204, 21, 0.4); border-radius: 8px;">
+            <span style="font-size: 0.88rem; color: #cbd5e1; font-weight: 700;"><i class="fa-solid fa-bed" style="color: #facc15;"></i> Descansan en esta Jornada:</span>
+            ${restingList.map(rItem => `
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                ${rItem.group ? `<span style="font-size: 0.74rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${escapeHTML(rItem.group)}</span>` : ''}
+                <img src="${escapeHTML(rItem.team.logo)}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <strong style="color: #ffd100; font-size: 0.92rem;">${escapeHTML(rItem.team.name)}</strong>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else {
+        restingContainer.style.display = 'none';
+        restingContainer.innerHTML = '';
+      }
+    }
+  }
+
+  container.innerHTML = '';
+
+  if (roundsToRender.length === 0) {
+    container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;">No hay partidos configurados para esta fecha.</p>`;
+    return;
+  }
+
+  roundsToRender.forEach(r => {
+    (r.matches || []).forEach(m => {
+      const t1 = lmiData.teams.find(t => t.id === m.team1Id);
+      const t2 = lmiData.teams.find(t => t.id === m.team2Id);
+      const t1Name = t1 ? t1.name : m.team1Id;
+      const t2Name = t2 ? t2.name : m.team2Id;
+      const t1Logo = t1 ? t1.logo : 'Logos Equipos/default.png';
+      const t2Logo = t2 ? t2.logo : 'Logos Equipos/default.png';
+
+      const isPlayed = m.played;
+      const scoreDisplay = isPlayed ? `${m.score1} - ${m.score2}` : 'VS';
+      const badgeStyle = isPlayed
+        ? 'background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);'
+        : 'background: rgba(255, 209, 0, 0.15); color: var(--lmi-gold); border: 1px solid rgba(255, 209, 0, 0.3);';
+      const statusText = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
+
+      let eventsHtml = '';
+      if (isPlayed && m.events && m.events.length > 0) {
+        const goals = m.events.filter(e => e.type === 'gol');
+        if (goals.length > 0) {
+          eventsHtml = `
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem; margin-top: 0.5rem; font-size: 0.78rem; color: #94a3b8; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="color: #38bdf8; font-weight: 700;"><i class="fa-solid fa-futbol"></i> Goles:</span>
+              ${goals.map(g => `<span>${escapeHTML(g.playerName)} (${g.count || 1})</span>`).join(', ')}
+            </div>
+          `;
+        }
+      }
+
+      const matchBox = document.createElement('div');
+      matchBox.style.background = '#0d1629';
+      matchBox.style.border = '1px solid rgba(56, 189, 248, 0.25)';
+      matchBox.style.borderRadius = 'var(--radius-md)';
+      matchBox.style.padding = '1rem';
+      matchBox.style.display = 'flex';
+      matchBox.style.flexDirection = 'column';
+      matchBox.style.gap = '0.5rem';
+
+      matchBox.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 0.45rem;">
+            ${m.group ? `<span style="font-size: 0.74rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 99px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${escapeHTML(m.group)}</span>` : ''}
+            <span style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Jornada ${m.jornada}</span>
+          </div>
+          <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 99px; ${badgeStyle}">
+            ${statusText}
+          </span>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.5rem 0;">
+          <div style="flex: 1; display: flex; align-items: center; gap: 0.55rem;">
+            <img src="${escapeHTML(t1Logo)}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;">${escapeHTML(t1Name)}</span>
+          </div>
+
+          <div style="font-weight: 900; font-size: 1.25rem; color: ${isPlayed ? 'var(--lmi-gold)' : 'var(--text-muted)'}; padding: 0 0.65rem; text-align: center; min-width: 60px;">
+            ${scoreDisplay}
+          </div>
+
+          <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 0.55rem;">
+            <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff; text-align: right;">${escapeHTML(t2Name)}</span>
+            <img src="${escapeHTML(t2Logo)}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+          </div>
+        </div>
+        ${eventsHtml}
+      `;
+      container.appendChild(matchBox);
+    });
+  });
+}
+window.renderChampionsWebFixtures = renderChampionsWebFixtures;
+
+function onChampionsPhaseFilterChange(phase) {
+  // Kept for backward compatibility if needed
 }
 window.onChampionsPhaseFilterChange = onChampionsPhaseFilterChange;
 
@@ -2631,7 +3055,7 @@ function updateDynamicClubsCounts() {
   if (lblTabPlata) lblTabPlata.textContent = plataCount;
 
   const lblTabChampions = document.getElementById('lbl-tab-count-champions');
-  if (lblTabChampions) lblTabChampions.textContent = 8;
+  if (lblTabChampions) lblTabChampions.textContent = 26;
 
   const lblTabEstelar = document.getElementById('lbl-tab-count-estelar');
   if (lblTabEstelar) lblTabEstelar.textContent = estelarCount;
@@ -2641,7 +3065,7 @@ function updateDynamicClubsCounts() {
   if (badgeEl) {
     let currentCount = oroCount;
     if (currentWebDivision === 'plata') currentCount = plataCount;
-    else if (currentWebDivision === 'champions') currentCount = 8;
+    else if (currentWebDivision === 'champions') currentCount = 26;
     else if (currentWebDivision === 'estelar') currentCount = estelarCount;
     badgeEl.textContent = `${currentCount} CLUBES`;
   }
@@ -2658,8 +3082,7 @@ function renderWebPosiciones() {
     renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
     renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
   } else if (currentWebDivision === 'champions') {
-    renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches);
-    renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
+    renderWebChampionsView();
   } else {
     renderWebStandings();
     populateWebJornadas();
@@ -2683,7 +3106,7 @@ function switchWebDivision(div) {
 
   const oroCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length : 8;
   const plataCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.division === 'plata').length : 12;
-  const championsCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds').length : 18;
+  const championsCount = 26;
 
   const tabsConfig = [
     { el: tabOro, id: 'oro', bg: '#fef3c7', border: '#d97706', color: '#92400e', shadow: '0 2px 8px rgba(217, 119, 6, 0.2)' },
@@ -2727,8 +3150,7 @@ function switchWebDivision(div) {
     if (jornadasCard) jornadasCard.style.display = 'none';
     if (championsContainer) championsContainer.style.display = 'block';
     if (estelarContainer) estelarContainer.style.display = 'none';
-    renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches);
-    renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches);
+    renderWebChampionsView();
     updateDynamicClubsCounts();
     return;
   } else {
