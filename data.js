@@ -9871,8 +9871,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792468026850_6",
-      "name": "Wataru Endo",
-      "position": "MCD",
+      "name": "Alejandro Garnacho",
+      "position": "EI",
       "teamId": "riverplate",
       "goals": 0,
       "assists": 0,
