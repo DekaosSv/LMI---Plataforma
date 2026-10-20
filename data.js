@@ -3282,10 +3282,10 @@ var INITIAL_LMI_DATA = {
       "name": "Nico Paz",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 2,
-      "assists": 1,
-      "goals_liga": 2,
-      "assists_liga": 1,
+      "goals": 3,
+      "assists": 2,
+      "goals_liga": 3,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3298,9 +3298,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ousmane Dembélé",
       "position": "EI",
       "teamId": "bayernleverkusen",
-      "goals": 2,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3314,9 +3314,9 @@ var INITIAL_LMI_DATA = {
       "name": "Karim Adeyemi",
       "position": "ED",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6947,9 +6947,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "acmiln",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7010,10 +7010,10 @@ var INITIAL_LMI_DATA = {
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 10,
-      "assists": 8,
-      "goals_liga": 10,
-      "assists_liga": 8,
+      "goals": 12,
+      "assists": 9,
+      "goals_liga": 12,
+      "assists_liga": 9,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7074,9 +7074,9 @@ var INITIAL_LMI_DATA = {
       "name": "Aurélien Tchouaméni",
       "position": "MCD",
       "teamId": "acmiln",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7187,9 +7187,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "acmiln",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9171,9 +9171,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "vascodagama",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9394,9 +9394,9 @@ var INITIAL_LMI_DATA = {
       "name": "Illian Hernández",
       "position": "DC",
       "teamId": "vascodagama",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -11265,10 +11265,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "manchestercity",
             "team2Id": "bayernleverkusen",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039977160_8",
+                "playerName": "Nico Paz",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_8",
+                "playerName": "Nico Paz",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_9",
+                "playerName": "Ousmane Dembélé",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_10",
+                "playerName": "Karim Adeyemi",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j5_m4",
@@ -12980,10 +13009,25 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "vascodagama",
             "team2Id": "brightonhovealbion",
-            "score1": 0,
+            "score1": 1,
             "score2": 0,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792126304381_8",
+                "playerName": "Pape Matar Sarr",
+                "teamId": "vascodagama",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792126304381_22",
+                "playerName": "Illian Hernández",
+                "teamId": "vascodagama",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ]
       },
@@ -13878,9 +13922,45 @@ var INITIAL_LMI_DATA = {
             "team1Id": "vascodagama",
             "team2Id": "acmiln",
             "score1": 0,
-            "score2": 0,
+            "score2": 3,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792040438881_7",
+                "playerName": "Federico Valverde",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_11",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040438881_11",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_22",
+                "playerName": "Yan Diomande",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_15",
+                "playerName": "Aurélien Tchouaméni",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ]
       },
@@ -17623,6 +17703,140 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792466913088",
+      "timestamp": 1792466913088,
+      "date": "19 oct 2026, 09:28 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m7",
+      "phase": "Jornada 5",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 0,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792040438881_7",
+          "playerName": "Federico Valverde",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_22",
+          "playerName": "Yan Diomande",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_15",
+          "playerName": "Aurélien Tchouaméni",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792466828800",
+      "timestamp": 1792466828800,
+      "date": "19 oct 2026, 09:27 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m7",
+      "phase": "Jornada 2",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 1,
+      "team2Id": "brightonhovealbion",
+      "team2Name": "Brighton & Hove Albion",
+      "team2Logo": "Logos Equipos/brighton.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792126304381_8",
+          "playerName": "Pape Matar Sarr",
+          "teamId": "vascodagama",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792126304381_22",
+          "playerName": "Illian Hernández",
+          "teamId": "vascodagama",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792466755228",
+      "timestamp": 1792466755228,
+      "date": "19 oct 2026, 09:25 p.m.",
+      "competition": "oro",
+      "jornada": 5,
+      "fixtureMatchId": "oro_j5_m3",
+      "phase": "Jornada 5",
+      "team1Id": "manchestercity",
+      "team1Name": "Manchester City",
+      "team1Logo": "Logos Equipos/manchestercity.png",
+      "score1": 0,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_10",
+          "playerName": "Karim Adeyemi",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792465598370",
       "timestamp": 1792465598370,
