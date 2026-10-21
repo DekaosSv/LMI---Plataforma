@@ -9535,8 +9535,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792466085252_8",
-      "name": "Aimar Oroz",
-      "position": "MP",
+      "name": "Dani Rodríguez",
+      "position": "ED",
       "teamId": "carabobofutbolclub",
       "goals": 0,
       "assists": 0,
@@ -9551,8 +9551,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792466085252_9",
-      "name": "Mattéo Guendouzi",
-      "position": "MC",
+      "name": "Wout Weghorst",
+      "position": "DC",
       "teamId": "carabobofutbolclub",
       "goals": 0,
       "assists": 0,
@@ -9567,8 +9567,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792466085252_10",
-      "name": "Boubacar Kamara",
-      "position": "MCD",
+      "name": "Jørgen Strand Larsen",
+      "position": "DC",
       "teamId": "carabobofutbolclub",
       "goals": 0,
       "assists": 0,
@@ -9711,8 +9711,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792466085252_19",
-      "name": "Nathan Collins",
-      "position": "CT",
+      "name": "Javi Guerra",
+      "position": "MC",
       "teamId": "carabobofutbolclub",
       "goals": 0,
       "assists": 0,
