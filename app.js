@@ -3032,8 +3032,8 @@ var currentWebDivision = 'oro';
 function updateDynamicClubsCounts() {
   if (!lmiData || !lmiData.teams) return;
   const oroCount = lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length;
-  const plataCount = lmiData.teams.filter(t => t.division === 'plata').length;
-  const championsCount = lmiData.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds').length;
+  const plataCount = lmiData.teams.filter(t => t.division === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub').length;
+  const championsCount = lmiData.teams.length;
   const estelarCount = championsCount;
   const totalCount = lmiData.teams.length;
 
@@ -3104,8 +3104,8 @@ function switchWebDivision(div) {
   const jornadasCard = document.getElementById('web-jornadas-card');
   const estelarContainer = document.getElementById('web-copa-estelar-container');
 
-  const oroCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length : 8;
-  const plataCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.division === 'plata').length : 12;
+  const oroCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length : 11;
+  const plataCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.division === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub').length : 13;
   const championsCount = 26;
 
   const tabsConfig = [
@@ -3200,7 +3200,9 @@ function calculateStandings(division) {
   
   let divTeams = [];
   if (division === 'champions') {
-    divTeams = lmiData.teams.filter(t => t.id !== 'clubamerica' && t.id !== 'urawareddiamonds');
+    divTeams = lmiData.teams;
+  } else if (division === 'plata') {
+    divTeams = lmiData.teams.filter(t => (t.division || 'oro') === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub');
   } else {
     divTeams = lmiData.teams.filter(t => (t.division || 'oro') === division);
   }

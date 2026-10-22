@@ -546,7 +546,7 @@ var INITIAL_LMI_DATA = {
       "legendRemoveNote": "",
       "leagueRank": 25,
       "logo": "Logos Equipos/rangers.webp",
-      "division": "plata",
+      "division": "champions",
       "stats": {
         "played": 0,
         "won": 0,
@@ -575,7 +575,7 @@ var INITIAL_LMI_DATA = {
       "legendRemoveNote": "",
       "leagueRank": 26,
       "logo": "Logos Equipos/carabobo.webp",
-      "division": "plata",
+      "division": "champions",
       "stats": {
         "played": 0,
         "won": 0,

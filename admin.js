@@ -1701,7 +1701,9 @@ const AdminApp = {
     // Equipos activos de la división
     const divTeams = division === 'champions' 
       ? this.data.teams 
-      : this.data.teams.filter(t => (t.division || 'oro') === division);
+      : (division === 'plata'
+          ? this.data.teams.filter(t => (t.division || 'oro') === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub')
+          : this.data.teams.filter(t => (t.division || 'oro') === division));
     const stats = {};
     divTeams.forEach(t => {
       stats[t.id] = {
@@ -4687,7 +4689,7 @@ const AdminApp = {
 
     // Contadores de clubes para generadores de fechas
     const oroCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'oro').length;
-    const plataCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'plata').length;
+    const plataCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub').length;
     const elOro = document.getElementById('gen-oro-count');
     if (elOro) elOro.textContent = oroCount;
     const elPlata = document.getElementById('gen-plata-count');
