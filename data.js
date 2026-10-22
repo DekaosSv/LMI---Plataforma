@@ -1107,9 +1107,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "fctwente",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -1122,9 +1122,9 @@ var INITIAL_LMI_DATA = {
       "name": "Michel Platini",
       "position": "MP",
       "teamId": "fctwente",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4018,9 +4018,9 @@ var INITIAL_LMI_DATA = {
       "name": "Talisca",
       "position": "MP",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 4,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4035,9 +4035,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 2,
+      "assists": 5,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4050,9 +4050,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 9,
+      "goals": 10,
       "assists": 1,
-      "goals_liga": 9,
+      "goals_liga": 10,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4066,9 +4066,9 @@ var INITIAL_LMI_DATA = {
       "name": "Andriy Shevchenko",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 5,
+      "goals": 6,
       "assists": 4,
-      "goals_liga": 5,
+      "goals_liga": 6,
       "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4162,9 +4162,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lucas Paquetá",
       "position": "MC",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4226,9 +4226,9 @@ var INITIAL_LMI_DATA = {
       "name": "Jarrod Bowen",
       "position": "ID",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 3,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4243,9 +4243,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5490,10 +5490,10 @@ var INITIAL_LMI_DATA = {
       "name": "Christopher Nkunku",
       "position": "MC",
       "teamId": "staderennais",
-      "goals": 1,
-      "assists": 1,
-      "goals_liga": 1,
-      "assists_liga": 1,
+      "goals": 2,
+      "assists": 2,
+      "goals_liga": 2,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5506,9 +5506,9 @@ var INITIAL_LMI_DATA = {
       "name": "George Best",
       "position": "ED",
       "teamId": "staderennais",
-      "goals": 11,
+      "goals": 14,
       "assists": 3,
-      "goals_liga": 11,
+      "goals_liga": 14,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5538,9 +5538,9 @@ var INITIAL_LMI_DATA = {
       "name": "Eden Hazard",
       "position": "SD",
       "teamId": "staderennais",
-      "goals": 4,
+      "goals": 5,
       "assists": 8,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 8,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5699,9 +5699,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "staderennais",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5890,9 +5890,9 @@ var INITIAL_LMI_DATA = {
       "name": "Francisco Conceição",
       "position": "ED",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5906,9 +5906,9 @@ var INITIAL_LMI_DATA = {
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 6,
+      "goals": 7,
       "assists": 0,
-      "goals_liga": 6,
+      "goals_liga": 7,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6595,9 +6595,9 @@ var INITIAL_LMI_DATA = {
       "position": "II",
       "teamId": "acmiln",
       "goals": 2,
-      "assists": 5,
+      "assists": 6,
       "goals_liga": 2,
-      "assists_liga": 5,
+      "assists_liga": 6,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6627,9 +6627,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "acmiln",
       "goals": 5,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 5,
-      "assists_liga": 4,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6642,9 +6642,9 @@ var INITIAL_LMI_DATA = {
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 12,
+      "goals": 14,
       "assists": 9,
-      "goals_liga": 12,
+      "goals_liga": 14,
       "assists_liga": 9,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8083,9 +8083,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
       "goals": 2,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 2,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8114,9 +8114,9 @@ var INITIAL_LMI_DATA = {
       "name": "Adriano",
       "position": "DC",
       "teamId": "ajaxdeamsterdam",
-      "goals": 8,
+      "goals": 9,
       "assists": 3,
-      "goals_liga": 8,
+      "goals_liga": 9,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8771,9 +8771,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "vascodagama",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8802,9 +8802,9 @@ var INITIAL_LMI_DATA = {
       "name": "Pape Matar Sarr",
       "position": "MP",
       "teamId": "vascodagama",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8818,9 +8818,9 @@ var INITIAL_LMI_DATA = {
       "name": "MDD Eduardo Salvio",
       "position": "MC",
       "teamId": "vascodagama",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8835,9 +8835,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "vascodagama",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8850,9 +8850,9 @@ var INITIAL_LMI_DATA = {
       "name": "Elye Wahi",
       "position": "DC",
       "teamId": "vascodagama",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9042,9 +9042,9 @@ var INITIAL_LMI_DATA = {
       "name": "Julián Quiñones",
       "position": "DC",
       "teamId": "vascodagama",
-      "goals": 4,
+      "goals": 5,
       "assists": 0,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -14617,10 +14617,60 @@ var INITIAL_LMI_DATA = {
             "jornada": 6,
             "team1Id": "realmadrid",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 4,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040339328_8",
+                "playerName": "Christopher Nkunku",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_8",
+                "playerName": "Christopher Nkunku",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_11",
+                "playerName": "Omar Marmoush",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_10",
+                "playerName": "Francisco Conceição",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_21",
+                "playerName": "Valentín Barco",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j6_m7",
@@ -14901,10 +14951,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "vascodagama",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792126304381_11",
+                "playerName": "Elye Wahi",
+                "teamId": "vascodagama",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792126304381_6",
+                "playerName": "Gennaro Gattuso",
+                "teamId": "vascodagama",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792126304381_23",
+                "playerName": "Julián Quiñones",
+                "teamId": "vascodagama",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ],
         "restingTeamId": "acmiln"
@@ -15141,10 +15220,74 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "arsenal",
             "team2Id": "fctwente",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 5,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040054246_11",
+                "playerName": "Andriy Shevchenko",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_9",
+                "playerName": "Memphis Depay",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_8",
+                "playerName": "Talisca",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039636832_10",
+                "playerName": "Michel Platini",
+                "teamId": "fctwente",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039636832_9",
+                "playerName": "Takefusa Kubo",
+                "teamId": "fctwente",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_22",
+                "playerName": "Jarrod Bowen",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_23",
+                "playerName": "Vedat Muriqi",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_18",
+                "playerName": "Lucas Paquetá",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j9_m3",
@@ -15253,9 +15396,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "vascodagama",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           }
         ],
@@ -15359,10 +15502,32 @@ var INITIAL_LMI_DATA = {
             "jornada": 10,
             "team1Id": "acmiln",
             "team2Id": "losclille",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040438881_10",
+                "playerName": "Erling Haaland",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_11",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040438881_8",
+                "playerName": "Park Ji-sung",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j10_m3",
@@ -15449,10 +15614,46 @@ var INITIAL_LMI_DATA = {
             "jornada": 10,
             "team1Id": "vascodagama",
             "team2Id": "ajaxdeamsterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792126304381_8",
+                "playerName": "Pape Matar Sarr",
+                "teamId": "vascodagama",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792126304381_10",
+                "playerName": "MDI Kamaldeen Sulemana",
+                "teamId": "vascodagama",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792126304381_9",
+                "playerName": "MDD Eduardo Salvio",
+                "teamId": "vascodagama",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040586949_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040586949_9",
+                "playerName": "Johan Manzambi",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           }
         ],
         "restingTeamId": "acffiorentina"
@@ -17124,6 +17325,315 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792640949756",
+      "timestamp": 1792640949756,
+      "date": "21 oct 2026, 09:49 p.m.",
+      "competition": "plata",
+      "jornada": 10,
+      "fixtureMatchId": "plata_j10_m2",
+      "phase": "Jornada 10",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 2,
+      "team2Id": "losclille",
+      "team2Name": "LOSC Lille",
+      "team2Logo": "Logos Equipos/lille.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040438881_10",
+          "playerName": "Erling Haaland",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040438881_8",
+          "playerName": "Park Ji-sung",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792640900111",
+      "timestamp": 1792640900111,
+      "date": "21 oct 2026, 09:48 p.m.",
+      "competition": "plata",
+      "jornada": 10,
+      "fixtureMatchId": "plata_j10_m7",
+      "phase": "Jornada 10",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 3,
+      "team2Id": "ajaxdeamsterdam",
+      "team2Name": "Ajax de Ámsterdam",
+      "team2Logo": "Logos Equipos/ajax.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792126304381_8",
+          "playerName": "Pape Matar Sarr",
+          "teamId": "vascodagama",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792126304381_10",
+          "playerName": "MDI Kamaldeen Sulemana",
+          "teamId": "vascodagama",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792126304381_9",
+          "playerName": "MDD Eduardo Salvio",
+          "teamId": "vascodagama",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040586949_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_9",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792640723074",
+      "timestamp": 1792640723074,
+      "date": "21 oct 2026, 09:45 p.m.",
+      "competition": "plata",
+      "jornada": 9,
+      "fixtureMatchId": "plata_j9_m2",
+      "phase": "Jornada 9",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 5,
+      "team2Id": "fctwente",
+      "team2Name": "FC Twente",
+      "team2Logo": "Logos Equipos/fctwente.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040054246_11",
+          "playerName": "Andriy Shevchenko",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_8",
+          "playerName": "Talisca",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039636832_10",
+          "playerName": "Michel Platini",
+          "teamId": "fctwente",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039636832_9",
+          "playerName": "Takefusa Kubo",
+          "teamId": "fctwente",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_22",
+          "playerName": "Jarrod Bowen",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_23",
+          "playerName": "Vedat Muriqi",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792640595938",
+      "timestamp": 1792640595938,
+      "date": "21 oct 2026, 09:43 p.m.",
+      "competition": "plata",
+      "jornada": 9,
+      "fixtureMatchId": "plata_j9_m7",
+      "phase": "Jornada 9",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 0,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 1,
+      "events": []
+    },
+    {
+      "id": "match_1792640564156",
+      "timestamp": 1792640564156,
+      "date": "21 oct 2026, 09:42 p.m.",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m7",
+      "phase": "Jornada 7",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 2,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792126304381_11",
+          "playerName": "Elye Wahi",
+          "teamId": "vascodagama",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792126304381_6",
+          "playerName": "Gennaro Gattuso",
+          "teamId": "vascodagama",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792126304381_23",
+          "playerName": "Julián Quiñones",
+          "teamId": "vascodagama",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792640477637",
+      "timestamp": 1792640477637,
+      "date": "21 oct 2026, 09:41 p.m.",
+      "competition": "plata",
+      "jornada": 6,
+      "fixtureMatchId": "plata_j6_m6",
+      "phase": "Jornada 6",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 2,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1792040339328_8",
+          "playerName": "Christopher Nkunku",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_8",
+          "playerName": "Christopher Nkunku",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_11",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_10",
+          "playerName": "Francisco Conceição",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_21",
+          "playerName": "Valentín Barco",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792640222098",
       "timestamp": 1792640222098,
