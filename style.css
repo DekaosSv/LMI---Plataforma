@@ -10,6 +10,7 @@
   --border-glow: rgba(0, 51, 160, 0.15);
   
   --text-primary: #0f172a;
+  --text-secondary: #64748b;
   --text-muted: #475569;
   --text-dim: #64748b;
   
@@ -22,6 +23,7 @@
   --lmi-blue: #0033A0;
   --lmi-green: #00A859;
   --lmi-yellow: #FFD100;
+  --lmi-gold: #ffd100;
   --lmi-red: #FF4F00;
   --lmi-gradient: linear-gradient(90deg, var(--lmi-blue) 0%, var(--lmi-green) 33%, var(--lmi-yellow) 66%, var(--lmi-red) 100%);
   

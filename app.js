@@ -1079,11 +1079,11 @@ function renderWebChampionsView() {
           rowBg = 'rgba(245, 158, 11, 0.04)';
         } else {
           // 4th or 5th: Eliminated (Grey)
-          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-weight:700; font-size:0.8rem; background:rgba(255,255,255,0.06); color:var(--text-muted);">${pos}</span>`;
+          posBadge = `<span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-weight:700; font-size:0.8rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#94a3b8;" title="Eliminado">${pos}</span>`;
         }
 
         const dgFormatted = item.dg > 0 ? `+${item.dg}` : `${item.dg}`;
-        const dgColor = item.dg > 0 ? 'var(--lmi-green)' : (item.dg < 0 ? '#ef4444' : 'var(--text-muted)');
+        const dgColor = item.dg > 0 ? '#34d399' : (item.dg < 0 ? '#f87171' : '#94a3b8');
 
         return `
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); border-left: ${rowBorderLeft}; background: ${rowBg}; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='${rowBg}'">
@@ -1094,14 +1094,14 @@ function renderWebChampionsView() {
                 <span style="font-weight: 700; font-size: 0.9rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;">${escapeHTML(item.team.name)}</span>
               </div>
             </td>
-            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.pj}</td>
-            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #ffffff;">${item.g}</td>
-            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.e}</td>
-            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.p}</td>
-            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gf}</td>
-            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gc}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.pj}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 700; color: #ffffff;">${item.g}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.e}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.p}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.gf}</td>
+            <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.gc}</td>
             <td style="padding: 0.65rem 0.4rem; text-align: center; font-weight: 700; color: ${dgColor};">${dgFormatted}</td>
-            <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 900; font-size: 0.98rem; color: var(--lmi-gold); background: rgba(255,209,0,0.04);">${item.pts}</td>
+            <td style="padding: 0.65rem 0.65rem; text-align: center; font-weight: 900; font-size: 0.98rem; color: #ffd100; background: rgba(255,209,0,0.08);">${item.pts}</td>
           </tr>
         `;
       }).join('');
@@ -1132,7 +1132,7 @@ function renderWebChampionsView() {
                   <th style="padding: 0.55rem 0.4rem; text-align: center;">GF</th>
                   <th style="padding: 0.55rem 0.4rem; text-align: center;">GC</th>
                   <th style="padding: 0.55rem 0.4rem; text-align: center;">DG</th>
-                  <th style="padding: 0.55rem 0.65rem; text-align: center; color: var(--lmi-gold);">PTS</th>
+                  <th style="padding: 0.55rem 0.65rem; text-align: center; color: #ffd100; font-weight: 800;">PTS</th>
                 </tr>
               </thead>
               <tbody>
@@ -1179,14 +1179,14 @@ function renderWebChampionsView() {
                 <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;">${escapeHTML(item.team.name)}</span>
               </div>
             </td>
-            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.pj}</td>
-            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #ffffff;">${item.g}</td>
-            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.e}</td>
-            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.p}</td>
-            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gf}</td>
-            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: var(--text-secondary);">${item.gc}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.pj}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 700; color: #ffffff;">${item.g}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.e}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.p}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.gf}</td>
+            <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; color: #cbd5e1;">${item.gc}</td>
             <td style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 700; color: ${dgColor};">${dgFormatted}</td>
-            <td style="padding: 0.75rem 0.75rem; text-align: center; font-weight: 900; font-size: 1.05rem; color: var(--lmi-gold); background: rgba(255,209,0,0.04);">${item.pts}</td>
+            <td style="padding: 0.75rem 0.75rem; text-align: center; font-weight: 900; font-size: 1.05rem; color: #ffd100; background: rgba(255,209,0,0.08);">${item.pts}</td>
             <td style="padding: 0.75rem 0.75rem; text-align: center;">${statusBadge}</td>
           </tr>
         `;
@@ -1274,7 +1274,7 @@ function renderChampionsWebFixtures(jornadaVal) {
       const scoreDisplay = isPlayed ? `${m.score1} - ${m.score2}` : 'VS';
       const badgeStyle = isPlayed
         ? 'background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);'
-        : 'background: rgba(255, 209, 0, 0.15); color: var(--lmi-gold); border: 1px solid rgba(255, 209, 0, 0.3);';
+        : 'background: rgba(255, 209, 0, 0.15); color: #ffd100; border: 1px solid rgba(255, 209, 0, 0.3);';
       const statusText = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
 
       let eventsHtml = '';
@@ -1303,7 +1303,7 @@ function renderChampionsWebFixtures(jornadaVal) {
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div style="display: flex; align-items: center; gap: 0.45rem;">
             ${m.group ? `<span style="font-size: 0.74rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 99px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${escapeHTML(m.group)}</span>` : ''}
-            <span style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted);">Jornada ${m.jornada}</span>
+            <span style="font-size: 0.74rem; font-weight: 700; color: #94a3b8;">Jornada ${m.jornada}</span>
           </div>
           <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 99px; ${badgeStyle}">
             ${statusText}
@@ -1316,7 +1316,7 @@ function renderChampionsWebFixtures(jornadaVal) {
             <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;">${escapeHTML(t1Name)}</span>
           </div>
 
-          <div style="font-weight: 900; font-size: 1.25rem; color: ${isPlayed ? 'var(--lmi-gold)' : 'var(--text-muted)'}; padding: 0 0.65rem; text-align: center; min-width: 60px;">
+          <div style="font-weight: 900; font-size: 1.25rem; color: ${isPlayed ? '#ffd100' : '#94a3b8'}; padding: 0 0.65rem; text-align: center; min-width: 60px;">
             ${scoreDisplay}
           </div>
 
