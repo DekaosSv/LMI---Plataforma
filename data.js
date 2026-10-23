@@ -2531,9 +2531,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2674,9 +2674,9 @@ var INITIAL_LMI_DATA = {
       "name": "Pierre-Emerick Aubameyang",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6626,9 +6626,9 @@ var INITIAL_LMI_DATA = {
       "name": "Erling Haaland",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 6,
+      "goals": 7,
       "assists": 5,
-      "goals_liga": 5,
+      "goals_liga": 6,
       "assists_liga": 5,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -6643,9 +6643,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "acmiln",
       "goals": 15,
-      "assists": 9,
+      "assists": 10,
       "goals_liga": 14,
-      "assists_liga": 9,
+      "assists_liga": 10,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -15942,10 +15942,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 13,
             "team1Id": "acmiln",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039904071_16",
+                "playerName": "Pierre-Emerick Aubameyang",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792039904071_7",
+                "playerName": "Giorgian de Arrascaeta",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_10",
+                "playerName": "Erling Haaland",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_11",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j13_m6",
@@ -17872,6 +17901,53 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792722877848",
+      "timestamp": 1792722877848,
+      "date": "22 oct 2026, 08:34 p.m.",
+      "competition": "plata",
+      "jornada": 13,
+      "fixtureMatchId": "plata_j13_m4",
+      "phase": "Jornada 13",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 1,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792039904071_16",
+          "playerName": "Pierre-Emerick Aubameyang",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039904071_7",
+          "playerName": "Giorgian de Arrascaeta",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_10",
+          "playerName": "Erling Haaland",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792722800155",
       "timestamp": 1792722800155,
