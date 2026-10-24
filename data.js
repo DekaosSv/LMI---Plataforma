@@ -10365,15 +10365,70 @@ var INITIAL_LMI_DATA = {
   "nonRenewedPlayers": [],
   "marketMovements": [
     {
-      "player": "Dean Huijsen",
+      "player": "Martin Ødegaard",
       "type": "Prestamo",
-      "fromTeamId": "realmadrid",
-      "fromTeamName": "Real Madrid",
-      "toTeamId": "como1907",
-      "toTeamName": "Como 1907",
-      "price": 40,
+      "fromTeamId": "losclille",
+      "fromTeamName": "LOSC Lille",
+      "toTeamId": "ajaxdeamsterdam",
+      "toTeamName": "Ajax de Ámsterdam",
+      "price": 0,
       "seasons": 1,
-      "details": "Prestamo de jugadores"
+      "details": ""
+    },
+    {
+      "player": "Ronaldinho",
+      "type": "Prestamo",
+      "fromTeamId": "ajaxdeamsterdam",
+      "fromTeamName": "Ajax de Ámsterdam",
+      "toTeamId": "losclille",
+      "toTeamName": "LOSC Lille",
+      "price": 0,
+      "seasons": 1,
+      "details": ""
+    },
+    {
+      "player": "Neymar JR",
+      "type": "Prestamo",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "riverplate",
+      "toTeamName": "River Plate",
+      "price": 50,
+      "seasons": 1,
+      "details": ""
+    },
+    {
+      "player": "Rodri",
+      "type": "Prestamo",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "borussiadortmund",
+      "toTeamName": "Borussia Dortmund",
+      "price": 30,
+      "seasons": 1,
+      "details": ""
+    },
+    {
+      "player": "Raphinha",
+      "type": "Prestamo",
+      "fromTeamId": "bocajuniors",
+      "fromTeamName": "Boca Juniors",
+      "toTeamId": "psg",
+      "toTeamName": "PSG",
+      "price": 0,
+      "seasons": 1,
+      "details": ""
+    },
+    {
+      "player": "Mohamed Salah",
+      "type": "Prestamo",
+      "fromTeamId": "psg",
+      "fromTeamName": "PSG",
+      "toTeamId": "bocajuniors",
+      "toTeamName": "Boca Juniors",
+      "price": 0,
+      "seasons": 1,
+      "details": ""
     },
     {
       "player": "Thibaut Courtois",
@@ -10385,39 +10440,6 @@ var INITIAL_LMI_DATA = {
       "price": 15,
       "seasons": 1,
       "details": "Prestamo de jugadores"
-    },
-    {
-      "player": "Trent Alexander Arnold",
-      "type": "Prestamo",
-      "fromTeamId": "como1907",
-      "fromTeamName": "Como 1907",
-      "toTeamId": "urawareddiamonds",
-      "toTeamName": "Urawa Red Diamonds",
-      "price": 0,
-      "seasons": 1,
-      "details": "Mercado de mitad de temporada"
-    },
-    {
-      "player": "Julian Alvarez",
-      "type": "Prestamo",
-      "fromTeamId": "bayernleverkusen",
-      "fromTeamName": "Bayern Leverkusen",
-      "toTeamId": "interdemilan",
-      "toTeamName": "Inter de Milan",
-      "price": 0,
-      "seasons": 1,
-      "details": "Mercado de mitad de temporada"
-    },
-    {
-      "player": "Ousmane Dembele",
-      "type": "Prestamo",
-      "fromTeamId": "interdemilan",
-      "fromTeamName": "Inter de Milan",
-      "toTeamId": "bayernleverkusen",
-      "toTeamName": "Bayern Leverkusen",
-      "price": 0,
-      "seasons": 1,
-      "details": "Mercado de mitad de temporada"
     }
   ],
   "champions": [
