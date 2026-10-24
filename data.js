@@ -16440,9 +16440,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "staderennais",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -18384,6 +18384,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792806634155",
+      "timestamp": 1792806634155,
+      "date": "23 oct 2026, 07:50 p.m.",
+      "competition": "plata",
+      "jornada": 15,
+      "fixtureMatchId": "plata_j15_m2",
+      "phase": "Jornada 15",
+      "team1Id": "staderennais",
+      "team1Name": "Stade Rennais",
+      "team1Logo": "Logos Equipos/staderennais.png",
+      "score1": 1,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1792806585067",
       "timestamp": 1792806585067,
