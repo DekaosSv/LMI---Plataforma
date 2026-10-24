@@ -675,9 +675,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "liverpool",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -691,9 +691,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "liverpool",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -770,9 +770,9 @@ var INITIAL_LMI_DATA = {
       "name": "Eric Cantona",
       "position": "DC",
       "teamId": "liverpool",
-      "goals": 4,
+      "goals": 5,
       "assists": 2,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -882,9 +882,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ibrahim Maza",
       "position": "MC",
       "teamId": "liverpool",
-      "goals": 1,
+      "goals": 2,
       "assists": 3,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4387,9 +4387,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "psg",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4434,9 +4434,9 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Costa",
       "position": "DC",
       "teamId": "psg",
-      "goals": 4,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 4,
+      "goals_liga": 6,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -10935,10 +10935,53 @@ var INITIAL_LMI_DATA = {
             "jornada": 3,
             "team1Id": "psg",
             "team2Id": "liverpool",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040197583_11",
+                "playerName": "Diego Costa",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040197583_8",
+                "playerName": "Xavi Simons",
+                "teamId": "psg",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_11",
+                "playerName": "Eric Cantona",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_5",
+                "playerName": "Antonee Robinson",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_18",
+                "playerName": "Ibrahim Maza",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_6",
+                "playerName": "Christian Ordóñez",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j3_m4",
@@ -14889,9 +14932,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 6,
             "team1Id": "fctwente",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -18384,6 +18427,85 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792806937433",
+      "timestamp": 1792806937433,
+      "date": "23 oct 2026, 07:55 p.m.",
+      "competition": "oro",
+      "jornada": 3,
+      "fixtureMatchId": "oro_j3_m3",
+      "phase": "Jornada 3",
+      "team1Id": "psg",
+      "team1Name": "PSG",
+      "team1Logo": "Logos Equipos/psg.png",
+      "score1": 2,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040197583_11",
+          "playerName": "Diego Costa",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040197583_8",
+          "playerName": "Xavi Simons",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_11",
+          "playerName": "Eric Cantona",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_5",
+          "playerName": "Antonee Robinson",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_18",
+          "playerName": "Ibrahim Maza",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_6",
+          "playerName": "Christian Ordóñez",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792806773730",
+      "timestamp": 1792806773730,
+      "date": "23 oct 2026, 07:52 p.m.",
+      "competition": "plata",
+      "jornada": 6,
+      "fixtureMatchId": "plata_j6_m3",
+      "phase": "Jornada 6",
+      "team1Id": "fctwente",
+      "team1Name": "FC Twente",
+      "team1Logo": "Logos Equipos/fctwente.png",
+      "score1": 0,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1792806634155",
       "timestamp": 1792806634155,
