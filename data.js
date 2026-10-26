@@ -770,9 +770,9 @@ var INITIAL_LMI_DATA = {
       "name": "Eric Cantona",
       "position": "DC",
       "teamId": "liverpool",
-      "goals": 8,
+      "goals": 9,
       "assists": 2,
-      "goals_liga": 8,
+      "goals_liga": 9,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -931,9 +931,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "liverpool",
       "goals": 1,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 1,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4402,11 +4402,11 @@ var INITIAL_LMI_DATA = {
       "name": "Raphinha",
       "position": "ED",
       "teamId": "psg",
-      "goals": 4,
-      "assists": 1,
+      "goals": 5,
+      "assists": 2,
       "goals_liga": 4,
-      "assists_liga": 1,
-      "goals_champions": 0,
+      "assists_liga": 2,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -4418,9 +4418,9 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Díaz",
       "position": "EI",
       "teamId": "psg",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4434,9 +4434,9 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Costa",
       "position": "DC",
       "teamId": "psg",
-      "goals": 8,
+      "goals": 9,
       "assists": 0,
-      "goals_liga": 8,
+      "goals_liga": 9,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4546,11 +4546,11 @@ var INITIAL_LMI_DATA = {
       "name": "Marco Asensio",
       "position": "MP",
       "teamId": "psg",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -4627,11 +4627,11 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "psg",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -6258,12 +6258,12 @@ var INITIAL_LMI_DATA = {
       "name": "Paulo Dybala",
       "position": "ED",
       "teamId": "borussiadortmund",
-      "goals": 2,
-      "assists": 0,
+      "goals": 3,
+      "assists": 2,
       "goals_liga": 2,
       "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
+      "goals_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -6274,11 +6274,11 @@ var INITIAL_LMI_DATA = {
       "name": "Ismael Saibari",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 5,
+      "goals": 7,
       "assists": 1,
       "goals_liga": 5,
       "assists_liga": 1,
-      "goals_champions": 0,
+      "goals_champions": 2,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6370,11 +6370,11 @@ var INITIAL_LMI_DATA = {
       "name": "Adrien Rabiot",
       "position": "MC",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6418,11 +6418,11 @@ var INITIAL_LMI_DATA = {
       "name": "Pedro Neto",
       "position": "MP",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -7010,11 +7010,11 @@ var INITIAL_LMI_DATA = {
       "name": "Julián Álvarez",
       "position": "DC",
       "teamId": "interdemilan",
-      "goals": 2,
+      "goals": 3,
       "assists": 0,
       "goals_liga": 2,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -12106,9 +12106,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "interdemilan",
             "team2Id": "atleticodemadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -13004,9 +13004,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 13,
             "team1Id": "interdemilan",
             "team2Id": "riverplate",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -13204,10 +13204,46 @@ var INITIAL_LMI_DATA = {
             "jornada": 14,
             "team1Id": "liverpool",
             "team2Id": "psg",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040197583_10",
+                "playerName": "Luis Díaz",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040197583_9",
+                "playerName": "Raphinha",
+                "teamId": "psg",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_11",
+                "playerName": "Eric Cantona",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_21",
+                "playerName": "Gonzalo Plata",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040197583_11",
+                "playerName": "Diego Costa",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j14_m4",
@@ -13299,9 +13335,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "interdemilan",
             "team2Id": "galatasaray",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -14007,9 +14043,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "chelseafc",
             "team2Id": "losclille",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 1,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -18458,10 +18494,25 @@ var INITIAL_LMI_DATA = {
             "group": "Grupo B",
             "team1Id": "riverplate",
             "team2Id": "borussiadortmund",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040410030_11",
+                "playerName": "Ismael Saibari",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_10",
+                "playerName": "Paulo Dybala",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "champions_j2_m4",
@@ -18792,10 +18843,46 @@ var INITIAL_LMI_DATA = {
             "group": "Grupo B",
             "team1Id": "borussiadortmund",
             "team2Id": "acmiln",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 4,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040410030_11",
+                "playerName": "Ismael Saibari",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_10",
+                "playerName": "Paulo Dybala",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_10",
+                "playerName": "Paulo Dybala",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_20",
+                "playerName": "Pedro Neto",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_17",
+                "playerName": "Adrien Rabiot",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "champions_j3_m4",
@@ -19091,9 +19178,9 @@ var INITIAL_LMI_DATA = {
             "group": "Grupo B",
             "team1Id": "como1907",
             "team2Id": "borussiadortmund",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 2,
+            "played": true,
             "events": []
           },
           {
@@ -19573,10 +19660,39 @@ var INITIAL_LMI_DATA = {
             "group": "Grupo F",
             "team1Id": "psg",
             "team2Id": "interdemilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040197583_9",
+                "playerName": "Raphinha",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040197583_18",
+                "playerName": "Marco Asensio",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040483217_11",
+                "playerName": "Julián Álvarez",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040197583_23",
+                "playerName": "Christian Pulisic",
+                "teamId": "psg",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "champions_j5_m12",
@@ -19594,6 +19710,284 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792984362195",
+      "timestamp": 1792984362195,
+      "date": "25 oct 2026, 09:12 p.m.",
+      "competition": "champions",
+      "jornada": 5,
+      "fixtureMatchId": "champions_j5_m11",
+      "phase": "Jornada 5",
+      "team1Id": "psg",
+      "team1Name": "PSG",
+      "team1Logo": "Logos Equipos/psg.png",
+      "score1": 2,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040197583_9",
+          "playerName": "Raphinha",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040197583_18",
+          "playerName": "Marco Asensio",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040483217_11",
+          "playerName": "Julián Álvarez",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040197583_23",
+          "playerName": "Christian Pulisic",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792984301507",
+      "timestamp": 1792984301507,
+      "date": "25 oct 2026, 09:11 p.m.",
+      "competition": "champions",
+      "jornada": 4,
+      "fixtureMatchId": "champions_j4_m3",
+      "phase": "Jornada 4",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 0,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 2,
+      "events": []
+    },
+    {
+      "id": "match_1792984267998",
+      "timestamp": 1792984267998,
+      "date": "25 oct 2026, 09:11 p.m.",
+      "competition": "champions",
+      "jornada": 3,
+      "fixtureMatchId": "champions_j3_m3",
+      "phase": "Jornada 3",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 4,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040410030_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_10",
+          "playerName": "Paulo Dybala",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_10",
+          "playerName": "Paulo Dybala",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_20",
+          "playerName": "Pedro Neto",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_17",
+          "playerName": "Adrien Rabiot",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792984175212",
+      "timestamp": 1792984175212,
+      "date": "25 oct 2026, 09:09 p.m.",
+      "competition": "oro",
+      "jornada": 14,
+      "fixtureMatchId": "oro_j14_m3",
+      "phase": "Jornada 14",
+      "team1Id": "liverpool",
+      "team1Name": "Liverpool",
+      "team1Logo": "Logos Equipos/liverpool.png",
+      "score1": 1,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040197583_10",
+          "playerName": "Luis Díaz",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040197583_9",
+          "playerName": "Raphinha",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_11",
+          "playerName": "Eric Cantona",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_21",
+          "playerName": "Gonzalo Plata",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040197583_11",
+          "playerName": "Diego Costa",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792984119020",
+      "timestamp": 1792984119020,
+      "date": "25 oct 2026, 09:08 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m3",
+      "phase": "Jornada 1",
+      "team1Id": "chelseafc",
+      "team1Name": "Chelsea FC",
+      "team1Logo": "Logos Equipos/chelsea.webp",
+      "score1": 1,
+      "team2Id": "losclille",
+      "team2Name": "LOSC Lille",
+      "team2Logo": "Logos Equipos/lille.png",
+      "score2": 1,
+      "events": []
+    },
+    {
+      "id": "match_1792984014971",
+      "timestamp": 1792984014971,
+      "date": "25 oct 2026, 09:06 p.m.",
+      "competition": "champions",
+      "jornada": 2,
+      "fixtureMatchId": "champions_j2_m3",
+      "phase": "Jornada 2",
+      "team1Id": "riverplate",
+      "team1Name": "River Plate",
+      "team1Logo": "Logos Equipos/riverplate.webp",
+      "score1": 0,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040410030_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_10",
+          "playerName": "Paulo Dybala",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792983957938",
+      "timestamp": 1792983957938,
+      "date": "25 oct 2026, 09:05 p.m.",
+      "competition": "oro",
+      "jornada": 9,
+      "fixtureMatchId": "oro_j9_m1",
+      "phase": "Jornada 9",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 1,
+      "team2Id": "atleticodemadrid",
+      "team2Name": "Atletico de Madrid",
+      "team2Logo": "Logos Equipos/atleticomadrid.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792983939096",
+      "timestamp": 1792983939096,
+      "date": "25 oct 2026, 09:05 p.m.",
+      "competition": "oro",
+      "jornada": 15,
+      "fixtureMatchId": "oro_j15_m1",
+      "phase": "Jornada 15",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 0,
+      "team2Id": "galatasaray",
+      "team2Name": "Galatasaray",
+      "team2Logo": "Logos Equipos/galatasaray.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792983910193",
+      "timestamp": 1792983910193,
+      "date": "25 oct 2026, 09:05 p.m.",
+      "competition": "oro",
+      "jornada": 13,
+      "fixtureMatchId": "oro_j13_m1",
+      "phase": "Jornada 13",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 0,
+      "team2Id": "riverplate",
+      "team2Name": "River Plate",
+      "team2Logo": "Logos Equipos/riverplate.webp",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1792983677803",
       "timestamp": 1792983677803,
