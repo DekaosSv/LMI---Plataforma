@@ -105,8 +105,8 @@ TEAM_DIVISION_MAP = {
     "lille": "plata",
     "ajaxdeamsterdam": "plata",
     "ajax": "plata",
-    "brightonhovealbion": "plata",
-    "brighton": "plata",
+    "brightonhovealbion": "inactivo",
+    "brighton": "inactivo",
     "chelseafc": "plata",
     "chelsea": "plata",
     "fctwente": "plata",
@@ -124,8 +124,12 @@ TEAM_DIVISION_MAP = {
     "rennais": "plata",
     "rennes": "plata",
     "casapiaac": "plata",
-    "vascodagama": "plata",
-    "vasco": "plata"
+    "vascodagama": "inactivo",
+    "vasco": "inactivo",
+    "carabobofutbolclub": "plata",
+    "carabobo": "plata",
+    "rangersfootballclub": "plata",
+    "rangers": "plata"
 }
 
 def normalize_key(name):

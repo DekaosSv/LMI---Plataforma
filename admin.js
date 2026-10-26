@@ -269,11 +269,15 @@ const AdminApp = {
       'view-teams': '<i class="fa-solid fa-shield-halved"></i> Clubes y Plantillas',
       'view-market': '<i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i> Mercado de Fichajes',
       'view-trophies': '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Trofeos & Balón de Oro',
-      'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web'
+      'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web',
+      'view-ida-vuelta': '<i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i> Registro Partidos Ida y Vuelta'
     };
     document.getElementById('topbar-page-title').innerHTML = titleMap[viewId] || 'Panel de Control';
     if (viewId === 'view-matches') {
       this.renderAdminStandings();
+    }
+    if (viewId === 'view-ida-vuelta') {
+      this.initIdaVueltaModule();
     }
   },
 
@@ -288,6 +292,7 @@ const AdminApp = {
     this.renderMatchHistory();
     this.renderWebControlView();
     this.renderAdminStandings();
+    this.initIdaVueltaModule();
   },
 
   renderAll() {
@@ -366,7 +371,7 @@ const AdminApp = {
     const currentVal = targetTeamId || sel.value;
     sel.innerHTML = '';
     
-    let teams = this.data.teams;
+    let teams = this.data.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
     if (filterDiv !== 'all') {
       teams = teams.filter(t => (t.division || 'oro') === filterDiv);
     }
@@ -387,7 +392,7 @@ const AdminApp = {
   },
 
   populateMarketAndModalTeams() {
-    const teams = this.data.teams || [];
+    const teams = (this.data.teams || []).filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
     const fill = (id) => {
       const el = document.getElementById(id);
       if (!el) return;
@@ -623,7 +628,7 @@ const AdminApp = {
     const sel2 = document.getElementById('match-team2-select');
     if (!sel1 || !sel2 || !this.data || !this.data.teams) return;
 
-    let teams = this.data.teams;
+    let teams = this.data.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
     if (comp === 'oro') {
       teams = teams.filter(t => t.division === 'oro');
     } else if (comp === 'plata') {
@@ -656,8 +661,10 @@ const AdminApp = {
     const currentVal = sel.value;
     sel.innerHTML = '<option value="">-- Elige un Club (ej. FC Barcelona) --</option>';
 
-    // Ordenar alfabéticamente los clubes
-    const sortedTeams = [...this.data.teams].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    // Ordenar alfabéticamente los clubes activos
+    const sortedTeams = [...this.data.teams]
+      .filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama')
+      .sort((a, b) => (a.name || '').localeCompare(b.name || ''));
     sortedTeams.forEach(t => {
       const opt = document.createElement('option');
       opt.value = t.id;
@@ -1513,7 +1520,8 @@ const AdminApp = {
 
     const subtitleEl = document.getElementById('champions-admin-subtitle');
     const phaseTitles = {
-      'all': 'CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)',
+      'all': 'CUADRO OFICIAL DE ELIMINATORIAS (16 CLUBES)',
+      'octavos': 'OCTAVOS DE FINAL (16 CLUBES) • RESULTADOS OFICIALES',
       'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
       'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
       'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
@@ -1558,6 +1566,7 @@ const AdminApp = {
       `;
     };
 
+    const octavos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('octavos'));
     const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
     const semis = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
     const finalM = matches.find(m => m.fase && m.fase.toLowerCase() === 'final');
@@ -1568,7 +1577,9 @@ const AdminApp = {
       container.style.gap = '1rem';
       container.style.overflowX = 'visible';
 
-      if (phaseFilter === 'cuartos') {
+      if (phaseFilter === 'octavos') {
+        container.innerHTML = octavos.length ? octavos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Octavos de Final registrados.</div>';
+      } else if (phaseFilter === 'cuartos') {
         container.innerHTML = cuartos.length ? cuartos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Cuartos de Final registrados.</div>';
       } else if (phaseFilter === 'semis') {
         container.innerHTML = semis.length ? semis.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Semifinales registrados.</div>';
@@ -1588,21 +1599,27 @@ const AdminApp = {
     container.style.overflowX = 'auto';
 
     let html = '';
+    if (octavos.length) {
+      html += `<div style="flex: 1; min-width: 230px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.4rem;">
+        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-shield-halved"></i> Octavos de Final</h4>
+        ${octavos.map(getMatchBox).join('')}
+      </div>`;
+    }
     if (cuartos.length) {
-      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
-        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;">Cuartos de Final</h4>
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.5rem;">
+        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-gamepad"></i> Cuartos de Final</h4>
         ${cuartos.map(getMatchBox).join('')}
       </div>`;
     }
     if (semis.length) {
-      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around;">
-        <h4 style="color: #60a5fa; text-align: center; border-bottom: 2px solid #3b82f6; padding-bottom: 0.4rem; font-size: 0.9rem;">Semifinales</h4>
+      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
+        <h4 style="color: #60a5fa; text-align: center; border-bottom: 2px solid #3b82f6; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-shield"></i> Semifinales</h4>
         ${semis.map(getMatchBox).join('')}
       </div>`;
     }
     if (finalM) {
       html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: center;">
-        <h4 style="color: #ffd700; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 0.4rem; font-size: 0.9rem;">Gran Final</h4>
+        <h4 style="color: #ffd700; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-trophy"></i> Gran Final</h4>
         ${getMatchBox(finalM)}
       </div>`;
     }
@@ -1698,12 +1715,11 @@ const AdminApp = {
   calculateDivisionStandings(division) {
     if (!this.data || !this.data.teams) return [];
     
-    // Equipos activos de la división
     const divTeams = division === 'champions' 
       ? this.data.teams 
       : (division === 'plata'
-          ? this.data.teams.filter(t => (t.division || 'oro') === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub')
-          : this.data.teams.filter(t => (t.division || 'oro') === division));
+          ? this.data.teams.filter(t => (t.division || 'oro') === 'plata' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama' && !t.hidden)
+          : this.data.teams.filter(t => (t.division || 'oro') === division && !t.hidden));
     const stats = {};
     divTeams.forEach(t => {
       stats[t.id] = {
@@ -2845,10 +2861,18 @@ const AdminApp = {
           };
 
           const champMapping = {
+            'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
+            'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
+            'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
+            'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
+            'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
+            'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
+            'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
+            'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
             'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
-            'cuartos 4': { phase: 'semifinal 1', teamSlot: 'team2' },
-            'cuartos 2': { phase: 'semifinal 2', teamSlot: 'team1' },
-            'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team2' },
+            'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
+            'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
+            'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
             'semifinal 1': { phase: 'final', teamSlot: 'team1' },
             'semifinal 2': { phase: 'final', teamSlot: 'team2' }
           };
@@ -4538,10 +4562,18 @@ const AdminApp = {
     };
 
     const champMapping = {
+      'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
+      'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
+      'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
+      'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
+      'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
+      'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
+      'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
+      'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
       'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
-      'cuartos 4': { phase: 'semifinal 1', teamSlot: 'team2' },
-      'cuartos 2': { phase: 'semifinal 2', teamSlot: 'team1' },
-      'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team2' },
+      'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
+      'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
+      'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
       'semifinal 1': { phase: 'final', teamSlot: 'team1' },
       'semifinal 2': { phase: 'final', teamSlot: 'team2' }
     };
@@ -4689,7 +4721,7 @@ const AdminApp = {
 
     // Contadores de clubes para generadores de fechas
     const oroCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'oro').length;
-    const plataCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub').length;
+    const plataCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'plata' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama' && !t.hidden).length;
     const elOro = document.getElementById('gen-oro-count');
     if (elOro) elOro.textContent = oroCount;
     const elPlata = document.getElementById('gen-plata-count');
@@ -4890,7 +4922,7 @@ const AdminApp = {
       return;
     }
 
-    const eligible = this.data.teams.filter(t => (t.division || '').toLowerCase() === divisionKey.toLowerCase());
+    const eligible = this.data.teams.filter(t => (t.division || '').toLowerCase() === divisionKey.toLowerCase() && !t.hidden && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
     if (eligible.length < 2) {
       this.showToast(`No hay suficientes clubes en ${divName} para generar calendario`, 'error');
       return;
@@ -4912,6 +4944,553 @@ const AdminApp = {
     await this.saveData(true);
     this.onCompetitionChange();
     this.showToast(`¡Calendario oficial de ${divName} (${fixtureRounds.length} Jornadas) generado y guardado exitosamente!`, 'success');
+  },
+
+  // ==================== MÓDULO REGISTRO IDA Y VUELTA (CARABOBO & RANGERS) ====================
+  idaVueltaState: {
+    currentSeries: null,
+    idaMatch: null,
+    vueltaMatch: null,
+    idaEvents: [],
+    vueltaEvents: []
+  },
+
+  initIdaVueltaModule() {
+    const seriesSel = document.getElementById('iv-series-select');
+    if (!seriesSel || !this.data || !this.data.teams) return;
+
+    const carabobo = this.getTeamById('carabobofutbolclub');
+    const rangers = this.getTeamById('rangersfootballclub');
+    if (!carabobo || !rangers) return;
+
+    // Obtener rivales de Plata (excluyendo Carabobo, Rangers, Brighton y Vasco)
+    const plataRivals = this.data.teams.filter(t => 
+      (t.division || '').toLowerCase() === 'plata' && 
+      !t.hidden && 
+      t.id !== 'carabobofutbolclub' && 
+      t.id !== 'rangersfootballclub' &&
+      t.id !== 'brightonhovealbion' && 
+      t.id !== 'vascodagama'
+    ).sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+
+    const prevVal = seriesSel.value;
+    seriesSel.innerHTML = '';
+
+    // 1. Serie Directa
+    const optDirect = document.createElement('option');
+    optDirect.value = 'direct__carabobofutbolclub__rangersfootballclub';
+    optDirect.textContent = '🔥 SERIE DIRECTA: Carabobo FC vs Rangers FC (Ida y Vuelta)';
+    seriesSel.appendChild(optDirect);
+
+    // 2. Carabobo vs Rivales Plata
+    const grpCarabobo = document.createElement('optgroup');
+    grpCarabobo.label = '🇻🇪 Carabobo FC — Series de Ida y Vuelta';
+    plataRivals.forEach(riv => {
+      const opt = document.createElement('option');
+      opt.value = `series__carabobofutbolclub__${riv.id}`;
+      opt.textContent = `Carabobo FC vs ${riv.name} (Ida y Vuelta)`;
+      grpCarabobo.appendChild(opt);
+    });
+    seriesSel.appendChild(grpCarabobo);
+
+    // 3. Rangers vs Rivales Plata
+    const grpRangers = document.createElement('optgroup');
+    grpRangers.label = '🏴󠁧󠁢󠁳󠁣󠁴󠁿 Rangers FC — Series de Ida y Vuelta';
+    plataRivals.forEach(riv => {
+      const opt = document.createElement('option');
+      opt.value = `series__rangersfootballclub__${riv.id}`;
+      opt.textContent = `Rangers FC vs ${riv.name} (Ida y Vuelta)`;
+      grpRangers.appendChild(opt);
+    });
+    seriesSel.appendChild(grpRangers);
+
+    if (prevVal && Array.from(seriesSel.options).some(o => o.value === prevVal)) {
+      seriesSel.value = prevVal;
+    }
+
+    this.onIdaVueltaSeriesChange();
+    this.renderIdaVueltaMatchesTable();
+  },
+
+  refreshIdaVueltaView() {
+    this.initIdaVueltaModule();
+    this.showToast('Enfrentamientos actualizados', 'info');
+  },
+
+  onIdaVueltaSeriesChange() {
+    const seriesSel = document.getElementById('iv-series-select');
+    if (!seriesSel || !this.data || !this.data.fixtures) return;
+
+    const val = seriesSel.value;
+    if (!val) return;
+
+    const parts = val.split('__');
+    const t1Id = parts[1];
+    const t2Id = parts[2];
+    const t1 = this.getTeamById(t1Id);
+    const t2 = this.getTeamById(t2Id);
+    if (!t1 || !t2) return;
+
+    this.idaVueltaState.currentSeries = { t1Id, t2Id, t1, t2 };
+
+    // Buscar los partidos en fixtures.plata
+    const rounds = this.data.fixtures.plata || [];
+    let idaM = null;
+    let vueltaM = null;
+
+    for (const r of rounds) {
+      for (const m of (r.matches || [])) {
+        if ((m.team1Id === t1Id && m.team2Id === t2Id) || (m.team1Id === t2Id && m.team2Id === t1Id)) {
+          if (!idaM) {
+            idaM = { ...m, roundJornada: r.jornada, roundType: r.type || (r.jornada <= 13 ? 'ida' : 'vuelta') };
+          } else if (!vueltaM) {
+            vueltaM = { ...m, roundJornada: r.jornada, roundType: r.type || (r.jornada <= 13 ? 'ida' : 'vuelta') };
+          }
+        }
+      }
+    }
+
+    if (idaM && vueltaM && idaM.roundJornada > vueltaM.roundJornada) {
+      const temp = idaM;
+      idaM = vueltaM;
+      vueltaM = temp;
+    }
+
+    this.idaVueltaState.idaMatch = idaM;
+    this.idaVueltaState.vueltaMatch = vueltaM;
+    this.idaVueltaState.idaEvents = idaM && Array.isArray(idaM.events) ? JSON.parse(JSON.stringify(idaM.events)) : [];
+    this.idaVueltaState.vueltaEvents = vueltaM && Array.isArray(vueltaM.events) ? JSON.parse(JSON.stringify(vueltaM.events)) : [];
+
+    this.renderIdaVueltaSeriesBanner(t1, t2, idaM, vueltaM);
+    this.populateIdaCard(t1, t2, idaM);
+    this.populateVueltaCard(t1, t2, vueltaM);
+  },
+
+  renderIdaVueltaSeriesBanner(t1, t2, idaM, vueltaM) {
+    const banner = document.getElementById('iv-series-banner');
+    if (!banner) return;
+
+    let aggregateText = 'Serie Por Jugar';
+    let s1Total = 0;
+    let s2Total = 0;
+    let anyPlayed = false;
+
+    if (idaM && idaM.played && idaM.score1 !== null && idaM.score2 !== null) {
+      anyPlayed = true;
+      if (idaM.team1Id === t1.id) {
+        s1Total += parseInt(idaM.score1, 10) || 0;
+        s2Total += parseInt(idaM.score2, 10) || 0;
+      } else {
+        s2Total += parseInt(idaM.score1, 10) || 0;
+        s1Total += parseInt(idaM.score2, 10) || 0;
+      }
+    }
+
+    if (vueltaM && vueltaM.played && vueltaM.score1 !== null && vueltaM.score2 !== null) {
+      anyPlayed = true;
+      if (vueltaM.team1Id === t1.id) {
+        s1Total += parseInt(vueltaM.score1, 10) || 0;
+        s2Total += parseInt(vueltaM.score2, 10) || 0;
+      } else {
+        s2Total += parseInt(vueltaM.score1, 10) || 0;
+        s1Total += parseInt(vueltaM.score2, 10) || 0;
+      }
+    }
+
+    if (anyPlayed) {
+      aggregateText = `Marcador Global: ${t1.name} ${s1Total} - ${s2Total} ${t2.name}`;
+    }
+
+    banner.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <img src="${this.escape(t1.logo)}" alt="" style="width: 36px; height: 36px; object-fit: contain;">
+          <span style="font-weight: 800; font-size: 1.05rem; color: #ffffff;">${this.escape(t1.name)}</span>
+        </div>
+        <span style="font-weight: 900; color: #94a3b8; font-size: 0.9rem;">VS</span>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <img src="${this.escape(t2.logo)}" alt="" style="width: 36px; height: 36px; object-fit: contain;">
+          <span style="font-weight: 800; font-size: 1.05rem; color: #ffffff;">${this.escape(t2.name)}</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="badge" style="background: rgba(250, 204, 21, 0.15); border: 1.5px solid #facc15; color: #facc15; font-size: 0.88rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 99px;">
+          ${aggregateText}
+        </span>
+      </div>
+    `;
+  },
+
+  populateIdaCard(t1, t2, idaM) {
+    const badge = document.getElementById('iv-ida-jornada-badge');
+    const t1Logo = document.getElementById('iv-ida-t1-logo');
+    const t1Name = document.getElementById('iv-ida-t1-name');
+    const t2Logo = document.getElementById('iv-ida-t2-logo');
+    const t2Name = document.getElementById('iv-ida-t2-name');
+    const sc1 = document.getElementById('iv-ida-score1');
+    const sc2 = document.getElementById('iv-ida-score2');
+
+    const homeTeam = idaM ? this.getTeamById(idaM.team1Id) || t1 : t1;
+    const awayTeam = idaM ? this.getTeamById(idaM.team2Id) || t2 : t2;
+
+    if (badge) badge.textContent = idaM ? `Jornada ${idaM.roundJornada}` : 'Jornada --';
+    if (t1Logo) t1Logo.src = homeTeam.logo || 'Logos Equipos/default.png';
+    if (t1Name) t1Name.textContent = homeTeam.name;
+    if (t2Logo) t2Logo.src = awayTeam.logo || 'Logos Equipos/default.png';
+    if (t2Name) t2Name.textContent = awayTeam.name;
+
+    if (sc1) sc1.value = (idaM && idaM.played && idaM.score1 !== null) ? idaM.score1 : 0;
+    if (sc2) sc2.value = (idaM && idaM.played && idaM.score2 !== null) ? idaM.score2 : 0;
+
+    this.renderIdaVueltaEventsList('ida');
+  },
+
+  populateVueltaCard(t1, t2, vueltaM) {
+    const badge = document.getElementById('iv-vuelta-jornada-badge');
+    const t1Logo = document.getElementById('iv-vuelta-t1-logo');
+    const t1Name = document.getElementById('iv-vuelta-t1-name');
+    const t2Logo = document.getElementById('iv-vuelta-t2-logo');
+    const t2Name = document.getElementById('iv-vuelta-t2-name');
+    const sc1 = document.getElementById('iv-vuelta-score1');
+    const sc2 = document.getElementById('iv-vuelta-score2');
+
+    const homeTeam = vueltaM ? this.getTeamById(vueltaM.team1Id) || t2 : t2;
+    const awayTeam = vueltaM ? this.getTeamById(vueltaM.team2Id) || t1 : t1;
+
+    if (badge) badge.textContent = vueltaM ? `Jornada ${vueltaM.roundJornada}` : 'Jornada --';
+    if (t1Logo) t1Logo.src = homeTeam.logo || 'Logos Equipos/default.png';
+    if (t1Name) t1Name.textContent = homeTeam.name;
+    if (t2Logo) t2Logo.src = awayTeam.logo || 'Logos Equipos/default.png';
+    if (t2Name) t2Name.textContent = awayTeam.name;
+
+    if (sc1) sc1.value = (vueltaM && vueltaM.played && vueltaM.score1 !== null) ? vueltaM.score1 : 0;
+    if (sc2) sc2.value = (vueltaM && vueltaM.played && vueltaM.score2 !== null) ? vueltaM.score2 : 0;
+
+    this.renderIdaVueltaEventsList('vuelta');
+  },
+
+  renderIdaVueltaEventsList(phase) {
+    const goalsCont = document.getElementById(`iv-${phase}-goals-container`);
+    const assistsCont = document.getElementById(`iv-${phase}-assists-container`);
+    if (!goalsCont || !assistsCont) return;
+
+    const events = (phase === 'ida') ? this.idaVueltaState.idaEvents : this.idaVueltaState.vueltaEvents;
+    const m = (phase === 'ida') ? this.idaVueltaState.idaMatch : this.idaVueltaState.vueltaMatch;
+    const t1Id = m ? m.team1Id : (this.idaVueltaState.currentSeries ? this.idaVueltaState.currentSeries.t1Id : null);
+    const t2Id = m ? m.team2Id : (this.idaVueltaState.currentSeries ? this.idaVueltaState.currentSeries.t2Id : null);
+
+    const eligiblePlayers = (this.data.players || []).filter(p => p.teamId === t1Id || p.teamId === t2Id);
+
+    const buildRows = (evType, container) => {
+      container.innerHTML = '';
+      const list = events.filter(e => e.type === evType);
+      if (list.length === 0) {
+        container.innerHTML = `<span style="font-size: 0.75rem; color: #64748b; font-style: italic;">Sin ${evType === 'gol' ? 'goles registrados' : 'asistencias registradas'}</span>`;
+        return;
+      }
+
+      list.forEach((ev) => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display: flex; align-items: center; gap: 0.4rem; background: #0c1c38; padding: 0.35rem 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);';
+
+        const sel = document.createElement('select');
+        sel.className = 'form-select';
+        sel.style.cssText = 'flex: 1; padding: 0.25rem 0.4rem; font-size: 0.8rem; font-weight: 700;';
+        eligiblePlayers.forEach(p => {
+          const opt = document.createElement('option');
+          opt.value = p.id;
+          const pTeam = this.getTeamById(p.teamId);
+          opt.textContent = `${p.name} (${pTeam ? pTeam.shortName || pTeam.name : ''})`;
+          if (p.id === ev.playerId) opt.selected = true;
+          sel.appendChild(opt);
+        });
+        sel.onchange = (e) => {
+          const chosenP = eligiblePlayers.find(p => p.id === e.target.value);
+          if (chosenP) {
+            ev.playerId = chosenP.id;
+            ev.playerName = chosenP.name;
+            ev.teamId = chosenP.teamId;
+          }
+        };
+
+        const cnt = document.createElement('input');
+        cnt.type = 'number';
+        cnt.min = '1';
+        cnt.max = '20';
+        cnt.value = ev.count || 1;
+        cnt.className = 'form-control';
+        cnt.style.cssText = 'width: 45px; padding: 0.25rem; font-size: 0.8rem; text-align: center; font-weight: 800;';
+        cnt.onchange = (e) => {
+          ev.count = parseInt(e.target.value, 10) || 1;
+        };
+
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'btn btn-secondary';
+        delBtn.innerHTML = '✕';
+        delBtn.style.cssText = 'padding: 0.2rem 0.45rem; font-size: 0.75rem; color: #f87171;';
+        delBtn.onclick = () => {
+          const evIdx = events.indexOf(ev);
+          if (evIdx > -1) {
+            events.splice(evIdx, 1);
+            this.renderIdaVueltaEventsList(phase);
+          }
+        };
+
+        row.appendChild(sel);
+        row.appendChild(cnt);
+        row.appendChild(delBtn);
+        container.appendChild(row);
+      });
+    };
+
+    buildRows('gol', goalsCont);
+    buildRows('asistencia', assistsCont);
+  },
+
+  addIdaVueltaEvent(phase, type) {
+    const events = (phase === 'ida') ? this.idaVueltaState.idaEvents : this.idaVueltaState.vueltaEvents;
+    const m = (phase === 'ida') ? this.idaVueltaState.idaMatch : this.idaVueltaState.vueltaMatch;
+    if (!this.idaVueltaState.currentSeries) return;
+
+    const t1Id = m ? m.team1Id : this.idaVueltaState.currentSeries.t1Id;
+    const t2Id = m ? m.team2Id : this.idaVueltaState.currentSeries.t2Id;
+    const eligiblePlayers = (this.data.players || []).filter(p => p.teamId === t1Id || p.teamId === t2Id);
+    if (eligiblePlayers.length === 0) {
+      this.showToast('No hay jugadores disponibles para estos clubes', 'warning');
+      return;
+    }
+
+    const firstP = eligiblePlayers[0];
+    events.push({
+      playerId: firstP.id,
+      playerName: firstP.name,
+      teamId: firstP.teamId,
+      type: type,
+      count: 1
+    });
+
+    this.renderIdaVueltaEventsList(phase);
+  },
+
+  async saveIdaVueltaMatch(phase, silent = false) {
+    const m = (phase === 'ida') ? this.idaVueltaState.idaMatch : this.idaVueltaState.vueltaMatch;
+    const sc1El = document.getElementById(`iv-${phase}-score1`);
+    const sc2El = document.getElementById(`iv-${phase}-score2`);
+    if (!sc1El || !sc2El || !this.data || !this.data.fixtures) return false;
+
+    const s1 = parseInt(sc1El.value, 10);
+    const s2 = parseInt(sc2El.value, 10);
+    if (isNaN(s1) || isNaN(s2)) {
+      this.showToast('Introduce marcadores válidos', 'error');
+      return false;
+    }
+
+    const events = (phase === 'ida') ? this.idaVueltaState.idaEvents : this.idaVueltaState.vueltaEvents;
+
+    const rounds = this.data.fixtures.plata || [];
+    let matchObj = null;
+
+    if (m && m.id) {
+      for (const r of rounds) {
+        matchObj = (r.matches || []).find(match => match.id === m.id);
+        if (matchObj) break;
+      }
+    }
+
+    if (!matchObj && this.idaVueltaState.currentSeries) {
+      const { t1Id, t2Id } = this.idaVueltaState.currentSeries;
+      for (const r of rounds) {
+        const isTargetJornada = (phase === 'ida') ? (r.jornada <= 13) : (r.jornada > 13);
+        if (isTargetJornada) {
+          matchObj = (r.matches || []).find(match => 
+            (match.team1Id === t1Id && match.team2Id === t2Id) ||
+            (match.team1Id === t2Id && match.team2Id === t1Id)
+          );
+          if (matchObj) break;
+        }
+      }
+    }
+
+    if (!matchObj) {
+      this.showToast(`No se encontró el partido de ${phase.toUpperCase()} en el fixture de División Plata`, 'error');
+      return false;
+    }
+
+    if (matchObj.played && Array.isArray(matchObj.events)) {
+      matchObj.events.forEach(ev => {
+        const player = (this.data.players || []).find(p => p.id === ev.playerId);
+        if (player) {
+          if (ev.type === 'gol') {
+            player.goals_liga = Math.max(0, (player.goals_liga || 0) - (ev.count || 1));
+            player.goals = Math.max(0, (player.goals || 0) - (ev.count || 1));
+          } else if (ev.type === 'asistencia') {
+            player.assists_liga = Math.max(0, (player.assists_liga || 0) - (ev.count || 1));
+            player.assists = Math.max(0, (player.assists || 0) - (ev.count || 1));
+          }
+        }
+      });
+    }
+
+    matchObj.score1 = s1;
+    matchObj.score2 = s2;
+    matchObj.played = true;
+    matchObj.events = JSON.parse(JSON.stringify(events));
+
+    events.forEach(ev => {
+      const player = (this.data.players || []).find(p => p.id === ev.playerId);
+      if (player) {
+        if (ev.type === 'gol') {
+          player.goals_liga = (player.goals_liga || 0) + (ev.count || 1);
+          player.goals = (player.goals || 0) + (ev.count || 1);
+        } else if (ev.type === 'asistencia') {
+          player.assists_liga = (player.assists_liga || 0) + (ev.count || 1);
+          player.assists = (player.assists || 0) + (ev.count || 1);
+        }
+      }
+    });
+
+    if (!this.data.matchHistory) this.data.matchHistory = [];
+    const t1 = this.getTeamById(matchObj.team1Id);
+    const t2 = this.getTeamById(matchObj.team2Id);
+    this.data.matchHistory.unshift({
+      id: `hist_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+      date: new Date().toISOString().split('T')[0],
+      competition: 'plata',
+      team1: t1 ? t1.name : matchObj.team1Id,
+      team2: t2 ? t2.name : matchObj.team2Id,
+      score1: s1,
+      score2: s2,
+      scorers: events.filter(e => e.type === 'gol').map(e => `${e.playerName} (${e.count})`),
+      assisters: events.filter(e => e.type === 'asistencia').map(e => `${e.playerName} (${e.count})`)
+    });
+
+    await this.saveData(true);
+
+    this.renderAdminStandings();
+    this.renderTopScorers();
+    this.renderMatchHistory();
+    this.onIdaVueltaSeriesChange();
+    this.renderIdaVueltaMatchesTable();
+
+    if (!silent) {
+      this.showToast(`¡Partido de ${phase.toUpperCase()} guardado con éxito!`, 'success');
+    }
+    return true;
+  },
+
+  async saveFullIdaVueltaSeries() {
+    const s1 = await this.saveIdaVueltaMatch('ida', true);
+    const s2 = await this.saveIdaVueltaMatch('vuelta', true);
+
+    if (s1 || s2) {
+      this.showToast('¡Serie de Ida y Vuelta guardada exitosamente en data.js!', 'success');
+    }
+  },
+
+  renderIdaVueltaMatchesTable() {
+    const tbody = document.getElementById('iv-matches-table-tbody');
+    if (!tbody || !this.data || !this.data.fixtures) return;
+
+    const filterTeam = document.getElementById('iv-filter-team')?.value || 'all';
+    const targetTeams = (filterTeam === 'all') 
+      ? ['carabobofutbolclub', 'rangersfootballclub'] 
+      : [filterTeam];
+
+    const rounds = this.data.fixtures.plata || [];
+    const matchesList = [];
+
+    rounds.forEach(r => {
+      (r.matches || []).forEach(m => {
+        if (targetTeams.includes(m.team1Id) || targetTeams.includes(m.team2Id)) {
+          matchesList.push({
+            ...m,
+            jornada: r.jornada,
+            phaseLabel: r.jornada <= 13 ? 'Ida' : 'Vuelta'
+          });
+        }
+      });
+    });
+
+    matchesList.sort((a, b) => a.jornada - b.jornada);
+
+    if (matchesList.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem; color: #94a3b8;">No se encontraron partidos programados para estos clubes.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = matchesList.map(m => {
+      const t1 = this.getTeamById(m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
+      const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+      const isPlayed = !!m.played;
+      const scoreStr = isPlayed ? `${m.score1} - ${m.score2}` : 'vs';
+      const statusBadge = isPlayed 
+        ? `<span class="badge" style="background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid #22c55e;">Finalizado</span>`
+        : `<span class="badge" style="background: rgba(250, 204, 21, 0.15); color: #facc15; border: 1px solid #eab308;">Pendiente</span>`;
+
+      return `
+        <tr>
+          <td style="text-align: center; font-weight: 800; color: #38bdf8;">Jornada ${m.jornada}</td>
+          <td style="text-align: center;">
+            <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: ${m.phaseLabel === 'Ida' ? 'rgba(16, 185, 129, 0.2); color: #34d399;' : 'rgba(56, 189, 248, 0.2); color: #38bdf8;'}">${m.phaseLabel}</span>
+          </td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <img src="${this.escape(t1.logo)}" alt="" style="width: 22px; height: 22px; object-fit: contain;">
+              <span style="font-weight: 700;">${this.escape(t1.name)}</span>
+            </div>
+          </td>
+          <td style="text-align: center; font-weight: 900; font-size: 1.05rem; color: ${isPlayed ? '#ffd100' : '#94a3b8'};">${scoreStr}</td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <img src="${this.escape(t2.logo)}" alt="" style="width: 22px; height: 22px; object-fit: contain;">
+              <span style="font-weight: 700;">${this.escape(t2.name)}</span>
+            </div>
+          </td>
+          <td style="text-align: center;">${statusBadge}</td>
+          <td style="text-align: right;">
+            <button class="btn btn-secondary" onclick="AdminApp.loadIdaVueltaMatch('${m.id}')" style="padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 700;">
+              <i class="fa-solid fa-pen-to-square"></i> Cargar
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  },
+
+  loadIdaVueltaMatch(matchId) {
+    if (!this.data || !this.data.fixtures) return;
+    const rounds = this.data.fixtures.plata || [];
+    let targetM = null;
+    for (const r of rounds) {
+      targetM = (r.matches || []).find(m => m.id === matchId);
+      if (targetM) break;
+    }
+    if (!targetM) return;
+
+    const seriesSel = document.getElementById('iv-series-select');
+    if (!seriesSel) return;
+
+    const t1 = targetM.team1Id;
+    const t2 = targetM.team2Id;
+
+    if ((t1 === 'carabobofutbolclub' && t2 === 'rangersfootballclub') || (t1 === 'rangersfootballclub' && t2 === 'carabobofutbolclub')) {
+      seriesSel.value = 'direct__carabobofutbolclub__rangersfootballclub';
+    } else if (t1 === 'carabobofutbolclub' || t2 === 'carabobofutbolclub') {
+      const rival = (t1 === 'carabobofutbolclub') ? t2 : t1;
+      seriesSel.value = `series__carabobofutbolclub__${rival}`;
+    } else if (t1 === 'rangersfootballclub' || t2 === 'rangersfootballclub') {
+      const rival = (t1 === 'rangersfootballclub') ? t2 : t1;
+      seriesSel.value = `series__rangersfootballclub__${rival}`;
+    }
+
+    this.onIdaVueltaSeriesChange();
+
+    const banner = document.getElementById('iv-series-banner');
+    if (banner) {
+      banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    this.showToast('Enfrentamiento cargado en el formulario', 'info');
   }
 };
 

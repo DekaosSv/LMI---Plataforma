@@ -440,7 +440,7 @@ var INITIAL_LMI_DATA = {
       "legendRemoveNote": "",
       "leagueRank": 26,
       "logo": "Logos Equipos/brighton.png",
-      "division": "plata",
+      "division": "inactivo",
       "stats": {
         "played": 0,
         "won": 0,
@@ -450,7 +450,8 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      }
+      },
+      "hidden": true
     },
     {
       "id": "acffiorentina",
@@ -517,7 +518,7 @@ var INITIAL_LMI_DATA = {
       "legendRemoveNote": "",
       "leagueRank": 25,
       "logo": "Logos Equipos/vasco.png",
-      "division": "plata",
+      "division": "inactivo",
       "stats": {
         "played": 0,
         "won": 0,
@@ -527,7 +528,8 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      }
+      },
+      "hidden": true
     },
     {
       "id": "rangersfootballclub",
@@ -546,7 +548,7 @@ var INITIAL_LMI_DATA = {
       "legendRemoveNote": "",
       "leagueRank": 25,
       "logo": "Logos Equipos/rangers.webp",
-      "division": "champions",
+      "division": "plata",
       "stats": {
         "played": 0,
         "won": 0,
@@ -556,7 +558,8 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      }
+      },
+      "hidden": false
     },
     {
       "id": "carabobofutbolclub",
@@ -575,7 +578,7 @@ var INITIAL_LMI_DATA = {
       "legendRemoveNote": "",
       "leagueRank": 26,
       "logo": "Logos Equipos/carabobo.webp",
-      "division": "champions",
+      "division": "plata",
       "stats": {
         "played": 0,
         "won": 0,
@@ -585,7 +588,8 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      }
+      },
+      "hidden": false
     }
   ],
   "players": [
@@ -10347,7 +10351,128 @@ var INITIAL_LMI_DATA = {
       "events": []
     }
   ],
-  "championsLeagueMatches": [],
+  "championsLeagueMatches": [
+    {
+      "fase": "Octavos 1",
+      "team1": "Carabobo Fútbol Club",
+      "score1": "",
+      "team2": "Manchester United",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 2",
+      "team1": "Borussia Dortmund",
+      "score1": "",
+      "team2": "Inter de Milan",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 3",
+      "team1": "Ajax de Ámsterdam",
+      "score1": "",
+      "team2": "Boca Juniors",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 4",
+      "team1": "Manchester City",
+      "score1": "",
+      "team2": "Arsenal",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 5",
+      "team1": "Bayern Leverkusen",
+      "score1": "",
+      "team2": "River Plate",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 6",
+      "team1": "FC Barcelona",
+      "score1": "",
+      "team2": "Galatasaray",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 7",
+      "team1": "Real Madrid",
+      "score1": "",
+      "team2": "PSG",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 8",
+      "team1": "AC Milan",
+      "score1": "",
+      "team2": "ACF Fiorentina",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 1",
+      "team1": "Ganador Octavos 1",
+      "score1": "",
+      "team2": "Ganador Octavos 2",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 2",
+      "team1": "Ganador Octavos 3",
+      "score1": "",
+      "team2": "Ganador Octavos 4",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 3",
+      "team1": "Ganador Octavos 5",
+      "score1": "",
+      "team2": "Ganador Octavos 6",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 4",
+      "team1": "Ganador Octavos 7",
+      "score1": "",
+      "team2": "Ganador Octavos 8",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Semifinal 1",
+      "team1": "Ganador Cuartos 1",
+      "score1": "",
+      "team2": "Ganador Cuartos 2",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Semifinal 2",
+      "team1": "Ganador Cuartos 3",
+      "score1": "",
+      "team2": "Ganador Cuartos 4",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Final",
+      "team1": "Ganador Semifinal 1",
+      "score1": "",
+      "team2": "Ganador Semifinal 2",
+      "score2": "",
+      "estado": "Pendiente"
+    }
+  ],
   "rules": [
     {
       "category": "Reglamento de Renovaciones Temporada 10",
@@ -13345,7 +13470,7 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "como1907",
             "team2Id": "manchestercity",
-            "score1": 0,
+            "score1": 1,
             "score2": 0,
             "played": true,
             "events": []
@@ -13954,89 +14079,11 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j1_m2",
             "jornada": 1,
             "team1Id": "realmadrid",
-            "team2Id": "brightonhovealbion",
-            "score1": 4,
-            "score2": 5,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040623974_10",
-                "playerName": "Romário",
-                "teamId": "brightonhovealbion",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_18",
-                "playerName": "Zico",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_15",
-                "playerName": "Geovany Quenda",
-                "teamId": "brightonhovealbion",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_19",
-                "playerName": "Frank Lampard",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_11",
-                "playerName": "Omar Marmoush",
-                "teamId": "realmadrid",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_8",
-                "playerName": "Désiré Doué",
-                "teamId": "realmadrid",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_7",
-                "playerName": "Jude Bellingham",
-                "teamId": "realmadrid",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_7",
-                "playerName": "Jude Bellingham",
-                "teamId": "realmadrid",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_17",
-                "playerName": "Cole Palmer",
-                "teamId": "realmadrid",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_17",
-                "playerName": "Cole Palmer",
-                "teamId": "realmadrid",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040371541_9",
-                "playerName": "Kingsley Coman",
-                "teamId": "realmadrid",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "team2Id": "carabobofutbolclub",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j1_m3",
@@ -14147,40 +14194,11 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j1_m7",
             "jornada": 1,
             "team1Id": "fcbarcelona",
-            "team2Id": "vascodagama",
-            "score1": 1,
-            "score2": 3,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792126304381_19",
-                "playerName": "Gabriel Sara",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_18",
-                "playerName": "Conor Gallagher",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_23",
-                "playerName": "Julián Quiñones",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 3
-              },
-              {
-                "playerId": "p_1792126304381_2",
-                "playerName": "Javier Zanetti",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 1
-              }
-            ]
+            "team2Id": "rangersfootballclub",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ]
       },
@@ -14424,27 +14442,12 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j2_m7",
             "jornada": 2,
-            "team1Id": "vascodagama",
-            "team2Id": "brightonhovealbion",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792126304381_8",
-                "playerName": "Pape Matar Sarr",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_22",
-                "playerName": "Illian Hernández",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "team1Id": "rangersfootballclub",
+            "team2Id": "carabobofutbolclub",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ]
       },
@@ -14457,47 +14460,11 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j3_m1",
             "jornada": 3,
             "team1Id": "fcbarcelona",
-            "team2Id": "brightonhovealbion",
-            "score1": 2,
-            "score2": 1,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040239414_21",
-                "playerName": "Fermín López",
-                "teamId": "fcbarcelona",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040239414_9",
-                "playerName": "Orkun Kökçü",
-                "teamId": "fcbarcelona",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_9",
-                "playerName": "Atep",
-                "teamId": "brightonhovealbion",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040239414_23",
-                "playerName": "Ferran Torres",
-                "teamId": "fcbarcelona",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_10",
-                "playerName": "Romário",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              }
-            ]
+            "team2Id": "carabobofutbolclub",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j3_m2",
@@ -14773,11 +14740,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j3_m7",
             "jornada": 3,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "feyenoordrotterdam",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ]
@@ -14815,11 +14782,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m2",
             "jornada": 4,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "feyenoordrotterdam",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -15043,27 +15010,12 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j4_m7",
             "jornada": 4,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "manchesterunited",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792126304381_23",
-                "playerName": "Julián Quiñones",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_19",
-                "playerName": "Gabriel Sara",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ]
       },
@@ -15103,83 +15055,12 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m3",
             "jornada": 5,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "manchesterunited",
-            "score1": 4,
-            "score2": 3,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040623974_10",
-                "playerName": "Romário",
-                "teamId": "brightonhovealbion",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040623974_9",
-                "playerName": "Atep",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_14",
-                "playerName": "Riyad Mahrez",
-                "teamId": "brightonhovealbion",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_19",
-                "playerName": "Frank Lampard",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792039745455_11",
-                "playerName": "Diego Forlán",
-                "teamId": "manchesterunited",
-                "type": "gol",
-                "count": 3
-              },
-              {
-                "playerId": "p_1792039745455_9",
-                "playerName": "João Félix",
-                "teamId": "manchesterunited",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792039745455_20",
-                "playerName": "Thiago Almada",
-                "teamId": "manchesterunited",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_6",
-                "playerName": "Granit Xhaka",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_12",
-                "playerName": "Randal Kolo Muani",
-                "teamId": "brightonhovealbion",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040623974_15",
-                "playerName": "Geovany Quenda",
-                "teamId": "brightonhovealbion",
-                "type": "asistencia",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j5_m4",
@@ -15336,48 +15217,12 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j5_m7",
             "jornada": 5,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "acmiln",
-            "score1": 0,
-            "score2": 3,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040438881_7",
-                "playerName": "Federico Valverde",
-                "teamId": "acmiln",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040438881_11",
-                "playerName": "Cristiano Ronaldo",
-                "teamId": "acmiln",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040438881_11",
-                "playerName": "Cristiano Ronaldo",
-                "teamId": "acmiln",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040438881_22",
-                "playerName": "Yan Diomande",
-                "teamId": "acmiln",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040438881_15",
-                "playerName": "Aurélien Tchouaméni",
-                "teamId": "acmiln",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ]
       },
@@ -15459,11 +15304,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m4",
             "jornada": 6,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "acmiln",
-            "score1": 0,
-            "score2": 0,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -15596,11 +15441,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j6_m7",
             "jornada": 6,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "losclille",
-            "score1": 0,
-            "score2": 0,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -15807,11 +15652,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m5",
             "jornada": 7,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "losclille",
-            "score1": 0,
-            "score2": 0,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -15870,41 +15715,12 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j7_m7",
             "jornada": 7,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "staderennais",
-            "score1": 2,
-            "score2": 2,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792126304381_11",
-                "playerName": "Elye Wahi",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_6",
-                "playerName": "Gennaro Gattuso",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792126304381_23",
-                "playerName": "Julián Quiñones",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040339328_9",
-                "playerName": "George Best",
-                "teamId": "staderennais",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ],
         "restingTeamId": "acmiln"
@@ -16037,44 +15853,22 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j8_m6",
             "jornada": 8,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "staderennais",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
             "id": "plata_j8_m7",
             "jornada": 8,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "acffiorentina",
-            "score1": 0,
-            "score2": 2,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040551310_10",
-                "playerName": "Samuel Eto'o",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040551310_20",
-                "playerName": "Facundo Torres",
-                "teamId": "acffiorentina",
-                "type": "asistencia",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040551310_8",
-                "playerName": "Kevin De Bruyne",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ],
         "restingTeamId": "losclille"
@@ -16277,71 +16071,21 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j9_m6",
             "jornada": 9,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "acffiorentina",
-            "score1": 1,
-            "score2": 7,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040551310_10",
-                "playerName": "Samuel Eto'o",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040551310_10",
-                "playerName": "Samuel Eto'o",
-                "teamId": "acffiorentina",
-                "type": "asistencia",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040551310_8",
-                "playerName": "Kevin De Bruyne",
-                "teamId": "acffiorentina",
-                "type": "asistencia",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040551310_23",
-                "playerName": "Carlos Espí",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040551310_9",
-                "playerName": "Estêvão",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040551310_11",
-                "playerName": "Michael Owen",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040551310_17",
-                "playerName": "Seksan Ratree",
-                "teamId": "acffiorentina",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j9_m7",
             "jornada": 9,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "chelseafc",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -16545,58 +16289,22 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j10_m6",
             "jornada": 10,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "chelseafc",
-            "score1": 4,
-            "score2": 4,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
             "id": "plata_j10_m7",
             "jornada": 10,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "ajaxdeamsterdam",
-            "score1": 3,
-            "score2": 1,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792126304381_8",
-                "playerName": "Pape Matar Sarr",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_10",
-                "playerName": "MDI Kamaldeen Sulemana",
-                "teamId": "vascodagama",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792126304381_9",
-                "playerName": "MDD Eduardo Salvio",
-                "teamId": "vascodagama",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1792040586949_11",
-                "playerName": "Adriano",
-                "teamId": "ajaxdeamsterdam",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040586949_9",
-                "playerName": "Johan Manzambi",
-                "teamId": "ajaxdeamsterdam",
-                "type": "asistencia",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ],
         "restingTeamId": "acffiorentina"
@@ -16771,21 +16479,21 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j11_m5",
             "jornada": 11,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "ajaxdeamsterdam",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
             "id": "plata_j11_m7",
             "jornada": 11,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "fctwente",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -16879,11 +16587,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j12_m4",
             "jornada": 12,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "fctwente",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -16928,11 +16636,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j12_m7",
             "jornada": 12,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "arsenal",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -17016,11 +16724,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m3",
             "jornada": 13,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "arsenal",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -17111,11 +16819,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j13_m7",
             "jornada": 13,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "realmadrid",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -17175,11 +16883,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m2",
             "jornada": 14,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "realmadrid",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -17286,11 +16994,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j14_m7",
             "jornada": 14,
-            "team1Id": "vascodagama",
+            "team1Id": "rangersfootballclub",
             "team2Id": "fcbarcelona",
-            "score1": 0,
-            "score2": 1,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -17490,11 +17198,11 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j15_m7",
             "jornada": 15,
-            "team1Id": "brightonhovealbion",
-            "team2Id": "vascodagama",
-            "score1": 0,
-            "score2": 0,
-            "played": true,
+            "team1Id": "carabobofutbolclub",
+            "team2Id": "rangersfootballclub",
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           }
         ],
@@ -17508,7 +17216,7 @@ var INITIAL_LMI_DATA = {
           {
             "id": "plata_j16_m1",
             "jornada": 16,
-            "team1Id": "brightonhovealbion",
+            "team1Id": "carabobofutbolclub",
             "team2Id": "fcbarcelona",
             "score1": null,
             "score2": null,
@@ -17627,7 +17335,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j17_m7",
             "jornada": 17,
             "team1Id": "manchesterunited",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17655,7 +17363,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j18_m3",
             "jornada": 18,
             "team1Id": "manchesterunited",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17695,7 +17403,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j18_m7",
             "jornada": 18,
             "team1Id": "acmiln",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17733,7 +17441,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j19_m4",
             "jornada": 19,
             "team1Id": "acmiln",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17763,7 +17471,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j19_m7",
             "jornada": 19,
             "team1Id": "losclille",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17811,7 +17519,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j20_m5",
             "jornada": 20,
             "team1Id": "losclille",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17831,7 +17539,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j20_m7",
             "jornada": 20,
             "team1Id": "staderennais",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17889,7 +17597,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j21_m6",
             "jornada": 21,
             "team1Id": "staderennais",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17899,7 +17607,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j21_m7",
             "jornada": 21,
             "team1Id": "acffiorentina",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17957,7 +17665,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j22_m6",
             "jornada": 22,
             "team1Id": "acffiorentina",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -17967,7 +17675,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j22_m7",
             "jornada": 22,
             "team1Id": "chelseafc",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18025,7 +17733,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j23_m6",
             "jornada": 23,
             "team1Id": "chelseafc",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18035,7 +17743,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j23_m7",
             "jornada": 23,
             "team1Id": "ajaxdeamsterdam",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18093,7 +17801,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j24_m5",
             "jornada": 24,
             "team1Id": "ajaxdeamsterdam",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18103,7 +17811,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j24_m7",
             "jornada": 24,
             "team1Id": "fctwente",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18151,7 +17859,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j25_m4",
             "jornada": 25,
             "team1Id": "fctwente",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18171,7 +17879,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j25_m7",
             "jornada": 25,
             "team1Id": "arsenal",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18209,7 +17917,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j26_m3",
             "jornada": 26,
             "team1Id": "arsenal",
-            "team2Id": "brightonhovealbion",
+            "team2Id": "carabobofutbolclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18239,7 +17947,7 @@ var INITIAL_LMI_DATA = {
             "id": "plata_j26_m7",
             "jornada": 26,
             "team1Id": "realmadrid",
-            "team2Id": "vascodagama",
+            "team2Id": "rangersfootballclub",
             "score1": null,
             "score2": null,
             "played": false,
@@ -18635,7 +18343,7 @@ var INITIAL_LMI_DATA = {
             "group": "Grupo B",
             "team1Id": "como1907",
             "team2Id": "atleticodemadrid",
-            "score1": 0,
+            "score1": 1,
             "score2": 0,
             "played": true,
             "events": []
@@ -19840,6 +19548,42 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792988836590",
+      "timestamp": 1792988836590,
+      "date": "25 oct 2026, 10:27 p.m.",
+      "competition": "champions",
+      "jornada": 2,
+      "fixtureMatchId": "champions_j2_m4",
+      "phase": "Jornada 2",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 1,
+      "team2Id": "atleticodemadrid",
+      "team2Name": "Atletico de Madrid",
+      "team2Logo": "Logos Equipos/atleticomadrid.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792988800460",
+      "timestamp": 1792988800460,
+      "date": "25 oct 2026, 10:26 p.m.",
+      "competition": "oro",
+      "jornada": 15,
+      "fixtureMatchId": "oro_j15_m2",
+      "phase": "Jornada 15",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 1,
+      "team2Id": "manchestercity",
+      "team2Name": "Manchester City",
+      "team2Logo": "Logos Equipos/manchestercity.png",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1792985968783",
       "timestamp": 1792985968783,

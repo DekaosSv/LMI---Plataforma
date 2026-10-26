@@ -312,7 +312,7 @@ function renderDashboard() {
   const scorersContainer = document.getElementById('dashboard-top-scorers');
   if (scorersContainer) {
     const topPlayers = [...lmiData.players]
-      .filter(p => (p.goals || 0) > 0)
+      .filter(p => (p.goals || 0) > 0 && p.teamId !== 'brightonhovealbion' && p.teamId !== 'vascodagama')
       .sort((a, b) => (b.goals || 0) - (a.goals || 0))
       .slice(0, 5);
 
@@ -366,7 +366,7 @@ function renderDashboard() {
   const assistsContainer = document.getElementById('dashboard-top-assists');
   if (assistsContainer) {
     const topAssists = [...lmiData.players]
-      .filter(p => (p.assists || 0) > 0)
+      .filter(p => (p.assists || 0) > 0 && p.teamId !== 'brightonhovealbion' && p.teamId !== 'vascodagama')
       .sort((a, b) => (b.assists || 0) - (a.assists || 0))
       .slice(0, 5);
 
@@ -499,19 +499,20 @@ function renderStats() {
 
   const getTeamDivision = (p) => {
     const t = allTeams.find(tm => tm.id === p.teamId);
-    return t ? (t.division || 'oro') : 'oro';
+    if (!t || t.hidden || t.division === 'inactivo' || t.id === 'brightonhovealbion' || t.id === 'vascodagama') return null;
+    return (t.division || 'oro');
   };
 
   const getScorers = (filterDiv) => {
     return allPlayers
-      .filter(p => (p[goalsKey] || 0) > 0 && (!filterDiv || getTeamDivision(p) === filterDiv))
+      .filter(p => (p[goalsKey] || 0) > 0 && p.teamId !== 'brightonhovealbion' && p.teamId !== 'vascodagama' && (!filterDiv ? getTeamDivision(p) !== null : getTeamDivision(p) === filterDiv))
       .sort((a, b) => (b[goalsKey] || 0) - (a[goalsKey] || 0))
       .slice(0, 10);
   };
 
   const getAssists = (filterDiv) => {
     return allPlayers
-      .filter(p => (p[assistsKey] || 0) > 0 && (!filterDiv || getTeamDivision(p) === filterDiv))
+      .filter(p => (p[assistsKey] || 0) > 0 && p.teamId !== 'brightonhovealbion' && p.teamId !== 'vascodagama' && (!filterDiv ? getTeamDivision(p) !== null : getTeamDivision(p) === filterDiv))
       .sort((a, b) => (b[assistsKey] || 0) - (a[assistsKey] || 0))
       .slice(0, 10);
   };
@@ -908,15 +909,18 @@ function switchChampionsSubTab(tab) {
   const btnGroups = document.getElementById('btn-subtab-champions-groups');
   const btnThirds = document.getElementById('btn-subtab-champions-thirds');
   const btnFixtures = document.getElementById('btn-subtab-champions-fixtures');
+  const btnPlayoffs = document.getElementById('btn-subtab-champions-playoffs');
 
   const viewGroups = document.getElementById('champions-view-groups');
   const viewThirds = document.getElementById('champions-view-thirds');
   const viewFixtures = document.getElementById('champions-view-fixtures');
+  const viewPlayoffs = document.getElementById('champions-view-playoffs');
 
   const tabButtons = [
     { el: btnGroups, id: 'groups' },
     { el: btnThirds, id: 'thirds' },
-    { el: btnFixtures, id: 'fixtures' }
+    { el: btnFixtures, id: 'fixtures' },
+    { el: btnPlayoffs, id: 'playoffs' }
   ];
 
   tabButtons.forEach(b => {
@@ -939,6 +943,12 @@ function switchChampionsSubTab(tab) {
   if (viewGroups) viewGroups.style.display = (tab === 'groups') ? 'block' : 'none';
   if (viewThirds) viewThirds.style.display = (tab === 'thirds') ? 'block' : 'none';
   if (viewFixtures) viewFixtures.style.display = (tab === 'fixtures') ? 'block' : 'none';
+  if (viewPlayoffs) viewPlayoffs.style.display = (tab === 'playoffs') ? 'block' : 'none';
+
+  if (tab === 'playoffs') {
+    const filter = document.getElementById('champions-phase-filter-web')?.value || 'all';
+    renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches, filter);
+  }
 }
 window.switchChampionsSubTab = switchChampionsSubTab;
 
@@ -1198,6 +1208,11 @@ function renderWebChampionsView() {
   const sel = document.getElementById('champions-web-jornada-select');
   const jVal = sel ? sel.value : '1';
   renderChampionsWebFixtures(jVal);
+
+  // 4. Render Playoffs Bracket
+  const pFilter = document.getElementById('champions-phase-filter-web')?.value || 'all';
+  renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches, pFilter);
+  renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches, pFilter);
 }
 window.renderWebChampionsView = renderWebChampionsView;
 
@@ -1334,7 +1349,18 @@ function renderChampionsWebFixtures(jornadaVal) {
 window.renderChampionsWebFixtures = renderChampionsWebFixtures;
 
 function onChampionsPhaseFilterChange(phase) {
-  // Kept for backward compatibility if needed
+  const subtitleEl = document.getElementById('champions-web-subtitle');
+  const phaseLabels = {
+    'all': 'CUADRO OFICIAL DE ELIMINATORIAS (16 CLUBES)',
+    'octavos': 'OCTAVOS DE FINAL (16 CLUBES) • RESULTADOS OFICIALES',
+    'cuartos': 'CUARTOS DE FINAL (8 CLUBES) • RESULTADOS OFICIALES',
+    'semis': 'SEMIFINALES (4 CLUBES) • RESULTADOS OFICIALES',
+    'final': 'GRAN FINAL • PARTIDO POR EL TÍTULO'
+  };
+  if (subtitleEl) subtitleEl.textContent = phaseLabels[phase] || phaseLabels['all'];
+
+  renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches, phase);
+  renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches, phase);
 }
 window.onChampionsPhaseFilterChange = onChampionsPhaseFilterChange;
 
@@ -1655,9 +1681,10 @@ window.showWebToast = showWebToast;
 function initTeamSelect() {
   const sel = document.getElementById('team-select');
   if (!sel) return;
-  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
-  if (lmiData.teams.length > 0) {
-    loadTeamHub(lmiData.teams[0].id);
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+  sel.innerHTML = activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+  if (activeTeams.length > 0) {
+    loadTeamHub(activeTeams[0].id);
   }
 }
 
@@ -1902,9 +1929,10 @@ function formatRenewalValue(val) {
 function initRenovationSelect() {
   const sel = document.getElementById('renovation-team-select');
   if (!sel) return;
-  sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}" style="background-color: #0b1528; color: #ffffff;">${t.name} (Presupuesto: $${formatRenewalValue((t.budget || 100000000) / 1000000)}M)</option>`).join('');
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+  sel.innerHTML = activeTeams.map(t => `<option value="${t.id}" style="background-color: #0b1528; color: #ffffff;">${t.name} (Presupuesto: $${formatRenewalValue((t.budget || 100000000) / 1000000)}M)</option>`).join('');
   const teamSel = document.getElementById('team-select');
-  const targetId = (teamSel && teamSel.value) ? teamSel.value : (lmiData.teams.length > 0 ? lmiData.teams[0].id : null);
+  const targetId = (teamSel && teamSel.value) ? teamSel.value : (activeTeams.length > 0 ? activeTeams[0].id : null);
   if (targetId) {
     sel.value = targetId;
     loadRenovationsForTeam(targetId);
@@ -2312,9 +2340,10 @@ function initPlayerSearchUI() {
   const teamSel = document.getElementById('player-search-team-filter');
   if (!teamSel) return;
   
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
   teamSel.innerHTML = `
     <option value="">Todos los Equipos</option>
-    ${lmiData.teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('')}
+    ${activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('')}
   `;
 
   filterPlayersDatabase();
@@ -2350,6 +2379,9 @@ function filterPlayersDatabase(resetLimit = true) {
   const selectedSort = sortFilter ? sortFilter.value : 'name_asc';
 
   let filtered = lmiData.players.filter(p => {
+    // Excluir jugadores de clubes inactivos / ocultos (Brighton y Vasco da Gama)
+    if (p.teamId === 'brightonhovealbion' || p.teamId === 'vascodagama') return false;
+
     // 1. Filtro de Posición
     if (selectedPos && p.position !== selectedPos) return false;
     
@@ -2516,7 +2548,8 @@ function initMarketUI() {
   const sel = document.getElementById('market-team-select');
   if (!sel) return;
   if (lmiData && lmiData.teams) {
-    sel.innerHTML = lmiData.teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+    const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+    sel.innerHTML = activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
   }
 }
 
@@ -3031,11 +3064,11 @@ var currentWebDivision = 'oro';
 
 function updateDynamicClubsCounts() {
   if (!lmiData || !lmiData.teams) return;
-  const oroCount = lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length;
-  const plataCount = lmiData.teams.filter(t => t.division === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub').length;
-  const championsCount = lmiData.teams.length;
+  const oroCount = lmiData.teams.filter(t => (t.division || 'oro') === 'oro' && !t.hidden).length;
+  const plataCount = lmiData.teams.filter(t => t.division === 'plata' && !t.hidden && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama').length;
+  const championsCount = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama').length;
   const estelarCount = championsCount;
-  const totalCount = lmiData.teams.length;
+  const totalCount = championsCount;
 
   // Header division bar
   const lblBarOro = document.getElementById('lbl-bar-count-oro');
@@ -3104,8 +3137,8 @@ function switchWebDivision(div) {
   const jornadasCard = document.getElementById('web-jornadas-card');
   const estelarContainer = document.getElementById('web-copa-estelar-container');
 
-  const oroCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => (t.division || 'oro') === 'oro').length : 11;
-  const plataCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.division === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub').length : 13;
+  const oroCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => (t.division || 'oro') === 'oro' && !t.hidden).length : 11;
+  const plataCount = (lmiData && lmiData.teams) ? lmiData.teams.filter(t => t.division === 'plata' && !t.hidden && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama').length : 13;
   const championsCount = 26;
 
   const tabsConfig = [
@@ -3200,11 +3233,11 @@ function calculateStandings(division) {
   
   let divTeams = [];
   if (division === 'champions') {
-    divTeams = lmiData.teams;
+    divTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
   } else if (division === 'plata') {
-    divTeams = lmiData.teams.filter(t => (t.division || 'oro') === 'plata' && t.id !== 'carabobofutbolclub' && t.id !== 'rangersfootballclub');
+    divTeams = lmiData.teams.filter(t => (t.division || 'oro') === 'plata' && !t.hidden && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
   } else {
-    divTeams = lmiData.teams.filter(t => (t.division || 'oro') === division);
+    divTeams = lmiData.teams.filter(t => (t.division || 'oro') === division && !t.hidden);
   }
 
   const stats = {};

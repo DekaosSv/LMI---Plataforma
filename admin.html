@@ -44,6 +44,10 @@
         <i class="fa-solid fa-trophy"></i>
         <span>Registrar Partido</span>
       </button>
+      <button class="nav-btn" data-view="view-ida-vuelta" style="border-left: 3px solid #10b981;">
+        <i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i>
+        <span>Partidos Ida y Vuelta</span>
+      </button>
       <button class="nav-btn" data-view="view-teams">
         <i class="fa-solid fa-shield-halved"></i>
         <span>Clubes y Plantillas</span>
@@ -552,7 +556,8 @@
               <div style="display: flex; align-items: center; gap: 0.4rem;">
                 <label for="champions-phase-filter-admin" style="font-size: 0.85rem; font-weight: 700; color: #38bdf8;">Fase a ver / exportar:</label>
                 <select id="champions-phase-filter-admin" class="form-select" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-md); background: #0c1c38; color: #e0f2fe; border: 1.5px solid #0284c7; cursor: pointer;">
-                  <option value="all">Todas las Fases (Cuadro Completo)</option>
+                  <option value="all">Todas las Fases (Cuadro Completo - 16 Clubes)</option>
+                  <option value="octavos">Solo Octavos de Final (16 Clubes)</option>
                   <option value="cuartos">Solo Cuartos de Final</option>
                   <option value="semis">Solo Semifinales</option>
                   <option value="final">Solo Gran Final</option>
@@ -571,7 +576,7 @@
                 <div style="font-size: 1.8rem; color: #38bdf8;"><i class="fa-solid fa-trophy"></i></div>
                 <div>
                   <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: 0.5px;">LIGA MÁSTER INTERNACIONAL &bull; UEFA CHAMPIONS LEAGUE</h2>
-                  <span id="champions-admin-subtitle" style="font-size: 0.85rem; font-weight: 800; color: #38bdf8; text-transform: uppercase;">CUADRO OFICIAL DE ELIMINATORIAS (TOP 8)</span>
+                  <span id="champions-admin-subtitle" style="font-size: 0.85rem; font-weight: 800; color: #38bdf8; text-transform: uppercase;">CUADRO OFICIAL DE ELIMINATORIAS (16 CLUBES)</span>
                 </div>
               </div>
               <div style="text-align: right; color: var(--text-muted); font-size: 0.82rem; font-weight: 700;">
@@ -690,6 +695,205 @@
                 </tr>
               </thead>
               <tbody id="match-history-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW: REGISTRO IDA Y VUELTA (CARABOBO & RANGERS) ==================== -->
+      <section class="module-view" id="view-ida-vuelta">
+        <!-- Tarjeta de Control y Selección de Serie -->
+        <div class="card" style="border: 1px solid rgba(16, 185, 129, 0.4); background: #0b1528;">
+          <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.25rem;">
+                <span class="badge" style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-weight: 800; font-size: 0.78rem;">
+                  <i class="fa-solid fa-repeat"></i> DIVISIÓN PLATA
+                </span>
+                <span class="badge" style="background: rgba(56, 189, 248, 0.15); border: 1px solid #0284c7; color: #38bdf8; font-weight: 800; font-size: 0.78rem;">
+                  CARABOBO FC &bull; RANGERS FC
+                </span>
+              </div>
+              <h2 class="card-title" style="color: #34d399; font-size: 1.3rem;">
+                <i class="fa-solid fa-arrows-rotate"></i> Registro Oficial de Partidos (Ida y Vuelta)
+              </h2>
+              <p class="card-desc" style="color: #94a3b8; font-size: 0.88rem; margin: 0.25rem 0 0 0;">
+                Módulo para registrar y gestionar los encuentros oficiales de Ida y Vuelta de <strong>Carabobo Fútbol Club</strong> y <strong>Rangers Football Club</strong> en sustitución de Brighton y Vasco da Gama.
+              </p>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+                <label for="iv-series-select" style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1;">Seleccionar Serie / Enfrentamiento:</label>
+                <select id="iv-series-select" class="form-select" onchange="AdminApp.onIdaVueltaSeriesChange()" style="min-width: 340px; font-weight: 700; background: #0c1c38; color: #e0f2fe; border: 1.5px solid #10b981; border-radius: var(--radius-md); padding: 0.5rem 0.85rem; font-size: 0.88rem;">
+                  <!-- Filled dynamically by JavaScript -->
+                </select>
+              </div>
+              <button class="btn btn-secondary" onclick="AdminApp.refreshIdaVueltaView()" style="align-self: flex-end; padding: 0.5rem 0.85rem; font-size: 0.85rem;" title="Recargar enfrentamientos">
+                <i class="fa-solid fa-arrows-rotate"></i> Actualizar
+              </button>
+            </div>
+          </div>
+
+          <!-- Banner Resumen de Serie Seleccionada -->
+          <div id="iv-series-banner" style="padding: 1rem 1.5rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(2, 132, 199, 0.1) 100%); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <!-- Rendered dynamically: Logos, names, aggregate score -->
+          </div>
+
+          <!-- Dual Form: Partido de Ida & Partido de Vuelta -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 1.5rem; padding: 1.5rem;">
+            
+            <!-- TARJETA PARTIDO DE IDA -->
+            <div class="card" style="background: #081224; border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #10b981; padding-bottom: 0.6rem; margin-bottom: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="background: #10b981; color: #000; font-weight: 900; font-size: 0.75rem; padding: 0.15rem 0.55rem; border-radius: 4px;">IDA</span>
+                  <h3 style="font-size: 1.05rem; font-weight: 800; color: #ffffff; margin: 0;">Partido de Ida</h3>
+                </div>
+                <span id="iv-ida-jornada-badge" class="badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #10b981; font-weight: 800;">Jornada --</span>
+              </div>
+
+              <!-- Equipos y Marcador de Ida -->
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: #0c1c38; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem;">
+                <div style="flex: 1; text-align: center;">
+                  <img id="iv-ida-t1-logo" src="Logos Equipos/default.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 0.3rem;">
+                  <div id="iv-ida-t1-name" style="font-size: 0.85rem; font-weight: 800; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Equipo 1</div>
+                  <span style="font-size: 0.7rem; color: #94a3b8; font-weight: 700;">(Local)</span>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <input type="number" id="iv-ida-score1" min="0" max="99" class="form-control" style="width: 55px; height: 45px; text-align: center; font-size: 1.4rem; font-weight: 900; background: #07101f; color: #38bdf8; border: 1.5px solid #0284c7; border-radius: 6px;" value="0">
+                  <span style="font-size: 1.2rem; font-weight: 900; color: #64748b;">-</span>
+                  <input type="number" id="iv-ida-score2" min="0" max="99" class="form-control" style="width: 55px; height: 45px; text-align: center; font-size: 1.4rem; font-weight: 900; background: #07101f; color: #38bdf8; border: 1.5px solid #0284c7; border-radius: 6px;" value="0">
+                </div>
+
+                <div style="flex: 1; text-align: center;">
+                  <img id="iv-ida-t2-logo" src="Logos Equipos/default.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 0.3rem;">
+                  <div id="iv-ida-t2-name" style="font-size: 0.85rem; font-weight: 800; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Equipo 2</div>
+                  <span style="font-size: 0.7rem; color: #94a3b8; font-weight: 700;">(Visita)</span>
+                </div>
+              </div>
+
+              <!-- Goleadores de Ida -->
+              <div style="margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #34d399;"><i class="fa-solid fa-futbol"></i> Goleadores del Partido de Ida:</span>
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.addIdaVueltaEvent('ida', 'gol')" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">+ Agregar Gol</button>
+                </div>
+                <div id="iv-ida-goals-container" style="display: flex; flex-direction: column; gap: 0.35rem;"></div>
+              </div>
+
+              <!-- Asistidores de Ida -->
+              <div style="margin-bottom: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #38bdf8;"><i class="fa-solid fa-hands-clapping"></i> Asistidores del Partido de Ida:</span>
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.addIdaVueltaEvent('ida', 'asistencia')" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">+ Agregar Asistencia</button>
+                </div>
+                <div id="iv-ida-assists-container" style="display: flex; flex-direction: column; gap: 0.35rem;"></div>
+              </div>
+
+              <!-- Botón Guardar Ida -->
+              <button class="btn btn-primary" onclick="AdminApp.saveIdaVueltaMatch('ida')" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border: none; font-weight: 800; padding: 0.6rem 1rem;">
+                <i class="fa-solid fa-check"></i> Guardar Marcador de Ida
+              </button>
+            </div>
+
+            <!-- TARJETA PARTIDO DE VUELTA -->
+            <div class="card" style="background: #081224; border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.6rem; margin-bottom: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="background: #0284c7; color: #ffffff; font-weight: 900; font-size: 0.75rem; padding: 0.15rem 0.55rem; border-radius: 4px;">VUELTA</span>
+                  <h3 style="font-size: 1.05rem; font-weight: 800; color: #ffffff; margin: 0;">Partido de Vuelta</h3>
+                </div>
+                <span id="iv-vuelta-jornada-badge" class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #0284c7; font-weight: 800;">Jornada --</span>
+              </div>
+
+              <!-- Equipos y Marcador de Vuelta -->
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: #0c1c38; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem;">
+                <div style="flex: 1; text-align: center;">
+                  <img id="iv-vuelta-t1-logo" src="Logos Equipos/default.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 0.3rem;">
+                  <div id="iv-vuelta-t1-name" style="font-size: 0.85rem; font-weight: 800; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Equipo 2</div>
+                  <span style="font-size: 0.7rem; color: #94a3b8; font-weight: 700;">(Local)</span>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <input type="number" id="iv-vuelta-score1" min="0" max="99" class="form-control" style="width: 55px; height: 45px; text-align: center; font-size: 1.4rem; font-weight: 900; background: #07101f; color: #38bdf8; border: 1.5px solid #0284c7; border-radius: 6px;" value="0">
+                  <span style="font-size: 1.2rem; font-weight: 900; color: #64748b;">-</span>
+                  <input type="number" id="iv-vuelta-score2" min="0" max="99" class="form-control" style="width: 55px; height: 45px; text-align: center; font-size: 1.4rem; font-weight: 900; background: #07101f; color: #38bdf8; border: 1.5px solid #0284c7; border-radius: 6px;" value="0">
+                </div>
+
+                <div style="flex: 1; text-align: center;">
+                  <img id="iv-vuelta-t2-logo" src="Logos Equipos/default.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 0.3rem;">
+                  <div id="iv-vuelta-t2-name" style="font-size: 0.85rem; font-weight: 800; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Equipo 1</div>
+                  <span style="font-size: 0.7rem; color: #94a3b8; font-weight: 700;">(Visita)</span>
+                </div>
+              </div>
+
+              <!-- Goleadores de Vuelta -->
+              <div style="margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #34d399;"><i class="fa-solid fa-futbol"></i> Goleadores del Partido de Vuelta:</span>
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.addIdaVueltaEvent('vuelta', 'gol')" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">+ Agregar Gol</button>
+                </div>
+                <div id="iv-vuelta-goals-container" style="display: flex; flex-direction: column; gap: 0.35rem;"></div>
+              </div>
+
+              <!-- Asistidores de Vuelta -->
+              <div style="margin-bottom: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #38bdf8;"><i class="fa-solid fa-hands-clapping"></i> Asistidores del Partido de Vuelta:</span>
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.addIdaVueltaEvent('vuelta', 'asistencia')" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">+ Agregar Asistencia</button>
+                </div>
+                <div id="iv-vuelta-assists-container" style="display: flex; flex-direction: column; gap: 0.35rem;"></div>
+              </div>
+
+              <!-- Botón Guardar Vuelta -->
+              <button class="btn btn-primary" onclick="AdminApp.saveIdaVueltaMatch('vuelta')" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800; padding: 0.6rem 1rem;">
+                <i class="fa-solid fa-check"></i> Guardar Marcador de Vuelta
+              </button>
+            </div>
+          </div>
+
+          <!-- Botón de Guardado Completo -->
+          <div style="padding: 0 1.5rem 1.5rem; display: flex; justify-content: center;">
+            <button class="btn btn-gold" onclick="AdminApp.saveFullIdaVueltaSeries()" style="padding: 0.75rem 2rem; font-size: 1rem; font-weight: 800; box-shadow: 0 4px 18px rgba(250, 204, 21, 0.35);">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Serie Completa (Ida y Vuelta)
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabla Histórica de Partidos Ida y Vuelta de Carabobo y Rangers -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 class="card-title"><i class="fa-solid fa-list-check" style="color: #10b981;"></i> Calendario de Enfrentamientos Oficiales (Carabobo FC & Rangers FC)</h3>
+              <p class="card-desc">Todos los partidos de Ida y Vuelta programados en División Plata. Haz clic en 'Cargar' para editar marcadores y estadísticas.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <select id="iv-filter-team" class="form-select" onchange="AdminApp.renderIdaVueltaMatchesTable()" style="padding: 0.35rem 0.75rem; font-size: 0.82rem; font-weight: 700;">
+                <option value="all">Ver Todos los Partidos (Ambos Equipos)</option>
+                <option value="carabobofutbolclub">Solo Carabobo FC</option>
+                <option value="rangersfootballclub">Solo Rangers FC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width: 90px; text-align: center;">Jornada</th>
+                  <th style="width: 80px; text-align: center;">Fase</th>
+                  <th>Local</th>
+                  <th style="text-align: center; width: 100px;">Marcador</th>
+                  <th>Visitante</th>
+                  <th style="text-align: center; width: 110px;">Estado</th>
+                  <th style="text-align: right; width: 110px;">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="iv-matches-table-tbody">
                 <!-- Populated dynamically -->
               </tbody>
             </table>
