@@ -3654,9 +3654,9 @@ var INITIAL_LMI_DATA = {
       "name": "Florian Wirtz",
       "position": "MP",
       "teamId": "como1907",
-      "goals": 1,
+      "goals": 2,
       "assists": 2,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 1,
@@ -3703,9 +3703,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "como1907",
       "goals": 8,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 7,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -12902,10 +12902,25 @@ var INITIAL_LMI_DATA = {
             "jornada": 11,
             "team1Id": "como1907",
             "team2Id": "psg",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040014502_8",
+                "playerName": "Florian Wirtz",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           }
         ],
         "restingTeamId": "bocajuniors"
@@ -19577,6 +19592,39 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792991126370",
+      "timestamp": 1792991126370,
+      "date": "25 oct 2026, 11:05 p.m.",
+      "competition": "oro",
+      "jornada": 11,
+      "fixtureMatchId": "oro_j11_m5",
+      "phase": "Jornada 11",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 1,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040014502_8",
+          "playerName": "Florian Wirtz",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792988985549",
       "timestamp": 1792988985549,
