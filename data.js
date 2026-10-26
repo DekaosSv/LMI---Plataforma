@@ -2231,9 +2231,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "bocajuniors",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2326,9 +2326,9 @@ var INITIAL_LMI_DATA = {
       "name": "Kylian Mbappé",
       "position": "DC",
       "teamId": "bocajuniors",
-      "goals": 13,
+      "goals": 14,
       "assists": 4,
-      "goals_liga": 12,
+      "goals_liga": 13,
       "assists_liga": 3,
       "goals_champions": 1,
       "assists_champions": 1,
@@ -2422,9 +2422,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lionel Messi",
       "position": "SD",
       "teamId": "bocajuniors",
-      "goals": 7,
+      "goals": 8,
       "assists": 3,
-      "goals_liga": 6,
+      "goals_liga": 7,
       "assists_liga": 2,
       "goals_champions": 1,
       "assists_champions": 1,
@@ -3607,9 +3607,9 @@ var INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "como1907",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3639,9 +3639,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "como1907",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3654,9 +3654,9 @@ var INITIAL_LMI_DATA = {
       "name": "Florian Wirtz",
       "position": "MP",
       "teamId": "como1907",
-      "goals": 2,
+      "goals": 3,
       "assists": 2,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 1,
@@ -3686,9 +3686,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lamine Yamal",
       "position": "ED",
       "teamId": "como1907",
-      "goals": 2,
+      "goals": 4,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 4,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3702,10 +3702,10 @@ var INITIAL_LMI_DATA = {
       "name": "Jamie Vardy",
       "position": "DC",
       "teamId": "como1907",
-      "goals": 8,
-      "assists": 1,
-      "goals_liga": 7,
-      "assists_liga": 1,
+      "goals": 11,
+      "assists": 2,
+      "goals_liga": 10,
+      "assists_liga": 2,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3847,9 +3847,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "como1907",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3863,9 +3863,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "como1907",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 1,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6215,9 +6215,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "borussiadortmund",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6278,9 +6278,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ismael Saibari",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 7,
+      "goals": 8,
       "assists": 1,
-      "goals_liga": 5,
+      "goals_liga": 6,
       "assists_liga": 1,
       "goals_champions": 2,
       "assists_champions": 0,
@@ -6375,9 +6375,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "borussiadortmund",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6406,9 +6406,9 @@ var INITIAL_LMI_DATA = {
       "name": "Dani Olmo",
       "position": "MP",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6422,10 +6422,10 @@ var INITIAL_LMI_DATA = {
       "name": "Pedro Neto",
       "position": "MP",
       "teamId": "borussiadortmund",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 2,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6438,9 +6438,9 @@ var INITIAL_LMI_DATA = {
       "name": "Christos Tzolis",
       "position": "EI",
       "teamId": "borussiadortmund",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6454,10 +6454,10 @@ var INITIAL_LMI_DATA = {
       "name": "Romelu Lukaku",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 1,
-      "assists": 1,
-      "goals_liga": 1,
-      "assists_liga": 1,
+      "goals": 2,
+      "assists": 2,
+      "goals_liga": 2,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -13080,10 +13080,74 @@ var INITIAL_LMI_DATA = {
             "jornada": 12,
             "team1Id": "como1907",
             "team2Id": "borussiadortmund",
-            "score1": 0,
-            "score2": 0,
+            "score1": 3,
+            "score2": 2,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792040014502_10",
+                "playerName": "Lamine Yamal",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_21",
+                "playerName": "Lorenzo Insigne",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040410030_11",
+                "playerName": "Ismael Saibari",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_7",
+                "playerName": "Khéphren Thuram",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_19",
+                "playerName": "Dani Olmo",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_22",
+                "playerName": "Romelu Lukaku",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_5",
+                "playerName": "Kyle Walker",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_20",
+                "playerName": "Maghnes Akliouche",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j12_m5",
@@ -13200,10 +13264,67 @@ var INITIAL_LMI_DATA = {
             "jornada": 13,
             "team1Id": "como1907",
             "team2Id": "bocajuniors",
-            "score1": 0,
-            "score2": 0,
+            "score1": 3,
+            "score2": 2,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792040014502_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_7",
+                "playerName": "Andrea Pirlo",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_8",
+                "playerName": "Florian Wirtz",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039864584_10",
+                "playerName": "Leroy Sané",
+                "teamId": "bocajuniors",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039864584_16",
+                "playerName": "Kylian Mbappé",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040014502_10",
+                "playerName": "Lamine Yamal",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039864584_22",
+                "playerName": "Lionel Messi",
+                "teamId": "bocajuniors",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j13_m4",
@@ -13221,9 +13342,45 @@ var INITIAL_LMI_DATA = {
             "team1Id": "bayernleverkusen",
             "team2Id": "borussiadortmund",
             "score1": 0,
-            "score2": 0,
+            "score2": 3,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792040410030_20",
+                "playerName": "Pedro Neto",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_20",
+                "playerName": "Pedro Neto",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_17",
+                "playerName": "Adrien Rabiot",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_21",
+                "playerName": "Christos Tzolis",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_22",
+                "playerName": "Romelu Lukaku",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           }
         ],
         "restingTeamId": "manchestercity"
@@ -19592,6 +19749,217 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792991413753",
+      "timestamp": 1792991413753,
+      "date": "25 oct 2026, 11:10 p.m.",
+      "competition": "oro",
+      "jornada": 13,
+      "fixtureMatchId": "oro_j13_m3",
+      "phase": "Jornada 13",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 3,
+      "team2Id": "bocajuniors",
+      "team2Name": "Boca Juniors",
+      "team2Logo": "Logos Equipos/boca.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040014502_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_7",
+          "playerName": "Andrea Pirlo",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_8",
+          "playerName": "Florian Wirtz",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039864584_10",
+          "playerName": "Leroy Sané",
+          "teamId": "bocajuniors",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039864584_16",
+          "playerName": "Kylian Mbappé",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_10",
+          "playerName": "Lamine Yamal",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039864584_22",
+          "playerName": "Lionel Messi",
+          "teamId": "bocajuniors",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792991347226",
+      "timestamp": 1792991347226,
+      "date": "25 oct 2026, 11:09 p.m.",
+      "competition": "oro",
+      "jornada": 13,
+      "fixtureMatchId": "oro_j13_m5",
+      "phase": "Jornada 13",
+      "team1Id": "bayernleverkusen",
+      "team1Name": "Bayern Leverkusen",
+      "team1Logo": "Logos Equipos/bayernleverkusen.png",
+      "score1": 0,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792040410030_20",
+          "playerName": "Pedro Neto",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_20",
+          "playerName": "Pedro Neto",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_17",
+          "playerName": "Adrien Rabiot",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_21",
+          "playerName": "Christos Tzolis",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_22",
+          "playerName": "Romelu Lukaku",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1792991297988",
+      "timestamp": 1792991297988,
+      "date": "25 oct 2026, 11:08 p.m.",
+      "competition": "oro",
+      "jornada": 12,
+      "fixtureMatchId": "oro_j12_m4",
+      "phase": "Jornada 12",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 3,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040014502_10",
+          "playerName": "Lamine Yamal",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_21",
+          "playerName": "Lorenzo Insigne",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040410030_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_7",
+          "playerName": "Khéphren Thuram",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_19",
+          "playerName": "Dani Olmo",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_22",
+          "playerName": "Romelu Lukaku",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_5",
+          "playerName": "Kyle Walker",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040014502_20",
+          "playerName": "Maghnes Akliouche",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792991126370",
       "timestamp": 1792991126370,
