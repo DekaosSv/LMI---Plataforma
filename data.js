@@ -4951,9 +4951,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "fcbarcelona",
       "goals": 1,
-      "assists": 2,
+      "assists": 5,
       "goals_liga": 1,
-      "assists_liga": 2,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4998,9 +4998,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ferran Torres",
       "position": "DC",
       "teamId": "fcbarcelona",
-      "goals": 5,
+      "goals": 8,
       "assists": 4,
-      "goals_liga": 3,
+      "goals_liga": 6,
       "assists_liga": 4,
       "goals_champions": 2,
       "assists_champions": 0,
@@ -5879,9 +5879,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "realmadrid",
       "goals": 1,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6086,9 +6086,9 @@ var INITIAL_LMI_DATA = {
       "name": "Victor Osimhen",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 3,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -16509,10 +16509,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 12,
             "team1Id": "realmadrid",
             "team2Id": "fcbarcelona",
-            "score1": 0,
-            "score2": 0,
+            "score1": 1,
+            "score2": 3,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792040371541_22",
+                "playerName": "Victor Osimhen",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040239414_20",
+                "playerName": "Pedri",
+                "teamId": "fcbarcelona",
+                "type": "asistencia",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792040239414_23",
+                "playerName": "Ferran Torres",
+                "teamId": "fcbarcelona",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792040371541_9",
+                "playerName": "Kingsley Coman",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j12_m2",
@@ -19548,6 +19577,53 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1792988985549",
+      "timestamp": 1792988985549,
+      "date": "25 oct 2026, 10:29 p.m.",
+      "competition": "plata",
+      "jornada": 12,
+      "fixtureMatchId": "plata_j12_m1",
+      "phase": "Jornada 12",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 1,
+      "team2Id": "fcbarcelona",
+      "team2Name": "FC Barcelona",
+      "team2Logo": "Logos Equipos/fcbarcelona.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792040371541_22",
+          "playerName": "Victor Osimhen",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040239414_20",
+          "playerName": "Pedri",
+          "teamId": "fcbarcelona",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040239414_23",
+          "playerName": "Ferran Torres",
+          "teamId": "fcbarcelona",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040371541_9",
+          "playerName": "Kingsley Coman",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792988836590",
       "timestamp": 1792988836590,
