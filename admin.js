@@ -10,6 +10,15 @@ const AdminApp = {
   matchEvents: [],
   plaintextMode: 'unified',
   cachedParsedPlayers: [],
+  midseason: {
+    step: 1,
+    currentTeamId: null,
+    draftRosters: {},
+    detectedDeals: [],
+    freeAgents: [],
+    newExternal: [],
+    loansReport: []
+  },
 
   // ==================== INICIALIZACIÓN ====================
   async init() {
@@ -268,6 +277,7 @@ const AdminApp = {
       'view-matches': '<i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i> Registrar Partido',
       'view-teams': '<i class="fa-solid fa-shield-halved"></i> Clubes y Plantillas',
       'view-market': '<i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i> Mercado de Fichajes',
+      'view-midseason-market': '<i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i> Mercado de Mitad de Temporada',
       'view-trophies': '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Trofeos & Balón de Oro',
       'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web',
       'view-ida-vuelta': '<i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i> Registro Partidos Ida y Vuelta'
@@ -278,6 +288,9 @@ const AdminApp = {
     }
     if (viewId === 'view-ida-vuelta') {
       this.initIdaVueltaModule();
+    }
+    if (viewId === 'view-midseason-market') {
+      this.initMidseasonMarketView();
     }
   },
 
@@ -5491,6 +5504,1328 @@ const AdminApp = {
       banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     this.showToast('Enfrentamiento cargado en el formulario', 'info');
+  },
+
+  // =========================================================================
+  // MERCADO DE MITAD DE TEMPORADA & CONCILIACIÓN GLOBAL DE PLANTILLAS
+  // =========================================================================
+
+  normalizePlayerKey(name) {
+    if (!name) return '';
+    return name
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s*\([pPcC]\)\s*$/, '')
+      .replace(/[^a-zA-Z0-9]/g, '')
+      .toLowerCase();
+  },
+
+  levenshtein(s1, s2) {
+    const m = s1.length;
+    const n = s2.length;
+    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+    for (let i = 0; i <= m; i++) dp[i][0] = i;
+    for (let j = 0; j <= n; j++) dp[0][j] = j;
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        const cost = s1[i - 1] === s2[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+      }
+    }
+    return dp[m][n];
+  },
+
+  arePlayersEquivalent(nameA, nameB) {
+    if (!nameA || !nameB) return { match: false, score: 0 };
+
+    const norm = (s) => (s || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s*\([pPcC]\)\s*$/, '')
+      .replace(/[^a-zA-Z0-9\s]/g, ' ')
+      .trim()
+      .toLowerCase();
+
+    const cleanA = norm(nameA).replace(/\s+/g, '');
+    const cleanB = norm(nameB).replace(/\s+/g, '');
+
+    if (cleanA === cleanB) return { match: true, score: 1.0, reason: 'exact' };
+
+    // 1. Alias / Suffix normalization (junior/jr, de/da/del/van/von/der)
+    const normAliases = (str) => {
+      return norm(str)
+        .replace(/\bjunior\b/g, 'jr')
+        .replace(/\bda\b|\bde\b|\bdel\b|\bvan\b|\bvon\b|\bder\b/g, '')
+        .replace(/\s+/g, '');
+    };
+    if (normAliases(nameA) === normAliases(nameB)) {
+      return { match: true, score: 0.98, reason: 'alias' };
+    }
+
+    // 2. Levenshtein distance on compact strings
+    const dist = this.levenshtein(cleanA, cleanB);
+    const maxLen = Math.max(cleanA.length, cleanB.length);
+    const ratio = 1 - (dist / maxLen);
+
+    if (dist === 1 && maxLen >= 5) {
+      return { match: true, score: 0.95, reason: 'typo_1' };
+    }
+    if (dist === 2 && maxLen >= 7) {
+      return { match: true, score: 0.88, reason: 'typo_2' };
+    }
+    if (dist <= 3 && maxLen >= 12 && ratio >= 0.78) {
+      return { match: true, score: ratio, reason: 'typo_3' };
+    }
+
+    // 3. Token-based matching (Surname + First name initial / single surname)
+    const tokensA = norm(nameA).split(/\s+/).filter(Boolean);
+    const tokensB = norm(nameB).split(/\s+/).filter(Boolean);
+
+    if (tokensA.length > 0 && tokensB.length > 0) {
+      const lastA = tokensA[tokensA.length - 1];
+      const lastB = tokensB[tokensB.length - 1];
+
+      // Exact last name match with at least 4 letters
+      if (lastA === lastB && lastA.length >= 4) {
+        if (tokensA.length === 1 || tokensB.length === 1) {
+          return { match: true, score: 0.88, reason: 'single_surname' };
+        }
+        const firstA = tokensA[0];
+        const firstB = tokensB[0];
+        if (firstA[0] === firstB[0] && (firstA.length === 1 || firstB.length === 1 || this.levenshtein(firstA, firstB) <= 2)) {
+          return { match: true, score: 0.90, reason: 'initial_surname' };
+        }
+      }
+
+      // Fuzzy last name (e.g. bekenbauer vs beckenbauer, mavropano vs mavropanos)
+      if (lastA && lastB && this.levenshtein(lastA, lastB) <= 1 && lastA.length >= 5) {
+        if (tokensA.length === 1 || tokensB.length === 1) {
+          return { match: true, score: 0.86, reason: 'fuzzy_surname' };
+        }
+        const firstA = tokensA[0];
+        const firstB = tokensB[0];
+        if (this.levenshtein(firstA, firstB) <= 2) {
+          return { match: true, score: 0.89, reason: 'fuzzy_full' };
+        }
+      }
+    }
+
+    // 4. Substring containment
+    if (cleanA.includes(cleanB) || cleanB.includes(cleanA)) {
+      const minLen = Math.min(cleanA.length, cleanB.length);
+      if (minLen / maxLen >= 0.65 && minLen >= 6) {
+        return { match: true, score: 0.82, reason: 'substring' };
+      }
+    }
+
+    return { match: false, score: ratio };
+  },
+
+  findDuplicatePlayersInDb() {
+    if (!this.data || !this.data.players) return [];
+    const seen = {};
+    const teamsMap = {};
+    if (this.data.teams) {
+      this.data.teams.forEach(t => teamsMap[t.id] = t.name);
+    }
+
+    this.data.players.forEach(p => {
+      const norm = this.normalizePlayerKey(p.name);
+      if (!norm || norm.startsWith('reserva') || norm.includes('faltajugador')) return;
+      if (!seen[norm]) seen[norm] = [];
+      seen[norm].push({
+        id: p.id,
+        name: p.name,
+        position: p.position,
+        teamId: p.teamId,
+        teamName: teamsMap[p.teamId] || p.teamId || 'Sin Club',
+        goals: p.goals || 0,
+        assists: p.assists || 0,
+        cardType: p.cardType || 'Normal'
+      });
+    });
+
+    const duplicates = [];
+    Object.keys(seen).forEach(k => {
+      if (seen[k].length > 1) {
+        duplicates.push({
+          key: k,
+          playerName: seen[k][0].name,
+          count: seen[k].length,
+          occurrences: seen[k]
+        });
+      }
+    });
+
+    return duplicates;
+  },
+
+  detectCurrentDuplicates(showAlert = false) {
+    const dups = this.findDuplicatePlayersInDb();
+    const alertBox = document.getElementById('midseason-duplicate-alert');
+    const alertTitle = document.getElementById('midseason-duplicate-alert-title');
+    const alertDesc = document.getElementById('midseason-duplicate-alert-desc');
+
+    if (alertBox) {
+      if (dups.length > 0) {
+        alertBox.style.display = 'block';
+        if (alertTitle) alertTitle.textContent = `⚠️ Se detectaron ${dups.length} jugadores duplicados en la base de datos actual`;
+        if (alertDesc) alertDesc.textContent = dups.map(d => `${d.playerName} (${d.occurrences.map(o => o.teamName).join(' y ')})`).join(' • ');
+      } else {
+        alertBox.style.display = 'none';
+      }
+    }
+
+    if (showAlert) {
+      if (dups.length > 0) {
+        this.showDuplicatesModal();
+        this.showToast(`Auditoría: ${dups.length} jugadores duplicados encontrados.`, 'error');
+      } else {
+        this.showToast('¡Felicidades! 0 jugadores duplicados en toda la liga.', 'success');
+      }
+    }
+
+    return dups;
+  },
+
+  showDuplicatesModal() {
+    const dups = this.findDuplicatePlayersInDb();
+    const list = document.getElementById('duplicates-modal-list');
+    if (!list) return;
+
+    if (dups.length === 0) {
+      list.innerHTML = `<div style="text-align: center; color: #10b981; padding: 2rem; font-weight: 700;"><i class="fa-solid fa-check-circle" style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i> No hay jugadores duplicados en la base de datos.</div>`;
+    } else {
+      list.innerHTML = dups.map(d => `
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 style="color: #fff; font-size: 1rem; font-weight: 800;">
+              ${this.escape(d.playerName)} <span class="badge" style="background: rgba(239,68,68,0.2); color: #f87171;">${d.count} clubes</span>
+            </h4>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.6rem;">Elige en cuál club debe permanecer el jugador (se unificará eliminando la copia del otro club):</p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            ${d.occurrences.map(occ => `
+              <button class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.75rem; border-color: #10b981;" onclick="AdminApp.resolveDuplicateDirect('${this.escape(d.key)}', '${occ.teamId}')">
+                <i class="fa-solid fa-check" style="color: #10b981;"></i> Dejar en <strong>${this.escape(occ.teamName)}</strong> (${occ.position})
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    const modal = document.getElementById('modal-duplicates');
+    if (modal) modal.style.display = 'flex';
+  },
+
+  closeDuplicatesModal() {
+    const modal = document.getElementById('modal-duplicates');
+    if (modal) modal.style.display = 'none';
+  },
+
+  async resolveDuplicateDirect(normKey, keepTeamId) {
+    if (!this.data || !this.data.players) return;
+    const targetKey = normKey.toLowerCase();
+    
+    // Find main player in keepTeamId
+    let keptPlayer = null;
+    const toRemoveIds = [];
+
+    this.data.players.forEach(p => {
+      if (this.normalizePlayerKey(p.name) === targetKey) {
+        if (p.teamId === keepTeamId && !keptPlayer) {
+          keptPlayer = p;
+        } else {
+          // Accumulate any goals/assists that might have been recorded on the duplicate
+          if (keptPlayer) {
+            keptPlayer.goals = (keptPlayer.goals || 0) + (p.goals || 0);
+            keptPlayer.assists = (keptPlayer.assists || 0) + (p.assists || 0);
+            keptPlayer.goals_liga = (keptPlayer.goals_liga || 0) + (p.goals_liga || 0);
+            keptPlayer.assists_liga = (keptPlayer.assists_liga || 0) + (p.assists_liga || 0);
+          }
+          toRemoveIds.push(p.id);
+        }
+      }
+    });
+
+    if (toRemoveIds.length > 0) {
+      this.data.players = this.data.players.filter(p => !toRemoveIds.includes(p.id));
+      this.markDirty();
+      await this.saveData(true);
+      this.renderTeamsView();
+      this.detectCurrentDuplicates();
+      this.showDuplicatesModal();
+      this.showToast(`Duplicado de "${keptPlayer ? keptPlayer.name : normKey}" resuelto con éxito.`, 'success');
+    }
+  },
+
+  initMidseasonMarketView() {
+    if (!this.data || !this.data.teams) return;
+
+    // Initialize draft rosters if not yet initialized
+    if (!this.midseason.draftRosters || Object.keys(this.midseason.draftRosters).length === 0) {
+      this.midseason.draftRosters = {};
+      this.data.teams.forEach(team => {
+        const teamPlayers = this.data.players.filter(p => p.teamId === team.id);
+        this.midseason.draftRosters[team.id] = {
+          teamId: team.id,
+          teamName: team.name,
+          status: 'pending', // 'pending' | 'unchanged' | 'modified'
+          originalPlayers: teamPlayers.map(p => ({ ...p })),
+          newPlayers: teamPlayers.map(p => ({ ...p })),
+          rawText: '',
+          altas: [],
+          bajas: [],
+          kept: teamPlayers.map(p => ({ ...p }))
+        };
+      });
+    }
+
+    // Set first team if none
+    if (!this.midseason.currentTeamId && this.data.teams.length > 0) {
+      this.midseason.currentTeamId = this.data.teams[0].id;
+    }
+
+    this.renderMidseasonClubSelectors();
+    this.detectCurrentDuplicates();
+    this.setMidseasonStep(this.midseason.step || 1);
+    this.renderCurrentMidseasonTeam();
+  },
+
+  setMidseasonStep(stepNum) {
+    this.midseason.step = stepNum;
+
+    // Update buttons
+    const s1Btn = document.getElementById('midseason-nav-step-1');
+    const s2Btn = document.getElementById('midseason-nav-step-2');
+    const s3Btn = document.getElementById('midseason-nav-step-3');
+
+    [s1Btn, s2Btn, s3Btn].forEach((btn, idx) => {
+      if (!btn) return;
+      btn.classList.toggle('active', (idx + 1) === stepNum);
+      btn.classList.toggle('completed', (idx + 1) < stepNum);
+    });
+
+    const c1 = document.getElementById('midseason-step-1-container');
+    const c2 = document.getElementById('midseason-step-2-container');
+    const c3 = document.getElementById('midseason-step-3-container');
+
+    if (c1) c1.style.display = stepNum === 1 ? 'block' : 'none';
+    if (c2) c2.style.display = stepNum === 2 ? 'block' : 'none';
+    if (c3) c3.style.display = stepNum === 3 ? 'block' : 'none';
+
+    if (stepNum === 3) {
+      this.renderActiveLoansReport();
+    }
+  },
+
+  renderMidseasonClubSelectors() {
+    const sel = document.getElementById('midseason-team-select');
+    const pills = document.getElementById('midseason-clubs-pills');
+    if (!sel || !pills || !this.data || !this.data.teams) return;
+
+    let confirmedCount = 0;
+    const totalTeams = this.data.teams.length;
+
+    sel.innerHTML = this.data.teams.map(t => {
+      const draft = this.midseason.draftRosters[t.id];
+      const status = draft ? draft.status : 'pending';
+      let icon = '⚪';
+      if (status === 'unchanged') { icon = '🟢'; confirmedCount++; }
+      else if (status === 'modified') { icon = '🔄'; confirmedCount++; }
+      return `<option value="${t.id}" ${t.id === this.midseason.currentTeamId ? 'selected' : ''}>${icon} ${t.name} (${(t.division || 'ORO').toUpperCase()})</option>`;
+    }).join('');
+
+    pills.innerHTML = this.data.teams.map(t => {
+      const draft = this.midseason.draftRosters[t.id];
+      const status = draft ? draft.status : 'pending';
+      const isActive = t.id === this.midseason.currentTeamId;
+      let extraClass = '';
+      if (status === 'unchanged') extraClass = 'status-done';
+      else if (status === 'modified') extraClass = 'status-modified';
+      if (isActive) extraClass += ' active';
+
+      let shortLabel = t.shortName || t.name;
+      if (shortLabel.length > 15) shortLabel = shortLabel.substring(0, 14) + '…';
+
+      return `<button class="club-nav-pill ${extraClass}" onclick="AdminApp.onMidseasonTeamSelected('${t.id}')">${shortLabel}</button>`;
+    }).join('');
+
+    const progText = document.getElementById('midseason-progress-text');
+    if (progText) progText.textContent = `${confirmedCount} / ${totalTeams} confirmados`;
+
+    const summaryLine = document.getElementById('midseason-summary-line');
+    if (summaryLine) {
+      let totalBajas = 0;
+      Object.values(this.midseason.draftRosters).forEach(d => {
+        if (d.bajas) totalBajas += d.bajas.length;
+      });
+      summaryLine.textContent = `Clubes confirmados: ${confirmedCount} de ${totalTeams} | Jugadores en Reserva de Mercado: ${totalBajas}`;
+    }
+  },
+
+  onMidseasonTeamSelected(teamId) {
+    this.midseason.currentTeamId = teamId;
+    this.renderMidseasonClubSelectors();
+    this.renderCurrentMidseasonTeam();
+  },
+
+  navigateMidseasonClub(delta) {
+    if (!this.data || !this.data.teams) return;
+    const currentIdx = this.data.teams.findIndex(t => t.id === this.midseason.currentTeamId);
+    let nextIdx = currentIdx + delta;
+    if (nextIdx < 0) nextIdx = this.data.teams.length - 1;
+    if (nextIdx >= this.data.teams.length) nextIdx = 0;
+    this.onMidseasonTeamSelected(this.data.teams[nextIdx].id);
+  },
+
+  renderCurrentMidseasonTeam() {
+    const teamId = this.midseason.currentTeamId;
+    const team = this.getTeamById(teamId);
+    if (!team) return;
+
+    const draft = this.midseason.draftRosters[teamId];
+
+    // Info header
+    const nameEl = document.getElementById('midseason-club-name');
+    const divEl = document.getElementById('midseason-club-division');
+    const logoEl = document.getElementById('midseason-club-logo');
+    const badgeEl = document.getElementById('midseason-current-club-badge');
+
+    if (nameEl) nameEl.textContent = team.name;
+    if (divEl) divEl.textContent = `División ${(team.division || 'ORO').toUpperCase()} • DT: ${team.dt || 'Sin DT'}`;
+    if (logoEl) logoEl.src = team.logo || 'Imagenes/placeholder.png';
+
+    if (badgeEl) {
+      if (draft.status === 'unchanged') {
+        badgeEl.textContent = '🟢 Sin Cambios (23)';
+        badgeEl.style.background = 'rgba(16, 185, 129, 0.15)';
+        badgeEl.style.color = '#10b981';
+      } else if (draft.status === 'modified') {
+        badgeEl.textContent = `🔄 Con Cambios (+${draft.altas.length} / -${draft.bajas.length})`;
+        badgeEl.style.background = 'rgba(59, 130, 246, 0.15)';
+        badgeEl.style.color = '#60a5fa';
+      } else {
+        badgeEl.textContent = '⚪ Pendiente de Revisar';
+        badgeEl.style.background = 'rgba(255, 255, 255, 0.08)';
+        badgeEl.style.color = 'var(--text-secondary)';
+      }
+    }
+
+    // Render current roster
+    const currentListEl = document.getElementById('midseason-current-players-list');
+    const currentCountEl = document.getElementById('midseason-current-count');
+    const originalPlayers = draft.originalPlayers || [];
+
+    if (currentCountEl) currentCountEl.textContent = `${originalPlayers.length} jugadores`;
+
+    if (currentListEl) {
+      currentListEl.innerHTML = originalPlayers.map((p, idx) => `
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.35rem 0.5rem; background: rgba(255,255,255,0.03); border-radius: 4px; font-size: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="color: var(--text-muted); font-size: 0.75rem; width: 20px;">${idx + 1}</span>
+            <span class="pos-badge pos-${p.position || 'MC'}" style="font-size: 0.72rem; padding: 0.1rem 0.4rem;">${p.position || 'MC'}</span>
+            <span style="color: #fff; font-weight: 700;">${this.escape(p.name)}</span>
+          </div>
+          <span style="color: var(--text-muted); font-size: 0.75rem;">${p.goals || 0}G / ${p.assists || 0}A</span>
+        </div>
+      `).join('');
+    }
+
+    // Set textarea content
+    const textarea = document.getElementById('midseason-plaintext-input');
+    if (textarea) {
+      if (draft.rawText) {
+        textarea.value = draft.rawText;
+      } else if (draft.status === 'unchanged') {
+        textarea.value = originalPlayers.map(p => `${p.position || 'MC'} ${p.name}`).join('\n');
+      } else {
+        textarea.value = '';
+      }
+      this.onMidseasonInputChanged();
+    }
+
+    // Render diff card if modified
+    this.renderMidseasonDiffCard(draft);
+  },
+
+  copyCurrentRosterToNew() {
+    const draft = this.midseason.draftRosters[this.midseason.currentTeamId];
+    if (!draft || !draft.originalPlayers) return;
+
+    const formatted = draft.originalPlayers.map(p => `${p.position || 'MC'} ${p.name}`).join('\n');
+    const textarea = document.getElementById('midseason-plaintext-input');
+    if (textarea) {
+      textarea.value = formatted;
+      this.onMidseasonInputChanged();
+      this.showToast('Plantilla actual copiada al editor. Ahora puedes modificar las altas y bajas.', 'info');
+    }
+  },
+
+  onMidseasonInputChanged() {
+    const text = document.getElementById('midseason-plaintext-input')?.value || '';
+    const badge = document.getElementById('midseason-new-count-badge');
+    if (!badge) return;
+
+    const lines = text.split(/\r?\n/)
+      .map(l => l.trim())
+      .filter(l => l.length > 0 && !l.startsWith('##') && !l.startsWith('---'));
+
+    const ptCount = lines.filter(l => /^(PT|POR|PO|GK)[\s:\-]|[\(\[]\s*(PT|POR|PO|GK)\s*[\)\]]$/i.test(l)).length;
+
+    badge.textContent = `${lines.length} / 23 jugadores (${ptCount} PT)`;
+    if (lines.length === 23 && ptCount >= 1) {
+      badge.style.background = 'rgba(16, 185, 129, 0.15)';
+      badge.style.borderColor = '#10b981';
+      badge.style.color = '#10b981';
+    } else {
+      badge.style.background = 'rgba(245, 158, 11, 0.15)';
+      badge.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+      badge.style.color = '#f59e0b';
+    }
+  },
+
+  markCurrentClubUnchanged() {
+    const teamId = this.midseason.currentTeamId;
+    const team = this.getTeamById(teamId);
+    if (!team) return;
+
+    const draft = this.midseason.draftRosters[teamId];
+    draft.status = 'unchanged';
+    draft.newPlayers = draft.originalPlayers.map(p => ({ ...p }));
+    draft.rawText = draft.originalPlayers.map(p => `${p.position || 'MC'} ${p.name}`).join('\n');
+    draft.altas = [];
+    draft.bajas = [];
+    draft.kept = draft.originalPlayers.map(p => ({ ...p }));
+
+    this.renderMidseasonClubSelectors();
+    this.renderCurrentMidseasonTeam();
+    this.showToast(`Plantilla de "${team.name}" confirmada SIN CAMBIOS.`, 'success');
+
+    // Auto advance to next pending club if available
+    setTimeout(() => {
+      const nextPending = this.data.teams.find(t => this.midseason.draftRosters[t.id]?.status === 'pending');
+      if (nextPending) {
+        this.onMidseasonTeamSelected(nextPending.id);
+      }
+    }, 300);
+  },
+
+  parseMidseasonPlaintext(text) {
+    const parsed = [];
+    const lines = text.split(/\r?\n/)
+      .map(l => l.trim())
+      .filter(l => l.length > 0 && !l.startsWith('##') && !l.startsWith('---'));
+
+    const posStartRegex = /^(PT|POR|PO|GK|CT|CB|DFC|DF|LD|RB|LI|LB|MCD|DMF|DM|CD|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|ID|II|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)[\s:\-]+(.+)$/i;
+    const posEndRegex = /^(.+?)\s*[\(\[]\s*(PT|POR|PO|GK|CT|CB|DFC|DF|LD|RB|LI|LB|MCD|DMF|DM|CD|MC|CMF|CM|MD|RMF|RM|MI|LMF|LM|ID|II|MP|MO|AMF|CAM|AM|EXD|ED|RWF|RW|EXI|EI|LWF|LW|SD|SS|DC|CF|ST|DL)\s*[\)\]]$/i;
+
+    lines.forEach(line => {
+      let pos = 'MC';
+      let name = line;
+
+      const mStart = line.match(posStartRegex);
+      if (mStart) {
+        pos = this.normalizePosition(mStart[1]);
+        name = mStart[2].trim();
+      } else {
+        const mEnd = line.match(posEndRegex);
+        if (mEnd) {
+          name = mEnd[1].trim();
+          pos = this.normalizePosition(mEnd[2]);
+        }
+      }
+
+      name = name.replace(/^[\s\-\*\•\d\.\)]+/, '').trim();
+      if (name) {
+        parsed.push({ name, position: pos });
+      }
+    });
+
+    return parsed;
+  },
+
+  analyzeCurrentClubChanges() {
+    const teamId = this.midseason.currentTeamId;
+    const team = this.getTeamById(teamId);
+    const draft = this.midseason.draftRosters[teamId];
+    if (!draft) return null;
+
+    const text = document.getElementById('midseason-plaintext-input')?.value || '';
+    if (!text.trim()) {
+      this.showToast('Primero pega la lista de jugadores en el cuadro de texto.', 'error');
+      return null;
+    }
+
+    const parsedList = this.parseMidseasonPlaintext(text);
+    const originalPlayers = draft.originalPlayers || [];
+
+    const usedOriginalIndices = new Set();
+    const usedParsedIndices = new Set();
+    const kept = [];
+    const correctedNames = [];
+
+    // Pass 1: Exact normalized match
+    parsedList.forEach((p, pIdx) => {
+      const k = this.normalizePlayerKey(p.name);
+      const oIdx = originalPlayers.findIndex((orig, idx) => !usedOriginalIndices.has(idx) && this.normalizePlayerKey(orig.name) === k);
+      if (oIdx !== -1) {
+        usedOriginalIndices.add(oIdx);
+        usedParsedIndices.add(pIdx);
+        kept.push({
+          ...originalPlayers[oIdx],
+          name: p.name,
+          position: p.position // allow position update
+        });
+      }
+    });
+
+    // Pass 2: Smart fuzzy / Typo / Alias match on remaining
+    parsedList.forEach((p, pIdx) => {
+      if (usedParsedIndices.has(pIdx)) return;
+
+      let bestMatch = null;
+      let bestScore = 0;
+      let bestOIdx = -1;
+
+      originalPlayers.forEach((orig, oIdx) => {
+        if (usedOriginalIndices.has(oIdx)) return;
+        const res = this.arePlayersEquivalent(orig.name, p.name);
+        if (res.match && res.score > bestScore) {
+          bestScore = res.score;
+          bestMatch = orig;
+          bestOIdx = oIdx;
+        }
+      });
+
+      if (bestMatch && bestOIdx !== -1) {
+        usedOriginalIndices.add(bestOIdx);
+        usedParsedIndices.add(pIdx);
+        correctedNames.push({
+          originalName: bestMatch.name,
+          newName: p.name,
+          position: p.position,
+          score: Math.round(bestScore * 100)
+        });
+        kept.push({
+          ...bestMatch,
+          name: p.name, // adopt the clean new name
+          position: p.position
+        });
+      }
+    });
+
+    // Altas (parsed players with no match)
+    const altas = [];
+    parsedList.forEach((p, pIdx) => {
+      if (!usedParsedIndices.has(pIdx)) {
+        altas.push(p);
+      }
+    });
+
+    // Bajas (original players with no match)
+    const bajas = [];
+    originalPlayers.forEach((orig, oIdx) => {
+      if (!usedOriginalIndices.has(oIdx)) {
+        bajas.push(orig);
+      }
+    });
+
+    draft.rawText = text;
+    draft.altas = altas;
+    draft.bajas = bajas;
+    draft.kept = kept;
+    draft.correctedNames = correctedNames;
+    draft.newPlayers = [...kept, ...altas];
+
+    this.renderMidseasonDiffCard(draft, true);
+
+    // Visual feedback
+    if (altas.length === 0 && bajas.length === 0) {
+      if (correctedNames.length > 0) {
+        this.showToast(`Plantilla de ${team.name}: Coinciden los ${kept.length} jugadores (${correctedNames.length} con corrección tipográfica/alias).`, 'success');
+      } else {
+        this.showToast(`Plantilla de ${team.name}: 100% idéntica (los ${kept.length} jugadores coinciden, 0 altas, 0 bajas).`, 'success');
+      }
+    } else {
+      this.showToast(`Comparación: +${altas.length} altas y -${bajas.length} bajas detectadas en ${team.name}.`, 'info');
+    }
+
+    const diffCard = document.getElementById('midseason-club-diff-card');
+    if (diffCard) {
+      diffCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    return draft;
+  },
+
+  renderMidseasonDiffCard(draft, isExplicit = false) {
+    const diffCard = document.getElementById('midseason-club-diff-card');
+    if (!diffCard) return;
+
+    if (!draft) {
+      diffCard.style.display = 'none';
+      return;
+    }
+
+    // Only hide if not explicitly compared, pending, no text, and no changes
+    if (!isExplicit && draft.status === 'pending' && !draft.rawText && draft.altas.length === 0 && draft.bajas.length === 0) {
+      diffCard.style.display = 'none';
+      return;
+    }
+
+    diffCard.style.display = 'block';
+    const titleEl = document.getElementById('midseason-diff-club-title');
+    const badgeEl = document.getElementById('midseason-diff-status-badge');
+    const altasCount = document.getElementById('midseason-diff-altas-count');
+    const bajasCount = document.getElementById('midseason-diff-bajas-count');
+    const keptCount = document.getElementById('midseason-diff-kept-count');
+    const altasList = document.getElementById('midseason-diff-altas-list');
+    const bajasList = document.getElementById('midseason-diff-bajas-list');
+    const keptList = document.getElementById('midseason-diff-kept-list');
+    const corrBox = document.getElementById('midseason-diff-corrections-box');
+    const corrList = document.getElementById('midseason-corrections-list');
+    const corrTitle = document.getElementById('midseason-corrections-count-title');
+    const identicalBox = document.getElementById('midseason-diff-identical-box');
+
+    if (titleEl) titleEl.textContent = draft.teamName;
+    if (altasCount) altasCount.textContent = draft.altas.length;
+    if (bajasCount) bajasCount.textContent = draft.bajas.length;
+    if (keptCount) keptCount.textContent = draft.kept.length;
+
+    const isIdentical = (draft.altas.length === 0 && draft.bajas.length === 0);
+
+    // Render automatically corrected names
+    if (corrBox && corrList) {
+      if (draft.correctedNames && draft.correctedNames.length > 0) {
+        corrBox.style.display = 'block';
+        if (corrTitle) corrTitle.textContent = `${draft.correctedNames.length} nombres vinculados con corrección tipográfica o variante:`;
+        corrList.innerHTML = draft.correctedNames.map(c => `
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.6rem; border-radius: 6px; background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.4); font-size: 0.8rem; color: #93c5fd;">
+            <span class="pos-badge pos-${c.position}">${c.position}</span>
+            <span style="color: #fca5a5; text-decoration: line-through;">${this.escape(c.originalName)}</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem; color: #60a5fa;"></i>
+            <strong style="color: #fff;">${this.escape(c.newName)}</strong>
+            <span style="color: #a7f3d0; font-size: 0.72rem; font-weight: 700;">(${c.score}%)</span>
+          </span>
+        `).join('');
+      } else {
+        corrBox.style.display = 'none';
+      }
+    }
+
+    // Render Identical Box
+    if (identicalBox) {
+      if (isIdentical && draft.kept.length > 0) {
+        identicalBox.style.display = 'block';
+      } else {
+        identicalBox.style.display = 'none';
+      }
+    }
+
+    if (badgeEl) {
+      if (isIdentical) {
+        badgeEl.textContent = '✓ Plantilla 100% idéntica';
+        badgeEl.className = 'badge';
+        badgeEl.style.background = 'rgba(16, 185, 129, 0.2)';
+        badgeEl.style.border = '1px solid #10b981';
+        badgeEl.style.color = '#10b981';
+      } else {
+        badgeEl.textContent = `+${draft.altas.length} altas / -${draft.bajas.length} bajas`;
+        badgeEl.className = 'badge';
+        badgeEl.style.background = 'rgba(59, 130, 246, 0.2)';
+        badgeEl.style.border = '1px solid #3b82f6';
+        badgeEl.style.color = '#60a5fa';
+      }
+    }
+
+    if (altasList) {
+      altasList.innerHTML = draft.altas.length > 0
+        ? draft.altas.map((p, aIdx) => `
+            <span class="diff-chip diff-chip-alta">
+              + ${p.position} ${this.escape(p.name)}
+            </span>
+          `).join('')
+        : '<span style="color: #10b981; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-check"></i> Sin altas (0)</span>';
+    }
+
+    if (bajasList) {
+      bajasList.innerHTML = draft.bajas.length > 0
+        ? draft.bajas.map((p, bIdx) => `
+            <span class="diff-chip diff-chip-baja" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+              - ${p.position} ${this.escape(p.name)}
+              ${draft.altas.length > 0 ? `
+                <button class="btn btn-secondary" style="padding: 0.1rem 0.4rem; font-size: 0.7rem; line-height: 1; border-color: rgba(255,255,255,0.25);" onclick="AdminApp.promptManualLinkBaja('${draft.teamId}', ${bIdx})" title="Vincular manualmente con una de las altas si es el mismo jugador">
+                  🔗 Vincular
+                </button>
+              ` : ''}
+            </span>
+          `).join('')
+        : '<span style="color: #10b981; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-check"></i> Sin bajas (0)</span>';
+    }
+
+    if (keptList) {
+      keptList.innerHTML = draft.kept.length > 0
+        ? draft.kept.map(p => `<span class="diff-chip diff-chip-kept">${p.position} ${this.escape(p.name)}</span>`).join('')
+        : '<span style="color: var(--text-muted); font-size: 0.8rem;">0</span>';
+    }
+  },
+
+  promptManualLinkBaja(teamId, bajaIdx) {
+    const draft = this.midseason.draftRosters[teamId];
+    if (!draft || !draft.bajas[bajaIdx] || draft.altas.length === 0) return;
+
+    const baja = draft.bajas[bajaIdx];
+    const altaOptions = draft.altas.map((a, idx) => `${idx + 1}. [${a.position}] ${a.name}`).join('\n');
+    const input = prompt(`Vincular a "${baja.name}" con una de las nuevas altas de la plantilla:\n\n${altaOptions}\n\nIngresa el número correspondiente:`);
+    if (!input) return;
+
+    const chosenIdx = parseInt(input.trim(), 10) - 1;
+    if (isNaN(chosenIdx) || chosenIdx < 0 || chosenIdx >= draft.altas.length) {
+      this.showToast('Opción inválida.', 'error');
+      return;
+    }
+
+    this.linkBajaToAltaManually(teamId, bajaIdx, chosenIdx);
+  },
+
+  linkBajaToAltaManually(teamId, bajaIdx, altaIdx) {
+    const draft = this.midseason.draftRosters[teamId];
+    if (!draft) return;
+
+    const baja = draft.bajas.splice(bajaIdx, 1)[0];
+    const alta = draft.altas.splice(altaIdx, 1)[0];
+
+    if (!draft.correctedNames) draft.correctedNames = [];
+    draft.correctedNames.push({
+      originalName: baja.name,
+      newName: alta.name,
+      position: alta.position,
+      score: 100
+    });
+
+    draft.kept.push({
+      ...baja,
+      name: alta.name,
+      position: alta.position
+    });
+
+    draft.newPlayers = [...draft.kept, ...draft.altas];
+    this.renderMidseasonDiffCard(draft);
+    this.showToast(`"${baja.name}" vinculado exitosamente con "${alta.name}".`, 'success');
+  },
+
+  saveCurrentClubDraft() {
+    const draft = this.analyzeCurrentClubChanges();
+    if (!draft) return;
+
+    const totalCount = draft.kept.length + draft.altas.length;
+    if (totalCount !== 23) {
+      if (!confirm(`⚠️ Advertencia: La plantilla contiene ${totalCount} jugadores (se esperan exactamente 23 en la LMI).\n¿Deseas guardarla en el borrador de todas formas?`)) {
+        return;
+      }
+    }
+
+    draft.status = 'modified';
+    this.renderMidseasonClubSelectors();
+    this.renderCurrentMidseasonTeam();
+    this.showToast(`Plantilla de "${draft.teamName}" guardada en el borrador (+${draft.altas.length} / -${draft.bajas.length}).`, 'success');
+
+    // Auto navigate to next pending
+    setTimeout(() => {
+      const nextPending = this.data.teams.find(t => this.midseason.draftRosters[t.id]?.status === 'pending');
+      if (nextPending) {
+        this.onMidseasonTeamSelected(nextPending.id);
+      }
+    }, 400);
+  },
+
+  resetMidseasonDraft() {
+    if (!confirm('¿Estás seguro de reiniciar el borrador del mercado de mitad de temporada? Se restablecerán las plantillas originales de la base de datos.')) return;
+    this.midseason.draftRosters = {};
+    this.initMidseasonMarketView();
+    this.showToast('Borrador de mercado reiniciado.', 'info');
+  },
+
+  goToConciliationStep() {
+    // Collect all bajas across all clubs
+    const allBajas = [];
+    const allAltas = [];
+    const teamsMap = {};
+    if (this.data.teams) {
+      this.data.teams.forEach(t => teamsMap[t.id] = t);
+    }
+
+    // Default any pending clubs to unchanged
+    this.data.teams.forEach(team => {
+      let draft = this.midseason.draftRosters[team.id];
+      if (!draft || draft.status === 'pending') {
+        const teamPlayers = this.data.players.filter(p => p.teamId === team.id);
+        draft = {
+          teamId: team.id,
+          teamName: team.name,
+          status: 'unchanged',
+          originalPlayers: teamPlayers.map(p => ({ ...p })),
+          newPlayers: teamPlayers.map(p => ({ ...p })),
+          rawText: '',
+          altas: [],
+          bajas: [],
+          kept: teamPlayers.map(p => ({ ...p }))
+        };
+        this.midseason.draftRosters[team.id] = draft;
+      }
+
+      if (draft.bajas) {
+        draft.bajas.forEach(b => {
+          allBajas.push({
+            ...b,
+            fromTeamId: team.id,
+            fromTeamName: team.name,
+            key: this.normalizePlayerKey(b.name)
+          });
+        });
+      }
+
+      if (draft.altas) {
+        draft.altas.forEach(a => {
+          allAltas.push({
+            ...a,
+            toTeamId: team.id,
+            toTeamName: team.name,
+            key: this.normalizePlayerKey(a.name)
+          });
+        });
+      }
+    });
+
+    // Also include any pre-existing duplicates that might need resolution
+    const currentDuplicates = this.findDuplicatePlayersInDb();
+    currentDuplicates.forEach(dup => {
+      // If a player appears in multiple teams, check which team kept them in draft
+      const keptInTeams = [];
+      dup.occurrences.forEach(occ => {
+        const d = this.midseason.draftRosters[occ.teamId];
+        if (d && d.newPlayers.some(p => this.normalizePlayerKey(p.name) === dup.key)) {
+          keptInTeams.push(occ.teamId);
+        }
+      });
+      // If kept in only one team, register the departure from other teams
+      if (keptInTeams.length === 1) {
+        const keptTid = keptInTeams[0];
+        dup.occurrences.forEach(occ => {
+          if (occ.teamId !== keptTid && !allBajas.some(b => b.key === dup.key && b.fromTeamId === occ.teamId)) {
+            allBajas.push({
+              ...occ,
+              fromTeamId: occ.teamId,
+              fromTeamName: occ.teamName,
+              key: dup.key
+            });
+          }
+        });
+      }
+    });
+
+    // Match Altas with Bajas
+    const detectedDeals = [];
+    const usedBajaIndices = new Set();
+    const usedAltaIndices = new Set();
+
+    // Pass 1: exact normalized match
+    allAltas.forEach((alta, aIdx) => {
+      const bIdx = allBajas.findIndex((baja, idx) => !usedBajaIndices.has(idx) && baja.key === alta.key);
+      if (bIdx !== -1) {
+        const baja = allBajas[bIdx];
+        usedBajaIndices.add(bIdx);
+        usedAltaIndices.add(aIdx);
+
+        const prevLoan = (this.data.marketMovements || []).find(m => 
+          this.arePlayersEquivalent(m.player, alta.name).match && 
+          (m.type || '').toLowerCase().includes('prestamo')
+        );
+
+        detectedDeals.push({
+          player: alta.name,
+          position: alta.position || baja.position || 'MC',
+          fromTeamId: baja.fromTeamId,
+          fromTeamName: baja.fromTeamName,
+          toTeamId: alta.toTeamId,
+          toTeamName: alta.toTeamName,
+          type: prevLoan ? 'Prestamo' : 'Fichaje',
+          seasons: prevLoan ? (prevLoan.seasons || 1) : 1,
+          price: 0,
+          details: 'Movimiento de mercado de mitad de temporada',
+          originalPlayer: baja
+        });
+      }
+    });
+
+    // Pass 2: smart fuzzy / typo match on remaining
+    allAltas.forEach((alta, aIdx) => {
+      if (usedAltaIndices.has(aIdx)) return;
+
+      let bestBIdx = -1;
+      let bestScore = 0;
+      allBajas.forEach((baja, bIdx) => {
+        if (usedBajaIndices.has(bIdx)) return;
+        const res = this.arePlayersEquivalent(baja.name, alta.name);
+        if (res.match && res.score > bestScore) {
+          bestScore = res.score;
+          bestBIdx = bIdx;
+        }
+      });
+
+      if (bestBIdx !== -1) {
+        const baja = allBajas[bestBIdx];
+        usedBajaIndices.add(bestBIdx);
+        usedAltaIndices.add(aIdx);
+
+        const prevLoan = (this.data.marketMovements || []).find(m => 
+          this.arePlayersEquivalent(m.player, alta.name).match && 
+          (m.type || '').toLowerCase().includes('prestamo')
+        );
+
+        detectedDeals.push({
+          player: alta.name,
+          position: alta.position || baja.position || 'MC',
+          fromTeamId: baja.fromTeamId,
+          fromTeamName: baja.fromTeamName,
+          toTeamId: alta.toTeamId,
+          toTeamName: alta.toTeamName,
+          type: prevLoan ? 'Prestamo' : 'Fichaje',
+          seasons: prevLoan ? (prevLoan.seasons || 1) : 1,
+          price: 0,
+          details: baja.name !== alta.name ? `Traspaso (nombre unificado: "${baja.name}" ➔ "${alta.name}")` : 'Movimiento de mercado de mitad de temporada',
+          originalPlayer: baja
+        });
+      }
+    });
+
+    const freeAgents = allBajas.filter((_, idx) => !usedBajaIndices.has(idx));
+    const newExternal = allAltas.filter((_, idx) => !usedAltaIndices.has(idx));
+
+    this.midseason.detectedDeals = detectedDeals;
+    this.midseason.freeAgents = freeAgents;
+    this.midseason.newExternal = newExternal;
+
+    this.renderConciliationStep();
+    this.setMidseasonStep(2);
+  },
+
+  renderConciliationStep() {
+    const deals = this.midseason.detectedDeals || [];
+    const free = this.midseason.freeAgents || [];
+    const external = this.midseason.newExternal || [];
+
+    const dealsCount = document.getElementById('midseason-deals-count');
+    const freeCount = document.getElementById('midseason-free-agents-count');
+    const extCount = document.getElementById('midseason-new-external-count');
+
+    if (dealsCount) dealsCount.textContent = deals.length;
+    if (freeCount) freeCount.textContent = free.length;
+    if (extCount) extCount.textContent = external.length;
+
+    // Render Deals
+    const dealsContainer = document.getElementById('midseason-deals-container');
+    if (dealsContainer) {
+      if (deals.length === 0) {
+        dealsContainer.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No se detectaron transferencias directas entre clubes.</div>`;
+      } else {
+        dealsContainer.innerHTML = deals.map((d, idx) => `
+          <div class="deal-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span class="pos-badge pos-${d.position}">${d.position}</span>
+                <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0;">${this.escape(d.player)}</h4>
+                <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.88rem;">
+                  <strong style="color: #f87171;">${this.escape(d.fromTeamName)}</strong>
+                  <i class="fa-solid fa-arrow-right" style="color: #f59e0b; font-size: 0.75rem;"></i>
+                  <strong style="color: #34d399;">${this.escape(d.toTeamName)}</strong>
+                </div>
+              </div>
+              <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.75rem;">
+                <i class="fa-solid fa-shield-check"></i> ${d.originalPlayer ? (d.originalPlayer.goals || 0) : 0} Goles / ${d.originalPlayer ? (d.originalPlayer.assists || 0) : 0} Asistencias conservados
+              </span>
+            </div>
+
+            <div class="grid-4" style="gap: 0.75rem; align-items: flex-end;">
+              <div class="form-group" style="margin: 0;">
+                <label style="font-size: 0.78rem;">Tipo de Negocio</label>
+                <select class="form-select" style="font-size: 0.85rem; padding: 0.35rem 0.6rem;" onchange="AdminApp.updateMidseasonDeal(${idx}, 'type', this.value)">
+                  <option value="Fichaje" ${d.type === 'Fichaje' ? 'selected' : ''}>Fichaje Definitivo (Venta/Compra)</option>
+                  <option value="Prestamo" ${d.type === 'Prestamo' ? 'selected' : ''}>Préstamo / Cesión Temporal</option>
+                  <option value="Intercambio" ${d.type === 'Intercambio' ? 'selected' : ''}>Intercambio / Trueque</option>
+                  <option value="Regreso de Préstamo" ${d.type === 'Regreso de Préstamo' ? 'selected' : ''}>Regreso de Préstamo</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label style="font-size: 0.78rem;">Temporadas (Préstamo)</label>
+                <input type="number" min="1" max="5" value="${d.seasons || 1}" class="form-control" style="font-size: 0.85rem; padding: 0.35rem 0.6rem; text-align: center;" onchange="AdminApp.updateMidseasonDeal(${idx}, 'seasons', parseInt(this.value, 10))">
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label style="font-size: 0.78rem;">Costo / Precio ($)</label>
+                <input type="number" value="${d.price || 0}" class="form-control" style="font-size: 0.85rem; padding: 0.35rem 0.6rem;" onchange="AdminApp.updateMidseasonDeal(${idx}, 'price', parseInt(this.value, 10))">
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label style="font-size: 0.78rem;">Cláusula / Detalles</label>
+                <input type="text" value="${this.escape(d.details || '')}" placeholder="Opcional..." class="form-control" style="font-size: 0.85rem; padding: 0.35rem 0.6rem;" onchange="AdminApp.updateMidseasonDeal(${idx}, 'details', this.value)">
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render Free Agents
+    const freeContainer = document.getElementById('midseason-free-agents-container');
+    if (freeContainer) {
+      if (free.length === 0) {
+        freeContainer.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">Ningún jugador quedó libre en este mercado.</span>`;
+      } else {
+        freeContainer.innerHTML = free.map(f => `
+          <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; padding: 0.4rem 0.75rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span class="pos-badge pos-${f.position}">${f.position}</span>
+            <strong style="color: #fff;">${this.escape(f.name)}</strong>
+            <span style="color: #f87171; font-size: 0.75rem;">(Ex ${this.escape(f.fromTeamName)})</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render External
+    const extContainer = document.getElementById('midseason-new-external-container');
+    if (extContainer) {
+      if (external.length === 0) {
+        extContainer.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">No hay fichajes externos nuevos.</span>`;
+      } else {
+        extContainer.innerHTML = external.map(e => `
+          <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 6px; padding: 0.4rem 0.75rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span class="pos-badge pos-${e.position}">${e.position}</span>
+            <strong style="color: #fff;">${this.escape(e.name)}</strong>
+            <span style="color: #60a5fa; font-size: 0.75rem;">(Hacia ${this.escape(e.toTeamName)})</span>
+          </div>
+        `).join('');
+      }
+    }
+  },
+
+  updateMidseasonDeal(idx, field, value) {
+    if (!this.midseason.detectedDeals || !this.midseason.detectedDeals[idx]) return;
+    this.midseason.detectedDeals[idx][field] = value;
+  },
+
+  async applyAllMidseasonMarket() {
+    if (!confirm('⚠️ ¿Confirmas aplicar todos los cambios del Mercado de Mitad de Temporada a la base de datos?\n\n• Se actualizarán las plantillas de todos los clubes a 23 jugadores exactos.\n• Se preservarán los goles y asistencias de los jugadores traspasados.\n• Se purgarán los duplicados.\n• Se guardará una copia de respaldo automática.')) {
+      return;
+    }
+
+    this.setStatus('Aplicando mercado...', 'loading');
+
+    // 1. Map of original players by normalized key and by ID to retain stats
+    const masterPlayersMap = {};
+    const masterPlayersById = {};
+    (this.data.players || []).forEach(p => {
+      masterPlayersById[p.id] = p;
+      const k = this.normalizePlayerKey(p.name);
+      if (!masterPlayersMap[k]) {
+        masterPlayersMap[k] = p;
+      }
+    });
+
+    const deals = this.midseason.detectedDeals || [];
+
+    // 2. Build new clean players list
+    const newGlobalPlayers = [];
+    const timestamp = Date.now();
+    let counter = 1;
+
+    this.data.teams.forEach(team => {
+      const draft = this.midseason.draftRosters[team.id];
+      const playersList = (draft && draft.newPlayers && draft.newPlayers.length > 0)
+        ? draft.newPlayers
+        : this.data.players.filter(p => p.teamId === team.id);
+
+      playersList.forEach(item => {
+        // Priority 1: Direct match by existing Player ID
+        let original = null;
+        if (item.id && masterPlayersById[item.id]) {
+          original = masterPlayersById[item.id];
+        } else if (item.id && (item.goals !== undefined || item.assists !== undefined)) {
+          original = item;
+        }
+
+        // Priority 2: Direct match by normalized name
+        if (!original) {
+          const k = this.normalizePlayerKey(item.name);
+          original = masterPlayersMap[k];
+        }
+
+        // Priority 3: Match from conciliated deals (transferred players)
+        if (!original && deals.length > 0) {
+          const deal = deals.find(d => this.arePlayersEquivalent(d.player, item.name).match);
+          if (deal && deal.originalPlayer) {
+            original = deal.originalPlayer;
+          }
+        }
+
+        // Priority 4: Fuzzy matching across all historical players
+        if (!original) {
+          for (const p of (this.data.players || [])) {
+            if (this.arePlayersEquivalent(p.name, item.name).match) {
+              original = p;
+              break;
+            }
+          }
+        }
+
+        if (original) {
+          // Retain 100% of stats and history, update teamId and clean name/position
+          newGlobalPlayers.push({
+            ...original,
+            name: item.name,
+            position: item.position || original.position || 'MC',
+            teamId: team.id
+          });
+        } else {
+          // Brand new external player entering the league
+          newGlobalPlayers.push({
+            id: `p_${timestamp}_${counter++}`,
+            name: item.name,
+            position: item.position || 'MC',
+            teamId: team.id,
+            goals: 0,
+            assists: 0,
+            goals_liga: 0,
+            assists_liga: 0,
+            goals_champions: 0,
+            assists_champions: 0,
+            goals_estelar: 0,
+            assists_estelar: 0,
+            cardType: 'Normal',
+            isLegend: false
+          });
+        }
+      });
+    });
+
+    // Replace players array in data
+    this.data.players = newGlobalPlayers;
+
+    // 3. Register movements in data.marketMovements
+    if (!this.data.marketMovements) {
+      this.data.marketMovements = [];
+    }
+
+    deals.forEach(d => {
+      this.data.marketMovements.unshift({
+        player: d.player,
+        type: d.type || 'Fichaje',
+        fromTeamId: d.fromTeamId,
+        fromTeamName: d.fromTeamName,
+        toTeamId: d.toTeamId,
+        toTeamName: d.toTeamName,
+        price: d.price || 0,
+        seasons: d.seasons || 1,
+        details: d.details || 'Mercado de mitad de temporada'
+      });
+    });
+
+    // 4. Save to data.js
+    await this.saveData(true);
+
+    // 5. Update metrics
+    const metricTeams = document.getElementById('midseason-metric-teams');
+    const metricTransfers = document.getElementById('midseason-metric-transfers');
+    const metricLoans = document.getElementById('midseason-metric-loans');
+    const metricDups = document.getElementById('midseason-metric-duplicates');
+
+    if (metricTeams) metricTeams.textContent = `${this.data.teams.length} / ${this.data.teams.length}`;
+    if (metricTransfers) metricTransfers.textContent = deals.filter(d => d.type !== 'Prestamo').length;
+    if (metricLoans) metricLoans.textContent = (this.data.marketMovements || []).filter(m => (m.type || '').toLowerCase().includes('prestamo')).length;
+    if (metricDups) metricDups.textContent = '0 (Limpio)';
+
+    // 6. Refresh views
+    this.renderTeamsView();
+    this.renderMarketView();
+    this.renderDashboard();
+    this.renderActiveLoansReport();
+    this.setMidseasonStep(3);
+    this.showToast('¡Mercado de mitad de temporada aplicado y sincronizado exitosamente!', 'success');
+  },
+
+  renderActiveLoansReport() {
+    const tbody = document.getElementById('midseason-loans-tbody');
+    if (!tbody || !this.data || !this.data.marketMovements) return;
+
+    // Find all loan movements
+    const movements = this.data.marketMovements || [];
+    const loanMovements = movements.filter(m => (m.type || '').toLowerCase().includes('prestamo'));
+
+    // Check which player is currently active in the destination team
+    const playersMap = {};
+    (this.data.players || []).forEach(p => {
+      playersMap[this.normalizePlayerKey(p.name)] = p;
+    });
+
+    if (loanMovements.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay jugadores a préstamo activos actualmente en la liga.</td></tr>`;
+      return;
+    }
+
+    this.midseason.loansReport = loanMovements;
+
+    tbody.innerHTML = loanMovements.map((m, idx) => {
+      const p = playersMap[this.normalizePlayerKey(m.player)];
+
+      return `
+        <tr>
+          <td style="color: var(--text-muted); font-size: 0.8rem; font-weight: 700;">${idx + 1}</td>
+          <td style="font-weight: 700; color: #fff;">
+            ${this.escape(m.player)}
+            ${p ? `<span class="pos-badge pos-${p.position}" style="margin-left: 0.4rem; font-size: 0.7rem; padding: 0.1rem 0.35rem;">${p.position}</span>` : ''}
+          </td>
+          <td style="color: #f87171; font-weight: 600;">${this.escape(m.fromTeamName || '-')}</td>
+          <td style="color: #34d399; font-weight: 700;">${this.escape(m.toTeamName || '-')}</td>
+          <td>
+            <span class="badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 0.8rem; font-weight: 700;">
+              ${m.seasons || 1} ${(m.seasons || 1) === 1 ? 'temporada' : 'temporadas'}
+            </span>
+          </td>
+          <td style="color: var(--text-secondary); font-size: 0.85rem;">${this.escape(m.details || 'Sin cláusulas adicionales')}</td>
+          <td>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.75rem;">
+              <i class="fa-solid fa-circle-check"></i> Activo
+            </span>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  },
+
+  copyLoansReportToClipboard() {
+    const loans = this.midseason.loansReport || [];
+    if (loans.length === 0) {
+      this.showToast('No hay préstamos activos para copiar.', 'info');
+      return;
+    }
+
+    let report = `📋 REPORTE OFICIAL LMI - PRÉSTAMOS ACTIVOS (TEMPORADA 10)\n`;
+    report += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+    loans.forEach((l, idx) => {
+      report += `⚽ ${l.player} | ${l.fromTeamName} ➔ ${l.toTeamName} (${l.seasons || 1} temp)${l.details ? ' • ' + l.details : ''}\n`;
+    });
+    report += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+    report += `Total de jugadores a préstamo activos: ${loans.length}\n`;
+    report += `Liga Máster Internacional • Web Oficial`;
+
+    navigator.clipboard.writeText(report).then(() => {
+      this.showToast('¡Reporte de préstamos copiado al portapapeles! Listo para enviar a Telegram.', 'success');
+    }).catch(err => {
+      this.showToast('No se pudo copiar automáticamente: ' + err, 'error');
+    });
   }
 };
 

@@ -56,6 +56,10 @@
         <i class="fa-solid fa-arrow-right-arrow-left"></i>
         <span>Mercado de Fichajes</span>
       </button>
+      <button class="nav-btn" data-view="view-midseason-market" style="border-left: 3px solid #f59e0b;">
+        <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i>
+        <span>Mercado Mitad Temporada</span>
+      </button>
       <button class="nav-btn" data-view="view-trophies">
         <i class="fa-solid fa-award"></i>
         <span>Trofeos & Balón de Oro</span>
@@ -970,6 +974,9 @@
               <button class="btn btn-secondary" id="btn-reset-club-stats" style="padding: 0.5rem 0.85rem; font-size: 0.85rem;" title="Poner a cero los goles y asistencias de esta plantilla para una nueva temporada">
                 <i class="fa-solid fa-arrows-rotate"></i> Reset Goles
               </button>
+              <button class="btn btn-secondary" onclick="AdminApp.switchView('view-midseason-market')" style="padding: 0.5rem 0.9rem; font-size: 0.85rem; border-color: #f59e0b; color: #f59e0b;" title="Actualizador Masivo de Mercado de Mitad de Temporada">
+                <i class="fa-solid fa-people-arrows"></i> Mercado Mitad Temporada
+              </button>
               <button class="btn btn-gold" id="btn-open-plaintext-roster" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;" title="Importar lista de jugadores copiando y pegando texto plano">
                 <i class="fa-solid fa-file-import"></i> Importar Plantilla (Texto Plano)
               </button>
@@ -1007,6 +1014,28 @@
       <!-- ==================== VIEW 4: MARKET & TRANSFERS ==================== -->
       <section class="module-view" id="view-market">
         
+        <!-- Mid-Season Market Callout Banner -->
+        <div class="card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.85)); border: 1px solid rgba(245, 158, 11, 0.4); margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(245, 158, 11, 0.25); display: flex; align-items: center; justify-content: center; color: #f59e0b; font-size: 1.4rem;">
+                <i class="fa-solid fa-people-arrows"></i>
+              </div>
+              <div>
+                <h3 style="color: #fff; font-size: 1.1rem; font-weight: 800; margin-bottom: 0.2rem;">
+                  ¿Mercado de Mitad de Temporada Abierto?
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 0;">
+                  Actualiza plantillas pegando texto plano, compara altas y bajas, evita duplicados y concilia préstamos/traspasos globalmente.
+                </p>
+              </div>
+            </div>
+            <button class="btn btn-gold" onclick="AdminApp.switchView('view-midseason-market')">
+              <i class="fa-solid fa-bolt"></i> Abrir Asistente Mitad de Temporada
+            </button>
+          </div>
+        </div>
+
         <!-- Register Market Movement Form -->
         <div class="card">
           <div class="card-header">
@@ -1104,6 +1133,396 @@
               </tbody>
             </table>
           </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== VIEW: MERCADO DE MITAD DE TEMPORADA ==================== -->
+      <section class="module-view" id="view-midseason-market">
+        
+        <!-- Header & Stepper Card -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+            <div>
+              <h2 class="card-title" style="display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i>
+                Mercado de Fichajes de Mitad de Temporada
+              </h2>
+              <p class="card-desc">
+                Actualiza plantillas pegando listas en texto plano. El sistema detecta altas y bajas, reserva a los salientes, concilia préstamos y fichajes sin duplicados y genera el informe de préstamos activos.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button class="btn btn-secondary" onclick="AdminApp.detectCurrentDuplicates(true)" title="Auditar duplicados en la base de datos actual">
+                <i class="fa-solid fa-shield-virus" style="color: #f59e0b;"></i> Auditar Duplicados BD
+              </button>
+              <button class="btn btn-secondary" onclick="AdminApp.resetMidseasonDraft()" title="Reiniciar borrador del mercado">
+                <i class="fa-solid fa-arrows-rotate"></i> Reiniciar Proceso
+              </button>
+            </div>
+          </div>
+
+          <!-- Stepper Navigation -->
+          <div class="midseason-stepper">
+            <button class="midseason-step-btn active" id="midseason-nav-step-1" onclick="AdminApp.setMidseasonStep(1)">
+              <span class="midseason-step-badge">1</span>
+              <span>Revisión y Carga de Plantillas</span>
+            </button>
+            <div style="width: 24px; height: 2px; background: var(--border-color);"></div>
+            <button class="midseason-step-btn" id="midseason-nav-step-2" onclick="AdminApp.goToConciliationStep()">
+              <span class="midseason-step-badge">2</span>
+              <span>Conciliación de Negocios & Traspasos</span>
+            </button>
+            <div style="width: 24px; height: 2px; background: var(--border-color);"></div>
+            <button class="midseason-step-btn" id="midseason-nav-step-3" onclick="AdminApp.setMidseasonStep(3)">
+              <span class="midseason-step-badge">3</span>
+              <span>Resumen & Préstamos Activos</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==================== PASO 1: REVISIÓN Y CARGA POR CLUB ==================== -->
+        <div id="midseason-step-1-container">
+          
+          <!-- Duplicate alert banner if duplicates exist currently -->
+          <div id="midseason-duplicate-alert" class="card" style="display: none; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); margin-bottom: 1.5rem; padding: 1rem 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444; font-size: 1.5rem;"></i>
+                <div>
+                  <h4 style="color: #fff; font-size: 0.95rem; font-weight: 800;" id="midseason-duplicate-alert-title">Jugadores duplicados detectados</h4>
+                  <p style="color: var(--text-secondary); font-size: 0.82rem; margin: 0;" id="midseason-duplicate-alert-desc">Se resolverán automáticamente al asignar sus nuevos clubes.</p>
+                </div>
+              </div>
+              <button class="btn btn-danger" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.showDuplicatesModal()">
+                <i class="fa-solid fa-list"></i> Ver Duplicados Activos
+              </button>
+            </div>
+          </div>
+
+          <!-- Selector de Clubes y Tira de Navegación -->
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <label style="font-weight: 700; color: #fff; font-size: 0.9rem;">Club a Revisar:</label>
+                <select id="midseason-team-select" class="form-select" style="min-width: 260px;" onchange="AdminApp.onMidseasonTeamSelected(this.value)">
+                  <!-- Populated dynamically -->
+                </select>
+                <span id="midseason-current-club-badge" class="badge" style="background: rgba(255,255,255,0.08); font-size: 0.82rem;">Pendiente</span>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span id="midseason-progress-text" style="color: var(--text-muted); font-size: 0.85rem; font-weight: 700;">0 / 26 confirmados</span>
+                <button class="btn btn-secondary" onclick="AdminApp.navigateMidseasonClub(-1)" title="Club Anterior">
+                  <i class="fa-solid fa-chevron-left"></i> Anterior
+                </button>
+                <button class="btn btn-secondary" onclick="AdminApp.navigateMidseasonClub(1)" title="Club Siguiente">
+                  Siguiente <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Tira de botones de todos los clubes para acceso rápido -->
+            <div id="midseason-clubs-pills" style="display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.5rem;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Cuadrícula Doble: Plantilla Actual vs Nueva Plantilla -->
+          <div class="midseason-grid" style="margin-bottom: 1.5rem;">
+            
+            <!-- Columna Izquierda: Plantilla Actual -->
+            <div class="midseason-roster-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                <div style="display: flex; align-items: center; gap: 0.65rem;">
+                  <img id="midseason-club-logo" src="" alt="Logo" style="width: 32px; height: 32px; object-fit: contain; border-radius: 4px; background: rgba(0,0,0,0.2);">
+                  <div>
+                    <h3 id="midseason-club-name" style="color: #fff; font-size: 1rem; font-weight: 800; margin: 0;">Club</h3>
+                    <span id="midseason-club-division" style="font-size: 0.75rem; color: var(--text-muted);">División</span>
+                  </div>
+                </div>
+                <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.65rem;" onclick="AdminApp.copyCurrentRosterToNew()" title="Copiar todos los jugadores actuales al cuadro derecho para editarlos fácilmente">
+                  <i class="fa-solid fa-arrow-right-to-bracket"></i> Copiar a la Nueva
+                </button>
+              </div>
+
+              <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span>Plantilla Actual en BD:</span>
+                <span id="midseason-current-count" style="font-weight: 700; color: #60a5fa;">23 jugadores</span>
+              </div>
+
+              <!-- Lista scrolleable de jugadores actuales -->
+              <div id="midseason-current-players-list" style="max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.35rem; padding-right: 4px;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Nueva Plantilla (Plaintext Input) -->
+            <div class="midseason-roster-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                <div>
+                  <h3 style="color: #fff; font-size: 1rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fa-solid fa-file-lines" style="color: #f59e0b;"></i> Nueva Plantilla (Pegar Texto Plano)
+                  </h3>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Formato: <code>PT Donnarumma</code> o <code>Donnarumma (PT)</code></span>
+                </div>
+                <div id="midseason-new-count-badge" class="badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 0.82rem;">
+                  0 / 23 jugadores
+                </div>
+              </div>
+
+              <!-- Textarea para pegar lista -->
+              <textarea id="midseason-plaintext-input" class="midseason-textarea" placeholder="Pega aquí la lista de 23 jugadores del club (un jugador por línea)...&#10;&#10;Ejemplo:&#10;PT Courtois&#10;PT Lunin&#10;CT Militão&#10;CT Rüdiger&#10;LD Carvajal&#10;LI Mendy&#10;MC Valverde&#10;MC Camavinga&#10;DC Mbappé&#10;EI Vinicius Jr." oninput="AdminApp.onMidseasonInputChanged()"></textarea>
+
+              <!-- Botones de Acción para este Club -->
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-color);">
+                <button class="btn btn-secondary" style="border-color: #10b981; color: #10b981; font-size: 0.85rem;" onclick="AdminApp.markCurrentClubUnchanged()" title="Confirmar que este club no tuvo movimientos y mantener su plantilla intacta">
+                  <i class="fa-solid fa-check"></i> Sin Cambios (Mantener)
+                </button>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button class="btn btn-secondary" style="font-size: 0.85rem;" onclick="AdminApp.analyzeCurrentClubChanges()">
+                    <i class="fa-solid fa-magnifying-glass"></i> Comparar Cambios
+                  </button>
+                  <button class="btn btn-gold" style="font-size: 0.85rem;" onclick="AdminApp.saveCurrentClubDraft()">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar Plantilla de este Club
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Panel de Desglose de Cambios de este Club (Diff Visual) -->
+          <div id="midseason-club-diff-card" class="card" style="display: none; margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.6);">
+            <div class="card-header">
+              <h3 class="card-title" style="font-size: 0.95rem;">
+                <i class="fa-solid fa-code-compare" style="color: #60a5fa;"></i> Resultado de la Comparación para <span id="midseason-diff-club-title" style="color: var(--lmi-gold);"></span>
+              </h3>
+              <span id="midseason-diff-status-badge" class="badge"></span>
+            </div>
+
+            <!-- Notice for automatically unified / typo-corrected names -->
+            <div id="midseason-diff-corrections-box" style="display: none; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.35); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1rem;">
+              <h4 style="color: #60a5fa; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> <span id="midseason-corrections-count-title">Nombres vinculados automáticamente con corrección tipográfica:</span>
+              </h4>
+              <div id="midseason-corrections-list" style="display: flex; flex-wrap: wrap; gap: 0.4rem;"></div>
+            </div>
+
+            <!-- Banner cuando la plantilla es 100% idéntica (sin altas ni bajas) -->
+            <div id="midseason-diff-identical-box" style="display: none; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1rem; color: #a7f3d0; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-circle-check" style="color: #10b981;"></i> ¡Plantilla idéntica! Todos los 23 jugadores ingresados coinciden con los registrados actualmente en este club. No hay altas ni bajas pendientes.
+            </div>
+
+            <div class="grid-3" style="gap: 1rem;">
+              <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 0.85rem;">
+                <h4 style="color: #34d399; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.5rem;">
+                  <i class="fa-solid fa-plus-circle"></i> Nuevas Altas (<span id="midseason-diff-altas-count">0</span>)
+                </h4>
+                <div id="midseason-diff-altas-list" style="display: flex; flex-wrap: wrap; gap: 0.3rem;"></div>
+              </div>
+              <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 0.85rem;">
+                <h4 style="color: #f87171; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.5rem;">
+                  <i class="fa-solid fa-minus-circle"></i> Bajas Enviadas a Reserva (<span id="midseason-diff-bajas-count">0</span>)
+                </h4>
+                <div id="midseason-diff-bajas-list" style="display: flex; flex-wrap: wrap; gap: 0.3rem;"></div>
+              </div>
+              <div style="background: rgba(148, 163, 184, 0.08); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 8px; padding: 0.85rem;">
+                <h4 style="color: #cbd5e1; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.5rem;">
+                  <i class="fa-solid fa-check"></i> Continúan (<span id="midseason-diff-kept-count">0</span>)
+                </h4>
+                <div id="midseason-diff-kept-list" style="display: flex; flex-wrap: wrap; gap: 0.3rem; max-height: 120px; overflow-y: auto;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra de Transición al Paso 2 -->
+          <div class="card" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: rgba(15, 23, 42, 0.9); border: 1px solid var(--border-color);">
+            <div>
+              <h4 style="color: #fff; font-size: 0.95rem; font-weight: 800; margin-bottom: 0.2rem;">
+                ¿Terminaste de revisar los clubes?
+              </h4>
+              <p style="color: var(--text-secondary); font-size: 0.82rem; margin: 0;" id="midseason-summary-line">
+                Clubes confirmados: 0 de 26 | Jugadores en Reserva de Mercado: 0
+              </p>
+            </div>
+            <button class="btn btn-success" style="padding: 0.75rem 1.4rem; font-size: 0.95rem;" onclick="AdminApp.goToConciliationStep()">
+              <i class="fa-solid fa-arrow-right"></i> Ir a Conciliación de Movimientos y Negocios (Paso 2)
+            </button>
+          </div>
+
+        </div>
+
+        <!-- ==================== PASO 2: CONCILIACIÓN DE MOVIMIENTOS Y NEGOCIOS ==================== -->
+        <div id="midseason-step-2-container" style="display: none;">
+          
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title"><i class="fa-solid fa-handshake" style="color: #f59e0b;"></i> Conciliación de Movimientos de Mercado</h3>
+                <p class="card-desc">El sistema detectó los jugadores que salieron de un club y entraron a otro. Define el tipo de negocio (traspaso, préstamo, trueque) y asegura que sus estadísticas históricas se conserven intactas.</p>
+              </div>
+              <button class="btn btn-secondary" onclick="AdminApp.setMidseasonStep(1)">
+                <i class="fa-solid fa-arrow-left"></i> Volver a Revisar Clubes
+              </button>
+            </div>
+          </div>
+
+          <!-- 1. Traspasos / Movimientos Detectados entre Clubes -->
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <h4 style="color: #fff; font-size: 1rem; font-weight: 800;">
+                <i class="fa-solid fa-arrows-split-up-and-left" style="color: #10b981;"></i> Movimientos Detectados entre Clubes (<span id="midseason-deals-count">0</span>)
+              </h4>
+              <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Estadísticas Vinculadas</span>
+            </div>
+            <div id="midseason-deals-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- 2. Bajas que quedaron Libres (Sin Nuevo Club) -->
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <h4 style="color: #fff; font-size: 1rem; font-weight: 800;">
+                <i class="fa-solid fa-user-xmark" style="color: #f87171;"></i> Jugadores Salientes que Quedan Libres (<span id="midseason-free-agents-count">0</span>)
+              </h4>
+              <span class="badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">Sin Nuevo Club en LMI</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.75rem;">Estos jugadores salieron de su club y ningún otro club los fichó. Quedarán archivados o como Agentes Libres sin generar duplicados.</p>
+            <div id="midseason-free-agents-container" style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- 3. Altas Externas (Jugadores Nuevos) -->
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <h4 style="color: #fff; font-size: 1rem; font-weight: 800;">
+                <i class="fa-solid fa-user-plus" style="color: #60a5fa;"></i> Fichajes Externos / Nuevos en la Liga (<span id="midseason-new-external-count">0</span>)
+              </h4>
+              <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">Jugadores Nuevos</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.75rem;">Jugadores añadidos que no provenían de ningún club de la LMI. Se crearán como nuevas fichas oficiales.</p>
+            <div id="midseason-new-external-container" style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Botón de Aplicación Definitiva -->
+          <div class="card" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(16, 185, 129, 0.4);">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin-bottom: 0.2rem;">
+                ¿Listo para aplicar todo el mercado a la base de datos?
+              </h4>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">
+                Se actualizarán las plantillas, se resolverán los duplicados, se registrarán los movimientos de mercado y se generará el reporte de préstamos activos.
+              </p>
+            </div>
+            <button class="btn btn-gold" style="padding: 0.85rem 1.8rem; font-size: 1rem; font-weight: 800;" onclick="AdminApp.applyAllMidseasonMarket()">
+              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js
+            </button>
+          </div>
+
+        </div>
+
+        <!-- ==================== PASO 3: RESUMEN Y PRÉSTAMOS ACTIVOS ==================== -->
+        <div id="midseason-step-3-container" style="display: none;">
+          
+          <!-- Success Banner -->
+          <div class="card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(15, 23, 42, 0.9)); border: 1px solid #10b981; margin-bottom: 1.5rem; text-align: center; padding: 2rem;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #10b981; color: #000; font-size: 1.8rem; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h2 style="color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem;">
+              ¡Mercado de Mitad de Temporada Aplicado Exitosamente!
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 650px; margin: 0 auto;">
+              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js</code>.
+            </p>
+          </div>
+
+          <!-- Métricas del Cierre -->
+          <div class="grid-4" style="margin-bottom: 1.5rem;">
+            <div class="stat-widget">
+              <div class="widget-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="widget-info">
+                <span>Clubes Validados</span>
+                <h3 id="midseason-metric-teams">26 / 26</h3>
+              </div>
+            </div>
+            <div class="stat-widget">
+              <div class="widget-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+              <div class="widget-info">
+                <span>Traspasos Hechos</span>
+                <h3 id="midseason-metric-transfers">0</h3>
+              </div>
+            </div>
+            <div class="stat-widget">
+              <div class="widget-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-handshake"></i></div>
+              <div class="widget-info">
+                <span>Préstamos Activos</span>
+                <h3 id="midseason-metric-loans">0</h3>
+              </div>
+            </div>
+            <div class="stat-widget">
+              <div class="widget-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-shield-virus"></i></div>
+              <div class="widget-info">
+                <span>Duplicados Restantes</span>
+                <h3 id="midseason-metric-duplicates" style="color: #10b981;">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- REPORTE DE PRÉSTAMOS ACTIVOS EN LA LMI -->
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h3 class="card-title" style="display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fa-solid fa-clock-rotate-left" style="color: #f59e0b;"></i> Jugadores a Préstamo Activos Actualmente en LMI
+                </h3>
+                <p class="card-desc">Lista consolidada de todos los jugadores cedidos temporalmente y sus temporadas restantes.</p>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-secondary" onclick="AdminApp.copyLoansReportToClipboard()">
+                  <i class="fa-solid fa-copy"></i> Copiar Resumen (Telegram / Redes)
+                </button>
+                <button class="btn btn-success" onclick="AdminApp.openDeployModal()">
+                  <i class="fa-solid fa-rocket"></i> Publicar a Producción (GitHub)
+                </button>
+              </div>
+            </div>
+
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Jugador</th>
+                    <th>Club Propietario (Origen)</th>
+                    <th>Club Cesión (Destino)</th>
+                    <th>Temporadas</th>
+                    <th>Detalles / Cláusulas</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="midseason-loans-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Acciones Finales -->
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button class="btn btn-secondary" onclick="AdminApp.switchView('view-market')">
+              <i class="fa-solid fa-arrow-left"></i> Volver a Mercado General
+            </button>
+            <button class="btn btn-primary" onclick="AdminApp.switchView('view-teams')">
+              <i class="fa-solid fa-users"></i> Ver Plantillas Actualizadas
+            </button>
+          </div>
+
         </div>
 
       </section>
@@ -1864,6 +2283,34 @@
         <button class="btn btn-secondary" onclick="AdminApp.closeSeasonResetModal()">Cancelar</button>
         <button class="btn btn-danger" id="btn-execute-season-reset" style="background: #dc2626; border-color: #ef4444; color: #fff; font-weight: 700;" onclick="AdminApp.executeSeasonReset()">
           <i class="fa-solid fa-arrows-rotate"></i> Confirmar e Iniciar Temporada 12
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: AUDITOR / DETECTOR DE DUPLICADOS ==================== -->
+  <div class="modal-overlay" id="modal-duplicates" style="display: none;">
+    <div class="modal-dialog" style="max-width: 780px;">
+      <div class="modal-header">
+        <h2 class="modal-title" style="color: #ef4444;">
+          <i class="fa-solid fa-triangle-exclamation"></i> Auditoría de Jugadores Duplicados
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeDuplicatesModal()">✕</button>
+      </div>
+
+      <div style="overflow-y: auto; max-height: 65vh; padding-right: 4px;">
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem;">
+          Estos jugadores aparecen registrados simultáneamente en más de un club. Puedes resolverlos directamente eligiendo en qué club debe permanecer el jugador, o resolverlos durante el asistente de Mercado de Mitad de Temporada.
+        </p>
+        <div id="duplicates-modal-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <button class="btn btn-secondary" onclick="AdminApp.closeDuplicatesModal()">Cerrar</button>
+        <button class="btn btn-gold" onclick="AdminApp.closeDuplicatesModal(); AdminApp.switchView('view-midseason-market');">
+          <i class="fa-solid fa-people-arrows"></i> Abrir Asistente de Mercado
         </button>
       </div>
     </div>
