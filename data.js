@@ -719,11 +719,11 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -733,11 +733,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -4954,11 +4954,11 @@ var INITIAL_LMI_DATA = {
       "name": "Ismael Saibari",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 8,
+      "goals": 9,
       "assists": 1,
       "goals_liga": 6,
       "assists_liga": 1,
-      "goals_champions": 2,
+      "goals_champions": 3,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -4968,11 +4968,11 @@ var INITIAL_LMI_DATA = {
         "borussiadortmund": {
           "teamId": "borussiadortmund",
           "teamName": "Borussia Dortmund",
-          "goals": 8,
+          "goals": 9,
           "assists": 1,
           "goals_liga": 6,
           "assists_liga": 1,
-          "goals_champions": 2,
+          "goals_champions": 3,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -15148,11 +15148,11 @@ var INITIAL_LMI_DATA = {
       "name": "Estêvão",
       "position": "ID",
       "teamId": "interdemilan",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
       "goals_liga": 1,
       "assists_liga": 1,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -15174,11 +15174,11 @@ var INITIAL_LMI_DATA = {
         "interdemilan": {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
-          "goals": 0,
+          "goals": 1,
           "assists": 0,
           "goals_liga": 0,
           "assists_liga": 0,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -19072,18 +19072,44 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 2 (Ida)",
       "team1": "Borussia Dortmund",
-      "score1": "",
+      "score1": "1",
       "team2": "Inter de Milan",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040551310_9",
+          "playerName": "Estêvão",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040483217_5",
+          "playerName": "Alejandro Grimaldo",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "Inter de Milan"
     },
     {
       "fase": "Octavos 2 (Vuelta)",
       "team1": "Inter de Milan",
-      "score1": "",
+      "score1": "3",
       "team2": "Borussia Dortmund",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "2",
+      "estado": "Finalizado",
+      "events": [],
+      "winner": "Inter de Milan"
     },
     {
       "fase": "Octavos 3 (Ida)",
@@ -19551,13 +19577,13 @@ var INITIAL_LMI_DATA = {
       "fase": "Cuartos 1 (Ida)",
       "team1": "Carabobo Fútbol Club",
       "score1": "",
-      "team2": "Ganador Octavos 2",
+      "team2": "Inter de Milan",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 1 (Vuelta)",
-      "team1": "Ganador Octavos 2",
+      "team1": "Inter de Milan",
       "score1": "",
       "team2": "Carabobo Fútbol Club",
       "score2": "",
@@ -30104,6 +30130,64 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793165347871",
+      "timestamp": 1793165347871,
+      "date": "27 oct 2026, 11:29 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 2 (Vuelta)",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 3,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 2,
+      "events": []
+    },
+    {
+      "id": "match_1793165322953",
+      "timestamp": 1793165322953,
+      "date": "27 oct 2026, 11:28 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 2 (Ida)",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 1,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040551310_9",
+          "playerName": "Estêvão",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040483217_5",
+          "playerName": "Alejandro Grimaldo",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1793164887995",
       "timestamp": 1793164887995,
