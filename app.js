@@ -336,15 +336,21 @@ function renderDashboard() {
           avatarStyle = 'background: linear-gradient(135deg, #ffedd5, #fed7aa); border-color: #b45309; color: #7c2d12; font-weight: 800;';
         }
 
+        const otherTeamsWithGoals = Object.values(p.statsByTeam || {}).filter(s => s.teamId !== p.teamId && s.goals > 0);
+        const multiClubHint = otherTeamsWithGoals.length > 0
+          ? `<span style="font-size: 0.65rem; color: var(--lmi-gold); font-weight: 700; margin-left: 0.2rem;" title="Acumulado: ${Object.values(p.statsByTeam).filter(s => s.goals > 0).map(s => `${s.goals} con ${s.teamName || s.teamId}`).join(', ')}">★ Suma ${otherTeamsWithGoals.map(s => s.teamName || s.teamId).join(', ')}</span>`
+          : '';
+
         return `
           <div class="leader-row">
             <div class="leader-info" style="min-width: 0;">
               <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
-              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">
+              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
               <div style="min-width: 0;">
                 <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
                 <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
                   <span>${team.name}</span>
+                  ${multiClubHint}
                   <span>&bull;</span>
                   <span class="pos-badge pos-${p.position}">${p.position}</span>
                   <span style="font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; text-transform: uppercase; ${isOro ? 'background: #fef3c7; color: #92400e; border: 1px solid #d97706;' : 'background: #e2e8f0; color: #0f172a; border: 1px solid #64748b;'}">
@@ -390,15 +396,21 @@ function renderDashboard() {
           avatarStyle = 'background: linear-gradient(135deg, #ffedd5, #fed7aa); border-color: #b45309; color: #7c2d12; font-weight: 800;';
         }
 
+        const otherTeamsWithAssists = Object.values(p.statsByTeam || {}).filter(s => s.teamId !== p.teamId && s.assists > 0);
+        const multiClubHintA = otherTeamsWithAssists.length > 0
+          ? `<span style="font-size: 0.65rem; color: #0284c7; font-weight: 700; margin-left: 0.2rem;" title="Acumulado: ${Object.values(p.statsByTeam).filter(s => s.assists > 0).map(s => `${s.assists} con ${s.teamName || s.teamId}`).join(', ')}">★ Suma ${otherTeamsWithAssists.map(s => s.teamName || s.teamId).join(', ')}</span>`
+          : '';
+
         return `
           <div class="leader-row">
             <div class="leader-info" style="min-width: 0;">
               <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
-              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">
+              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
               <div style="min-width: 0;">
                 <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
                 <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
                   <span>${team.name}</span>
+                  ${multiClubHintA}
                   <span>&bull;</span>
                   <span class="pos-badge pos-${p.position}">${p.position}</span>
                   <span style="font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; text-transform: uppercase; ${isOro ? 'background: #fef3c7; color: #92400e; border: 1px solid #d97706;' : 'background: #e2e8f0; color: #0f172a; border: 1px solid #64748b;'}">
@@ -417,6 +429,40 @@ function renderDashboard() {
   }
 }
 
+// Helper universal para obtener estadísticas de un jugador filtradas por club
+function getPlayerStatsForTeam(player, teamId) {
+  if (!player) {
+    return {
+      goals: 0, assists: 0,
+      goals_liga: 0, assists_liga: 0,
+      goals_champions: 0, assists_champions: 0,
+      goals_estelar: 0, assists_estelar: 0
+    };
+  }
+  if (player.statsByTeam && teamId && player.statsByTeam[teamId]) {
+    return player.statsByTeam[teamId];
+  }
+  if (player.teamId === teamId) {
+    return {
+      goals: player.goals || 0,
+      assists: player.assists || 0,
+      goals_liga: player.goals_liga || 0,
+      assists_liga: player.assists_liga || 0,
+      goals_champions: player.goals_champions || 0,
+      assists_champions: player.assists_champions || 0,
+      goals_estelar: player.goals_estelar || 0,
+      assists_estelar: player.assists_estelar || 0
+    };
+  }
+  return {
+    goals: 0, assists: 0,
+    goals_liga: 0, assists_liga: 0,
+    goals_champions: 0, assists_champions: 0,
+    goals_estelar: 0, assists_estelar: 0
+  };
+}
+window.getPlayerStatsForTeam = getPlayerStatsForTeam;
+
 // Helper para renderizar filas de podio en estadísticas
 function renderLeaderboardHTML(players, valueKey, label, emptyMsg, valueColor, showDivBadge = false) {
   if (!players || players.length === 0) {
@@ -428,10 +474,10 @@ function renderLeaderboardHTML(players, valueKey, label, emptyMsg, valueColor, s
   }
 
   return players.map((p, idx) => {
-    const team = (lmiData && lmiData.teams) ? lmiData.teams.find(t => t.id === p.teamId) : null;
-    const teamName = team ? team.name : 'Libre';
-    const teamLogo = team ? team.logo : '';
-    const teamDiv = team ? (team.division || 'oro') : 'oro';
+    const team = (lmiData && lmiData.teams) ? lmiData.teams.find(t => t.id === (p.displayTeamId || p.teamId)) : null;
+    const teamName = p.displayTeamName || (team ? team.name : 'Libre');
+    const teamLogo = p.displayTeamLogo || (team ? team.logo : '');
+    const teamDiv = p.displayTeamDiv || (team ? (team.division || 'oro') : 'oro');
     const isOro = teamDiv === 'oro';
 
     let avatarStyle = 'border-color: var(--lmi-blue); color: var(--lmi-blue);';
@@ -449,23 +495,41 @@ function renderLeaderboardHTML(players, valueKey, label, emptyMsg, valueColor, s
       </span>
     ` : '';
 
+    const currTeam = (p.currentTeamId && p.currentTeamId !== (p.displayTeamId || p.teamId))
+      ? (lmiData.teams || []).find(t => t.id === p.currentTeamId)
+      : null;
+    const transferNote = currTeam ? `
+      <span style="font-size: 0.65rem; color: #0284c7; font-weight: 800; background: #e0f2fe; border: 1px solid #bae6fd; padding: 0.1rem 0.4rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px;" title="Transferido a ${currTeam.name} en mitad de temporada">
+        <i class="fa-solid fa-arrow-right-arrow-left" style="font-size: 0.58rem;"></i> Traspaso: ${currTeam.name}
+      </span>
+    ` : '';
+
+    const statCount = (p.statValue !== undefined) ? p.statValue : (p[valueKey] || 0);
+    const seasonTotalText = (p.seasonTotal && p.seasonTotal > statCount) ? `
+      <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600; display: block;" title="Total acumulado en toda la temporada (todos los clubes): ${p.seasonTotal}">
+        (${p.seasonTotal} tot. temp.)
+      </span>
+    ` : '';
+
     return `
       <div class="leader-row">
         <div class="leader-info" style="min-width: 0;">
           <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
-          ${teamLogo ? `<img src="${teamLogo}" class="team-logo" alt="${teamName}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;">` : ''}
+          ${teamLogo ? `<img src="${teamLogo}" class="team-logo" alt="${teamName}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">` : ''}
           <div style="min-width: 0;">
             <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
             <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
               <span>${teamName}</span>
+              ${transferNote}
               <span>&bull;</span>
               <span class="pos-badge pos-${p.position}">${p.position}</span>
               ${divBadge}
             </div>
           </div>
         </div>
-        <div class="stat-value" style="color: ${valueColor}; flex-shrink: 0; margin-left: 0.5rem;">
-          ${p[valueKey]} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${label}</span>
+        <div class="stat-value" style="color: ${valueColor}; flex-shrink: 0; margin-left: 0.5rem; text-align: right;">
+          ${statCount} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${label}</span>
+          ${seasonTotalText}
         </div>
       </div>
     `;
@@ -497,24 +561,72 @@ function renderStats() {
   const allPlayers = (lmiData && lmiData.players) ? lmiData.players : [];
   const allTeams = (lmiData && lmiData.teams) ? lmiData.teams : [];
 
-  const getTeamDivision = (p) => {
-    const t = allTeams.find(tm => tm.id === p.teamId);
-    if (!t || t.hidden || t.division === 'inactivo' || t.id === 'brightonhovealbion' || t.id === 'vascodagama') return null;
-    return (t.division || 'oro');
-  };
-
   const getScorers = (filterDiv) => {
-    return allPlayers
-      .filter(p => (p[goalsKey] || 0) > 0 && p.teamId !== 'brightonhovealbion' && p.teamId !== 'vascodagama' && (!filterDiv ? getTeamDivision(p) !== null : getTeamDivision(p) === filterDiv))
-      .sort((a, b) => (b[goalsKey] || 0) - (a[goalsKey] || 0))
-      .slice(0, 10);
+    const list = [];
+    allPlayers.forEach(p => {
+      const sByTeam = p.statsByTeam || {};
+      const teamEntries = Object.keys(sByTeam).length > 0 
+        ? Object.entries(sByTeam) 
+        : (p.teamId ? [[p.teamId, { [goalsKey]: p[goalsKey] || 0, goals: p.goals || 0 }]] : []);
+      
+      teamEntries.forEach(([tId, s]) => {
+        if (tId === 'brightonhovealbion' || tId === 'vascodagama') return;
+        const t = allTeams.find(tm => tm.id === tId);
+        if (!t || t.hidden || t.division === 'inactivo') return;
+        const tDiv = t.division || 'oro';
+        if (filterDiv && tDiv !== filterDiv) return;
+
+        const val = s[goalsKey] || 0;
+        if (val > 0) {
+          list.push({
+            ...p,
+            displayTeamId: t.id,
+            displayTeamName: t.name,
+            displayTeamLogo: t.logo,
+            displayTeamDiv: tDiv,
+            currentTeamId: p.teamId,
+            statValue: val,
+            seasonTotal: p.goals || 0
+          });
+        }
+      });
+    });
+
+    return list.sort((a, b) => b.statValue - a.statValue).slice(0, 10);
   };
 
   const getAssists = (filterDiv) => {
-    return allPlayers
-      .filter(p => (p[assistsKey] || 0) > 0 && p.teamId !== 'brightonhovealbion' && p.teamId !== 'vascodagama' && (!filterDiv ? getTeamDivision(p) !== null : getTeamDivision(p) === filterDiv))
-      .sort((a, b) => (b[assistsKey] || 0) - (a[assistsKey] || 0))
-      .slice(0, 10);
+    const list = [];
+    allPlayers.forEach(p => {
+      const sByTeam = p.statsByTeam || {};
+      const teamEntries = Object.keys(sByTeam).length > 0 
+        ? Object.entries(sByTeam) 
+        : (p.teamId ? [[p.teamId, { [assistsKey]: p[assistsKey] || 0, assists: p.assists || 0 }]] : []);
+      
+      teamEntries.forEach(([tId, s]) => {
+        if (tId === 'brightonhovealbion' || tId === 'vascodagama') return;
+        const t = allTeams.find(tm => tm.id === tId);
+        if (!t || t.hidden || t.division === 'inactivo') return;
+        const tDiv = t.division || 'oro';
+        if (filterDiv && tDiv !== filterDiv) return;
+
+        const val = s[assistsKey] || 0;
+        if (val > 0) {
+          list.push({
+            ...p,
+            displayTeamId: t.id,
+            displayTeamName: t.name,
+            displayTeamLogo: t.logo,
+            displayTeamDiv: tDiv,
+            currentTeamId: p.teamId,
+            statValue: val,
+            seasonTotal: p.assists || 0
+          });
+        }
+      });
+    });
+
+    return list.sort((a, b) => b.statValue - a.statValue).slice(0, 10);
   };
 
   const divTabsBar = document.getElementById('stats-division-tabs-bar');
@@ -724,6 +836,105 @@ function renderBracket(containerId, matches, phaseFilter = null) {
     `;
   };
 
+  const isTwoLegs = matches.some(m => m.fase && m.fase.includes('(Ida)'));
+
+  const getTieBoxHtml = (tieBase, idaMatch, vueltaMatch) => {
+    if (!idaMatch && !vueltaMatch) return '';
+    const m1 = idaMatch || { fase: `${tieBase} (Ida)`, team1: 'Por definir', team2: 'Por definir', score1: '', score2: '', estado: 'Pendiente' };
+    const m2 = vueltaMatch || { fase: `${tieBase} (Vuelta)`, team1: 'Por definir', team2: 'Por definir', score1: '', score2: '', estado: 'Pendiente' };
+
+    const teamA = m1.team1;
+    const teamB = m1.team2;
+    const hasIda = m1.estado && m1.estado.toLowerCase() === 'finalizado';
+    const hasVuelta = m2.estado && m2.estado.toLowerCase() === 'finalizado';
+
+    const s1_ida = (m1.score1 !== undefined && m1.score1 !== null && m1.score1 !== '') ? m1.score1 : '-';
+    const s2_ida = (m1.score2 !== undefined && m1.score2 !== null && m1.score2 !== '') ? m1.score2 : '-';
+    const s1_vue = (m2.score1 !== undefined && m2.score1 !== null && m2.score1 !== '') ? m2.score1 : '-';
+    const s2_vue = (m2.score2 !== undefined && m2.score2 !== null && m2.score2 !== '') ? m2.score2 : '-';
+
+    let totA = 0;
+    let totB = 0;
+    if (hasIda) {
+      totA += parseInt(m1.score1, 10) || 0;
+      totB += parseInt(m1.score2, 10) || 0;
+    }
+    if (hasVuelta) {
+      if (m2.team1 === teamB && m2.team2 === teamA) {
+        totB += parseInt(m2.score1, 10) || 0;
+        totA += parseInt(m2.score2, 10) || 0;
+      } else {
+        totA += parseInt(m2.score1, 10) || 0;
+        totB += parseInt(m2.score2, 10) || 0;
+      }
+    }
+
+    const isTieFinished = hasIda && hasVuelta;
+    let winner = m1.winner || m2.winner || '';
+    if (!winner && isTieFinished && totA !== totB) {
+      winner = totA > totB ? teamA : teamB;
+    }
+
+    let statusText = 'Por Jugar';
+    let statusStyle = 'background: rgba(250, 204, 21, 0.15); color: #d97706;';
+    if (isTieFinished) {
+      statusText = 'Finalizado';
+      statusStyle = 'background: rgba(16, 185, 129, 0.15); color: var(--lmi-green);';
+    } else if (hasIda || hasVuelta) {
+      statusText = 'En Curso (1/2)';
+      statusStyle = 'background: rgba(2, 132, 199, 0.15); color: var(--lmi-blue);';
+    }
+
+    return `
+      <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.45rem 0.35rem; box-shadow: 0 2px 4px rgba(0,0,0,0.03); margin: 0.45rem 0; width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.1rem 0.4rem; margin-bottom: 0.25rem;">
+          <span style="font-size: 0.72rem; font-weight: 800; color: var(--lmi-blue); text-transform: uppercase; letter-spacing: 0.5px;">${tieBase} (Ida y Vuelta)</span>
+          <span style="font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px; ${statusStyle}">${statusText}</span>
+        </div>
+
+        <!-- Ida -->
+        <div style="background: rgba(0,0,0,0.02); border-radius: 4px; padding: 0.2rem 0.3rem; margin-bottom: 0.25rem;">
+          <div style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.1rem;">IDA</div>
+          ${getTeamRowHtml(m1.team1, s1_ida, hasIda && parseInt(m1.score1) > parseInt(m1.score2), hasIda && parseInt(m1.score2) > parseInt(m1.score1))}
+          ${getTeamRowHtml(m1.team2, s2_ida, hasIda && parseInt(m1.score2) > parseInt(m1.score1), hasIda && parseInt(m1.score1) > parseInt(m1.score2))}
+        </div>
+
+        <!-- Vuelta -->
+        <div style="background: rgba(0,0,0,0.02); border-radius: 4px; padding: 0.2rem 0.3rem; margin-bottom: 0.25rem;">
+          <div style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.1rem;">VUELTA</div>
+          ${getTeamRowHtml(m2.team1, s1_vue, hasVuelta && parseInt(m2.score1) > parseInt(m2.score2), hasVuelta && parseInt(m2.score2) > parseInt(m2.score1))}
+          ${getTeamRowHtml(m2.team2, s2_vue, hasVuelta && parseInt(m2.score2) > parseInt(m2.score1), hasVuelta && parseInt(m2.score1) > parseInt(m2.score2))}
+        </div>
+
+        <!-- Marcador Global -->
+        ${(hasIda || hasVuelta) ? `
+          <div style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(3, 105, 161, 0.03) 100%); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 4px; padding: 0.25rem 0.45rem; display: flex; justify-content: space-between; align-items: center; margin-top: 0.25rem;">
+            <span style="font-size: 0.68rem; font-weight: 800; color: var(--lmi-blue);">GLOBAL:</span>
+            <span style="font-size: 0.82rem; font-weight: 900; color: var(--text-primary);">${totA} - ${totB}</span>
+            ${winner ? `<span style="font-size: 0.68rem; font-weight: 800; color: var(--lmi-green);"><i class="fa-solid fa-circle-check"></i> ${winner}</span>` : ''}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  };
+
+  const getTieBoxes = (count, prefix) => {
+    const boxes = [];
+    for (let i = 1; i <= count; i++) {
+      const tieName = `${prefix} ${i}`;
+      const ida = matches.find(m => m.fase && m.fase.toLowerCase() === `${tieName.toLowerCase()} (ida)`);
+      const vuelta = matches.find(m => m.fase && m.fase.toLowerCase() === `${tieName.toLowerCase()} (vuelta)`);
+      if (ida || vuelta) {
+        boxes.push(getTieBoxHtml(tieName, ida, vuelta));
+      }
+    }
+    return boxes;
+  };
+
+  const octavosTies = isTwoLegs ? getTieBoxes(8, 'Octavos') : [];
+  const cuartosTies = isTwoLegs ? getTieBoxes(4, 'Cuartos') : [];
+  const semisTies = isTwoLegs ? getTieBoxes(2, 'Semifinal') : [];
+
   // Render Previa Column (if any)
   let previaHtml = '';
   if (previa.length > 0) {
@@ -737,33 +948,33 @@ function renderBracket(containerId, matches, phaseFilter = null) {
 
   // Render Octavos Column (if any)
   let octavosHtml = '';
-  if (octavos.length > 0) {
+  if (isTwoLegs ? octavosTies.length > 0 : octavos.length > 0) {
     octavosHtml = `
-      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.6rem;">
-        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: #2563eb; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Octavos de Final</h3>
-        ${octavos.map(getMatchBoxHtml).join('')}
+      <div style="flex: 1; min-width: 230px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.6rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: #2563eb; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Octavos ${isTwoLegs ? '(Ida y Vuelta)' : 'de Final'}</h3>
+        ${isTwoLegs ? octavosTies.join('') : octavos.map(getMatchBoxHtml).join('')}
       </div>
     `;
   }
 
   // Render Cuartos Column
   let cuartosHtml = '';
-  if (cuartos.length > 0) {
+  if (isTwoLegs ? cuartosTies.length > 0 : cuartos.length > 0) {
     cuartosHtml = `
-      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
-        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-gamepad"></i> Cuartos de Final</h3>
-        ${cuartos.map(getMatchBoxHtml).join('')}
+      <div style="flex: 1; min-width: 230px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-gamepad"></i> Cuartos ${isTwoLegs ? '(Ida y Vuelta)' : 'de Final'}</h3>
+        ${isTwoLegs ? cuartosTies.join('') : cuartos.map(getMatchBoxHtml).join('')}
       </div>
     `;
   }
 
   // Render Semifinal Column
   let semifinalHtml = '';
-  if (semifinales.length > 0) {
+  if (isTwoLegs ? semisTies.length > 0 : semifinales.length > 0) {
     semifinalHtml = `
-      <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem;">
-        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield"></i> Semifinales</h3>
-        ${semifinales.map(getMatchBoxHtml).join('')}
+      <div style="flex: 1; min-width: 230px; display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 0.95rem; text-align: center; color: var(--lmi-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield"></i> Semifinales ${isTwoLegs ? '(Ida y Vuelta)' : ''}</h3>
+        ${isTwoLegs ? semisTies.join('') : semifinales.map(getMatchBoxHtml).join('')}
       </div>
     `;
   }
@@ -844,18 +1055,21 @@ function renderBracket(containerId, matches, phaseFilter = null) {
 
   if (phaseFilter && phaseFilter !== 'all') {
     container.style.display = 'grid';
-    container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+    container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(290px, 1fr))';
     container.style.gap = '1rem';
     container.style.overflowX = 'visible';
 
     if (phaseFilter === 'previa') {
       container.innerHTML = previa.length ? previa.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Ronda Previa.</div>';
     } else if (phaseFilter === 'octavos') {
-      container.innerHTML = octavos.length ? octavos.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Octavos de Final.</div>';
+      const content = isTwoLegs ? (octavosTies.length ? octavosTies.join('') : '') : (octavos.length ? octavos.map(getMatchBoxHtml).join('') : '');
+      container.innerHTML = content || '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Octavos de Final.</div>';
     } else if (phaseFilter === 'cuartos') {
-      container.innerHTML = cuartos.length ? cuartos.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Cuartos de Final.</div>';
+      const content = isTwoLegs ? (cuartosTies.length ? cuartosTies.join('') : '') : (cuartos.length ? cuartos.map(getMatchBoxHtml).join('') : '');
+      container.innerHTML = content || '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Cuartos de Final.</div>';
     } else if (phaseFilter === 'semis') {
-      container.innerHTML = semifinales.length ? semifinales.map(getMatchBoxHtml).join('') : '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Semifinales.</div>';
+      const content = isTwoLegs ? (semisTies.length ? semisTies.join('') : '') : (semifinales.length ? semifinales.map(getMatchBoxHtml).join('') : '');
+      container.innerHTML = content || '<div style="text-align: center; grid-column: 1/-1; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para Semifinales.</div>';
     } else if (phaseFilter === 'final') {
       container.style.display = 'flex';
       container.style.justifyContent = 'center';
@@ -1762,6 +1976,22 @@ function loadTeamHub(teamId) {
     rosterTbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sin jugadores registrados en plantilla.</td></tr>`;
   } else {
     rosterTbody.innerHTML = teamPlayers.map(p => {
+      const clubStats = getPlayerStatsForTeam(p, teamId);
+      const hasOtherGoals = (p.goals || 0) > (clubStats.goals || 0);
+      const hasOtherAssists = (p.assists || 0) > (clubStats.assists || 0);
+
+      const goalsBadge = hasOtherGoals ? `
+        <div style="font-size: 0.68rem; color: var(--lmi-gold); font-weight: 800; margin-top: 1px;" title="Goles con ${team.name}: ${clubStats.goals} | Total en temporada (todos los clubes): ${p.goals} goles">
+          (${p.goals} tot.)
+        </div>
+      ` : '';
+
+      const assistsBadge = hasOtherAssists ? `
+        <div style="font-size: 0.68rem; color: #0284c7; font-weight: 800; margin-top: 1px;" title="Asistencias con ${team.name}: ${clubStats.assists} | Total en temporada (todos los clubes): ${p.assists} asist.">
+          (${p.assists} tot.)
+        </div>
+      ` : '';
+
       return `
         <tr>
           <td><span class="pos-badge pos-${p.position}">${p.position}</span></td>
@@ -1774,18 +2004,28 @@ function loadTeamHub(teamId) {
               </div>
             </div>
           </td>
-          <td style="text-align: center; font-weight: 700;">${p.goals}</td>
-          <td style="text-align: center; font-weight: 700;">${p.assists}</td>
+          <td style="text-align: center; font-weight: 700;">
+            ${clubStats.goals}
+            ${goalsBadge}
+          </td>
+          <td style="text-align: center; font-weight: 700;">
+            ${clubStats.assists}
+            ${assistsBadge}
+          </td>
         </tr>
       `;
     }).join('');
   }
 
-  // Club Stats Box & Top Club Performers
+  // Club Stats Box & Top Club Performers (Filtrados por rendimiento exclusivo en este club)
   const rank = team.leagueRank || 1;
 
-  const topScorer = teamPlayers.length > 0 ? [...teamPlayers].sort((a,b) => b.goals - a.goals)[0] : null;
-  const topAssister = teamPlayers.length > 0 ? [...teamPlayers].sort((a,b) => b.assists - a.assists)[0] : null;
+  const topScorer = teamPlayers.length > 0
+    ? [...teamPlayers].sort((a,b) => (getPlayerStatsForTeam(b, teamId).goals - getPlayerStatsForTeam(a, teamId).goals))[0]
+    : null;
+  const topAssister = teamPlayers.length > 0
+    ? [...teamPlayers].sort((a,b) => (getPlayerStatsForTeam(b, teamId).assists - getPlayerStatsForTeam(a, teamId).assists))[0]
+    : null;
 
   // Partidos Pendientes de este Club en su división
   const divRounds = (lmiData && lmiData.fixtures && lmiData.fixtures[team.division || 'oro']) || [];
@@ -1893,7 +2133,7 @@ function loadTeamHub(teamId) {
           </div>
         </div>
         <div style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 900; color: #059669; flex-shrink: 0; text-align: right;">
-          ${topScorer ? topScorer.goals : 0} <span style="font-size: 0.75rem; color: #475569; font-weight: 700;">goles</span>
+          ${topScorer ? getPlayerStatsForTeam(topScorer, teamId).goals : 0} <span style="font-size: 0.75rem; color: #475569; font-weight: 700;">goles</span>
         </div>
       </div>
 
@@ -1910,7 +2150,7 @@ function loadTeamHub(teamId) {
           </div>
         </div>
         <div style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 900; color: #0284c7; flex-shrink: 0; text-align: right;">
-          ${topAssister ? topAssister.assists : 0} <span style="font-size: 0.75rem; color: #475569; font-weight: 700;">asist.</span>
+          ${topAssister ? getPlayerStatsForTeam(topAssister, teamId).assists : 0} <span style="font-size: 0.75rem; color: #475569; font-weight: 700;">asist.</span>
         </div>
       </div>
     </div>

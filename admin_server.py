@@ -77,19 +77,21 @@ def write_data_js(data_obj):
 
 def update_index_cache_buster():
     import time
-    index_path = os.path.join(BASE_DIR, "index.html")
-    if not os.path.exists(index_path):
-        return
-    try:
-        with open(index_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        new_v = str(int(time.time()))
-        updated = re.sub(r'data\.js(?:\?v=[^"\'\s>]+)?', f'data.js?v={new_v}', content)
-        with open(index_path, "w", encoding="utf-8") as f:
-            f.write(updated)
-        print(f"✅ 'index.html' cache buster actualizado a v={new_v}")
-    except Exception as e:
-        print(f"Error actualizando cache buster en index.html: {e}")
+    new_v = str(int(time.time()))
+    for html_file in ["index.html", "admin.html"]:
+        f_path = os.path.join(BASE_DIR, html_file)
+        if not os.path.exists(f_path):
+            continue
+        try:
+            with open(f_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            updated = re.sub(r'data\.js(?:\?v=[^"\'\s>]+)?', f'data.js?v={new_v}', content)
+            updated = re.sub(r'admin\.js(?:\?v=[^"\'\s>]+)?', f'admin.js?v={new_v}', updated)
+            with open(f_path, "w", encoding="utf-8") as f:
+                f.write(updated)
+            print(f"✅ '{html_file}' cache buster actualizado a v={new_v}")
+        except Exception as e:
+            print(f"Error actualizando cache buster en {html_file}: {e}")
 
 def sync_balon_oro_txt(balon_oro_list):
     if not balon_oro_list:

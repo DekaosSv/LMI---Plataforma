@@ -170,7 +170,7 @@ const AdminApp = {
     this.setStatus('Cargando base de datos...', 'loading');
     const base = await this.getApiBase();
     try {
-      const res = await fetch(`${base}/api/data`);
+      const res = await fetch(`${base}/api/data?_t=${Date.now()}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
       if (json.error) throw new Error(json.error);
@@ -465,6 +465,7 @@ const AdminApp = {
       }
 
       this.populateMatchTeamsForCompetition(comp);
+      this.populatePhasesForCompetition(comp);
       this.onPhaseChange();
       this.renderChampionsAdminBracket();
     } else {
@@ -483,8 +484,36 @@ const AdminApp = {
       }
 
       this.populateMatchTeamsForCompetition(comp);
+      this.populatePhasesForCompetition(comp);
       this.onPhaseChange();
       this.renderCopaEstelarAdminBracket();
+    }
+  },
+
+  populatePhasesForCompetition(comp) {
+    const phaseSel = document.getElementById('match-phase');
+    if (!phaseSel || !this.data) return;
+    const matchArray = comp === 'champions_ko' ? (this.data.championsLeagueMatches || []) : (this.data.copaEstelarMatches || []);
+    if (!matchArray || matchArray.length === 0) return;
+
+    const previousValue = phaseSel.value;
+    phaseSel.innerHTML = '';
+    matchArray.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.fase;
+      const t1 = m.team1 || 'Por definir';
+      const t2 = m.team2 || 'Por definir';
+      const isPlayed = m.estado && m.estado.toLowerCase() === 'finalizado';
+      const scoreStr = isPlayed ? ` [${m.score1}-${m.score2}] ✓` : '';
+      opt.textContent = `${m.fase}: ${t1} vs ${t2}${scoreStr}`;
+      phaseSel.appendChild(opt);
+    });
+
+    if (previousValue && matchArray.some(m => m.fase.toLowerCase() === previousValue.toLowerCase())) {
+      const found = matchArray.find(m => m.fase.toLowerCase() === previousValue.toLowerCase());
+      if (found) phaseSel.value = found.fase;
+    } else {
+      phaseSel.selectedIndex = 0;
     }
   },
 
@@ -514,6 +543,44 @@ const AdminApp = {
       const s2 = parseInt(targetMatch.score2, 10);
       document.getElementById('match-score1').value = !isNaN(s1) ? s1 : 0;
       document.getElementById('match-score2').value = !isNaN(s2) ? s2 : 0;
+
+      // Cargar eventos del partido si ya existen
+      this.matchEvents = [];
+      const container = document.getElementById('match-events-list');
+      const emptyMsg = document.getElementById('match-events-empty');
+      const header = document.getElementById('match-events-header');
+      if (container) {
+        container.querySelectorAll('.event-row').forEach(r => r.remove());
+        if (targetMatch.events && targetMatch.events.length > 0) {
+          const playerMap = {};
+          targetMatch.events.forEach(ev => {
+            const key = `${ev.teamId}_${ev.playerId}`;
+            if (!playerMap[key]) {
+              playerMap[key] = {
+                teamId: ev.teamId,
+                playerId: ev.playerId,
+                goals: 0,
+                assists: 0
+              };
+            }
+            const isGoal = ev.type === 'gol' || ev.type === 'goal';
+            if (isGoal) {
+              playerMap[key].goals += (ev.count || 1);
+            } else {
+              playerMap[key].assists += (ev.count || 1);
+            }
+          });
+          Object.values(playerMap).forEach(item => {
+            this.addMatchEventRow(item);
+          });
+        } else {
+          if (emptyMsg) emptyMsg.style.display = 'block';
+          if (header) header.style.display = 'none';
+          if (!isNaN(s1) && !isNaN(s2) && (s1 > 0 || s2 > 0)) {
+            this.syncEventsWithScores();
+          }
+        }
+      }
     }
   },
 
@@ -1561,7 +1628,7 @@ const AdminApp = {
     const getMatchBox = (m) => {
       const isFinal = m.fase && (m.fase.toLowerCase() === 'final' || m.fase.toLowerCase().includes('gran final'));
       const advanceBtn = !isFinal ? `
-        <button class="btn btn-secondary" onclick="AdminApp.openAdvanceTeamModal('champions_ko', '${m.fase}')" style="padding: 0.22rem 0.5rem; font-size: 0.73rem; font-weight: 700; width: 100%; margin-top: 0.4rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); color: #38bdf8;" title="Pasar un equipo de esta llave a la siguiente fase (Sin rival asignado o por W.O.)">
+        <button class="btn btn-secondary" onclick="AdminApp.openAdvanceTeamModal('champions_ko', '${m.fase}')" style="padding: 0.22rem 0.5rem; font-size: 0.73rem; font-weight: 700; width: 100%; margin-top: 0.4rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); color: #38bdf8;" title="Pasar un equipo de esta llave a la siguiente fase">
           <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pasar a Siguiente Fase
         </button>
       ` : '';
@@ -1574,28 +1641,135 @@ const AdminApp = {
           </div>
           ${getTeamRow(m.team1, m.score1)}
           ${getTeamRow(m.team2, m.score2)}
+          <button onclick="AdminApp.loadChampionsMatchToStudio('${m.fase}')" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; font-weight: 700; width: 100%; margin-top: 0.35rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(56, 189, 248, 0.2); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8;">
+            <i class="fa-solid fa-pen-to-square"></i> Cargar Marcador en Registro
+          </button>
           ${advanceBtn}
         </div>
       `;
     };
 
-    const octavos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('octavos'));
-    const cuartos = matches.filter(m => m.fase && m.fase.toLowerCase().includes('cuartos'));
-    const semis = matches.filter(m => m.fase && m.fase.toLowerCase().includes('semifinal'));
+    const getTieBox = (tieBase, idaMatch, vueltaMatch) => {
+      if (!idaMatch && !vueltaMatch) return '';
+      const m1 = idaMatch || { fase: `${tieBase} (Ida)`, team1: 'Por definir', team2: 'Por definir', score1: '', score2: '', estado: 'Pendiente' };
+      const m2 = vueltaMatch || { fase: `${tieBase} (Vuelta)`, team1: 'Por definir', team2: 'Por definir', score1: '', score2: '', estado: 'Pendiente' };
+
+      const teamA = m1.team1;
+      const teamB = m1.team2;
+      const hasIda = m1.estado && m1.estado.toLowerCase() === 'finalizado';
+      const hasVuelta = m2.estado && m2.estado.toLowerCase() === 'finalizado';
+
+      const s1_ida = (m1.score1 !== undefined && m1.score1 !== null && m1.score1 !== '') ? m1.score1 : '-';
+      const s2_ida = (m1.score2 !== undefined && m1.score2 !== null && m1.score2 !== '') ? m1.score2 : '-';
+      const s1_vue = (m2.score1 !== undefined && m2.score1 !== null && m2.score1 !== '') ? m2.score1 : '-';
+      const s2_vue = (m2.score2 !== undefined && m2.score2 !== null && m2.score2 !== '') ? m2.score2 : '-';
+
+      let totA = 0;
+      let totB = 0;
+      if (hasIda) {
+        totA += parseInt(m1.score1, 10) || 0;
+        totB += parseInt(m1.score2, 10) || 0;
+      }
+      if (hasVuelta) {
+        if (m2.team1 === teamB && m2.team2 === teamA) {
+          totB += parseInt(m2.score1, 10) || 0;
+          totA += parseInt(m2.score2, 10) || 0;
+        } else {
+          totA += parseInt(m2.score1, 10) || 0;
+          totB += parseInt(m2.score2, 10) || 0;
+        }
+      }
+
+      const isTieFinished = hasIda && hasVuelta;
+      let winner = m1.winner || m2.winner || '';
+      if (!winner && isTieFinished && totA !== totB) {
+        winner = totA > totB ? teamA : teamB;
+      }
+
+      let statusBadge = '<span style="font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px; background: rgba(250, 204, 21, 0.2); color: #facc15;">Pendiente</span>';
+      if (isTieFinished) {
+        statusBadge = '<span style="font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px; background: rgba(74, 222, 128, 0.2); color: #4ade80;">Finalizado</span>';
+      } else if (hasIda || hasVuelta) {
+        statusBadge = '<span style="font-size: 0.65rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px; background: rgba(56, 189, 248, 0.2); color: #38bdf8;">En Curso (1/2)</span>';
+      }
+
+      return `
+        <div style="background: #0f274a; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 0.6rem; margin: 0.45rem 0; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding-bottom: 0.25rem;">
+            <span style="font-size: 0.75rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px;">${tieBase} (Ida y Vuelta)</span>
+            ${statusBadge}
+          </div>
+
+          <!-- Partido de Ida -->
+          <div style="background: rgba(12, 28, 56, 0.6); border-radius: 6px; padding: 0.35rem 0.45rem; margin-bottom: 0.3rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem;">
+              <span style="font-size: 0.68rem; font-weight: 800; color: #94a3b8;"><i class="fa-solid fa-play" style="font-size: 0.58rem; color: #38bdf8;"></i> IDA</span>
+              <button onclick="AdminApp.loadChampionsMatchToStudio('${m1.fase}')" class="btn btn-secondary" style="padding: 0.12rem 0.45rem; font-size: 0.66rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; cursor: pointer;">
+                <i class="fa-solid fa-pen-to-square"></i> Cargar Ida
+              </button>
+            </div>
+            ${getTeamRow(m1.team1, s1_ida)}
+            ${getTeamRow(m1.team2, s2_ida)}
+          </div>
+
+          <!-- Partido de Vuelta -->
+          <div style="background: rgba(12, 28, 56, 0.6); border-radius: 6px; padding: 0.35rem 0.45rem; margin-bottom: 0.3rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem;">
+              <span style="font-size: 0.68rem; font-weight: 800; color: #94a3b8;"><i class="fa-solid fa-rotate" style="font-size: 0.58rem; color: #38bdf8;"></i> VUELTA</span>
+              <button onclick="AdminApp.loadChampionsMatchToStudio('${m2.fase}')" class="btn btn-secondary" style="padding: 0.12rem 0.45rem; font-size: 0.66rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; cursor: pointer;">
+                <i class="fa-solid fa-pen-to-square"></i> Cargar Vuelta
+              </button>
+            </div>
+            ${getTeamRow(m2.team1, s1_vue)}
+            ${getTeamRow(m2.team2, s2_vue)}
+          </div>
+
+          <!-- Marcador Global -->
+          ${(hasIda || hasVuelta) ? `
+            <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 0.3rem 0.5rem; display: flex; justify-content: space-between; align-items: center; margin: 0.35rem 0;">
+              <span style="font-size: 0.7rem; font-weight: 800; color: #38bdf8;">GLOBAL:</span>
+              <span style="font-size: 0.85rem; font-weight: 900; color: #ffffff;">${totA} - ${totB}</span>
+              ${winner ? `<span style="font-size: 0.7rem; font-weight: 800; color: #4ade80;"><i class="fa-solid fa-circle-check"></i> ${winner}</span>` : ''}
+            </div>
+          ` : ''}
+
+          <button class="btn btn-secondary" onclick="AdminApp.openAdvanceTeamModal('champions_ko', '${m1.fase}')" style="padding: 0.22rem 0.5rem; font-size: 0.72rem; font-weight: 700; width: 100%; margin-top: 0.35rem; justify-content: center; display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8;" title="Pasar un equipo de esta llave a la siguiente fase">
+            <i class="fa-solid fa-forward-step" style="color: #38bdf8;"></i> Pasar a Siguiente Fase
+          </button>
+        </div>
+      `;
+    };
+
+    const getTieBoxes = (count, prefix) => {
+      const boxes = [];
+      for (let i = 1; i <= count; i++) {
+        const tieName = `${prefix} ${i}`;
+        const ida = matches.find(m => m.fase && m.fase.toLowerCase() === `${tieName.toLowerCase()} (ida)`);
+        const vuelta = matches.find(m => m.fase && m.fase.toLowerCase() === `${tieName.toLowerCase()} (vuelta)`);
+        if (ida || vuelta) {
+          boxes.push(getTieBox(tieName, ida, vuelta));
+        }
+      }
+      return boxes;
+    };
+
+    const octavosTies = getTieBoxes(8, 'Octavos');
+    const cuartosTies = getTieBoxes(4, 'Cuartos');
+    const semisTies = getTieBoxes(2, 'Semifinal');
     const finalM = matches.find(m => m.fase && m.fase.toLowerCase() === 'final');
 
     if (phaseFilter !== 'all') {
       container.style.display = 'grid';
-      container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+      container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(290px, 1fr))';
       container.style.gap = '1rem';
       container.style.overflowX = 'visible';
 
       if (phaseFilter === 'octavos') {
-        container.innerHTML = octavos.length ? octavos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Octavos de Final registrados.</div>';
+        container.innerHTML = octavosTies.length ? octavosTies.join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Octavos de Final registrados.</div>';
       } else if (phaseFilter === 'cuartos') {
-        container.innerHTML = cuartos.length ? cuartos.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Cuartos de Final registrados.</div>';
+        container.innerHTML = cuartosTies.length ? cuartosTies.join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Cuartos de Final registrados.</div>';
       } else if (phaseFilter === 'semis') {
-        container.innerHTML = semis.length ? semis.map(getMatchBox).join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Semifinales registrados.</div>';
+        container.innerHTML = semisTies.length ? semisTies.join('') : '<div style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">No hay partidos de Semifinales registrados.</div>';
       } else if (phaseFilter === 'final') {
         container.style.display = 'flex';
         container.style.justifyContent = 'center';
@@ -1612,32 +1786,45 @@ const AdminApp = {
     container.style.overflowX = 'auto';
 
     let html = '';
-    if (octavos.length) {
-      html += `<div style="flex: 1; min-width: 230px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.4rem;">
-        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-shield-halved"></i> Octavos de Final</h4>
-        ${octavos.map(getMatchBox).join('')}
+    if (octavosTies.length) {
+      html += `<div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.4rem;">
+        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-shield-halved"></i> Octavos (Ida y Vuelta)</h4>
+        ${octavosTies.join('')}
       </div>`;
     }
-    if (cuartos.length) {
-      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.5rem;">
-        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-gamepad"></i> Cuartos de Final</h4>
-        ${cuartos.map(getMatchBox).join('')}
+    if (cuartosTies.length) {
+      html += `<div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; justify-content: space-around; gap: 0.5rem;">
+        <h4 style="color: #38bdf8; text-align: center; border-bottom: 2px solid #0284c7; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-gamepad"></i> Cuartos (Ida y Vuelta)</h4>
+        ${cuartosTies.join('')}
       </div>`;
     }
-    if (semis.length) {
-      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
-        <h4 style="color: #60a5fa; text-align: center; border-bottom: 2px solid #3b82f6; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-shield"></i> Semifinales</h4>
-        ${semis.map(getMatchBox).join('')}
+    if (semisTies.length) {
+      html += `<div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; justify-content: space-around; gap: 1rem;">
+        <h4 style="color: #60a5fa; text-align: center; border-bottom: 2px solid #3b82f6; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-shield"></i> Semifinales (Ida y Vuelta)</h4>
+        ${semisTies.join('')}
       </div>`;
     }
     if (finalM) {
-      html += `<div style="flex: 1; min-width: 220px; display: flex; flex-direction: column; justify-content: center;">
+      html += `<div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; justify-content: center;">
         <h4 style="color: #ffd700; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-trophy"></i> Gran Final</h4>
         ${getMatchBox(finalM)}
       </div>`;
     }
 
     container.innerHTML = html;
+  },
+
+  loadChampionsMatchToStudio(phase) {
+    this.switchView('matches');
+    const compSel = document.getElementById('match-competition');
+    if (compSel) compSel.value = 'champions_ko';
+    this.onCompetitionChange();
+    const phaseSel = document.getElementById('match-phase');
+    if (phaseSel) {
+      phaseSel.value = phase;
+      this.onPhaseChange();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
   async exportChampionsAdminImage() {
@@ -2230,27 +2417,41 @@ const AdminApp = {
     const t3_4 = best4Thirds[3].team.name;
 
     this.data.championsLeagueMatches = [
-      // Octavos de Final (16 Clubes, 8 Partidos)
-      { fase: 'Octavos 1', team1: firsts['Grupo A'], score1: '', team2: t3_4, score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 2', team1: firsts['Grupo B'], score1: '', team2: t3_3, score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 3', team1: firsts['Grupo C'], score1: '', team2: seconds['Grupo D'], score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 4', team1: firsts['Grupo D'], score1: '', team2: seconds['Grupo C'], score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 5', team1: firsts['Grupo E'], score1: '', team2: t3_2, score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 6', team1: firsts['Grupo F'], score1: '', team2: t3_1, score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 7', team1: seconds['Grupo A'], score1: '', team2: seconds['Grupo F'], score2: '', estado: 'Pendiente' },
-      { fase: 'Octavos 8', team1: seconds['Grupo B'], score1: '', team2: seconds['Grupo E'], score2: '', estado: 'Pendiente' },
+      // Octavos de Final (Ida y Vuelta)
+      { fase: 'Octavos 1 (Ida)', team1: firsts['Grupo A'], score1: '', team2: t3_4, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 1 (Vuelta)', team1: t3_4, score1: '', team2: firsts['Grupo A'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 2 (Ida)', team1: firsts['Grupo B'], score1: '', team2: t3_3, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 2 (Vuelta)', team1: t3_3, score1: '', team2: firsts['Grupo B'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 3 (Ida)', team1: firsts['Grupo C'], score1: '', team2: seconds['Grupo D'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 3 (Vuelta)', team1: seconds['Grupo D'], score1: '', team2: firsts['Grupo C'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 4 (Ida)', team1: firsts['Grupo D'], score1: '', team2: seconds['Grupo C'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 4 (Vuelta)', team1: seconds['Grupo C'], score1: '', team2: firsts['Grupo D'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 5 (Ida)', team1: firsts['Grupo E'], score1: '', team2: t3_2, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 5 (Vuelta)', team1: t3_2, score1: '', team2: firsts['Grupo E'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 6 (Ida)', team1: firsts['Grupo F'], score1: '', team2: t3_1, score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 6 (Vuelta)', team1: t3_1, score1: '', team2: firsts['Grupo F'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 7 (Ida)', team1: seconds['Grupo A'], score1: '', team2: seconds['Grupo F'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 7 (Vuelta)', team1: seconds['Grupo F'], score1: '', team2: seconds['Grupo A'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 8 (Ida)', team1: seconds['Grupo B'], score1: '', team2: seconds['Grupo E'], score2: '', estado: 'Pendiente' },
+      { fase: 'Octavos 8 (Vuelta)', team1: seconds['Grupo E'], score1: '', team2: seconds['Grupo B'], score2: '', estado: 'Pendiente' },
 
-      // Cuartos de Final (8 Clubes, 4 Partidos)
-      { fase: 'Cuartos 1', team1: 'Ganador Octavos 1', score1: '', team2: 'Ganador Octavos 2', score2: '', estado: 'Pendiente' },
-      { fase: 'Cuartos 2', team1: 'Ganador Octavos 3', score1: '', team2: 'Ganador Octavos 4', score2: '', estado: 'Pendiente' },
-      { fase: 'Cuartos 3', team1: 'Ganador Octavos 5', score1: '', team2: 'Ganador Octavos 6', score2: '', estado: 'Pendiente' },
-      { fase: 'Cuartos 4', team1: 'Ganador Octavos 7', score1: '', team2: 'Ganador Octavos 8', score2: '', estado: 'Pendiente' },
+      // Cuartos de Final (Ida y Vuelta)
+      { fase: 'Cuartos 1 (Ida)', team1: 'Ganador Octavos 1', score1: '', team2: 'Ganador Octavos 2', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 1 (Vuelta)', team1: 'Ganador Octavos 2', score1: '', team2: 'Ganador Octavos 1', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 2 (Ida)', team1: 'Ganador Octavos 3', score1: '', team2: 'Ganador Octavos 4', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 2 (Vuelta)', team1: 'Ganador Octavos 4', score1: '', team2: 'Ganador Octavos 3', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 3 (Ida)', team1: 'Ganador Octavos 5', score1: '', team2: 'Ganador Octavos 6', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 3 (Vuelta)', team1: 'Ganador Octavos 6', score1: '', team2: 'Ganador Octavos 5', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 4 (Ida)', team1: 'Ganador Octavos 7', score1: '', team2: 'Ganador Octavos 8', score2: '', estado: 'Pendiente' },
+      { fase: 'Cuartos 4 (Vuelta)', team1: 'Ganador Octavos 8', score1: '', team2: 'Ganador Octavos 7', score2: '', estado: 'Pendiente' },
 
-      // Semifinales (4 Clubes, 2 Partidos)
-      { fase: 'Semifinal 1', team1: 'Ganador Cuartos 1', score1: '', team2: 'Ganador Cuartos 2', score2: '', estado: 'Pendiente' },
-      { fase: 'Semifinal 2', team1: 'Ganador Cuartos 3', score1: '', team2: 'Ganador Cuartos 4', score2: '', estado: 'Pendiente' },
+      // Semifinales (Ida y Vuelta)
+      { fase: 'Semifinal 1 (Ida)', team1: 'Ganador Cuartos 1', score1: '', team2: 'Ganador Cuartos 2', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 1 (Vuelta)', team1: 'Ganador Cuartos 2', score1: '', team2: 'Ganador Cuartos 1', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 2 (Ida)', team1: 'Ganador Cuartos 3', score1: '', team2: 'Ganador Cuartos 4', score2: '', estado: 'Pendiente' },
+      { fase: 'Semifinal 2 (Vuelta)', team1: 'Ganador Cuartos 4', score1: '', team2: 'Ganador Cuartos 3', score2: '', estado: 'Pendiente' },
 
-      // Gran Final
+      // Gran Final (Partido Único)
       { fase: 'Final', team1: 'Ganador Semifinal 1', score1: '', team2: 'Ganador Semifinal 2', score2: '', estado: 'Pendiente' }
     ];
 
@@ -2517,9 +2718,19 @@ const AdminApp = {
     const goalsInput = row.querySelector('.ev-goals-input');
     const assistsInput = row.querySelector('.ev-assists-input');
 
+    const posOrder = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
+    const sortSquad = (arr) => {
+      return [...arr].sort((a, b) => {
+        const diff = (posOrder[a.position] || 99) - (posOrder[b.position] || 99);
+        if (diff !== 0) return diff;
+        return (a.name || '').localeCompare(b.name || '');
+      });
+    };
+
     const populatePlayers = (tId, selectedPlayerId = null) => {
       playerSel.innerHTML = '<option value="">-- Seleccionar Jugador --</option>';
-      const players = this.getPlayersByTeam(tId);
+      const rawPlayers = this.getPlayersByTeam(tId);
+      const players = sortSquad(rawPlayers);
       players.forEach(p => {
         const opt = document.createElement('option');
         opt.value = p.id;
@@ -2583,6 +2794,15 @@ const AdminApp = {
     const team1 = this.getTeamById(team1Id);
     const team2 = this.getTeamById(team2Id);
 
+    const posOrder = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
+    const sortSquad = (arr) => {
+      return [...arr].sort((a, b) => {
+        const diff = (posOrder[a.position] || 99) - (posOrder[b.position] || 99);
+        if (diff !== 0) return diff;
+        return (a.name || '').localeCompare(b.name || '');
+      });
+    };
+
     document.querySelectorAll('.event-row').forEach(row => {
       const teamSel = row.querySelector('.ev-team-select');
       const playerSel = row.querySelector('.ev-player-select');
@@ -2597,7 +2817,8 @@ const AdminApp = {
 
       const currentPlayerVal = playerSel.value;
       playerSel.innerHTML = '<option value="">-- Seleccionar Jugador --</option>';
-      const players = this.getPlayersByTeam(teamSel.value);
+      const rawPlayers = this.getPlayersByTeam(teamSel.value);
+      const players = sortSquad(rawPlayers);
       players.forEach(p => {
         const opt = document.createElement('option');
         opt.value = p.id;
@@ -2771,20 +2992,50 @@ const AdminApp = {
 
         const goals = parseInt(ev.goals, 10) || 0;
         const assists = parseInt(ev.assists, 10) || 0;
+        const evTeamId = ev.teamId || player.teamId;
+
+        if (!player.statsByTeam) player.statsByTeam = {};
+        if (evTeamId && !player.statsByTeam[evTeamId]) {
+          player.statsByTeam[evTeamId] = {
+            teamId: evTeamId,
+            teamName: this.getTeamById(evTeamId)?.name || evTeamId,
+            goals: 0, assists: 0,
+            goals_liga: 0, assists_liga: 0,
+            goals_champions: 0, assists_champions: 0,
+            goals_estelar: 0, assists_estelar: 0
+          };
+        }
+        const tEntry = evTeamId ? player.statsByTeam[evTeamId] : null;
 
         if (goals > 0) {
           player.goals = (player.goals || 0) + goals;
-          if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.goals_liga = (player.goals_liga || 0) + goals;
-          else if (comp === 'champions' || comp === 'champions_ko') player.goals_champions = (player.goals_champions || 0) + goals;
-          else if (comp === 'estelar') player.goals_estelar = (player.goals_estelar || 0) + goals;
+          if (tEntry) tEntry.goals = (tEntry.goals || 0) + goals;
+          if (comp === 'oro' || comp === 'plata' || comp === 'liga') {
+            player.goals_liga = (player.goals_liga || 0) + goals;
+            if (tEntry) tEntry.goals_liga = (tEntry.goals_liga || 0) + goals;
+          } else if (comp === 'champions' || comp === 'champions_ko') {
+            player.goals_champions = (player.goals_champions || 0) + goals;
+            if (tEntry) tEntry.goals_champions = (tEntry.goals_champions || 0) + goals;
+          } else if (comp === 'estelar') {
+            player.goals_estelar = (player.goals_estelar || 0) + goals;
+            if (tEntry) tEntry.goals_estelar = (tEntry.goals_estelar || 0) + goals;
+          }
           updatedStatsCount += goals;
         }
 
         if (assists > 0) {
           player.assists = (player.assists || 0) + assists;
-          if (comp === 'oro' || comp === 'plata' || comp === 'liga') player.assists_liga = (player.assists_liga || 0) + assists;
-          else if (comp === 'champions' || comp === 'champions_ko') player.assists_champions = (player.assists_champions || 0) + assists;
-          else if (comp === 'estelar') player.assists_estelar = (player.assists_estelar || 0) + assists;
+          if (tEntry) tEntry.assists = (tEntry.assists || 0) + assists;
+          if (comp === 'oro' || comp === 'plata' || comp === 'liga') {
+            player.assists_liga = (player.assists_liga || 0) + assists;
+            if (tEntry) tEntry.assists_liga = (tEntry.assists_liga || 0) + assists;
+          } else if (comp === 'champions' || comp === 'champions_ko') {
+            player.assists_champions = (player.assists_champions || 0) + assists;
+            if (tEntry) tEntry.assists_champions = (tEntry.assists_champions || 0) + assists;
+          } else if (comp === 'estelar') {
+            player.assists_estelar = (player.assists_estelar || 0) + assists;
+            if (tEntry) tEntry.assists_estelar = (tEntry.assists_estelar || 0) + assists;
+          }
           updatedStatsCount += assists;
         }
       });
@@ -2840,6 +3091,7 @@ const AdminApp = {
           targetMatch.team2 = team2.name;
           targetMatch.score2 = String(score2);
           targetMatch.estado = 'Finalizado';
+          targetMatch.events = serializedEvents;
         } else {
           matchArray.push({
             fase: phase,
@@ -2847,58 +3099,129 @@ const AdminApp = {
             score1: String(score1),
             team2: team2.name,
             score2: String(score2),
-            estado: 'Finalizado'
+            estado: 'Finalizado',
+            events: serializedEvents
           });
         }
 
-        // Auto-avanzar ganador al siguiente cruce
-        if (score1 !== score2) {
-          const winnerName = score1 > score2 ? team1.name : team2.name;
-          const copaMapping = {
-            'ronda previa 1': { phase: 'octavos 1', teamSlot: 'team1' },
-            'ronda previa 2': { phase: 'octavos 2', teamSlot: 'team1' },
-            'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
-            'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
-            'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
-            'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
-            'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
-            'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
-            'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
-            'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
-            'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
-            'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
-            'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
-            'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
-            'semifinal 1': { phase: 'final', teamSlot: 'team1' },
-            'semifinal 2': { phase: 'final', teamSlot: 'team2' }
-          };
+        if (comp === 'champions_ko') {
+          // Lógica Champions League Ida y Vuelta
+          const isFinal = phase.toLowerCase() === 'final';
+          if (isFinal) {
+            if (score1 !== score2) {
+              const champion = score1 > score2 ? team1.name : team2.name;
+              targetMatch.winner = champion;
+              this.showToast(`¡🏆 ${champion} ES EL NUEVO CAMPEÓN DE LA UEFA CHAMPIONS LEAGUE!`, 'success');
+            }
+          } else {
+            // Determine tie base (ej. "Octavos 1", "Cuartos 2", "Semifinal 1")
+            const isIda = phase.toLowerCase().includes('(ida)');
+            const isVuelta = phase.toLowerCase().includes('(vuelta)');
+            const tieBase = phase.replace(/\((ida|vuelta)\)/i, '').trim();
 
-          const champMapping = {
-            'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
-            'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
-            'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
-            'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
-            'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
-            'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
-            'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
-            'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
-            'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
-            'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
-            'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
-            'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
-            'semifinal 1': { phase: 'final', teamSlot: 'team1' },
-            'semifinal 2': { phase: 'final', teamSlot: 'team2' }
-          };
+            const idaMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${tieBase.toLowerCase()} (ida)`);
+            const vueltaMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${tieBase.toLowerCase()} (vuelta)`);
 
-          const mapping = comp === 'champions_ko' ? champMapping : copaMapping;
-          const pLower = phase.toLowerCase();
-          const targetKey = Object.keys(mapping).find(k => pLower.startsWith(k));
-          const target = targetKey ? mapping[targetKey] : null;
+            // Sincronizar rivales entre Ida y Vuelta
+            if (isIda && vueltaMatch) {
+              if (!vueltaMatch.team1 || vueltaMatch.team1.toLowerCase().startsWith('ganador')) vueltaMatch.team1 = team2.name;
+              if (!vueltaMatch.team2 || vueltaMatch.team2.toLowerCase().startsWith('ganador')) vueltaMatch.team2 = team1.name;
+            } else if (isVuelta && idaMatch) {
+              if (!idaMatch.team1 || idaMatch.team1.toLowerCase().startsWith('ganador')) idaMatch.team1 = team2.name;
+              if (!idaMatch.team2 || idaMatch.team2.toLowerCase().startsWith('ganador')) idaMatch.team2 = team1.name;
+            }
 
-          if (target) {
-            const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(target.phase));
-            if (nextMatch) {
-              nextMatch[target.teamSlot] = winnerName;
+            // Si ambos partidos están jugados, calcular el Marcador Global
+            if (idaMatch && vueltaMatch && idaMatch.estado === 'Finalizado' && vueltaMatch.estado === 'Finalizado') {
+              const teamA = idaMatch.team1; // Local en Ida, Visitante en Vuelta
+              const teamB = idaMatch.team2; // Visitante en Ida, Local en Vuelta
+
+              const idaScoreA = parseInt(idaMatch.score1, 10) || 0;
+              const idaScoreB = parseInt(idaMatch.score2, 10) || 0;
+
+              let vueltaScoreA = 0;
+              let vueltaScoreB = 0;
+              if (vueltaMatch.team1 === teamB && vueltaMatch.team2 === teamA) {
+                vueltaScoreB = parseInt(vueltaMatch.score1, 10) || 0;
+                vueltaScoreA = parseInt(vueltaMatch.score2, 10) || 0;
+              } else if (vueltaMatch.team1 === teamA && vueltaMatch.team2 === teamB) {
+                vueltaScoreA = parseInt(vueltaMatch.score1, 10) || 0;
+                vueltaScoreB = parseInt(vueltaMatch.score2, 10) || 0;
+              }
+
+              const globalA = idaScoreA + vueltaScoreA;
+              const globalB = idaScoreB + vueltaScoreB;
+
+              if (globalA !== globalB) {
+                const winnerName = (globalA > globalB) ? teamA : teamB;
+                idaMatch.winner = winnerName;
+                vueltaMatch.winner = winnerName;
+
+                // Avanzar al ganador a la siguiente fase
+                const champMapping = {
+                  'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
+                  'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
+                  'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
+                  'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
+                  'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
+                  'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
+                  'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
+                  'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
+                  'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
+                  'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
+                  'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
+                  'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
+                  'semifinal 1': { phase: 'final', teamSlot: 'team1' },
+                  'semifinal 2': { phase: 'final', teamSlot: 'team2' }
+                };
+
+                const dest = champMapping[tieBase.toLowerCase()];
+                if (dest) {
+                  if (dest.phase === 'final') {
+                    const finalM = matchArray.find(m => m.fase && m.fase.toLowerCase() === 'final');
+                    if (finalM) finalM[dest.teamSlot] = winnerName;
+                  } else {
+                    const nextIda = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${dest.phase.toLowerCase()} (ida)`);
+                    const nextVuelta = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${dest.phase.toLowerCase()} (vuelta)`);
+                    const oppSlot = (dest.teamSlot === 'team1') ? 'team2' : 'team1';
+                    if (nextIda) nextIda[dest.teamSlot] = winnerName;
+                    if (nextVuelta) nextVuelta[oppSlot] = winnerName;
+                  }
+                  this.showToast(`¡${winnerName} avanzó en el Global (${globalA}-${globalB}) a ${dest.phase.toUpperCase()}!`, 'success');
+                }
+              }
+            }
+          }
+        } else {
+          // Copa Estelar (partido único)
+          if (score1 !== score2) {
+            const winnerName = score1 > score2 ? team1.name : team2.name;
+            const copaMapping = {
+              'ronda previa 1': { phase: 'octavos 1', teamSlot: 'team1' },
+              'ronda previa 2': { phase: 'octavos 2', teamSlot: 'team1' },
+              'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
+              'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
+              'octavos 3': { phase: 'cuartos 2', teamSlot: 'team1' },
+              'octavos 4': { phase: 'cuartos 2', teamSlot: 'team2' },
+              'octavos 5': { phase: 'cuartos 3', teamSlot: 'team1' },
+              'octavos 6': { phase: 'cuartos 3', teamSlot: 'team2' },
+              'octavos 7': { phase: 'cuartos 4', teamSlot: 'team1' },
+              'octavos 8': { phase: 'cuartos 4', teamSlot: 'team2' },
+              'cuartos 1': { phase: 'semifinal 1', teamSlot: 'team1' },
+              'cuartos 2': { phase: 'semifinal 1', teamSlot: 'team2' },
+              'cuartos 3': { phase: 'semifinal 2', teamSlot: 'team1' },
+              'cuartos 4': { phase: 'semifinal 2', teamSlot: 'team2' },
+              'semifinal 1': { phase: 'final', teamSlot: 'team1' },
+              'semifinal 2': { phase: 'final', teamSlot: 'team2' }
+            };
+            const pLower = phase.toLowerCase();
+            const targetKey = Object.keys(copaMapping).find(k => pLower.startsWith(k));
+            const target = targetKey ? copaMapping[targetKey] : null;
+            if (target) {
+              const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(target.phase));
+              if (nextMatch) {
+                nextMatch[target.teamSlot] = winnerName;
+              }
             }
           }
         }
@@ -2942,7 +3265,7 @@ const AdminApp = {
       competition: comp,
       jornada: jornadaNumber,
       fixtureMatchId: fixtureMatchId,
-      phase: comp === 'estelar' ? phase : (jornadaNumber ? `Jornada ${jornadaNumber}` : ''),
+      phase: (comp === 'estelar' || comp === 'champions_ko') ? phase : (jornadaNumber ? `Jornada ${jornadaNumber}` : ''),
       team1Id: team1.id,
       team1Name: team1.name,
       team1Logo: team1.logo || '',
@@ -3078,23 +3401,34 @@ const AdminApp = {
         if (!player) return;
 
         const count = ev.count || 1;
+        const evTeamId = ev.teamId || player.teamId;
+        const tEntry = (player.statsByTeam && evTeamId) ? player.statsByTeam[evTeamId] : null;
+
         if (ev.type === 'gol') {
           player.goals = Math.max(0, (player.goals || 0) - count);
+          if (tEntry) tEntry.goals = Math.max(0, (tEntry.goals || 0) - count);
           if (match.competition === 'oro' || match.competition === 'plata' || match.competition === 'liga') {
             player.goals_liga = Math.max(0, (player.goals_liga || 0) - count);
+            if (tEntry) tEntry.goals_liga = Math.max(0, (tEntry.goals_liga || 0) - count);
           } else if (match.competition === 'champions' || match.competition === 'champions_ko') {
             player.goals_champions = Math.max(0, (player.goals_champions || 0) - count);
+            if (tEntry) tEntry.goals_champions = Math.max(0, (tEntry.goals_champions || 0) - count);
           } else if (match.competition === 'estelar') {
             player.goals_estelar = Math.max(0, (player.goals_estelar || 0) - count);
+            if (tEntry) tEntry.goals_estelar = Math.max(0, (tEntry.goals_estelar || 0) - count);
           }
         } else if (ev.type === 'asistencia') {
           player.assists = Math.max(0, (player.assists || 0) - count);
+          if (tEntry) tEntry.assists = Math.max(0, (tEntry.assists || 0) - count);
           if (match.competition === 'oro' || match.competition === 'plata' || match.competition === 'liga') {
             player.assists_liga = Math.max(0, (player.assists_liga || 0) - count);
+            if (tEntry) tEntry.assists_liga = Math.max(0, (tEntry.assists_liga || 0) - count);
           } else if (match.competition === 'champions' || match.competition === 'champions_ko') {
             player.assists_champions = Math.max(0, (player.assists_champions || 0) - count);
+            if (tEntry) tEntry.assists_champions = Math.max(0, (tEntry.assists_champions || 0) - count);
           } else if (match.competition === 'estelar') {
             player.assists_estelar = Math.max(0, (player.assists_estelar || 0) - count);
+            if (tEntry) tEntry.assists_estelar = Math.max(0, (tEntry.assists_estelar || 0) - count);
           }
         }
         revertedCount += count;
@@ -3688,6 +4022,16 @@ const AdminApp = {
     }
 
     players.forEach(p => {
+      const clubStats = (p.statsByTeam && p.statsByTeam[this.selectedTeamId]) ? p.statsByTeam[this.selectedTeamId] : {
+        goals: p.goals || 0,
+        assists: p.assists || 0,
+        goals_liga: p.goals_liga || 0,
+        goals_champions: p.goals_champions || 0,
+        goals_estelar: p.goals_estelar || 0
+      };
+      const hasOtherGoals = (p.goals || 0) > (clubStats.goals || 0);
+      const hasOtherAssists = (p.assists || 0) > (clubStats.assists || 0);
+
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td style="font-weight: 700; color: #fff;">
@@ -3695,11 +4039,17 @@ const AdminApp = {
           ${p.isLegend ? '<span style="color: var(--lmi-gold); font-size: 0.75rem; margin-left: 0.3rem;">★ Leyenda</span>' : ''}
         </td>
         <td><span class="pos-badge pos-${p.position || 'MC'}">${p.position || 'MC'}</span></td>
-        <td>${p.goals_liga || 0}</td>
-        <td>${p.goals_champions || 0}</td>
-        <td>${p.goals_estelar || 0}</td>
-        <td style="font-weight: 800; color: var(--lmi-gold);">${p.goals || 0}</td>
-        <td>${p.assists || 0}</td>
+        <td>${clubStats.goals_liga || 0}</td>
+        <td>${clubStats.goals_champions || 0}</td>
+        <td>${clubStats.goals_estelar || 0}</td>
+        <td style="font-weight: 800; color: var(--lmi-gold);">
+          ${clubStats.goals || 0}
+          ${hasOtherGoals ? `<span style="font-size: 0.72rem; color: #fbbf24; margin-left: 3px;" title="Goles con este club: ${clubStats.goals || 0} | Total acumulado en temporada: ${p.goals || 0} goles">(${p.goals || 0} tot.)</span>` : ''}
+        </td>
+        <td>
+          ${clubStats.assists || 0}
+          ${hasOtherAssists ? `<span style="font-size: 0.72rem; color: #38bdf8; margin-left: 3px;" title="Asistencias con este club: ${clubStats.assists || 0} | Total acumulado en temporada: ${p.assists || 0} asist.">(${p.assists || 0} tot.)</span>` : ''}
+        </td>
         <td>
           <span style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; background: ${p.cardType === 'Leyenda' ? 'rgba(255,209,0,0.15)' : 'rgba(255,255,255,0.08)'}; color: ${p.cardType === 'Leyenda' ? 'var(--lmi-gold)' : 'var(--text-secondary)'}; font-weight: 700;">
             ${p.cardType || 'Normal'}
@@ -3857,6 +4207,37 @@ const AdminApp = {
 
     const newTeam = teams[chosenIdx];
     const oldTeam = this.getTeamById(player.teamId);
+
+    if (!player.statsByTeam) player.statsByTeam = {};
+    if (oldTeam && !player.statsByTeam[oldTeam.id]) {
+      player.statsByTeam[oldTeam.id] = {
+        teamId: oldTeam.id,
+        teamName: oldTeam.name,
+        goals: player.goals || 0,
+        assists: player.assists || 0,
+        goals_liga: player.goals_liga || 0,
+        assists_liga: player.assists_liga || 0,
+        goals_champions: player.goals_champions || 0,
+        assists_champions: player.assists_champions || 0,
+        goals_estelar: player.goals_estelar || 0,
+        assists_estelar: player.assists_estelar || 0
+      };
+    }
+    if (!player.statsByTeam[newTeam.id]) {
+      player.statsByTeam[newTeam.id] = {
+        teamId: newTeam.id,
+        teamName: newTeam.name,
+        goals: 0,
+        assists: 0,
+        goals_liga: 0,
+        assists_liga: 0,
+        goals_champions: 0,
+        assists_champions: 0,
+        goals_estelar: 0,
+        assists_estelar: 0
+      };
+    }
+
     player.teamId = newTeam.id;
 
     // Registrar en mercado automáticamente
@@ -4421,8 +4802,9 @@ const AdminApp = {
   },
 
   getPlayersByTeam(teamId) {
-    if (!this.data || !this.data.players) return [];
-    return this.data.players.filter(p => p.teamId === teamId);
+    if (!this.data || !this.data.players || !teamId) return [];
+    const tid = String(teamId).trim().toLowerCase();
+    return this.data.players.filter(p => p.teamId && String(p.teamId).trim().toLowerCase() === tid);
   },
 
   formatMoney(amount) {
@@ -4627,31 +5009,68 @@ const AdminApp = {
       return;
     }
 
-    const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(mapping.phase.toLowerCase()));
-    if (!nextMatch) {
-      this.showToast(`No se encontró el partido de destino (${mapping.phase})`, 'error');
-      return;
-    }
-
     if (!confirm(`¿Confirmas avanzar a ${teamName} a ${mapping.phase.toUpperCase()} (${mapping.teamSlot === 'team1' ? 'Local' : 'Visitante'}) por ${reason}?`)) {
       return;
     }
 
-    nextMatch[mapping.teamSlot] = teamName;
+    if (comp === 'champions_ko') {
+      const isDestFinal = mapping.phase.toLowerCase() === 'final';
+      if (isDestFinal) {
+        const destMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === 'final');
+        if (destMatch) destMatch[mapping.teamSlot] = teamName;
+      } else {
+        const nextIda = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${mapping.phase.toLowerCase()} (ida)`);
+        const nextVuelta = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${mapping.phase.toLowerCase()} (vuelta)`);
+        const oppSlot = (mapping.teamSlot === 'team1') ? 'team2' : 'team1';
+        if (nextIda) nextIda[mapping.teamSlot] = teamName;
+        if (nextVuelta) nextVuelta[oppSlot] = teamName;
+      }
 
-    currentMatch.estado = 'Finalizado';
-    currentMatch.winner = teamName;
-    if (currentMatch.team1 === teamName) {
-      currentMatch.score1 = 'Pase';
-      currentMatch.score2 = currentMatch.score2 || '-';
-      if (!currentMatch.team2 || currentMatch.team2.toLowerCase().startsWith('ganador')) {
-        currentMatch.team2 = 'Sin Rival (No jugaron)';
+      // Finalizar ambas llaves de la eliminatoria actual si son Ida y Vuelta
+      const tieBase = phase.replace(/\((ida|vuelta)\)/i, '').trim();
+      const idaMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${tieBase.toLowerCase()} (ida)`);
+      const vueltaMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${tieBase.toLowerCase()} (vuelta)`);
+
+      const markLegPase = (leg) => {
+        if (!leg) return;
+        leg.estado = 'Finalizado';
+        leg.winner = teamName;
+        if (leg.team1 === teamName) {
+          leg.score1 = 'Pase';
+          leg.score2 = leg.score2 || '-';
+          if (!leg.team2 || leg.team2.toLowerCase().startsWith('ganador')) leg.team2 = 'Sin Rival (W.O.)';
+        } else {
+          leg.score2 = 'Pase';
+          leg.score1 = leg.score1 || '-';
+          if (!leg.team1 || leg.team1.toLowerCase().startsWith('ganador')) leg.team1 = 'Sin Rival (W.O.)';
+        }
+      };
+
+      if (idaMatch || vueltaMatch) {
+        markLegPase(idaMatch);
+        markLegPase(vueltaMatch);
+      } else {
+        markLegPase(currentMatch);
       }
     } else {
-      currentMatch.score2 = 'Pase';
-      currentMatch.score1 = currentMatch.score1 || '-';
-      if (!currentMatch.team1 || currentMatch.team1.toLowerCase().startsWith('ganador')) {
-        currentMatch.team1 = 'Sin Rival (No jugaron)';
+      // Copa Estelar
+      const nextMatch = matchArray.find(m => m.fase && m.fase.toLowerCase().startsWith(mapping.phase.toLowerCase()));
+      if (nextMatch) nextMatch[mapping.teamSlot] = teamName;
+
+      currentMatch.estado = 'Finalizado';
+      currentMatch.winner = teamName;
+      if (currentMatch.team1 === teamName) {
+        currentMatch.score1 = 'Pase';
+        currentMatch.score2 = currentMatch.score2 || '-';
+        if (!currentMatch.team2 || currentMatch.team2.toLowerCase().startsWith('ganador')) {
+          currentMatch.team2 = 'Sin Rival (No jugaron)';
+        }
+      } else {
+        currentMatch.score2 = 'Pase';
+        currentMatch.score1 = currentMatch.score1 || '-';
+        if (!currentMatch.team1 || currentMatch.team1.toLowerCase().startsWith('ganador')) {
+          currentMatch.team1 = 'Sin Rival (No jugaron)';
+        }
       }
     }
 
@@ -5334,12 +5753,23 @@ const AdminApp = {
       matchObj.events.forEach(ev => {
         const player = (this.data.players || []).find(p => p.id === ev.playerId);
         if (player) {
+          const evTeamId = ev.teamId || player.teamId;
+          const tEntry = (player.statsByTeam && evTeamId) ? player.statsByTeam[evTeamId] : null;
+          const cnt = ev.count || 1;
           if (ev.type === 'gol') {
-            player.goals_liga = Math.max(0, (player.goals_liga || 0) - (ev.count || 1));
-            player.goals = Math.max(0, (player.goals || 0) - (ev.count || 1));
+            player.goals_liga = Math.max(0, (player.goals_liga || 0) - cnt);
+            player.goals = Math.max(0, (player.goals || 0) - cnt);
+            if (tEntry) {
+              tEntry.goals_liga = Math.max(0, (tEntry.goals_liga || 0) - cnt);
+              tEntry.goals = Math.max(0, (tEntry.goals || 0) - cnt);
+            }
           } else if (ev.type === 'asistencia') {
-            player.assists_liga = Math.max(0, (player.assists_liga || 0) - (ev.count || 1));
-            player.assists = Math.max(0, (player.assists || 0) - (ev.count || 1));
+            player.assists_liga = Math.max(0, (player.assists_liga || 0) - cnt);
+            player.assists = Math.max(0, (player.assists || 0) - cnt);
+            if (tEntry) {
+              tEntry.assists_liga = Math.max(0, (tEntry.assists_liga || 0) - cnt);
+              tEntry.assists = Math.max(0, (tEntry.assists || 0) - cnt);
+            }
           }
         }
       });
@@ -5353,12 +5783,35 @@ const AdminApp = {
     events.forEach(ev => {
       const player = (this.data.players || []).find(p => p.id === ev.playerId);
       if (player) {
+        const evTeamId = ev.teamId || player.teamId;
+        if (!player.statsByTeam) player.statsByTeam = {};
+        if (evTeamId && !player.statsByTeam[evTeamId]) {
+          player.statsByTeam[evTeamId] = {
+            teamId: evTeamId,
+            teamName: this.getTeamById(evTeamId)?.name || evTeamId,
+            goals: 0, assists: 0,
+            goals_liga: 0, assists_liga: 0,
+            goals_champions: 0, assists_champions: 0,
+            goals_estelar: 0, assists_estelar: 0
+          };
+        }
+        const tEntry = evTeamId ? player.statsByTeam[evTeamId] : null;
+        const cnt = ev.count || 1;
+
         if (ev.type === 'gol') {
-          player.goals_liga = (player.goals_liga || 0) + (ev.count || 1);
-          player.goals = (player.goals || 0) + (ev.count || 1);
+          player.goals_liga = (player.goals_liga || 0) + cnt;
+          player.goals = (player.goals || 0) + cnt;
+          if (tEntry) {
+            tEntry.goals_liga = (tEntry.goals_liga || 0) + cnt;
+            tEntry.goals = (tEntry.goals || 0) + cnt;
+          }
         } else if (ev.type === 'asistencia') {
-          player.assists_liga = (player.assists_liga || 0) + (ev.count || 1);
-          player.assists = (player.assists || 0) + (ev.count || 1);
+          player.assists_liga = (player.assists_liga || 0) + cnt;
+          player.assists = (player.assists || 0) + cnt;
+          if (tEntry) {
+            tEntry.assists_liga = (tEntry.assists_liga || 0) + cnt;
+            tEntry.assists = (tEntry.assists || 0) + cnt;
+          }
         }
       }
     });

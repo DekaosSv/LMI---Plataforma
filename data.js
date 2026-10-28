@@ -607,7 +607,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_2",
@@ -623,7 +637,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_3",
@@ -639,7 +667,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_4",
@@ -655,7 +697,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_5",
@@ -671,7 +727,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_7",
@@ -687,7 +757,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_8",
@@ -703,7 +787,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 2,
+          "assists": 5,
+          "goals_liga": 2,
+          "assists_liga": 4,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_9",
@@ -719,7 +817,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 3,
+          "assists": 3,
+          "goals_liga": 3,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_13",
@@ -735,7 +847,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_14",
@@ -751,7 +877,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_15",
@@ -767,7 +907,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_16",
@@ -783,7 +937,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_18",
@@ -799,7 +967,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_19",
@@ -815,7 +997,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_20",
@@ -831,7 +1027,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_21",
@@ -847,7 +1057,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_23",
@@ -863,7 +1087,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 3,
+          "assists_liga": 1,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_22",
@@ -879,7 +1117,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 4,
+          "assists": 0,
+          "goals_liga": 4,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_1",
@@ -895,7 +1159,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_2",
@@ -911,7 +1189,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_3",
@@ -927,7 +1219,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_4",
@@ -943,7 +1249,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_1",
@@ -959,7 +1279,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_2",
@@ -975,7 +1309,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_3",
@@ -991,7 +1339,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_4",
@@ -1007,7 +1369,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_5",
@@ -1023,7 +1399,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_6",
@@ -1039,7 +1429,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_7",
@@ -1055,7 +1459,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_8",
@@ -1071,7 +1489,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_11",
@@ -1079,15 +1511,29 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "liverpool",
       "goals": 9,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 9,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 9,
+          "assists": 3,
+          "goals_liga": 9,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_12",
@@ -1103,7 +1549,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_13",
@@ -1119,7 +1579,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_14",
@@ -1135,7 +1609,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_16",
@@ -1151,7 +1639,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_18",
@@ -1167,7 +1669,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 2,
+          "assists": 3,
+          "goals_liga": 2,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_19",
@@ -1183,7 +1699,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_20",
@@ -1199,7 +1729,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_21",
@@ -1215,7 +1759,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 1,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_23",
@@ -1231,7 +1789,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_22",
@@ -1247,7 +1819,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 3,
+          "assists": 1,
+          "goals_liga": 3,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_17",
@@ -1263,7 +1861,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_7",
@@ -1279,7 +1891,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_1",
@@ -1295,7 +1921,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_2",
@@ -1311,7 +1951,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_3",
@@ -1327,7 +1981,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_4",
@@ -1343,7 +2011,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_5",
@@ -1359,7 +2041,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_6",
@@ -1375,7 +2071,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_7",
@@ -1391,7 +2101,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_8",
@@ -1407,7 +2131,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_9",
@@ -1423,7 +2161,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_12",
@@ -1439,7 +2191,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_14",
@@ -1455,7 +2221,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_16",
@@ -1471,7 +2251,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 14,
+          "assists": 4,
+          "goals_liga": 13,
+          "assists_liga": 3,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_17",
@@ -1487,7 +2281,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_18",
@@ -1503,7 +2311,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_19",
@@ -1519,7 +2341,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 4,
+          "assists": 5,
+          "goals_liga": 4,
+          "assists_liga": 5,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_20",
@@ -1535,7 +2371,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_21",
@@ -1551,7 +2401,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_22",
@@ -1567,7 +2431,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 8,
+          "assists": 3,
+          "goals_liga": 7,
+          "assists_liga": 2,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_23",
@@ -1583,7 +2461,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 7,
+          "assists": 5,
+          "goals_liga": 5,
+          "assists_liga": 4,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_21",
@@ -1599,7 +2491,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_20",
@@ -1615,7 +2521,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_18",
@@ -1631,7 +2563,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_12",
@@ -1647,7 +2605,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_1",
@@ -1663,7 +2635,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_2",
@@ -1679,7 +2665,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_3",
@@ -1695,7 +2695,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_4",
@@ -1711,7 +2725,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_5",
@@ -1727,7 +2755,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_6",
@@ -1743,7 +2785,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_9",
@@ -1759,7 +2815,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_10",
@@ -1775,7 +2845,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 2,
+          "assists": 3,
+          "goals_liga": 2,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_12",
@@ -1791,7 +2875,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_13",
@@ -1807,7 +2905,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_14",
@@ -1823,7 +2935,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_15",
@@ -1839,7 +2965,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_16",
@@ -1855,7 +2995,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_17",
@@ -1871,7 +3025,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_20",
@@ -1887,7 +3055,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 1,
+          "assists": 5,
+          "goals_liga": 1,
+          "assists_liga": 5,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_21",
@@ -1903,7 +3085,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 5,
+          "assists": 4,
+          "goals_liga": 5,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_23",
@@ -1919,7 +3115,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 8,
+          "assists": 4,
+          "goals_liga": 6,
+          "assists_liga": 4,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_10",
@@ -1935,7 +3145,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 2,
+          "assists": 3,
+          "goals_liga": 2,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_6",
@@ -1951,7 +3187,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_11",
@@ -1967,7 +3217,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 7,
+          "assists": 6,
+          "goals_liga": 7,
+          "assists_liga": 5,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_11",
@@ -1983,7 +3259,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 2,
+          "assists": 2,
+          "goals_liga": 2,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_1",
@@ -1999,7 +3301,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_3",
@@ -2015,7 +3331,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_4",
@@ -2031,7 +3361,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_5",
@@ -2047,7 +3391,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_6",
@@ -2063,7 +3421,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_7",
@@ -2079,7 +3451,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_8",
@@ -2095,7 +3481,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 3,
+          "assists": 4,
+          "goals_liga": 2,
+          "assists_liga": 3,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_9",
@@ -2111,7 +3511,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 18,
+          "assists": 5,
+          "goals_liga": 17,
+          "assists_liga": 4,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_10",
@@ -2127,7 +3541,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_11",
@@ -2143,7 +3571,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 8,
+          "assists": 11,
+          "goals_liga": 7,
+          "assists_liga": 9,
+          "goals_champions": 1,
+          "assists_champions": 2,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_12",
@@ -2159,7 +3601,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_14",
@@ -2175,7 +3631,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_15",
@@ -2191,7 +3661,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_16",
@@ -2207,7 +3691,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_17",
@@ -2223,7 +3721,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_18",
@@ -2239,7 +3751,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_19",
@@ -2255,7 +3781,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_21",
@@ -2271,7 +3811,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 3,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_22",
@@ -2287,7 +3841,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_2",
@@ -2303,7 +3871,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040339328_23",
@@ -2319,7 +3901,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_15",
@@ -2335,7 +3931,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_8",
@@ -2351,7 +3961,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_1",
@@ -2367,7 +3991,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_2",
@@ -2383,7 +4021,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_3",
@@ -2399,7 +4051,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_4",
@@ -2415,7 +4081,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_5",
@@ -2431,7 +4111,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_6",
@@ -2447,7 +4141,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_7",
@@ -2463,7 +4171,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_8",
@@ -2479,23 +4201,51 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_9",
       "name": "Roberto Alvarado",
       "position": "ED",
       "teamId": "atleticodemadrid",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_13",
@@ -2511,7 +4261,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_14",
@@ -2527,7 +4291,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_15",
@@ -2543,7 +4321,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_16",
@@ -2559,7 +4351,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_17",
@@ -2567,15 +4373,29 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "atleticodemadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_18",
@@ -2591,7 +4411,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_20",
@@ -2599,15 +4433,29 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "atleticodemadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_21",
@@ -2623,7 +4471,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_22",
@@ -2639,7 +4501,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_23",
@@ -2655,23 +4531,51 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_10",
       "name": "Ruud van Nistelrooij",
       "position": "DC",
       "teamId": "atleticodemadrid",
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 3,
+          "assists": 1,
+          "goals_liga": 3,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_19",
@@ -2679,15 +4583,29 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "atleticodemadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_20",
@@ -2703,7 +4621,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_1",
@@ -2719,7 +4663,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_2",
@@ -2735,7 +4693,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_3",
@@ -2751,7 +4723,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_14",
@@ -2767,7 +4753,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_15",
@@ -2783,7 +4783,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_6",
@@ -2799,7 +4813,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_7",
@@ -2815,7 +4843,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_8",
@@ -2831,7 +4873,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_9",
@@ -2847,7 +4903,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_10",
@@ -2863,7 +4933,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 3,
+          "assists": 2,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 2,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_11",
@@ -2879,7 +4963,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 8,
+          "assists": 1,
+          "goals_liga": 6,
+          "assists_liga": 1,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_13",
@@ -2895,7 +4993,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_5",
@@ -2911,7 +5023,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_4",
@@ -2927,7 +5053,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_16",
@@ -2943,7 +5083,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_17",
@@ -2959,7 +5113,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_18",
@@ -2975,7 +5143,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_19",
@@ -2991,7 +5173,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_21",
@@ -3007,7 +5203,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_22",
@@ -3023,7 +5233,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 2,
+          "assists": 2,
+          "goals_liga": 2,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040410030_23",
@@ -3039,7 +5263,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_9",
@@ -3055,7 +5293,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_1",
@@ -3071,7 +5323,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_2",
@@ -3087,7 +5353,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 1,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_3",
@@ -3103,7 +5383,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_4",
@@ -3119,7 +5413,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_5",
@@ -3135,7 +5443,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_6",
@@ -3151,7 +5473,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_7",
@@ -3167,7 +5503,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_8",
@@ -3183,7 +5533,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 5,
+          "assists": 9,
+          "goals_liga": 4,
+          "assists_liga": 6,
+          "goals_champions": 1,
+          "assists_champions": 3,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_9",
@@ -3199,7 +5563,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 5,
+          "assists": 1,
+          "goals_liga": 5,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_10",
@@ -3215,7 +5593,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 6,
+          "assists": 2,
+          "goals_liga": 4,
+          "assists_liga": 1,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_11",
@@ -3231,7 +5623,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 12,
+          "assists": 0,
+          "goals_liga": 12,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_12",
@@ -3247,7 +5653,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_13",
@@ -3263,7 +5683,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_14",
@@ -3279,7 +5713,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_15",
@@ -3295,7 +5743,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_16",
@@ -3311,7 +5773,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_17",
@@ -3327,7 +5803,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_18",
@@ -3343,7 +5833,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_19",
@@ -3359,7 +5863,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 3,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_20",
@@ -3375,7 +5893,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_21",
@@ -3391,7 +5923,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_22",
@@ -3407,7 +5953,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 3,
+          "assists_liga": 1,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039977160_23",
@@ -3423,7 +5983,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 3,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_1",
@@ -3439,7 +6013,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_2",
@@ -3455,7 +6043,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_3",
@@ -3471,7 +6073,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_4",
@@ -3487,7 +6103,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_5",
@@ -3503,7 +6133,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_6",
@@ -3519,7 +6163,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_7",
@@ -3535,7 +6193,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_19",
@@ -3551,7 +6223,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_9",
@@ -3567,7 +6253,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 5,
+          "assists": 2,
+          "goals_liga": 4,
+          "assists_liga": 2,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_10",
@@ -3583,7 +6283,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_11",
@@ -3599,7 +6313,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 9,
+          "assists": 0,
+          "goals_liga": 9,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_12",
@@ -3615,7 +6343,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_13",
@@ -3631,7 +6373,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_14",
@@ -3647,7 +6403,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_15",
@@ -3663,7 +6433,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_16",
@@ -3679,7 +6463,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_17",
@@ -3695,7 +6493,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_18",
@@ -3711,7 +6523,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_20",
@@ -3727,7 +6553,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_21",
@@ -3743,7 +6583,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_22",
@@ -3759,7 +6613,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040197583_23",
@@ -3775,7 +6643,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_10",
@@ -3791,7 +6673,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_15",
@@ -3807,7 +6703,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_3",
@@ -3823,7 +6733,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_4",
@@ -3839,7 +6763,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_5",
@@ -3855,7 +6793,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_6",
@@ -3871,7 +6823,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_7",
@@ -3887,7 +6853,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 2,
+          "assists": 2,
+          "goals_liga": 2,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_8",
@@ -3903,7 +6883,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 4,
+          "goals_liga": 0,
+          "assists_liga": 4,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_9",
@@ -3919,7 +6913,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 1,
+          "assists": 4,
+          "goals_liga": 1,
+          "assists_liga": 4,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_10",
@@ -3935,7 +6943,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_11",
@@ -3951,7 +6973,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 7,
+          "assists": 1,
+          "goals_liga": 7,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_14",
@@ -3967,7 +7003,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_13",
@@ -3983,7 +7033,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_2",
@@ -3999,7 +7063,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_16",
@@ -4015,7 +7093,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_18",
@@ -4031,7 +7123,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_20",
@@ -4047,7 +7153,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_19",
@@ -4063,7 +7183,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 2,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_21",
@@ -4079,7 +7213,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_23",
@@ -4095,7 +7243,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_1",
@@ -4111,7 +7273,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_3",
@@ -4127,7 +7303,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_7",
@@ -4143,7 +7333,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 4,
+          "goals_liga": 0,
+          "assists_liga": 4,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_11",
@@ -4159,7 +7375,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_1",
@@ -4175,7 +7417,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_2",
@@ -4191,7 +7447,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_4",
@@ -4207,7 +7477,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_5",
@@ -4223,7 +7507,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_6",
@@ -4239,7 +7537,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_17",
@@ -4255,7 +7567,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_8",
@@ -4271,7 +7597,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 3,
+          "assists": 2,
+          "goals_liga": 3,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_10",
@@ -4287,7 +7627,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 4,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_11",
@@ -4303,7 +7657,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 11,
+          "assists": 2,
+          "goals_liga": 10,
+          "assists_liga": 2,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_12",
@@ -4319,7 +7687,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_3",
@@ -4335,7 +7717,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_14",
@@ -4351,7 +7747,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_16",
@@ -4367,7 +7777,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_18",
@@ -4383,7 +7807,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_19",
@@ -4399,7 +7837,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_20",
@@ -4415,7 +7867,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_22",
@@ -4431,7 +7897,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040014502_9",
@@ -4447,7 +7927,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_11",
@@ -4463,7 +7957,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_15",
@@ -4479,7 +7987,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_12",
@@ -4495,7 +8017,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_13",
@@ -4511,7 +8047,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_14",
@@ -4527,7 +8077,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_1",
@@ -4543,7 +8107,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_2",
@@ -4559,7 +8137,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_3",
@@ -4575,7 +8167,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_4",
@@ -4591,7 +8197,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_5",
@@ -4607,7 +8227,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_6",
@@ -4623,7 +8257,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_7",
@@ -4639,7 +8287,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 2,
+          "assists": 4,
+          "goals_liga": 0,
+          "assists_liga": 4,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_8",
@@ -4655,7 +8317,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 10,
+          "assists": 4,
+          "goals_liga": 10,
+          "assists_liga": 4,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_9",
@@ -4671,7 +8347,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_10",
@@ -4687,7 +8377,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 9,
+          "assists": 1,
+          "goals_liga": 7,
+          "assists_liga": 1,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_11",
@@ -4703,7 +8407,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 12,
+          "assists": 5,
+          "goals_liga": 12,
+          "assists_liga": 5,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_12",
@@ -4719,7 +8437,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 5,
+          "goals_liga": 0,
+          "assists_liga": 4,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_13",
@@ -4735,7 +8467,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_14",
@@ -4751,7 +8497,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_15",
@@ -4767,7 +8527,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_16",
@@ -4783,7 +8557,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_17",
@@ -4799,7 +8587,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_18",
@@ -4815,7 +8617,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_19",
@@ -4831,7 +8647,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 2,
+          "assists": 4,
+          "goals_liga": 2,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_20",
@@ -4847,7 +8677,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_22",
@@ -4863,7 +8707,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039794983_23",
@@ -4879,7 +8737,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_15",
@@ -4895,7 +8767,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_2",
@@ -4911,7 +8797,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_3",
@@ -4927,7 +8827,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_4",
@@ -4943,7 +8857,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_5",
@@ -4959,7 +8887,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_6",
@@ -4975,7 +8917,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_7",
@@ -4991,7 +8947,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_8",
@@ -5007,7 +8977,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_9",
@@ -5023,7 +9007,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_10",
@@ -5039,7 +9037,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_11",
@@ -5055,7 +9067,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_12",
@@ -5071,7 +9097,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_13",
@@ -5087,7 +9127,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_14",
@@ -5103,7 +9157,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_15",
@@ -5119,7 +9187,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_16",
@@ -5135,7 +9217,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_17",
@@ -5151,7 +9247,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_18",
@@ -5167,7 +9277,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_19",
@@ -5183,7 +9307,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_20",
@@ -5199,7 +9337,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_21",
@@ -5215,7 +9367,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_22",
@@ -5231,7 +9397,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_23",
@@ -5247,7 +9427,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_1",
@@ -5263,7 +9457,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_2",
@@ -5279,7 +9487,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_3",
@@ -5295,7 +9517,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_4",
@@ -5311,7 +9547,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_5",
@@ -5327,7 +9577,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_6",
@@ -5343,7 +9607,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_7",
@@ -5359,7 +9637,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_8",
@@ -5375,7 +9667,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_9",
@@ -5391,7 +9697,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_10",
@@ -5407,7 +9727,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 5,
+          "assists": 1,
+          "goals_liga": 3,
+          "assists_liga": 0,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_11",
@@ -5423,7 +9757,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 2,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 3,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_12",
@@ -5439,7 +9787,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_13",
@@ -5455,7 +9817,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_14",
@@ -5471,7 +9847,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_15",
@@ -5487,7 +9877,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_16",
@@ -5503,7 +9907,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_17",
@@ -5519,7 +9937,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_18",
@@ -5535,7 +9967,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_19",
@@ -5551,7 +9997,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 3,
+          "assists": 2,
+          "goals_liga": 3,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_20",
@@ -5567,7 +10027,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_21",
@@ -5583,7 +10057,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_23",
@@ -5599,7 +10087,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_1",
@@ -5615,7 +10117,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_2",
@@ -5631,7 +10147,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_3",
@@ -5647,7 +10177,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_5",
@@ -5663,7 +10207,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_6",
@@ -5679,7 +10237,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_7",
@@ -5695,7 +10267,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_8",
@@ -5711,7 +10297,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 2,
+          "assists": 7,
+          "goals_liga": 1,
+          "assists_liga": 6,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_9",
@@ -5719,31 +10319,59 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 6,
+      "assists": 9,
       "goals_liga": 0,
-      "assists_liga": 5,
+      "assists_liga": 8,
       "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 9,
+          "goals_liga": 0,
+          "assists_liga": 8,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_10",
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 17,
+      "goals": 19,
       "assists": 1,
-      "goals_liga": 14,
+      "goals_liga": 16,
       "assists_liga": 1,
       "goals_champions": 3,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 19,
+          "assists": 1,
+          "goals_liga": 16,
+          "assists_liga": 1,
+          "goals_champions": 3,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_12",
@@ -5759,7 +10387,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_13",
@@ -5775,7 +10417,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_14",
@@ -5791,7 +10447,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_15",
@@ -5807,7 +10477,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_18",
@@ -5823,7 +10507,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_19",
@@ -5839,7 +10537,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_21",
@@ -5855,7 +10567,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_22",
@@ -5871,7 +10597,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 4,
+          "goals_liga": 1,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_23",
@@ -5887,7 +10627,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_24",
@@ -5903,7 +10657,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 2,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_18",
@@ -5919,23 +10687,63 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_22",
       "name": "Darwin Núñez",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 4,
+      "goals": 5,
       "assists": 4,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 3,
       "goals_champions": 2,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 4,
+          "assists": 4,
+          "goals_liga": 2,
+          "assists_liga": 3,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_16",
@@ -5951,7 +10759,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_17",
@@ -5967,7 +10789,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_1",
@@ -5983,7 +10819,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_2",
@@ -5999,7 +10849,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_3",
@@ -6015,7 +10879,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_4",
@@ -6031,7 +10909,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_5",
@@ -6047,7 +10939,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_6",
@@ -6063,7 +10969,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_8",
@@ -6079,7 +10999,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 2,
+          "assists": 6,
+          "goals_liga": 2,
+          "assists_liga": 6,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_9",
@@ -6087,15 +11021,29 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "acmiln",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_10",
@@ -6111,23 +11059,51 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 7,
+          "assists": 5,
+          "goals_liga": 6,
+          "assists_liga": 5,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_11",
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 16,
+      "goals": 17,
       "assists": 10,
-      "goals_liga": 15,
+      "goals_liga": 16,
       "assists_liga": 10,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 17,
+          "assists": 10,
+          "goals_liga": 16,
+          "assists_liga": 10,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_12",
@@ -6143,7 +11119,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_13",
@@ -6159,7 +11149,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_14",
@@ -6175,7 +11179,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_15",
@@ -6191,7 +11209,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_16",
@@ -6207,7 +11239,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 6,
+          "assists": 0,
+          "goals_liga": 6,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_17",
@@ -6223,7 +11269,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_19",
@@ -6239,7 +11299,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 2,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_21",
@@ -6255,7 +11329,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_22",
@@ -6271,7 +11359,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040438881_23",
@@ -6287,7 +11389,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040371541_17",
@@ -6303,7 +11419,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040054246_20",
@@ -6319,7 +11461,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_23",
@@ -6335,7 +11491,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_1",
@@ -6351,7 +11533,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_2",
@@ -6367,7 +11563,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_3",
@@ -6383,7 +11593,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_4",
@@ -6399,7 +11623,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_5",
@@ -6415,7 +11653,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_6",
@@ -6431,7 +11683,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_7",
@@ -6447,7 +11713,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_8",
@@ -6463,7 +11743,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_9",
@@ -6479,7 +11773,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_10",
@@ -6495,7 +11803,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_11",
@@ -6511,7 +11833,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_12",
@@ -6527,7 +11863,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_13",
@@ -6543,7 +11893,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_14",
@@ -6559,7 +11923,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_15",
@@ -6575,7 +11953,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_16",
@@ -6591,7 +11983,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_17",
@@ -6607,7 +12013,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_18",
@@ -6623,7 +12043,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_19",
@@ -6639,7 +12073,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_20",
@@ -6655,7 +12103,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_21",
@@ -6671,7 +12133,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_22",
@@ -6687,7 +12163,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039636832_23",
@@ -6703,7 +12193,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fctwente": {
+          "teamId": "fctwente",
+          "teamName": "FC Twente",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_1",
@@ -6719,7 +12223,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_2",
@@ -6735,7 +12253,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_3",
@@ -6751,7 +12283,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_4",
@@ -6767,7 +12313,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_5",
@@ -6783,7 +12343,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_6",
@@ -6799,7 +12373,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_7",
@@ -6815,7 +12403,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_8",
@@ -6831,7 +12433,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_9",
@@ -6847,7 +12463,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_10",
@@ -6863,7 +12493,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_11",
@@ -6879,7 +12523,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_13",
@@ -6895,7 +12553,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_15",
@@ -6911,7 +12583,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_16",
@@ -6927,7 +12613,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_17",
@@ -6943,7 +12643,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_19",
@@ -6959,7 +12673,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_20",
@@ -6975,7 +12703,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_21",
@@ -6991,7 +12733,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_22",
@@ -7007,7 +12763,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_23",
@@ -7023,7 +12793,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_1",
@@ -7039,7 +12823,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_2",
@@ -7055,7 +12853,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_3",
@@ -7071,7 +12883,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_4",
@@ -7087,7 +12913,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_6",
@@ -7103,7 +12943,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_8",
@@ -7119,7 +12973,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 3,
+          "assists": 11,
+          "goals_liga": 3,
+          "assists_liga": 7,
+          "goals_champions": 0,
+          "assists_champions": 4,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_9",
@@ -7135,7 +13003,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 3,
+          "assists": 6,
+          "goals_liga": 3,
+          "assists_liga": 5,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_10",
@@ -7151,7 +13033,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 3,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_11",
@@ -7167,7 +13063,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 26,
+          "assists": 4,
+          "goals_liga": 17,
+          "assists_liga": 4,
+          "goals_champions": 9,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_12",
@@ -7183,7 +13093,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_13",
@@ -7199,7 +13123,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_14",
@@ -7215,7 +13153,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_15",
@@ -7231,7 +13183,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_16",
@@ -7247,7 +13213,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_18",
@@ -7263,7 +13243,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_19",
@@ -7279,7 +13273,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_21",
@@ -7295,7 +13303,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_22",
@@ -7311,7 +13333,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_5",
@@ -7327,7 +13363,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_7",
@@ -7343,7 +13393,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 1,
+          "assists": 6,
+          "goals_liga": 1,
+          "assists_liga": 6,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_15",
@@ -7359,7 +13423,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_20",
@@ -7375,7 +13465,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_18",
@@ -7391,7 +13507,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_1",
@@ -7407,7 +13537,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_2",
@@ -7423,7 +13567,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_3",
@@ -7439,7 +13597,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_4",
@@ -7455,7 +13627,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_6",
@@ -7471,7 +13657,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_8",
@@ -7487,7 +13687,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_9",
@@ -7503,7 +13717,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_10",
@@ -7519,7 +13747,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_11",
@@ -7535,7 +13777,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 2,
+          "assists": 2,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_13",
@@ -7551,7 +13807,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_14",
@@ -7567,7 +13837,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_15",
@@ -7583,7 +13867,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_17",
@@ -7599,7 +13897,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_18",
@@ -7615,7 +13927,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_19",
@@ -7631,7 +13957,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_21",
@@ -7647,7 +13987,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 4,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_22",
@@ -7663,7 +14017,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_7",
@@ -7679,7 +14047,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_19",
@@ -7695,7 +14077,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040586949_23",
@@ -7711,7 +14107,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_20",
@@ -7727,7 +14137,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_21",
@@ -7743,7 +14167,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_22",
@@ -7759,7 +14197,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_1",
@@ -7775,7 +14227,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_2",
@@ -7791,7 +14257,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_3",
@@ -7807,7 +14287,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_4",
@@ -7823,7 +14317,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_5",
@@ -7839,7 +14347,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_6",
@@ -7855,7 +14377,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_7",
@@ -7871,7 +14407,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_8",
@@ -7887,7 +14437,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_9",
@@ -7903,7 +14467,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_10",
@@ -7919,7 +14497,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 5,
+          "assists": 1,
+          "goals_liga": 5,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_11",
@@ -7935,7 +14527,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_12",
@@ -7951,7 +14557,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_13",
@@ -7967,7 +14587,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_14",
@@ -7983,7 +14617,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_15",
@@ -7999,7 +14647,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_16",
@@ -8015,7 +14677,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_17",
@@ -8031,7 +14707,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_18",
@@ -8047,7 +14737,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_19",
@@ -8063,7 +14767,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_20",
@@ -8079,7 +14797,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_21",
@@ -8095,7 +14827,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_22",
@@ -8111,7 +14857,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040623974_23",
@@ -8127,7 +14887,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "brightonhovealbion": {
+          "teamId": "brightonhovealbion",
+          "teamName": "Brighton & Hove Albion",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_1",
@@ -8143,7 +14917,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_2",
@@ -8159,7 +14947,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_3",
@@ -8175,7 +14977,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_4",
@@ -8191,7 +15007,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_5",
@@ -8207,7 +15037,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_6",
@@ -8215,15 +15059,29 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "acffiorentina",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_7",
@@ -8239,29 +15097,57 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_8",
       "name": "Kevin De Bruyne",
       "position": "MP",
       "teamId": "acffiorentina",
-      "goals": 7,
+      "goals": 8,
       "assists": 8,
-      "goals_liga": 5,
+      "goals_liga": 6,
       "assists_liga": 7,
       "goals_champions": 2,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 8,
+          "assists": 8,
+          "goals_liga": 6,
+          "assists_liga": 7,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_9",
       "name": "Estêvão",
       "position": "ID",
-      "teamId": "acffiorentina",
+      "teamId": "interdemilan",
       "goals": 1,
       "assists": 1,
       "goals_liga": 1,
@@ -8271,7 +15157,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_11",
@@ -8287,7 +15199,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 5,
+          "assists": 4,
+          "goals_liga": 4,
+          "assists_liga": 3,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_13",
@@ -8303,7 +15229,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_14",
@@ -8319,7 +15259,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_15",
@@ -8335,7 +15289,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_16",
@@ -8351,7 +15319,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_17",
@@ -8367,7 +15349,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_18",
@@ -8383,7 +15379,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_19",
@@ -8399,7 +15409,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_20",
@@ -8415,7 +15439,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 3,
+          "assists": 9,
+          "goals_liga": 2,
+          "assists_liga": 8,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_21",
@@ -8431,7 +15469,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_23",
@@ -8447,7 +15499,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_24",
@@ -8455,15 +15521,29 @@ var INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "acffiorentina",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_25",
@@ -8479,7 +15559,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_1",
@@ -8495,7 +15589,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_2",
@@ -8511,7 +15619,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_3",
@@ -8527,7 +15649,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_5",
@@ -8543,7 +15679,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_22",
@@ -8559,7 +15709,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_18",
@@ -8575,7 +15739,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 1,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_7",
@@ -8591,7 +15769,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 3,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_12",
@@ -8607,7 +15799,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 5,
+          "assists": 0,
+          "goals_liga": 3,
+          "assists_liga": 0,
+          "goals_champions": 2,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_10",
@@ -8623,7 +15829,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 4,
+          "assists": 2,
+          "goals_liga": 4,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_13",
@@ -8639,7 +15859,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_4",
@@ -8655,7 +15889,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_19",
@@ -8671,7 +15919,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_20",
@@ -8687,7 +15949,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_6",
@@ -8703,7 +15979,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_17",
@@ -8719,7 +16009,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_11",
@@ -8735,7 +16039,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_16",
@@ -8751,7 +16069,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_12",
@@ -8767,7 +16099,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_26",
@@ -8783,7 +16129,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039864584_10",
@@ -8799,7 +16159,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "bocajuniors": {
+          "teamId": "bocajuniors",
+          "teamName": "Boca Juniors",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_11",
@@ -8815,7 +16201,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 6,
+          "assists": 1,
+          "goals_liga": 6,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_16",
@@ -8834,7 +16246,33 @@ var INITIAL_LMI_DATA = {
       "isLegend": false,
       "fromTeamId": "chelseafc",
       "fromTeamName": "Chelsea FC",
-      "key": "pierreemerickaubameyang"
+      "key": "pierreemerickaubameyang",
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_1",
@@ -8850,7 +16288,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_2",
@@ -8866,7 +16318,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_3",
@@ -8882,7 +16348,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_4",
@@ -8898,7 +16378,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_5",
@@ -8914,7 +16408,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_6",
@@ -8930,7 +16438,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_7",
@@ -8946,7 +16468,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_8",
@@ -8962,7 +16498,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_9",
@@ -8978,7 +16528,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_10",
@@ -8994,7 +16558,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_11",
@@ -9010,7 +16588,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_12",
@@ -9026,7 +16618,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_13",
@@ -9042,7 +16648,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_14",
@@ -9058,7 +16678,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_15",
@@ -9074,7 +16708,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_16",
@@ -9090,7 +16738,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_17",
@@ -9106,7 +16768,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_18",
@@ -9122,7 +16798,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_19",
@@ -9138,7 +16828,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_20",
@@ -9154,7 +16858,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_21",
@@ -9170,7 +16888,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_22",
@@ -9186,7 +16918,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792126304381_23",
@@ -9202,7 +16948,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "vascodagama": {
+          "teamId": "vascodagama",
+          "teamName": "Vasco da Gama",
+          "goals": 5,
+          "assists": 0,
+          "goals_liga": 5,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_1",
@@ -9218,7 +16978,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_2",
@@ -9234,7 +17008,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_3",
@@ -9250,7 +17038,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_4",
@@ -9266,7 +17068,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_5",
@@ -9282,7 +17098,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_6",
@@ -9298,7 +17128,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_7",
@@ -9314,7 +17158,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_8",
@@ -9330,7 +17188,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_9",
@@ -9346,7 +17218,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_10",
@@ -9362,7 +17248,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_11",
@@ -9378,7 +17278,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_12",
@@ -9394,7 +17308,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_13",
@@ -9410,7 +17338,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_14",
@@ -9426,7 +17368,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_16",
@@ -9442,7 +17398,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_17",
@@ -9458,7 +17428,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_18",
@@ -9474,7 +17458,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_19",
@@ -9490,7 +17488,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_20",
@@ -9506,7 +17518,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_21",
@@ -9522,7 +17548,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_22",
@@ -9538,7 +17578,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792465873774_23",
@@ -9554,7 +17608,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039904071_23",
@@ -9570,7 +17638,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "rangersfootballclub": {
+          "teamId": "rangersfootballclub",
+          "teamName": "Rangers Football Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_4",
@@ -9586,7 +17668,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 2,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_6",
@@ -9602,7 +17698,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 3,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_10",
@@ -9618,7 +17728,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 3,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_14",
@@ -9634,7 +17758,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_13",
@@ -9650,7 +17788,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_16",
@@ -9666,7 +17818,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_17",
@@ -9682,7 +17848,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_18",
@@ -9698,7 +17878,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_23",
@@ -9714,7 +17908,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_9",
@@ -9730,7 +17938,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_1",
@@ -9746,7 +17968,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_12",
@@ -9762,7 +17998,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_15",
@@ -9778,7 +18028,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 1,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 3,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_19",
@@ -9794,7 +18058,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_8",
@@ -9810,7 +18088,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_20",
@@ -9826,7 +18118,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_2",
@@ -9842,7 +18148,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_7",
@@ -9858,7 +18178,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792466085252_11",
@@ -9874,7 +18208,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_14",
@@ -9890,7 +18238,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_27",
@@ -9906,7 +18280,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_28",
@@ -9922,7 +18310,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793076042031_29",
@@ -9938,23 +18340,51 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_10",
       "name": "Takuma Asano",
       "position": "II",
       "teamId": "liverpool",
-      "goals": 3,
+      "goals": 4,
       "assists": 1,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 4,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039523671_9",
@@ -9970,13 +18400,27 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "liverpool": {
+          "teamId": "liverpool",
+          "teamName": "Liverpool",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040483217_22",
       "name": "Rafael Leão",
       "position": "DC",
-      "teamId": "realmadrid",
+      "teamId": "acffiorentina",
       "goals": 1,
       "assists": 0,
       "goals_liga": 1,
@@ -9986,7 +18430,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "interdemilan": {
+          "teamId": "interdemilan",
+          "teamName": "Inter de Milan",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040515606_12",
@@ -10002,7 +18472,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_8",
@@ -10018,7 +18514,33 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "teamName": "Atletico de Madrid",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040551310_10",
@@ -10034,23 +18556,75 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 23,
+          "assists": 8,
+          "goals_liga": 20,
+          "assists_liga": 6,
+          "goals_champions": 3,
+          "assists_champions": 2,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040239414_11",
       "name": "Luis Suárez",
       "position": "DC",
       "teamId": "acffiorentina",
-      "goals": 3,
+      "goals": 4,
       "assists": 2,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acffiorentina": {
+          "teamId": "acffiorentina",
+          "teamName": "ACF Fiorentina",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        },
+        "fcbarcelona": {
+          "teamId": "fcbarcelona",
+          "teamName": "FC Barcelona",
+          "goals": 3,
+          "assists": 2,
+          "goals_liga": 3,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_14",
@@ -10066,7 +18640,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_18",
@@ -10082,7 +18670,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 3,
+          "goals_liga": 0,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792992249049_12",
@@ -10098,7 +18700,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1791780792740_1",
@@ -10114,7 +18730,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "losclille": {
+          "teamId": "losclille",
+          "teamName": "LOSC Lille",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792040288950_1",
@@ -10130,7 +18760,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792468026850_23",
@@ -10146,7 +18790,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "manchestercity": {
+          "teamId": "manchestercity",
+          "teamName": "Manchester City",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1792039948207_22",
@@ -10162,7 +18820,21 @@ var INITIAL_LMI_DATA = {
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "riverplate": {
+          "teamId": "riverplate",
+          "teamName": "River Plate",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     }
   ],
   "copaEstelarMatches": [
@@ -10356,7 +19028,7 @@ var INITIAL_LMI_DATA = {
   ],
   "championsLeagueMatches": [
     {
-      "fase": "Octavos 1",
+      "fase": "Octavos 1 (Ida)",
       "team1": "Carabobo Fútbol Club",
       "score1": "",
       "team2": "Manchester United",
@@ -10364,7 +19036,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 2",
+      "fase": "Octavos 1 (Vuelta)",
+      "team1": "Manchester United",
+      "score1": "",
+      "team2": "Carabobo Fútbol Club",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 2 (Ida)",
       "team1": "Borussia Dortmund",
       "score1": "",
       "team2": "Inter de Milan",
@@ -10372,7 +19052,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 3",
+      "fase": "Octavos 2 (Vuelta)",
+      "team1": "Inter de Milan",
+      "score1": "",
+      "team2": "Borussia Dortmund",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 3 (Ida)",
       "team1": "Ajax de Ámsterdam",
       "score1": "",
       "team2": "Boca Juniors",
@@ -10380,7 +19068,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 4",
+      "fase": "Octavos 3 (Vuelta)",
+      "team1": "Boca Juniors",
+      "score1": "",
+      "team2": "Ajax de Ámsterdam",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 4 (Ida)",
       "team1": "Manchester City",
       "score1": "",
       "team2": "Arsenal",
@@ -10388,7 +19084,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 5",
+      "fase": "Octavos 4 (Vuelta)",
+      "team1": "Arsenal",
+      "score1": "",
+      "team2": "Manchester City",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 5 (Ida)",
       "team1": "Bayern Leverkusen",
       "score1": "",
       "team2": "River Plate",
@@ -10396,7 +19100,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 6",
+      "fase": "Octavos 5 (Vuelta)",
+      "team1": "River Plate",
+      "score1": "",
+      "team2": "Bayern Leverkusen",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 6 (Ida)",
       "team1": "FC Barcelona",
       "score1": "",
       "team2": "Galatasaray",
@@ -10404,7 +19116,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 7",
+      "fase": "Octavos 6 (Vuelta)",
+      "team1": "Galatasaray",
+      "score1": "",
+      "team2": "FC Barcelona",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 7 (Ida)",
       "team1": "Real Madrid",
       "score1": "",
       "team2": "PSG",
@@ -10412,7 +19132,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Octavos 8",
+      "fase": "Octavos 7 (Vuelta)",
+      "team1": "PSG",
+      "score1": "",
+      "team2": "Real Madrid",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Octavos 8 (Ida)",
       "team1": "AC Milan",
       "score1": "",
       "team2": "ACF Fiorentina",
@@ -10420,7 +19148,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 1",
+      "fase": "Octavos 8 (Vuelta)",
+      "team1": "ACF Fiorentina",
+      "score1": "",
+      "team2": "AC Milan",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 1 (Ida)",
       "team1": "Ganador Octavos 1",
       "score1": "",
       "team2": "Ganador Octavos 2",
@@ -10428,7 +19164,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 2",
+      "fase": "Cuartos 1 (Vuelta)",
+      "team1": "Ganador Octavos 2",
+      "score1": "",
+      "team2": "Ganador Octavos 1",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 2 (Ida)",
       "team1": "Ganador Octavos 3",
       "score1": "",
       "team2": "Ganador Octavos 4",
@@ -10436,7 +19180,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 3",
+      "fase": "Cuartos 2 (Vuelta)",
+      "team1": "Ganador Octavos 4",
+      "score1": "",
+      "team2": "Ganador Octavos 3",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 3 (Ida)",
       "team1": "Ganador Octavos 5",
       "score1": "",
       "team2": "Ganador Octavos 6",
@@ -10444,7 +19196,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 4",
+      "fase": "Cuartos 3 (Vuelta)",
+      "team1": "Ganador Octavos 6",
+      "score1": "",
+      "team2": "Ganador Octavos 5",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Cuartos 4 (Ida)",
       "team1": "Ganador Octavos 7",
       "score1": "",
       "team2": "Ganador Octavos 8",
@@ -10452,7 +19212,15 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Semifinal 1",
+      "fase": "Cuartos 4 (Vuelta)",
+      "team1": "Ganador Octavos 8",
+      "score1": "",
+      "team2": "Ganador Octavos 7",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Semifinal 1 (Ida)",
       "team1": "Ganador Cuartos 1",
       "score1": "",
       "team2": "Ganador Cuartos 2",
@@ -10460,10 +19228,26 @@ var INITIAL_LMI_DATA = {
       "estado": "Pendiente"
     },
     {
-      "fase": "Semifinal 2",
+      "fase": "Semifinal 1 (Vuelta)",
+      "team1": "Ganador Cuartos 2",
+      "score1": "",
+      "team2": "Ganador Cuartos 1",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Semifinal 2 (Ida)",
       "team1": "Ganador Cuartos 3",
       "score1": "",
       "team2": "Ganador Cuartos 4",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Semifinal 2 (Vuelta)",
+      "team1": "Ganador Cuartos 4",
+      "score1": "",
+      "team2": "Ganador Cuartos 3",
       "score2": "",
       "estado": "Pendiente"
     },
@@ -10494,14 +19278,25 @@ var INITIAL_LMI_DATA = {
   "marketMovements": [
     {
       "player": "Rafael Leão",
-      "type": "Fichaje",
+      "type": "Intercambio",
       "fromTeamId": "interdemilan",
       "fromTeamName": "Inter de Milan",
-      "toTeamId": "realmadrid",
-      "toTeamName": "Real Madrid",
+      "toTeamId": "acffiorentina",
+      "toTeamName": "ACF Fiorentina",
       "price": 0,
       "seasons": 1,
-      "details": "Movimiento de mercado de mitad de temporada. Nota: Las estadísticas registradas de este jugador corresponden al total acumulado en los clubes donde ha militado en la temporada."
+      "details": "Intercambio por Estêvão. Nota: Las estadísticas registradas de este jugador corresponden al total acumulado en los clubes donde ha militado en la temporada."
+    },
+    {
+      "player": "Estêvão",
+      "type": "Intercambio",
+      "fromTeamId": "acffiorentina",
+      "fromTeamName": "ACF Fiorentina",
+      "toTeamId": "interdemilan",
+      "toTeamName": "Inter de Milan",
+      "price": 0,
+      "seasons": 1,
+      "details": "Intercambio por Rafael Leão. Nota: Las estadísticas registradas de este jugador corresponden al total acumulado en los clubes donde ha militado en la temporada."
     },
     {
       "player": "Álex Baena",
@@ -13095,10 +21890,60 @@ var INITIAL_LMI_DATA = {
             "jornada": 10,
             "team1Id": "atleticodemadrid",
             "team2Id": "liverpool",
-            "score1": 0,
-            "score2": 0,
+            "score1": 3,
+            "score2": 1,
             "played": true,
-            "events": []
+            "events": [
+              {
+                "playerId": "p_1792040515606_19",
+                "playerName": "EL Brian Rodríguez",
+                "teamId": "atleticodemadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040515606_9",
+                "playerName": "Roberto Alvarado",
+                "teamId": "atleticodemadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040515606_17",
+                "playerName": "Samuel Chukwueze",
+                "teamId": "atleticodemadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_10",
+                "playerName": "Takuma Asano",
+                "teamId": "liverpool",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039523671_11",
+                "playerName": "Eric Cantona",
+                "teamId": "liverpool",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040515606_10",
+                "playerName": "Ruud van Nistelrooij",
+                "teamId": "atleticodemadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040515606_20",
+                "playerName": "Martín Terrier",
+                "teamId": "atleticodemadrid",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j10_m3",
@@ -17905,10 +26750,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 16,
             "team1Id": "acffiorentina",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040551310_8",
+                "playerName": "Kevin De Bruyne",
+                "teamId": "acffiorentina",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040239414_11",
+                "playerName": "Luis Suárez",
+                "teamId": "acffiorentina",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793076042031_24",
+                "playerName": "Víctor Múñoz",
+                "teamId": "acffiorentina",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040551310_6",
+                "playerName": "Aleksandar Pavlovic",
+                "teamId": "acffiorentina",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j16_m3",
@@ -17945,10 +26819,46 @@ var INITIAL_LMI_DATA = {
             "jornada": 16,
             "team1Id": "acmiln",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040551310_22",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_9",
+                "playerName": "Memphis Depay",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792040438881_11",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040438881_9",
+                "playerName": "Arda Güler",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 2
+              }
+            ]
           }
         ],
         "restingTeamId": "vascodagama"
@@ -20225,6 +29135,175 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793149464176",
+      "timestamp": 1793149464176,
+      "date": "27 oct 2026, 07:04 p.m.",
+      "competition": "plata",
+      "jornada": 16,
+      "fixtureMatchId": "plata_j16_m2",
+      "phase": "Jornada 16",
+      "team1Id": "acffiorentina",
+      "team1Name": "ACF Fiorentina",
+      "team1Logo": "Logos Equipos/fiorentina.webp",
+      "score1": 2,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040551310_8",
+          "playerName": "Kevin De Bruyne",
+          "teamId": "acffiorentina",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040239414_11",
+          "playerName": "Luis Suárez",
+          "teamId": "acffiorentina",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793076042031_24",
+          "playerName": "Víctor Múñoz",
+          "teamId": "acffiorentina",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040551310_6",
+          "playerName": "Aleksandar Pavlovic",
+          "teamId": "acffiorentina",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793149413684",
+      "timestamp": 1793149413684,
+      "date": "27 oct 2026, 07:03 p.m.",
+      "competition": "plata",
+      "jornada": 16,
+      "fixtureMatchId": "plata_j16_m6",
+      "phase": "Jornada 16",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 1,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_9",
+          "playerName": "Arda Güler",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "match_1793149185197",
+      "timestamp": 1793149185197,
+      "date": "27 oct 2026, 06:59 p.m.",
+      "competition": "oro",
+      "jornada": 10,
+      "fixtureMatchId": "oro_j10_m2",
+      "phase": "Jornada 10",
+      "team1Id": "atleticodemadrid",
+      "team1Name": "Atletico de Madrid",
+      "team1Logo": "Logos Equipos/atleticomadrid.webp",
+      "score1": 3,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040515606_19",
+          "playerName": "EL Brian Rodríguez",
+          "teamId": "atleticodemadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040515606_9",
+          "playerName": "Roberto Alvarado",
+          "teamId": "atleticodemadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040515606_17",
+          "playerName": "Samuel Chukwueze",
+          "teamId": "atleticodemadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_10",
+          "playerName": "Takuma Asano",
+          "teamId": "liverpool",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039523671_11",
+          "playerName": "Eric Cantona",
+          "teamId": "liverpool",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040515606_10",
+          "playerName": "Ruud van Nistelrooij",
+          "teamId": "atleticodemadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040515606_20",
+          "playerName": "Martín Terrier",
+          "teamId": "atleticodemadrid",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1792991413753",
       "timestamp": 1792991413753,

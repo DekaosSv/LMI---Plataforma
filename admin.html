@@ -120,7 +120,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
           <span>Ver Web</span>
         </a>
-        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js">
+        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1793158457">
           <i class="fa-solid fa-floppy-disk"></i>
           <span>Guardar Cambios</span>
         </button>
@@ -224,7 +224,7 @@
             <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.9rem;">
               <li>Edición en vivo de plantillas, presupuestos y estadísticas.</li>
               <li>Actualización instantánea de goles y asistencias por torneo.</li>
-              <li>Sincronización automática con <code>data.js</code> y <code>Registro Balon de Oro.txt</code>.</li>
+              <li>Sincronización automática con <code>data.js?v=1793158457</code> y <code>Registro Balon de Oro.txt</code>.</li>
               <li>Publicación con 1 clic hacia GitHub Pages.</li>
             </ul>
             <button class="btn btn-gold" onclick="AdminApp.saveData(true)" style="width: 100%;">
@@ -285,24 +285,37 @@
               <select class="form-select" id="match-fixture-item-select" style="width: 270px; font-weight: 700;">
                 <option value="">-- Seleccionar Partido --</option>
               </select>
-              <select class="form-select" id="match-phase" style="width: 200px; display: none; font-weight: 700;">
-                <option value="Ronda Previa 1">Ronda Previa 1</option>
-                <option value="Ronda Previa 2">Ronda Previa 2</option>
-                <option value="Octavos 1">Octavos 1</option>
-                <option value="Octavos 2">Octavos 2</option>
-                <option value="Octavos 3">Octavos 3</option>
-                <option value="Octavos 4">Octavos 4</option>
-                <option value="Octavos 5">Octavos 5</option>
-                <option value="Octavos 6">Octavos 6</option>
-                <option value="Octavos 7">Octavos 7</option>
-                <option value="Octavos 8">Octavos 8</option>
-                <option value="Cuartos 1">Cuartos 1</option>
-                <option value="Cuartos 2">Cuartos 2</option>
-                <option value="Cuartos 3">Cuartos 3</option>
-                <option value="Cuartos 4">Cuartos 4</option>
-                <option value="Semifinal 1">Semifinal 1</option>
-                <option value="Semifinal 2">Semifinal 2</option>
-                <option value="Final">Gran Final</option>
+              <select class="form-select" id="match-phase" style="width: 230px; display: none; font-weight: 700;">
+                <!-- Populated dynamically according to competition (Champions League KO Ida/Vuelta or Copa Estelar) -->
+                <option value="Octavos 1 (Ida)">Octavos 1 (Ida)</option>
+                <option value="Octavos 1 (Vuelta)">Octavos 1 (Vuelta)</option>
+                <option value="Octavos 2 (Ida)">Octavos 2 (Ida)</option>
+                <option value="Octavos 2 (Vuelta)">Octavos 2 (Vuelta)</option>
+                <option value="Octavos 3 (Ida)">Octavos 3 (Ida)</option>
+                <option value="Octavos 3 (Vuelta)">Octavos 3 (Vuelta)</option>
+                <option value="Octavos 4 (Ida)">Octavos 4 (Ida)</option>
+                <option value="Octavos 4 (Vuelta)">Octavos 4 (Vuelta)</option>
+                <option value="Octavos 5 (Ida)">Octavos 5 (Ida)</option>
+                <option value="Octavos 5 (Vuelta)">Octavos 5 (Vuelta)</option>
+                <option value="Octavos 6 (Ida)">Octavos 6 (Ida)</option>
+                <option value="Octavos 6 (Vuelta)">Octavos 6 (Vuelta)</option>
+                <option value="Octavos 7 (Ida)">Octavos 7 (Ida)</option>
+                <option value="Octavos 7 (Vuelta)">Octavos 7 (Vuelta)</option>
+                <option value="Octavos 8 (Ida)">Octavos 8 (Ida)</option>
+                <option value="Octavos 8 (Vuelta)">Octavos 8 (Vuelta)</option>
+                <option value="Cuartos 1 (Ida)">Cuartos 1 (Ida)</option>
+                <option value="Cuartos 1 (Vuelta)">Cuartos 1 (Vuelta)</option>
+                <option value="Cuartos 2 (Ida)">Cuartos 2 (Ida)</option>
+                <option value="Cuartos 2 (Vuelta)">Cuartos 2 (Vuelta)</option>
+                <option value="Cuartos 3 (Ida)">Cuartos 3 (Ida)</option>
+                <option value="Cuartos 3 (Vuelta)">Cuartos 3 (Vuelta)</option>
+                <option value="Cuartos 4 (Ida)">Cuartos 4 (Ida)</option>
+                <option value="Cuartos 4 (Vuelta)">Cuartos 4 (Vuelta)</option>
+                <option value="Semifinal 1 (Ida)">Semifinal 1 (Ida)</option>
+                <option value="Semifinal 1 (Vuelta)">Semifinal 1 (Vuelta)</option>
+                <option value="Semifinal 2 (Ida)">Semifinal 2 (Ida)</option>
+                <option value="Semifinal 2 (Vuelta)">Semifinal 2 (Vuelta)</option>
+                <option value="Final">Gran Final (Partido Único)</option>
               </select>
             </div>
           </div>
@@ -1420,7 +1433,7 @@
               </p>
             </div>
             <button class="btn btn-gold" style="padding: 0.85rem 1.8rem; font-size: 1rem; font-weight: 800;" onclick="AdminApp.applyAllMidseasonMarket()">
-              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js
+              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1793158457
             </button>
           </div>
 
@@ -1438,7 +1451,7 @@
               ¡Mercado de Mitad de Temporada Aplicado Exitosamente!
             </h2>
             <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 650px; margin: 0 auto;">
-              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js</code>.
+              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js?v=1793158457</code>.
             </p>
           </div>
 
@@ -1535,7 +1548,7 @@
           <div class="card-header">
             <div>
               <h2 class="card-title"><i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Ganadores del Balón de Oro</h2>
-              <p class="card-desc">Sincronizado automáticamente con <code>data.js</code> y <code>Registro Balon de Oro.txt</code>.</p>
+              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1793158457</code> y <code>Registro Balon de Oro.txt</code>.</p>
             </div>
             <button class="btn btn-gold" id="btn-add-bdo-modal">
               <i class="fa-solid fa-plus"></i> Añadir Ganador de Balón de Oro
@@ -2319,8 +2332,8 @@
   <!-- Toast Notification Container -->
   <div class="toast-box" id="toast-box"></div>
 
-  <!-- Application Logic -->
-  <script src="data.js"></script>
-  <script src="admin.js"></script>
+  <!-- Application Logic with cache-busting -->
+  <script src="data.js?v=1793165000"></script>
+  <script src="admin.js?v=1793165000"></script>
 </body>
 </html>
