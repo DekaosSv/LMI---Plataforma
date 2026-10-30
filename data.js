@@ -28273,9 +28273,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 17,
             "team1Id": "acmiln",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -30909,6 +30909,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793333963687",
+      "timestamp": 1793333963687,
+      "date": "29 oct 2026, 10:19 p.m.",
+      "competition": "plata",
+      "jornada": 17,
+      "fixtureMatchId": "plata_j17_m5",
+      "phase": "Jornada 17",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 0,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1793333777959",
       "timestamp": 1793333777959,
