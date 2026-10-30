@@ -689,9 +689,9 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "interdemilan",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -703,9 +703,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
           "goals": 1,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 1,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -1108,10 +1108,10 @@ var INITIAL_LMI_DATA = {
       "name": "Victor Osimhen (P)",
       "position": "DC",
       "teamId": "interdemilan",
-      "goals": 4,
-      "assists": 0,
-      "goals_liga": 4,
-      "assists_liga": 0,
+      "goals": 5,
+      "assists": 1,
+      "goals_liga": 5,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -1134,10 +1134,10 @@ var INITIAL_LMI_DATA = {
         "interdemilan": {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
-          "goals": 0,
-          "assists": 0,
-          "goals_liga": 0,
-          "assists_liga": 0,
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -1240,9 +1240,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lee Kang-In",
       "position": "MP",
       "teamId": "interdemilan",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1254,9 +1254,9 @@ var INITIAL_LMI_DATA = {
         "interdemilan": {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
-          "goals": 0,
+          "goals": 1,
           "assists": 1,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -4745,9 +4745,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "borussiadortmund",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4759,9 +4759,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "borussiadortmund",
           "teamName": "Borussia Dortmund",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4924,9 +4924,9 @@ var INITIAL_LMI_DATA = {
       "name": "Paulo Dybala",
       "position": "ED",
       "teamId": "borussiadortmund",
-      "goals": 3,
+      "goals": 5,
       "assists": 2,
-      "goals_liga": 2,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 1,
       "assists_champions": 2,
@@ -4938,9 +4938,9 @@ var INITIAL_LMI_DATA = {
         "borussiadortmund": {
           "teamId": "borussiadortmund",
           "teamName": "Borussia Dortmund",
-          "goals": 3,
+          "goals": 5,
           "assists": 2,
-          "goals_liga": 2,
+          "goals_liga": 4,
           "assists_liga": 0,
           "goals_champions": 1,
           "assists_champions": 2,
@@ -4954,9 +4954,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ismael Saibari",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 9,
+      "goals": 10,
       "assists": 1,
-      "goals_liga": 6,
+      "goals_liga": 7,
       "assists_liga": 1,
       "goals_champions": 3,
       "assists_champions": 0,
@@ -4968,9 +4968,9 @@ var INITIAL_LMI_DATA = {
         "borussiadortmund": {
           "teamId": "borussiadortmund",
           "teamName": "Borussia Dortmund",
-          "goals": 9,
+          "goals": 10,
           "assists": 1,
-          "goals_liga": 6,
+          "goals_liga": 7,
           "assists_liga": 1,
           "goals_champions": 3,
           "assists_champions": 0,
@@ -23869,10 +23869,60 @@ var INITIAL_LMI_DATA = {
             "jornada": 19,
             "team1Id": "interdemilan",
             "team2Id": "borussiadortmund",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040410030_10",
+                "playerName": "Paulo Dybala",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040410030_11",
+                "playerName": "Ismael Saibari",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040410030_14",
+                "playerName": "Achraf Hakimi",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_22",
+                "playerName": "Victor Osimhen (P)",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_22",
+                "playerName": "Victor Osimhen (P)",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040483217_4",
+                "playerName": "Marco Palestra",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793076042031_4",
+                "playerName": "Lee Kang-In",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j19_m2",
@@ -30448,6 +30498,74 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793328256676",
+      "timestamp": 1793328256676,
+      "date": "29 oct 2026, 08:44 p.m.",
+      "competition": "oro",
+      "jornada": 19,
+      "fixtureMatchId": "oro_j19_m1",
+      "phase": "Jornada 19",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 2,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1792040410030_10",
+          "playerName": "Paulo Dybala",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040410030_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040410030_14",
+          "playerName": "Achraf Hakimi",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_22",
+          "playerName": "Victor Osimhen (P)",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_22",
+          "playerName": "Victor Osimhen (P)",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040483217_4",
+          "playerName": "Marco Palestra",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793076042031_4",
+          "playerName": "Lee Kang-In",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1793328046393",
       "timestamp": 1793328046393,
