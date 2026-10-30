@@ -21736,9 +21736,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "interdemilan",
             "team2Id": "bayernleverkusen",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 2,
+            "score2": 1,
+            "played": true,
             "events": []
           },
           {
@@ -30909,6 +30909,24 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793333777959",
+      "timestamp": 1793333777959,
+      "date": "29 oct 2026, 10:16 p.m.",
+      "competition": "oro",
+      "jornada": 7,
+      "fixtureMatchId": "oro_j7_m1",
+      "phase": "Jornada 7",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 2,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 1,
+      "events": []
+    },
     {
       "id": "match_1793333639032",
       "timestamp": 1793333639032,
