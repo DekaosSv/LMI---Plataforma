@@ -12724,11 +12724,11 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Forlán",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 3,
-      "assists": 1,
-      "goals_liga": 3,
-      "assists_liga": 1,
-      "goals_champions": 0,
+      "goals": 19,
+      "assists": 2,
+      "goals_liga": 18,
+      "assists_liga": 2,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -12738,11 +12738,11 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 3,
-          "assists": 1,
-          "goals_liga": 3,
-          "assists_liga": 1,
-          "goals_champions": 0,
+          "goals": 19,
+          "assists": 2,
+          "goals_liga": 18,
+          "assists_liga": 2,
+          "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -36180,14 +36180,14 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "asistencia",
@@ -37601,7 +37601,7 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -37641,7 +37641,7 @@ var INITIAL_LMI_DATA = {
       "score2": 1,
       "events": [
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -38463,7 +38463,7 @@ var INITIAL_LMI_DATA = {
       "score2": 2,
       "events": [
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -40995,7 +40995,7 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -41129,7 +41129,7 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -42833,7 +42833,7 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -43044,7 +43044,7 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -43538,7 +43538,7 @@ var INITIAL_LMI_DATA = {
       "score2": 2,
       "events": [
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
@@ -43846,7 +43846,7 @@ var INITIAL_LMI_DATA = {
           "count": 2
         },
         {
-          "playerId": "p_1792039745455_11",
+          "playerId": "p_1792992249049_21",
           "playerName": "Diego Forlán",
           "teamId": "manchesterunited",
           "type": "gol",
