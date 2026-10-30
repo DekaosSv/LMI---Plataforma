@@ -10348,9 +10348,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 23,
+      "goals": 25,
       "assists": 5,
-      "goals_liga": 19,
+      "goals_liga": 21,
       "assists_liga": 4,
       "goals_champions": 4,
       "assists_champions": 1,
@@ -10362,9 +10362,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 23,
+          "goals": 25,
           "assists": 5,
-          "goals_liga": 19,
+          "goals_liga": 21,
           "assists_liga": 4,
           "goals_champions": 4,
           "assists_champions": 1,
@@ -25632,9 +25632,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "arsenal",
             "team2Id": "losclille",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
+            "score1": null,
+            "score2": null,
+            "played": false,
             "events": []
           },
           {
@@ -28268,10 +28268,18 @@ var INITIAL_LMI_DATA = {
             "jornada": 17,
             "team1Id": "losclille",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 2
+              }
+            ]
           },
           {
             "id": "plata_j17_m7",
@@ -30886,6 +30894,32 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793332895370",
+      "timestamp": 1793332895370,
+      "date": "29 oct 2026, 10:01 p.m.",
+      "competition": "plata",
+      "jornada": 17,
+      "fixtureMatchId": "plata_j17_m6",
+      "phase": "Jornada 17",
+      "team1Id": "losclille",
+      "team1Name": "LOSC Lille",
+      "team1Logo": "Logos Equipos/lille.png",
+      "score1": 0,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        }
+      ]
+    },
     {
       "id": "match_1793332770386",
       "timestamp": 1793332770386,
