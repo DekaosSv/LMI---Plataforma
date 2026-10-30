@@ -778,9 +778,9 @@ var INITIAL_LMI_DATA = {
       "name": "Wayne Rooney",
       "position": "SD",
       "teamId": "interdemilan",
-      "goals": 2,
+      "goals": 4,
       "assists": 5,
-      "goals_liga": 2,
+      "goals_liga": 4,
       "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 1,
@@ -792,9 +792,9 @@ var INITIAL_LMI_DATA = {
         "interdemilan": {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
-          "goals": 2,
+          "goals": 4,
           "assists": 5,
-          "goals_liga": 2,
+          "goals_liga": 4,
           "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 1,
@@ -1151,9 +1151,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -1165,9 +1165,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -1241,9 +1241,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "interdemilan",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -1255,9 +1255,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "interdemilan",
           "teamName": "Inter de Milan",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3502,10 +3502,10 @@ var INITIAL_LMI_DATA = {
       "name": "George Best",
       "position": "ED",
       "teamId": "staderennais",
-      "goals": 18,
-      "assists": 6,
-      "goals_liga": 17,
-      "assists_liga": 5,
+      "goals": 23,
+      "assists": 7,
+      "goals_liga": 22,
+      "assists_liga": 6,
       "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -3516,10 +3516,10 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 18,
-          "assists": 6,
-          "goals_liga": 17,
-          "assists_liga": 5,
+          "goals": 23,
+          "assists": 7,
+          "goals_liga": 22,
+          "assists_liga": 6,
           "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 0,
@@ -3562,10 +3562,10 @@ var INITIAL_LMI_DATA = {
       "name": "Eden Hazard",
       "position": "SD",
       "teamId": "staderennais",
-      "goals": 10,
-      "assists": 11,
-      "goals_liga": 9,
-      "assists_liga": 9,
+      "goals": 14,
+      "assists": 13,
+      "goals_liga": 13,
+      "assists_liga": 11,
       "goals_champions": 1,
       "assists_champions": 2,
       "goals_estelar": 0,
@@ -3576,10 +3576,10 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 10,
-          "assists": 11,
-          "goals_liga": 9,
-          "assists_liga": 9,
+          "goals": 14,
+          "assists": 13,
+          "goals_liga": 13,
+          "assists_liga": 11,
           "goals_champions": 1,
           "assists_champions": 2,
           "goals_estelar": 0,
@@ -3623,9 +3623,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "staderennais",
       "goals": 0,
-      "assists": 0,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3637,9 +3637,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
           "goals": 0,
-          "assists": 0,
+          "assists": 3,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3713,9 +3713,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "staderennais",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3727,9 +3727,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3743,9 +3743,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "staderennais",
       "goals": 1,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3757,9 +3757,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
           "goals": 1,
-          "assists": 0,
+          "assists": 2,
           "goals_liga": 1,
-          "assists_liga": 0,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3952,9 +3952,9 @@ var INITIAL_LMI_DATA = {
       "name": "Yunus Akgün",
       "position": "MP",
       "teamId": "staderennais",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3966,9 +3966,9 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 0,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -5525,9 +5525,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "bayernleverkusen",
       "goals": 5,
-      "assists": 10,
+      "assists": 11,
       "goals_liga": 4,
-      "assists_liga": 6,
+      "assists_liga": 7,
       "goals_champions": 1,
       "assists_champions": 4,
       "goals_estelar": 0,
@@ -5539,9 +5539,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 5,
-          "assists": 10,
+          "assists": 11,
           "goals_liga": 4,
-          "assists_liga": 6,
+          "assists_liga": 7,
           "goals_champions": 1,
           "assists_champions": 4,
           "goals_estelar": 0,
@@ -5555,9 +5555,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "bayernleverkusen",
       "goals": 6,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 5,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5569,9 +5569,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 6,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 5,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -5614,9 +5614,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lautaro Martínez",
       "position": "DC",
       "teamId": "bayernleverkusen",
-      "goals": 13,
+      "goals": 17,
       "assists": 0,
-      "goals_liga": 12,
+      "goals_liga": 16,
       "assists_liga": 0,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -5628,9 +5628,9 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 13,
+          "goals": 17,
           "assists": 0,
-          "goals_liga": 12,
+          "goals_liga": 16,
           "assists_liga": 0,
           "goals_champions": 1,
           "assists_champions": 0,
@@ -5765,9 +5765,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "bayernleverkusen",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5779,9 +5779,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -5794,10 +5794,10 @@ var INITIAL_LMI_DATA = {
       "name": "James Rodríguez",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 1,
-      "assists": 1,
-      "goals_liga": 0,
-      "assists_liga": 1,
+      "goals": 2,
+      "assists": 3,
+      "goals_liga": 1,
+      "assists_liga": 3,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5808,10 +5808,10 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 1,
-          "assists": 1,
-          "goals_liga": 0,
-          "assists_liga": 1,
+          "goals": 2,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 3,
           "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -5855,9 +5855,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "bayernleverkusen",
       "goals": 3,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 3,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5869,9 +5869,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 3,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 3,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -5914,9 +5914,9 @@ var INITIAL_LMI_DATA = {
       "name": "Savinho",
       "position": "ID",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5928,9 +5928,9 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 0,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -6815,9 +6815,9 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -6829,9 +6829,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 1,
           "goals_estelar": 0,
@@ -6934,9 +6934,9 @@ var INITIAL_LMI_DATA = {
       "name": "Francisco Conceição",
       "position": "ED",
       "teamId": "realmadrid",
-      "goals": 2,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -6948,9 +6948,9 @@ var INITIAL_LMI_DATA = {
         "realmadrid": {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
-          "goals": 2,
+          "goals": 3,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 1,
           "assists_champions": 0,
@@ -9598,9 +9598,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ryan Gravenberch",
       "position": "MCD",
       "teamId": "manchestercity",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9612,9 +9612,9 @@ var INITIAL_LMI_DATA = {
         "manchestercity": {
           "teamId": "manchestercity",
           "teamName": "Manchester City",
-          "goals": 0,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -10078,9 +10078,9 @@ var INITIAL_LMI_DATA = {
       "name": "Edinson Cavani",
       "position": "DC",
       "teamId": "manchestercity",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -10092,9 +10092,9 @@ var INITIAL_LMI_DATA = {
         "manchestercity": {
           "teamId": "manchestercity",
           "teamName": "Manchester City",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -10348,10 +10348,10 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 22,
-      "assists": 4,
-      "goals_liga": 18,
-      "assists_liga": 3,
+      "goals": 23,
+      "assists": 5,
+      "goals_liga": 19,
+      "assists_liga": 4,
       "goals_champions": 4,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -10362,10 +10362,10 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 22,
-          "assists": 4,
-          "goals_liga": 18,
-          "assists_liga": 3,
+          "goals": 23,
+          "assists": 5,
+          "goals_liga": 19,
+          "assists_liga": 4,
           "goals_champions": 4,
           "assists_champions": 1,
           "goals_estelar": 0,
@@ -10708,9 +10708,9 @@ var INITIAL_LMI_DATA = {
       "name": "Darwin Núñez",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 10,
+      "goals": 11,
       "assists": 4,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 3,
       "goals_champions": 7,
       "assists_champions": 1,
@@ -10722,9 +10722,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 6,
+          "goals": 7,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 5,
           "assists_champions": 0,
@@ -12545,9 +12545,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "manchesterunited",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -12559,9 +12559,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -12664,9 +12664,9 @@ var INITIAL_LMI_DATA = {
       "name": "Joao Félix",
       "position": "EI",
       "teamId": "manchesterunited",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -12678,9 +12678,9 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 0,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -12724,10 +12724,10 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Forlán",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
+      "goals": 3,
+      "assists": 1,
+      "goals_liga": 3,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -12738,10 +12738,10 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
+          "goals": 3,
+          "assists": 1,
+          "goals_liga": 3,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -12785,9 +12785,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "manchesterunited",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -12799,9 +12799,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -13054,9 +13054,9 @@ var INITIAL_LMI_DATA = {
       "name": "Adriano",
       "position": "DC",
       "teamId": "ajaxdeamsterdam",
-      "goals": 34,
+      "goals": 38,
       "assists": 6,
-      "goals_liga": 22,
+      "goals_liga": 26,
       "assists_liga": 5,
       "goals_champions": 12,
       "assists_champions": 1,
@@ -13068,9 +13068,9 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 34,
+          "goals": 38,
           "assists": 6,
-          "goals_liga": 22,
+          "goals_liga": 26,
           "assists_liga": 5,
           "goals_champions": 12,
           "assists_champions": 1,
@@ -16000,9 +16000,9 @@ var INITIAL_LMI_DATA = {
       "name": "Son Heung-Min",
       "position": "EI",
       "teamId": "riverplate",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -16014,9 +16014,9 @@ var INITIAL_LMI_DATA = {
         "riverplate": {
           "teamId": "riverplate",
           "teamName": "River Plate",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -17059,9 +17059,9 @@ var INITIAL_LMI_DATA = {
       "name": "Dan Ndoye",
       "position": "MP",
       "teamId": "rangersfootballclub",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -17073,9 +17073,9 @@ var INITIAL_LMI_DATA = {
         "rangersfootballclub": {
           "teamId": "rangersfootballclub",
           "teamName": "Rangers Football Club",
-          "goals": 0,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -17660,9 +17660,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "carabobofutbolclub",
       "goals": 5,
-      "assists": 5,
+      "assists": 6,
       "goals_liga": 2,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 3,
       "assists_champions": 2,
       "goals_estelar": 0,
@@ -17674,9 +17674,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
           "goals": 5,
-          "assists": 5,
+          "assists": 6,
           "goals_liga": 2,
-          "assists_liga": 3,
+          "assists_liga": 4,
           "goals_champions": 3,
           "assists_champions": 2,
           "goals_estelar": 0,
@@ -17959,9 +17959,9 @@ var INITIAL_LMI_DATA = {
       "name": "Amine Gouiri",
       "position": "DC",
       "teamId": "carabobofutbolclub",
-      "goals": 3,
+      "goals": 4,
       "assists": 2,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 1,
@@ -17973,9 +17973,9 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 3,
+          "goals": 4,
           "assists": 2,
-          "goals_liga": 3,
+          "goals_liga": 4,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 1,
@@ -18422,9 +18422,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "acffiorentina",
       "goals": 2,
-      "assists": 1,
+      "assists": 3,
       "goals_liga": 2,
-      "assists_liga": 1,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -18448,9 +18448,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "acffiorentina",
           "teamName": "ACF Fiorentina",
           "goals": 1,
-          "assists": 1,
+          "assists": 3,
           "goals_liga": 1,
-          "assists_liga": 1,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -18589,9 +18589,9 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Suárez",
       "position": "DC",
       "teamId": "acffiorentina",
-      "goals": 7,
+      "goals": 9,
       "assists": 2,
-      "goals_liga": 6,
+      "goals_liga": 8,
       "assists_liga": 2,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -18603,9 +18603,9 @@ var INITIAL_LMI_DATA = {
         "acffiorentina": {
           "teamId": "acffiorentina",
           "teamName": "ACF Fiorentina",
-          "goals": 4,
+          "goals": 6,
           "assists": 0,
-          "goals_liga": 3,
+          "goals_liga": 5,
           "assists_liga": 0,
           "goals_champions": 1,
           "assists_champions": 0,
@@ -21493,39 +21493,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "interdemilan",
             "team2Id": "bayernleverkusen",
-            "score1": 2,
-            "score2": 1,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1792040483217_9",
-                "playerName": "Barış Alper Yılmaz",
-                "teamId": "interdemilan",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040483217_9",
-                "playerName": "Barış Alper Yılmaz",
-                "teamId": "interdemilan",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792040483217_10",
-                "playerName": "Khvicha Kvaratskhelia",
-                "teamId": "interdemilan",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1792039977160_10",
-                "playerName": "Karim Adeyemi",
-                "teamId": "bayernleverkusen",
-                "type": "gol",
-                "count": 1
-              }
-            ]
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "oro_j7_m2",
@@ -23578,20 +23549,57 @@ var INITIAL_LMI_DATA = {
             "jornada": 16,
             "team1Id": "bayernleverkusen",
             "team2Id": "manchestercity",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039977160_11",
+                "playerName": "Lautaro Martínez",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_9",
+                "playerName": "Ousmane Dembélé",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039948207_6",
+                "playerName": "Ryan Gravenberch",
+                "teamId": "manchestercity",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039948207_23",
+                "playerName": "Edinson Cavani",
+                "teamId": "manchestercity",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j16_m4",
             "jornada": 16,
             "team1Id": "riverplate",
             "team2Id": "borussiadortmund",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792468026850_17",
+                "playerName": "Son Heung-Min",
+                "teamId": "riverplate",
+                "type": "gol",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j16_m5",
@@ -23732,10 +23740,81 @@ var INITIAL_LMI_DATA = {
             "jornada": 18,
             "team1Id": "bayernleverkusen",
             "team2Id": "interdemilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 6,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792039977160_11",
+                "playerName": "Lautaro Martínez",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792039977160_16",
+                "playerName": "Hakan Çalhanoğlu",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_17",
+                "playerName": "James Rodríguez",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_17",
+                "playerName": "James Rodríguez",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792039977160_8",
+                "playerName": "Nico Paz",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_21",
+                "playerName": "Savinho",
+                "teamId": "bayernleverkusen",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793076042031_4",
+                "playerName": "Lee Kang-In",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040483217_8",
+                "playerName": "Wayne Rooney",
+                "teamId": "interdemilan",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793076042031_1",
+                "playerName": "Pervis Estupiñán",
+                "teamId": "interdemilan",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792039977160_19",
+                "playerName": "James Maddison",
+                "teamId": "bayernleverkusen",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "oro_j18_m2",
@@ -27514,10 +27593,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 16,
             "team1Id": "manchesterunited",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792992249049_21",
+                "playerName": "Diego Forlán",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_10",
+                "playerName": "Francisco Conceição",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040371541_6",
+                "playerName": "Edgar Davids",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792992249049_13",
+                "playerName": "León Goretzka",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j16_m5",
@@ -27648,20 +27756,64 @@ var INITIAL_LMI_DATA = {
             "jornada": 17,
             "team1Id": "acffiorentina",
             "team2Id": "ajaxdeamsterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 4,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040586949_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 4
+              }
+            ]
           },
           {
             "id": "plata_j17_m4",
             "jornada": 17,
             "team1Id": "staderennais",
             "team2Id": "fctwente",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040339328_14",
+                "playerName": "Emile Smith Rowe",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793076042031_8",
+                "playerName": "Yunus Akgün",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_17",
+                "playerName": "Marselino Ferdinan",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j17_m5",
@@ -27731,10 +27883,53 @@ var INITIAL_LMI_DATA = {
             "jornada": 18,
             "team1Id": "manchesterunited",
             "team2Id": "carabobofutbolclub",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792992249049_19",
+                "playerName": "Joao Félix",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792992249049_21",
+                "playerName": "Diego Forlán",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792992249049_21",
+                "playerName": "Diego Forlán",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792466085252_1",
+                "playerName": "Amine Gouiri",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792466085252_4",
+                "playerName": "Viktor Tsygankov",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792992249049_23",
+                "playerName": "Tiquinho Soares",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j18_m4",
@@ -27751,10 +27946,53 @@ var INITIAL_LMI_DATA = {
             "jornada": 18,
             "team1Id": "staderennais",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040339328_14",
+                "playerName": "Emile Smith Rowe",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_18",
+                "playerName": "Petar Sučić",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1792040551310_22",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040054246_10",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j18_m6",
@@ -27943,10 +28181,39 @@ var INITIAL_LMI_DATA = {
             "jornada": 19,
             "team1Id": "staderennais",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_18",
+                "playerName": "Petar Sučić",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j19_m7",
@@ -28112,20 +28379,71 @@ var INITIAL_LMI_DATA = {
             "jornada": 20,
             "team1Id": "acffiorentina",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040239414_11",
+                "playerName": "Luis Suárez",
+                "teamId": "acffiorentina",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1792040483217_22",
+                "playerName": "Rafael Leão",
+                "teamId": "acffiorentina",
+                "type": "asistencia",
+                "count": 2
+              }
+            ]
           },
           {
             "id": "plata_j20_m7",
             "jornada": 20,
             "team1Id": "staderennais",
             "team2Id": "rangersfootballclub",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792465873774_4",
+                "playerName": "Dan Ndoye",
+                "teamId": "rangersfootballclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_14",
+                "playerName": "Emile Smith Rowe",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           }
         ],
         "restingTeamId": "acmiln"
@@ -30130,6 +30448,551 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793328046393",
+      "timestamp": 1793328046393,
+      "date": "29 oct 2026, 08:40 p.m.",
+      "competition": "plata",
+      "jornada": 20,
+      "fixtureMatchId": "plata_j20_m6",
+      "phase": "Jornada 20",
+      "team1Id": "acffiorentina",
+      "team1Name": "ACF Fiorentina",
+      "team1Logo": "Logos Equipos/fiorentina.webp",
+      "score1": 2,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040239414_11",
+          "playerName": "Luis Suárez",
+          "teamId": "acffiorentina",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040483217_22",
+          "playerName": "Rafael Leão",
+          "teamId": "acffiorentina",
+          "type": "asistencia",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "match_1793328001544",
+      "timestamp": 1793328001544,
+      "date": "29 oct 2026, 08:40 p.m.",
+      "competition": "plata",
+      "jornada": 20,
+      "fixtureMatchId": "plata_j20_m7",
+      "phase": "Jornada 20",
+      "team1Id": "staderennais",
+      "team1Name": "Stade Rennais",
+      "team1Logo": "Logos Equipos/staderennais.png",
+      "score1": 2,
+      "team2Id": "rangersfootballclub",
+      "team2Name": "Rangers Football Club",
+      "team2Logo": "Logos Equipos/rangers.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792465873774_4",
+          "playerName": "Dan Ndoye",
+          "teamId": "rangersfootballclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_14",
+          "playerName": "Emile Smith Rowe",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327937919",
+      "timestamp": 1793327937919,
+      "date": "29 oct 2026, 08:38 p.m.",
+      "competition": "plata",
+      "jornada": 19,
+      "fixtureMatchId": "plata_j19_m6",
+      "phase": "Jornada 19",
+      "team1Id": "staderennais",
+      "team1Name": "Stade Rennais",
+      "team1Logo": "Logos Equipos/staderennais.png",
+      "score1": 2,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_18",
+          "playerName": "Petar Sučić",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327868152",
+      "timestamp": 1793327868152,
+      "date": "29 oct 2026, 08:37 p.m.",
+      "competition": "plata",
+      "jornada": 18,
+      "fixtureMatchId": "plata_j18_m3",
+      "phase": "Jornada 18",
+      "team1Id": "manchesterunited",
+      "team1Name": "Manchester United",
+      "team1Logo": "Logos Equipos/manchesterunited.png",
+      "score1": 2,
+      "team2Id": "carabobofutbolclub",
+      "team2Name": "Carabobo Fútbol Club",
+      "team2Logo": "Logos Equipos/carabobo.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792992249049_21",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792992249049_21",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_1",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_4",
+          "playerName": "Viktor Tsygankov",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792992249049_23",
+          "playerName": "Tiquinho Soares",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327805560",
+      "timestamp": 1793327805560,
+      "date": "29 oct 2026, 08:36 p.m.",
+      "competition": "plata",
+      "jornada": 18,
+      "fixtureMatchId": "plata_j18_m5",
+      "phase": "Jornada 18",
+      "team1Id": "staderennais",
+      "team1Name": "Stade Rennais",
+      "team1Logo": "Logos Equipos/staderennais.png",
+      "score1": 3,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040339328_14",
+          "playerName": "Emile Smith Rowe",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_18",
+          "playerName": "Petar Sučić",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327737721",
+      "timestamp": 1793327737721,
+      "date": "29 oct 2026, 08:35 p.m.",
+      "competition": "plata",
+      "jornada": 17,
+      "fixtureMatchId": "plata_j17_m4",
+      "phase": "Jornada 17",
+      "team1Id": "staderennais",
+      "team1Name": "Stade Rennais",
+      "team1Logo": "Logos Equipos/staderennais.png",
+      "score1": 3,
+      "team2Id": "fctwente",
+      "team2Name": "FC Twente",
+      "team2Logo": "Logos Equipos/fctwente.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792040339328_14",
+          "playerName": "Emile Smith Rowe",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793076042031_8",
+          "playerName": "Yunus Akgün",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_17",
+          "playerName": "Marselino Ferdinan",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327653041",
+      "timestamp": 1793327653041,
+      "date": "29 oct 2026, 08:34 p.m.",
+      "competition": "plata",
+      "jornada": 17,
+      "fixtureMatchId": "plata_j17_m3",
+      "phase": "Jornada 17",
+      "team1Id": "acffiorentina",
+      "team1Name": "ACF Fiorentina",
+      "team1Logo": "Logos Equipos/fiorentina.webp",
+      "score1": 0,
+      "team2Id": "ajaxdeamsterdam",
+      "team2Name": "Ajax de Ámsterdam",
+      "team2Logo": "Logos Equipos/ajax.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1792040586949_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "match_1793327627923",
+      "timestamp": 1793327627923,
+      "date": "29 oct 2026, 08:33 p.m.",
+      "competition": "plata",
+      "jornada": 16,
+      "fixtureMatchId": "plata_j16_m4",
+      "phase": "Jornada 16",
+      "team1Id": "manchesterunited",
+      "team1Name": "Manchester United",
+      "team1Logo": "Logos Equipos/manchesterunited.png",
+      "score1": 1,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792992249049_21",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_10",
+          "playerName": "Francisco Conceição",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_6",
+          "playerName": "Edgar Davids",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792992249049_13",
+          "playerName": "León Goretzka",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327486106",
+      "timestamp": 1793327486106,
+      "date": "29 oct 2026, 08:31 p.m.",
+      "competition": "oro",
+      "jornada": 18,
+      "fixtureMatchId": "oro_j18_m1",
+      "phase": "Jornada 18",
+      "team1Id": "bayernleverkusen",
+      "team1Name": "Bayern Leverkusen",
+      "team1Logo": "Logos Equipos/bayernleverkusen.png",
+      "score1": 6,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792039977160_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792039977160_16",
+          "playerName": "Hakan Çalhanoğlu",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_21",
+          "playerName": "Savinho",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793076042031_4",
+          "playerName": "Lee Kang-In",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040483217_8",
+          "playerName": "Wayne Rooney",
+          "teamId": "interdemilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793076042031_1",
+          "playerName": "Pervis Estupiñán",
+          "teamId": "interdemilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_19",
+          "playerName": "James Maddison",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327207121",
+      "timestamp": 1793327207121,
+      "date": "29 oct 2026, 08:26 p.m.",
+      "competition": "oro",
+      "jornada": 16,
+      "fixtureMatchId": "oro_j16_m3",
+      "phase": "Jornada 16",
+      "team1Id": "bayernleverkusen",
+      "team1Name": "Bayern Leverkusen",
+      "team1Logo": "Logos Equipos/bayernleverkusen.png",
+      "score1": 2,
+      "team2Id": "manchestercity",
+      "team2Name": "Manchester City",
+      "team2Logo": "Logos Equipos/manchestercity.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792039977160_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039948207_6",
+          "playerName": "Ryan Gravenberch",
+          "teamId": "manchestercity",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039948207_23",
+          "playerName": "Edinson Cavani",
+          "teamId": "manchestercity",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793327166583",
+      "timestamp": 1793327166583,
+      "date": "29 oct 2026, 08:26 p.m.",
+      "competition": "oro",
+      "jornada": 16,
+      "fixtureMatchId": "oro_j16_m4",
+      "phase": "Jornada 16",
+      "team1Id": "riverplate",
+      "team1Name": "River Plate",
+      "team1Logo": "Logos Equipos/riverplate.webp",
+      "score1": 1,
+      "team2Id": "borussiadortmund",
+      "team2Name": "Borussia Dortmund",
+      "team2Logo": "Logos Equipos/borussia.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1792468026850_17",
+          "playerName": "Son Heung-Min",
+          "teamId": "riverplate",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1793165347871",
       "timestamp": 1793165347871,
