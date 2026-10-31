@@ -44275,7 +44275,7 @@ var INITIAL_LMI_DATA = {
         "id": "uefa-champions",
         "label": "Champions League",
         "icon": "fa-shield-halved",
-        "enabled": true
+        "enabled": false
       },
       {
         "id": "mercado",
@@ -44285,9 +44285,9 @@ var INITIAL_LMI_DATA = {
       },
       {
         "id": "renovaciones",
-        "label": "Calculadora Renovaciones",
+        "label": "Renovaciones",
         "icon": "fa-calculator",
-        "enabled": false
+        "enabled": true
       },
       {
         "id": "buscador",
