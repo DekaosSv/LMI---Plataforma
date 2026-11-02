@@ -205,6 +205,17 @@ const AdminApp = {
 
   async saveData(silent = false) {
     if (!this.data) return;
+    // Sanitizar automáticamente: asegurar que ningún partido de feyenoord se guarde en fixtures ni history
+    if (this.data.fixtures) {
+      Object.keys(this.data.fixtures).forEach(div => {
+        (this.data.fixtures[div] || []).forEach(r => {
+          r.matches = (r.matches || []).filter(m => m.team1Id !== 'feyenoordrotterdam' && m.team2Id !== 'feyenoordrotterdam');
+        });
+      });
+    }
+    if (this.data.matchHistory) {
+      this.data.matchHistory = this.data.matchHistory.filter(m => m.team1Id !== 'feyenoordrotterdam' && m.team2Id !== 'feyenoordrotterdam');
+    }
     this.setStatus('Guardando...', 'loading');
     const base = await this.getApiBase();
     try {

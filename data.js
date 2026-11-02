@@ -1,5 +1,3 @@
-// Base de datos unificada LMI Temporada 10
-
 var INITIAL_LMI_DATA = {
   "season": "Temporada 12",
   "teams": [
@@ -25397,16 +25395,6 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
-            "id": "plata_j1_m4",
-            "jornada": 1,
-            "team1Id": "arsenal",
-            "team2Id": "feyenoordrotterdam",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
-            "events": []
-          },
-          {
             "id": "plata_j1_m5",
             "jornada": 1,
             "team1Id": "ajaxdeamsterdam",
@@ -25656,16 +25644,6 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
-          },
-          {
-            "id": "plata_j2_m3",
-            "jornada": 2,
-            "team1Id": "realmadrid",
-            "team2Id": "feyenoordrotterdam",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
-            "events": []
           },
           {
             "id": "plata_j2_m4",
@@ -26116,16 +26094,6 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
-          },
-          {
-            "id": "plata_j3_m7",
-            "jornada": 3,
-            "team1Id": "rangersfootballclub",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
           }
         ]
       },
@@ -26158,16 +26126,6 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
-          },
-          {
-            "id": "plata_j4_m2",
-            "jornada": 4,
-            "team1Id": "carabobofutbolclub",
-            "team2Id": "feyenoordrotterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
           },
           {
             "id": "plata_j4_m3",
@@ -26404,16 +26362,6 @@ var INITIAL_LMI_DATA = {
         "name": "Jornada 5",
         "type": "ida",
         "matches": [
-          {
-            "id": "plata_j5_m1",
-            "jornada": 5,
-            "team1Id": "fcbarcelona",
-            "team2Id": "feyenoordrotterdam",
-            "score1": 1,
-            "score2": 0,
-            "played": true,
-            "events": []
-          },
           {
             "id": "plata_j5_m2",
             "jornada": 5,
@@ -46152,24 +46100,6 @@ var INITIAL_LMI_DATA = {
       "events": []
     },
     {
-      "id": "match_1792376370490",
-      "timestamp": 1792376370490,
-      "date": "18 oct 2026, 08:19 p.m.",
-      "competition": "plata",
-      "jornada": 3,
-      "fixtureMatchId": "plata_j3_m7",
-      "phase": "Jornada 3",
-      "team1Id": "vascodagama",
-      "team1Name": "Vasco da Gama",
-      "team1Logo": "Logos Equipos/vasco.png",
-      "score1": 1,
-      "team2Id": "feyenoordrotterdam",
-      "team2Name": "Feyenoord Rotterdam",
-      "team2Logo": "Logos Equipos/feyenoord.webp",
-      "score2": 0,
-      "events": []
-    },
-    {
       "id": "match_1792375525016",
       "timestamp": 1792375525016,
       "date": "18 oct 2026, 08:05 p.m.",
@@ -46184,42 +46114,6 @@ var INITIAL_LMI_DATA = {
       "team2Id": "acmiln",
       "team2Name": "AC Milan",
       "team2Logo": "Logos Equipos/acmilan.webp",
-      "score2": 0,
-      "events": []
-    },
-    {
-      "id": "match_1792375517221",
-      "timestamp": 1792375517221,
-      "date": "18 oct 2026, 08:05 p.m.",
-      "competition": "plata",
-      "jornada": 5,
-      "fixtureMatchId": "plata_j5_m1",
-      "phase": "Jornada 5",
-      "team1Id": "fcbarcelona",
-      "team1Name": "FC Barcelona",
-      "team1Logo": "Logos Equipos/fcbarcelona.png",
-      "score1": 1,
-      "team2Id": "feyenoordrotterdam",
-      "team2Name": "Feyenoord Rotterdam",
-      "team2Logo": "Logos Equipos/feyenoord.webp",
-      "score2": 0,
-      "events": []
-    },
-    {
-      "id": "match_1792375505827",
-      "timestamp": 1792375505827,
-      "date": "18 oct 2026, 08:05 p.m.",
-      "competition": "plata",
-      "jornada": 4,
-      "fixtureMatchId": "plata_j4_m2",
-      "phase": "Jornada 4",
-      "team1Id": "brightonhovealbion",
-      "team1Name": "Brighton & Hove Albion",
-      "team1Logo": "Logos Equipos/brighton.png",
-      "score1": 1,
-      "team2Id": "feyenoordrotterdam",
-      "team2Name": "Feyenoord Rotterdam",
-      "team2Logo": "Logos Equipos/feyenoord.webp",
       "score2": 0,
       "events": []
     },
@@ -47167,24 +47061,6 @@ var INITIAL_LMI_DATA = {
       ]
     },
     {
-      "id": "match_1792289792051",
-      "timestamp": 1792289792051,
-      "date": "17 oct 2026, 08:16 p.m.",
-      "competition": "plata",
-      "jornada": 1,
-      "fixtureMatchId": "plata_j1_m4",
-      "phase": "Jornada 1",
-      "team1Id": "arsenal",
-      "team1Name": "Arsenal",
-      "team1Logo": "Logos Equipos/arsenal.png",
-      "score1": 1,
-      "team2Id": "feyenoordrotterdam",
-      "team2Name": "Feyenoord Rotterdam",
-      "team2Logo": "Logos Equipos/feyenoord.webp",
-      "score2": 0,
-      "events": []
-    },
-    {
       "id": "match_1792289737290",
       "timestamp": 1792289737290,
       "date": "17 oct 2026, 08:15 p.m.",
@@ -47258,24 +47134,6 @@ var INITIAL_LMI_DATA = {
           "count": 1
         }
       ]
-    },
-    {
-      "id": "match_1792288317173",
-      "timestamp": 1792288317173,
-      "date": "17 oct 2026, 07:51 p.m.",
-      "competition": "plata",
-      "jornada": 2,
-      "fixtureMatchId": "plata_j2_m3",
-      "phase": "Jornada 2",
-      "team1Id": "realmadrid",
-      "team1Name": "Real Madrid",
-      "team1Logo": "Logos Equipos/realmadrid.webp",
-      "score1": 1,
-      "team2Id": "feyenoordrotterdam",
-      "team2Name": "Feyenoord Rotterdam",
-      "team2Logo": "Logos Equipos/feyenoord.webp",
-      "score2": 0,
-      "events": []
     },
     {
       "id": "match_1792288047892",
