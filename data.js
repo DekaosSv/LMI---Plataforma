@@ -1,3 +1,5 @@
+// Base de datos unificada LMI Temporada 10
+
 var INITIAL_LMI_DATA = {
   "season": "Temporada 12",
   "teams": [
@@ -3500,10 +3502,10 @@ var INITIAL_LMI_DATA = {
       "name": "George Best",
       "position": "ED",
       "teamId": "staderennais",
-      "goals": 26,
-      "assists": 8,
-      "goals_liga": 25,
-      "assists_liga": 7,
+      "goals": 27,
+      "assists": 9,
+      "goals_liga": 26,
+      "assists_liga": 8,
       "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -3514,10 +3516,10 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 26,
-          "assists": 8,
-          "goals_liga": 25,
-          "assists_liga": 7,
+          "goals": 27,
+          "assists": 9,
+          "goals_liga": 26,
+          "assists_liga": 8,
           "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 0,
@@ -3620,10 +3622,10 @@ var INITIAL_LMI_DATA = {
       "name": "Emile Smith Rowe",
       "position": "MP",
       "teamId": "staderennais",
-      "goals": 0,
-      "assists": 3,
-      "goals_liga": 0,
-      "assists_liga": 3,
+      "goals": 1,
+      "assists": 4,
+      "goals_liga": 1,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3634,10 +3636,10 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 0,
-          "assists": 3,
-          "goals_liga": 0,
-          "assists_liga": 3,
+          "goals": 1,
+          "assists": 4,
+          "goals_liga": 1,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3950,9 +3952,9 @@ var INITIAL_LMI_DATA = {
       "name": "Yunus Akgün",
       "position": "MP",
       "teamId": "staderennais",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3964,9 +3966,9 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -17657,9 +17659,9 @@ var INITIAL_LMI_DATA = {
       "name": "Viktor Tsygankov",
       "position": "SD",
       "teamId": "carabobofutbolclub",
-      "goals": 9,
+      "goals": 10,
       "assists": 8,
-      "goals_liga": 6,
+      "goals_liga": 7,
       "assists_liga": 6,
       "goals_champions": 3,
       "assists_champions": 2,
@@ -17671,9 +17673,9 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 9,
+          "goals": 10,
           "assists": 8,
-          "goals_liga": 6,
+          "goals_liga": 7,
           "assists_liga": 6,
           "goals_champions": 3,
           "assists_champions": 2,
@@ -17958,9 +17960,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "carabobofutbolclub",
       "goals": 5,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 5,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 1,
       "goals_estelar": 0,
@@ -17972,9 +17974,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
           "goals": 5,
-          "assists": 2,
+          "assists": 3,
           "goals_liga": 5,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 1,
           "goals_estelar": 0,
@@ -17987,9 +17989,9 @@ var INITIAL_LMI_DATA = {
       "name": "Oihan Sancet",
       "position": "MP",
       "teamId": "carabobofutbolclub",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 1,
       "assists_champions": 0,
@@ -18001,9 +18003,9 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 1,
           "assists_champions": 0,
@@ -18228,9 +18230,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "carabobofutbolclub",
       "goals": 1,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -18254,9 +18256,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
           "goals": 1,
-          "assists": 2,
+          "assists": 3,
           "goals_liga": 1,
-          "assists_liga": 2,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -25395,6 +25397,16 @@ var INITIAL_LMI_DATA = {
             "events": []
           },
           {
+            "id": "plata_j1_m4",
+            "jornada": 1,
+            "team1Id": "arsenal",
+            "team2Id": "feyenoordrotterdam",
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": []
+          },
+          {
             "id": "plata_j1_m5",
             "jornada": 1,
             "team1Id": "ajaxdeamsterdam",
@@ -25644,6 +25656,16 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
+          },
+          {
+            "id": "plata_j2_m3",
+            "jornada": 2,
+            "team1Id": "realmadrid",
+            "team2Id": "feyenoordrotterdam",
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": []
           },
           {
             "id": "plata_j2_m4",
@@ -26094,6 +26116,16 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
+          },
+          {
+            "id": "plata_j3_m7",
+            "jornada": 3,
+            "team1Id": "rangersfootballclub",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           }
         ]
       },
@@ -26126,6 +26158,16 @@ var INITIAL_LMI_DATA = {
                 "count": 1
               }
             ]
+          },
+          {
+            "id": "plata_j4_m2",
+            "jornada": 4,
+            "team1Id": "carabobofutbolclub",
+            "team2Id": "feyenoordrotterdam",
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j4_m3",
@@ -26362,6 +26404,16 @@ var INITIAL_LMI_DATA = {
         "name": "Jornada 5",
         "type": "ida",
         "matches": [
+          {
+            "id": "plata_j5_m1",
+            "jornada": 5,
+            "team1Id": "fcbarcelona",
+            "team2Id": "feyenoordrotterdam",
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": []
+          },
           {
             "id": "plata_j5_m2",
             "jornada": 5,
@@ -27060,9 +27112,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "rangersfootballclub",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ],
@@ -27198,10 +27250,74 @@ var INITIAL_LMI_DATA = {
             "jornada": 8,
             "team1Id": "carabobofutbolclub",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793076042031_8",
+                "playerName": "Yunus Akgün",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_14",
+                "playerName": "Emile Smith Rowe",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_14",
+                "playerName": "Emile Smith Rowe",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792040339328_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792466085252_4",
+                "playerName": "Viktor Tsygankov",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792468026850_14",
+                "playerName": "Eduardo Camavinga",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792466085252_12",
+                "playerName": "Oihan Sancet",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1792466085252_1",
+                "playerName": "Amine Gouiri",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              }
+            ]
           },
           {
             "id": "plata_j8_m7",
@@ -30336,9 +30452,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 24,
             "team1Id": "staderennais",
             "team2Id": "acmiln",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -32326,6 +32442,124 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793599694220",
+      "timestamp": 1793599694220,
+      "date": "02 nov 2026, 12:08 a.m.",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m7",
+      "phase": "Jornada 7",
+      "team1Id": "rangersfootballclub",
+      "team1Name": "Rangers Football Club",
+      "team1Logo": "Logos Equipos/rangers.webp",
+      "score1": 0,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1793599665932",
+      "timestamp": 1793599665932,
+      "date": "02 nov 2026, 12:07 a.m.",
+      "competition": "plata",
+      "jornada": 8,
+      "fixtureMatchId": "plata_j8_m6",
+      "phase": "Jornada 8",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 2,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1793076042031_8",
+          "playerName": "Yunus Akgün",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_14",
+          "playerName": "Emile Smith Rowe",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_14",
+          "playerName": "Emile Smith Rowe",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040339328_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_4",
+          "playerName": "Viktor Tsygankov",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792468026850_14",
+          "playerName": "Eduardo Camavinga",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_12",
+          "playerName": "Oihan Sancet",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_1",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793599493598",
+      "timestamp": 1793599493598,
+      "date": "02 nov 2026, 12:04 a.m.",
+      "competition": "plata",
+      "jornada": 24,
+      "fixtureMatchId": "plata_j24_m3",
+      "phase": "Jornada 24",
+      "team1Id": "staderennais",
+      "team1Name": "Stade Rennais",
+      "team1Logo": "Logos Equipos/staderennais.png",
+      "score1": 0,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1793598282239",
       "timestamp": 1793598282239,
@@ -45918,6 +46152,24 @@ var INITIAL_LMI_DATA = {
       "events": []
     },
     {
+      "id": "match_1792376370490",
+      "timestamp": 1792376370490,
+      "date": "18 oct 2026, 08:19 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m7",
+      "phase": "Jornada 3",
+      "team1Id": "vascodagama",
+      "team1Name": "Vasco da Gama",
+      "team1Logo": "Logos Equipos/vasco.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
       "id": "match_1792375525016",
       "timestamp": 1792375525016,
       "date": "18 oct 2026, 08:05 p.m.",
@@ -45932,6 +46184,42 @@ var INITIAL_LMI_DATA = {
       "team2Id": "acmiln",
       "team2Name": "AC Milan",
       "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792375517221",
+      "timestamp": 1792375517221,
+      "date": "18 oct 2026, 08:05 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m1",
+      "phase": "Jornada 5",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1792375505827",
+      "timestamp": 1792375505827,
+      "date": "18 oct 2026, 08:05 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m2",
+      "phase": "Jornada 4",
+      "team1Id": "brightonhovealbion",
+      "team1Name": "Brighton & Hove Albion",
+      "team1Logo": "Logos Equipos/brighton.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
       "score2": 0,
       "events": []
     },
@@ -46879,6 +47167,24 @@ var INITIAL_LMI_DATA = {
       ]
     },
     {
+      "id": "match_1792289792051",
+      "timestamp": 1792289792051,
+      "date": "17 oct 2026, 08:16 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m4",
+      "phase": "Jornada 1",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
       "id": "match_1792289737290",
       "timestamp": 1792289737290,
       "date": "17 oct 2026, 08:15 p.m.",
@@ -46952,6 +47258,24 @@ var INITIAL_LMI_DATA = {
           "count": 1
         }
       ]
+    },
+    {
+      "id": "match_1792288317173",
+      "timestamp": 1792288317173,
+      "date": "17 oct 2026, 07:51 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m3",
+      "phase": "Jornada 2",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 1,
+      "team2Id": "feyenoordrotterdam",
+      "team2Name": "Feyenoord Rotterdam",
+      "team2Logo": "Logos Equipos/feyenoord.webp",
+      "score2": 0,
+      "events": []
     },
     {
       "id": "match_1792288047892",
