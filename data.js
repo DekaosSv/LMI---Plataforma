@@ -5554,11 +5554,11 @@ var INITIAL_LMI_DATA = {
       "name": "Ousmane Dembélé",
       "position": "EI",
       "teamId": "bayernleverkusen",
-      "goals": 6,
+      "goals": 8,
       "assists": 2,
       "goals_liga": 5,
       "assists_liga": 2,
-      "goals_champions": 1,
+      "goals_champions": 3,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -5568,11 +5568,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 6,
+          "goals": 8,
           "assists": 2,
           "goals_liga": 5,
           "assists_liga": 2,
-          "goals_champions": 1,
+          "goals_champions": 3,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -5614,11 +5614,11 @@ var INITIAL_LMI_DATA = {
       "name": "Lautaro Martínez",
       "position": "DC",
       "teamId": "bayernleverkusen",
-      "goals": 23,
+      "goals": 24,
       "assists": 0,
       "goals_liga": 22,
       "assists_liga": 0,
-      "goals_champions": 1,
+      "goals_champions": 2,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -5628,11 +5628,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 23,
+          "goals": 24,
           "assists": 0,
           "goals_liga": 22,
           "assists_liga": 0,
-          "goals_champions": 1,
+          "goals_champions": 2,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -5794,10 +5794,40 @@ var INITIAL_LMI_DATA = {
       "name": "James Rodríguez",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 2,
-      "assists": 3,
+      "goals": 3,
+      "assists": 4,
       "goals_liga": 1,
       "assists_liga": 3,
+      "goals_champions": 2,
+      "assists_champions": 1,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "bayernleverkusen": {
+          "teamId": "bayernleverkusen",
+          "teamName": "Bayern Leverkusen",
+          "goals": 3,
+          "assists": 4,
+          "goals_liga": 1,
+          "assists_liga": 3,
+          "goals_champions": 2,
+          "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1792039977160_18",
+      "name": "Brahim Díaz",
+      "position": "MP",
+      "teamId": "bayernleverkusen",
+      "goals": 2,
+      "assists": 0,
+      "goals_liga": 1,
+      "assists_liga": 0,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5809,40 +5839,10 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 2,
-          "assists": 3,
-          "goals_liga": 1,
-          "assists_liga": 3,
-          "goals_champions": 1,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
-    },
-    {
-      "id": "p_1792039977160_18",
-      "name": "Brahim Díaz",
-      "position": "MP",
-      "teamId": "bayernleverkusen",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "bayernleverkusen": {
-          "teamId": "bayernleverkusen",
-          "teamName": "Bayern Leverkusen",
-          "goals": 1,
           "assists": 0,
           "goals_liga": 1,
           "assists_liga": 0,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -5855,11 +5855,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "bayernleverkusen",
       "goals": 3,
-      "assists": 2,
+      "assists": 7,
       "goals_liga": 3,
       "assists_liga": 2,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 5,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -5869,11 +5869,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 3,
-          "assists": 2,
+          "assists": 7,
           "goals_liga": 3,
           "assists_liga": 2,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 5,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -5885,11 +5885,11 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "bayernleverkusen",
       "goals": 1,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 0,
       "assists_liga": 2,
       "goals_champions": 1,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -5899,11 +5899,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 1,
-          "assists": 3,
+          "assists": 4,
           "goals_liga": 0,
           "assists_liga": 2,
           "goals_champions": 1,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -5944,11 +5944,11 @@ var INITIAL_LMI_DATA = {
       "name": "Gabriel Jesus",
       "position": "DC",
       "teamId": "bayernleverkusen",
-      "goals": 6,
+      "goals": 10,
       "assists": 1,
       "goals_liga": 5,
       "assists_liga": 1,
-      "goals_champions": 1,
+      "goals_champions": 5,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -5958,11 +5958,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 6,
+          "goals": 10,
           "assists": 1,
           "goals_liga": 5,
           "assists_liga": 1,
-          "goals_champions": 1,
+          "goals_champions": 5,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -6934,11 +6934,11 @@ var INITIAL_LMI_DATA = {
       "name": "Francisco Conceição",
       "position": "ED",
       "teamId": "realmadrid",
-      "goals": 4,
+      "goals": 6,
       "assists": 2,
       "goals_liga": 2,
       "assists_liga": 0,
-      "goals_champions": 2,
+      "goals_champions": 4,
       "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6948,11 +6948,11 @@ var INITIAL_LMI_DATA = {
         "realmadrid": {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
-          "goals": 4,
+          "goals": 6,
           "assists": 2,
           "goals_liga": 2,
           "assists_liga": 0,
-          "goals_champions": 2,
+          "goals_champions": 4,
           "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -6964,11 +6964,11 @@ var INITIAL_LMI_DATA = {
       "name": "Omar Marmoush",
       "position": "DC",
       "teamId": "realmadrid",
-      "goals": 8,
+      "goals": 9,
       "assists": 1,
       "goals_liga": 7,
       "assists_liga": 0,
-      "goals_champions": 1,
+      "goals_champions": 2,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6978,11 +6978,11 @@ var INITIAL_LMI_DATA = {
         "realmadrid": {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
-          "goals": 8,
+          "goals": 9,
           "assists": 1,
           "goals_liga": 7,
           "assists_liga": 0,
-          "goals_champions": 1,
+          "goals_champions": 2,
           "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -7085,11 +7085,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "realmadrid",
       "goals": 2,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 1,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7099,11 +7099,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
           "goals": 2,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 1,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -7115,11 +7115,11 @@ var INITIAL_LMI_DATA = {
       "position": "II",
       "teamId": "realmadrid",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 1,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7129,11 +7129,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
           "goals": 1,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
           "assists_liga": 0,
           "goals_champions": 1,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -8219,11 +8219,11 @@ var INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -8233,11 +8233,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
           "goals": 0,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -8308,12 +8308,12 @@ var INITIAL_LMI_DATA = {
       "name": "Vinícius Júnior",
       "position": "EI",
       "teamId": "galatasaray",
-      "goals": 10,
-      "assists": 7,
+      "goals": 11,
+      "assists": 8,
       "goals_liga": 10,
       "assists_liga": 7,
-      "goals_champions": 0,
-      "assists_champions": 0,
+      "goals_champions": 1,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -8322,12 +8322,12 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 10,
-          "assists": 7,
+          "goals": 11,
+          "assists": 8,
           "goals_liga": 10,
           "assists_liga": 7,
-          "goals_champions": 0,
-          "assists_champions": 0,
+          "goals_champions": 1,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -8338,11 +8338,11 @@ var INITIAL_LMI_DATA = {
       "name": "Antoine Semenyo",
       "position": "ED",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 1,
       "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -8352,11 +8352,11 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 0,
+          "goals": 1,
           "assists": 1,
           "goals_liga": 0,
           "assists_liga": 0,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -8398,11 +8398,11 @@ var INITIAL_LMI_DATA = {
       "name": "Semih Kılıçsoy",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 16,
+      "goals": 18,
       "assists": 5,
       "goals_liga": 16,
       "assists_liga": 5,
-      "goals_champions": 0,
+      "goals_champions": 2,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -8412,11 +8412,11 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 16,
+          "goals": 18,
           "assists": 5,
           "goals_liga": 16,
           "assists_liga": 5,
-          "goals_champions": 0,
+          "goals_champions": 2,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -8429,11 +8429,11 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "galatasaray",
       "goals": 1,
-      "assists": 5,
+      "assists": 6,
       "goals_liga": 1,
       "assists_liga": 4,
       "goals_champions": 0,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -8443,11 +8443,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
           "goals": 1,
-          "assists": 5,
+          "assists": 6,
           "goals_liga": 1,
           "assists_liga": 4,
           "goals_champions": 0,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -8488,12 +8488,12 @@ var INITIAL_LMI_DATA = {
       "name": "Alexander Isak",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 2,
-      "assists": 3,
+      "goals": 3,
+      "assists": 5,
       "goals_liga": 1,
       "assists_liga": 3,
-      "goals_champions": 1,
-      "assists_champions": 0,
+      "goals_champions": 2,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -8502,12 +8502,12 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 2,
-          "assists": 3,
+          "goals": 3,
+          "assists": 5,
           "goals_liga": 1,
           "assists_liga": 3,
-          "goals_champions": 1,
-          "assists_champions": 0,
+          "goals_champions": 2,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -8548,11 +8548,11 @@ var INITIAL_LMI_DATA = {
       "name": "Mikel Merino",
       "position": "MP",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
       "goals_liga": 0,
       "assists_liga": 1,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -8562,11 +8562,11 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 0,
+          "goals": 1,
           "assists": 2,
           "goals_liga": 0,
           "assists_liga": 1,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -10289,11 +10289,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 4,
-      "assists": 7,
+      "assists": 8,
       "goals_liga": 3,
       "assists_liga": 6,
       "goals_champions": 1,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10303,11 +10303,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals": 4,
-          "assists": 7,
+          "assists": 8,
           "goals_liga": 3,
           "assists_liga": 6,
           "goals_champions": 1,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10318,12 +10318,12 @@ var INITIAL_LMI_DATA = {
       "name": "Memphis Depay",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 3,
-      "assists": 15,
+      "goals": 5,
+      "assists": 18,
       "goals_liga": 2,
       "assists_liga": 12,
-      "goals_champions": 1,
-      "assists_champions": 3,
+      "goals_champions": 3,
+      "assists_champions": 6,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10332,12 +10332,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 3,
-          "assists": 15,
+          "goals": 5,
+          "assists": 18,
           "goals_liga": 2,
           "assists_liga": 12,
-          "goals_champions": 1,
-          "assists_champions": 3,
+          "goals_champions": 3,
+          "assists_champions": 6,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10348,12 +10348,12 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 29,
-      "assists": 5,
+      "goals": 33,
+      "assists": 7,
       "goals_liga": 25,
       "assists_liga": 4,
-      "goals_champions": 4,
-      "assists_champions": 1,
+      "goals_champions": 8,
+      "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10362,12 +10362,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 29,
-          "assists": 5,
+          "goals": 33,
+          "assists": 7,
           "goals_liga": 25,
           "assists_liga": 4,
-          "goals_champions": 4,
-          "assists_champions": 1,
+          "goals_champions": 8,
+          "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10708,12 +10708,12 @@ var INITIAL_LMI_DATA = {
       "name": "Darwin Núñez",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 12,
-      "assists": 8,
+      "goals": 15,
+      "assists": 9,
       "goals_liga": 5,
       "assists_liga": 7,
-      "goals_champions": 7,
-      "assists_champions": 1,
+      "goals_champions": 10,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10722,12 +10722,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 8,
-          "assists": 4,
+          "goals": 11,
+          "assists": 5,
           "goals_liga": 3,
           "assists_liga": 4,
-          "goals_champions": 5,
-          "assists_champions": 0,
+          "goals_champions": 8,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         },
@@ -10901,11 +10901,11 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "acmiln",
       "goals": 0,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 0,
       "assists_liga": 3,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10915,11 +10915,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "acmiln",
           "teamName": "AC Milan",
           "goals": 0,
-          "assists": 3,
+          "assists": 4,
           "goals_liga": 0,
           "assists_liga": 3,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10991,11 +10991,11 @@ var INITIAL_LMI_DATA = {
       "position": "II",
       "teamId": "acmiln",
       "goals": 2,
-      "assists": 8,
+      "assists": 9,
       "goals_liga": 2,
       "assists_liga": 6,
       "goals_champions": 0,
-      "assists_champions": 2,
+      "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -11005,11 +11005,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "acmiln",
           "teamName": "AC Milan",
           "goals": 2,
-          "assists": 8,
+          "assists": 9,
           "goals_liga": 2,
           "assists_liga": 6,
           "goals_champions": 0,
-          "assists_champions": 2,
+          "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -11020,11 +11020,11 @@ var INITIAL_LMI_DATA = {
       "name": "Arda Güler",
       "position": "ID",
       "teamId": "acmiln",
-      "goals": 2,
+      "goals": 3,
       "assists": 3,
       "goals_liga": 1,
       "assists_liga": 3,
-      "goals_champions": 1,
+      "goals_champions": 2,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -11034,11 +11034,11 @@ var INITIAL_LMI_DATA = {
         "acmiln": {
           "teamId": "acmiln",
           "teamName": "AC Milan",
-          "goals": 2,
+          "goals": 3,
           "assists": 3,
           "goals_liga": 1,
           "assists_liga": 3,
-          "goals_champions": 1,
+          "goals_champions": 2,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -11050,11 +11050,11 @@ var INITIAL_LMI_DATA = {
       "name": "Erling Haaland",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 8,
+      "goals": 10,
       "assists": 7,
       "goals_liga": 7,
       "assists_liga": 7,
-      "goals_champions": 1,
+      "goals_champions": 3,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -11064,11 +11064,11 @@ var INITIAL_LMI_DATA = {
         "acmiln": {
           "teamId": "acmiln",
           "teamName": "AC Milan",
-          "goals": 8,
+          "goals": 10,
           "assists": 7,
           "goals_liga": 7,
           "assists_liga": 7,
-          "goals_champions": 1,
+          "goals_champions": 3,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -11081,11 +11081,11 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "acmiln",
       "goals": 25,
-      "assists": 10,
+      "assists": 11,
       "goals_liga": 23,
       "assists_liga": 10,
       "goals_champions": 2,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -11095,11 +11095,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "acmiln",
           "teamName": "AC Milan",
           "goals": 25,
-          "assists": 10,
+          "assists": 11,
           "goals_liga": 23,
           "assists_liga": 10,
           "goals_champions": 2,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -12934,11 +12934,11 @@ var INITIAL_LMI_DATA = {
       "name": "İlkay Gündoğan",
       "position": "MCD",
       "teamId": "ajaxdeamsterdam",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
       "goals_liga": 1,
       "assists_liga": 1,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -12948,11 +12948,11 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 1,
+          "goals": 2,
           "assists": 1,
           "goals_liga": 1,
           "assists_liga": 1,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -12964,11 +12964,11 @@ var INITIAL_LMI_DATA = {
       "name": "Martin Ødegaard",
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
-      "goals": 4,
+      "goals": 5,
       "assists": 13,
       "goals_liga": 4,
       "assists_liga": 8,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 5,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -12978,11 +12978,11 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 4,
+          "goals": 5,
           "assists": 13,
           "goals_liga": 4,
           "assists_liga": 8,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 5,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -12995,11 +12995,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
       "goals": 4,
-      "assists": 10,
+      "assists": 11,
       "goals_liga": 3,
       "assists_liga": 8,
       "goals_champions": 1,
-      "assists_champions": 2,
+      "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -13009,11 +13009,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
           "goals": 4,
-          "assists": 10,
+          "assists": 11,
           "goals_liga": 3,
           "assists_liga": 8,
           "goals_champions": 1,
-          "assists_champions": 2,
+          "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -19819,96 +19819,405 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Cuartos 1 (Ida)",
       "team1": "Carabobo Fútbol Club",
-      "score1": "",
+      "score1": "0",
       "team2": "Inter de Milan",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "0",
+      "estado": "Finalizado",
+      "events": [],
+      "winner": "Carabobo Fútbol Club"
     },
     {
       "fase": "Cuartos 1 (Vuelta)",
       "team1": "Inter de Milan",
-      "score1": "",
+      "score1": "2",
       "team2": "Carabobo Fútbol Club",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "3",
+      "estado": "Finalizado",
+      "events": [],
+      "winner": "Carabobo Fútbol Club"
     },
     {
       "fase": "Cuartos 2 (Ida)",
       "team1": "Ajax de Ámsterdam",
+      "score1": "2",
+      "team2": "Arsenal",
+      "score2": "7",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040586949_8",
+          "playerName": "Martin Ødegaard",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_9",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_6",
+          "playerName": "İlkay Gündoğan",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "Arsenal"
+    },
+    {
+      "fase": "Cuartos 2 (Vuelta)",
+      "team1": "Arsenal",
+      "score1": "2",
+      "team2": "Ajax de Ámsterdam",
+      "score2": "6",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_8",
+          "playerName": "Talisca",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Arsenal"
+    },
+    {
+      "fase": "Cuartos 3 (Ida)",
+      "team1": "Bayern Leverkusen",
+      "score1": "2",
+      "team2": "Galatasaray",
+      "score2": "4",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792039794983_9",
+          "playerName": "Antoine Semenyo",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_14",
+          "playerName": "Alexander Isak",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_14",
+          "playerName": "Alexander Isak",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039794983_8",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_16",
+          "playerName": "Mikel Merino",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_5",
+          "playerName": "Djed Spence",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_19",
+          "playerName": "James Maddison",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "Bayern Leverkusen"
+    },
+    {
+      "fase": "Cuartos 3 (Vuelta)",
+      "team1": "Galatasaray",
+      "score1": "2",
+      "team2": "Bayern Leverkusen",
+      "score2": "7",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792039977160_22",
+          "playerName": "Gabriel Jesus",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792039977160_19",
+          "playerName": "James Maddison",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792039977160_18",
+          "playerName": "Brahim Díaz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_12",
+          "playerName": "Paul Scholes",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_11",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039794983_8",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Bayern Leverkusen"
+    },
+    {
+      "fase": "Cuartos 4 (Ida)",
+      "team1": "Real Madrid",
+      "score1": "1",
+      "team2": "AC Milan",
+      "score2": "1",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040371541_10",
+          "playerName": "Francisco Conceição",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "AC Milan"
+    },
+    {
+      "fase": "Cuartos 4 (Vuelta)",
+      "team1": "AC Milan",
+      "score1": "3",
+      "team2": "Real Madrid",
+      "score2": "2",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040438881_10",
+          "playerName": "Erling Haaland",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040438881_8",
+          "playerName": "Park Ji-Sung",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_4",
+          "playerName": "Joško Gvardiol",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_10",
+          "playerName": "Francisco Conceição",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_18",
+          "playerName": "Kerem Aktürkoğlu",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_9",
+          "playerName": "Arda Güler",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_11",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_16",
+          "playerName": "João Pedro",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "AC Milan"
+    },
+    {
+      "fase": "Semifinal 1 (Ida)",
+      "team1": "Carabobo Fútbol Club",
       "score1": "",
       "team2": "Arsenal",
       "score2": "",
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 2 (Vuelta)",
+      "fase": "Semifinal 1 (Vuelta)",
       "team1": "Arsenal",
       "score1": "",
-      "team2": "Ajax de Ámsterdam",
+      "team2": "Carabobo Fútbol Club",
       "score2": "",
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 3 (Ida)",
+      "fase": "Semifinal 2 (Ida)",
       "team1": "Bayern Leverkusen",
-      "score1": "",
-      "team2": "Galatasaray",
-      "score2": "",
-      "estado": "Pendiente"
-    },
-    {
-      "fase": "Cuartos 3 (Vuelta)",
-      "team1": "Galatasaray",
-      "score1": "",
-      "team2": "Bayern Leverkusen",
-      "score2": "",
-      "estado": "Pendiente"
-    },
-    {
-      "fase": "Cuartos 4 (Ida)",
-      "team1": "Real Madrid",
       "score1": "",
       "team2": "AC Milan",
       "score2": "",
       "estado": "Pendiente"
     },
     {
-      "fase": "Cuartos 4 (Vuelta)",
+      "fase": "Semifinal 2 (Vuelta)",
       "team1": "AC Milan",
       "score1": "",
-      "team2": "Real Madrid",
-      "score2": "",
-      "estado": "Pendiente"
-    },
-    {
-      "fase": "Semifinal 1 (Ida)",
-      "team1": "Ganador Cuartos 1",
-      "score1": "",
-      "team2": "Ganador Cuartos 2",
-      "score2": "",
-      "estado": "Pendiente"
-    },
-    {
-      "fase": "Semifinal 1 (Vuelta)",
-      "team1": "Ganador Cuartos 2",
-      "score1": "",
-      "team2": "Ganador Cuartos 1",
-      "score2": "",
-      "estado": "Pendiente"
-    },
-    {
-      "fase": "Semifinal 2 (Ida)",
-      "team1": "Ganador Cuartos 3",
-      "score1": "",
-      "team2": "Ganador Cuartos 4",
-      "score2": "",
-      "estado": "Pendiente"
-    },
-    {
-      "fase": "Semifinal 2 (Vuelta)",
-      "team1": "Ganador Cuartos 4",
-      "score1": "",
-      "team2": "Ganador Cuartos 3",
+      "team2": "Bayern Leverkusen",
       "score2": "",
       "estado": "Pendiente"
     },
@@ -23975,9 +24284,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 17,
             "team1Id": "interdemilan",
             "team2Id": "psg",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           },
           {
@@ -31990,6 +32299,461 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793595753637",
+      "timestamp": 1793595753637,
+      "date": "01 nov 2026, 11:02 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 3 (Vuelta)",
+      "team1Id": "galatasaray",
+      "team1Name": "Galatasaray",
+      "team1Logo": "Logos Equipos/galatasaray.png",
+      "score1": 2,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 7,
+      "events": [
+        {
+          "playerId": "p_1792039977160_22",
+          "playerName": "Gabriel Jesus",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792039977160_19",
+          "playerName": "James Maddison",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792039977160_18",
+          "playerName": "Brahim Díaz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_12",
+          "playerName": "Paul Scholes",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_11",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039794983_8",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793595456339",
+      "timestamp": 1793595456339,
+      "date": "01 nov 2026, 10:57 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 3 (Ida)",
+      "team1Id": "bayernleverkusen",
+      "team1Name": "Bayern Leverkusen",
+      "team1Logo": "Logos Equipos/bayernleverkusen.png",
+      "score1": 2,
+      "team2Id": "galatasaray",
+      "team2Name": "Galatasaray",
+      "team2Logo": "Logos Equipos/galatasaray.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1792039794983_9",
+          "playerName": "Antoine Semenyo",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_14",
+          "playerName": "Alexander Isak",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_14",
+          "playerName": "Alexander Isak",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792039794983_8",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_9",
+          "playerName": "Ousmane Dembélé",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_16",
+          "playerName": "Mikel Merino",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039794983_5",
+          "playerName": "Djed Spence",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_19",
+          "playerName": "James Maddison",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793595137433",
+      "timestamp": 1793595137433,
+      "date": "01 nov 2026, 10:52 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 2 (Vuelta)",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 2,
+      "team2Id": "ajaxdeamsterdam",
+      "team2Name": "Ajax de Ámsterdam",
+      "team2Logo": "Logos Equipos/ajax.png",
+      "score2": 6,
+      "events": [
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_8",
+          "playerName": "Talisca",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793594990948",
+      "timestamp": 1793594990948,
+      "date": "01 nov 2026, 10:49 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 2 (Ida)",
+      "team1Id": "ajaxdeamsterdam",
+      "team1Name": "Ajax de Ámsterdam",
+      "team1Logo": "Logos Equipos/ajax.png",
+      "score1": 2,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 7,
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040586949_8",
+          "playerName": "Martin Ødegaard",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_9",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040586949_6",
+          "playerName": "İlkay Gündoğan",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793594794010",
+      "timestamp": 1793594794010,
+      "date": "01 nov 2026, 10:46 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 1 (Vuelta)",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 2,
+      "team2Id": "carabobofutbolclub",
+      "team2Name": "Carabobo Fútbol Club",
+      "team2Logo": "Logos Equipos/carabobo.webp",
+      "score2": 3,
+      "events": []
+    },
+    {
+      "id": "match_1793594769403",
+      "timestamp": 1793594769403,
+      "date": "01 nov 2026, 10:46 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 1 (Ida)",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 0,
+      "team2Id": "interdemilan",
+      "team2Name": "Inter de Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1793594743566",
+      "timestamp": 1793594743566,
+      "date": "01 nov 2026, 10:45 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 4 (Vuelta)",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 3,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1792040438881_10",
+          "playerName": "Erling Haaland",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040438881_8",
+          "playerName": "Park Ji-Sung",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_4",
+          "playerName": "Joško Gvardiol",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_10",
+          "playerName": "Francisco Conceição",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_18",
+          "playerName": "Kerem Aktürkoğlu",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_9",
+          "playerName": "Arda Güler",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040438881_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_11",
+          "playerName": "Omar Marmoush",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040371541_16",
+          "playerName": "João Pedro",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793594571675",
+      "timestamp": 1793594571675,
+      "date": "01 nov 2026, 10:42 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Cuartos 4 (Ida)",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 1,
+      "team2Id": "acmiln",
+      "team2Name": "AC Milan",
+      "team2Logo": "Logos Equipos/acmilan.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040371541_10",
+          "playerName": "Francisco Conceição",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793594266908",
+      "timestamp": 1793594266908,
+      "date": "01 nov 2026, 10:37 p.m.",
+      "competition": "oro",
+      "jornada": 17,
+      "fixtureMatchId": "oro_j17_m1",
+      "phase": "Jornada 17",
+      "team1Id": "interdemilan",
+      "team1Name": "Inter de Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 0,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1793593849916",
       "timestamp": 1793593849916,
