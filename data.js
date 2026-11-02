@@ -1,3 +1,5 @@
+// Base de datos unificada LMI Temporada 10
+
 var INITIAL_LMI_DATA = {
   "season": "Temporada 12",
   "teams": [
@@ -25766,9 +25768,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "rangersfootballclub",
             "team2Id": "carabobofutbolclub",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ]
@@ -28773,9 +28775,9 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "carabobofutbolclub",
             "team2Id": "rangersfootballclub",
-            "score1": null,
-            "score2": null,
-            "played": false,
+            "score1": 0,
+            "score2": 0,
+            "played": true,
             "events": []
           }
         ],
@@ -32390,6 +32392,42 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793600419934",
+      "timestamp": 1793600419934,
+      "date": "02 nov 2026, 12:20 a.m.",
+      "competition": "plata",
+      "jornada": 15,
+      "fixtureMatchId": "plata_j15_m7",
+      "phase": "Jornada 15",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 0,
+      "team2Id": "rangersfootballclub",
+      "team2Name": "Rangers Football Club",
+      "team2Logo": "Logos Equipos/rangers.webp",
+      "score2": 0,
+      "events": []
+    },
+    {
+      "id": "match_1793600416864",
+      "timestamp": 1793600416864,
+      "date": "02 nov 2026, 12:20 a.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m7",
+      "phase": "Jornada 2",
+      "team1Id": "rangersfootballclub",
+      "team1Name": "Rangers Football Club",
+      "team1Logo": "Logos Equipos/rangers.webp",
+      "score1": 0,
+      "team2Id": "carabobofutbolclub",
+      "team2Name": "Carabobo Fútbol Club",
+      "team2Logo": "Logos Equipos/carabobo.webp",
+      "score2": 0,
+      "events": []
+    },
     {
       "id": "match_1793599694220",
       "timestamp": 1793599694220,
