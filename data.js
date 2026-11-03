@@ -1,3 +1,5 @@
+// Base de datos unificada LMI Temporada 10
+
 var INITIAL_LMI_DATA = {
   "season": "Temporada 12",
   "teams": [
@@ -12,37 +14,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Stadio Giuseppe Meazza",
       "manager": "Alejandro Salgado",
-      "budget": 3791000000.0,
+      "budget": 3104000000,
       "initialBudget": 2121000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 11,
       "logo": "Logos Equipos/intermilan.webp",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Inter de Milan",
-        "teamId": "interdemilan",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 3589.0,
-        "gastosRenovaciones": 321.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 8,
-            "premio": 250.0,
-            "goleadores": 0.0,
-            "asistidores": 73.0
-          },
-          "champions": {
-            "fase": "4tos",
-            "premio": 200.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 523.0,
-        "presupuestoFinal": 3791.0
-      }
+      "division": "oro"
     },
     {
       "id": "liverpool",
@@ -55,37 +33,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Anfield",
       "manager": "Esteban Arturo",
-      "budget": 797000000.0,
+      "budget": 831000000,
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 20,
       "logo": "Logos Equipos/liverpool.png",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Liverpool",
-        "teamId": "liverpool",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 650.0,
-        "gastosRenovaciones": 263.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 6,
-            "premio": 270.0,
-            "goleadores": 40.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 100.0
-        },
-        "balanceTemporada": 410.0,
-        "presupuestoFinal": 797.0
-      }
+      "division": "oro"
     },
     {
       "id": "bocajuniors",
@@ -98,37 +52,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Estadio Alberto J. Armando",
       "manager": "Luis Fajardo",
-      "budget": 1943000000.0,
+      "budget": 1241000000,
       "initialBudget": 759000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 5,
       "logo": "Logos Equipos/boca.png",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Boca Juniors",
-        "teamId": "bocajuniors",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 1241.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 4,
-            "premio": 300.0,
-            "goleadores": 112.0,
-            "asistidores": 135.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 5.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 702.0,
-        "presupuestoFinal": 1943.0
-      }
+      "division": "oro"
     },
     {
       "id": "fcbarcelona",
@@ -141,37 +71,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Spotify Camp Nou",
       "manager": "Robert Salve",
-      "budget": 2360000000.0,
+      "budget": 2725000000,
       "initialBudget": 2569000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 4,
       "logo": "Logos Equipos/fcbarcelona.png",
-      "division": "plata",
-      "budgetDetails": {
-        "excelName": "FC Barcelona",
-        "teamId": "fcbarcelona",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 2135.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 3,
-            "premio": 0.0,
-            "goleadores": 30.0,
-            "asistidores": 30.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 15.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 225.0,
-        "presupuestoFinal": 2360.0
-      }
+      "division": "plata"
     },
     {
       "id": "staderennais",
@@ -184,37 +90,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Roazhon Park",
       "manager": "Daniel Herrera",
-      "budget": 679000000.0,
+      "budget": 500000000,
       "initialBudget": 357000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 13,
       "logo": "Logos Equipos/staderennais.png",
-      "division": "plata",
-      "budgetDetails": {
-        "excelName": "Stade Rennais",
-        "teamId": "staderennais",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 400.0,
-        "gastosRenovaciones": 279.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 1,
-            "premio": 360.0,
-            "goleadores": 98.0,
-            "asistidores": 100.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 558.0,
-        "presupuestoFinal": 679.0
-      }
+      "division": "plata"
     },
     {
       "id": "atleticodemadrid",
@@ -227,37 +109,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Cívitas Metropolitano",
       "manager": "Fernando",
-      "budget": 147000000.0,
+      "budget": 397000000,
       "initialBudget": 11000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 9,
       "logo": "Logos Equipos/atleticomadrid.webp",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Atletico de Madrid",
-        "teamId": "atleticodemadrid",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 397.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 11,
-            "premio": -250.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": -250.0,
-        "presupuestoFinal": 147.0
-      }
+      "division": "oro"
     },
     {
       "id": "borussiadortmund",
@@ -270,37 +128,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Signal Iduna Park",
       "manager": "Eseba",
-      "budget": 927000000.0,
+      "budget": 514000000,
       "initialBudget": 181000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 16,
       "logo": "Logos Equipos/borussia.webp",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Borussia Dortmund",
-        "teamId": "borussiadortmund",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 479.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 7,
-            "premio": 260.0,
-            "goleadores": 38.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 448.0,
-        "presupuestoFinal": 927.0
-      }
+      "division": "oro"
     },
     {
       "id": "bayernleverkusen",
@@ -313,37 +147,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "BayArena",
       "manager": "Santiago Encinas",
-      "budget": 3155000000.0,
+      "budget": 385000000,
       "initialBudget": 2154000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 7,
       "logo": "Logos Equipos/bayernleverkusen.png",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Bayern Leverkusen",
-        "teamId": "bayernleverkusen",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 2895.0,
-        "gastosRenovaciones": 250.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 1,
-            "premio": 360.0,
-            "goleadores": 70.0,
-            "asistidores": 70.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 10.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 510.0,
-        "presupuestoFinal": 3155.0
-      }
+      "division": "oro"
     },
     {
       "id": "psg",
@@ -356,37 +166,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Parc des Princes",
       "manager": "Alvaro Castro",
-      "budget": 1186000000.0,
+      "budget": 1071000000,
       "initialBudget": 810000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 3,
       "logo": "Logos Equipos/psg.png",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "PSG",
-        "teamId": "psg",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 931.0,
-        "gastosRenovaciones": 265.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 3,
-            "premio": 320.0,
-            "goleadores": 50.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 520.0,
-        "presupuestoFinal": 1186.0
-      }
+      "division": "oro"
     },
     {
       "id": "realmadrid",
@@ -399,37 +185,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Santiago Bernabéu",
       "manager": "Duvan Ardila",
-      "budget": 1076000000.0,
+      "budget": 996000000,
       "initialBudget": 223000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 8,
       "logo": "Logos Equipos/realmadrid.webp",
-      "division": "plata",
-      "budgetDetails": {
-        "excelName": "Real Madrid",
-        "teamId": "realmadrid",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 1016.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 12,
-            "premio": -140.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": "4tos",
-            "premio": 200.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 60.0,
-        "presupuestoFinal": 1076.0
-      }
+      "division": "plata"
     },
     {
       "id": "como1907",
@@ -442,37 +204,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Stadio Giuseppe Sinigaglia",
       "manager": "Jose Encinas",
-      "budget": 2779000000.0,
+      "budget": 2865000000,
       "initialBudget": 2575000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 1,
       "logo": "Logos Equipos/como.webp",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Como 1907",
-        "teamId": "como1907",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 2660.0,
-        "gastosRenovaciones": 266.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 2,
-            "premio": 340.0,
-            "goleadores": 45.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 385.0,
-        "presupuestoFinal": 2779.0
-      }
+      "division": "oro"
     },
     {
       "id": "galatasaray",
@@ -485,37 +223,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Rams Park",
       "manager": "Jesus Parra",
-      "budget": 860000000.0,
+      "budget": 404000000,
       "initialBudget": 119000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 10,
       "logo": "Logos Equipos/galatasaray.png",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Galatasaray",
-        "teamId": "galatasaray",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 404.0,
-        "gastosRenovaciones": 256.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 5,
-            "premio": 280.0,
-            "goleadores": 95.0,
-            "asistidores": 132.0
-          },
-          "champions": {
-            "fase": "4tos",
-            "premio": 200.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 5.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 712.0,
-        "presupuestoFinal": 860.0
-      }
+      "division": "oro"
     },
     {
       "id": "losclille",
@@ -528,37 +242,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Stade Pierre-Mauroy",
       "manager": "J Alvarez",
-      "budget": 96000000.0,
+      "budget": 630000000,
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 19,
       "logo": "Logos Equipos/lille.png",
-      "division": "plata",
-      "budgetDetails": {
-        "excelName": "LOSC Lille",
-        "teamId": "losclille",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 630.0,
-        "gastosRenovaciones": 344.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 13,
-            "premio": -190.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": -190.0,
-        "presupuestoFinal": 96.0
-      }
+      "division": "plata"
     },
     {
       "id": "manchestercity",
@@ -571,37 +261,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Etihad Stadium",
       "manager": "Director Técnico",
-      "budget": 1319000000.0,
+      "budget": 1328000000,
       "initialBudget": 280000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 6,
       "logo": "Logos Equipos/manchestercity.png",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "Manchester City",
-        "teamId": "manchestercity",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 1329.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 10,
-            "premio": -200.0,
-            "goleadores": 0.0,
-            "asistidores": 40.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": -10.0,
-        "presupuestoFinal": 1319.0
-      }
+      "division": "oro"
     },
     {
       "id": "arsenal",
@@ -614,37 +280,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Emirates Stadium",
       "manager": "Ronald Acosta",
-      "budget": 558000000.0,
+      "budget": 438000000,
       "initialBudget": 211000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 2,
       "logo": "Logos Equipos/arsenal.png",
-      "division": "plata",
-      "budgetDetails": {
-        "excelName": "Arsenal",
-        "teamId": "arsenal",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 368.0,
-        "gastosRenovaciones": 320.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 4,
-            "premio": 300.0,
-            "goleadores": 55.0,
-            "asistidores": 55.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 100.0
-        },
-        "balanceTemporada": 510.0,
-        "presupuestoFinal": 558.0
-      }
+      "division": "plata"
     },
     {
       "id": "acmiln",
@@ -657,37 +299,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Stadio Giuseppe Meazza",
       "manager": "Daniel Ugarte",
-      "budget": 598000000.0,
+      "budget": 221000000,
       "initialBudget": 440000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 15,
       "logo": "Logos Equipos/acmilan.webp",
-      "division": "plata",
-      "budgetDetails": {
-        "excelName": "AC Milan",
-        "teamId": "acmiln",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 221.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 8,
-            "premio": 250.0,
-            "goleadores": 50.0,
-            "asistidores": 77.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 377.0,
-        "presupuestoFinal": 598.0
-      }
+      "division": "plata"
     },
     {
       "id": "fctwente",
@@ -700,7 +318,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "De Grolsch Veste",
       "manager": "Altas Mexico",
-      "budget": 290000000.0,
+      "budget": 370000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -716,30 +334,6 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      },
-      "budgetDetails": {
-        "excelName": "FC Twente",
-        "teamId": "fctwente",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 370.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 10,
-            "premio": -80.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": -80.0,
-        "presupuestoFinal": 290.0
       }
     },
     {
@@ -753,7 +347,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Old Trafford",
       "manager": "Jlservicehvac",
-      "budget": 157000000.0,
+      "budget": 389000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -769,30 +363,6 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      },
-      "budgetDetails": {
-        "excelName": "Manchester United",
-        "teamId": "manchesterunited",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 143.0,
-        "gastosRenovaciones": 446.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 9,
-            "premio": 150.0,
-            "goleadores": 45.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 15.0,
-          "adicionales": 100.0
-        },
-        "balanceTemporada": 460.0,
-        "presupuestoFinal": 157.0
       }
     },
     {
@@ -806,7 +376,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Johan Cruyff Arena",
       "manager": "J Castillo",
-      "budget": 531000000.0,
+      "budget": 183000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -822,30 +392,6 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      },
-      "budgetDetails": {
-        "excelName": "Ajax de Ámsterdam",
-        "teamId": "ajaxdeamsterdam",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 250.0,
-        "gastosRenovaciones": 332.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 6,
-            "premio": 270.0,
-            "goleadores": 70.0,
-            "asistidores": 73.0
-          },
-          "champions": {
-            "fase": "4tos",
-            "premio": 200.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 613.0,
-        "presupuestoFinal": 531.0
       }
     },
     {
@@ -859,7 +405,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Stamford Bridge",
       "manager": "RogerSu",
-      "budget": 777000000.0,
+      "budget": 497000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -875,30 +421,6 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      },
-      "budgetDetails": {
-        "excelName": "Chelsea FC",
-        "teamId": "chelseafc",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 807.0,
-        "gastosRenovaciones": 290.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 7,
-            "premio": 260.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 260.0,
-        "presupuestoFinal": 777.0
       }
     },
     {
@@ -942,7 +464,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Estadio Artemio Franchi",
       "manager": "David",
-      "budget": 1092000000.0,
+      "budget": 473000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -958,30 +480,6 @@ var INITIAL_LMI_DATA = {
         "goalsAgainst": 0,
         "goalDiff": 0,
         "points": 0
-      },
-      "budgetDetails": {
-        "excelName": "ACF Fiorentina",
-        "teamId": "acffiorentina",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 573.0,
-        "gastosRenovaciones": 288.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 2,
-            "premio": 340.0,
-            "goleadores": 102.0,
-            "asistidores": 115.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 100.0
-        },
-        "balanceTemporada": 807.0,
-        "presupuestoFinal": 1092.0
       }
     },
     {
@@ -995,37 +493,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Estadio Monumental",
       "manager": "Da Niel",
-      "budget": 137000000.0,
+      "budget": 411000000,
       "initialBudget": 300000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 18,
       "logo": "Logos Equipos/riverplate.webp",
-      "division": "oro",
-      "budgetDetails": {
-        "excelName": "River Plate",
-        "teamId": "riverplate",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 103.0,
-        "gastosRenovaciones": 141.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 9,
-            "premio": 0.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": "8vos",
-            "premio": 150.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 25.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 175.0,
-        "presupuestoFinal": 137.0
-      }
+      "division": "oro"
     },
     {
       "id": "vascodagama",
@@ -1038,7 +512,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "São Januário",
       "manager": "Dzyuba",
-      "budget": 202000000.0,
+      "budget": 500000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -1055,31 +529,7 @@ var INITIAL_LMI_DATA = {
         "goalDiff": 0,
         "points": 0
       },
-      "hidden": true,
-      "budgetDetails": {
-        "excelName": "Vasco Da Gama",
-        "teamId": "vascodagama",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 500.0,
-        "gastosRenovaciones": 298.0,
-        "ingresos": {
-          "liga": {
-            "posicion": null,
-            "premio": 0.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 0.0,
-        "presupuestoFinal": 202.0
-      }
+      "hidden": true
     },
     {
       "id": "rangersfootballclub",
@@ -1092,7 +542,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Ibrox Stadium",
       "manager": "Jose M Bello V",
-      "budget": 400000000.0,
+      "budget": 500000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -1109,31 +559,7 @@ var INITIAL_LMI_DATA = {
         "goalDiff": 0,
         "points": 0
       },
-      "hidden": false,
-      "budgetDetails": {
-        "excelName": "Rangers Football Club",
-        "teamId": "rangersfootballclub",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 500.0,
-        "gastosRenovaciones": 0.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 11,
-            "premio": -100.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": -100.0,
-        "presupuestoFinal": 400.0
-      }
+      "hidden": false
     },
     {
       "id": "carabobofutbolclub",
@@ -1146,7 +572,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Polideportivo Misael Delgado",
       "manager": "Jesus",
-      "budget": 482000000.0,
+      "budget": 500000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -1163,31 +589,7 @@ var INITIAL_LMI_DATA = {
         "goalDiff": 0,
         "points": 0
       },
-      "hidden": false,
-      "budgetDetails": {
-        "excelName": "Carabobo Fútbol Club",
-        "teamId": "carabobofutbolclub",
-        "season": "TEMP 13",
-        "presupuestoAnterior": 500.0,
-        "gastosRenovaciones": 298.0,
-        "ingresos": {
-          "liga": {
-            "posicion": 5,
-            "premio": 280.0,
-            "goleadores": 0.0,
-            "asistidores": 0.0
-          },
-          "champions": {
-            "fase": null,
-            "premio": 0.0,
-            "goleadorAsistidor": 0.0
-          },
-          "pretemporada": 0.0,
-          "adicionales": 0.0
-        },
-        "balanceTemporada": 280.0,
-        "presupuestoFinal": 482.0
-      }
+      "hidden": false
     }
   ],
   "players": [
@@ -10857,11 +10259,11 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
       "assists_liga": 2,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10871,11 +10273,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals": 0,
-          "assists": 2,
+          "assists": 3,
           "goals_liga": 0,
           "assists_liga": 2,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10887,11 +10289,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 4,
-      "assists": 8,
+      "assists": 9,
       "goals_liga": 3,
       "assists_liga": 6,
       "goals_champions": 1,
-      "assists_champions": 2,
+      "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10901,11 +10303,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals": 4,
-          "assists": 8,
+          "assists": 9,
           "goals_liga": 3,
           "assists_liga": 6,
           "goals_champions": 1,
-          "assists_champions": 2,
+          "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10917,11 +10319,11 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 5,
-      "assists": 18,
+      "assists": 22,
       "goals_liga": 2,
       "assists_liga": 12,
       "goals_champions": 3,
-      "assists_champions": 6,
+      "assists_champions": 10,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10931,11 +10333,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals": 5,
-          "assists": 18,
+          "assists": 22,
           "goals_liga": 2,
           "assists_liga": 12,
           "goals_champions": 3,
-          "assists_champions": 6,
+          "assists_champions": 10,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10946,12 +10348,12 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 33,
-      "assists": 7,
+      "goals": 34,
+      "assists": 9,
       "goals_liga": 25,
       "assists_liga": 4,
-      "goals_champions": 8,
-      "assists_champions": 3,
+      "goals_champions": 9,
+      "assists_champions": 5,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10960,12 +10362,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 33,
-          "assists": 7,
+          "goals": 34,
+          "assists": 9,
           "goals_liga": 25,
           "assists_liga": 4,
-          "goals_champions": 8,
-          "assists_champions": 3,
+          "goals_champions": 9,
+          "assists_champions": 5,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -11276,11 +10678,11 @@ var INITIAL_LMI_DATA = {
       "name": "Federico Dimarco",
       "position": "LI",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -11290,11 +10692,11 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 0,
+          "goals": 1,
           "assists": 2,
           "goals_liga": 0,
           "assists_liga": 0,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -11306,12 +10708,12 @@ var INITIAL_LMI_DATA = {
       "name": "Darwin Núñez",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 15,
-      "assists": 9,
+      "goals": 22,
+      "assists": 10,
       "goals_liga": 5,
       "assists_liga": 7,
-      "goals_champions": 10,
-      "assists_champions": 2,
+      "goals_champions": 17,
+      "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -11320,12 +10722,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 11,
-          "assists": 5,
+          "goals": 18,
+          "assists": 6,
           "goals_liga": 3,
           "assists_liga": 4,
-          "goals_champions": 8,
-          "assists_champions": 1,
+          "goals_champions": 15,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         },
@@ -18317,11 +17719,11 @@ var INITIAL_LMI_DATA = {
       "name": "Jørgen Strand Larsen",
       "position": "DC",
       "teamId": "carabobofutbolclub",
-      "goals": 3,
+      "goals": 4,
       "assists": 2,
       "goals_liga": 0,
       "assists_liga": 2,
-      "goals_champions": 3,
+      "goals_champions": 4,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -18331,11 +17733,11 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 3,
+          "goals": 4,
           "assists": 2,
           "goals_liga": 0,
           "assists_liga": 2,
-          "goals_champions": 3,
+          "goals_champions": 4,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -18557,11 +17959,11 @@ var INITIAL_LMI_DATA = {
       "name": "Amine Gouiri",
       "position": "DC",
       "teamId": "carabobofutbolclub",
-      "goals": 5,
+      "goals": 6,
       "assists": 3,
       "goals_liga": 5,
       "assists_liga": 2,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -18571,11 +17973,11 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 5,
+          "goals": 6,
           "assists": 3,
           "goals_liga": 5,
           "assists_liga": 2,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -18678,11 +18080,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "carabobofutbolclub",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -18692,11 +18094,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
           "goals": 1,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -20820,18 +20222,115 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Semifinal 1 (Ida)",
       "team1": "Carabobo Fútbol Club",
-      "score1": "",
+      "score1": "1",
       "team2": "Arsenal",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "6",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040438881_18",
+          "playerName": "Federico Dimarco",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_7",
+          "playerName": "Ibrahim Sangaré",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_1",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "Arsenal"
     },
     {
       "fase": "Semifinal 1 (Vuelta)",
       "team1": "Arsenal",
-      "score1": "",
+      "score1": "3",
       "team2": "Carabobo Fútbol Club",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_8",
+          "playerName": "Talisca",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792466085252_10",
+          "playerName": "Jørgen Strand Larsen",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_8",
+          "playerName": "Dani Rodríguez",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Arsenal"
     },
     {
       "fase": "Semifinal 2 (Ida)",
@@ -20927,7 +20426,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "fase": "Final",
-      "team1": "Ganador Semifinal 1",
+      "team1": "Arsenal",
       "score1": "",
       "team2": "Bayern Leverkusen",
       "score2": "",
@@ -33096,6 +32595,135 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793675978713",
+      "timestamp": 1793675978713,
+      "date": "02 nov 2026, 09:19 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Semifinal 1 (Vuelta)",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 3,
+      "team2Id": "carabobofutbolclub",
+      "team2Name": "Carabobo Fútbol Club",
+      "team2Logo": "Logos Equipos/carabobo.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1792040054246_8",
+          "playerName": "Talisca",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792466085252_10",
+          "playerName": "Jørgen Strand Larsen",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_8",
+          "playerName": "Dani Rodríguez",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "match_1793675903569",
+      "timestamp": 1793675903569,
+      "date": "02 nov 2026, 09:18 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Semifinal 1 (Ida)",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 1,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 6,
+      "events": [
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 4
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_9",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1792040438881_18",
+          "playerName": "Federico Dimarco",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_7",
+          "playerName": "Ibrahim Sangaré",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792466085252_1",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1793675792553",
       "timestamp": 1793675792553,
@@ -49567,608 +49195,6 @@ var INITIAL_LMI_DATA = {
         "fcbarcelona",
         "brightonhovealbion"
       ]
-    }
-  },
-  "teamBudgets": {
-    "bayernleverkusen": {
-      "excelName": "Bayern Leverkusen",
-      "teamId": "bayernleverkusen",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 2895.0,
-      "gastosRenovaciones": 250.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 1,
-          "premio": 360.0,
-          "goleadores": 70.0,
-          "asistidores": 70.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 10.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 510.0,
-      "presupuestoFinal": 3155.0
-    },
-    "como1907": {
-      "excelName": "Como 1907",
-      "teamId": "como1907",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 2660.0,
-      "gastosRenovaciones": 266.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 2,
-          "premio": 340.0,
-          "goleadores": 45.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 385.0,
-      "presupuestoFinal": 2779.0
-    },
-    "psg": {
-      "excelName": "PSG",
-      "teamId": "psg",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 931.0,
-      "gastosRenovaciones": 265.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 3,
-          "premio": 320.0,
-          "goleadores": 50.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 520.0,
-      "presupuestoFinal": 1186.0
-    },
-    "bocajuniors": {
-      "excelName": "Boca Juniors",
-      "teamId": "bocajuniors",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 1241.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 4,
-          "premio": 300.0,
-          "goleadores": 112.0,
-          "asistidores": 135.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 5.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 702.0,
-      "presupuestoFinal": 1943.0
-    },
-    "galatasaray": {
-      "excelName": "Galatasaray",
-      "teamId": "galatasaray",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 404.0,
-      "gastosRenovaciones": 256.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 5,
-          "premio": 280.0,
-          "goleadores": 95.0,
-          "asistidores": 132.0
-        },
-        "champions": {
-          "fase": "4tos",
-          "premio": 200.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 5.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 712.0,
-      "presupuestoFinal": 860.0
-    },
-    "liverpool": {
-      "excelName": "Liverpool",
-      "teamId": "liverpool",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 650.0,
-      "gastosRenovaciones": 263.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 6,
-          "premio": 270.0,
-          "goleadores": 40.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 100.0
-      },
-      "balanceTemporada": 410.0,
-      "presupuestoFinal": 797.0
-    },
-    "borussiadortmund": {
-      "excelName": "Borussia Dortmund",
-      "teamId": "borussiadortmund",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 479.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 7,
-          "premio": 260.0,
-          "goleadores": 38.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 448.0,
-      "presupuestoFinal": 927.0
-    },
-    "interdemilan": {
-      "excelName": "Inter de Milan",
-      "teamId": "interdemilan",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 3589.0,
-      "gastosRenovaciones": 321.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 8,
-          "premio": 250.0,
-          "goleadores": 0.0,
-          "asistidores": 73.0
-        },
-        "champions": {
-          "fase": "4tos",
-          "premio": 200.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 523.0,
-      "presupuestoFinal": 3791.0
-    },
-    "riverplate": {
-      "excelName": "River Plate",
-      "teamId": "riverplate",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 103.0,
-      "gastosRenovaciones": 141.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 9,
-          "premio": 0.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 25.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 175.0,
-      "presupuestoFinal": 137.0
-    },
-    "manchestercity": {
-      "excelName": "Manchester City",
-      "teamId": "manchestercity",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 1329.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 10,
-          "premio": -200.0,
-          "goleadores": 0.0,
-          "asistidores": 40.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": -10.0,
-      "presupuestoFinal": 1319.0
-    },
-    "atleticodemadrid": {
-      "excelName": "Atletico de Madrid",
-      "teamId": "atleticodemadrid",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 397.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 11,
-          "premio": -250.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": -250.0,
-      "presupuestoFinal": 147.0
-    },
-    "staderennais": {
-      "excelName": "Stade Rennais",
-      "teamId": "staderennais",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 400.0,
-      "gastosRenovaciones": 279.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 1,
-          "premio": 360.0,
-          "goleadores": 98.0,
-          "asistidores": 100.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 558.0,
-      "presupuestoFinal": 679.0
-    },
-    "acffiorentina": {
-      "excelName": "ACF Fiorentina",
-      "teamId": "acffiorentina",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 573.0,
-      "gastosRenovaciones": 288.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 2,
-          "premio": 340.0,
-          "goleadores": 102.0,
-          "asistidores": 115.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 100.0
-      },
-      "balanceTemporada": 807.0,
-      "presupuestoFinal": 1092.0
-    },
-    "fcbarcelona": {
-      "excelName": "FC Barcelona",
-      "teamId": "fcbarcelona",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 2135.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 3,
-          "premio": 0.0,
-          "goleadores": 30.0,
-          "asistidores": 30.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 15.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 225.0,
-      "presupuestoFinal": 2360.0
-    },
-    "arsenal": {
-      "excelName": "Arsenal",
-      "teamId": "arsenal",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 368.0,
-      "gastosRenovaciones": 320.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 4,
-          "premio": 300.0,
-          "goleadores": 55.0,
-          "asistidores": 55.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 100.0
-      },
-      "balanceTemporada": 510.0,
-      "presupuestoFinal": 558.0
-    },
-    "carabobofutbolclub": {
-      "excelName": "Carabobo Fútbol Club",
-      "teamId": "carabobofutbolclub",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 500.0,
-      "gastosRenovaciones": 298.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 5,
-          "premio": 280.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 280.0,
-      "presupuestoFinal": 482.0
-    },
-    "ajaxdeamsterdam": {
-      "excelName": "Ajax de Ámsterdam",
-      "teamId": "ajaxdeamsterdam",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 250.0,
-      "gastosRenovaciones": 332.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 6,
-          "premio": 270.0,
-          "goleadores": 70.0,
-          "asistidores": 73.0
-        },
-        "champions": {
-          "fase": "4tos",
-          "premio": 200.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 613.0,
-      "presupuestoFinal": 531.0
-    },
-    "chelseafc": {
-      "excelName": "Chelsea FC",
-      "teamId": "chelseafc",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 807.0,
-      "gastosRenovaciones": 290.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 7,
-          "premio": 260.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 260.0,
-      "presupuestoFinal": 777.0
-    },
-    "acmiln": {
-      "excelName": "AC Milan",
-      "teamId": "acmiln",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 221.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 8,
-          "premio": 250.0,
-          "goleadores": 50.0,
-          "asistidores": 77.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 377.0,
-      "presupuestoFinal": 598.0
-    },
-    "manchesterunited": {
-      "excelName": "Manchester United",
-      "teamId": "manchesterunited",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 143.0,
-      "gastosRenovaciones": 446.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 9,
-          "premio": 150.0,
-          "goleadores": 45.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": "8vos",
-          "premio": 150.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 15.0,
-        "adicionales": 100.0
-      },
-      "balanceTemporada": 460.0,
-      "presupuestoFinal": 157.0
-    },
-    "fctwente": {
-      "excelName": "FC Twente",
-      "teamId": "fctwente",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 370.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 10,
-          "premio": -80.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": -80.0,
-      "presupuestoFinal": 290.0
-    },
-    "rangersfootballclub": {
-      "excelName": "Rangers Football Club",
-      "teamId": "rangersfootballclub",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 500.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 11,
-          "premio": -100.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": -100.0,
-      "presupuestoFinal": 400.0
-    },
-    "realmadrid": {
-      "excelName": "Real Madrid",
-      "teamId": "realmadrid",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 1016.0,
-      "gastosRenovaciones": 0.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 12,
-          "premio": -140.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": "4tos",
-          "premio": 200.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 60.0,
-      "presupuestoFinal": 1076.0
-    },
-    "losclille": {
-      "excelName": "LOSC Lille",
-      "teamId": "losclille",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 630.0,
-      "gastosRenovaciones": 344.0,
-      "ingresos": {
-        "liga": {
-          "posicion": 13,
-          "premio": -190.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": -190.0,
-      "presupuestoFinal": 96.0
-    },
-    "vascodagama": {
-      "excelName": "Vasco Da Gama",
-      "teamId": "vascodagama",
-      "season": "TEMP 13",
-      "presupuestoAnterior": 500.0,
-      "gastosRenovaciones": 298.0,
-      "ingresos": {
-        "liga": {
-          "posicion": null,
-          "premio": 0.0,
-          "goleadores": 0.0,
-          "asistidores": 0.0
-        },
-        "champions": {
-          "fase": null,
-          "premio": 0.0,
-          "goleadorAsistidor": 0.0
-        },
-        "pretemporada": 0.0,
-        "adicionales": 0.0
-      },
-      "balanceTemporada": 0.0,
-      "presupuestoFinal": 202.0
     }
   }
 };
