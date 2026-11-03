@@ -293,6 +293,7 @@ const AdminApp = {
       'view-teams': '<i class="fa-solid fa-shield-halved"></i> Clubes y Plantillas',
       'view-market': '<i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i> Mercado de Fichajes',
       'view-midseason-market': '<i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i> Mercado de Mitad de Temporada',
+      'view-budgets': '<i class="fa-solid fa-wallet" style="color: #10b981;"></i> Presupuestos & Finanzas (TEMP 13)',
       'view-trophies': '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Trofeos & Balón de Oro',
       'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web',
       'view-ida-vuelta': '<i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i> Registro Partidos Ida y Vuelta'
@@ -320,6 +321,7 @@ const AdminApp = {
     this.renderMatchHistory();
     this.renderWebControlView();
     this.renderAdminStandings();
+    this.renderBudgetsView();
     this.initIdaVueltaModule();
   },
 
@@ -7294,7 +7296,263 @@ const AdminApp = {
     }).catch(err => {
       this.showToast('No se pudo copiar automáticamente: ' + err, 'error');
     });
-  }
+  },
+
+  // ==================== PRESUPUESTOS Y FINANZAS (TEMP 13) ====================
+  ensureTeamBudgets() {
+    if (!this.data) return;
+    if (!this.data.teamBudgets) {
+      this.data.teamBudgets = {};
+    }
+  },
+
+  renderBudgetsView() {
+    if (!this.data) return;
+    this.ensureTeamBudgets();
+
+    const tbody = document.getElementById('budgets-tbody');
+    if (!tbody) return;
+
+    const query = (document.getElementById('budget-search-input')?.value || '').toLowerCase().trim();
+    const activeTeams = (this.data.teams || []).filter(t => !t.hidden && t.division !== 'inactivo');
+
+    let totalPrizes = 0;
+    let totalRenov = 0;
+    let totalMass = 0;
+    let countWithBudget = 0;
+
+    activeTeams.forEach(t => {
+      const b = (this.data.teamBudgets && this.data.teamBudgets[t.id]) || t.budgetDetails;
+      if (b) {
+        countWithBudget++;
+        totalPrizes += Number(b.balanceTemporada || 0);
+        totalRenov += Number(b.gastosRenovaciones || 0);
+        totalMass += Number(b.presupuestoFinal || 0);
+      }
+    });
+
+    // Actualizar métricas
+    const elClubs = document.getElementById('b-stat-total-clubs');
+    const elPrizes = document.getElementById('b-stat-total-prizes');
+    const elRenov = document.getElementById('b-stat-total-renov');
+    const elMass = document.getElementById('b-stat-total-mass');
+
+    if (elClubs) elClubs.textContent = `${countWithBudget} / ${activeTeams.length}`;
+    if (elPrizes) elPrizes.textContent = `$${totalPrizes.toLocaleString()}M`;
+    if (elRenov) elRenov.textContent = `$${totalRenov.toLocaleString()}M`;
+    if (elMass) elMass.textContent = `$${totalMass.toLocaleString()}M`;
+
+    // Filtrar por buscador
+    const filteredTeams = activeTeams.filter(t => {
+      if (!query) return true;
+      return t.name.toLowerCase().includes(query) || (t.id || '').toLowerCase().includes(query);
+    });
+
+    if (filteredTeams.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">No se encontraron clubes coincidentes.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = filteredTeams.map((t, idx) => {
+      const b = (this.data.teamBudgets && this.data.teamBudgets[t.id]) || t.budgetDetails;
+      const isOro = (t.division || '').toLowerCase() === 'oro';
+      const divBadge = isOro
+        ? `<span style="font-size: 0.72rem; font-weight: 800; background: rgba(217, 119, 6, 0.15); color: #fbbf24; border: 1px solid rgba(217, 119, 6, 0.3); padding: 0.15rem 0.5rem; border-radius: 4px;">ORO</span>`
+        : `<span style="font-size: 0.72rem; font-weight: 800; background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); padding: 0.15rem 0.5rem; border-radius: 4px;">PLATA</span>`;
+
+      if (!b) {
+        return `
+          <tr>
+            <td style="color: var(--text-muted); font-size: 0.85rem;">${idx + 1}</td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <img src="${this.escape(t.logo || 'Logos Equipos/default.png')}" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <span style="font-weight: 700; color: #fff;">${this.escape(t.name)}</span>
+              </div>
+            </td>
+            <td>${divBadge}</td>
+            <td colspan="4" style="text-align: center; color: var(--text-muted); font-style: italic; font-size: 0.85rem;">Sin presupuesto asignado</td>
+            <td style="text-align: center;">
+              <button class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.3rem 0.65rem;" onclick="AdminApp.openEditBudgetModal('${t.id}')">
+                <i class="fa-solid fa-plus"></i> Asignar
+              </button>
+            </td>
+          </tr>
+        `;
+      }
+
+      const balColor = Number(b.balanceTemporada) >= 0 ? '#34d399' : '#f87171';
+      const balSign = Number(b.balanceTemporada) >= 0 ? '+' : '';
+
+      return `
+        <tr>
+          <td style="color: var(--text-muted); font-size: 0.85rem;">${idx + 1}</td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <img src="${this.escape(t.logo || 'Logos Equipos/default.png')}" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+              <div>
+                <span style="font-weight: 700; color: #fff;">${this.escape(t.name)}</span>
+                <div style="font-size: 0.72rem; color: var(--text-muted);">${b.excelName || ''}</div>
+              </div>
+            </div>
+          </td>
+          <td>${divBadge}</td>
+          <td style="text-align: right; font-weight: 700; color: #94a3b8;">$${Number(b.presupuestoAnterior || 0).toLocaleString()}M</td>
+          <td style="text-align: right; font-weight: 700; color: ${b.gastosRenovaciones > 0 ? '#f87171' : '#64748b'};">
+            ${b.gastosRenovaciones > 0 ? '-$' + Number(b.gastosRenovaciones).toLocaleString() + 'M' : '$0M'}
+          </td>
+          <td style="text-align: right; font-weight: 800; color: ${balColor};">
+            ${balSign}$${Number(b.balanceTemporada || 0).toLocaleString()}M
+          </td>
+          <td style="text-align: right; font-weight: 900; color: #fbbf24; font-size: 1rem;">
+            $${Number(b.presupuestoFinal || 0).toLocaleString()}M
+          </td>
+          <td style="text-align: center;">
+            <button class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.3rem 0.65rem;" onclick="AdminApp.openEditBudgetModal('${t.id}')">
+              <i class="fa-solid fa-pen"></i> Editar
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  },
+
+  filterBudgetsTable(val) {
+    this.renderBudgetsView();
+  },
+
+  openEditBudgetModal(teamId) {
+    if (!this.data) return;
+    this.ensureTeamBudgets();
+    const team = (this.data.teams || []).find(t => t.id === teamId);
+    if (!team) return;
+
+    let b = (this.data.teamBudgets && this.data.teamBudgets[teamId]) || team.budgetDetails;
+    if (!b) {
+      b = {
+        excelName: team.name,
+        teamId: team.id,
+        season: 'TEMP 13',
+        presupuestoAnterior: 500,
+        gastosRenovaciones: 0,
+        ingresos: {
+          liga: { posicion: null, premio: 0, goleadores: 0, asistidores: 0 },
+          champions: { fase: null, premio: 0, goleadorAsistidor: 0 },
+          pretemporada: 0,
+          adicionales: 0
+        },
+        balanceTemporada: 0,
+        presupuestoFinal: 500
+      };
+    }
+
+    const ing = b.ingresos || {};
+    const liga = ing.liga || {};
+    const champ = ing.champions || {};
+
+    document.getElementById('modal-budget-team-id').value = team.id;
+    document.getElementById('modal-budget-team-name').textContent = team.name;
+
+    document.getElementById('modal-b-ant').value = b.presupuestoAnterior !== undefined ? b.presupuestoAnterior : 0;
+    document.getElementById('modal-b-renov').value = b.gastosRenovaciones !== undefined ? b.gastosRenovaciones : 0;
+
+    document.getElementById('modal-b-liga-pos').value = liga.posicion || '';
+    document.getElementById('modal-b-liga-prem').value = liga.premio !== undefined ? liga.premio : 0;
+    document.getElementById('modal-b-liga-gol').value = liga.goleadores !== undefined ? liga.goleadores : 0;
+    document.getElementById('modal-b-liga-asis').value = liga.asistidores !== undefined ? liga.asistidores : 0;
+    document.getElementById('modal-b-pretemp').value = ing.pretemporada !== undefined ? ing.pretemporada : 0;
+
+    document.getElementById('modal-b-champ-pos').value = champ.fase || '';
+    document.getElementById('modal-b-champ-prem').value = champ.premio !== undefined ? champ.premio : 0;
+    document.getElementById('modal-b-champ-gol-asis').value = champ.goleadorAsistidor !== undefined ? champ.goleadorAsistidor : 0;
+    document.getElementById('modal-b-adic').value = ing.adicionales !== undefined ? ing.adicionales : 0;
+
+    this.calcLiveBudgetModal();
+
+    const modal = document.getElementById('modal-edit-budget');
+    if (modal) modal.style.display = 'flex';
+  },
+
+  closeEditBudgetModal() {
+    const modal = document.getElementById('modal-edit-budget');
+    if (modal) modal.style.display = 'none';
+  },
+
+  calcLiveBudgetModal() {
+    const ant = parseFloat(document.getElementById('modal-b-ant')?.value) || 0;
+    const renov = parseFloat(document.getElementById('modal-b-renov')?.value) || 0;
+
+    const ligaPrem = parseFloat(document.getElementById('modal-b-liga-prem')?.value) || 0;
+    const ligaGol = parseFloat(document.getElementById('modal-b-liga-gol')?.value) || 0;
+    const ligaAsis = parseFloat(document.getElementById('modal-b-liga-asis')?.value) || 0;
+    const pretemp = parseFloat(document.getElementById('modal-b-pretemp')?.value) || 0;
+
+    const champPrem = parseFloat(document.getElementById('modal-b-champ-prem')?.value) || 0;
+    const champGolAsis = parseFloat(document.getElementById('modal-b-champ-gol-asis')?.value) || 0;
+    const adic = parseFloat(document.getElementById('modal-b-adic')?.value) || 0;
+
+    const seasonGain = ligaPrem + ligaGol + ligaAsis + pretemp + champPrem + champGolAsis + adic;
+    const finalBudget = ant - renov + seasonGain;
+
+    const elFinal = document.getElementById('modal-live-final-budget');
+    const elBal = document.getElementById('modal-live-season-balance');
+
+    if (elFinal) elFinal.textContent = `$${finalBudget.toLocaleString()}M`;
+    if (elBal) {
+      elBal.textContent = `${seasonGain >= 0 ? '+' : ''}$${seasonGain.toLocaleString()}M`;
+      elBal.style.color = seasonGain >= 0 ? '#34d399' : '#f87171';
+    }
+
+    return { ant, renov, seasonGain, finalBudget, ligaPrem, ligaGol, ligaAsis, pretemp, champPrem, champGolAsis, adic };
+  },
+
+  saveBudgetModal() {
+    const teamId = document.getElementById('modal-budget-team-id')?.value;
+    if (!teamId || !this.data) return;
+
+    this.ensureTeamBudgets();
+    const team = (this.data.teams || []).find(t => t.id === teamId);
+    if (!team) return;
+
+    const c = this.calcLiveBudgetModal();
+    const ligaPos = parseInt(document.getElementById('modal-b-liga-pos')?.value, 10) || null;
+    const champFase = document.getElementById('modal-b-champ-pos')?.value.trim() || null;
+
+    const updated = {
+      excelName: team.name,
+      teamId: team.id,
+      season: 'TEMP 13',
+      presupuestoAnterior: c.ant,
+      gastosRenovaciones: c.renov,
+      ingresos: {
+        liga: {
+          posicion: ligaPos,
+          premio: c.ligaPrem,
+          goleadores: c.ligaGol,
+          asistidores: c.ligaAsis
+        },
+        champions: {
+          fase: champFase,
+          premio: c.champPrem,
+          goleadorAsistidor: c.champGolAsis
+        },
+        pretemporada: c.pretemp,
+        adicionales: c.adic
+      },
+      balanceTemporada: c.seasonGain,
+      presupuestoFinal: c.finalBudget
+    };
+
+    this.data.teamBudgets[team.id] = updated;
+    team.budgetDetails = updated;
+    team.budget = c.finalBudget * 1000000;
+
+    this.markDirty();
+    this.closeEditBudgetModal();
+    this.renderBudgetsView();
+    this.showToast(`Presupuesto de ${team.name} actualizado: $${c.finalBudget}M USD.`, 'success');
+  },
+
 };
 
 // Auto-arranque al cargar el DOM

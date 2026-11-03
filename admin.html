@@ -60,6 +60,10 @@
         <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i>
         <span>Mercado Mitad Temporada</span>
       </button>
+      <button class="nav-btn" data-view="view-budgets" style="border-left: 3px solid #10b981;">
+        <i class="fa-solid fa-wallet" style="color: #10b981;"></i>
+        <span>Presupuestos & Finanzas</span>
+      </button>
       <button class="nav-btn" data-view="view-trophies">
         <i class="fa-solid fa-award"></i>
         <span>Trofeos & Balón de Oro</span>
@@ -1540,6 +1544,70 @@
 
       </section>
 
+      <!-- ==================== VIEW: PRESUPUESTOS Y FINANZAS (TEMP 13) ==================== -->
+      <section class="module-view" id="view-budgets">
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="card-title" style="display: flex; align-items: center; gap: 0.6rem;">
+                <i class="fa-solid fa-wallet" style="color: #10b981;"></i>
+                Gestión Financiera & Presupuestos (TEMP 13)
+              </h2>
+              <p class="card-desc">
+                Consulta y edita en vivo los presupuestos, premios de liga, copa, goleadores/asistidores y deducciones de cada club. Se refleja instantáneamente en la web pública.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="text" class="form-control" id="budget-search-input" placeholder="Buscar club..." style="width: 220px;" oninput="AdminApp.filterBudgetsTable(this.value)">
+              <button class="btn btn-gold" onclick="AdminApp.saveData(false)">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+              </button>
+            </div>
+          </div>
+
+          <!-- Métricas Resumen -->
+          <div class="grid-4" style="margin-bottom: 1.5rem;">
+            <div class="stat-card" style="border-left: 3px solid #38bdf8;">
+              <span class="stat-label">Clubes con Presupuesto</span>
+              <div class="stat-value" id="b-stat-total-clubs">25 / 26</div>
+            </div>
+            <div class="stat-card" style="border-left: 3px solid #10b981;">
+              <span class="stat-label">Total Premios Repartidos</span>
+              <div class="stat-value" id="b-stat-total-prizes" style="color: #34d399;">$0M</div>
+            </div>
+            <div class="stat-card" style="border-left: 3px solid #f87171;">
+              <span class="stat-label">Total Gastos Renovaciones</span>
+              <div class="stat-value" id="b-stat-total-renov" style="color: #f87171;">$0M</div>
+            </div>
+            <div class="stat-card" style="border-left: 3px solid #fbbf24;">
+              <span class="stat-label">Masa Monetaria Final</span>
+              <div class="stat-value" id="b-stat-total-mass" style="color: #fbbf24;">$0M</div>
+            </div>
+          </div>
+
+          <!-- Tabla de Clubes -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 45px;">#</th>
+                  <th>Club</th>
+                  <th>División</th>
+                  <th style="text-align: right;">Presp. Anterior</th>
+                  <th style="text-align: right;">Renovaciones</th>
+                  <th style="text-align: right;">Ganado Temp 13</th>
+                  <th style="text-align: right; color: #fbbf24;">Presupuesto Final</th>
+                  <th style="text-align: center; width: 120px;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="budgets-tbody">
+                <!-- Rendered dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- ==================== VIEW 5: TROPHIES & BALLON D'OR ==================== -->
       <section class="module-view" id="view-trophies">
         
@@ -1944,6 +2012,116 @@
         <button class="btn btn-secondary" onclick="AdminApp.closeBdoModal()">Cancelar</button>
         <button class="btn btn-gold" id="btn-save-bdo-modal">
           <i class="fa-solid fa-check"></i> Guardar Registro
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: EDITAR PRESUPUESTO CLUB ==================== -->
+  <div class="modal-overlay" id="modal-edit-budget" style="display: none;">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <div class="modal-header">
+        <h2 class="modal-title" style="display: flex; align-items: center; gap: 0.6rem;">
+          <i class="fa-solid fa-wallet" style="color: #10b981;"></i>
+          <span>Editar Presupuesto: <strong id="modal-budget-team-name" style="color: #fff;">Club</strong></span>
+        </h2>
+        <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem;" onclick="AdminApp.closeEditBudgetModal()">✕</button>
+      </div>
+
+      <input type="hidden" id="modal-budget-team-id">
+
+      <div style="max-height: 70vh; overflow-y: auto; padding-right: 4px;">
+        <!-- Resumen Rápido -->
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Cálculo en Tiempo Real</span>
+            <span id="modal-calc-status" style="font-size: 0.8rem; font-weight: 800; color: #34d399;">Fórmula: Anterior - Renovaciones + Ganado</span>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.85rem; color: var(--text-secondary);">Presupuesto Final Calculado:</span>
+              <div style="font-size: 1.6rem; font-weight: 900; color: #fbbf24;" id="modal-live-final-budget">$0M</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.85rem; color: var(--text-secondary);">Balance Temporada:</span>
+              <div style="font-size: 1.25rem; font-weight: 800;" id="modal-live-season-balance">$0M</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Presupuesto Base y Renovaciones -->
+        <h4 style="font-size: 0.9rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px;">
+          <i class="fa-solid fa-coins"></i> 1. Base y Gastos de Renovación
+        </h4>
+        <div class="grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label>Presupuesto Anterior ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-ant" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+          <div class="form-group">
+            <label>Gasto en Renovaciones ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-renov" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+        </div>
+
+        <!-- 2. Liga -->
+        <h4 style="font-size: 0.9rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px;">
+          <i class="fa-solid fa-trophy"></i> 2. Premios y Sanciones de Liga
+        </h4>
+        <div class="grid-3" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label>Posición en Liga</label>
+            <input type="number" min="1" max="15" class="form-control" id="modal-b-liga-pos">
+          </div>
+          <div class="form-group">
+            <label>Premio Liga ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-liga-prem" oninput="AdminApp.calcLiveBudgetModal()">
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Usa signo menos (-) para sanciones</span>
+          </div>
+          <div class="form-group">
+            <label>Premios Goleadores ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-liga-gol" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+        </div>
+        <div class="grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label>Premios Asistidores Liga ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-liga-asis" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+          <div class="form-group">
+            <label>Premio Pretemporada ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-pretemp" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+        </div>
+
+        <!-- 3. Champions League y Adicionales -->
+        <h4 style="font-size: 0.9rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px;">
+          <i class="fa-solid fa-star"></i> 3. Champions League & Adicionales
+        </h4>
+        <div class="grid-3" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label>Fase Champions</label>
+            <input type="text" class="form-control" id="modal-b-champ-pos" placeholder="Ej: 8vos, 4tos, Campeon">
+          </div>
+          <div class="form-group">
+            <label>Premio Fase ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-champ-prem" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+          <div class="form-group">
+            <label>Gol/Asis Champions ($M)</label>
+            <input type="number" step="any" class="form-control" id="modal-b-champ-gol-asis" oninput="AdminApp.calcLiveBudgetModal()">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label>Ingresos Adicionales ($M)</label>
+          <input type="number" step="any" class="form-control" id="modal-b-adic" oninput="AdminApp.calcLiveBudgetModal()">
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+        <button class="btn btn-secondary" onclick="AdminApp.closeEditBudgetModal()">Cancelar</button>
+        <button class="btn btn-gold" onclick="AdminApp.saveBudgetModal()">
+          <i class="fa-solid fa-check"></i> Aplicar y Guardar
         </button>
       </div>
     </div>
