@@ -39,8 +39,8 @@ async function syncLatestDataAsync() {
         const prefix = 'var INITIAL_LMI_DATA = ';
         const idx = text.indexOf(prefix);
         if (idx !== -1) {
-          const endIdx = text.lastIndexOf(';');
-          const jsonStr = text.substring(idx + prefix.length, endIdx !== -1 ? endIdx : text.length).trim();
+          const endObjIdx = text.lastIndexOf('};');
+          const jsonStr = text.substring(idx + prefix.length, endObjIdx !== -1 ? endObjIdx + 1 : text.length).trim();
           const json = JSON.parse(jsonStr);
           if (json && json.teams && Array.isArray(json.teams)) {
             freshData = json;

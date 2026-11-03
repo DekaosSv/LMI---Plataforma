@@ -205,6 +205,10 @@ const AdminApp = {
 
   async saveData(silent = false) {
     if (!this.data) return;
+    // Preservar presupuestos en caso de que en memoria no estén definidos
+    if ((!this.data.teamBudgets || Object.keys(this.data.teamBudgets).length === 0) && typeof INITIAL_LMI_DATA !== 'undefined' && INITIAL_LMI_DATA.teamBudgets) {
+      this.data.teamBudgets = INITIAL_LMI_DATA.teamBudgets;
+    }
     // Sanitizar automáticamente: asegurar que ningún partido de feyenoord se guarde en fixtures ni history
     if (this.data.fixtures) {
       Object.keys(this.data.fixtures).forEach(div => {
