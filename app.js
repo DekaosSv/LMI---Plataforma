@@ -1895,7 +1895,7 @@ window.showWebToast = showWebToast;
 function initTeamSelect() {
   const sel = document.getElementById('team-select');
   if (!sel) return;
-  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.id !== 'brightonhovealbion');
   sel.innerHTML = activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
   if (activeTeams.length > 0) {
     loadTeamHub(activeTeams[0].id);
@@ -2319,7 +2319,7 @@ function formatRenewalValue(val) {
 function initRenovationSelect() {
   const sel = document.getElementById('renovation-team-select');
   if (!sel) return;
-  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.id !== 'brightonhovealbion');
   sel.innerHTML = activeTeams.map(t => `<option value="${t.id}" style="background-color: #0b1528; color: #ffffff;">${t.name} (Presupuesto: $${formatRenewalValue((t.budget || 100000000) / 1000000)}M)</option>`).join('');
   const teamSel = document.getElementById('team-select');
   const targetId = (teamSel && teamSel.value) ? teamSel.value : (activeTeams.length > 0 ? activeTeams[0].id : null);
@@ -2730,7 +2730,7 @@ function initPlayerSearchUI() {
   const teamSel = document.getElementById('player-search-team-filter');
   if (!teamSel) return;
   
-  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.id !== 'brightonhovealbion');
   teamSel.innerHTML = `
     <option value="">Todos los Equipos</option>
     ${activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('')}
@@ -2770,7 +2770,7 @@ function filterPlayersDatabase(resetLimit = true) {
 
   let filtered = lmiData.players.filter(p => {
     // Excluir jugadores de clubes inactivos / ocultos (Brighton y Vasco da Gama)
-    if (p.teamId === 'brightonhovealbion' || p.teamId === 'vascodagama') return false;
+    if (p.teamId === 'brightonhovealbion') return false;
 
     // 1. Filtro de Posición
     if (selectedPos && p.position !== selectedPos) return false;
@@ -2938,7 +2938,7 @@ function initMarketUI() {
   const sel = document.getElementById('market-team-select');
   if (!sel) return;
   if (lmiData && lmiData.teams) {
-    const activeTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+    const activeTeams = lmiData.teams.filter(t => !t.hidden && t.id !== 'brightonhovealbion');
     sel.innerHTML = activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
   }
 }
