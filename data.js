@@ -1,5 +1,3 @@
-// Base de datos unificada LMI Temporada 10
-
 var INITIAL_LMI_DATA = {
   "season": "Temporada 12",
   "teams": [
@@ -12664,12 +12662,12 @@ var INITIAL_LMI_DATA = {
       "name": "Joao Félix",
       "position": "EI",
       "teamId": "manchesterunited",
-      "goals": 2,
-      "assists": 3,
-      "goals_liga": 2,
-      "assists_liga": 3,
+      "goals": 5,
+      "assists": 10,
+      "goals_liga": 5,
+      "assists_liga": 9,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -12678,12 +12676,12 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 2,
-          "assists": 3,
-          "goals_liga": 2,
-          "assists_liga": 3,
+          "goals": 5,
+          "assists": 10,
+          "goals_liga": 5,
+          "assists_liga": 9,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -18831,6 +18829,36 @@ var INITIAL_LMI_DATA = {
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 1,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1792040410030_20",
+      "name": "Pedro Neto",
+      "position": "MP",
+      "teamId": "borussiadortmund",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -40670,15 +40698,15 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "gol",
           "count": 2
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
@@ -42192,8 +42220,8 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "gol",
           "count": 1
@@ -42946,8 +42974,8 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
@@ -45478,8 +45506,8 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
@@ -45612,8 +45640,8 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
@@ -47226,8 +47254,8 @@ var INITIAL_LMI_DATA = {
           "count": 3
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
@@ -47437,8 +47465,8 @@ var INITIAL_LMI_DATA = {
           "count": 2
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
@@ -47931,8 +47959,8 @@ var INITIAL_LMI_DATA = {
           "count": 2
         },
         {
-          "playerId": "p_1792039745455_9",
-          "playerName": "João Félix",
+          "playerId": "p_1792992249049_19",
+          "playerName": "Joao Félix",
           "teamId": "manchesterunited",
           "type": "asistencia",
           "count": 1
