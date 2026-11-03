@@ -2154,8 +2154,158 @@ function loadTeamHub(teamId) {
         </div>
       </div>
     </div>
+    ${renderTeamBudgetBox(team)}
   `;
 }
+
+// Helper para renderizar desglose financiero en Team Hub
+function renderTeamBudgetBox(team) {
+  const b = team.budgetDetails || (lmiData.teamBudgets && lmiData.teamBudgets[team.id]);
+  if (!b) {
+    return `
+      <div style="margin-top: 1.25rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+          <span><i class="fa-solid fa-wallet" style="color: #0284c7;"></i> Presupuesto & Finanzas</span>
+          <span style="font-size: 0.7rem; font-weight: 800; background: #f1f5f9; color: #64748b; padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid #cbd5e1;">TEMP 13</span>
+        </h3>
+        <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: var(--radius-md); padding: 1rem; text-align: center; color: #64748b; font-size: 0.85rem;">
+          <i class="fa-solid fa-circle-info" style="margin-right: 0.35rem; color: #3b82f6;"></i> Sin desglose registrado para esta temporada.
+        </div>
+      </div>
+    `;
+  }
+
+  const ing = b.ingresos || {};
+  const liga = ing.liga || {};
+  const champ = ing.champions || {};
+
+  // Formato compacto de items generados
+  const items = [];
+
+  // 1. Liga (Posición)
+  if (liga.posicion) {
+    const isPenalty = Number(liga.premio) < 0;
+    items.push({
+      label: `Liga (Puesto #${liga.posicion})`,
+      val: Number(liga.premio),
+      icon: 'fa-trophy',
+      color: isPenalty ? '#dc2626' : '#059669',
+      isPenalty
+    });
+  }
+
+  // 2. Goleadores / Asistidores de Liga
+  if (Number(liga.goleadores) > 0) {
+    items.push({
+      label: 'Premios Goleador(es) Liga',
+      val: Number(liga.goleadores),
+      icon: 'fa-futbol',
+      color: '#059669'
+    });
+  }
+  if (Number(liga.asistidores) > 0) {
+    items.push({
+      label: 'Premios Asistidor(es) Liga',
+      val: Number(liga.asistidores),
+      icon: 'fa-hands-clapping',
+      color: '#059669'
+    });
+  }
+
+  // 3. Champions League
+  if (champ.fase || Number(champ.premio) > 0) {
+    items.push({
+      label: `Champions League (${champ.fase || 'Fase Final'})`,
+      val: Number(champ.premio),
+      icon: 'fa-star',
+      color: '#0284c7'
+    });
+  }
+  if (Number(champ.goleadorAsistidor) > 0) {
+    items.push({
+      label: 'Goleador / Asistidor Champions',
+      val: Number(champ.goleadorAsistidor),
+      icon: 'fa-award',
+      color: '#0284c7'
+    });
+  }
+
+  // 4. Pretemporada y Adicionales
+  if (Number(ing.pretemporada) > 0) {
+    items.push({
+      label: 'Premio Pretemporada',
+      val: Number(ing.pretemporada),
+      icon: 'fa-stopwatch',
+      color: '#059669'
+    });
+  }
+  if (Number(ing.adicionales) > 0) {
+    items.push({
+      label: 'Ingresos Adicionales',
+      val: Number(ing.adicionales),
+      icon: 'fa-plus-circle',
+      color: '#059669'
+    });
+  }
+
+  const balanceSign = b.balanceTemporada >= 0 ? '+' : '';
+  const balanceColor = b.balanceTemporada >= 0 ? '#059669' : '#dc2626';
+
+  return `
+    <!-- Bloque de Presupuesto y Finanzas TEMP 13 -->
+    <div style="margin-top: 1.25rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 0.45rem; margin: 0;">
+          <i class="fa-solid fa-wallet" style="color: #0284c7;"></i> Presupuesto & Balance
+        </h3>
+        <span style="font-size: 0.7rem; font-weight: 800; background: #eff6ff; color: #1d4ed8; padding: 0.2rem 0.55rem; border-radius: 4px; border: 1px solid #bfdbfe; letter-spacing: 0.5px;">
+          PREMIOS TEMP 13
+        </span>
+      </div>
+
+      <!-- Tarjeta Principal de Presupuesto Final Disponible -->
+      <div style="background: linear-gradient(135deg, #0b1528 0%, #172554 100%); border: 1.5px solid rgba(59, 130, 246, 0.4); border-radius: var(--radius-md); padding: 1rem 1.15rem; color: #ffffff; margin-bottom: 0.75rem; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #93c5fd; letter-spacing: 0.5px;">Presupuesto Final Disponible</span>
+          <span style="font-size: 0.72rem; font-weight: 700; color: ${b.balanceTemporada >= 0 ? '#34d399' : '#f87171'};">
+            ${balanceSign}$${b.balanceTemporada}M en TEMP 13
+          </span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 0.4rem;">
+          <span style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 900; color: #fbbf24; text-shadow: 0 0 12px rgba(251, 191, 36, 0.3);">$${b.presupuestoFinal}M</span>
+          <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1;">USD</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.72rem; color: #94a3b8;">
+          <span>Presp. Anterior: <strong style="color: #ffffff;">$${b.presupuestoAnterior}M</strong></span>
+          <span>Renovaciones: <strong style="color: ${b.gastosRenovaciones > 0 ? '#f87171' : '#cbd5e1'};">-${b.gastosRenovaciones > 0 ? '$' + b.gastosRenovaciones + 'M' : '$0M'}</strong></span>
+        </div>
+      </div>
+
+      <!-- Desglose breve de ingresos de la temporada -->
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-md); padding: 0.75rem 0.85rem;">
+        <div style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+          <span>Desglose de Ganancias</span>
+          <span style="color: ${balanceColor}; font-weight: 800;">Total: ${balanceSign}$${b.balanceTemporada}M</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem;">
+          ${items.map(it => `
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px dashed #e2e8f0;">
+              <span style="color: #334155; display: flex; align-items: center; gap: 0.45rem;">
+                <i class="fa-solid ${it.icon}" style="color: ${it.color}; font-size: 0.8rem;"></i>
+                <span>${it.label}</span>
+              </span>
+              <span style="font-weight: 800; color: ${it.val >= 0 ? '#059669' : '#dc2626'};">
+                ${it.val >= 0 ? '+' : ''}$${it.val}M
+              </span>
+            </div>
+          `).join('')}
+          ${items.length === 0 ? '<div style="color: #94a3b8; font-size: 0.78rem; text-align: center; padding: 0.3rem;">Sin ingresos registrados este período.</div>' : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 
 // RENOVACIONES TEMPORADA 11 ENGINE
 function formatRenewalValue(val) {
