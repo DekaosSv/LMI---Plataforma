@@ -616,7 +616,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Emirates Stadium",
       "manager": "Ronald Acosta",
-      "budget": 853000000,
+      "budget": 973000000,
       "initialBudget": 211000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -639,13 +639,13 @@ var INITIAL_LMI_DATA = {
           "champions": {
             "fase": "SUBCAMPEON",
             "premio": 300,
-            "goleadorAsistidor": 0
+            "goleadorAsistidor": 120
           },
           "pretemporada": 0,
           "adicionales": 100
         },
-        "balanceTemporada": 810,
-        "presupuestoFinal": 853
+        "balanceTemporada": 930,
+        "presupuestoFinal": 973
       }
     },
     {
@@ -50346,13 +50346,13 @@ var INITIAL_LMI_DATA = {
         "champions": {
           "fase": "SUBCAMPEON",
           "premio": 300,
-          "goleadorAsistidor": 0
+          "goleadorAsistidor": 120
         },
         "pretemporada": 0,
         "adicionales": 100
       },
-      "balanceTemporada": 810,
-      "presupuestoFinal": 853
+      "balanceTemporada": 930,
+      "presupuestoFinal": 973
     },
     "carabobofutbolclub": {
       "excelName": "Carabobo Fútbol Club",
