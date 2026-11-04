@@ -143,7 +143,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Spotify Camp Nou",
       "manager": "Robert Salve",
-      "budget": 1948000000,
+      "budget": 1953000000,
       "initialBudget": 2569000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -155,7 +155,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "fcbarcelona",
         "season": "TEMP 13",
         "presupuestoAnterior": 2135,
-        "gastosRenovaciones": 412,
+        "gastosRenovaciones": 407,
         "ingresos": {
           "liga": {
             "posicion": 3,
@@ -172,7 +172,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 225,
-        "presupuestoFinal": 1948
+        "presupuestoFinal": 1953
       }
     },
     {
@@ -659,7 +659,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Stadio Giuseppe Meazza",
       "manager": "Daniel Ugarte",
-      "budget": 598000000,
+      "budget": 149000000,
       "initialBudget": 440000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -671,7 +671,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "acmiln",
         "season": "TEMP 13",
         "presupuestoAnterior": 221,
-        "gastosRenovaciones": 0,
+        "gastosRenovaciones": 449,
         "ingresos": {
           "liga": {
             "posicion": 8,
@@ -688,7 +688,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 377,
-        "presupuestoFinal": 598
+        "presupuestoFinal": 149
       }
     },
     {
@@ -1040,13 +1040,13 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "São Januário",
       "manager": "Dzyuba",
-      "budget": 202000000,
+      "budget": 207000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
       "leagueRank": 25,
       "logo": "Logos Equipos/vasco.png",
-      "division": "inactivo",
+      "division": "plata",
       "stats": {
         "played": 0,
         "won": 0,
@@ -1063,7 +1063,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "vascodagama",
         "season": "TEMP 13",
         "presupuestoAnterior": 500,
-        "gastosRenovaciones": 298,
+        "gastosRenovaciones": 293,
         "ingresos": {
           "liga": {
             "posicion": null,
@@ -1080,7 +1080,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 0,
-        "presupuestoFinal": 202
+        "presupuestoFinal": 207
       }
     },
     {
@@ -50121,7 +50121,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "fcbarcelona",
       "season": "TEMP 13",
       "presupuestoAnterior": 2135,
-      "gastosRenovaciones": 412,
+      "gastosRenovaciones": 407,
       "ingresos": {
         "liga": {
           "posicion": 3,
@@ -50138,7 +50138,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 225,
-      "presupuestoFinal": 1948
+      "presupuestoFinal": 1953
     },
     "arsenal": {
       "excelName": "Arsenal",
@@ -50241,7 +50241,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "acmiln",
       "season": "TEMP 13",
       "presupuestoAnterior": 221,
-      "gastosRenovaciones": 0,
+      "gastosRenovaciones": 449,
       "ingresos": {
         "liga": {
           "posicion": 8,
@@ -50258,7 +50258,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 377,
-      "presupuestoFinal": 598
+      "presupuestoFinal": 149
     },
     "manchesterunited": {
       "excelName": "Manchester United",
@@ -50385,7 +50385,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "vascodagama",
       "season": "TEMP 13",
       "presupuestoAnterior": 500,
-      "gastosRenovaciones": 298,
+      "gastosRenovaciones": 293,
       "ingresos": {
         "liga": {
           "posicion": null,
@@ -50402,7 +50402,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 0,
-      "presupuestoFinal": 202
+      "presupuestoFinal": 207
     }
   },
   "ruletaConfig": {

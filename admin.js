@@ -405,7 +405,7 @@ const AdminApp = {
     const currentVal = targetTeamId || sel.value;
     sel.innerHTML = '';
     
-    let teams = this.data.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+    let teams = this.data.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion');
     if (filterDiv !== 'all') {
       teams = teams.filter(t => (t.division || 'oro') === filterDiv);
     }
@@ -426,7 +426,7 @@ const AdminApp = {
   },
 
   populateMarketAndModalTeams() {
-    const teams = (this.data.teams || []).filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+    const teams = (this.data.teams || []).filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion');
     const fill = (id) => {
       const el = document.getElementById(id);
       if (!el) return;
@@ -729,7 +729,7 @@ const AdminApp = {
     const sel2 = document.getElementById('match-team2-select');
     if (!sel1 || !sel2 || !this.data || !this.data.teams) return;
 
-    let teams = this.data.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
+    let teams = this.data.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion');
     if (comp === 'oro') {
       teams = teams.filter(t => t.division === 'oro');
     } else if (comp === 'plata') {
