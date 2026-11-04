@@ -143,7 +143,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Spotify Camp Nou",
       "manager": "Robert Salve",
-      "budget": 2360000000,
+      "budget": 1948000000,
       "initialBudget": 2569000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -155,7 +155,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "fcbarcelona",
         "season": "TEMP 13",
         "presupuestoAnterior": 2135,
-        "gastosRenovaciones": 0,
+        "gastosRenovaciones": 412,
         "ingresos": {
           "liga": {
             "posicion": 3,
@@ -172,7 +172,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 225,
-        "presupuestoFinal": 2360
+        "presupuestoFinal": 1948
       }
     },
     {
@@ -186,7 +186,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Roazhon Park",
       "manager": "Daniel Herrera",
-      "budget": 683000000,
+      "budget": 671000000,
       "initialBudget": 357000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -198,7 +198,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "staderennais",
         "season": "TEMP 13",
         "presupuestoAnterior": 400,
-        "gastosRenovaciones": 275,
+        "gastosRenovaciones": 287,
         "ingresos": {
           "liga": {
             "posicion": 1,
@@ -215,7 +215,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 558,
-        "presupuestoFinal": 683
+        "presupuestoFinal": 671
       }
     },
     {
@@ -229,7 +229,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Cívitas Metropolitano",
       "manager": "Fernando",
-      "budget": 147000000,
+      "budget": -151000000,
       "initialBudget": 11000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -241,7 +241,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "atleticodemadrid",
         "season": "TEMP 13",
         "presupuestoAnterior": 397,
-        "gastosRenovaciones": 0,
+        "gastosRenovaciones": 298,
         "ingresos": {
           "liga": {
             "posicion": 11,
@@ -258,7 +258,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": -250,
-        "presupuestoFinal": 147
+        "presupuestoFinal": -151
       }
     },
     {
@@ -401,7 +401,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Santiago Bernabéu",
       "manager": "Duvan Ardila",
-      "budget": 1076000000,
+      "budget": 767000000,
       "initialBudget": 223000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -413,7 +413,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "realmadrid",
         "season": "TEMP 13",
         "presupuestoAnterior": 1016,
-        "gastosRenovaciones": 0,
+        "gastosRenovaciones": 309,
         "ingresos": {
           "liga": {
             "posicion": 12,
@@ -430,7 +430,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 60,
-        "presupuestoFinal": 1076
+        "presupuestoFinal": 767
       }
     },
     {
@@ -616,7 +616,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Emirates Stadium",
       "manager": "Ronald Acosta",
-      "budget": 558000000,
+      "budget": 553000000,
       "initialBudget": 211000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -628,7 +628,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "arsenal",
         "season": "TEMP 13",
         "presupuestoAnterior": 368,
-        "gastosRenovaciones": 320,
+        "gastosRenovaciones": 325,
         "ingresos": {
           "liga": {
             "posicion": 4,
@@ -645,7 +645,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 100
         },
         "balanceTemporada": 510,
-        "presupuestoFinal": 558
+        "presupuestoFinal": 553
       }
     },
     {
@@ -808,7 +808,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Johan Cruyff Arena",
       "manager": "J Castillo",
-      "budget": 531000000,
+      "budget": 450000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -830,7 +830,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "ajaxdeamsterdam",
         "season": "TEMP 13",
         "presupuestoAnterior": 250,
-        "gastosRenovaciones": 332,
+        "gastosRenovaciones": 413,
         "ingresos": {
           "liga": {
             "posicion": 6,
@@ -847,7 +847,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 613,
-        "presupuestoFinal": 531
+        "presupuestoFinal": 450
       }
     },
     {
@@ -1094,7 +1094,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Ibrox Stadium",
       "manager": "Jose M Bello V",
-      "budget": 400000000,
+      "budget": 111000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -1117,7 +1117,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "rangersfootballclub",
         "season": "TEMP 13",
         "presupuestoAnterior": 500,
-        "gastosRenovaciones": 0,
+        "gastosRenovaciones": 289,
         "ingresos": {
           "liga": {
             "posicion": 11,
@@ -1134,7 +1134,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": -100,
-        "presupuestoFinal": 400
+        "presupuestoFinal": 111
       }
     },
     {
@@ -1148,7 +1148,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Polideportivo Misael Delgado",
       "manager": "Jesus",
-      "budget": 482000000,
+      "budget": 487000000,
       "initialBudget": 500000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -1171,7 +1171,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "carabobofutbolclub",
         "season": "TEMP 13",
         "presupuestoAnterior": 500,
-        "gastosRenovaciones": 298,
+        "gastosRenovaciones": 293,
         "ingresos": {
           "liga": {
             "posicion": 5,
@@ -1188,7 +1188,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": 280,
-        "presupuestoFinal": 482
+        "presupuestoFinal": 487
       }
     }
   ],
@@ -49716,6 +49716,12 @@ var INITIAL_LMI_DATA = {
         "enabled": true
       },
       {
+        "id": "ruleta",
+        "label": "Ruleta",
+        "icon": "fa-dharmachakra",
+        "enabled": true
+      },
+      {
         "id": "buscador",
         "label": "Buscar Jugadores",
         "icon": "fa-magnifying-glass",
@@ -50043,7 +50049,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "atleticodemadrid",
       "season": "TEMP 13",
       "presupuestoAnterior": 397,
-      "gastosRenovaciones": 0,
+      "gastosRenovaciones": 298,
       "ingresos": {
         "liga": {
           "posicion": 11,
@@ -50060,14 +50066,14 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": -250,
-      "presupuestoFinal": 147
+      "presupuestoFinal": -151
     },
     "staderennais": {
       "excelName": "Stade Rennais",
       "teamId": "staderennais",
       "season": "TEMP 13",
       "presupuestoAnterior": 400,
-      "gastosRenovaciones": 275,
+      "gastosRenovaciones": 287,
       "ingresos": {
         "liga": {
           "posicion": 1,
@@ -50084,7 +50090,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 558,
-      "presupuestoFinal": 683
+      "presupuestoFinal": 671
     },
     "acffiorentina": {
       "excelName": "ACF Fiorentina",
@@ -50115,7 +50121,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "fcbarcelona",
       "season": "TEMP 13",
       "presupuestoAnterior": 2135,
-      "gastosRenovaciones": 0,
+      "gastosRenovaciones": 412,
       "ingresos": {
         "liga": {
           "posicion": 3,
@@ -50132,14 +50138,14 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 225,
-      "presupuestoFinal": 2360
+      "presupuestoFinal": 1948
     },
     "arsenal": {
       "excelName": "Arsenal",
       "teamId": "arsenal",
       "season": "TEMP 13",
       "presupuestoAnterior": 368,
-      "gastosRenovaciones": 320,
+      "gastosRenovaciones": 325,
       "ingresos": {
         "liga": {
           "posicion": 4,
@@ -50156,14 +50162,14 @@ var INITIAL_LMI_DATA = {
         "adicionales": 100
       },
       "balanceTemporada": 510,
-      "presupuestoFinal": 558
+      "presupuestoFinal": 553
     },
     "carabobofutbolclub": {
       "excelName": "Carabobo Fútbol Club",
       "teamId": "carabobofutbolclub",
       "season": "TEMP 13",
       "presupuestoAnterior": 500,
-      "gastosRenovaciones": 298,
+      "gastosRenovaciones": 293,
       "ingresos": {
         "liga": {
           "posicion": 5,
@@ -50180,14 +50186,14 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 280,
-      "presupuestoFinal": 482
+      "presupuestoFinal": 487
     },
     "ajaxdeamsterdam": {
       "excelName": "Ajax de Ámsterdam",
       "teamId": "ajaxdeamsterdam",
       "season": "TEMP 13",
       "presupuestoAnterior": 250,
-      "gastosRenovaciones": 332,
+      "gastosRenovaciones": 413,
       "ingresos": {
         "liga": {
           "posicion": 6,
@@ -50204,7 +50210,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 613,
-      "presupuestoFinal": 531
+      "presupuestoFinal": 450
     },
     "chelseafc": {
       "excelName": "Chelsea FC",
@@ -50307,7 +50313,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "rangersfootballclub",
       "season": "TEMP 13",
       "presupuestoAnterior": 500,
-      "gastosRenovaciones": 0,
+      "gastosRenovaciones": 289,
       "ingresos": {
         "liga": {
           "posicion": 11,
@@ -50324,14 +50330,14 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": -100,
-      "presupuestoFinal": 400
+      "presupuestoFinal": 111
     },
     "realmadrid": {
       "excelName": "Real Madrid",
       "teamId": "realmadrid",
       "season": "TEMP 13",
       "presupuestoAnterior": 1016,
-      "gastosRenovaciones": 0,
+      "gastosRenovaciones": 309,
       "ingresos": {
         "liga": {
           "posicion": 12,
@@ -50348,7 +50354,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": 60,
-      "presupuestoFinal": 1076
+      "presupuestoFinal": 767
     },
     "losclille": {
       "excelName": "LOSC Lille",
@@ -50398,7 +50404,250 @@ var INITIAL_LMI_DATA = {
       "balanceTemporada": 0,
       "presupuestoFinal": 202
     }
-  }
+  },
+  "ruletaConfig": {
+    "costOro": 150,
+    "costPlata": 75,
+    "bridgeWebhookUrl": "https://script.google.com/macros/s/AKfycbyt6qG1pRSveRt3U_lR2tqy0o_FRgEq6CAbjVsHKVbrdqW3WIHPhce4TwGW1nGBaQrJ/exec",
+    "telegramBotToken": "8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA",
+    "telegramChatId": "1096032578",
+    "itemsOro": [
+      {
+        "name": "Fichaje Bomba",
+        "val": "+$300M",
+        "delta": 150,
+        "type": "premio",
+        "tag": "Gran Premio",
+        "color": "#10b981",
+        "icon": "fa-gift",
+        "desc": "Ingreso directo de $300M al presupuesto del club. ¡Ganas $150M netos!"
+      },
+      {
+        "name": "Renovación 100%",
+        "val": "100% Gratis",
+        "delta": 0,
+        "type": "mercado",
+        "tag": "Beneficio",
+        "color": "#0284c7",
+        "icon": "fa-shield",
+        "desc": "Descuento del 100% en la renovación total de tu plantilla para la siguiente temporada."
+      },
+      {
+        "name": "Bono Rendimiento",
+        "val": "+$180M",
+        "delta": 30,
+        "type": "premio",
+        "tag": "Premio",
+        "color": "#059669",
+        "icon": "fa-coins",
+        "desc": "Ingreso de $180M por méritos comerciales (Ganancia neta de +$30M)."
+      },
+      {
+        "name": "Épico a Préstamo",
+        "val": "1 Temporada",
+        "delta": 0,
+        "type": "mercado",
+        "tag": "Mercado",
+        "color": "#38bdf8",
+        "icon": "fa-user-plus",
+        "desc": "Si tienes carta de alguno de tus jugadores que sea épica, la puedes incluir a lo largo de toda la temporada."
+      },
+      {
+        "name": "2 Libres Directos",
+        "val": "2 Fichajes",
+        "delta": 0,
+        "type": "mercado",
+        "tag": "Exclusivo",
+        "color": "#6366f1",
+        "icon": "fa-user-check",
+        "desc": "Ganas 2 jugadores libres directamente sin necesidad de publicar en Facebook."
+      },
+      {
+        "name": "Patrocinio Asiático",
+        "val": "+$150M",
+        "delta": 0,
+        "type": "premio",
+        "tag": "Reembolso",
+        "color": "#34d399",
+        "icon": "fa-handshake",
+        "desc": "Recuperas íntegro el costo del tiro ($150M). ¡Giro gratis!"
+      },
+      {
+        "name": "Auditoría Fair Play",
+        "val": "-$120M",
+        "delta": -270,
+        "type": "castigo",
+        "tag": "Castigo",
+        "color": "#ef4444",
+        "icon": "fa-scale-unbalanced",
+        "desc": "Sanción económica de -$120M adicionales por exceso de masa salarial."
+      },
+      {
+        "name": "Lesión de Estrella",
+        "val": "-$80M",
+        "delta": -230,
+        "type": "castigo",
+        "tag": "Castigo",
+        "color": "#dc2626",
+        "icon": "fa-user-injured",
+        "desc": "Pagas -$80M en tratamientos médicos de urgencia para tu figura."
+      },
+      {
+        "name": "Comisión de Agente",
+        "val": "-$50M",
+        "delta": -200,
+        "type": "castigo",
+        "tag": "Pérdida",
+        "color": "#f87171",
+        "icon": "fa-briefcase",
+        "desc": "Pagas -$50M imprevistos por intermediación de representantes."
+      },
+      {
+        "name": "Negociación Fallida",
+        "val": "$0",
+        "delta": -150,
+        "type": "vacio",
+        "tag": "Vacío",
+        "color": "#64748b",
+        "icon": "fa-cloud",
+        "desc": "El DT se fue de vacaciones sin cerrar el acuerdo. Pierdes los $150M del tiro."
+      },
+      {
+        "name": "Cláusula Rescisión",
+        "val": "-$70M",
+        "delta": -220,
+        "type": "castigo",
+        "tag": "Riesgo",
+        "color": "#e11d48",
+        "icon": "fa-receipt",
+        "desc": "Un club rival activa una cláusula y debes pagar -$70M para retener a tu jugador."
+      },
+      {
+        "name": "Veto Libres 12h",
+        "val": "Bloqueo 12h",
+        "delta": -150,
+        "type": "mercado",
+        "tag": "Sanción",
+        "color": "#a855f7",
+        "icon": "fa-lock",
+        "desc": "Bloqueo para fichar en el mercado de jugadores libres por 12 horas desde su apertura."
+      }
+    ],
+    "itemsPlata": [
+      {
+        "name": "Golpe en la Mesa",
+        "val": "+$160M",
+        "delta": 85,
+        "type": "premio",
+        "tag": "Gran Premio",
+        "color": "#10b981",
+        "icon": "fa-trophy",
+        "desc": "Ingreso directo de +$160M al presupuesto del club. ¡Ganas $85M netos!"
+      },
+      {
+        "name": "Beca Renovación",
+        "val": "-30% Total",
+        "delta": 0,
+        "type": "mercado",
+        "tag": "Descuento",
+        "color": "#0284c7",
+        "icon": "fa-tags",
+        "desc": "30% de descuento en la renovación total de tu plantilla para la siguiente temporada."
+      },
+      {
+        "name": "Bono Progreso",
+        "val": "+$95M",
+        "delta": 20,
+        "type": "premio",
+        "tag": "Premio",
+        "color": "#059669",
+        "icon": "fa-coins",
+        "desc": "Premio al mérito deportivo en Plata de $95M (Ganancia neta de +$20M)."
+      },
+      {
+        "name": "1 Libre Directo",
+        "val": "1 Fichaje",
+        "delta": 0,
+        "type": "mercado",
+        "tag": "Exclusivo",
+        "color": "#6366f1",
+        "icon": "fa-user-check",
+        "desc": "Ganas 1 jugador libre directamente sin necesidad de publicar en Facebook."
+      },
+      {
+        "name": "Taquilla Llena",
+        "val": "+$75M",
+        "delta": 0,
+        "type": "premio",
+        "tag": "Reembolso",
+        "color": "#34d399",
+        "icon": "fa-ticket",
+        "desc": "Recuperas los $75M del tiro gracias a la taquilla del estadio. ¡Giro gratis!"
+      },
+      {
+        "name": "Multa Federación",
+        "val": "-$60M",
+        "delta": -135,
+        "type": "castigo",
+        "tag": "Castigo",
+        "color": "#ef4444",
+        "icon": "fa-fire",
+        "desc": "Sanción de -$60M por disturbios y bengalas en las gradas de tu estadio."
+      },
+      {
+        "name": "Huelga de Plantilla",
+        "val": "-$40M",
+        "delta": -115,
+        "type": "castigo",
+        "tag": "Castigo",
+        "color": "#dc2626",
+        "icon": "fa-users-slash",
+        "desc": "Debes desembolsar -$40M en concepto de primas atrasadas."
+      },
+      {
+        "name": "Cheque Rebotado",
+        "val": "$0",
+        "delta": -75,
+        "type": "vacio",
+        "tag": "Vacío",
+        "color": "#64748b",
+        "icon": "fa-ban",
+        "desc": "El banco no aprobó la transferencia. Pierdes los $75M del tiro."
+      },
+      {
+        "name": "Reparación Estadio",
+        "val": "-$50M",
+        "delta": -125,
+        "type": "castigo",
+        "tag": "Castigo",
+        "color": "#b91c1c",
+        "icon": "fa-hammer",
+        "desc": "Pagas -$50M en mantenimiento y arreglo urgente del césped del campo."
+      },
+      {
+        "name": "Tiro Extra",
+        "val": "1 Giro Gratis",
+        "delta": 0,
+        "type": "premio",
+        "tag": "Suerte",
+        "color": "#eab308",
+        "icon": "fa-rotate",
+        "desc": "¡La suerte te sonríe! Puedes volver a girar la ruleta gratis de inmediato."
+      },
+      {
+        "name": "Veto Libres 12h",
+        "val": "Bloqueo 12h",
+        "delta": -75,
+        "type": "mercado",
+        "tag": "Sanción",
+        "color": "#a855f7",
+        "icon": "fa-lock",
+        "desc": "Bloqueo para fichar en el mercado de jugadores libres por 12 horas desde su apertura."
+      }
+    ]
+  },
+  "ruletaTickets": [],
+  "ruletaHistory": []
 };
 
 if (typeof window !== 'undefined') {

@@ -248,6 +248,7 @@ function switchNav(navId) {
   if (activeSec) activeSec.classList.add('active');
 
   if (navId === 'dashboard') renderDashboard();
+  if (navId === 'ruleta') { if (typeof RuletaApp !== 'undefined') RuletaApp.init(); }
   if (navId === 'posiciones') renderWebPosiciones();
   if (navId === 'stats') renderStats();
   if (navId === 'teams') {
@@ -4143,3 +4144,585 @@ window.exportChampionsImage = exportChampionsImage;
 
 
 
+
+
+// ==========================================================================
+// LMI RULETA DE LA FORTUNA - CONTROLADOR WEB (PRO)
+// ==========================================================================
+
+const RuletaApp = {
+  currentDiv: 'oro',
+  isSpinning: false,
+  currentRotation: 0,
+  lastSpinResult: null,
+
+  sliceColorsOro: [
+    '#1e293b', '#b45309', '#0f172a', '#065f46', 
+    '#1e293b', '#4338ca', '#0f172a', '#991b1b', 
+    '#1e293b', '#78350f', '#0f172a', '#581c87'
+  ],
+
+  sliceColorsPlata: [
+    '#1e293b', '#334155', '#0f172a', '#065f46', 
+    '#1e293b', '#4338ca', '#0f172a', '#991b1b', 
+    '#1e293b', '#475569', '#0f172a'
+  ],
+
+  init() {
+    this.populateClubSelect();
+    this.renderPrizesList();
+    this.drawWheel();
+    this.updateCostAndLabels();
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    const input = document.getElementById('ruleta-ticket-code');
+    if (input && !input.dataset.bound) {
+      input.dataset.bound = "true";
+      input.addEventListener('input', (e) => this.onTicketInput(e.target.value));
+    }
+  },
+
+  onTicketInput(rawVal) {
+    const code = (rawVal || '').trim().toUpperCase();
+    const statusMsg = document.getElementById('ruleta-status-message');
+    if (!code) {
+      if (statusMsg) statusMsg.innerHTML = '<i class="fa-solid fa-circle-info"></i> El costo de inscripción será descontado automáticamente del presupuesto del club.';
+      return;
+    }
+
+    const tickets = (lmiData && lmiData.ruletaTickets) || [];
+    const found = tickets.find(t => (t.code || t.ticket || '').toUpperCase() === code);
+
+    if (found) {
+      // Auto-seleccionar división si es distinta
+      if (found.division && found.division !== this.currentDiv) {
+        this.selectDivision(found.division);
+      }
+      // Auto-seleccionar club
+      const sel = document.getElementById('ruleta-club-select');
+      if (sel && found.teamId) {
+        sel.value = found.teamId;
+        this.onClubSelectChange();
+      }
+
+      if (found.status === 'USADO') {
+        const usedDate = found.usedAt ? new Date(found.usedAt).toLocaleString() : 'Fecha previa';
+        const prevPrize = found.spinResult ? found.spinResult.name : 'Premio registrado';
+        if (statusMsg) {
+          statusMsg.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-ban"></i> <strong>Ticket ya utilizado:</strong> Canjeado el ${usedDate} (Premio: ${prevPrize}).</span>`;
+        }
+      } else {
+        if (statusMsg) {
+          statusMsg.innerHTML = `<span style="color: #34d399;"><i class="fa-solid fa-circle-check"></i> <strong>Ticket verificado:</strong> Válido para <strong>${found.teamName}</strong> (División ${found.division.toUpperCase()}). ¡Listo para girar!</span>`;
+        }
+      }
+    }
+  },
+
+  getConfig() {
+    return (lmiData && lmiData.ruletaConfig) ? lmiData.ruletaConfig : {
+      costOro: 150,
+      costPlata: 75,
+      itemsOro: [],
+      itemsPlata: []
+    };
+  },
+
+  getCurrentItems() {
+    const cfg = this.getConfig();
+    return this.currentDiv === 'oro' ? (cfg.itemsOro || []) : (cfg.itemsPlata || []);
+  },
+
+  getCurrentCost() {
+    const cfg = this.getConfig();
+    return this.currentDiv === 'oro' ? (cfg.costOro || 150) : (cfg.costPlata || 75);
+  },
+
+  selectDivision(div) {
+    if (this.isSpinning) return;
+    this.currentDiv = div;
+
+    document.getElementById('ruleta-tab-oro')?.classList.toggle('active', div === 'oro');
+    document.getElementById('ruleta-tab-plata')?.classList.toggle('active', div === 'plata');
+
+    const badge = document.getElementById('ruleta-active-badge');
+    if (badge) {
+      if (div === 'oro') {
+        badge.innerHTML = '<i class="fa-solid fa-crown"></i> RULETA OFICIAL DIVISIÓN ORO';
+        badge.style.borderColor = '#f59e0b';
+        badge.style.color = '#fbbf24';
+        badge.style.background = 'rgba(245, 158, 11, 0.15)';
+      } else {
+        badge.innerHTML = '<i class="fa-solid fa-medal"></i> RULETA OFICIAL DIVISIÓN PLATA';
+        badge.style.borderColor = '#cbd5e1';
+        badge.style.color = '#f1f5f9';
+        badge.style.background = 'rgba(148, 163, 184, 0.15)';
+      }
+    }
+
+    const btn = document.getElementById('btn-ruleta-spin-main');
+    if (btn) {
+      btn.className = `btn-ruleta-spin ${div === 'oro' ? 'btn-ruleta-spin-oro' : 'btn-ruleta-spin-plata'}`;
+    }
+
+    const canvas = document.getElementById('ruleta-wheel-canvas');
+    if (canvas) {
+      canvas.style.transition = 'none';
+      canvas.style.transform = 'rotate(0deg)';
+      this.currentRotation = 0;
+    }
+
+    document.getElementById('ruleta-result-box').style.display = 'none';
+
+    this.updateCostAndLabels();
+    this.populateClubSelect();
+    this.renderPrizesList();
+    this.drawWheel();
+  },
+
+  updateCostAndLabels() {
+    const cost = this.getCurrentCost();
+    const items = this.getCurrentItems();
+
+    const lblSpin = document.getElementById('lbl-ruleta-spin-text');
+    if (lblSpin) lblSpin.textContent = `VALIDAR TICKET Y GIRAR (-$${cost}M)`;
+
+    const lblCost = document.getElementById('ruleta-prizes-cost-label');
+    if (lblCost) lblCost.textContent = `Coste: $${cost}M USD`;
+
+    const lblTitle = document.getElementById('ruleta-prizes-title');
+    if (lblTitle) {
+      lblTitle.innerHTML = `
+        <i class="fa-solid fa-${this.currentDiv === 'oro' ? 'crown' : 'medal'}" style="color: ${this.currentDiv === 'oro' ? '#f59e0b' : '#94a3b8'};"></i> 
+        Casillas de la Ruleta ${this.currentDiv === 'oro' ? 'Oro' : 'Plata'} (${items.length})
+      `;
+    }
+  },
+
+  populateClubSelect() {
+    const sel = document.getElementById('ruleta-club-select');
+    if (!sel || !lmiData || !Array.isArray(lmiData.teams)) return;
+
+    const filtered = lmiData.teams.filter(t => (t.division || 'oro').toLowerCase() === this.currentDiv);
+    sel.innerHTML = filtered.map(t => {
+      const budgetM = t.budget ? Math.round(t.budget / 1000000) : (t.budgetDetails ? t.budgetDetails.presupuestoFinal : 0);
+      return `<option value="${t.id}">${t.name} (Presp: $${budgetM}M)</option>`;
+    }).join('');
+
+    this.onClubSelectChange();
+  },
+
+  onClubSelectChange() {
+    const sel = document.getElementById('ruleta-club-select');
+    const badge = document.getElementById('ruleta-club-budget-badge');
+    if (!sel || !badge || !lmiData) return;
+
+    const club = (lmiData.teams || []).find(t => t.id === sel.value);
+    if (club) {
+      const budgetM = club.budget ? Math.round(club.budget / 1000000) : (club.budgetDetails ? club.budgetDetails.presupuestoFinal : 0);
+      badge.textContent = `Presupuesto: $${budgetM}M USD`;
+    }
+  },
+
+  renderPrizesList(highlightIndex = null) {
+    const listEl = document.getElementById('ruleta-prizes-list');
+    if (!listEl) return;
+
+    const items = this.getCurrentItems();
+    listEl.innerHTML = items.map((item, idx) => {
+      const isHL = highlightIndex === idx;
+      const tagClass = `tag-${item.type || 'premio'}`;
+      return `
+        <div class="ruleta-prize-row ${isHL ? 'active-highlight' : ''}" id="ruleta-prize-row-${idx}">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 26px; height: 26px; border-radius: 6px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem; color: #94a3b8;">
+              #${idx + 1}
+            </div>
+            <div>
+              <div style="font-weight: 800; font-size: 0.92rem; color: #fff; display: flex; align-items: center; gap: 0.45rem;">
+                <i class="fa-solid ${item.icon || 'fa-gift'}" style="color: ${item.color || '#f59e0b'}; font-size: 0.85rem;"></i>
+                ${item.name}
+              </div>
+              <div style="font-size: 0.74rem; color: #94a3b8; margin-top: 0.15rem;">${item.desc || ''}</div>
+            </div>
+          </div>
+          <div style="text-align: right; flex-shrink: 0;">
+            <span class="ruleta-tag ${tagClass}">${item.tag || 'Premio'}</span>
+            <div style="font-weight: 900; font-size: 0.98rem; color: ${item.color || '#fff'}; margin-top: 0.2rem;">${item.val}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  },
+
+  drawWheel() {
+    const canvas = document.getElementById('ruleta-wheel-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const items = this.getCurrentItems();
+    const numSlices = items.length;
+    if (numSlices === 0) return;
+
+    const sliceAngle = (2 * Math.PI) / numSlices;
+    const radius = canvas.width / 2;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const colors = this.currentDiv === 'oro' ? this.sliceColorsOro : this.sliceColorsPlata;
+
+    for (let i = 0; i < numSlices; i++) {
+      const angle = i * sliceAngle;
+
+      ctx.beginPath();
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.moveTo(radius, radius);
+      ctx.arc(radius, radius, radius - 6, angle, angle + sliceAngle);
+      ctx.lineTo(radius, radius);
+      ctx.fill();
+
+      // Línea divisoria
+      ctx.strokeStyle = this.currentDiv === 'oro' ? 'rgba(245, 158, 11, 0.4)' : 'rgba(148, 163, 184, 0.4)';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Texto de la casilla
+      ctx.save();
+      ctx.translate(radius, radius);
+      ctx.rotate(angle + sliceAngle / 2);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#ffffff';
+
+      ctx.font = 'bold 24px "Plus Jakarta Sans", sans-serif';
+      const label = items[i].name.length > 15 ? items[i].name.substring(0, 13) + '..' : items[i].name;
+      ctx.fillText(label, radius - 55, 0);
+
+      ctx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = items[i].color || '#f59e0b';
+      ctx.fillText(items[i].val, radius - 55, 26);
+
+      ctx.restore();
+    }
+
+    // Borde exterior metálico
+    ctx.beginPath();
+    ctx.arc(radius, radius, radius - 6, 0, 2 * Math.PI);
+    ctx.strokeStyle = this.currentDiv === 'oro' ? '#f59e0b' : '#cbd5e1';
+    ctx.lineWidth = 10;
+    ctx.stroke();
+  },
+
+  async onSpinClick() {
+    if (this.isSpinning) return;
+
+    const sel = document.getElementById('ruleta-club-select');
+    const ticketInput = document.getElementById('ruleta-ticket-code');
+    const statusMsg = document.getElementById('ruleta-status-message');
+
+    if (!sel || !sel.value) {
+      alert("Por favor selecciona un club.");
+      return;
+    }
+
+    const clubId = sel.value;
+    const ticketCode = (ticketInput?.value || '').trim().toUpperCase();
+
+    if (!ticketCode) {
+      if (statusMsg) {
+        statusMsg.innerHTML = '<span style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar un <strong>Ticket Oficial</strong> para girar. Solicítalo al Admin.</span>';
+      }
+      ticketInput?.focus();
+      return;
+    }
+
+    const cfg = this.getConfig();
+    const cost = this.getCurrentCost();
+    const club = (lmiData.teams || []).find(t => t.id === clubId);
+    const clubBudgetM = club ? (club.budget ? Math.round(club.budget / 1000000) : (club.budgetDetails ? club.budgetDetails.presupuestoFinal : 0)) : 0;
+
+    // Verificar si hay webhook configurado (Cloud Bridge)
+    if (cfg.bridgeWebhookUrl && cfg.bridgeWebhookUrl.startsWith('http')) {
+      if (statusMsg) {
+        statusMsg.innerHTML = '<span style="color: #38bdf8;"><i class="fa-solid fa-spinner fa-spin"></i> Conectando con el servidor seguro y validando ticket...</span>';
+      }
+      try {
+        const resp = await fetch(cfg.bridgeWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'spin',
+            ticket: ticketCode,
+            clubId: clubId,
+            division: this.currentDiv
+          })
+        });
+        const resData = await resp.json();
+        if (!resData.success) {
+          if (statusMsg) statusMsg.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-circle-xmark"></i> ${resData.message || 'Error validando ticket'}</span>`;
+          return;
+        }
+
+        // Éxito desde el Cloud Bridge
+        this.runSpinAnimation(resData.winningIndex, resData.winner, ticketCode, club, resData.delta, resData.newBudget);
+        return;
+      } catch (err) {
+        console.warn("Fallo de conexión con Bridge, recurriendo a verificación local:", err);
+      }
+    }
+
+    // Modo de Verificación Local / Backup
+    const tickets = lmiData.ruletaTickets || [];
+    const foundTicket = tickets.find(t => (t.code || t.ticket || '').toUpperCase() === ticketCode);
+
+    if (!foundTicket) {
+      if (statusMsg) {
+        statusMsg.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-circle-xmark"></i> El ticket <strong>${ticketCode}</strong> no existe o no fue generado por el Administrador.</span>`;
+      }
+      return;
+    }
+
+    if (foundTicket.status === 'USADO') {
+      const usedDate = foundTicket.usedAt ? new Date(foundTicket.usedAt).toLocaleString() : 'Fecha previa';
+      const prevPrize = foundTicket.spinResult ? foundTicket.spinResult.name : 'Premio registrado';
+      if (statusMsg) {
+        statusMsg.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-ban"></i> <strong>Ticket ya utilizado:</strong> Fue canjeado el ${usedDate} (Premio: ${prevPrize}). No se permiten tiros duplicados.</span>`;
+      }
+      return;
+    }
+
+    // Comprobar división del ticket
+    if (foundTicket.division && foundTicket.division !== this.currentDiv) {
+      this.selectDivision(foundTicket.division);
+    }
+
+    // Proceder al giro verificado
+    const items = this.getCurrentItems();
+    const winningIndex = Math.floor(Math.random() * items.length);
+    const winner = items[winningIndex];
+
+    // Quemar ticket
+    foundTicket.status = 'USADO';
+    foundTicket.usedAt = new Date().toISOString();
+    foundTicket.spinResult = {
+      name: winner.name,
+      val: winner.val,
+      tag: winner.tag,
+      delta: winner.delta
+    };
+
+    // Calcular nuevo balance
+    const netDelta = winner.delta;
+    const newBudgetM = clubBudgetM + netDelta;
+    if (club) {
+      club.budget = newBudgetM * 1000000;
+      if (club.budgetDetails) club.budgetDetails.presupuestoFinal = newBudgetM;
+    }
+    if (lmiData.teamBudgets && lmiData.teamBudgets[clubId]) {
+      lmiData.teamBudgets[clubId].presupuestoFinal = newBudgetM;
+    }
+
+    // Registrar en Historial
+    if (!lmiData.ruletaHistory) lmiData.ruletaHistory = [];
+    lmiData.ruletaHistory.unshift({
+      id: `SPIN-${Date.now()}`,
+      ticketCode: ticketCode,
+      teamId: clubId,
+      teamName: club ? club.name : clubId,
+      division: this.currentDiv,
+      cost: cost,
+      prize: winner,
+      delta: netDelta,
+      prevBudget: clubBudgetM,
+      newBudget: newBudgetM,
+      timestamp: new Date().toISOString()
+    });
+
+    // Persistir localmente si estamos en entorno local
+    this.saveDataLocally();
+
+    // Enviar notificación automática a Telegram
+    this.sendTelegramAlert(club ? club.name : clubId, this.currentDiv, ticketCode, winner, netDelta, newBudgetM);
+
+    // Ejecutar animación física
+    this.runSpinAnimation(winningIndex, winner, ticketCode, club, netDelta, newBudgetM);
+  },
+
+  async saveDataLocally() {
+    if (typeof window === 'undefined') return;
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    if (!isLocal) return;
+
+    try {
+      await fetch('/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lmiData)
+      });
+      console.log("RuletaApp: Cambios guardados en data.js localmente tras el giro.");
+    } catch (e) {
+      try {
+        await fetch('http://127.0.0.1:8000/api/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(lmiData)
+        });
+      } catch (err) {}
+    }
+  },
+
+  runSpinAnimation(winningIndex, winner, ticketCode, club, netDelta, newBudgetM) {
+    this.isSpinning = true;
+
+    const btnMain = document.getElementById('btn-ruleta-spin-main');
+    const btnCenter = document.getElementById('ruleta-center-spin-btn');
+    const canvas = document.getElementById('ruleta-wheel-canvas');
+    const statusMsg = document.getElementById('ruleta-status-message');
+
+    if (btnMain) btnMain.disabled = true;
+    if (btnCenter) btnCenter.disabled = true;
+    if (statusMsg) statusMsg.innerHTML = '<span style="color: #fbbf24;"><i class="fa-solid fa-spinner fa-spin"></i> ¡La ruleta está girando! Mucha suerte...</span>';
+
+    const items = this.getCurrentItems();
+    const numSlices = items.length;
+    const sliceDeg = 360 / numSlices;
+
+    const centerOffset = sliceDeg / 2;
+    const targetDeg = (winningIndex * sliceDeg) + centerOffset;
+    const fullRotations = (5 + Math.floor(Math.random() * 3)) * 360;
+    const stopAt = fullRotations + (360 - targetDeg) - 90;
+    this.currentRotation += stopAt;
+
+    if (canvas) {
+      canvas.style.transition = 'transform 4.5s cubic-bezier(0.12, 0.9, 0.22, 1)';
+      canvas.style.transform = `rotate(${this.currentRotation}deg)`;
+    }
+
+    setTimeout(() => {
+      this.isSpinning = false;
+      if (btnMain) btnMain.disabled = false;
+      if (btnCenter) btnCenter.disabled = false;
+
+      this.lastSpinResult = {
+        clubName: club ? club.name : 'Club LMI',
+        division: this.currentDiv.toUpperCase(),
+        ticket: ticketCode,
+        winner: winner,
+        delta: netDelta,
+        newBudget: newBudgetM,
+        date: new Date().toLocaleString()
+      };
+
+      // Mostrar Certificado
+      const resBox = document.getElementById('ruleta-result-box');
+      const resTitle = document.getElementById('ruleta-result-title');
+      const resDesc = document.getElementById('ruleta-result-desc');
+      const resAcc = document.getElementById('ruleta-result-accounting');
+
+      if (resTitle) {
+        resTitle.innerHTML = `<span style="color: ${winner.color || '#fbbf24'};"><i class="fa-solid ${winner.icon || 'fa-gift'}"></i> ${winner.name} (${winner.val})</span>`;
+      }
+      if (resDesc) {
+        resDesc.innerHTML = `<strong>${winner.tag || 'Premio'}:</strong> ${winner.desc || ''}`;
+      }
+      if (resAcc) {
+        const sign = netDelta >= 0 ? `+${netDelta}` : `${netDelta}`;
+        resAcc.innerHTML = `
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem; flex-wrap: wrap;">
+            <span><i class="fa-solid fa-shield-halved"></i> Club: <strong>${this.lastSpinResult.clubName}</strong></span>
+            <span><i class="fa-solid fa-ticket"></i> Ticket: <strong>${ticketCode}</strong></span>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.35rem; flex-wrap: wrap;">
+            <span>Balance de Giro: <strong style="color: ${netDelta >= 0 ? '#34d399' : '#f87171'};">$${sign}M</strong></span>
+            <span>Nuevo Presupuesto: <strong style="color: #38bdf8;">$${newBudgetM}M USD</strong></span>
+          </div>
+        `;
+      }
+
+      if (resBox) resBox.style.display = 'block';
+      if (statusMsg) statusMsg.innerHTML = '<span style="color: #34d399;"><i class="fa-solid fa-circle-check"></i> Giro completado y registrado exitosamente.</span>';
+
+      this.renderPrizesList(winningIndex);
+      this.onClubSelectChange();
+
+      const activeRow = document.getElementById(`ruleta-prize-row-${winningIndex}`);
+      if (activeRow) activeRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    }, 4600);
+  },
+
+  async sendTelegramAlert(clubName, division, ticketCode, winner, delta, newBudgetM) {
+    const cfg = this.getConfig();
+    const token = cfg.telegramBotToken || '8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA';
+    const chatId = cfg.telegramChatId || '1096032578';
+    if (!token || !chatId) return;
+
+    const sign = delta >= 0 ? `+${delta}` : `${delta}`;
+    const text = `🎰 *NUEVO GIRO EN RULETA LMI*\n\n` +
+      `🛡️ *Club:* ${clubName}\n` +
+      `🏆 *Ruleta:* División ${division.toUpperCase()}\n` +
+      `🎟️ *Ticket:* \`${ticketCode}\` *(Quemado)*\n` +
+      `🎯 *Casilla:* ${winner.name} (${winner.val})\n` +
+      `💼 *Detalle:* ${winner.desc}\n` +
+      `💰 *Impacto Financiero:* ${sign}M\n` +
+      `🏦 *Nuevo Presupuesto:* $${newBudgetM}M USD\n` +
+      `📅 *Fecha:* ${new Date().toLocaleString()}\n` +
+      `🔒 _Verificado por Sistema Anti-Trampas LMI_`;
+
+    const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (isLocal) {
+      try {
+        const localRes = await fetch('/api/telegram/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, token, chat_id: chatId })
+        });
+        if (localRes.ok) return;
+      } catch (e) {}
+    }
+
+    try {
+      const url = `https://api.telegram.org/bot${token}/sendMessage`;
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: 'Markdown'
+        })
+      });
+    } catch (e) {
+      console.log('Telegram notice:', e);
+    }
+  },
+
+  copyShareResult() {
+    if (!this.lastSpinResult) return;
+    const r = this.lastSpinResult;
+    const sign = r.delta >= 0 ? `+${r.delta}` : `${r.delta}`;
+    const text = `🎰 *COMPROBANTE OFICIAL RULETA LMI*\n\n` +
+      `🛡️ *Club:* ${r.clubName}\n` +
+      `🏆 *División:* ${r.division}\n` +
+      `🎟️ *Ticket:* ${r.ticket}\n` +
+      `🎯 *Resultado:* ${r.winner.name} (${r.winner.val})\n` +
+      `📊 *Balance Financiero:* $${sign}M USD\n` +
+      `🏦 *Presupuesto Oficial:* $${r.newBudget}M USD\n` +
+      `📅 *Fecha:* ${r.date}\n\n` +
+      `🌐 _Liga Master Internacional (LMI)_`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      alert("¡Comprobante copiado al portapapeles! Listo para pegar en WhatsApp o Facebook.");
+    }).catch(() => {
+      alert(text);
+    });
+  },
+
+  resetViewAfterSpin() {
+    document.getElementById('ruleta-result-box').style.display = 'none';
+    const input = document.getElementById('ruleta-ticket-code');
+    if (input) input.value = '';
+    const statusMsg = document.getElementById('ruleta-status-message');
+    if (statusMsg) statusMsg.innerHTML = '<i class="fa-solid fa-circle-info"></i> El costo de inscripción será descontado automáticamente del presupuesto del club.';
+  }
+};

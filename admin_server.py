@@ -206,6 +206,32 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
             return
 
+        if path == "/api/telegram/test" or path == "/api/telegram/send":
+            try:
+                p = json.loads(body) if body else {}
+                text = p.get("text", "🔔 Test desde LMI Admin Hub")
+                token = p.get("token", "8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA")
+                chat_id = p.get("chat_id", "1096032578")
+
+                tg_url = f"https://api.telegram.org/bot{token}/sendMessage"
+                payload = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}).encode("utf-8")
+                req = urllib.request.Request(tg_url, data=payload, headers={"Content-Type": "application/json"})
+                
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    tg_res = json.loads(resp.read().decode("utf-8"))
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"success": True, "result": tg_res}).encode("utf-8"))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
+            return
+
         if path == "/api/deploy":
             try:
                 commit_msg = "Actualización desde LMI Admin Hub"

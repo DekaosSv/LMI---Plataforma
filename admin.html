@@ -60,7 +60,11 @@
         <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i>
         <span>Mercado Mitad Temporada</span>
       </button>
-      <button class="nav-btn" data-view="view-budgets" style="border-left: 3px solid #10b981;">
+            <button class="nav-btn" data-view="view-ruleta" style="border-left: 3px solid #f59e0b;">
+        <i class="fa-solid fa-dharmachakra" style="color: #f59e0b;"></i>
+        <span>Ruleta de la Fortuna</span>
+      </button>
+      <button class="nav-btn" data-view="view-budgets"  style="border-left: 3px solid #10b981;">
         <i class="fa-solid fa-wallet" style="color: #10b981;"></i>
         <span>Presupuestos & Finanzas</span>
       </button>
@@ -124,7 +128,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
           <span>Ver Web</span>
         </a>
-        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1793681960">
+        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1793762488">
           <i class="fa-solid fa-floppy-disk"></i>
           <span>Guardar Cambios</span>
         </button>
@@ -228,7 +232,7 @@
             <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.9rem;">
               <li>Edición en vivo de plantillas, presupuestos y estadísticas.</li>
               <li>Actualización instantánea de goles y asistencias por torneo.</li>
-              <li>Sincronización automática con <code>data.js?v=1793681960> y <code>Registro Balon de Oro.txt</code>.</li>
+              <li>Sincronización automática con <code>data.js?v=1793762488> y <code>Registro Balon de Oro.txt</code>.</li>
               <li>Publicación con 1 clic hacia GitHub Pages.</li>
             </ul>
             <button class="btn btn-gold" onclick="AdminApp.saveData(true)" style="width: 100%;">
@@ -1437,7 +1441,7 @@
               </p>
             </div>
             <button class="btn btn-gold" style="padding: 0.85rem 1.8rem; font-size: 1rem; font-weight: 800;" onclick="AdminApp.applyAllMidseasonMarket()">
-              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1793681960
+              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1793762488
             </button>
           </div>
 
@@ -1455,7 +1459,7 @@
               ¡Mercado de Mitad de Temporada Aplicado Exitosamente!
             </h2>
             <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 650px; margin: 0 auto;">
-              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js?v=1793681960>.
+              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js?v=1793762488>.
             </p>
           </div>
 
@@ -1608,6 +1612,288 @@
         </div>
       </section>
 
+      
+
+      <!-- ==================== VIEW: RULETA DE LA FORTUNA ==================== -->
+      <section class="module-view" id="view-ruleta">
+        
+        <!-- Header Card -->
+        <div class="card" style="margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 18px; padding: 1.6rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.35); padding: 0.25rem 0.75rem; border-radius: 999px; color: #fbbf24; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-dharmachakra"></i> Sistema Oficial LMI
+              </div>
+              <h2 style="font-size: 1.8rem; font-weight: 900; color: #fff; margin: 0 0 0.35rem 0;">
+                Control de Ruleta & Tokens Anti-Trampas
+              </h2>
+              <p style="color: #94a3b8; font-size: 0.9rem; margin: 0; max-width: 700px;">
+                Genera tickets de tiro únicos para los clubes, audita los giros realizados en vivo, descuenta fondos automáticamente y gestiona las alertas al bot de Telegram.
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+              <button class="btn-primary" onclick="AdminApp.saveData()" style="padding: 0.7rem 1.2rem; font-size: 0.88rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar data.js?v=1793762488
+              </button>
+              <button class="btn-secondary" onclick="AdminApp.openDeployModal()" style="padding: 0.7rem 1.2rem; font-size: 0.88rem;">
+                <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Publicar (Git)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          
+          <div class="card" style="padding: 1.2rem; border-left: 4px solid #f59e0b; display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(245, 158, 11, 0.15); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 1.4rem;">
+              <i class="fa-solid fa-dharmachakra"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Total Giros</div>
+              <div id="kpi-ruleta-total-spins" style="font-size: 1.6rem; font-weight: 900; color: #fff;">0</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 1.2rem; border-left: 4px solid #10b981; display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; color: #34d399; font-size: 1.4rem;">
+              <i class="fa-solid fa-ticket"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Tickets Disponibles</div>
+              <div id="kpi-ruleta-available-tickets" style="font-size: 1.6rem; font-weight: 900; color: #34d399;">0</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 1.2rem; border-left: 4px solid #38bdf8; display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(56, 189, 248, 0.15); display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 1.4rem;">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Impacto Neto Liga</div>
+              <div id="kpi-ruleta-net-drain" style="font-size: 1.6rem; font-weight: 900; color: #fff;">$0M</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 1.2rem; border-left: 4px solid #22c55e; display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34, 197, 94, 0.15); display: flex; align-items: center; justify-content: center; color: #22c55e; font-size: 1.4rem;">
+              <i class="fa-brands fa-telegram"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Telegram Sentinel</div>
+              <div style="font-size: 1.1rem; font-weight: 900; color: #22c55e;">Conectado</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Fila de Operaciones (Generador de Tickets + Telegram Test + Giro Directo) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+          
+          <!-- Panel 1: Generador de Tickets -->
+          <div class="card" style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.12);">
+            <div class="card-header" style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-ticket" style="color: #f59e0b;"></i> Generar Ticket Anti-Trampas
+              </h3>
+              <span style="font-size: 0.72rem; color: #94a3b8;">1 Uso Único</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div>
+                <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">Club Participante</label>
+                <select id="admin-ruleta-gen-club" class="form-input" style="width: 100%; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px;" onchange="AdminApp.onRuletaGenClubChange()">
+                  <!-- Dinámico -->
+                </select>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div>
+                  <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">Ruleta / Costo</label>
+                  <select id="admin-ruleta-gen-div" class="form-input" style="width: 100%; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px;">
+                    <option value="oro">Oro (-$150M)</option>
+                    <option value="plata">Plata (-$75M)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">Prefijo Especial</label>
+                  <input type="text" id="admin-ruleta-gen-prefix" class="form-input" placeholder="AUTO" style="width: 100%; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; text-transform: uppercase;" />
+                </div>
+              </div>
+
+              <button class="btn-primary" onclick="AdminApp.generateRuletaTicket()" style="margin-top: 0.5rem; width: 100%; padding: 0.85rem; font-weight: 800; font-size: 0.92rem; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #000;">
+                <i class="fa-solid fa-plus-circle"></i> Generar y Habilitar Ticket
+              </button>
+
+              <!-- Resultado del Ticket Generado -->
+              <div id="admin-ruleta-generated-result-box" style="display: none; background: rgba(0,0,0,0.5); border: 1px dashed #f59e0b; border-radius: 12px; padding: 0.9rem; margin-top: 0.5rem;">
+                <div style="font-size: 0.75rem; color: #fbbf24; font-weight: 800; text-transform: uppercase; margin-bottom: 0.35rem;">
+                  ¡Ticket Oficial Creado!
+                </div>
+                <div id="admin-ruleta-lbl-code" style="font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; color: #fff; margin-bottom: 0.65rem;"></div>
+                <button class="btn-secondary" onclick="AdminApp.copyGeneratedTicketMessage()" style="width: 100%; font-size: 0.82rem; padding: 0.55rem;">
+                  <i class="fa-brands fa-whatsapp" style="color: #22c55e;"></i> Copiar Mensaje para el DT (WhatsApp)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Notificaciones Telegram & Cloud Bridge -->
+          <div class="card" style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.12);">
+            <div class="card-header" style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-brands fa-telegram" style="color: #38bdf8;"></i> Alertas Telegram & Webhook
+              </h3>
+              <span style="font-size: 0.72rem; color: #22c55e;"><i class="fa-solid fa-circle-check"></i> Activo</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.75rem; font-size: 0.82rem; color: #94a3b8; line-height: 1.5;">
+                <div style="margin-bottom: 0.25rem;">Bot: <strong>LMI Sentinel (@LMI_Sentinel_bot)</strong></div>
+                <div>Destinatario ID: <strong style="color: #38bdf8;">1096032578</strong></div>
+              </div>
+
+              <div>
+                <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">
+                  Webhook URL (Google Apps Script / Bridge)
+                </label>
+                <input type="text" id="admin-ruleta-webhook-url" class="form-input" placeholder="https://script.google.com/macros/s/.../exec" style="width: 100%; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; font-size: 0.82rem;" onchange="AdminApp.saveRuletaWebhookUrl()" />
+              </div>
+
+              <div>
+                <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">
+                  Prueba de Envío Inmediato
+                </label>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="admin-ruleta-test-msg" class="form-input" placeholder="Mensaje de prueba para Telegram..." style="flex: 1; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; font-size: 0.82rem;" value="🎰 Prueba de conexión Ruleta LMI -> Telegram OK!" />
+                  <button class="btn-secondary" onclick="AdminApp.sendTestTelegramMessage()" style="padding: 0.65rem 1rem; font-size: 0.82rem; white-space: nowrap;">
+                    <i class="fa-solid fa-paper-plane" style="color: #38bdf8;"></i> Probar
+                  </button>
+                </div>
+              </div>
+
+              <div style="margin-top: 0.2rem; font-size: 0.75rem; color: #64748b; line-height: 1.4;">
+                <i class="fa-solid fa-info-circle"></i> Cada vez que un club gira en la web, el bot te enviará el club, el ticket usado, el premio y el nuevo presupuesto al instante.
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Giro Directo desde el Admin -->
+          <div class="card" style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.12);">
+            <div class="card-header" style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-play" style="color: #10b981;"></i> Giro en Vivo / Manual (Admin)
+              </h3>
+              <span style="font-size: 0.72rem; color: #fbbf24;">Sorteo Directo</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div>
+                <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">Club a Girar</label>
+                <select id="admin-ruleta-direct-club" class="form-input" style="width: 100%; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px;">
+                  <!-- Dinámico -->
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.25rem; display: block;">División</label>
+                <select id="admin-ruleta-direct-div" class="form-input" style="width: 100%; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px;">
+                  <option value="oro">Ruleta Oro (-$150M)</option>
+                  <option value="plata">Ruleta Plata (-$75M)</option>
+                </select>
+              </div>
+
+              <button class="btn-primary" onclick="AdminApp.executeAdminDirectSpin()" style="margin-top: 0.5rem; width: 100%; padding: 0.85rem; font-weight: 800; font-size: 0.92rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff;">
+                <i class="fa-solid fa-dice"></i> Girar Ruleta & Aplicar Finanzas
+              </button>
+
+              <div id="admin-ruleta-direct-result-box" style="display: none; background: rgba(0,0,0,0.5); border: 1px solid #10b981; border-radius: 12px; padding: 0.9rem; margin-top: 0.5rem; font-size: 0.85rem;">
+                <div id="admin-ruleta-direct-result-title" style="font-weight: 900; color: #34d399; margin-bottom: 0.25rem;"></div>
+                <div id="admin-ruleta-direct-result-desc" style="color: #cbd5e1; font-size: 0.8rem; margin-bottom: 0.4rem;"></div>
+                <div id="admin-ruleta-direct-result-acc" style="color: #94a3b8; font-size: 0.78rem;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tabla 1: Registro Auditado de Tickets -->
+        <div class="card" style="padding: 1.5rem; margin-bottom: 1.5rem;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-list-check" style="color: #f59e0b;"></i> Registro y Estado de Tickets
+              </h3>
+              <p style="color: #94a3b8; font-size: 0.82rem; margin: 0.2rem 0 0 0;">
+                Auditoría completa de los tickets creados, su estado de uso y los resultados obtenidos.
+              </p>
+            </div>
+            
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn-secondary" onclick="AdminApp.filterRuletaTickets('all')" style="padding: 0.4rem 0.8rem; font-size: 0.78rem;">Todos</button>
+              <button class="btn-secondary" onclick="AdminApp.filterRuletaTickets('DISPONIBLE')" style="padding: 0.4rem 0.8rem; font-size: 0.78rem; color: #34d399;">Disponibles</button>
+              <button class="btn-secondary" onclick="AdminApp.filterRuletaTickets('USADO')" style="padding: 0.4rem 0.8rem; font-size: 0.78rem; color: #94a3b8;">Usados</button>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); text-align: left; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase;">
+                  <th style="padding: 0.75rem;">Código Ticket</th>
+                  <th style="padding: 0.75rem;">Club</th>
+                  <th style="padding: 0.75rem;">Ruleta</th>
+                  <th style="padding: 0.75rem;">Estado</th>
+                  <th style="padding: 0.75rem;">Creado</th>
+                  <th style="padding: 0.75rem;">Usado el</th>
+                  <th style="padding: 0.75rem;">Resultado Obtenido</th>
+                  <th style="padding: 0.75rem; text-align: center;">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="admin-ruleta-tickets-tbody">
+                <!-- Dinámico -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tabla 2: Historial de Giros Oficiales -->
+        <div class="card" style="padding: 1.5rem;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-clock-rotate-left" style="color: #38bdf8;"></i> Historial Contable de Giros
+              </h3>
+              <p style="color: #94a3b8; font-size: 0.82rem; margin: 0.2rem 0 0 0;">
+                Trazabilidad financiera de cada premio, castigo e impacto en el presupuesto de los clubes.
+              </p>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(255,255,255,0.1); text-align: left; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase;">
+                  <th style="padding: 0.75rem;">Fecha & Hora</th>
+                  <th style="padding: 0.75rem;">Club</th>
+                  <th style="padding: 0.75rem;">Ruleta</th>
+                  <th style="padding: 0.75rem;">Ticket</th>
+                  <th style="padding: 0.75rem;">Premio / Sanción</th>
+                  <th style="padding: 0.75rem;">Balance Giro</th>
+                  <th style="padding: 0.75rem;">Nuevo Presupuesto</th>
+                </tr>
+              </thead>
+              <tbody id="admin-ruleta-history-tbody">
+                <!-- Dinámico -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+
       <!-- ==================== VIEW 5: TROPHIES & BALLON D'OR ==================== -->
       <section class="module-view" id="view-trophies">
         
@@ -1616,7 +1902,7 @@
           <div class="card-header">
             <div>
               <h2 class="card-title"><i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Ganadores del Balón de Oro</h2>
-              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1793681960> y <code>Registro Balon de Oro.txt</code>.</p>
+              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1793762488> y <code>Registro Balon de Oro.txt</code>.</p>
             </div>
             <button class="btn btn-gold" id="btn-add-bdo-modal">
               <i class="fa-solid fa-plus"></i> Añadir Ganador de Balón de Oro
@@ -2511,7 +2797,7 @@
   <div class="toast-box" id="toast-box"></div>
 
   <!-- Application Logic with cache-busting -->
-  <script src="data.js?v=1793681960"></script>
-  <script src="admin.js?v=1793681960"></script>
+  <script src="data.js?v=1793762488"></script>
+  <script src="admin.js?v=1793762488"></script>
 </body>
 </html>
