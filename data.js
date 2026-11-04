@@ -315,7 +315,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "BayArena",
       "manager": "Santiago Encinas",
-      "budget": 3155000000,
+      "budget": 3505000000,
       "initialBudget": 2154000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -336,15 +336,15 @@ var INITIAL_LMI_DATA = {
             "asistidores": 70
           },
           "champions": {
-            "fase": null,
-            "premio": 0,
+            "fase": "CAMPEON",
+            "premio": 350,
             "goleadorAsistidor": 0
           },
           "pretemporada": 10,
           "adicionales": 0
         },
-        "balanceTemporada": 510,
-        "presupuestoFinal": 3155
+        "balanceTemporada": 860,
+        "presupuestoFinal": 3505
       }
     },
     {
@@ -616,7 +616,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Emirates Stadium",
       "manager": "Ronald Acosta",
-      "budget": 553000000,
+      "budget": 853000000,
       "initialBudget": 211000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -637,15 +637,15 @@ var INITIAL_LMI_DATA = {
             "asistidores": 55
           },
           "champions": {
-            "fase": null,
-            "premio": 0,
+            "fase": "SUBCAMPEON",
+            "premio": 300,
             "goleadorAsistidor": 0
           },
           "pretemporada": 0,
           "adicionales": 100
         },
-        "balanceTemporada": 510,
-        "presupuestoFinal": 553
+        "balanceTemporada": 810,
+        "presupuestoFinal": 853
       }
     },
     {
@@ -6034,11 +6034,11 @@ var INITIAL_LMI_DATA = {
       "name": "João Cancelo",
       "position": "LD",
       "teamId": "bayernleverkusen",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6048,11 +6048,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 0,
+          "goals": 1,
           "assists": 2,
           "goals_liga": 0,
           "assists_liga": 0,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -6124,11 +6124,11 @@ var INITIAL_LMI_DATA = {
       "name": "Nico Paz",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 5,
+      "goals": 6,
       "assists": 15,
       "goals_liga": 4,
       "assists_liga": 11,
-      "goals_champions": 1,
+      "goals_champions": 2,
       "assists_champions": 4,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6138,11 +6138,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 5,
+          "goals": 6,
           "assists": 15,
           "goals_liga": 4,
           "assists_liga": 11,
-          "goals_champions": 1,
+          "goals_champions": 2,
           "assists_champions": 4,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -6394,11 +6394,11 @@ var INITIAL_LMI_DATA = {
       "name": "James Rodríguez",
       "position": "MP",
       "teamId": "bayernleverkusen",
-      "goals": 4,
+      "goals": 5,
       "assists": 6,
       "goals_liga": 1,
       "assists_liga": 3,
-      "goals_champions": 3,
+      "goals_champions": 4,
       "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6408,11 +6408,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 4,
+          "goals": 5,
           "assists": 6,
           "goals_liga": 1,
           "assists_liga": 3,
-          "goals_champions": 3,
+          "goals_champions": 4,
           "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -6485,11 +6485,11 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "bayernleverkusen",
       "goals": 1,
-      "assists": 5,
+      "assists": 6,
       "goals_liga": 0,
       "assists_liga": 2,
       "goals_champions": 1,
-      "assists_champions": 3,
+      "assists_champions": 4,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -6499,11 +6499,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 1,
-          "assists": 5,
+          "assists": 6,
           "goals_liga": 0,
           "assists_liga": 2,
           "goals_champions": 1,
-          "assists_champions": 3,
+          "assists_champions": 4,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -6515,11 +6515,11 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "bayernleverkusen",
       "goals": 2,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -6529,11 +6529,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
           "goals": 2,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -6544,11 +6544,11 @@ var INITIAL_LMI_DATA = {
       "name": "Gabriel Jesus",
       "position": "DC",
       "teamId": "bayernleverkusen",
-      "goals": 10,
+      "goals": 11,
       "assists": 1,
       "goals_liga": 5,
       "assists_liga": 1,
-      "goals_champions": 5,
+      "goals_champions": 6,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -6558,11 +6558,11 @@ var INITIAL_LMI_DATA = {
         "bayernleverkusen": {
           "teamId": "bayernleverkusen",
           "teamName": "Bayern Leverkusen",
-          "goals": 10,
+          "goals": 11,
           "assists": 1,
           "goals_liga": 5,
           "assists_liga": 1,
-          "goals_champions": 5,
+          "goals_champions": 6,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -10828,12 +10828,12 @@ var INITIAL_LMI_DATA = {
       "name": "Samuele Ricci",
       "position": "MCD",
       "teamId": "arsenal",
-      "goals": 1,
-      "assists": 1,
+      "goals": 2,
+      "assists": 2,
       "goals_liga": 1,
       "assists_liga": 1,
-      "goals_champions": 0,
-      "assists_champions": 0,
+      "goals_champions": 1,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -10842,12 +10842,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 1,
-          "assists": 1,
+          "goals": 2,
+          "assists": 2,
           "goals_liga": 1,
           "assists_liga": 1,
-          "goals_champions": 0,
-          "assists_champions": 0,
+          "goals_champions": 1,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -10948,11 +10948,11 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 34,
+      "goals": 35,
       "assists": 9,
       "goals_liga": 25,
       "assists_liga": 4,
-      "goals_champions": 9,
+      "goals_champions": 10,
       "assists_champions": 5,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -10962,11 +10962,11 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 34,
+          "goals": 35,
           "assists": 9,
           "goals_liga": 25,
           "assists_liga": 4,
-          "goals_champions": 9,
+          "goals_champions": 10,
           "assists_champions": 5,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -11218,12 +11218,12 @@ var INITIAL_LMI_DATA = {
       "name": "Vedat Muriqi",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 3,
-      "assists": 2,
+      "goals": 4,
+      "assists": 3,
       "goals_liga": 1,
       "assists_liga": 1,
-      "goals_champions": 2,
-      "assists_champions": 1,
+      "goals_champions": 3,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -11232,12 +11232,12 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 3,
-          "assists": 2,
+          "goals": 4,
+          "assists": 3,
           "goals_liga": 1,
           "assists_liga": 1,
-          "goals_champions": 2,
-          "assists_champions": 1,
+          "goals_champions": 3,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -11309,11 +11309,11 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "arsenal",
       "goals": 22,
-      "assists": 10,
+      "assists": 11,
       "goals_liga": 5,
       "assists_liga": 7,
       "goals_champions": 17,
-      "assists_champions": 3,
+      "assists_champions": 4,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -11323,11 +11323,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals": 18,
-          "assists": 6,
+          "assists": 7,
           "goals_liga": 3,
           "assists_liga": 4,
           "goals_champions": 15,
-          "assists_champions": 2,
+          "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
         },
@@ -21027,10 +21027,97 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Final",
       "team1": "Arsenal",
-      "score1": "",
+      "score1": "3",
       "team2": "Bayern Leverkusen",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "4",
+      "estado": "Finalizado",
+      "events": [
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_5",
+          "playerName": "João Cancelo",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_23",
+          "playerName": "Vedat Muriqi",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_23",
+          "playerName": "Vedat Muriqi",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_6",
+          "playerName": "Samuele Ricci",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_6",
+          "playerName": "Samuele Ricci",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_22",
+          "playerName": "Gabriel Jesus",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_21",
+          "playerName": "Savinho",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Bayern Leverkusen"
     }
   ],
   "rules": [
@@ -33195,6 +33282,109 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1793766262167",
+      "timestamp": 1793766262167,
+      "date": "03 nov 2026, 10:24 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Final",
+      "team1Id": "arsenal",
+      "team1Name": "Arsenal",
+      "team1Logo": "Logos Equipos/arsenal.png",
+      "score1": 3,
+      "team2Id": "bayernleverkusen",
+      "team2Name": "Bayern Leverkusen",
+      "team2Logo": "Logos Equipos/bayernleverkusen.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1792039977160_17",
+          "playerName": "James Rodríguez",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_8",
+          "playerName": "Nico Paz",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_5",
+          "playerName": "João Cancelo",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_10",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040551310_22",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_23",
+          "playerName": "Vedat Muriqi",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_23",
+          "playerName": "Vedat Muriqi",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_6",
+          "playerName": "Samuele Ricci",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792040054246_6",
+          "playerName": "Samuele Ricci",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_22",
+          "playerName": "Gabriel Jesus",
+          "teamId": "bayernleverkusen",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1792039977160_21",
+          "playerName": "Savinho",
+          "teamId": "bayernleverkusen",
+          "type": "asistencia",
+          "count": 1
+        }
+      ]
+    },
     {
       "id": "match_1793675978713",
       "timestamp": 1793675978713,
@@ -49818,15 +50008,15 @@ var INITIAL_LMI_DATA = {
           "asistidores": 70
         },
         "champions": {
-          "fase": null,
-          "premio": 0,
+          "fase": "CAMPEON",
+          "premio": 350,
           "goleadorAsistidor": 0
         },
         "pretemporada": 10,
         "adicionales": 0
       },
-      "balanceTemporada": 510,
-      "presupuestoFinal": 3155
+      "balanceTemporada": 860,
+      "presupuestoFinal": 3505
     },
     "como1907": {
       "excelName": "Como 1907",
@@ -50154,15 +50344,15 @@ var INITIAL_LMI_DATA = {
           "asistidores": 55
         },
         "champions": {
-          "fase": null,
-          "premio": 0,
+          "fase": "SUBCAMPEON",
+          "premio": 300,
           "goleadorAsistidor": 0
         },
         "pretemporada": 0,
         "adicionales": 100
       },
-      "balanceTemporada": 510,
-      "presupuestoFinal": 553
+      "balanceTemporada": 810,
+      "presupuestoFinal": 853
     },
     "carabobofutbolclub": {
       "excelName": "Carabobo Fútbol Club",
