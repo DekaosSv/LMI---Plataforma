@@ -21747,7 +21747,7 @@ var INITIAL_LMI_DATA = {
     {
       "torneo": "Champions League",
       "ganador": "Santiago Encinas",
-      "cantidad": 1
+      "cantidad": 2
     },
     {
       "torneo": "Copa Estelar",
@@ -21763,6 +21763,16 @@ var INITIAL_LMI_DATA = {
       "torneo": "Copa Estelar",
       "ganador": "Santiago Encinas",
       "cantidad": 3
+    },
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Santiago Encinas",
+      "cantidad": 1
+    },
+    {
+      "torneo": "Liga LMI",
+      "ganador": "Daniel Herrera",
+      "cantidad": 1
     }
   ],
   "balonOro": [
