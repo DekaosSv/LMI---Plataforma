@@ -142,7 +142,7 @@ function renderMainNavMenu() {
 
   // Si existe configuración de pestañas desde Admin Hub, usarla dinámicamente
   if (lmiData && lmiData.webConfig && Array.isArray(lmiData.webConfig.tabs)) {
-    const enabledTabs = lmiData.webConfig.tabs.filter(t => t.enabled !== false);
+    const enabledTabs = lmiData.webConfig.tabs.filter(t => t.enabled !== false && t.id !== 'ruleta');
     if (enabledTabs.length > 0) {
       navContainer.innerHTML = enabledTabs.map(tab => {
         const isActive = (currentNav === tab.id);
@@ -212,6 +212,10 @@ function initUI() {
 }
 
 function switchNav(navId) {
+  if (navId === 'ruleta') {
+    switchNav('dashboard');
+    return;
+  }
   // Comprobar si la pestaña está deshabilitada en la configuración del Admin Hub
   if (lmiData && lmiData.webConfig && Array.isArray(lmiData.webConfig.tabs)) {
     const tabObj = lmiData.webConfig.tabs.find(t => t.id === navId);
@@ -248,7 +252,6 @@ function switchNav(navId) {
   if (activeSec) activeSec.classList.add('active');
 
   if (navId === 'dashboard') renderDashboard();
-  if (navId === 'ruleta') { if (typeof RuletaApp !== 'undefined') RuletaApp.init(); }
   if (navId === 'posiciones') renderWebPosiciones();
   if (navId === 'stats') renderStats();
   if (navId === 'teams') {
@@ -2731,7 +2734,7 @@ function initPlayerSearchUI() {
   const teamSel = document.getElementById('player-search-team-filter');
   if (!teamSel) return;
   
-  const hiddenSearchTeams = ['brightonhovealbion', 'manchestercity', 'fctwente'];
+  const hiddenSearchTeams = ['brightonhovealbion', 'fctwente'];
   const activeTeams = lmiData.teams.filter(t => !t.hidden && !hiddenSearchTeams.includes(t.id));
   teamSel.innerHTML = `
     <option value="">Todos los Equipos</option>
@@ -2770,9 +2773,9 @@ function filterPlayersDatabase(resetLimit = true) {
   const selectedCardType = cardTypeFilter ? cardTypeFilter.value : '';
   const selectedSort = sortFilter ? sortFilter.value : 'name_asc';
 
-  const hiddenSearchTeams = ['brightonhovealbion', 'manchestercity', 'fctwente'];
+  const hiddenSearchTeams = ['brightonhovealbion', 'fctwente'];
   let filtered = lmiData.players.filter(p => {
-    // Excluir jugadores de clubes ocultos en el buscador (Brighton, Manchester City, FC Twente)
+    // Excluir jugadores de clubes ocultos en el buscador (Brighton y FC Twente)
     if (hiddenSearchTeams.includes(p.teamId) || p.hidden) return false;
 
     // 1. Filtro de Posición

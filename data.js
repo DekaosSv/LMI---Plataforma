@@ -5237,7 +5237,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792040515606_19",
-      "name": "EL Brian Rodríguez",
+      "name": "Brian Rodríguez",
       "position": "MC",
       "teamId": "atleticodemadrid",
       "goals": 0,
@@ -10129,8 +10129,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_2",
@@ -10160,8 +10159,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_3",
@@ -10191,8 +10189,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_4",
@@ -10222,8 +10219,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_5",
@@ -10253,8 +10249,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_6",
@@ -10284,8 +10279,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_7",
@@ -10315,8 +10309,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_8",
@@ -10346,8 +10339,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_9",
@@ -10377,8 +10369,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_10",
@@ -10408,8 +10399,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_11",
@@ -10439,8 +10429,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_12",
@@ -10470,8 +10459,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_13",
@@ -10501,12 +10489,11 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_14",
-      "name": "MDD Serge Gnabry",
+      "name": "Serge Gnabry",
       "position": "MC",
       "teamId": "manchestercity",
       "goals": 2,
@@ -10532,8 +10519,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_15",
@@ -10563,8 +10549,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_16",
@@ -10594,8 +10579,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_17",
@@ -10625,8 +10609,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_18",
@@ -10656,8 +10639,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_19",
@@ -10687,8 +10669,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_20",
@@ -10718,8 +10699,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_21",
@@ -10749,8 +10729,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_23",
@@ -10780,8 +10759,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792040054246_1",
@@ -12542,7 +12520,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792039636832_12",
-      "name": "DEC Lothar Matthäus",
+      "name": "Lothar Matthäus",
       "position": "MC",
       "teamId": "fctwente",
       "goals": 0,
@@ -12573,7 +12551,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792039636832_13",
-      "name": "DEC Lisandro Martínez",
+      "name": "Lisandro Martínez",
       "position": "MC",
       "teamId": "fctwente",
       "goals": 0,
@@ -12635,7 +12613,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792039636832_15",
-      "name": "DEC Antonio Rüdiger",
+      "name": "Antonio Rüdiger",
       "position": "MC",
       "teamId": "fctwente",
       "goals": 0,
@@ -12697,7 +12675,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792039636832_17",
-      "name": "MDI Nicolás Tagliafico",
+      "name": "Nicolás Tagliafico",
       "position": "MC",
       "teamId": "fctwente",
       "goals": 0,
@@ -12728,7 +12706,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792039636832_18",
-      "name": "MDD Jeremie Frimpong",
+      "name": "Jeremie Frimpong",
       "position": "MC",
       "teamId": "fctwente",
       "goals": 0,
@@ -17242,7 +17220,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792126304381_9",
-      "name": "MDD Eduardo Salvio",
+      "name": "Eduardo Salvio",
       "position": "MC",
       "teamId": "vascodagama",
       "goals": 0,
@@ -17272,7 +17250,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792126304381_10",
-      "name": "MDI Kamaldeen Sulemana",
+      "name": "Kamaldeen Sulemana",
       "position": "MC",
       "teamId": "vascodagama",
       "goals": 0,
@@ -17602,7 +17580,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1792126304381_21",
-      "name": "MDI Marcelo Flores",
+      "name": "Marcelo Flores",
       "position": "MC",
       "teamId": "vascodagama",
       "goals": 0,
@@ -19530,8 +19508,7 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      },
-      "hidden": true
+      }
     },
     {
       "id": "p_1792039948207_22",
@@ -24076,7 +24053,7 @@ var INITIAL_LMI_DATA = {
             "events": [
               {
                 "playerId": "p_1792039948207_14",
-                "playerName": "MDD Serge Gnabry",
+                "playerName": "Serge Gnabry",
                 "teamId": "manchestercity",
                 "type": "gol",
                 "count": 1
@@ -24504,7 +24481,7 @@ var INITIAL_LMI_DATA = {
             "events": [
               {
                 "playerId": "p_1792040515606_19",
-                "playerName": "EL Brian Rodríguez",
+                "playerName": "Brian Rodríguez",
                 "teamId": "atleticodemadrid",
                 "type": "asistencia",
                 "count": 1
@@ -26717,7 +26694,7 @@ var INITIAL_LMI_DATA = {
               },
               {
                 "playerId": "p_1792039948207_14",
-                "playerName": "MDD Serge Gnabry",
+                "playerName": "Serge Gnabry",
                 "teamId": "manchestercity",
                 "type": "gol",
                 "count": 1
@@ -31791,7 +31768,7 @@ var INITIAL_LMI_DATA = {
               },
               {
                 "playerId": "p_1792039636832_12",
-                "playerName": "DEC Lothar Matthäus",
+                "playerName": "Lothar Matthäus",
                 "teamId": "fctwente",
                 "type": "asistencia",
                 "count": 1
@@ -35808,7 +35785,7 @@ var INITIAL_LMI_DATA = {
         },
         {
           "playerId": "p_1792039948207_14",
-          "playerName": "MDD Serge Gnabry",
+          "playerName": "Serge Gnabry",
           "teamId": "manchestercity",
           "type": "gol",
           "count": 1
@@ -36539,7 +36516,7 @@ var INITIAL_LMI_DATA = {
         },
         {
           "playerId": "p_1792039636832_12",
-          "playerName": "DEC Lothar Matthäus",
+          "playerName": "Lothar Matthäus",
           "teamId": "fctwente",
           "type": "asistencia",
           "count": 1
@@ -40633,7 +40610,7 @@ var INITIAL_LMI_DATA = {
       "events": [
         {
           "playerId": "p_1792040515606_19",
-          "playerName": "EL Brian Rodríguez",
+          "playerName": "Brian Rodríguez",
           "teamId": "atleticodemadrid",
           "type": "asistencia",
           "count": 1
@@ -45782,14 +45759,14 @@ var INITIAL_LMI_DATA = {
         },
         {
           "playerId": "p_1792126304381_10",
-          "playerName": "MDI Kamaldeen Sulemana",
+          "playerName": "Kamaldeen Sulemana",
           "teamId": "vascodagama",
           "type": "asistencia",
           "count": 1
         },
         {
           "playerId": "p_1792126304381_9",
-          "playerName": "MDD Eduardo Salvio",
+          "playerName": "Eduardo Salvio",
           "teamId": "vascodagama",
           "type": "gol",
           "count": 2
@@ -46614,7 +46591,7 @@ var INITIAL_LMI_DATA = {
       "events": [
         {
           "playerId": "p_1792039948207_14",
-          "playerName": "MDD Serge Gnabry",
+          "playerName": "Serge Gnabry",
           "teamId": "manchestercity",
           "type": "gol",
           "count": 1
@@ -50686,7 +50663,7 @@ var INITIAL_LMI_DATA = {
         "id": "ruleta",
         "label": "Ruleta",
         "icon": "fa-dharmachakra",
-        "enabled": true
+        "enabled": false
       },
       {
         "id": "buscador",
