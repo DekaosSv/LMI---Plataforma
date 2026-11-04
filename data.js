@@ -573,7 +573,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Etihad Stadium",
       "manager": "Director Técnico",
-      "budget": 1319000000,
+      "budget": 815000000,
       "initialBudget": 280000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -585,7 +585,7 @@ var INITIAL_LMI_DATA = {
         "teamId": "manchestercity",
         "season": "TEMP 13",
         "presupuestoAnterior": 1329,
-        "gastosRenovaciones": 0,
+        "gastosRenovaciones": 504,
         "ingresos": {
           "liga": {
             "posicion": 10,
@@ -602,7 +602,7 @@ var INITIAL_LMI_DATA = {
           "adicionales": 0
         },
         "balanceTemporada": -10,
-        "presupuestoFinal": 1319
+        "presupuestoFinal": 815
       }
     },
     {
@@ -10071,7 +10071,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_2",
@@ -10101,7 +10102,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_3",
@@ -10131,7 +10133,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_4",
@@ -10161,7 +10164,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_5",
@@ -10191,7 +10195,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_6",
@@ -10221,7 +10226,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_7",
@@ -10251,7 +10257,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_8",
@@ -10281,7 +10288,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_9",
@@ -10311,7 +10319,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_10",
@@ -10341,7 +10350,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_11",
@@ -10371,7 +10381,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_12",
@@ -10401,7 +10412,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_13",
@@ -10431,7 +10443,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_14",
@@ -10461,7 +10474,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_15",
@@ -10491,7 +10505,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_16",
@@ -10521,7 +10536,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_17",
@@ -10551,7 +10567,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_18",
@@ -10581,7 +10598,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_19",
@@ -10611,7 +10629,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_20",
@@ -10641,7 +10660,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_21",
@@ -10671,7 +10691,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_23",
@@ -10701,7 +10722,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040054246_1",
@@ -12147,7 +12169,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_2",
@@ -12177,7 +12200,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_3",
@@ -12207,7 +12231,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_4",
@@ -12237,7 +12262,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_5",
@@ -12267,7 +12293,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_6",
@@ -12297,7 +12324,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_7",
@@ -12327,7 +12355,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_8",
@@ -12357,7 +12386,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_9",
@@ -12387,7 +12417,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_10",
@@ -12417,7 +12448,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_11",
@@ -12447,7 +12479,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_12",
@@ -12477,7 +12510,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_13",
@@ -12507,7 +12541,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_14",
@@ -12537,7 +12572,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_15",
@@ -12567,7 +12603,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_16",
@@ -12597,7 +12634,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_17",
@@ -12627,7 +12665,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_18",
@@ -12657,7 +12696,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_19",
@@ -12687,7 +12727,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_20",
@@ -12717,7 +12758,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_21",
@@ -12747,7 +12789,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_22",
@@ -12777,7 +12820,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039636832_23",
@@ -12807,7 +12851,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792992249049_1",
@@ -14841,7 +14886,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_2",
@@ -14871,7 +14917,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_3",
@@ -14901,7 +14948,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_4",
@@ -14931,7 +14979,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_5",
@@ -14961,7 +15010,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_6",
@@ -14991,7 +15041,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_7",
@@ -15021,7 +15072,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_8",
@@ -15051,7 +15103,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_9",
@@ -15081,7 +15134,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_10",
@@ -15111,7 +15165,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_11",
@@ -15141,7 +15196,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_12",
@@ -15171,7 +15227,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_13",
@@ -15201,7 +15258,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_14",
@@ -15231,7 +15289,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_15",
@@ -15261,7 +15320,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_16",
@@ -15291,7 +15351,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_17",
@@ -15321,7 +15382,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_18",
@@ -15351,7 +15413,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_19",
@@ -15381,7 +15444,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_20",
@@ -15411,7 +15475,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_21",
@@ -15441,7 +15506,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_22",
@@ -15471,7 +15537,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040623974_23",
@@ -15501,7 +15568,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792040551310_1",
@@ -19404,7 +19472,8 @@ var INITIAL_LMI_DATA = {
           "goals_estelar": 0,
           "assists_estelar": 0
         }
-      }
+      },
+      "hidden": true
     },
     {
       "id": "p_1792039948207_22",
@@ -50225,7 +50294,7 @@ var INITIAL_LMI_DATA = {
       "teamId": "manchestercity",
       "season": "TEMP 13",
       "presupuestoAnterior": 1329,
-      "gastosRenovaciones": 0,
+      "gastosRenovaciones": 504,
       "ingresos": {
         "liga": {
           "posicion": 10,
@@ -50242,7 +50311,7 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": -10,
-      "presupuestoFinal": 1319
+      "presupuestoFinal": 815
     },
     "atleticodemadrid": {
       "excelName": "Atletico de Madrid",

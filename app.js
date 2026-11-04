@@ -2731,7 +2731,8 @@ function initPlayerSearchUI() {
   const teamSel = document.getElementById('player-search-team-filter');
   if (!teamSel) return;
   
-  const activeTeams = lmiData.teams.filter(t => !t.hidden && t.id !== 'brightonhovealbion');
+  const hiddenSearchTeams = ['brightonhovealbion', 'manchestercity', 'fctwente'];
+  const activeTeams = lmiData.teams.filter(t => !t.hidden && !hiddenSearchTeams.includes(t.id));
   teamSel.innerHTML = `
     <option value="">Todos los Equipos</option>
     ${activeTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('')}
@@ -2769,9 +2770,10 @@ function filterPlayersDatabase(resetLimit = true) {
   const selectedCardType = cardTypeFilter ? cardTypeFilter.value : '';
   const selectedSort = sortFilter ? sortFilter.value : 'name_asc';
 
+  const hiddenSearchTeams = ['brightonhovealbion', 'manchestercity', 'fctwente'];
   let filtered = lmiData.players.filter(p => {
-    // Excluir jugadores de clubes inactivos / ocultos (Brighton y Vasco da Gama)
-    if (p.teamId === 'brightonhovealbion') return false;
+    // Excluir jugadores de clubes ocultos en el buscador (Brighton, Manchester City, FC Twente)
+    if (hiddenSearchTeams.includes(p.teamId) || p.hidden) return false;
 
     // 1. Filtro de Posición
     if (selectedPos && p.position !== selectedPos) return false;
