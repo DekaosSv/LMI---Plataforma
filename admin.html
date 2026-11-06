@@ -955,6 +955,71 @@
             </div>
           </div>
 
+          <!-- Identidad del Club y Previsualizador de Escudo con Transparencia -->
+          <div style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h3 style="font-size: 1rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-paintbrush" style="color: var(--lmi-gold);"></i> Identidad del Club (Nombre y Escudo Oficial)
+              </h3>
+              <span style="font-size: 0.78rem; color: #94a3b8;">
+                Verifica si el escudo tiene fondo o es transparente (sin recuadro alrededor).
+              </span>
+            </div>
+
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+              
+              <!-- Cuadro de Previsualización de Transparencia del Escudo -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.45rem;">
+                <div id="team-logo-preview-box" class="checkerboard-bg" style="width: 120px; height: 120px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.4); transition: background 0.2s ease;">
+                  <img id="team-logo-preview-img" src="" alt="Escudo" style="max-width: 95px; max-height: 95px; object-fit: contain;">
+                  <div id="team-logo-preview-empty" style="display: none; color: #64748b; font-size: 0.75rem; text-align: center; padding: 0.5rem;">Sin imagen</div>
+                </div>
+
+                <!-- Botones selectores de fondo para comprobar transparencia -->
+                <div style="display: flex; gap: 0.35rem;">
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.setLogoPreviewBg('checker')" title="Fondo Ajedrez (Ver Transparencia)" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; font-weight: 700;">
+                    🏁 Ajedrez
+                  </button>
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.setLogoPreviewBg('dark')" title="Fondo Oscuro" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; font-weight: 700;">
+                    ⬛ Oscuro
+                  </button>
+                  <button type="button" class="btn btn-secondary" onclick="AdminApp.setLogoPreviewBg('light')" title="Fondo Blanco" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; font-weight: 700;">
+                    ⬜ Blanco
+                  </button>
+                </div>
+              </div>
+
+              <!-- Inputs de Nombre y Escudo -->
+              <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 0.85rem;">
+                <div class="grid-2" style="margin: 0; gap: 0.85rem;">
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">Nombre Oficial del Club</label>
+                    <input type="text" class="form-control" id="team-edit-name" placeholder="Ej: Como 1907">
+                  </div>
+                  <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">Nombre Corto / Siglas</label>
+                    <input type="text" class="form-control" id="team-edit-shortname" placeholder="Ej: COM">
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin: 0;">
+                  <label style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">Ruta o URL del Escudo (PNG sin fondo)</label>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" class="form-control" id="team-edit-logo" placeholder="Ej: Logos Equipos/como.webp o URL https://..." oninput="AdminApp.updateTeamLogoPreview(this.value)">
+                    <label class="btn btn-secondary" style="cursor: pointer; white-space: nowrap; margin: 0; padding: 0.5rem 0.85rem; font-weight: 700;" title="Subir archivo de imagen desde tu computadora">
+                      <i class="fa-solid fa-upload"></i> Subir Archivo
+                      <input type="file" id="team-edit-logo-file" accept="image/*" style="display: none;" onchange="AdminApp.handleLogoFileUpload(event)">
+                    </label>
+                  </div>
+                  <span style="font-size: 0.74rem; color: #64748b; margin-top: 0.25rem; display: block;">
+                    💡 Si al seleccionar el fondo <strong>Ajedrez</strong> o <strong>Blanco</strong> se ven los cuadros detrás del escudo, <strong>NO tiene fondo</strong>. Si aparece un recuadro blanco o negro sólido, <strong>TIENE fondo</strong>.
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <!-- Team Details Edit Row -->
           <div class="grid-4" id="team-details-box" style="margin-bottom: 1.5rem;">
             <div class="form-group">
@@ -1981,6 +2046,27 @@
 
           <div class="grid-3" id="web-tabs-control-grid">
             <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- Control de Visibilidad de Tarjeta de Presupuesto en Equipos -->
+        <div class="card" style="border-left: 4px solid #10b981;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="card-title" style="color: #34d399;">
+                <i class="fa-solid fa-wallet" style="color: #10b981;"></i> Finanzas en Perfiles de Clubes
+              </h2>
+              <p class="card-desc">
+                Controla si los usuarios de la web ven la tarjeta detallada de <strong>Presupuesto & Balance</strong> (desglose de premios de liga, champions y renovaciones) al visitar el perfil de cada club.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Mostrar Tarjeta "Presupuesto & Balance"</span>
+              <label class="lmi-switch">
+                <input type="checkbox" id="web-config-show-team-budget-card" onchange="AdminApp.onWebConfigChange()">
+                <span class="lmi-slider"></span>
+              </label>
+            </div>
           </div>
         </div>
 

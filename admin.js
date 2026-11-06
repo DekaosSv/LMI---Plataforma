@@ -3506,6 +3506,17 @@ const AdminApp = {
       p.assists_champions = 0;
       p.goals_estelar = 0;
       p.assists_estelar = 0;
+      if (p.statsByTeam && p.statsByTeam[this.selectedTeamId]) {
+        const s = p.statsByTeam[this.selectedTeamId];
+        s.goals = 0;
+        s.assists = 0;
+        s.goals_liga = 0;
+        s.assists_liga = 0;
+        s.goals_champions = 0;
+        s.assists_champions = 0;
+        s.goals_estelar = 0;
+        s.assists_estelar = 0;
+      }
     });
 
     this.markDirty();
@@ -3544,7 +3555,7 @@ const AdminApp = {
     this.ensureWebConfig();
     this.data.webConfig.seasonTitle = targetSeason;
 
-    // 2. Reiniciar estadísticas individuales a 0 (solo temporada)
+    // 2. Reiniciar estadísticas individuales a 0 (totales y por club / división)
     let playersCount = 0;
     (this.data.players || []).forEach(p => {
       p.goals = 0;
@@ -3555,10 +3566,40 @@ const AdminApp = {
       p.assists_champions = 0;
       p.goals_estelar = 0;
       p.assists_estelar = 0;
+
+      // Limpiar desglose de estadísticas por club
+      if (p.statsByTeam && typeof p.statsByTeam === 'object') {
+        Object.values(p.statsByTeam).forEach(s => {
+          if (s && typeof s === 'object') {
+            s.goals = 0;
+            s.assists = 0;
+            s.goals_liga = 0;
+            s.assists_liga = 0;
+            s.goals_champions = 0;
+            s.assists_champions = 0;
+            s.goals_estelar = 0;
+            s.assists_estelar = 0;
+          }
+        });
+      }
       playersCount++;
     });
 
-    // 3. Reiniciar torneos de la temporada
+    // 3. Reiniciar estadísticas de los clubes (tabla de posiciones)
+    (this.data.teams || []).forEach(t => {
+      t.stats = {
+        played: 0,
+        won: 0,
+        drawn: 0,
+        lost: 0,
+        goalsFor: 0,
+        goalsAgainst: 0,
+        goalDiff: 0,
+        points: 0
+      };
+    });
+
+    // 4. Reiniciar torneos de la temporada
     // Copa Estelar
     (this.data.copaEstelarMatches || []).forEach(m => {
       m.score1 = null;
@@ -3569,15 +3610,8 @@ const AdminApp = {
       m.events = [];
     });
 
-    // Champions League
-    (this.data.championsLeagueMatches || []).forEach(m => {
-      m.score1 = null;
-      m.score2 = null;
-      m.estado = 'Pendiente';
-      m.winner = null;
-      m.played = false;
-      m.events = [];
-    });
+    // Champions League - Eliminatorias limpias hasta terminar fase de grupos
+    this.data.championsLeagueMatches = [];
 
     // Fixtures de Liga (Oro, Plata, Champions)
     if (this.data.fixtures) {
@@ -3621,10 +3655,71 @@ const AdminApp = {
   },
 
   // ==================== TEAMS & ROSTERS STUDIO ====================
+  setLogoPreviewBg(type) {
+    const box = document.getElementById('team-logo-preview-box');
+    if (!box) return;
+    if (type === 'checker') {
+      box.className = 'checkerboard-bg';
+      box.style.background = '';
+    } else if (type === 'dark') {
+      box.className = '';
+      box.style.background = '#0b0f19';
+    } else if (type === 'light') {
+      box.className = '';
+      box.style.background = '#ffffff';
+    }
+  },
+
+  updateTeamLogoPreview(url) {
+    const img = document.getElementById('team-logo-preview-img');
+    const empty = document.getElementById('team-logo-preview-empty');
+    if (!img) return;
+    const cleanUrl = (url || '').trim();
+    if (cleanUrl) {
+      img.src = cleanUrl;
+      img.style.display = 'block';
+      if (empty) empty.style.display = 'none';
+      img.onerror = () => {
+        img.style.display = 'none';
+        if (empty) {
+          empty.textContent = 'Error al cargar imagen';
+          empty.style.display = 'block';
+        }
+      };
+    } else {
+      img.style.display = 'none';
+      if (empty) {
+        empty.textContent = 'Sin imagen';
+        empty.style.display = 'block';
+      }
+    }
+  },
+
+  handleLogoFileUpload(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target.result;
+      const logoInput = document.getElementById('team-edit-logo');
+      if (logoInput) logoInput.value = dataUrl;
+      this.updateTeamLogoPreview(dataUrl);
+    };
+    reader.readAsDataURL(file);
+  },
+
   onTeamSelected(teamId) {
     this.selectedTeamId = teamId;
     const team = this.getTeamById(teamId);
     if (!team) return;
+
+    const nameEl = document.getElementById('team-edit-name');
+    if (nameEl) nameEl.value = team.name || '';
+    const shortEl = document.getElementById('team-edit-shortname');
+    if (shortEl) shortEl.value = team.shortName || '';
+    const logoEl = document.getElementById('team-edit-logo');
+    if (logoEl) logoEl.value = team.logo || '';
+    this.updateTeamLogoPreview(team.logo || '');
 
     document.getElementById('team-edit-manager').value = team.manager || '';
     document.getElementById('team-edit-stadium').value = team.stadium || '';
@@ -3640,10 +3735,44 @@ const AdminApp = {
     const team = this.getTeamById(this.selectedTeamId);
     if (!team) return;
 
+    const nameEl = document.getElementById('team-edit-name');
+    const newName = nameEl ? nameEl.value.trim() : team.name;
+    const oldName = team.name;
+
+    const shortEl = document.getElementById('team-edit-shortname');
+    if (shortEl && shortEl.value.trim()) team.shortName = shortEl.value.trim();
+
+    const logoEl = document.getElementById('team-edit-logo');
+    if (logoEl && logoEl.value.trim()) team.logo = logoEl.value.trim();
+
     team.manager = document.getElementById('team-edit-manager').value.trim();
     team.stadium = document.getElementById('team-edit-stadium').value.trim();
-    team.budget = parseInt(document.getElementById('team-edit-budget').value, 10) || 0;
-    
+
+    // Budget handling: soporta tanto millones (ej. 2779) como número completo (2779000000)
+    let rawBudget = parseInt(document.getElementById('team-edit-budget').value, 10);
+    if (isNaN(rawBudget)) rawBudget = 0;
+    if (Math.abs(rawBudget) > 0 && Math.abs(rawBudget) < 100000) {
+      rawBudget = rawBudget * 1000000;
+    }
+    team.budget = rawBudget;
+
+    // Sincronizar presupuesto en budgetDetails
+    if (team.budgetDetails) {
+      team.budgetDetails.presupuestoFinal = Math.round(rawBudget / 1000000);
+      if (newName) team.budgetDetails.teamName = newName;
+    }
+    if (this.data.teamBudgets && this.data.teamBudgets[team.id]) {
+      this.data.teamBudgets[team.id].presupuestoFinal = Math.round(rawBudget / 1000000);
+      if (newName) this.data.teamBudgets[team.id].teamName = newName;
+    }
+
+    if (newName && newName !== oldName) {
+      team.name = newName;
+      const curFilter = document.getElementById('team-filter-division') ? document.getElementById('team-filter-division').value : 'all';
+      this.populateTeamSelectorByDivision(curFilter);
+      this.populateTeamDropdowns();
+    }
+
     const oldDiv = team.division || 'oro';
     const divEl = document.getElementById('team-edit-division');
     if (divEl) team.division = divEl.value;
@@ -3654,7 +3783,7 @@ const AdminApp = {
     }
 
     await this.saveData(true);
-    this.showToast(`Datos actualizados y guardados para ${team.name}.`, 'success');
+    this.showToast(`Datos e identidad de ${team.name} actualizados y guardados.`, 'success');
   },
 
   // ==================== GESTIÓN DE CLUBES (NUEVO / ELIMINAR) ====================
@@ -5172,6 +5301,11 @@ const AdminApp = {
       bannerType.value = (cfg.bannerAnnouncement && cfg.bannerAnnouncement.type) || 'info';
     }
 
+    const budgetCardChk = document.getElementById('web-config-show-team-budget-card');
+    if (budgetCardChk) {
+      budgetCardChk.checked = cfg.showTeamBudgetCard !== false;
+    }
+
     // Contadores de clubes para generadores de fechas
     const oroCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'oro').length;
     const plataCount = (this.data.teams || []).filter(t => (t.division || '').toLowerCase() === 'plata' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama' && !t.hidden).length;
@@ -5282,6 +5416,11 @@ const AdminApp = {
         text: bannerTxt.value.trim(),
         type: bannerType.value
       };
+    }
+
+    const budgetCardChk = document.getElementById('web-config-show-team-budget-card');
+    if (budgetCardChk) {
+      this.data.webConfig.showTeamBudgetCard = budgetCardChk.checked;
     }
     this.markDirty();
   },

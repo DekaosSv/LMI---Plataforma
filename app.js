@@ -2164,6 +2164,10 @@ function loadTeamHub(teamId) {
 
 // Helper para renderizar desglose financiero en Team Hub
 function renderTeamBudgetBox(team) {
+  // Control Web: Ocultar tarjeta de presupuesto y balance si está desactivada
+  if (lmiData && lmiData.webConfig && lmiData.webConfig.showTeamBudgetCard === false) {
+    return '';
+  }
   const b = team.budgetDetails || (lmiData.teamBudgets && lmiData.teamBudgets[team.id]);
   if (!b) {
     return `
