@@ -17,3 +17,13 @@ Goles: 18
 Asistencias: 0
 Titulos: Campeón de Liga LMI & UEFA Champions League
 Descripcion: Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles.
+
+Temporada: Temporada 12
+Jugador: Lautaro Martínez
+Club: Bayern Leverkusen
+DT: Santiago Encinas
+Imagen: lautaro_balon_oro_t12.jpg
+Goles: 28
+Asistencias: 0
+Titulos: Campeon de Division Oro y Champions League siendo figura en las eliminatorias y la final
+Descripcion: El delantero argentino Lautaro Martínez fue una pieza fundamental para que el Bayern Leverkusen consiguiera el doblete. Además, a nivel individual, cerró una temporada espectacular sumando un total de 28 goles, consolidándose como un verdadero killer del área.

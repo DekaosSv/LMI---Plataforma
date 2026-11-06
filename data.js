@@ -22650,6 +22650,28 @@ var INITIAL_LMI_DATA = {
       "asistencias": 0,
       "titulos": "Campeón de Liga LMI & UEFA Champions League",
       "descripcion": "Ganador del Balón de Oro de la Temporada 12 con el Como 1907 tras una campaña estelar con 18 goles."
+    },
+    {
+      "id": "bdo-1793935216067",
+      "season": "Temporada 12",
+      "temporada": "Temporada 12",
+      "player": "Lautaro Martínez",
+      "jugador": "Lautaro Martínez",
+      "team": "Bayern Leverkusen",
+      "club": "Bayern Leverkusen",
+      "teamLogo": "Logos Equipos/bayernleverkusen.png",
+      "manager": "Santiago Encinas",
+      "dt": "Santiago Encinas",
+      "image": "Balon de oro/lautaro_balon_oro_t12.jpg",
+      "imagen": "Balon de oro/lautaro_balon_oro_t12.jpg",
+      "goals": 28,
+      "goles": 28,
+      "assists": 0,
+      "asistencias": 0,
+      "trophies": "Campeon de Division Oro y Champions League siendo figura en las eliminatorias y la final",
+      "titulos": "Campeon de Division Oro y Champions League siendo figura en las eliminatorias y la final",
+      "description": "El delantero argentino Lautaro Martínez fue una pieza fundamental para que el Bayern Leverkusen consiguiera el doblete. Además, a nivel individual, cerró una temporada espectacular sumando un total de 28 goles, consolidándose como un verdadero killer del área.",
+      "descripcion": "El delantero argentino Lautaro Martínez fue una pieza fundamental para que el Bayern Leverkusen consiguiera el doblete. Además, a nivel individual, cerró una temporada espectacular sumando un total de 28 goles, consolidándose como un verdadero killer del área."
     }
   ],
   "fixtures": {
