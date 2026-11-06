@@ -23000,7 +23000,7 @@ var INITIAL_LMI_DATA = {
         "id": "renovaciones",
         "label": "Renovaciones",
         "icon": "fa-calculator",
-        "enabled": true
+        "enabled": false
       },
       {
         "id": "ruleta",
