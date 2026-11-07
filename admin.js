@@ -1008,7 +1008,7 @@ const AdminApp = {
 
             <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.2rem; font-size: 0.86rem;">
               <div style="display: flex; align-items: center; gap: 0.45rem; flex: 1; overflow: hidden;">
-                <img src="${m.team1Logo}" alt="" style="width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${m.team1Logo}" alt="" style="width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${t1Display}</div>
               </div>
               <div style="padding: 0 0.5rem; font-weight: 900; color: ${m.played ? '#facc15' : 'var(--text-muted)'}; font-size: 0.9rem; flex-shrink: 0;">
@@ -1016,7 +1016,7 @@ const AdminApp = {
               </div>
               <div style="display: flex; align-items: center; gap: 0.45rem; flex: 1; justify-content: flex-end; overflow: hidden;">
                 <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;">${t2Display}</div>
-                <img src="${m.team2Logo}" alt="" style="width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${m.team2Logo}" alt="" style="width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               </div>
             </div>
 
@@ -1140,7 +1140,7 @@ const AdminApp = {
             ${restingList.map(r => `
               <div style="display: flex; align-items: center; gap: 0.45rem;">
                 ${r.group ? `<span style="font-size: 0.72rem; font-weight: 800; padding: 0.12rem 0.45rem; border-radius: 4px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${this.escape(r.group)}</span>` : ''}
-                <img src="${this.escape(r.team.logo || 'Logos Equipos/default.png')}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${this.escape(r.team.logo || 'Logos Equipos/default.png')}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <strong style="color: #ffd100; font-size: 0.92rem;">${this.escape(r.team.name)}</strong>
               </div>
             `).join('')}
@@ -1199,7 +1199,7 @@ const AdminApp = {
 
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.5rem 0;">
           <div style="flex: 1; display: flex; align-items: center; gap: 0.5rem;">
-            ${t1Logo ? `<img src="${this.escape(t1Logo)}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">` : ''}
+            ${t1Logo ? `<img src="${this.escape(t1Logo)}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">` : ''}
             <span style="font-weight: 700; font-size: 0.9rem; color: #fff;">${this.escape(t1Name)}</span>
           </div>
 
@@ -1209,7 +1209,7 @@ const AdminApp = {
 
           <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem;">
             <span style="font-weight: 700; font-size: 0.9rem; color: #fff; text-align: right;">${this.escape(t2Name)}</span>
-            ${t2Logo ? `<img src="${this.escape(t2Logo)}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">` : ''}
+            ${t2Logo ? `<img src="${this.escape(t2Logo)}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">` : ''}
           </div>
         </div>
       `;
@@ -1365,7 +1365,7 @@ const AdminApp = {
       return `
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.38rem 0.6rem; background: #0f172a; border-radius: 6px; margin-bottom: 3px;">
           <div style="display: flex; align-items: center; gap: 0.55rem; max-width: 80%;">
-            <img src="${teamObj.logo}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${teamObj.logo}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
             <span style="font-size: 0.86rem; color: ${isPlaceholder ? '#94a3b8' : '#ffffff'}; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${teamName || 'Por clasificar'}</span>
           </div>
           <span style="font-size: 0.95rem; font-weight: 900; color: #facc15;">${score !== undefined && score !== null ? score : ''}</span>
@@ -1638,7 +1638,7 @@ const AdminApp = {
       return `
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.38rem 0.6rem; background: #0c1c38; border-radius: 6px; margin-bottom: 3px;">
           <div style="display: flex; align-items: center; gap: 0.55rem; max-width: 80%;">
-            <img src="${teamObj.logo}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${teamObj.logo}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
             <span style="font-size: 0.86rem; color: ${isPlaceholder ? '#94a3b8' : '#ffffff'}; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${teamName || 'Por clasificar'}</span>
           </div>
           <span style="font-size: 0.95rem; font-weight: 900; color: #38bdf8;">${score !== undefined && score !== null ? score : ''}</span>
@@ -2145,7 +2145,7 @@ const AdminApp = {
           <td style="padding: 0.65rem 0.5rem; text-align: center;">${posBadge}</td>
           <td style="padding: 0.65rem 0.85rem; text-align: left;">
             <div style="display: flex; align-items: center; gap: 0.65rem;">
-              <img src="${this.escape(item.team.logo || 'Logos Equipos/default.png')}" alt="${this.escape(item.team.name)}" style="width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.src='Logos Equipos/default.png'">
+              <img src="${this.escape(item.team.logo || 'Logos Equipos/default.png')}" alt="${this.escape(item.team.name)}" style="width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               <span style="font-weight: 800; font-size: 0.92rem; color: #ffffff;">${this.escape(item.team.name)}</span>
               ${extraGroup}
             </div>
@@ -4643,7 +4643,7 @@ const AdminApp = {
 
       card.innerHTML = `
         <div style="position: relative; width: 100%; height: 210px; border-radius: var(--radius-md); overflow: hidden; background: #000;">
-          <img src="${this.escape(imgPath)}" alt="${this.escape(playerName)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
+          <img src="${this.escape(imgPath)}" alt="${this.escape(playerName)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null;this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
           <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.75); border: 1px solid var(--lmi-gold); color: var(--lmi-gold); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 99px;">
             ${this.escape(seasonName)}
           </div>
@@ -7509,7 +7509,7 @@ const AdminApp = {
             <td style="color: var(--text-muted); font-size: 0.85rem;">${idx + 1}</td>
             <td>
               <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <img src="${this.escape(t.logo || 'Logos Equipos/default.png')}" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${this.escape(t.logo || 'Logos Equipos/default.png')}" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <span style="font-weight: 700; color: #fff;">${this.escape(t.name)}</span>
               </div>
             </td>
@@ -7532,7 +7532,7 @@ const AdminApp = {
           <td style="color: var(--text-muted); font-size: 0.85rem;">${idx + 1}</td>
           <td>
             <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <img src="${this.escape(t.logo || 'Logos Equipos/default.png')}" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+              <img src="${this.escape(t.logo || 'Logos Equipos/default.png')}" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               <div>
                 <span style="font-weight: 700; color: #fff;">${this.escape(t.name)}</span>
                 <div style="font-size: 0.72rem; color: var(--text-muted);">${b.excelName || ''}</div>

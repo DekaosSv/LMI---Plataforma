@@ -349,7 +349,7 @@ function renderDashboard() {
           <div class="leader-row">
             <div class="leader-info" style="min-width: 0;">
               <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
-              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               <div style="min-width: 0;">
                 <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
                 <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
@@ -409,7 +409,7 @@ function renderDashboard() {
           <div class="leader-row">
             <div class="leader-info" style="min-width: 0;">
               <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
-              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+              <img src="${team.logo}" class="team-logo" alt="${team.name}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               <div style="min-width: 0;">
                 <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
                 <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
@@ -519,7 +519,7 @@ function renderLeaderboardHTML(players, valueKey, label, emptyMsg, valueColor, s
       <div class="leader-row">
         <div class="leader-info" style="min-width: 0;">
           <div class="player-avatar" style="${avatarStyle}">${idx + 1}</div>
-          ${teamLogo ? `<img src="${teamLogo}" class="team-logo" alt="${teamName}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">` : ''}
+          ${teamLogo ? `<img src="${teamLogo}" class="team-logo" alt="${teamName}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">` : ''}
           <div style="min-width: 0;">
             <div class="player-name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</div>
             <div class="player-meta" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
@@ -793,7 +793,7 @@ function renderBracket(containerId, matches, phaseFilter = null) {
     return `
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0.5rem; ${isOpponentWinner ? 'opacity: 0.75;' : ''}">
         <div style="display: flex; align-items: center; gap: 0.5rem; max-width: 80%;">
-          <img src="${teamObj.logo}" alt="${teamName}" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+          <img src="${teamObj.logo}" alt="${teamName}" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
           <span style="font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="${nameStyle}" title="${teamName || 'Por clasificar'}">${teamName || 'Por clasificar'}</span>
         </div>
         <span style="font-family: var(--font-heading); font-size: 0.85rem; ${scoreStyle}">${score !== undefined && score !== null ? score : ''}</span>
@@ -1019,7 +1019,7 @@ function renderBracket(containerId, matches, phaseFilter = null) {
         <div style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.15) 0%, rgba(0, 168, 89, 0.1) 100%); border: 2px solid var(--lmi-yellow); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: 0 8px 20px rgba(255, 209, 0, 0.15); text-align: center;">
           <i class="fa-solid fa-trophy" style="font-size: 2.5rem; color: var(--lmi-yellow); margin-bottom: 0.75rem; display: inline-block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));"></i>
           <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem;">¡CAMPEÓN OFICIAL!</div>
-          <img src="${championLogo}" alt="${championName}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));" onerror="this.src='Logos Equipos/default.png'">
+          <img src="${championLogo}" alt="${championName}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
           <div style="font-size: 1.25rem; font-weight: 800; color: var(--lmi-blue); line-height: 1.2;">${championName}</div>
           <div style="font-size: 0.85rem; font-weight: 700; color: var(--lmi-green); margin-top: 0.5rem;">Marcador: ${finalMatch.score1} - ${finalMatch.score2}</div>
         </div>
@@ -1032,14 +1032,14 @@ function renderBracket(containerId, matches, phaseFilter = null) {
           
           <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.75rem;">
             <div style="text-align: center; width: 75px;">
-              <img src="${t1Obj.logo}" alt="${finalMatch.team1}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" onerror="this.src='Logos Equipos/default.png'">
+              <img src="${t1Obj.logo}" alt="${finalMatch.team1}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               <div style="font-size: 0.7rem; font-weight: 700; margin-top: 0.25rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${finalMatch.team1 || 'Por Clasificar'}</div>
             </div>
             
             <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted);">VS</span>
             
             <div style="text-align: center; width: 75px;">
-              <img src="${t2Obj.logo}" alt="${finalMatch.team2}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" onerror="this.src='Logos Equipos/default.png'">
+              <img src="${t2Obj.logo}" alt="${finalMatch.team2}" style="width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
               <div style="font-size: 0.7rem; font-weight: 700; margin-top: 0.25rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${finalMatch.team2 || 'Por Clasificar'}</div>
             </div>
           </div>
@@ -1318,7 +1318,7 @@ function renderWebChampionsView() {
             <td style="padding: 0.65rem 0.5rem; text-align: center;">${posBadge}</td>
             <td style="padding: 0.65rem 0.75rem; text-align: left;">
               <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <img src="${escapeHTML(item.team.logo)}" alt="" style="width: 24px; height: 24px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${escapeHTML(item.team.logo)}" alt="" style="width: 24px; height: 24px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <span style="font-weight: 700; font-size: 0.9rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;">${escapeHTML(item.team.name)}</span>
               </div>
             </td>
@@ -1403,7 +1403,7 @@ function renderWebChampionsView() {
             </td>
             <td style="padding: 0.75rem 1rem; text-align: left;">
               <div style="display: flex; align-items: center; gap: 0.65rem;">
-                <img src="${escapeHTML(item.team.logo)}" alt="" style="width: 26px; height: 26px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${escapeHTML(item.team.logo)}" alt="" style="width: 26px; height: 26px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;">${escapeHTML(item.team.name)}</span>
               </div>
             </td>
@@ -1474,7 +1474,7 @@ function renderChampionsWebFixtures(jornadaVal) {
             ${restingList.map(rItem => `
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 ${rItem.group ? `<span style="font-size: 0.74rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${escapeHTML(rItem.group)}</span>` : ''}
-                <img src="${escapeHTML(rItem.team.logo)}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${escapeHTML(rItem.team.logo)}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <strong style="color: #ffd100; font-size: 0.92rem;">${escapeHTML(rItem.team.name)}</strong>
               </div>
             `).join('')}
@@ -1545,7 +1545,7 @@ function renderChampionsWebFixtures(jornadaVal) {
 
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.5rem 0;">
           <div style="flex: 1; display: flex; align-items: center; gap: 0.55rem;">
-            <img src="${escapeHTML(t1Logo)}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${escapeHTML(t1Logo)}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
             <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff;">${escapeHTML(t1Name)}</span>
           </div>
 
@@ -1555,7 +1555,7 @@ function renderChampionsWebFixtures(jornadaVal) {
 
           <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 0.55rem;">
             <span style="font-weight: 700; font-size: 0.95rem; color: #ffffff; text-align: right;">${escapeHTML(t2Name)}</span>
-            <img src="${escapeHTML(t2Logo)}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${escapeHTML(t2Logo)}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
           </div>
         </div>
         ${eventsHtml}
@@ -2071,7 +2071,7 @@ function loadTeamHub(teamId) {
           return `
             <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--lmi-blue)'; this.style.background='#f1f5f9'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc'">
               <div style="display: flex; align-items: center; gap: 0.65rem; min-width: 0;">
-                <img src="${escapeHTML(pm.opponent.logo)}" alt="${escapeHTML(pm.opponent.name)}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.src='Logos Equipos/default.png'">
+                <img src="${escapeHTML(pm.opponent.logo)}" alt="${escapeHTML(pm.opponent.name)}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
                 <div style="min-width: 0;">
                   <div style="font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Jornada ${pm.jornada} (${pm.type === 'vuelta' ? 'Vuelta' : 'Ida'})</div>
                   <div style="font-weight: 800; font-size: 0.92rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">vs ${escapeHTML(pm.opponent.name)}</div>
@@ -3362,7 +3362,7 @@ function renderBalonOro() {
     return `
       <div class="balon-card" id="bdo-card-${w.id}" onclick="openBalonOroLightbox('${w.id}')" title="Haz clic para ver detalles y foto completa">
         <div class="balon-card-img-wrapper">
-          <img src="${imgSrc}" alt="${w.player}" class="balon-card-img" onerror="this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
+          <img src="${imgSrc}" alt="${w.player}" class="balon-card-img" onerror="this.onerror=null;this.src='Sala de campeones/Balon de oro/trofeo_balon_oro.jpg'">
           <div class="balon-img-overlay"></div>
           <span class="balon-season-badge-tag"><i class="fa-solid fa-crown"></i> ${w.season || 'Edición LMI'}</span>
           <div class="balon-zoom-hint" title="Ver detalles"><i class="fa-solid fa-expand"></i></div>
@@ -3793,7 +3793,7 @@ function renderWebStandings() {
         <td style="padding: 0.85rem 1rem; text-align: center;">${posBadge}</td>
         <td style="padding: 0.85rem 1rem; text-align: left;">
           <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <img src="${escapeHTML(item.team.logo)}" alt="${escapeHTML(item.team.name)}" style="width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${escapeHTML(item.team.logo)}" alt="${escapeHTML(item.team.name)}" style="width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
             <span style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">${escapeHTML(item.team.name)}</span>
           </div>
         </td>
@@ -3930,7 +3930,7 @@ function onWebJornadaSelectChange() {
         <div style="display: flex; align-items: center; justify-content: center; gap: 0.65rem; padding: 0.6rem 1rem; background: rgba(250, 204, 21, 0.1); border: 1px dashed rgba(250, 204, 21, 0.4); border-radius: 8px;">
           <i class="fa-solid fa-bed" style="color: #facc15; font-size: 0.95rem;"></i>
           <span style="font-size: 0.85rem; color: #cbd5e1; font-weight: 600;">Descansa esta jornada:</span>
-          <img src="${escapeHTML(restTeam.logo || 'Logos Equipos/default.png')}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.src='Logos Equipos/default.png'">
+          <img src="${escapeHTML(restTeam.logo || 'Logos Equipos/default.png')}" alt="" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
           <strong style="color: #ffd100; font-size: 0.92rem;">${escapeHTML(restTeam.name)}</strong>
         </div>
       `;
@@ -3977,7 +3977,7 @@ function onWebJornadaSelectChange() {
         <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.75rem;">
           <!-- Local -->
           <div style="display: flex; align-items: center; gap: 0.65rem; min-width: 0;">
-            <img src="${escapeHTML(t1.logo)}" alt="${escapeHTML(t1.name)}" style="width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${escapeHTML(t1.logo)}" alt="${escapeHTML(t1.name)}" style="width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
             <span style="font-weight: 800; font-size: 0.95rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${escapeHTML(t1.name)}">${escapeHTML(t1.name)}</span>
           </div>
 
@@ -3989,7 +3989,7 @@ function onWebJornadaSelectChange() {
           <!-- Visita -->
           <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.65rem; min-width: 0;">
             <span style="font-weight: 800; font-size: 0.95rem; color: #ffffff; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${escapeHTML(t2.name)}">${escapeHTML(t2.name)}</span>
-            <img src="${escapeHTML(t2.logo)}" alt="${escapeHTML(t2.name)}" style="width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));" onerror="this.src='Logos Equipos/default.png'">
+            <img src="${escapeHTML(t2.logo)}" alt="${escapeHTML(t2.name)}" style="width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
           </div>
         </div>
       </div>
