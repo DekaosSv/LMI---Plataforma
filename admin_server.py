@@ -210,8 +210,14 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 p = json.loads(body) if body else {}
                 text = p.get("text", "🔔 Test desde LMI Admin Hub")
-                token = p.get("token", "8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA")
-                chat_id = p.get("chat_id", "1096032578")
+                token = p.get("token") or os.environ.get("TELEGRAM_BOT_TOKEN", "")
+                chat_id = p.get("chat_id") or os.environ.get("TELEGRAM_ALLOWED_USER_ID", "")
+                if not token or not chat_id:
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"success": False, "error": "Token o Chat ID no configurados"}).encode("utf-8"))
+                    return
 
                 tg_url = f"https://api.telegram.org/bot{token}/sendMessage"
                 payload = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}).encode("utf-8")

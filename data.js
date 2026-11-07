@@ -15678,7 +15678,7 @@ var INITIAL_LMI_DATA = {
     "costOro": 150,
     "costPlata": 75,
     "bridgeWebhookUrl": "https://script.google.com/macros/s/AKfycbyt6qG1pRSveRt3U_lR2tqy0o_FRgEq6CAbjVsHKVbrdqW3WIHPhce4TwGW1nGBaQrJ/exec",
-    "telegramBotToken": "8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA",
+    "telegramBotToken": "",
     "telegramChatId": "1096032578",
     "itemsOro": [
       {

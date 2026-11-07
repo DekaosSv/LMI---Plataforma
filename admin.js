@@ -7721,8 +7721,8 @@ const AdminApp = {
         costOro: 150,
         costPlata: 75,
         bridgeWebhookUrl: '',
-        telegramBotToken: '8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA',
-        telegramChatId: '1096032578',
+        telegramBotToken: '',
+        telegramChatId: '',
         itemsOro: [],
         itemsPlata: []
       };
@@ -8009,8 +8009,13 @@ const AdminApp = {
     const input = document.getElementById('admin-ruleta-test-msg');
     const msg = (input?.value || '🎰 Prueba de Ruleta LMI a Telegram').trim();
 
-    const token = this.data?.ruletaConfig?.telegramBotToken || '8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA';
-    const chatId = this.data?.ruletaConfig?.telegramChatId || '1096032578';
+    const token = this.data?.ruletaConfig?.telegramBotToken || '';
+    const chatId = this.data?.ruletaConfig?.telegramChatId || '';
+
+    if (!token || !chatId) {
+      this.showToast('Configura el Token y Chat ID de Telegram en Control Web antes de probar.', 'warning');
+      return;
+    }
 
     this.showToast('Enviando mensaje de prueba a Telegram...', 'loading');
 
@@ -8098,8 +8103,12 @@ const AdminApp = {
 
     // Enviar alerta a Telegram
     try {
-      const token = cfg.telegramBotToken || '8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA';
-      const chatId = cfg.telegramChatId || '1096032578';
+      const token = cfg.telegramBotToken || '';
+      const chatId = cfg.telegramChatId || '';
+      if (!token || !chatId) {
+        // Sin token configurado, no enviamos alerta directa
+        return;
+      }
       const sign = netDelta >= 0 ? `+${netDelta}` : `${netDelta}`;
       fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: 'POST',

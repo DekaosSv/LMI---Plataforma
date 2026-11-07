@@ -4662,8 +4662,8 @@ const RuletaApp = {
 
   async sendTelegramAlert(clubName, division, ticketCode, winner, delta, newBudgetM) {
     const cfg = this.getConfig();
-    const token = cfg.telegramBotToken || '8811462383:AAEYISyTGPH0KABupReFXbgKj1eadah4ijA';
-    const chatId = cfg.telegramChatId || '1096032578';
+    const token = cfg.telegramBotToken || '';
+    const chatId = cfg.telegramChatId || '';
     if (!token || !chatId) return;
 
     const sign = delta >= 0 ? `+${delta}` : `${delta}`;
