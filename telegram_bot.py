@@ -262,15 +262,29 @@ def execute_tool_call(tool_name, tool_args):
     """Ejecuta la función del motor LMI y genera el mensaje de respuesta"""
     if tool_name == "find_duplicate_players":
         dups = lmi_core.find_duplicate_players()
-        if not dups:
+        active_conflicts = [d for d in dups if not d.get("isAuthorized")]
+        authorized = [d for d in dups if d.get("isAuthorized")]
+
+        if not active_conflicts and not authorized:
             return "✅ *Auditoría de Duplicados:* ¡Excelente! No existen futbolistas repetidos en la liga."
         
-        msg = f"⚠️ *ALERTA: Se encontraron {len(dups)} jugadores duplicados en la liga:*\n\n"
-        for d in dups:
-            clubs = ", ".join([f"*{x['teamName']}* ({x['position']})" for x in d["occurrences"]])
-            msg += f"• 👤 *{d['playerName']}* (Repetido en {d['count']} clubes):\n  └ {clubs}\n\n"
-        msg += "_Sugerencia: Puedes transferir o dar de baja al jugador desde el Admin Hub para regularizar las plantillas._"
-        return msg
+        msg = ""
+        if active_conflicts:
+            msg += f"⚠️ *ALERTA: Se encontraron {len(active_conflicts)} jugador(es) duplicado(s) por regularizar:*\n\n"
+            for d in active_conflicts:
+                clubs = ", ".join([f"*{x['teamName']}* ({x['position']})" for x in d["occurrences"]])
+                msg += f"• 👤 *{d['playerName']}* (Repetido en {d['count']} clubes):\n  └ {clubs}\n\n"
+            msg += "_Sugerencia: Puedes transferir o regularizar al jugador desde el Admin Hub._\n\n"
+        else:
+            msg += "✅ *Auditoría de Duplicados:* ¡Excelente! No hay conflictos pendientes por regularizar.\n\n"
+
+        if authorized:
+            msg += f"ℹ️ *Casos autorizados por la administración ({len(authorized)}):*\n"
+            for d in authorized:
+                clubs = ", ".join([f"*{x['teamName']}* ({x['position']})" for x in d["occurrences"]])
+                msg += f"• 👤 *{d['playerName']}* (Mantenido en ambos clubes):\n  └ {clubs}\n"
+
+        return msg.strip()
 
     elif tool_name == "audit_league":
         report = lmi_core.audit_league_integrity()
@@ -280,16 +294,24 @@ def execute_tool_call(tool_name, tool_args):
         msg += f"📊 *Resumen General:*\n"
         msg += f"• Clubes Oficiales: *{report['totalTeams']}*\n"
         msg += f"• Futbolistas Registrados: *{report['totalPlayers']}*\n"
-        msg += f"• Jugadores Duplicados: *{len(report['duplicates'])}*\n\n"
+        
+        active_dups = [d for d in report["duplicates"] if not d.get("isAuthorized")]
+        auth_dups = [d for d in report["duplicates"] if d.get("isAuthorized")]
+        msg += f"• Conflictos Duplicados: *{len(active_dups)}*\n\n"
 
-        if report["duplicates"]:
-            msg += f"⚠️ *Jugadores Duplicados ({len(report['duplicates'])}):*\n"
-            for d in report["duplicates"][:5]:
+        if active_dups:
+            msg += f"⚠️ *Jugadores Duplicados por Resolver ({len(active_dups)}):*\n"
+            for d in active_dups[:5]:
                 c_str = ", ".join([x['teamName'] for x in d['occurrences']])
                 msg += f"  - *{d['playerName']}* en: {c_str}\n"
-            if len(report["duplicates"]) > 5:
-                msg += f"  - _...y {len(report['duplicates']) - 5} más._\n"
+            if len(active_dups) > 5:
+                msg += f"  - _...y {len(active_dups) - 5} más._\n"
             msg += "\n"
+        elif not auth_dups:
+            msg += "✅ 0 jugadores duplicados en la liga.\n\n"
+
+        if auth_dups:
+            msg += f"ℹ️ *Duplicados Autorizados ({len(auth_dups)}):* " + ", ".join([d['playerName'] for d in auth_dups]) + "\n\n"
 
         if report["rosterAnomalies"]:
             msg += f"📋 *Clubes sin 23 jugadores exactos ({len(report['rosterAnomalies'])}):*\n"

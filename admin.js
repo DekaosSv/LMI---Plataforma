@@ -6238,13 +6238,24 @@ const AdminApp = {
     if (!this.data || !this.data.players) return [];
     const seen = {};
     const teamsMap = {};
+    const activeTeamIds = new Set();
     if (this.data.teams) {
-      this.data.teams.forEach(t => teamsMap[t.id] = t.name);
+      this.data.teams.forEach(t => {
+        teamsMap[t.id] = t.name;
+        if (!t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion') {
+          activeTeamIds.add(t.id);
+        }
+      });
     }
 
+    // Casos autorizados por la administración que no deben disparar alertas
+    const authorizedKeys = new Set(['carlespuyol', 'lewishall']);
+
     this.data.players.forEach(p => {
+      if (p.teamId && !activeTeamIds.has(p.teamId)) return;
       const norm = this.normalizePlayerKey(p.name);
-      if (!norm || norm.startsWith('reserva') || norm.includes('faltajugador')) return;
+      if (!norm || norm.startsWith('reserva') || norm.includes('faltajugador') || norm.includes('pendiente') || norm === 'sinasignar') return;
+      if (authorizedKeys.has(norm)) return;
       if (!seen[norm]) seen[norm] = [];
       seen[norm].push({
         id: p.id,

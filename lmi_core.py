@@ -64,25 +64,40 @@ def write_lmi_data(data_obj):
 # =========================================================================
 # 1. AUDITORÍA: JUGADORES DUPLICADOS
 # =========================================================================
-def find_duplicate_players(data=None):
+AUTHORIZED_DUPLICATES = {"carlespuyol", "lewishall"}
+
+def find_duplicate_players(data=None, include_authorized=True):
     """
     Detecta si existen jugadores duplicados en la base de datos (por nombre idéntico o normalizado).
+    Filtra clubes inactivos/ocultos (como Brighton) y comodines de plantilla ('PENDIENTE', 'RESERVA', etc.).
     Retorna un diccionario detallado con las apariciones y clubes.
     """
     if data is None:
         data = read_lmi_data()
     
     players = data.get("players", [])
-    teams_map = {t["id"]: t["name"] for t in data.get("teams", [])}
+    teams = data.get("teams", [])
+    teams_map = {t["id"]: t["name"] for t in teams}
+    active_team_ids = {
+        t["id"] for t in teams 
+        if not t.get("hidden") and t.get("division") != "inactivo" and t.get("id") != "brightonhovealbion"
+    }
 
     names_map = {}
     for p in players:
+        team_id = p.get("teamId", "")
+        if team_id not in active_team_ids:
+            continue
+
         raw_name = p.get("name", "").strip()
-        norm_key = raw_name.lower()
+        norm_key = raw_name.lower().replace(" ", "")
         if not norm_key:
             continue
         
-        team_id = p.get("teamId", "")
+        # Ignorar comodines o jugadores temporales/pendientes
+        if norm_key.startswith("reserva") or "faltajugador" in norm_key or "pendiente" in norm_key or norm_key == "sinasignar":
+            continue
+        
         team_name = teams_map.get(team_id, team_id or "Sin Club")
         
         entry = {
@@ -98,8 +113,13 @@ def find_duplicate_players(data=None):
     duplicates = []
     for norm_key, plist in names_map.items():
         if len(plist) > 1:
+            is_authorized = norm_key in AUTHORIZED_DUPLICATES
+            if not include_authorized and is_authorized:
+                continue
             duplicates.append({
                 "playerName": plist[0]["name"],
+                "normKey": norm_key,
+                "isAuthorized": is_authorized,
                 "count": len(plist),
                 "occurrences": plist
             })
@@ -121,10 +141,15 @@ def audit_league_integrity(data=None):
     if data is None:
         data = read_lmi_data()
 
+    # Considerar únicamente los clubes oficiales activos en la liga
+    teams = [t for t in data.get("teams", []) if not t.get("hidden") and t.get("division") != "inactivo" and t.get("id") != "brightonhovealbion"]
+    active_team_ids = {t["id"] for t in teams}
+    players = [p for p in data.get("players", []) if p.get("teamId") in active_team_ids]
+
     report = {
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "totalTeams": len(data.get("teams", [])),
-        "totalPlayers": len(data.get("players", [])),
+        "totalTeams": len(teams),
+        "totalPlayers": len(players),
         "duplicates": find_duplicate_players(data),
         "invalidPositions": [],
         "rosterAnomalies": [],
@@ -134,9 +159,6 @@ def audit_league_integrity(data=None):
             "loans": []
         }
     }
-
-    teams = data.get("teams", [])
-    players = data.get("players", [])
     
     # 1. Contar jugadores por club
     roster_counts = {}
