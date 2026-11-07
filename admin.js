@@ -220,6 +220,10 @@ const AdminApp = {
     if (this.data.matchHistory) {
       this.data.matchHistory = this.data.matchHistory.filter(m => m.team1Id !== 'feyenoordrotterdam' && m.team2Id !== 'feyenoordrotterdam');
     }
+    // Sanitizar credenciales: NUNCA guardar tokens ni claves en data.js
+    if (this.data.ruletaConfig && this.data.ruletaConfig.telegramBotToken) {
+      this.data.ruletaConfig.telegramBotToken = '';
+    }
     this.setStatus('Guardando...', 'loading');
     const base = await this.getApiBase();
     try {

@@ -61,6 +61,11 @@ def write_data_js(data_obj):
         except Exception as e:
             print(f"No se pudo crear copia de seguridad: {e}")
             
+    # Sanitizar credenciales para que JAMÁS se serialicen en data.js
+    if isinstance(data_obj, dict) and "ruletaConfig" in data_obj:
+        if "telegramBotToken" in data_obj["ruletaConfig"]:
+            data_obj["ruletaConfig"]["telegramBotToken"] = ""
+
     header = "// Base de datos unificada LMI Temporada 10\n\nvar INITIAL_LMI_DATA = "
     json_str = json.dumps(data_obj, ensure_ascii=False, indent=2)
     footer = ";\n\nif (typeof window !== 'undefined') {\n  window.lmiData = INITIAL_LMI_DATA;\n}\n"

@@ -48,6 +48,11 @@ def read_lmi_data():
 
 def write_lmi_data(data_obj):
     """Guarda data.js con respaldo automático en data.backup.js"""
+    # 0. Sanitizar credenciales para que JAMÁS se serialicen en data.js
+    if isinstance(data_obj, dict) and "ruletaConfig" in data_obj:
+        if "telegramBotToken" in data_obj["ruletaConfig"]:
+            data_obj["ruletaConfig"]["telegramBotToken"] = ""
+
     # 1. Crear respaldo si data.js existe
     if os.path.exists(DATA_JS_PATH):
         try:
