@@ -604,7 +604,7 @@ var INITIAL_LMI_DATA = {
       },
       "stadium": "Emirates Stadium",
       "manager": "Ronald Acosta",
-      "budget": 640000000,
+      "budget": 660000000,
       "initialBudget": 211000000,
       "legendChangeNote": "",
       "legendRemoveNote": "",
@@ -633,7 +633,8 @@ var INITIAL_LMI_DATA = {
           "adicionales": 100
         },
         "balanceTemporada": 930,
-        "presupuestoFinal": 973
+        "presupuestoFinal": 660,
+        "teamName": "Arsenal"
       },
       "stats": {
         "played": 0,
@@ -2926,8 +2927,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936559088_18",
-      "name": "Morten Hjulmand",
-      "position": "MCD",
+      "name": "Thomas Müller",
+      "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
       "assists": 0,
@@ -4526,8 +4527,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017241785_3",
-      "name": "PENDIENTE",
-      "position": "LD",
+      "name": "Giovanni Di Lorenzo",
+      "position": "CT",
       "teamId": "clubnacional",
       "goals": 0,
       "assists": 0,
@@ -9454,7 +9455,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794027731258_12",
-      "name": "PENDIENTE",
+      "name": "Dean Henderson",
       "position": "PT",
       "teamId": "sportingclubedeportugal",
       "goals": 0,
@@ -15423,7 +15424,8 @@ var INITIAL_LMI_DATA = {
         "adicionales": 100
       },
       "balanceTemporada": 930,
-      "presupuestoFinal": 973
+      "presupuestoFinal": 660,
+      "teamName": "Arsenal"
     },
     "carabobofutbolclub": {
       "excelName": "Carabobo Fútbol Club",
