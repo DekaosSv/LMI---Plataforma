@@ -2827,9 +2827,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 2,
+      "assists": 4,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2840,9 +2840,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 0,
-          "assists": 2,
+          "assists": 4,
           "goals_liga": 0,
-          "assists_liga": 2,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2871,6 +2871,35 @@ var INITIAL_LMI_DATA = {
       "name": "Darwin Núñez",
       "position": "SD",
       "teamId": "arsenal",
+      "goals": 4,
+      "assists": 0,
+      "goals_liga": 4,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "goals": 4,
+          "assists": 0,
+          "goals_liga": 4,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1793936559088_11",
+      "name": "Gareth Bale",
+      "position": "DC",
+      "teamId": "arsenal",
       "goals": 2,
       "assists": 0,
       "goals_liga": 2,
@@ -2887,35 +2916,6 @@ var INITIAL_LMI_DATA = {
           "goals": 2,
           "assists": 0,
           "goals_liga": 2,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
-    },
-    {
-      "id": "p_1793936559088_11",
-      "name": "Gareth Bale",
-      "position": "DC",
-      "teamId": "arsenal",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "arsenal": {
-          "teamId": "arsenal",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -13186,7 +13186,7 @@ var INITIAL_LMI_DATA = {
             ],
             "annulled": false,
             "registeredBy": "Esteban Arturo",
-            "registeredAt": "2026-11-08T23:30:34.576Z"
+            "registeredAt": "2026-11-08T23:33:29.920Z"
           },
           {
             "id": "plata_j6_m7",
@@ -15319,6 +15319,48 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794180809921",
+      "timestamp": 1794180809921,
+      "date": "08 nov 2026, 18:33",
+      "competition": "plata",
+      "jornada": 6,
+      "fixtureMatchId": "plata_j6_m6",
+      "phase": "Jornada 6",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 0,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_8",
+          "playerName": "Kevin De Bruyne",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        }
+      ],
+      "registeredBy": "Esteban Arturo",
+      "registeredAt": "2026-11-08T23:33:29.920Z"
+    },
     {
       "id": "match_1794180634577",
       "timestamp": 1794180634577,
