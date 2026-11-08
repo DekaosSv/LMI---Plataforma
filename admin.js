@@ -5117,14 +5117,15 @@ const AdminApp = {
 
     try {
       const base = await this.getApiBase();
-      if (!base) {
-        this.showToast('Servidor local no detectado. Inicia admin_server.py o admin.bat.', 'warning');
-        return;
+      const res = await fetch(`${base}/api/sync`, { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Servidor no responde`);
       }
-
-      const res = await fetch(`${base}/api/sync`, { method: 'POST' });
       const result = await res.json();
-      if (!res.ok || !result.success) {
+      if (!result.success) {
         throw new Error(result.error || result.output || 'Fallo en git pull');
       }
 
@@ -5136,7 +5137,7 @@ const AdminApp = {
     } catch (err) {
       console.error('Error sincronizando:', err);
       this.setStatus('Error al sincronizar', 'error');
-      this.showToast(`Error de sincronización: ${err.message}`, 'error');
+      this.showToast(`No se pudo sincronizar: Asegúrate de tener admin.bat abierto. (${err.message})`, 'error');
     } finally {
       if (syncBtn) {
         syncBtn.disabled = false;
