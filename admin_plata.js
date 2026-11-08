@@ -910,7 +910,7 @@ const PlataApp = {
     currentRound.matches.forEach(m => {
       const t1 = this.getTeamById(m.team1Id) || { name: m.team1Id };
       const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id };
-      const statusIcon = m.played ? `✅ [${m.score1} - ${m.score2}]` : '⏳ [Pendiente]';
+      const statusIcon = m.annulled ? `🚫 [ANULADO]` : (m.played ? `✅ [${m.score1} - ${m.score2}]` : '⏳ [Pendiente]');
       const authorTag = m.registeredBy ? ` • ${m.registeredBy}` : '';
 
       const opt = document.createElement('option');
@@ -961,7 +961,11 @@ const PlataApp = {
     s1Input.value = (target.played && target.score1 !== null) ? target.score1 : 0;
     s2Input.value = (target.played && target.score2 !== null) ? target.score2 : 0;
 
-    if (target.played) {
+    if (target.annulled) {
+      const byUser = target.registeredBy ? ` por ${target.registeredBy}` : '';
+      statusLabel.textContent = `🚫 PARTIDO ANULADO (0 Puntos para ambos)${byUser}`;
+      statusLabel.style.color = '#f87171';
+    } else if (target.played) {
       const byUser = target.registeredBy ? ` por ${target.registeredBy}` : '';
       statusLabel.textContent = `Partido Jugado (${target.score1}-${target.score2})${byUser}`;
       statusLabel.style.color = '#34d399';
@@ -1326,6 +1330,109 @@ const PlataApp = {
     }
   },
 
+  async anularMatch() {
+    if (!this.isJornadaAllowed(this.currentJornada)) {
+      this.showToast('Esta jornada está bloqueada por el Administrador Principal. No se puede anular.', 'error');
+      return;
+    }
+
+    if (!this.currentMatch) {
+      this.showToast('Por favor selecciona un partido para anular.', 'error');
+      return;
+    }
+
+    const t1 = this.getTeamById(this.currentMatch.team1Id);
+    const t2 = this.getTeamById(this.currentMatch.team2Id);
+    const t1Name = t1 ? t1.name : this.currentMatch.team1Id;
+    const t2Name = t2 ? t2.name : this.currentMatch.team2Id;
+
+    const confirmMsg = `⚠️ ¿Confirmas ANULAR el partido entre ${t1Name} y ${t2Name} (Jornada ${this.currentJornada})?\n\n` +
+      `• El partido se registrará como JUGADO para ambos equipos.\n` +
+      `• NINGÚN equipo sumará puntos en la tabla de posiciones.\n` +
+      `• Si ya tenía goles o asistencias registradas, serán revertidas de los jugadores.\n\n` +
+      `¿Deseas continuar?`;
+
+    if (!confirm(confirmMsg)) return;
+
+    // 1. Revertir estadísticas previas si el partido ya había sido jugado
+    if (this.currentMatch.played && Array.isArray(this.currentMatch.events)) {
+      this.currentMatch.events.forEach(ev => {
+        if (!ev.playerId) return;
+        const player = this.getPlayerById(ev.playerId);
+        if (!player) return;
+
+        const cnt = parseInt(ev.count, 10) || 1;
+        const evTeamId = ev.teamId || player.teamId;
+
+        if (ev.type === 'gol') {
+          player.goals = Math.max(0, (player.goals || 0) - cnt);
+          player.goals_liga = Math.max(0, (player.goals_liga || 0) - cnt);
+          if (player.statsByTeam && player.statsByTeam[evTeamId]) {
+            player.statsByTeam[evTeamId].goals = Math.max(0, (player.statsByTeam[evTeamId].goals || 0) - cnt);
+            player.statsByTeam[evTeamId].goals_liga = Math.max(0, (player.statsByTeam[evTeamId].goals_liga || 0) - cnt);
+          }
+        } else if (ev.type === 'asistencia') {
+          player.assists = Math.max(0, (player.assists || 0) - cnt);
+          player.assists_liga = Math.max(0, (player.assists_liga || 0) - cnt);
+          if (player.statsByTeam && player.statsByTeam[evTeamId]) {
+            player.statsByTeam[evTeamId].assists = Math.max(0, (player.statsByTeam[evTeamId].assists || 0) - cnt);
+            player.statsByTeam[evTeamId].assists_liga = Math.max(0, (player.statsByTeam[evTeamId].assists_liga || 0) - cnt);
+          }
+        }
+      });
+    }
+
+    const nowIso = new Date().toISOString();
+    const delegateUser = this.currentUser || 'Delegado Plata';
+
+    // 2. Marcar como jugado y anulado
+    this.currentMatch.played = true;
+    this.currentMatch.annulled = true;
+    this.currentMatch.score1 = 0;
+    this.currentMatch.score2 = 0;
+    this.currentMatch.events = [];
+    this.currentMatch.registeredBy = delegateUser;
+    this.currentMatch.registeredAt = nowIso;
+
+    // 3. Registrar en historial de partidos para auditoría
+    if (!this.data.matchHistory) this.data.matchHistory = [];
+
+    const historyRecord = {
+      id: `match_${Date.now()}`,
+      timestamp: Date.now(),
+      date: new Date().toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      competition: 'plata',
+      jornada: this.currentJornada,
+      fixtureMatchId: this.currentMatch.id,
+      phase: `Jornada ${this.currentJornada}`,
+      team1Id: t1 ? t1.id : this.currentMatch.team1Id,
+      team1Name: t1Name,
+      team1Logo: t1 ? t1.logo : '',
+      score1: 0,
+      team2Id: t2 ? t2.id : this.currentMatch.team2Id,
+      team2Name: t2Name,
+      team2Logo: t2 ? t2.logo : '',
+      score2: 0,
+      annulled: true,
+      events: [],
+      registeredBy: delegateUser,
+      registeredAt: nowIso
+    };
+
+    this.data.matchHistory.unshift(historyRecord);
+
+    // 4. Guardar (Local o Cloud GitHub API)
+    const commitMsg = `Anulación Jornada ${this.currentJornada}: ${t1Name} vs ${t2Name} [${delegateUser}]`;
+    const ok = await this.saveData(commitMsg);
+    if (ok) {
+      this.populateMatchesForCurrentJornada();
+      this.onMatchSelected(this.currentMatch.id);
+      this.renderMatchHistory();
+      this.renderActiveExport();
+      this.showToast(`¡Partido entre ${t1Name} y ${t2Name} anulado! Registrado como jugado sin puntos.`, 'success');
+    }
+  },
+
   // ==========================================
   // HISTORIAL Y AUDITORÍA
   // ==========================================
@@ -1456,9 +1563,10 @@ const PlataApp = {
             </div>
           </td>
           <td style="text-align: center;">
-            <span class="badge" style="background: rgba(15, 23, 42, 0.9); font-size: 0.95rem; font-weight: 900; padding: 0.35rem 0.75rem; border: 1.5px solid #38bdf8; color: #fff;">
-              ${m.score1} - ${m.score2}
-            </span>
+            ${m.annulled 
+              ? `<span class="badge" style="background: rgba(239, 68, 68, 0.2); font-size: 0.82rem; font-weight: 900; padding: 0.35rem 0.65rem; border: 1.5px solid #ef4444; color: #f87171;">🚫 ANULADO</span>`
+              : `<span class="badge" style="background: rgba(15, 23, 42, 0.9); font-size: 0.95rem; font-weight: 900; padding: 0.35rem 0.75rem; border: 1.5px solid #38bdf8; color: #fff;">${m.score1} - ${m.score2}</span>`
+            }
           </td>
           <td style="max-width: 320px;">
             ${eventsHtml}
@@ -1700,9 +1808,12 @@ const PlataApp = {
       const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
 
       const isPlayed = m.played;
-      const statusBadge = isPlayed
-        ? `<span style="padding: 0.25rem 0.6rem; border-radius: 99px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-weight: 800; font-size: 0.72rem;">JUGADO ${m.score1} - ${m.score2}</span>`
-        : `<span style="padding: 0.25rem 0.6rem; border-radius: 99px; background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fbbf24; font-weight: 800; font-size: 0.72rem;">PENDIENTE</span>`;
+      const isAnnulled = !!m.annulled;
+      const statusBadge = isAnnulled
+        ? `<span style="padding: 0.25rem 0.6rem; border-radius: 99px; background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #f87171; font-weight: 800; font-size: 0.72rem;">🚫 ANULADO</span>`
+        : (isPlayed
+          ? `<span style="padding: 0.25rem 0.6rem; border-radius: 99px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-weight: 800; font-size: 0.72rem;">JUGADO ${m.score1} - ${m.score2}</span>`
+          : `<span style="padding: 0.25rem 0.6rem; border-radius: 99px; background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fbbf24; font-weight: 800; font-size: 0.72rem;">PENDIENTE</span>`);
 
       return `
         <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; gap: 0.65rem;">
@@ -1938,6 +2049,13 @@ const PlataApp = {
       const matches = r.matches || [];
       matches.forEach(m => {
         if (m.played && m.score1 !== null && m.score2 !== null) {
+          // Si el partido está anulado, se cuenta como jugado pero no suma puntos ni goles
+          if (m.annulled) {
+            if (stats[m.team1Id]) stats[m.team1Id].pj++;
+            if (stats[m.team2Id]) stats[m.team2Id].pj++;
+            return;
+          }
+
           const s1 = parseInt(m.score1, 10);
           const s2 = parseInt(m.score2, 10);
           if (isNaN(s1) || isNaN(s2)) return;

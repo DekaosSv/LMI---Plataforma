@@ -659,7 +659,7 @@ const AdminApp = {
 
         const opt = document.createElement('option');
         opt.value = m.id;
-        const scoreLabel = m.played ? ` [${m.score1} - ${m.score2}] ✓` : ' [Pendiente]';
+        const scoreLabel = m.annulled ? ' [ANULADO] 🚫' : (m.played ? ` [${m.score1} - ${m.score2}] ✓` : ' [Pendiente]');
         const groupLabel = m.group ? `[${m.group}] ` : '';
         opt.textContent = `${groupLabel}${t1Name} vs ${t2Name}${scoreLabel}`;
         fixtureSel.appendChild(opt);
@@ -1175,12 +1175,15 @@ const AdminApp = {
       const t1Logo = t1 && t1.logo ? t1.logo : '';
       const t2Logo = t2 && t2.logo ? t2.logo : '';
 
+      const isAnnulled = !!m.annulled;
       const isPlayed = m.played;
-      const scoreDisplay = isPlayed ? `${m.score1} - ${m.score2}` : 'VS';
-      const badgeStyle = isPlayed
-        ? 'background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4);'
-        : 'background: rgba(255, 209, 0, 0.15); color: var(--lmi-gold); border: 1px solid rgba(255, 209, 0, 0.3);';
-      const statusText = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
+      const scoreDisplay = isAnnulled ? 'ANULADO' : (isPlayed ? `${m.score1} - ${m.score2}` : 'VS');
+      const badgeStyle = isAnnulled
+        ? 'background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);'
+        : (isPlayed
+          ? 'background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4);'
+          : 'background: rgba(255, 209, 0, 0.15); color: var(--lmi-gold); border: 1px solid rgba(255, 209, 0, 0.3);');
+      const statusText = isAnnulled ? 'ANULADO' : (isPlayed ? 'FINALIZADO' : 'PENDIENTE');
       const groupBadge = m.group ? `<span style="font-size: 0.72rem; font-weight: 800; padding: 0.12rem 0.45rem; border-radius: 99px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35);">${this.escape(m.group)}</span>` : '';
 
       const matchBox = document.createElement('div');
@@ -1968,6 +1971,13 @@ const AdminApp = {
     rounds.forEach(r => {
       (r.matches || []).forEach(m => {
         if (m.played && m.score1 !== null && m.score2 !== null) {
+          // Si el partido está anulado: cuenta como jugado para ambos pero sin puntos ni goles
+          if (m.annulled) {
+            if (stats[m.team1Id]) stats[m.team1Id].pj++;
+            if (stats[m.team2Id]) stats[m.team2Id].pj++;
+            return;
+          }
+
           const s1 = parseInt(m.score1, 10);
           const s2 = parseInt(m.score2, 10);
           if (isNaN(s1) || isNaN(s2)) return;
@@ -2383,15 +2393,19 @@ const AdminApp = {
     rounds.forEach(r => {
       (r.matches || []).forEach(m => {
         if (m.played && m.score1 !== null && m.score2 !== null) {
-          const s1 = parseInt(m.score1, 10);
-          const s2 = parseInt(m.score2, 10);
-          if (isNaN(s1) || isNaN(s2)) return;
-
           const gName = m.group || teamToGroup[m.team1Id];
           if (gName && groupStandings[gName]) {
             const item1 = groupStandings[gName].find(x => x.team.id === m.team1Id);
             const item2 = groupStandings[gName].find(x => x.team.id === m.team2Id);
             if (item1 && item2) {
+              if (m.annulled) {
+                item1.pj++;
+                item2.pj++;
+                return;
+              }
+              const s1 = parseInt(m.score1, 10);
+              const s2 = parseInt(m.score2, 10);
+              if (isNaN(s1) || isNaN(s2)) return;
               item1.pj++; item2.pj++;
               item1.gf += s1; item1.gc += s2;
               item2.gf += s2; item2.gc += s1;
@@ -3353,6 +3367,182 @@ const AdminApp = {
     this.showToast(`¡Partido registrado y guardado exitosamente! ${team1.name} ${score1} - ${score2} ${team2.name}.`, 'success');
   },
 
+  async anularCurrentMatch() {
+    const comp = document.getElementById('match-competition').value;
+    const phase = document.getElementById('match-phase').value;
+    const team1Id = document.getElementById('match-team1-select').value;
+    const team2Id = document.getElementById('match-team2-select').value;
+
+    if (!team1Id || !team2Id || team1Id === team2Id) {
+      this.showToast('Selecciona los dos equipos para poder anular el partido', 'error');
+      return;
+    }
+
+    const team1 = this.getTeamById(team1Id);
+    const team2 = this.getTeamById(team2Id);
+    const t1Name = team1 ? team1.name : team1Id;
+    const t2Name = team2 ? team2.name : team2Id;
+
+    const confirmMsg = `⚠️ ¿Confirmas ANULAR el partido entre ${t1Name} y ${t2Name}?\n\n` +
+      `• El partido se registrará como JUGADO para ambos equipos.\n` +
+      `• NINGÚN equipo sumará puntos en la tabla de posiciones.\n` +
+      `• Si ya tenía goles o asistencias registradas, serán restadas automáticamente de los jugadores.\n\n` +
+      `¿Deseas continuar con la anulación?`;
+
+    if (!confirm(confirmMsg)) return;
+
+    let fixtureMatchId = null;
+    let jornadaNumber = null;
+    let fMatch = null;
+
+    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
+      jornadaNumber = parseInt(document.getElementById('match-jornada-select').value, 10) || 1;
+      fixtureMatchId = document.getElementById('match-fixture-item-select').value;
+      const rounds = (this.data && this.data.fixtures) ? (this.data.fixtures[comp] || []) : [];
+      if (fixtureMatchId) {
+        for (const r of rounds) {
+          fMatch = r.matches.find(m => m.id === fixtureMatchId);
+          if (fMatch) break;
+        }
+      }
+      if (!fMatch) {
+        const r = rounds.find(rd => rd.jornada === jornadaNumber);
+        if (r && r.matches) {
+          fMatch = r.matches.find(m => (m.team1Id === team1Id && m.team2Id === team2Id) || (m.team1Id === team2Id && m.team2Id === team1Id));
+        }
+      }
+
+      if (fMatch) {
+        fixtureMatchId = fMatch.id;
+        // Revertir estadísticas previas si existían
+        if (fMatch.played && Array.isArray(fMatch.events) && fMatch.events.length > 0) {
+          this.revertEventsList(fMatch.events, comp);
+        }
+        fMatch.played = true;
+        fMatch.annulled = true;
+        fMatch.score1 = 0;
+        fMatch.score2 = 0;
+        fMatch.events = [];
+        fMatch.registeredBy = 'Administrador Principal';
+        fMatch.registeredAt = new Date().toISOString();
+      }
+    } else if (comp === 'estelar' || comp === 'champions_ko') {
+      const matchArray = comp === 'champions_ko' ? this.data.championsLeagueMatches : this.data.copaEstelarMatches;
+      if (matchArray) {
+        let targetMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === phase.toLowerCase());
+        if (!targetMatch) {
+          targetMatch = matchArray.find(m => 
+            (m.team1 === t1Name && m.team2 === t2Name) ||
+            (m.team1 === t2Name && m.team2 === t1Name)
+          );
+        }
+        if (targetMatch) {
+          if (targetMatch.events && targetMatch.events.length > 0) {
+            this.revertEventsList(targetMatch.events, comp);
+          }
+          targetMatch.estado = 'Finalizado';
+          targetMatch.annulled = true;
+          targetMatch.score1 = '0';
+          targetMatch.score2 = '0';
+          targetMatch.events = [];
+        }
+      }
+    }
+
+    // Registrar en Historial de Partidos para auditoría
+    const matchRecord = {
+      id: `match_${Date.now()}`,
+      timestamp: Date.now(),
+      date: new Date().toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      competition: comp,
+      jornada: jornadaNumber,
+      fixtureMatchId: fixtureMatchId,
+      phase: (comp === 'estelar' || comp === 'champions_ko') ? phase : (jornadaNumber ? `Jornada ${jornadaNumber}` : ''),
+      team1Id: team1Id,
+      team1Name: t1Name,
+      team1Logo: team1 ? team1.logo : '',
+      score1: 0,
+      team2Id: team2Id,
+      team2Name: t2Name,
+      team2Logo: team2 ? team2.logo : '',
+      score2: 0,
+      annulled: true,
+      events: [],
+      registeredBy: 'Administrador Principal',
+      registeredAt: new Date().toISOString()
+    };
+    if (!this.data.matchHistory) this.data.matchHistory = [];
+    this.data.matchHistory.unshift(matchRecord);
+
+    // Limpiar eventos y formulario
+    this.matchEvents = [];
+    const eventsList = document.getElementById('match-events-list');
+    if (eventsList) {
+      eventsList.innerHTML = `
+        <p style="color: var(--text-muted); text-align: center; padding: 1.25rem;" id="match-events-empty">
+          No hay eventos agregados. Haz clic en "Añadir Goleador / Asistente" si hubo anotaciones o pases de gol.
+        </p>
+      `;
+    }
+    const eventsHeader = document.getElementById('match-events-header');
+    if (eventsHeader) eventsHeader.style.display = 'none';
+    document.getElementById('match-score1').value = 0;
+    document.getElementById('match-score2').value = 0;
+
+    this.renderTopScorers();
+    this.renderTeamsView();
+    this.renderMatchHistory();
+    this.onPendingFilterChange();
+    if (comp === 'oro' || comp === 'plata') {
+      this.onJornadaChange();
+    }
+    this.renderAdminStandings();
+
+    await this.saveData(true);
+    this.showToast(`¡Partido entre ${t1Name} y ${t2Name} ANULADO con éxito! Registrado como jugado sin puntos.`, 'success');
+  },
+
+  revertEventsList(events, comp) {
+    if (!Array.isArray(events) || events.length === 0) return;
+    events.forEach(ev => {
+      if (!ev.playerId) return;
+      const player = this.getPlayerById(ev.playerId);
+      if (!player) return;
+
+      const count = ev.count || 1;
+      const evTeamId = ev.teamId || player.teamId;
+      const tEntry = (player.statsByTeam && evTeamId) ? player.statsByTeam[evTeamId] : null;
+
+      if (ev.type === 'gol' || ev.type === 'goal') {
+        player.goals = Math.max(0, (player.goals || 0) - count);
+        if (tEntry) tEntry.goals = Math.max(0, (tEntry.goals || 0) - count);
+        if (comp === 'oro' || comp === 'plata' || comp === 'liga') {
+          player.goals_liga = Math.max(0, (player.goals_liga || 0) - count);
+          if (tEntry) tEntry.goals_liga = Math.max(0, (tEntry.goals_liga || 0) - count);
+        } else if (comp === 'champions' || comp === 'champions_ko') {
+          player.goals_champions = Math.max(0, (player.goals_champions || 0) - count);
+          if (tEntry) tEntry.goals_champions = Math.max(0, (tEntry.goals_champions || 0) - count);
+        } else if (comp === 'estelar') {
+          player.goals_estelar = Math.max(0, (player.goals_estelar || 0) - count);
+          if (tEntry) tEntry.goals_estelar = Math.max(0, (tEntry.goals_estelar || 0) - count);
+        }
+      } else if (ev.type === 'asistencia' || ev.type === 'assist') {
+        player.assists = Math.max(0, (player.assists || 0) - count);
+        if (tEntry) tEntry.assists = Math.max(0, (tEntry.assists || 0) - count);
+        if (comp === 'oro' || comp === 'plata' || comp === 'liga') {
+          player.assists_liga = Math.max(0, (player.assists_liga || 0) - count);
+          if (tEntry) tEntry.assists_liga = Math.max(0, (tEntry.assists_liga || 0) - count);
+        } else if (comp === 'champions' || comp === 'champions_ko') {
+          player.assists_champions = Math.max(0, (player.assists_champions || 0) - count);
+          if (tEntry) tEntry.assists_champions = Math.max(0, (tEntry.assists_champions || 0) - count);
+        } else if (comp === 'estelar') {
+          player.assists_estelar = Math.max(0, (player.assists_estelar || 0) - count);
+          if (tEntry) tEntry.assists_estelar = Math.max(0, (tEntry.assists_estelar || 0) - count);
+        }
+      }
+    });
+  },
+
   renderMatchHistory() {
     const tbody = document.getElementById('match-history-tbody');
     const badge = document.getElementById('lbl-matches-history-count');
@@ -3410,8 +3600,8 @@ const AdminApp = {
             <span>${this.escape(m.team2Name)}</span>
           </div>
         </td>
-        <td style="text-align: center; font-weight: 900; font-size: 1.15rem; color: var(--lmi-gold); white-space: nowrap;">
-          ${m.score1} - ${m.score2}
+        <td style="text-align: center; font-weight: 900; font-size: 1.15rem; color: ${m.annulled ? '#f87171' : 'var(--lmi-gold)'}; white-space: nowrap;">
+          ${m.annulled ? '<span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1.5px solid #ef4444; font-size: 0.8rem;">🚫 ANULADO</span>' : `${m.score1} - ${m.score2}`}
         </td>
         <td style="font-size: 0.85rem; line-height: 1.4;">${eventsSummary}</td>
         <td style="font-size: 0.82rem; white-space: nowrap;">
@@ -3509,6 +3699,7 @@ const AdminApp = {
         const fm = r.matches.find(m => m.id === match.fixtureMatchId || ((m.team1Id === match.team1Id && m.team2Id === match.team2Id) || (m.team1Id === match.team2Id && m.team2Id === match.team1Id)));
         if (fm) {
           fm.played = false;
+          fm.annulled = false;
           fm.score1 = null;
           fm.score2 = null;
           fm.events = [];

@@ -402,9 +402,14 @@
               <span style="font-size: 0.78rem; color: #94a3b8;">Los goles y asistencias se sumarán automáticamente a las estadísticas de la liga.</span>
             </div>
 
-            <button class="btn btn-success" id="btn-save-plata-match" onclick="PlataApp.submitMatch()" style="padding: 0.85rem 1.75rem; font-size: 0.95rem; font-weight: 800;">
-              <i class="fa-solid fa-check-double"></i> Registrar y Guardar Partido
-            </button>
+            <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn-secondary" id="btn-anular-plata-match" onclick="PlataApp.anularMatch()" style="padding: 0.85rem 1.4rem; font-size: 0.92rem; font-weight: 800; background: rgba(239, 68, 68, 0.15); border: 1.5px solid rgba(239, 68, 68, 0.5); color: #f87171;" title="Anular partido: se registra como jugado pero no suma puntos a ningún equipo">
+                <i class="fa-solid fa-ban"></i> Anular Partido
+              </button>
+              <button class="btn btn-success" id="btn-save-plata-match" onclick="PlataApp.submitMatch()" style="padding: 0.85rem 1.75rem; font-size: 0.95rem; font-weight: 800;">
+                <i class="fa-solid fa-check-double"></i> Registrar y Guardar Partido
+              </button>
+            </div>
           </div>
 
         </div>

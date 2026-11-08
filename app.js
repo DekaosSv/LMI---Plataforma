@@ -1211,15 +1211,19 @@ function calculateChampionsGroupStandings() {
   rounds.forEach(r => {
     (r.matches || []).forEach(m => {
       if (m.played && m.score1 !== null && m.score2 !== null) {
-        const s1 = parseInt(m.score1, 10);
-        const s2 = parseInt(m.score2, 10);
-        if (isNaN(s1) || isNaN(s2)) return;
-
         const gName = m.group || teamToGroup[m.team1Id];
         if (gName && groupStandings[gName]) {
           const item1 = groupStandings[gName].find(x => x.team.id === m.team1Id);
           const item2 = groupStandings[gName].find(x => x.team.id === m.team2Id);
           if (item1 && item2) {
+            if (m.annulled) {
+              item1.pj++;
+              item2.pj++;
+              return;
+            }
+            const s1 = parseInt(m.score1, 10);
+            const s2 = parseInt(m.score2, 10);
+            if (isNaN(s1) || isNaN(s2)) return;
             item1.pj++;
             item2.pj++;
             item1.gf += s1;
@@ -3660,6 +3664,13 @@ function calculateStandings(division) {
     const matches = r.matches || [];
     matches.forEach(m => {
       if (m.played && m.score1 !== null && m.score2 !== null) {
+        // Partido anulado: cuenta como jugado para ambos pero sin puntos ni goles
+        if (m.annulled) {
+          if (stats[m.team1Id]) stats[m.team1Id].pj++;
+          if (stats[m.team2Id]) stats[m.team2Id].pj++;
+          return;
+        }
+
         const s1 = parseInt(m.score1, 10);
         const s2 = parseInt(m.score2, 10);
         if (isNaN(s1) || isNaN(s2)) return;
@@ -3950,13 +3961,18 @@ function onWebJornadaSelectChange() {
     const t2 = (lmiData.teams || []).find(t => t.id === m.team2Id) || (m.team2Id === 'feyenoordrotterdam' ? { name: 'Feyenoord Rotterdam (Baja)', logo: 'Logos Equipos/feyenoord.webp' } : { name: m.team2Id, logo: 'Logos Equipos/default.png' });
 
     const isPlayed = m.played && m.score1 !== null && m.score2 !== null;
-    const scoreDisplay = isPlayed 
-      ? `<span style="font-size: 1.45rem; font-weight: 900; color: #fde047; letter-spacing: 2px;">${m.score1} - ${m.score2}</span>`
-      : `<span style="font-size: 1.15rem; font-weight: 900; color: #ffffff; letter-spacing: 2px;">VS</span>`;
+    const isAnnulled = !!m.annulled;
+    const scoreDisplay = isAnnulled
+      ? `<span style="font-size: 1.05rem; font-weight: 900; color: #f87171; letter-spacing: 1px;">ANULADO</span>`
+      : (isPlayed 
+        ? `<span style="font-size: 1.45rem; font-weight: 900; color: #fde047; letter-spacing: 2px;">${m.score1} - ${m.score2}</span>`
+        : `<span style="font-size: 1.15rem; font-weight: 900; color: #ffffff; letter-spacing: 2px;">VS</span>`);
 
-    const statusPill = isPlayed
-      ? `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(16, 185, 129, 0.25); color: #4ade80; border: 1px solid #10b981; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Finalizado</span>`
-      : `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(245, 158, 11, 0.25); color: #fde047; border: 1px solid #f59e0b; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Pendiente</span>`;
+    const statusPill = isAnnulled
+      ? `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid #ef4444; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Anulado</span>`
+      : (isPlayed
+        ? `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(16, 185, 129, 0.25); color: #4ade80; border: 1px solid #10b981; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Finalizado</span>`
+        : `<span style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 99px; background: rgba(245, 158, 11, 0.25); color: #fde047; border: 1px solid #f59e0b; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Pendiente</span>`);
 
     const statsBtn = isPlayed
       ? `<span class="card-stats-btn" title="Clic para ver estadísticas del partido"><i class="fa-solid fa-chart-column"></i> Ficha</span>`
@@ -4028,14 +4044,22 @@ function openMatchDetailsModal(division, jornadaNum, matchId) {
   if (awayName) awayName.textContent = t2.name;
 
   // Marcador y estado
+  const isAnnulled = !!m.annulled;
   const scoreDisp = document.getElementById('mm-score-display');
   const statusPill = document.getElementById('mm-status-pill');
-  if (scoreDisp) scoreDisp.textContent = isPlayed ? `${m.score1} - ${m.score2}` : 'VS';
+  if (scoreDisp) scoreDisp.textContent = isAnnulled ? 'ANULADO (0 - 0)' : (isPlayed ? `${m.score1} - ${m.score2}` : 'VS');
   if (statusPill) {
-    statusPill.textContent = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
-    statusPill.style.background = isPlayed ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)';
-    statusPill.style.color = isPlayed ? '#4ade80' : '#fde047';
-    statusPill.style.borderColor = isPlayed ? '#10b981' : '#f59e0b';
+    if (isAnnulled) {
+      statusPill.textContent = 'ANULADO (0 PUNTOS)';
+      statusPill.style.background = 'rgba(239, 68, 68, 0.2)';
+      statusPill.style.color = '#f87171';
+      statusPill.style.borderColor = '#ef4444';
+    } else {
+      statusPill.textContent = isPlayed ? 'FINALIZADO' : 'PENDIENTE';
+      statusPill.style.background = isPlayed ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)';
+      statusPill.style.color = isPlayed ? '#4ade80' : '#fde047';
+      statusPill.style.borderColor = isPlayed ? '#10b981' : '#f59e0b';
+    }
   }
 
   // Eventos de Goles y Asistencias
