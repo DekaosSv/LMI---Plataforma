@@ -5409,6 +5409,7 @@ const AdminApp = {
 
     // Renderizar control de jornadas de delegados para División Plata
     this.renderPlataDelegatesControl();
+    this.renderPlataDelegatesSecurityControl();
   },
 
   toggleWebTab(tabId, enabled) {
@@ -5478,14 +5479,32 @@ const AdminApp = {
   initPlataDelegatesConfig() {
     if (!this.data) return;
     if (!this.data.plataDelegatesConfig) {
-      this.data.plataDelegatesConfig = {
-        allowedJornadas: [1],
-        allowAllJornadas: false,
-        delegates: ['Delegado Plata 1', 'Delegado Plata 2']
-      };
+      this.data.plataDelegatesConfig = {};
     }
-    if (!Array.isArray(this.data.plataDelegatesConfig.allowedJornadas)) {
-      this.data.plataDelegatesConfig.allowedJornadas = [1];
+    const cfg = this.data.plataDelegatesConfig;
+    if (!Array.isArray(cfg.allowedJornadas)) {
+      cfg.allowedJornadas = [1];
+    }
+    if (typeof cfg.allowAllJornadas !== 'boolean') {
+      cfg.allowAllJornadas = false;
+    }
+    if (!cfg.adminPin) {
+      cfg.adminPin = '9999';
+    }
+    if (!Array.isArray(cfg.delegates) || cfg.delegates.length === 0) {
+      cfg.delegates = [
+        { id: 'del1', name: 'Delegado Plata 1', pin: '1234' },
+        { id: 'del2', name: 'Delegado Plata 2', pin: '5678' },
+        { id: 'del3', name: 'Delegado Plata 3', pin: '9012' }
+      ];
+    } else {
+      const defaultPins = ['1234', '5678', '9012'];
+      cfg.delegates = cfg.delegates.map((d, i) => {
+        if (typeof d === 'string') {
+          return { id: `del${i+1}`, name: d, pin: defaultPins[i] || '1234' };
+        }
+        return d;
+      });
     }
   },
 
@@ -5608,6 +5627,181 @@ const AdminApp = {
     this.initPlataDelegatesConfig();
     await this.saveData(true);
     this.showToast('¡Configuración de fechas para delegados guardada con éxito!', 'success');
+  },
+
+  renderPlataDelegatesSecurityControl() {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    const delegates = cfg.delegates || [];
+
+    const d1 = delegates[0] || { name: 'Delegado Plata 1', pin: '1234' };
+    const d2 = delegates[1] || { name: 'Delegado Plata 2', pin: '5678' };
+    const d3 = delegates[2] || { name: 'Delegado Plata 3', pin: '9012' };
+
+    const elD1Name = document.getElementById('cfg-del1-name');
+    const elD1Pin = document.getElementById('cfg-del1-pin');
+    const elD2Name = document.getElementById('cfg-del2-name');
+    const elD2Pin = document.getElementById('cfg-del2-pin');
+    const elD3Name = document.getElementById('cfg-del3-name');
+    const elD3Pin = document.getElementById('cfg-del3-pin');
+    const elAdminPin = document.getElementById('cfg-admin-pin');
+    const elGhToken = document.getElementById('cfg-github-token-input');
+    const elSyncBadge = document.getElementById('lbl-github-sync-status');
+
+    if (elD1Name) elD1Name.value = d1.name || 'Delegado Plata 1';
+    if (elD1Pin) elD1Pin.value = d1.pin || '1234';
+    if (elD2Name) elD2Name.value = d2.name || 'Delegado Plata 2';
+    if (elD2Pin) elD2Pin.value = d2.pin || '5678';
+    if (elD3Name) elD3Name.value = d3.name || 'Delegado Plata 3';
+    if (elD3Pin) elD3Pin.value = d3.pin || '9012';
+    if (elAdminPin) elAdminPin.value = cfg.adminPin || '9999';
+
+    const savedToken = localStorage.getItem('lmi_github_token') || '';
+    if (elGhToken) elGhToken.value = savedToken;
+
+    if (elSyncBadge) {
+      if (savedToken && (savedToken.startsWith('ghp_') || savedToken.startsWith('github_pat_') || savedToken.length > 20)) {
+        elSyncBadge.textContent = '🟢 Token Configurado';
+        elSyncBadge.style.background = 'rgba(16, 185, 129, 0.2)';
+        elSyncBadge.style.color = '#34d399';
+        elSyncBadge.style.borderColor = '#10b981';
+      } else {
+        elSyncBadge.textContent = '⚪ Token No Configurado';
+        elSyncBadge.style.background = 'rgba(148, 163, 184, 0.2)';
+        elSyncBadge.style.color = '#cbd5e1';
+        elSyncBadge.style.borderColor = '#94a3b8';
+      }
+    }
+  },
+
+  async savePlataDelegatesSecurityConfig() {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+
+    const d1Name = document.getElementById('cfg-del1-name')?.value.trim() || 'Delegado Plata 1';
+    const d1Pin = document.getElementById('cfg-del1-pin')?.value.trim() || '1234';
+    const d2Name = document.getElementById('cfg-del2-name')?.value.trim() || 'Delegado Plata 2';
+    const d2Pin = document.getElementById('cfg-del2-pin')?.value.trim() || '5678';
+    const d3Name = document.getElementById('cfg-del3-name')?.value.trim() || 'Delegado Plata 3';
+    const d3Pin = document.getElementById('cfg-del3-pin')?.value.trim() || '9012';
+    const adminPin = document.getElementById('cfg-admin-pin')?.value.trim() || '9999';
+
+    cfg.delegates = [
+      { id: 'del1', name: d1Name, pin: d1Pin },
+      { id: 'del2', name: d2Name, pin: d2Pin },
+      { id: 'del3', name: d3Name, pin: d3Pin }
+    ];
+    cfg.adminPin = adminPin;
+
+    await this.saveData(true);
+    this.showToast('¡PINs y nombres de delegados guardados exitosamente!', 'success');
+  },
+
+  saveLocalGitHubToken(val) {
+    const token = (val || '').trim();
+    if (token) {
+      localStorage.setItem('lmi_github_token', token);
+      this.showToast('Token de GitHub guardado en tu navegador local.', 'info');
+    } else {
+      localStorage.removeItem('lmi_github_token');
+    }
+    this.renderPlataDelegatesSecurityControl();
+  },
+
+  toggleGitHubTokenVisibility() {
+    const input = document.getElementById('cfg-github-token-input');
+    const icon = document.getElementById('icon-gh-token-eye');
+    if (!input) return;
+    if (input.type === 'password') {
+      input.type = 'text';
+      if (icon) icon.className = 'fa-solid fa-eye-slash';
+    } else {
+      input.type = 'password';
+      if (icon) icon.className = 'fa-solid fa-eye';
+    }
+  },
+
+  async testGitHubConnection() {
+    const token = document.getElementById('cfg-github-token-input')?.value.trim() || localStorage.getItem('lmi_github_token') || '';
+    const resLbl = document.getElementById('lbl-github-test-result');
+    if (!token) {
+      this.showToast('Primero ingresa un Personal Access Token de GitHub.', 'warning');
+      if (resLbl) {
+        resLbl.textContent = '❌ No has introducido ningún token.';
+        resLbl.style.color = '#ef4444';
+      }
+      return;
+    }
+
+    if (resLbl) {
+      resLbl.textContent = '⏳ Probando conexión con GitHub API...';
+      resLbl.style.color = '#38bdf8';
+    }
+
+    try {
+      const res = await fetch('https://api.github.com/repos/DekaosSv/LMI---Plataforma', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github+json'
+        }
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(`HTTP ${res.status}: ${err.message || 'Token inválido o sin permisos'}`);
+      }
+
+      const repo = await res.json();
+      const perms = repo.permissions || {};
+      const canPush = perms.push || false;
+
+      if (resLbl) {
+        if (canPush) {
+          resLbl.innerHTML = `✅ Conexión exitosa. El token tiene permisos de escritura (push) en <strong>${repo.full_name}</strong>.`;
+          resLbl.style.color = '#34d399';
+        } else {
+          resLbl.innerHTML = `⚠️ Conexión establecida con <strong>${repo.full_name}</strong>, pero el token no parece tener permiso de escritura (push). Asegúrate de marcar 'repo' o 'contents:write'.`;
+          resLbl.style.color = '#f59e0b';
+        }
+      }
+      this.showToast('¡Prueba de conexión con GitHub completada!', 'success');
+      localStorage.setItem('lmi_github_token', token);
+      this.renderPlataDelegatesSecurityControl();
+    } catch (err) {
+      console.error('Error probando conexión con GitHub:', err);
+      if (resLbl) {
+        resLbl.textContent = `❌ Falló la conexión: ${err.message}`;
+        resLbl.style.color = '#ef4444';
+      }
+      this.showToast(`Error de conexión con GitHub: ${err.message}`, 'error');
+    }
+  },
+
+  copyPlataInviteLink() {
+    const token = document.getElementById('cfg-github-token-input')?.value.trim() || localStorage.getItem('lmi_github_token') || '';
+    if (!token) {
+      this.showToast('Primero ingresa tu Token de GitHub en el campo inferior para generar el enlace de invitación.', 'warning');
+      document.getElementById('cfg-github-token-input')?.focus();
+      return;
+    }
+
+    localStorage.setItem('lmi_github_token', token);
+
+    // Codificar en Base64 para pasar de forma limpia en el hash
+    const b64 = btoa(token);
+    let baseUrl = window.location.href.split('admin.html')[0];
+    if (!baseUrl.endsWith('/')) baseUrl += '/';
+    const inviteUrl = `${baseUrl}admin_plata.html#invite=${encodeURIComponent(b64)}`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(inviteUrl).then(() => {
+        this.showToast('📋 ¡Enlace de invitación copiado al portapapeles! Envíalo a tus compañeros delegados.', 'success');
+      }).catch(() => {
+        prompt('Copia este enlace de invitación para tus delegados:', inviteUrl);
+      });
+    } else {
+      prompt('Copia este enlace de invitación para tus delegados:', inviteUrl);
+    }
   },
 
   buildRoundRobin(teamIds, twoLegs = false) {

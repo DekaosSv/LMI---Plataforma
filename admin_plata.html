@@ -73,9 +73,121 @@
       background: rgba(255,255,255,0.05);
       color: #fff;
     }
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.95);
+      backdrop-filter: blur(14px);
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .auth-card {
+      background: linear-gradient(135deg, #070d18 0%, #0f172a 100%);
+      border: 1.5px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.15);
+      max-width: 440px;
+      width: 100%;
+      padding: 2.25rem 2rem;
+      color: #fff;
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ==================== PANTALLA DE LOGIN / BLOQUEO DE SEGURIDAD ==================== -->
+  <div id="plata-auth-overlay" class="auth-overlay" style="display: flex;">
+    <div class="auth-card">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="width: 58px; height: 58px; margin: 0 auto 0.75rem auto; border-radius: 14px; background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(148, 163, 184, 0.2)); border: 1.5px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <span class="badge" style="background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid #94a3b8; font-weight: 800; font-size: 0.74rem;">
+          DIVISIÓN PLATA &bull; LMI
+        </span>
+        <h2 style="font-size: 1.35rem; font-weight: 900; margin: 0.4rem 0 0.2rem 0; color: #fff;">
+          Acceso de Delegados
+        </h2>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin: 0;">
+          Inicia sesión con tu perfil y PIN para registrar resultados y publicar en la web.
+        </p>
+      </div>
+
+      <form id="plata-login-form" onsubmit="PlataAuth.submitLogin(event)">
+        <!-- Selector de Perfil -->
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.35rem;">
+            <i class="fa-solid fa-user-circle" style="color: #38bdf8;"></i> Selecciona tu Perfil de Delegado:
+          </label>
+          <select id="login-delegate-select" class="form-select" style="width: 100%; font-weight: 800; font-size: 0.9rem; padding: 0.55rem 0.75rem; border-color: #38bdf8; color: #fff; background: #070d18;">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <!-- Input de PIN -->
+        <div style="margin-bottom: 1.15rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: #cbd5e1;">
+              <i class="fa-solid fa-key" style="color: #ffd100;"></i> PIN de Seguridad:
+            </label>
+            <span style="font-size: 0.7rem; color: #64748b;">(4 a 8 caracteres)</span>
+          </div>
+          <div style="position: relative;">
+            <input type="password" id="login-pin-input" class="form-input" placeholder="••••" maxlength="8" style="width: 100%; font-size: 1.1rem; letter-spacing: 4px; padding: 0.5rem 2.5rem 0.5rem 0.75rem; font-weight: 900; text-align: center;" required autocomplete="current-password" />
+            <button type="button" onclick="PlataAuth.toggleLoginPinVisibility()" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; padding: 0.25rem;">
+              <i class="fa-solid fa-eye" id="icon-login-pin-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Estado del Token de GitHub -->
+        <div id="login-token-section" style="margin-bottom: 1.25rem; padding: 0.85rem; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08);">
+          <div id="login-token-status-active" style="display: none; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-circle-check" style="color: #34d399; font-size: 1.1rem;"></i>
+              <div>
+                <strong style="font-size: 0.82rem; color: #34d399; display: block;">Conexión a GitHub Activa</strong>
+                <span style="font-size: 0.7rem; color: #94a3b8;">Podrás guardar directo en GitHub Pages.</span>
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="PlataAuth.showTokenInputInLogin()" style="font-size: 0.72rem; padding: 0.2rem 0.5rem;">
+              Cambiar
+            </button>
+          </div>
+
+          <div id="login-token-status-missing" style="display: block;">
+            <label style="display: block; font-size: 0.75rem; font-weight: 800; color: #ffd100; margin-bottom: 0.3rem;">
+              <i class="fa-brands fa-github"></i> Token de GitHub (Para Guardar en la Nube):
+            </label>
+            <input type="password" id="login-github-token-input" class="form-input" placeholder="ghp_... o github_pat_..." style="width: 100%; font-size: 0.82rem; font-family: monospace;" />
+            <span style="display: block; font-size: 0.68rem; color: #94a3b8; margin-top: 0.35rem;">
+              💡 Si entraste mediante un enlace de invitación del Admin, este campo se completa solo.
+            </span>
+          </div>
+        </div>
+
+        <!-- Alerta de Error en Login -->
+        <div id="login-error-alert" style="display: none; padding: 0.65rem 0.85rem; border-radius: 8px; background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fca5a5; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">
+          <!-- Populated via JS -->
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-login-submit" style="width: 100%; padding: 0.75rem; font-weight: 800; font-size: 0.95rem; background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);">
+          <i class="fa-solid fa-lock-open"></i> Iniciar Sesión en Hub Plata
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Contenedor Principal de la App (Se muestra tras iniciar sesión) -->
+  <div class="admin-layout" id="plata-app-container" style="display: none;">
 
   <!-- ==================== SIDEBAR ==================== -->
   <aside class="admin-sidebar" style="border-right-color: rgba(148, 163, 184, 0.2);">
@@ -158,6 +270,19 @@
       </div>
 
       <div class="topbar-actions">
+        <!-- Badge de Usuario Autenticado -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(15, 23, 42, 0.85); padding: 0.35rem 0.75rem; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.3);">
+          <span style="font-size: 0.82rem; font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 0.35rem;">
+            <i class="fa-solid fa-user-check"></i> <span id="lbl-topbar-username">Delegado Plata 1</span>
+          </span>
+          <button class="btn btn-secondary btn-sm" onclick="PlataAuth.openTokenModal()" title="Configuración de Token GitHub" style="padding: 0.2rem 0.5rem; font-size: 0.74rem;">
+            <i class="fa-brands fa-github"></i> <span id="lbl-topbar-token-status">Token</span>
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="PlataAuth.logout()" title="Cerrar Sesión" style="padding: 0.2rem 0.5rem; font-size: 0.74rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35);">
+            <i class="fa-solid fa-right-from-bracket"></i> Salir
+          </button>
+        </div>
+
         <button class="btn btn-secondary" onclick="PlataApp.loadData()" title="Recargar base de datos">
           <i class="fa-solid fa-rotate"></i> <span>Actualizar</span>
         </button>
@@ -555,6 +680,42 @@
 
     </div>
   </main>
+  </div> <!-- /#plata-app-container -->
+
+  <!-- MODAL DE CONFIGURACIÓN DE TOKEN GITHUB -->
+  <div class="modal" id="modal-plata-token" style="display: none;">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-brands fa-github" style="color: #38bdf8;"></i> Conexión con GitHub Pages</h3>
+        <button class="modal-close" onclick="PlataAuth.closeTokenModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+          Este token permite que los partidos registrados se guarden directamente en el repositorio de GitHub y se publiquen en la web en tiempo real sin requerir un servidor encendido.
+        </p>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.35rem;">
+            Personal Access Token (PAT):
+          </label>
+          <div style="position: relative;">
+            <input type="password" id="modal-token-input" class="form-input" placeholder="ghp_... o github_pat_..." style="width: 100%; font-family: monospace; font-size: 0.82rem; padding-right: 2.2rem;" />
+            <button type="button" onclick="PlataAuth.toggleModalTokenVisibility()" style="position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer;">
+              <i class="fa-solid fa-eye" id="icon-modal-token-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div id="modal-token-test-result" style="display: none; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.78rem; font-weight: 700; margin-bottom: 1rem;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="PlataAuth.testCurrentToken()">
+          <i class="fa-solid fa-plug"></i> Probar Conexión
+        </button>
+        <button class="btn btn-primary" onclick="PlataAuth.saveTokenFromModal()">
+          <i class="fa-solid fa-floppy-disk"></i> Guardar Token
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL DE DESPLIEGUE A GITHUB -->
   <div class="modal" id="modal-plata-deploy" style="display: none;">
@@ -590,3 +751,4 @@
   <script src="admin_plata.js?v=plata1"></script>
 </body>
 </html>
+

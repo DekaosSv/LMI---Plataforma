@@ -16161,9 +16161,23 @@ var INITIAL_LMI_DATA = {
       1
     ],
     "allowAllJornadas": false,
+    "adminPin": "9999",
     "delegates": [
-      "Delegado Plata 1",
-      "Delegado Plata 2"
+      {
+        "id": "del1",
+        "name": "Delegado Plata 1",
+        "pin": "1234"
+      },
+      {
+        "id": "del2",
+        "name": "Delegado Plata 2",
+        "pin": "5678"
+      },
+      {
+        "id": "del3",
+        "name": "Delegado Plata 3",
+        "pin": "9012"
+      }
     ]
   }
 };

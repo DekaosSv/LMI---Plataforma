@@ -1,14 +1,360 @@
 /**
  * LMI - Panel de Delegados de División Plata (admin_plata.js)
  * Permite a los delegados de División Plata:
- * 1. Registrar resultados, marcadores, goleadores y asistentes de División Plata.
- * 2. Firmar cada registro con su usuario (autoría y fecha/hora exacta).
- * 3. Respetar las fechas (jornadas) habilitadas/bloqueadas por la Administración Principal.
- * 4. Auditar el historial completo de registros de la división.
- * 5. Generar y descargar imágenes oficiales en PNG (Tabla, Goleadores, Asistidores y Pendientes).
- * 6. Publicar los cambios en GitHub Pages.
+ * 1. Iniciar sesión de forma segura con PIN personal de delegado.
+ * 2. Guardar y registrar resultados en la nube (GitHub Pages) mediante la API de GitHub o servidor local.
+ * 3. Firmar cada registro con su usuario (autoría y fecha/hora exacta).
+ * 4. Respetar las fechas (jornadas) habilitadas/bloqueadas por la Administración Principal.
+ * 5. Auditar el historial completo de registros de la división.
+ * 6. Generar y descargar imágenes oficiales en PNG (Tabla, Goleadores, Asistidores y Pendientes).
  */
 
+// =========================================================================
+// MÓDULO DE AUTENTICACIÓN Y SEGURIDAD (PIN & SESIONES)
+// =========================================================================
+const PlataAuth = {
+  session: null,
+
+  init() {
+    this.checkInviteUrl();
+    this.updateTokenStatusUI();
+    this.checkSession();
+  },
+
+  checkInviteUrl() {
+    const hash = window.location.hash || '';
+    if (hash.includes('invite=')) {
+      const raw = hash.split('invite=')[1]?.split('&')[0];
+      if (raw) {
+        try {
+          const token = atob(decodeURIComponent(raw)).trim();
+          if (token && (token.startsWith('ghp_') || token.startsWith('github_pat_') || token.length > 20)) {
+            localStorage.setItem('lmi_github_token', token);
+            // Limpiar la URL para no dejar el token expuesto en la barra de direcciones
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState(null, '', window.location.pathname);
+            }
+            console.log('Token de GitHub configurado exitosamente mediante enlace de invitación.');
+            setTimeout(() => {
+              PlataApp.showToast('🎉 ¡Token de GitHub configurado automáticamente desde la invitación!', 'success');
+            }, 500);
+          }
+        } catch (e) {
+          console.error('Error decodificando token de invitación:', e);
+        }
+      }
+    }
+  },
+
+  populateLoginDelegates() {
+    const selectEl = document.getElementById('login-delegate-select');
+    if (!selectEl) return;
+
+    selectEl.innerHTML = '';
+    const delegates = PlataApp.getDelegatesList();
+
+    delegates.forEach(del => {
+      const opt = document.createElement('option');
+      opt.value = del.id;
+      opt.textContent = `👤 ${del.name}`;
+      selectEl.appendChild(opt);
+    });
+
+    // Opción para Admin Principal
+    const adminOpt = document.createElement('option');
+    adminOpt.value = 'admin';
+    adminOpt.textContent = '👑 Administrador Principal';
+    selectEl.appendChild(adminOpt);
+
+    // Recordar última selección si existe
+    const lastDelId = localStorage.getItem('lmi_last_delegate_id');
+    if (lastDelId && delegates.some(d => d.id === lastDelId)) {
+      selectEl.value = lastDelId;
+    }
+  },
+
+  updateTokenStatusUI() {
+    const token = localStorage.getItem('lmi_github_token');
+    const activeBox = document.getElementById('login-token-status-active');
+    const missingBox = document.getElementById('login-token-status-missing');
+    const topbarTokenLbl = document.getElementById('lbl-topbar-token-status');
+
+    const hasToken = token && (token.startsWith('ghp_') || token.startsWith('github_pat_') || token.length > 20);
+
+    if (activeBox && missingBox) {
+      if (hasToken) {
+        activeBox.style.display = 'flex';
+        missingBox.style.display = 'none';
+      } else {
+        activeBox.style.display = 'none';
+        missingBox.style.display = 'block';
+      }
+    }
+
+    if (topbarTokenLbl) {
+      topbarTokenLbl.textContent = hasToken ? 'GitHub OK' : 'Sin Token';
+      topbarTokenLbl.style.color = hasToken ? '#34d399' : '#fca5a5';
+    }
+  },
+
+  showTokenInputInLogin() {
+    const activeBox = document.getElementById('login-token-status-active');
+    const missingBox = document.getElementById('login-token-status-missing');
+    if (activeBox) activeBox.style.display = 'none';
+    if (missingBox) {
+      missingBox.style.display = 'block';
+      const input = document.getElementById('login-github-token-input');
+      if (input) {
+        input.value = localStorage.getItem('lmi_github_token') || '';
+        input.focus();
+      }
+    }
+  },
+
+  checkSession() {
+    const raw = sessionStorage.getItem('lmi_plata_session') || localStorage.getItem('lmi_plata_session');
+    if (!raw) {
+      this.showLoginOverlay();
+      return false;
+    }
+
+    try {
+      const sess = JSON.parse(raw);
+      if (sess && sess.name) {
+        this.session = sess;
+        this.unlockApp(sess);
+        return true;
+      }
+    } catch (e) {
+      console.warn('Sesión corrupta o inválida:', e);
+    }
+
+    this.showLoginOverlay();
+    return false;
+  },
+
+  submitLogin(event) {
+    if (event) event.preventDefault();
+
+    const delegateId = document.getElementById('login-delegate-select')?.value;
+    const pin = document.getElementById('login-pin-input')?.value.trim();
+    const tokenInput = document.getElementById('login-github-token-input');
+    const errorBox = document.getElementById('login-error-alert');
+
+    // Guardar token si el usuario lo escribió
+    if (tokenInput && tokenInput.value.trim()) {
+      localStorage.setItem('lmi_github_token', tokenInput.value.trim());
+      this.updateTokenStatusUI();
+    }
+
+    // Validar PIN
+    const cfg = (PlataApp.data && PlataApp.data.plataDelegatesConfig) ? PlataApp.data.plataDelegatesConfig : {};
+    let isValid = false;
+    let delegateObj = null;
+
+    if (delegateId === 'admin') {
+      const adminPin = cfg.adminPin || '9999';
+      if (pin === adminPin) {
+        isValid = true;
+        delegateObj = { id: 'admin', name: 'Administrador Principal', role: 'admin' };
+      }
+    } else {
+      const delegates = PlataApp.getDelegatesList();
+      const target = delegates.find(d => d.id === delegateId);
+      if (target && target.pin === pin) {
+        isValid = true;
+        delegateObj = target;
+      }
+    }
+
+    if (!isValid) {
+      if (errorBox) {
+        errorBox.textContent = '❌ PIN incorrecto. Por favor verifica tu clave con el Administrador.';
+        errorBox.style.display = 'block';
+      }
+      return;
+    }
+
+    if (errorBox) errorBox.style.display = 'none';
+
+    // Sesión exitosa
+    const sessionData = {
+      id: delegateObj.id,
+      name: delegateObj.name,
+      role: delegateObj.role || 'delegado',
+      loginTime: Date.now()
+    };
+
+    localStorage.setItem('lmi_last_delegate_id', delegateObj.id);
+    localStorage.setItem('lmi_plata_session', JSON.stringify(sessionData));
+    this.session = sessionData;
+
+    this.unlockApp(sessionData);
+    PlataApp.showToast(`🎉 ¡Bienvenido, ${delegateObj.name}! Sesión iniciada correctamente.`, 'success');
+  },
+
+  unlockApp(sessionData) {
+    const overlay = document.getElementById('plata-auth-overlay');
+    const appContainer = document.getElementById('plata-app-container');
+    const topbarUser = document.getElementById('lbl-topbar-username');
+
+    if (overlay) overlay.style.display = 'none';
+    if (appContainer) appContainer.style.display = 'flex';
+
+    PlataApp.currentUser = sessionData.name || 'Delegado Plata';
+    if (topbarUser) topbarUser.textContent = sessionData.name;
+
+    const signedLbl = document.getElementById('lbl-plata-author-signed');
+    if (signedLbl) signedLbl.textContent = sessionData.name;
+
+    const selectUser = document.getElementById('plata-current-user-select');
+    if (selectUser) {
+      selectUser.value = sessionData.name;
+    }
+
+    this.updateTokenStatusUI();
+  },
+
+  showLoginOverlay() {
+    const overlay = document.getElementById('plata-auth-overlay');
+    const appContainer = document.getElementById('plata-app-container');
+
+    if (overlay) overlay.style.display = 'flex';
+    if (appContainer) appContainer.style.display = 'none';
+
+    this.populateLoginDelegates();
+    this.updateTokenStatusUI();
+
+    const pinInput = document.getElementById('login-pin-input');
+    if (pinInput) {
+      pinInput.value = '';
+      setTimeout(() => pinInput.focus(), 150);
+    }
+  },
+
+  logout() {
+    sessionStorage.removeItem('lmi_plata_session');
+    localStorage.removeItem('lmi_plata_session');
+    this.session = null;
+    this.showLoginOverlay();
+    PlataApp.showToast('Sesión cerrada correctamente.', 'info');
+  },
+
+  toggleLoginPinVisibility() {
+    const input = document.getElementById('login-pin-input');
+    const icon = document.getElementById('icon-login-pin-eye');
+    if (!input) return;
+    if (input.type === 'password') {
+      input.type = 'text';
+      if (icon) icon.className = 'fa-solid fa-eye-slash';
+    } else {
+      input.type = 'password';
+      if (icon) icon.className = 'fa-solid fa-eye';
+    }
+  },
+
+  // Token Modal
+  openTokenModal() {
+    const modal = document.getElementById('modal-plata-token');
+    const input = document.getElementById('modal-token-input');
+    const testResult = document.getElementById('modal-token-test-result');
+    if (modal) modal.style.display = 'flex';
+    if (input) input.value = localStorage.getItem('lmi_github_token') || '';
+    if (testResult) testResult.style.display = 'none';
+  },
+
+  closeTokenModal() {
+    const modal = document.getElementById('modal-plata-token');
+    if (modal) modal.style.display = 'none';
+  },
+
+  toggleModalTokenVisibility() {
+    const input = document.getElementById('modal-token-input');
+    const icon = document.getElementById('icon-modal-token-eye');
+    if (!input) return;
+    if (input.type === 'password') {
+      input.type = 'text';
+      if (icon) icon.className = 'fa-solid fa-eye-slash';
+    } else {
+      input.type = 'password';
+      if (icon) icon.className = 'fa-solid fa-eye';
+    }
+  },
+
+  saveTokenFromModal() {
+    const input = document.getElementById('modal-token-input');
+    const val = (input?.value || '').trim();
+    if (val) {
+      localStorage.setItem('lmi_github_token', val);
+      PlataApp.showToast('Token de GitHub guardado en este dispositivo.', 'success');
+    } else {
+      localStorage.removeItem('lmi_github_token');
+      PlataApp.showToast('Token eliminado.', 'info');
+    }
+    this.updateTokenStatusUI();
+    this.closeTokenModal();
+  },
+
+  async testCurrentToken() {
+    const input = document.getElementById('modal-token-input');
+    const token = (input?.value || localStorage.getItem('lmi_github_token') || '').trim();
+    const resultBox = document.getElementById('modal-token-test-result');
+    if (!token) {
+      if (resultBox) {
+        resultBox.style.display = 'block';
+        resultBox.style.background = 'rgba(239, 68, 68, 0.2)';
+        resultBox.style.color = '#fca5a5';
+        resultBox.textContent = '❌ Por favor escribe un token antes de probar.';
+      }
+      return;
+    }
+
+    if (resultBox) {
+      resultBox.style.display = 'block';
+      resultBox.style.background = 'rgba(56, 189, 248, 0.15)';
+      resultBox.style.color = '#38bdf8';
+      resultBox.textContent = '⏳ Verificando permisos con GitHub API...';
+    }
+
+    try {
+      const res = await fetch('https://api.github.com/repos/DekaosSv/LMI---Plataforma', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github+json'
+        }
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(`HTTP ${res.status}: ${err.message || 'Token no autorizado'}`);
+      }
+      const data = await res.json();
+      const perms = data.permissions || {};
+      const canPush = perms.push || false;
+
+      if (resultBox) {
+        if (canPush) {
+          resultBox.style.background = 'rgba(16, 185, 129, 0.2)';
+          resultBox.style.color = '#34d399';
+          resultBox.textContent = `✅ Token válido con permisos de escritura en ${data.full_name}.`;
+        } else {
+          resultBox.style.background = 'rgba(245, 158, 11, 0.2)';
+          resultBox.style.color = '#fbbf24';
+          resultBox.textContent = `⚠️ Conectó a ${data.full_name}, pero no tiene permisos de escritura (push).`;
+        }
+      }
+    } catch (err) {
+      if (resultBox) {
+        resultBox.style.background = 'rgba(239, 68, 68, 0.2)';
+        resultBox.style.color = '#fca5a5';
+        resultBox.textContent = `❌ Error: ${err.message}`;
+      }
+    }
+  }
+};
+
+// =========================================================================
+// MÓDULO PRINCIPAL DE LA APLICACIÓN (PLATA APP)
+// =========================================================================
 const PlataApp = {
   apiBase: null,
   data: null,
@@ -24,13 +370,13 @@ const PlataApp = {
   // ==========================================
   async init() {
     console.log('Iniciando Panel de Delegados - División Plata...');
-    this.initUserIdentity();
     this.setupEventListeners();
     await this.loadData();
+    PlataAuth.init();
   },
 
   // ==========================================
-  // CONECTIVIDAD & API
+  // CONECTIVIDAD & API LOCAL Y NUBE
   // ==========================================
   async getApiBase() {
     if (this.apiBase !== null) return this.apiBase;
@@ -61,50 +407,214 @@ const PlataApp = {
     this.setStatus('Conectando...', 'connecting');
     try {
       const base = await this.getApiBase();
-      const res = await fetch(`${base}/api/data?t=${Date.now()}`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      this.data = await res.json();
-      window.lmiData = this.data;
-      this.setStatus('Online (Sincronizado)', 'ready');
-    } catch (err) {
-      console.warn('No se pudo conectar a /api/data, usando window.lmiData local:', err);
-      if (window.lmiData) {
-        this.data = window.lmiData;
-        this.setStatus('Modo Lectura Local', 'warning');
-      } else {
-        this.setStatus('Error de Conexión', 'error');
-        this.showToast('No se pudieron cargar los datos de la liga.', 'error');
-        return;
+      if (base) {
+        const res = await fetch(`${base}/api/data?t=${Date.now()}`);
+        if (res.ok) {
+          this.data = await res.json();
+          window.lmiData = this.data;
+          this.setStatus('Online (Servidor Local)', 'ready');
+          this.onDataLoaded();
+          return;
+        }
       }
+    } catch (err) {
+      console.warn('Servidor local no disponible, cargando datos desde frontend:', err);
+    }
+
+    if (window.lmiData) {
+      this.data = window.lmiData;
+      this.setStatus('Online (GitHub Pages)', 'ready');
+    } else {
+      this.setStatus('Error de Conexión', 'error');
+      this.showToast('No se pudieron cargar los datos de la liga.', 'error');
+      return;
     }
 
     this.onDataLoaded();
   },
 
+  // Serializador seguro idéntico al backend
+  serializeDataJs(dataObj) {
+    const copy = JSON.parse(JSON.stringify(dataObj));
+    if (copy.ruletaConfig && copy.ruletaConfig.telegramBotToken) {
+      copy.ruletaConfig.telegramBotToken = '';
+    }
+    const header = '// Base de datos unificada LMI Temporada 10\n\nvar INITIAL_LMI_DATA = ';
+    const jsonStr = JSON.stringify(copy, null, 2);
+    const footer = ";\n\nif (typeof window !== 'undefined') {\n  window.lmiData = INITIAL_LMI_DATA;\n}\n";
+    return header + jsonStr + footer;
+  },
+
+  // Guardar directamente en GitHub mediante la API Git Data (Blobs & Commits)
+  // Soporta archivos de cualquier tamaño (bypassa el límite de 1MB de Contents API)
+  async saveToGitHub(token, dataObj, commitMessage) {
+    const owner = 'DekaosSv';
+    const repo = 'LMI---Plataforma';
+    const branch = 'main';
+    const filePath = 'data.js';
+
+    const fullContent = this.serializeDataJs(dataObj);
+
+    const headers = {
+      'Authorization': `Bearer ${token.trim()}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+
+    // 1. Obtener el commit actual de la rama main
+    const refRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${branch}?_t=${Date.now()}`, { headers });
+    if (!refRes.ok) {
+      const err = await refRes.json().catch(() => ({}));
+      throw new Error(`Error en GitHub (${refRes.status}): ${err.message || 'Token inválido o sin permisos de repo'}`);
+    }
+    const refData = await refRes.json();
+    const latestCommitSha = refData.object.sha;
+
+    // 2. Crear Blob con codificación UTF-8 / Base64
+    const bytes = new TextEncoder().encode(fullContent);
+    let binary = '';
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    const base64Content = btoa(binary);
+
+    const blobRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/blobs`, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: base64Content,
+        encoding: 'base64'
+      })
+    });
+    if (!blobRes.ok) {
+      const err = await blobRes.json().catch(() => ({}));
+      throw new Error(`Error creando Blob (${blobRes.status}): ${err.message || 'Fallo al procesar archivo'}`);
+    }
+    const blobData = await blobRes.json();
+    const blobSha = blobData.sha;
+
+    // 3. Crear Tree apuntando al nuevo blob de data.js
+    const treeRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees`, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        base_tree: latestCommitSha,
+        tree: [
+          {
+            path: filePath,
+            mode: '100644',
+            type: 'blob',
+            sha: blobSha
+          }
+        ]
+      })
+    });
+    if (!treeRes.ok) {
+      const err = await treeRes.json().catch(() => ({}));
+      throw new Error(`Error creando Árbol Git (${treeRes.status}): ${err.message || 'Fallo de estructura'}`);
+    }
+    const treeData = await treeRes.json();
+    const newTreeSha = treeData.sha;
+
+    // 4. Crear Commit
+    const commitRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/commits`, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: commitMessage || `Registro División Plata por ${this.currentUser}`,
+        tree: newTreeSha,
+        parents: [latestCommitSha]
+      })
+    });
+    if (!commitRes.ok) {
+      const err = await commitRes.json().catch(() => ({}));
+      throw new Error(`Error creando Commit (${commitRes.status}): ${err.message || 'Fallo al commitear'}`);
+    }
+    const commitData = await commitRes.json();
+    const newCommitSha = commitData.sha;
+
+    // 5. Actualizar la referencia refs/heads/main
+    const updateRefRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/refs/heads/${branch}`, {
+      method: 'PATCH',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sha: newCommitSha,
+        force: false
+      })
+    });
+    if (!updateRefRes.ok) {
+      const err = await updateRefRes.json().catch(() => ({}));
+      throw new Error(`Error actualizando rama main (${updateRefRes.status}): ${err.message || 'Fallo al publicar'}`);
+    }
+
+    return { success: true, commitSha: newCommitSha };
+  },
+
+  // Guardado Inteligente: Local o Nube según entorno
   async saveData(silent = false) {
     if (!this.data) return false;
-    const base = await this.getApiBase();
-    this.setStatus('Guardando...', 'connecting');
-    try {
-      const res = await fetch(`${base}/api/save`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.data)
-      });
-      const result = await res.json();
-      if (!res.ok || result.error) throw new Error(result.error || `HTTP ${res.status}`);
 
-      this.setStatus('Online (Guardado)', 'ready');
-      if (!silent) {
-        this.showToast('¡Datos guardados con éxito en la plataforma!', 'success');
+    const isLocal = window.location.protocol.startsWith('http:') && 
+      (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost');
+    const githubToken = localStorage.getItem('lmi_github_token');
+
+    // 1. Si está en servidor local con Python activo, guardar localmente
+    if (isLocal) {
+      try {
+        const base = await this.getApiBase();
+        if (base) {
+          this.setStatus('Guardando local...', 'connecting');
+          const res = await fetch(`${base}/api/save`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(this.data)
+          });
+          if (res.ok) {
+            this.setStatus('Online (Guardado Local)', 'ready');
+            if (!silent) {
+              this.showToast('¡Datos guardados con éxito en data.js local!', 'success');
+            }
+            return true;
+          }
+        }
+      } catch (err) {
+        console.warn('Servidor local no respondió, intentando GitHub API...', err);
       }
-      return true;
-    } catch (err) {
-      console.error('Error guardando:', err);
-      this.setStatus('Error al guardar', 'error');
-      this.showToast(`Error al guardar: ${err.message}`, 'error');
+    }
+
+    // 2. Si está en GitHub Pages o servidor local apagado, guardar vía GitHub API
+    if (!githubToken) {
+      this.setStatus('Falta Token GitHub', 'error');
+      this.showToast('Para guardar en la nube necesitas configurar el Token de GitHub.', 'error');
+      PlataAuth.openTokenModal();
       return false;
     }
+
+    this.setStatus('Publicando en GitHub...', 'connecting');
+    if (!silent) {
+      this.showToast('🚀 Guardando y publicando directamente en GitHub...', 'info');
+    }
+
+    try {
+      const commitMsg = `Registro Jornada ${this.currentJornada}: ${this.currentMatch ? (this.currentMatch.team1Id + ' vs ' + this.currentMatch.team2Id) : 'División Plata'} [${this.currentUser}]`;
+      const res = await this.saveToGitHub(githubToken, this.data, commitMsg);
+
+      if (res && res.success) {
+        this.setStatus('Online (Publicado)', 'ready');
+        if (!silent) {
+          this.showToast(`🎉 ¡Partido registrado por ${this.currentUser} y publicado en GitHub con éxito!`, 'success');
+        }
+        return true;
+      }
+    } catch (err) {
+      console.error('Error guardando en GitHub API:', err);
+      this.setStatus('Error en GitHub', 'error');
+      this.showToast(`Error al publicar en GitHub: ${err.message}`, 'error');
+      return false;
+    }
+
+    return false;
   },
 
   setStatus(text, state) {
@@ -126,64 +636,22 @@ const PlataApp = {
     }, 4000);
   },
 
-  // ==========================================
-  // GESTIÓN DE IDENTIDAD DE USUARIO (FIRMA)
-  // ==========================================
-  initUserIdentity() {
-    const savedUser = localStorage.getItem('lmi_plata_user') || 'Delegado Plata 1';
-    this.currentUser = savedUser;
-
-    const selectEl = document.getElementById('plata-current-user-select');
-    const customInput = document.getElementById('plata-current-user-custom');
-    const signedLbl = document.getElementById('lbl-plata-author-signed');
-
-    if (selectEl) {
-      const isPredefined = ['Delegado Plata 1', 'Delegado Plata 2', 'Delegado Plata 3'].includes(savedUser);
-      if (isPredefined) {
-        selectEl.value = savedUser;
-        if (customInput) customInput.style.display = 'none';
-      } else {
-        selectEl.value = 'custom';
-        if (customInput) {
-          customInput.style.display = 'block';
-          customInput.value = savedUser;
+  getDelegatesList() {
+    const cfg = (this.data && this.data.plataDelegatesConfig) ? this.data.plataDelegatesConfig : {};
+    if (Array.isArray(cfg.delegates) && cfg.delegates.length > 0) {
+      const defaultPins = ['1234', '5678', '9012'];
+      return cfg.delegates.map((d, i) => {
+        if (typeof d === 'string') {
+          return { id: `del${i + 1}`, name: d, pin: defaultPins[i] || '1234' };
         }
-      }
-
-      selectEl.addEventListener('change', (e) => {
-        if (e.target.value === 'custom') {
-          if (customInput) {
-            customInput.style.display = 'block';
-            customInput.focus();
-            if (customInput.value.trim()) {
-              this.setUser(customInput.value.trim());
-            }
-          }
-        } else {
-          if (customInput) customInput.style.display = 'none';
-          this.setUser(e.target.value);
-        }
+        return d;
       });
     }
-
-    if (customInput) {
-      customInput.addEventListener('input', (e) => {
-        const val = e.target.value.trim();
-        if (val) {
-          this.setUser(val);
-        }
-      });
-    }
-
-    if (signedLbl) signedLbl.textContent = this.currentUser;
-  },
-
-  setUser(userName) {
-    this.currentUser = userName || 'Delegado Plata';
-    localStorage.setItem('lmi_plata_user', this.currentUser);
-    const signedLbl = document.getElementById('lbl-plata-author-signed');
-    if (signedLbl) signedLbl.textContent = this.currentUser;
-    console.log('Usuario activo actualizado a:', this.currentUser);
+    return [
+      { id: 'del1', name: 'Delegado Plata 1', pin: '1234' },
+      { id: 'del2', name: 'Delegado Plata 2', pin: '5678' },
+      { id: 'del3', name: 'Delegado Plata 3', pin: '9012' }
+    ];
   },
 
   // ==========================================
@@ -251,6 +719,7 @@ const PlataApp = {
     this.populateHistoryFilters();
     this.renderMatchHistory();
     this.renderActiveExport();
+    PlataAuth.populateLoginDelegates();
   },
 
   // ==========================================
@@ -597,7 +1066,7 @@ const PlataApp = {
             </select>
           </div>
 
-          <!-- Selector de Jugador (Agrupado por club Local / Visitante) -->
+          <!-- Selector de Jugador -->
           <div style="flex: 1; min-width: 220px;">
             <select class="form-select form-select-sm" style="width: 100%; font-weight: 700; font-size: 0.82rem;" onchange="PlataApp.updateEventPlayer(${idx}, this.value)">
               <optgroup label="🏠 [Local] ${t1.name}">
@@ -838,10 +1307,9 @@ const PlataApp = {
     // Prepend to match history
     this.data.matchHistory.unshift(historyRecord);
 
-    // 5. Guardar en backend
+    // 5. Guardar (Local o Cloud GitHub API)
     const ok = await this.saveData();
     if (ok) {
-      this.showToast(`✅ Partido guardado por ${delegateUser}. Marcador: ${t1.name} ${s1} - ${s2} ${t2.name}`, 'success');
       this.populateMatchesForCurrentJornada();
       this.onMatchSelected(this.currentMatch.id);
       this.renderMatchHistory();
@@ -896,11 +1364,9 @@ const PlataApp = {
     const jFilter = document.getElementById('plata-history-jornada-filter')?.value || 'all';
     const aFilter = document.getElementById('plata-history-author-filter')?.value || 'all';
 
-    // Obtener partidos de División Plata desde el historial
     let list = (this.data && Array.isArray(this.data.matchHistory))
       ? this.data.matchHistory.filter(m => {
           if (m.competition && m.competition.toLowerCase() === 'plata') return true;
-          // Fallback: verificar si ambos clubes son de división plata
           const t1 = this.getTeamById(m.team1Id);
           return t1 && (t1.division || '').toLowerCase() === 'plata';
         })
@@ -1007,7 +1473,6 @@ const PlataApp = {
   switchExportTab(tabName) {
     this.activeExportTab = tabName;
 
-    // Pills
     ['standings', 'scorers', 'assists', 'pending'].forEach(t => {
       const pill = document.getElementById(`pill-export-${t}`);
       const card = document.getElementById(`card-export-${t}`);
@@ -1048,12 +1513,10 @@ const PlataApp = {
       let rowBg = (idx % 2 === 0) ? 'rgba(255,255,255,0.02)' : 'transparent';
 
       if (pos <= 2) {
-        // Ascenso Directo (Verde)
         posColor = '#34d399';
         borderLeft = '3px solid #10b981';
         rowBg = 'rgba(16, 185, 129, 0.08)';
       } else if (pos <= 6) {
-        // Play-offs (Amarillo)
         posColor = '#facc15';
         borderLeft = '3px solid #eab308';
         rowBg = 'rgba(234, 179, 8, 0.05)';
@@ -1262,7 +1725,7 @@ const PlataApp = {
     await this.captureAndDownload('export-container-pending', `LMI_Division_Plata_Pendientes_Jornada_${jNum}.png`);
   },
 
-  // Método Genérico y Robusto de Captura con html2canvas
+  // Método de Captura con html2canvas
   async captureAndDownload(containerId, filename) {
     const target = document.getElementById(containerId);
     if (!target) {
@@ -1292,7 +1755,6 @@ const PlataApp = {
     clone.style.boxSizing = 'border-box';
     clone.style.overflow = 'visible';
 
-    // 1. Reemplazar iconos para evitar cuelgues de @font-face
     clone.querySelectorAll('i').forEach(icon => {
       const cls = icon.className || '';
       let emoji = '⚽';
@@ -1311,7 +1773,6 @@ const PlataApp = {
       icon.parentNode.replaceChild(span, icon);
     });
 
-    // 2. Pre-convertir imágenes ya renderizadas a Data URLs
     const origImgs = target.querySelectorAll('img');
     const cloneImgs = clone.querySelectorAll('img');
     cloneImgs.forEach((cImg, idx) => {
@@ -1373,7 +1834,7 @@ const PlataApp = {
   },
 
   // ==========================================
-  // MODAL DE DESPLIEGUE A GITHUB PAGES
+  // MODAL DE DESPLIEGUE A GITHUB PAGES (GIT)
   // ==========================================
   openDeployModal() {
     const modal = document.getElementById('modal-plata-deploy');
@@ -1392,7 +1853,7 @@ const PlataApp = {
 
     if (consoleEl) {
       consoleEl.style.display = 'block';
-      consoleEl.textContent = '== INICIANDO PUBLICACIÓN EN GITHUB PAGES ==\nGuardando datos locales...\n';
+      consoleEl.textContent = '== INICIANDO PUBLICACIÓN EN PRODUCCIÓN ==\n';
     }
 
     if (btn) {
@@ -1401,30 +1862,18 @@ const PlataApp = {
     }
 
     try {
-      // 1. Guardar primero
-      await this.saveData(true);
-      if (consoleEl) consoleEl.textContent += '✓ Datos sincronizados con éxito.\nEjecutando git add, commit y push...\n';
-
-      // 2. Deploy en backend
-      const base = await this.getApiBase();
-      const res = await fetch(`${base}/api/deploy`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg })
-      });
-
-      const result = await res.json();
-      if (!res.ok || result.error) throw new Error(result.error || result.output || 'Error en git push');
-
-      if (consoleEl) {
-        consoleEl.textContent += `\n${result.output || '¡Publicado con éxito!'}\n\n`;
-        consoleEl.textContent += '🎉 ¡PROCESO FINALIZADO CON ÉXITO!\nLos cambios se reflejarán en la web pública en 1-2 minutos.';
+      const ok = await this.saveData(false);
+      if (ok) {
+        if (consoleEl) {
+          consoleEl.textContent += '\n✓ Datos sincronizados con éxito.\n';
+          consoleEl.textContent += '🎉 ¡PROCESO FINALIZADO CON ÉXITO!\nLos cambios se reflejarán en la web pública en 1-2 minutos.';
+        }
+      } else {
+        throw new Error('No se pudo guardar la información.');
       }
-      this.showToast('🚀 ¡Cambios publicados exitosamente en GitHub Pages!', 'success');
     } catch (err) {
       console.error('Error en deploy:', err);
       if (consoleEl) consoleEl.textContent += `\n❌ ERROR: ${err.message}`;
-      this.showToast(`Error al publicar: ${err.message}`, 'error');
     } finally {
       if (btn) {
         btn.disabled = false;
@@ -1522,7 +1971,6 @@ const PlataApp = {
       item.dg = item.gf - item.gc;
     });
 
-    // Ordenar: PTS desc, DG desc, GF desc, Nombre asc
     list.sort((a, b) => {
       if (b.pts !== a.pts) return b.pts - a.pts;
       if (b.dg !== a.dg) return b.dg - a.dg;
