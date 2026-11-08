@@ -253,19 +253,22 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
                     except:
                         pass
                 
-                # Ejecutar git add
-                add_cmd = ["git", "add", "data.js", "app.js", "index.html", "style.css", "process_lmi_excel.py", "Sala de campeones", "Balon de oro", "Logos Equipos", "Imagenes", "actualizar_web.bat", "admin.html", "admin.js", "admin.css", "admin_server.py", "admin.bat"]
+                # 1. Traer cambios remotos primero (por si delegados guardaron en GitHub Pages)
+                p_pull = subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+                
+                # 2. Ejecutar git add
+                add_cmd = ["git", "add", "data.js", "app.js", "index.html", "style.css", "process_lmi_excel.py", "Sala de campeones", "Balon de oro", "Logos Equipos", "Imagenes", "actualizar_web.bat", "admin.html", "admin.js", "admin.css", "admin_server.py", "admin.bat", "admin_plata.html", "admin_plata.js"]
                 p_add = subprocess.run(add_cmd, cwd=BASE_DIR, capture_output=True, text=True)
                 
-                # Ejecutar git commit
+                # 3. Ejecutar git commit
                 commit_cmd = ["git", "commit", "-m", commit_msg]
                 p_commit = subprocess.run(commit_cmd, cwd=BASE_DIR, capture_output=True, text=True)
                 
-                # Ejecutar git push
+                # 4. Ejecutar git push
                 push_cmd = ["git", "push", "origin", "main"]
                 p_push = subprocess.run(push_cmd, cwd=BASE_DIR, capture_output=True, text=True)
                 
-                output = f"--- Git Add ---\n{p_add.stdout}{p_add.stderr}\n\n--- Git Commit ---\n{p_commit.stdout}{p_commit.stderr}\n\n--- Git Push ---\n{p_push.stdout}{p_push.stderr}"
+                output = f"--- Git Pull (Rebase) ---\n{p_pull.stdout}{p_pull.stderr}\n\n--- Git Add ---\n{p_add.stdout}{p_add.stderr}\n\n--- Git Commit ---\n{p_commit.stdout}{p_commit.stderr}\n\n--- Git Push ---\n{p_push.stdout}{p_push.stderr}"
                 
                 success = p_push.returncode == 0 or "Everything up-to-date" in output
                 

@@ -402,6 +402,28 @@ const PlataApp = {
       console.warn('Servidor local no disponible, cargando datos desde frontend:', err);
     }
 
+    // Si estamos en GitHub Pages o web, intentar cargar data.js fresco sin caché
+    try {
+      const res = await fetch(`data.js?_t=${Date.now()}`, { cache: 'no-store' });
+      if (res.ok) {
+        const text = await res.text();
+        const prefix = 'var INITIAL_LMI_DATA = ';
+        const idx = text.indexOf(prefix);
+        if (idx !== -1) {
+          const jsonStart = idx + prefix.length;
+          const jsonEnd = text.lastIndexOf(';\n\nif (typeof window');
+          const jsonStr = jsonEnd !== -1 ? text.substring(jsonStart, jsonEnd).trim() : text.substring(jsonStart).trim().replace(/;$/, '');
+          this.data = JSON.parse(jsonStr);
+          window.lmiData = this.data;
+          this.setStatus('Online (GitHub Pages)', 'ready');
+          this.onDataLoaded();
+          return;
+        }
+      }
+    } catch (fetchErr) {
+      console.warn('Fetch fresco de data.js falló, usando script tag:', fetchErr);
+    }
+
     if (window.lmiData) {
       this.data = window.lmiData;
       this.setStatus('Online (GitHub Pages)', 'ready');

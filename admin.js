@@ -5626,7 +5626,10 @@ const AdminApp = {
   async savePlataDelegatesConfig() {
     this.initPlataDelegatesConfig();
     await this.saveData(true);
-    this.showToast('¡Configuración de fechas para delegados guardada con éxito!', 'success');
+    this.showToast('¡Configuración de fechas guardada en data.js local!', 'success');
+    if (confirm('✅ Fechas guardadas localmente.\n\n¿Deseas PUBLICAR en GitHub Pages ahora mismo para que tus delegados ya las tengan habilitadas en producción?')) {
+      this.openDeployModal();
+    }
   },
 
   renderPlataDelegatesSecurityControl() {
@@ -5770,6 +5773,9 @@ const AdminApp = {
     this.initPlataDelegatesConfig();
     await this.saveData(true);
     this.showToast('¡Configuración de delegados guardada exitosamente en data.js local!', 'success');
+    if (confirm('✅ Delegados guardados localmente.\n\n¿Deseas PUBLICAR en GitHub Pages ahora mismo para que tus delegados puedan ingresar con sus nuevos PINs en producción?')) {
+      this.openDeployModal();
+    }
   },
 
   saveLocalGitHubToken(val) {
