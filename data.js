@@ -7839,7 +7839,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017852961_3",
-      "name": "Carles Puyol",
+      "name": "Dan Burn",
       "position": "CT",
       "teamId": "acmiln",
       "goals": 0,
