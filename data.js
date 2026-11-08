@@ -13287,7 +13287,7 @@ var INITIAL_LMI_DATA = {
             ],
             "annulled": false,
             "registeredBy": "Esteban Arturo",
-            "registeredAt": "2026-11-08T23:42:05.924Z"
+            "registeredAt": "2026-11-08T23:43:43.964Z"
           },
           {
             "id": "plata_j6_m6",
@@ -15456,9 +15456,9 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794181325924",
-      "timestamp": 1794181325924,
-      "date": "08 nov 2026, 18:42",
+      "id": "match_1794181423964",
+      "timestamp": 1794181423965,
+      "date": "08 nov 2026, 18:43",
       "competition": "plata",
       "jornada": 6,
       "fixtureMatchId": "plata_j6_m5",
@@ -15488,7 +15488,7 @@ var INITIAL_LMI_DATA = {
         }
       ],
       "registeredBy": "Esteban Arturo",
-      "registeredAt": "2026-11-08T23:42:05.924Z"
+      "registeredAt": "2026-11-08T23:43:43.964Z"
     },
     {
       "id": "match_1794181099623",
