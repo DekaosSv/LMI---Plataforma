@@ -1,2 +1,3 @@
 #!/bin/sh
 python scripts/pre_commit_guard.py
+

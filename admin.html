@@ -76,6 +76,10 @@
         <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i>
         <span>Centro de Control Web</span>
       </button>
+      <a href="admin_plata.html" target="_blank" class="nav-btn" style="text-decoration: none; border-left: 3px solid #94a3b8; display: flex; align-items: center; gap: 0.65rem;">
+        <i class="fa-solid fa-users-gear" style="color: #94a3b8;"></i>
+        <span>Hub División Plata ↗</span>
+      </a>
 
       <span class="nav-section-title">Sistema</span>
       <button class="nav-btn" id="btn-quick-deploy">
@@ -695,13 +699,18 @@
               <h2 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Historial de Partidos Registrados</h2>
               <p class="card-desc">Lista de encuentros guardados. Si te equivocaste en algún resultado o jugador, puedes deshacerlo con un clic y restaurar automáticamente las estadísticas.</p>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <select class="form-select" id="history-filter-select" style="width: 170px; font-weight: 700; padding: 0.4rem 0.75rem; font-size: 0.85rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <select class="form-select" id="history-filter-select" style="width: 160px; font-weight: 700; padding: 0.4rem 0.75rem; font-size: 0.85rem;">
                 <option value="all">Todos los Torneos</option>
                 <option value="oro">🥇 División Oro</option>
                 <option value="plata">🥈 División Plata</option>
                 <option value="champions">🏆 Champions League</option>
                 <option value="estelar">⭐ Copa Estelar</option>
+              </select>
+              <select class="form-select" id="history-author-filter" style="width: 185px; font-weight: 700; padding: 0.4rem 0.75rem; font-size: 0.85rem; border-color: #38bdf8; color: #38bdf8;">
+                <option value="all">👤 Todos los Autores</option>
+                <option value="delegates">👥 Solo Delegados Plata</option>
+                <option value="admin">⭐ Solo Admin Principal</option>
               </select>
               <span class="badge" id="lbl-matches-history-count" style="background: var(--border-color); padding: 0.35rem 0.7rem; border-radius: 99px; font-size: 0.8rem; font-weight: 700;">0 partidos</span>
             </div>
@@ -716,6 +725,7 @@
                   <th>Partido</th>
                   <th style="text-align: center;">Marcador</th>
                   <th>Goles y Asistencias</th>
+                  <th>Registrado Por</th>
                   <th style="text-align: right;">Acciones</th>
                 </tr>
               </thead>
@@ -2066,6 +2076,71 @@
                 <input type="checkbox" id="web-config-show-team-budget-card" onchange="AdminApp.onWebConfigChange()">
                 <span class="lmi-slider"></span>
               </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control de Fechas Habilitadas para Delegados de División Plata -->
+        <div class="card" style="border-left: 4px solid #94a3b8; background: linear-gradient(135deg, rgba(148, 163, 184, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #94a3b8; font-weight: 800; font-size: 0.75rem;">
+                  <i class="fa-solid fa-medal"></i> DIVISIÓN PLATA
+                </span>
+                <span id="lbl-plata-delegates-status" class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; font-weight: 800; font-size: 0.75rem;">
+                  1 Fecha Habilitada
+                </span>
+              </div>
+              <h2 class="card-title" style="color: #cbd5e1;">
+                <i class="fa-solid fa-calendar-check" style="color: #94a3b8;"></i> Control de Fechas Habilitadas para Delegados (División Plata)
+              </h2>
+              <p class="card-desc">
+                Autoriza qué jornadas de <strong>División Plata</strong> pueden registrar tus compañeros desde su <a href="admin_plata.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">Hub de Delegados</a>. Si una fecha está bloqueada aquí, ellos no podrán registrar partidos de esa fecha hasta que la habilites.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <a href="admin_plata.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.85rem; border-color: #94a3b8; color: #cbd5e1;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Hub Delegados
+              </a>
+              <button class="btn btn-gold" onclick="AdminApp.savePlataDelegatesConfig()" style="font-size: 0.8rem; padding: 0.4rem 0.85rem;">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Permisos
+              </button>
+            </div>
+          </div>
+
+          <!-- Master Switch & Presets -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.06);">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <label class="lmi-switch">
+                <input type="checkbox" id="chk-plata-allow-all" onchange="AdminApp.onPlataAllowAllChange()">
+                <span class="lmi-slider"></span>
+              </label>
+              <div>
+                <strong style="color: #fff; font-size: 0.92rem;">Permitir TODAS las Jornadas a la vez</strong>
+                <p style="margin: 0; font-size: 0.78rem; color: #94a3b8;">Habilita el registro de las 26 jornadas sin restricciones para tus compañeros.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('only1')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">Solo J1</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to3')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J3</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to5')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J5</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to10')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J10</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('blockAll')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem; color: #fca5a5; border-color: rgba(239, 68, 68, 0.4);">Bloquear Todas</button>
+            </div>
+          </div>
+
+          <!-- 26 Interactive Chips -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: #94a3b8;">
+                Haz clic en cualquier jornada para alternar entre Habilitada (🟢) o Bloqueada (🔒):
+              </span>
+              <span style="font-size: 0.76rem; color: #64748b;">(26 Jornadas de División Plata)</span>
+            </div>
+            <div id="plata-jornadas-chip-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem;">
+              <!-- Populated via JS -->
             </div>
           </div>
         </div>

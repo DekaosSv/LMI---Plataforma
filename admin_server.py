@@ -83,7 +83,7 @@ def write_data_js(data_obj):
 def update_index_cache_buster():
     import time
     new_v = str(int(time.time()))
-    for html_file in ["index.html", "admin.html"]:
+    for html_file in ["index.html", "admin.html", "admin_plata.html"]:
         f_path = os.path.join(BASE_DIR, html_file)
         if not os.path.exists(f_path):
             continue

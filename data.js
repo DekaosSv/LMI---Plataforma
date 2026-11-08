@@ -16155,7 +16155,17 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "ruletaTickets": [],
-  "ruletaHistory": []
+  "ruletaHistory": [],
+  "plataDelegatesConfig": {
+    "allowedJornadas": [
+      1
+    ],
+    "allowAllJornadas": false,
+    "delegates": [
+      "Delegado Plata 1",
+      "Delegado Plata 2"
+    ]
+  }
 };
 
 if (typeof window !== 'undefined') {

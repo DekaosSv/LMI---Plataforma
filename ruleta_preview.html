@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMI • Ruletas de la Fortuna (Oro y Plata)</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #070d1a;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --gold-primary: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.35);
+      --silver-primary: #94a3b8;
+      --silver-glow: rgba(148, 163, 184, 0.35);
+      --green: #10b981;
+      --red: #ef4444;
+      --blue: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f1f38 0%, #060913 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 0.35rem 0.9rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .header h1 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Switch Tabs */
+    .wheel-switch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .switch-btn {
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 12px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      transition: all 0.25s ease;
+      background: rgba(15, 23, 42, 0.6);
+      color: #94a3b8;
+    }
+
+    .switch-btn.active.btn-oro {
+      background: linear-gradient(135deg, #78350f 0%, #b45309 100%);
+      color: #fef3c7;
+      border-color: #f59e0b;
+      box-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .switch-btn.active.btn-plata {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: #f1f5f9;
+      border-color: #94a3b8;
+      box-shadow: 0 0 25px var(--silver-glow);
+    }
+
+    /* Main Grid */
+    .game-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Wheel Box */
+    .wheel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .wheel-container {
+      position: relative;
+      width: 380px;
+      height: 380px;
+      margin: 1rem 0 1.75rem;
+    }
+
+    @media (max-width: 440px) {
+      .wheel-container {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
+      transition: transform 4.5s cubic-bezier(0.15, 0.9, 0.25, 1);
+    }
+
+    /* Pointer Marker */
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 30px solid #ef4444;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+      z-index: 10;
+    }
+
+    .spin-center-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      background: radial-gradient(circle, #1e293b 0%, #090d16 100%);
+      border: 3px solid #f59e0b;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.8rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      z-index: 5;
+      transition: all 0.2s;
+    }
+
+    .spin-center-btn:hover:not(:disabled) {
+      transform: translate(-50%, -50%) scale(1.08);
+      border-color: #fbbf24;
+    }
+
+    .spin-center-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .spin-action-bar {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      text-align: center;
+    }
+
+    .btn-spin-main {
+      width: 100%;
+      padding: 1.1rem;
+      font-size: 1.15rem;
+      font-weight: 900;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-spin-oro {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #000;
+    }
+    .btn-spin-oro:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px var(--gold-glow);
+    }
+
+    .btn-spin-plata {
+      background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+      color: #0f172a;
+    }
+    .btn-spin-plata:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px var(--silver-glow);
+    }
+
+    .cost-notice {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    /* Simulation Club Selector Box */
+    .club-selector-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .club-select-input {
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      outline: none;
+      flex-grow: 1;
+    }
+
+    /* Result Banner */
+    .result-box {
+      margin-top: 1rem;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.15rem 1.25rem;
+      display: none;
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Prize List Card */
+    .details-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.75rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .details-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .details-subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+    }
+
+    .prizes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-height: 540px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .prize-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+
+    .prize-item:hover {
+      background: rgba(255, 255, 255, 0.07);
+      transform: translateX(4px);
+    }
+
+    .prize-item.active-highlight {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.15);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .prize-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .tag-premio { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-castigo { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .tag-mercado { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-vacio { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
+
+    /* Custom scroll */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-tag"><i class="fa-solid fa-dice"></i> Nueva Mecánica LMI</div>
+      <h1>RULETAS DE LA FORTUNA</h1>
+      <p>Configuradas para Oro ($150M) y Plata ($75M). Diseñadas con probabilidades matemáticas para generar emoción y drenar masa monetaria de forma controlada.</p>
+    </header>
+
+    <!-- Switch de Divisiones -->
+    <div class="wheel-switch">
+      <button class="switch-btn active btn-oro" id="tab-oro" onclick="selectDivision('oro')">
+        <i class="fa-solid fa-crown" style="color: #fbbf24;"></i>
+        <span>División Oro ($150M / Giro)</span>
+      </button>
+      <button class="switch-btn btn-plata" id="tab-plata" onclick="selectDivision('plata')">
+        <i class="fa-solid fa-medal" style="color: #cbd5e1;"></i>
+        <span>División Plata ($75M / Giro)</span>
+      </button>
+    </div>
+
+    <!-- Grid Principal -->
+    <div class="game-grid">
+      <!-- Columna 1: La Ruleta -->
+      <div class="wheel-card">
+        
+        <!-- Simulación de Selección de Club -->
+        <div class="club-selector-box">
+          <label style="font-size: 0.8rem; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Club Participante:</label>
+          <select class="club-select-input" id="select-club" onchange="onClubChange()">
+            <!-- Dinámico -->
+          </select>
+        </div>
+
+        <div class="wheel-container">
+          <div class="wheel-pointer"></div>
+          <canvas id="wheel-canvas" width="600" height="600"></canvas>
+          <button class="spin-center-btn" id="btn-spin-center" onclick="spinWheel()">GIRAR</button>
+        </div>
+
+        <div class="spin-action-bar">
+          <button class="btn-spin-main btn-spin-oro" id="btn-spin-main" onclick="spinWheel()">
+            <i class="fa-solid fa-rotate"></i>
+            <span id="lbl-spin-text">GIRAR RULETA ORO (-$150M)</span>
+          </button>
+          <div class="cost-notice" id="lbl-cost-notice">
+            <i class="fa-solid fa-circle-exclamation"></i> Se descontarán <strong>$150,000,000 USD</strong> del presupuesto del club al girar.
+          </div>
+        </div>
+
+        <!-- Banner con el resultado final -->
+        <div class="result-box" id="result-box">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 0.25rem;">
+            Resultado Oficial LMI • Registro de Transacción
+          </div>
+          <div id="result-title" style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.35rem;">
+            <!-- Dinámico -->
+          </div>
+          <div id="result-desc" style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.4;">
+            <!-- Dinámico -->
+          </div>
+          <div id="result-accounting" style="margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.82rem; font-weight: 700; color: #fbbf24;">
+            <!-- Dinámico -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: Tabla de Premios y Castigos -->
+      <div class="details-card">
+        <div class="details-title" id="details-title">
+          <i class="fa-solid fa-list-check" style="color: #f59e0b;"></i> Casillas de la Ruleta Oro (12)
+        </div>
+        <div class="details-subtitle" id="details-subtitle">
+          Probabilidad uniforme (1 entre 12 por cada casilla). Matemáticamente balanceada para drenar presupuesto.
+        </div>
+
+        <div class="prizes-grid" id="prizes-list">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // LISTA DE CLUBES PARA PRUEBA
+    const CLUBS = {
+      oro: [
+        { id: "bayernleverkusen", name: "Bayern Leverkusen", budget: 3155 },
+        { id: "como1907", name: "Como 1907", budget: 2779 },
+        { id: "bocajuniors", name: "Boca Juniors", budget: 1943 },
+        { id: "manchestercity", name: "Manchester City", budget: 1319 },
+        { id: "psg", name: "PSG", budget: 1186 },
+        { id: "borussiadortmund", name: "Borussia Dortmund", budget: 927 },
+        { id: "galatasaray", name: "Galatasaray", budget: 860 },
+        { id: "liverpool", name: "Liverpool", budget: 797 },
+        { id: "interdemilan", name: "Inter de Milan", budget: 3791 },
+        { id: "atleticodemadrid", name: "Atletico de Madrid", budget: 147 },
+        { id: "riverplate", name: "River Plate", budget: 137 }
+      ],
+      plata: [
+        { id: "fcbarcelona", name: "FC Barcelona", budget: 2360 },
+        { id: "acffiorentina", name: "ACF Fiorentina", budget: 1092 },
+        { id: "realmadrid", name: "Real Madrid", budget: 1076 },
+        { id: "chelseafc", name: "Chelsea FC", budget: 777 },
+        { id: "staderennais", name: "Stade Rennais", budget: 679 },
+        { id: "acmiln", name: "AC Milan", budget: 598 },
+        { id: "arsenal", name: "Arsenal", budget: 558 },
+        { id: "ajaxdeamsterdam", name: "Ajax de Ámsterdam", budget: 531 },
+        { id: "carabobofutbolclub", name: "Carabobo Fútbol Club", budget: 482 },
+        { id: "rangersfootballclub", name: "Rangers Football Club", budget: 400 },
+        { id: "fctwente", name: "FC Twente", budget: 290 },
+        { id: "vascodagama", name: "Vasco da Gama", budget: 202 },
+        { id: "manchesterunited", name: "Manchester United", budget: 157 },
+        { id: "losclille", name: "LOSC Lille", budget: 96 }
+      ]
+    };
+
+    // DATOS DE LAS RULETAS (Oro = $150M | Plata = $75M)
+    const WHEEL_DATA = {
+      oro: {
+        cost: 150,
+        themeColor: '#f59e0b',
+        btnClass: 'btn-spin-oro',
+        items: [
+          { name: "Fichaje Bomba", val: "+$300M", delta: 150, type: "premio", tag: "Gran Premio", color: "#10b981", icon: "fa-gift", desc: "Ingreso directo de $300M al presupuesto del club. ¡Ganas $150M netos!" },
+          { name: "Renovación 100%", val: "100% Gratis", delta: 0, type: "mercado", tag: "Beneficio", color: "#0284c7", icon: "fa-shield", desc: "Descuento del 100% en la renovación total de tu plantilla para la siguiente temporada." },
+          { name: "Bono Rendimiento", val: "+$180M", delta: 30, type: "premio", tag: "Premio", color: "#059669", icon: "fa-coins", desc: "Ingreso de $180M por méritos comerciales (Ganancia neta de +$30M)." },
+          { name: "Épico a Préstamo", val: "1 Temporada", delta: 0, type: "mercado", tag: "Mercado", color: "#38bdf8", icon: "fa-user-plus", desc: "Si tienes carta de alguno de tus jugadores que sea épica, la puedes incluir a lo largo de toda la temporada." },
+          { name: "2 Libres Directos", val: "2 Fichajes", delta: 0, type: "mercado", tag: "Exclusivo", color: "#6366f1", icon: "fa-user-check", desc: "Ganas 2 jugadores libres directamente sin necesidad de publicar en Facebook." },
+          { name: "Patrocinio Asiático", val: "+$150M", delta: 0, type: "premio", tag: "Reembolso", color: "#34d399", icon: "fa-handshake", desc: "Recuperas íntegro el costo del tiro ($150M). ¡Giro gratis!" },
+          { name: "Auditoría Fair Play", val: "-$120M", delta: -270, type: "castigo", tag: "Castigo", color: "#ef4444", icon: "fa-scale-unbalanced", desc: "Sanción económica de -$120M adicionales por exceso de masa salarial." },
+          { name: "Lesión de Estrella", val: "-$80M", delta: -230, type: "castigo", tag: "Castigo", color: "#dc2626", icon: "fa-user-injured", desc: "Pagas -$80M en tratamientos médicos de urgencia para tu figura." },
+          { name: "Comisión de Agente", val: "-$50M", delta: -200, type: "castigo", tag: "Pérdida", color: "#f87171", icon: "fa-briefcase", desc: "Pagas -$50M imprevistos por intermediación de representantes." },
+          { name: "Negociación Fallida", val: "$0", delta: -150, type: "vacio", tag: "Vacío", color: "#64748b", icon: "fa-cloud", desc: "El DT se fue de vacaciones sin cerrar el acuerdo. Pierdes los $150M del giro." },
+          { name: "Cláusula Rescisión", val: "-$70M", delta: -220, type: "castigo", tag: "Riesgo", color: "#e11d48", icon: "fa-receipt", desc: "Un club rival activa una cláusula y debes pagar -$70M para retener a tu jugador." },
+          { name: "Veto Libres 12h", val: "Bloqueo 12h", delta: -150, type: "mercado", tag: "Sanción", color: "#a855f7", icon: "fa-lock", desc: "Bloqueo para fichar en el mercado de jugadores libres por 12 horas desde su apertura." }
+        ]
+      },
+      plata: {
+        cost: 75,
+        themeColor: '#94a3b8',
+        btnClass: 'btn-spin-plata',
+        items: [
+          { name: "Golpe en la Mesa", val: "+$160M", delta: 85, type: "premio", tag: "Gran Premio", color: "#10b981", icon: "fa-trophy", desc: "Ingreso directo de +$160M al presupuesto del club. ¡Ganas $85M netos!" },
+          { name: "Beca Renovación", val: "-30% Total", delta: 0, type: "mercado", tag: "Descuento", color: "#0284c7", icon: "fa-tags", desc: "30% de descuento en la renovación total de tu plantilla para la siguiente temporada." },
+          { name: "Bono Progreso", val: "+$95M", delta: 20, type: "premio", tag: "Premio", color: "#059669", icon: "fa-coins", desc: "Premio al mérito deportivo en Plata de $95M (Ganancia neta de +$20M)." },
+          { name: "1 Libre Directo", val: "1 Fichaje", delta: 0, type: "mercado", tag: "Exclusivo", color: "#6366f1", icon: "fa-user-check", desc: "Ganas 1 jugador libre directamente sin necesidad de publicar en Facebook." },
+          { name: "Taquilla Llena", val: "+$75M", delta: 0, type: "premio", tag: "Reembolso", color: "#34d399", icon: "fa-ticket", desc: "Recuperas los $75M del tiro gracias a la taquilla del estadio. ¡Giro gratis!" },
+          { name: "Multa Federación", val: "-$60M", delta: -135, type: "castigo", tag: "Castigo", color: "#ef4444", icon: "fa-fire", desc: "Sanción de -$60M por disturbios y bengalas en las gradas de tu estadio." },
+          { name: "Huelga de Plantilla", val: "-$40M", delta: -115, type: "castigo", tag: "Castigo", color: "#dc2626", icon: "fa-users-slash", desc: "Debes desembolsar -$40M en concepto de primas atrasadas." },
+          { name: "Cheque Rebotado", val: "$0", delta: -75, type: "vacio", tag: "Vacío", color: "#64748b", icon: "fa-ban", desc: "El banco no aprobó la transferencia. Pierdes los $75M del tiro." },
+          { name: "Reparación Estadio", val: "-$50M", delta: -125, type: "castigo", tag: "Castigo", color: "#b91c1c", icon: "fa-hammer", desc: "Pagas -$50M en mantenimiento y arreglo urgente del césped del campo." },
+          { name: "Tiro Extra", val: "1 Giro Gratis", delta: 0, type: "premio", tag: "Suerte", color: "#eab308", icon: "fa-rotate", desc: "¡La suerte te sonríe! Puedes volver a girar la ruleta gratis de inmediato." },
+          { name: "Veto Libres 12h", val: "Bloqueo 12h", delta: -75, type: "mercado", tag: "Sanción", color: "#a855f7", icon: "fa-lock", desc: "Bloqueo para fichar en el mercado de jugadores libres por 12 horas desde su apertura." }
+        ]
+      }
+    };
+
+    let currentDiv = 'oro';
+    let isSpinning = false;
+    let currentRotation = 0;
+
+    const canvas = document.getElementById('wheel-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const SLICE_COLORS_ORO = [
+      '#1e293b', '#b45309', '#0f172a', '#065f46', 
+      '#1e293b', '#4338ca', '#0f172a', '#991b1b', 
+      '#1e293b', '#78350f', '#0f172a', '#581c87'
+    ];
+
+    const SLICE_COLORS_PLATA = [
+      '#1e293b', '#334155', '#0f172a', '#065f46', 
+      '#1e293b', '#4338ca', '#0f172a', '#991b1b', 
+      '#1e293b', '#475569', '#0f172a', '#581c87'
+    ];
+
+    function populateClubSelector() {
+      const sel = document.getElementById('select-club');
+      const clubs = CLUBS[currentDiv];
+      sel.innerHTML = clubs.map(c => `
+        <option value="${c.id}">${c.name} (Presp: $${c.budget}M)</option>
+      `).join('');
+    }
+
+    function onClubChange() {
+      document.getElementById('result-box').style.display = 'none';
+    }
+
+    function selectDivision(div) {
+      if (isSpinning) return;
+      currentDiv = div;
+
+      document.getElementById('tab-oro').classList.toggle('active', div === 'oro');
+      document.getElementById('tab-plata').classList.toggle('active', div === 'plata');
+
+      const data = WHEEL_DATA[div];
+
+      const btn = document.getElementById('btn-spin-main');
+      btn.className = `btn-spin-main ${data.btnClass}`;
+      document.getElementById('lbl-spin-text').textContent = `GIRAR RULETA ${div.toUpperCase()} (-$${data.cost}M)`;
+      document.getElementById('lbl-cost-notice').innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Se descontarán <strong>$${data.cost},000,000 USD</strong> del presupuesto del club al girar.`;
+
+      document.getElementById('details-title').innerHTML = `
+        <i class="fa-solid fa-${div === 'oro' ? 'crown' : 'medal'}" style="color: ${data.themeColor};"></i> 
+        Casillas de la Ruleta ${div === 'oro' ? 'Oro' : 'Plata'} (${data.items.length})
+      `;
+
+      document.getElementById('result-box').style.display = 'none';
+
+      canvas.style.transition = 'none';
+      canvas.style.transform = 'rotate(0deg)';
+      currentRotation = 0;
+
+      populateClubSelector();
+      renderPrizesList();
+      drawWheel();
+    }
+
+    function renderPrizesList(highlightIndex = null) {
+      const listEl = document.getElementById('prizes-list');
+      const data = WHEEL_DATA[currentDiv];
+
+      listEl.innerHTML = data.items.map((item, idx) => {
+        const isHL = highlightIndex === idx;
+        const tagClass = `tag-${item.type}`;
+        return `
+          <div class="prize-item ${isHL ? 'active-highlight' : ''}" id="prize-row-${idx}">
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem; color: #94a3b8;">
+                #${idx + 1}
+              </div>
+              <div>
+                <div style="font-weight: 800; font-size: 0.9rem; color: #fff; display: flex; align-items: center; gap: 0.4rem;">
+                  <i class="fa-solid ${item.icon}" style="color: ${item.color}; font-size: 0.8rem;"></i>
+                  ${item.name}
+                </div>
+                <div style="font-size: 0.73rem; color: #94a3b8; margin-top: 0.15rem;">${item.desc}</div>
+              </div>
+            </div>
+            <div style="text-align: right; flex-shrink: 0;">
+              <span class="prize-tag ${tagClass}">${item.tag}</span>
+              <div style="font-weight: 900; font-size: 0.95rem; color: ${item.color}; margin-top: 0.2rem;">${item.val}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function drawWheel() {
+      const data = WHEEL_DATA[currentDiv];
+      const items = data.items;
+      const numSlices = items.length;
+      const sliceAngle = (2 * Math.PI) / numSlices;
+      const radius = canvas.width / 2;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const colors = currentDiv === 'oro' ? SLICE_COLORS_ORO : SLICE_COLORS_PLATA;
+
+      for (let i = 0; i < numSlices; i++) {
+        const angle = i * sliceAngle;
+
+        ctx.beginPath();
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius - 4, angle, angle + sliceAngle);
+        ctx.lineTo(radius, radius);
+        ctx.fill();
+
+        ctx.strokeStyle = currentDiv === 'oro' ? 'rgba(245, 158, 11, 0.4)' : 'rgba(148, 163, 184, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(angle + sliceAngle / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#ffffff';
+
+        ctx.font = 'bold 17px "Plus Jakarta Sans", sans-serif';
+        const label = items[i].name.length > 15 ? items[i].name.substring(0, 13) + '..' : items[i].name;
+        ctx.fillText(label, radius - 40, 0);
+
+        ctx.font = 'bold 14px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = items[i].color;
+        ctx.fillText(items[i].val, radius - 40, 20);
+
+        ctx.restore();
+      }
+
+      ctx.beginPath();
+      ctx.arc(radius, radius, radius - 4, 0, 2 * Math.PI);
+      ctx.strokeStyle = currentDiv === 'oro' ? '#f59e0b' : '#94a3b8';
+      ctx.lineWidth = 8;
+      ctx.stroke();
+    }
+
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      document.getElementById('btn-spin-main').disabled = true;
+      document.getElementById('btn-spin-center').disabled = true;
+      document.getElementById('result-box').style.display = 'none';
+
+      const data = WHEEL_DATA[currentDiv];
+      const numSlices = data.items.length;
+      const sliceDeg = 360 / numSlices;
+
+      const winningIndex = Math.floor(Math.random() * numSlices);
+      const centerOffset = sliceDeg / 2;
+      const targetDeg = (winningIndex * sliceDeg) + centerOffset;
+      const fullRotations = (5 + Math.floor(Math.random() * 3)) * 360;
+      const stopAt = fullRotations + (360 - targetDeg) - 90;
+      currentRotation += stopAt;
+
+      canvas.style.transition = 'transform 4.5s cubic-bezier(0.12, 0.9, 0.22, 1)';
+      canvas.style.transform = `rotate(${currentRotation}deg)`;
+
+      setTimeout(() => {
+        isSpinning = false;
+        document.getElementById('btn-spin-main').disabled = false;
+        document.getElementById('btn-spin-center').disabled = false;
+
+        const winner = data.items[winningIndex];
+
+        // Club info
+        const sel = document.getElementById('select-club');
+        const clubName = sel.options[sel.selectedIndex].text.split(' (Presp:')[0];
+
+        // Mostrar resultado
+        const resBox = document.getElementById('result-box');
+        const resTitle = document.getElementById('result-title');
+        const resDesc = document.getElementById('result-desc');
+        const resAcc = document.getElementById('result-accounting');
+
+        resTitle.innerHTML = `<span style="color: ${winner.color};"><i class="fa-solid ${winner.icon}"></i> ${winner.name} (${winner.val})</span>`;
+        resDesc.innerHTML = `<strong>${winner.tag}:</strong> ${winner.desc}`;
+        
+        const deltaFormatted = winner.delta >= 0 ? `+${winner.delta}` : `${winner.delta}`;
+        resAcc.innerHTML = `
+          <i class="fa-solid fa-receipt"></i> Club: <strong>${clubName}</strong> | Costo de Giro: <strong>-$${data.cost}M</strong> | Balance Financiero: <strong style="color: ${winner.delta >= 0 ? '#34d399' : '#f87171'};">$${deltaFormatted}M</strong>
+        `;
+
+        resBox.style.display = 'block';
+
+        renderPrizesList(winningIndex);
+        const activeRow = document.getElementById(`prize-row-${winningIndex}`);
+        if (activeRow) activeRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      }, 4600);
+    }
+
+    // Inicializar
+    selectDivision('oro');
+  </script>
+</body>
+</html>

@@ -70,6 +70,10 @@ const AdminApp = {
     });
     document.getElementById('champions-phase-filter-admin')?.addEventListener('change', (e) => this.onChampionsPhaseFilterChange(e.target.value));
     document.getElementById('history-filter-select').addEventListener('change', () => this.renderMatchHistory());
+    const authorFilter = document.getElementById('history-author-filter');
+    if (authorFilter) {
+      authorFilter.addEventListener('change', () => this.renderMatchHistory());
+    }
     document.getElementById('btn-export-standings-oro')?.addEventListener('click', () => this.exportStandingsImage('oro'));
     document.getElementById('btn-export-standings-plata')?.addEventListener('click', () => this.exportStandingsImage('plata'));
     document.getElementById('btn-download-standings-img')?.addEventListener('click', () => this.exportStandingsImage());
@@ -3279,6 +3283,8 @@ const AdminApp = {
         fMatch.score1 = score1;
         fMatch.score2 = score2;
         fMatch.events = serializedEvents;
+        fMatch.registeredBy = 'Administrador Principal';
+        fMatch.registeredAt = new Date().toISOString();
       }
     }
 
@@ -3299,7 +3305,9 @@ const AdminApp = {
       team2Name: team2.name,
       team2Logo: team2.logo || '',
       score2: score2,
-      events: serializedEvents
+      events: serializedEvents,
+      registeredBy: 'Administrador Principal',
+      registeredAt: new Date().toISOString()
     };
     if (!this.data.matchHistory) this.data.matchHistory = [];
     this.data.matchHistory.unshift(matchRecord);
@@ -3349,19 +3357,26 @@ const AdminApp = {
     const tbody = document.getElementById('match-history-tbody');
     const badge = document.getElementById('lbl-matches-history-count');
     const filterSelect = document.getElementById('history-filter-select');
+    const authorSelect = document.getElementById('history-author-filter');
     if (!tbody) return;
 
     tbody.innerHTML = '';
     const filterVal = filterSelect ? filterSelect.value : 'all';
+    const authorVal = authorSelect ? authorSelect.value : 'all';
     let matches = this.data.matchHistory || [];
     
     if (filterVal !== 'all') {
       matches = matches.filter(m => m.competition === filterVal);
     }
+    if (authorVal === 'delegates') {
+      matches = matches.filter(m => m.registeredBy && m.registeredBy !== 'Administrador Principal');
+    } else if (authorVal === 'admin') {
+      matches = matches.filter(m => !m.registeredBy || m.registeredBy === 'Administrador Principal');
+    }
     if (badge) badge.textContent = `${matches.length} partidos`;
 
     if (matches.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para esta selección.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No hay partidos registrados para esta selección.</td></tr>`;
       return;
     }
 
@@ -3399,6 +3414,9 @@ const AdminApp = {
           ${m.score1} - ${m.score2}
         </td>
         <td style="font-size: 0.85rem; line-height: 1.4;">${eventsSummary}</td>
+        <td style="font-size: 0.82rem; white-space: nowrap;">
+          ${this.renderAuthorBadge(m.registeredBy, m.registeredAt || m.date)}
+        </td>
         <td style="text-align: right; white-space: nowrap;">
           <button class="btn btn-danger" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" onclick="AdminApp.revertMatch('${m.id}')" title="Deshacer partido y revertir goles de jugadores">
             <i class="fa-solid fa-rotate-left"></i> Deshacer
@@ -3407,6 +3425,30 @@ const AdminApp = {
       `;
       tbody.appendChild(tr);
     });
+  },
+
+  renderAuthorBadge(author, timeStr) {
+    const isDelegate = author && author !== 'Administrador Principal';
+    const name = author || 'Administrador Principal';
+    const dateFormatted = timeStr ? (timeStr.includes('T') ? new Date(timeStr).toLocaleString('es-MX', { dateStyle: 'short', timeStyle: 'short' }) : timeStr) : '';
+    if (isDelegate) {
+      return `
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-weight: 800; font-size: 0.74rem;">
+            <i class="fa-solid fa-user-pen"></i> ${this.escape(name)}
+          </span>
+          <span style="font-size: 0.7rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> ${this.escape(dateFormatted)}</span>
+        </div>
+      `;
+    }
+    return `
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span class="badge" style="background: rgba(255, 209, 0, 0.12); color: var(--lmi-gold); border: 1px solid rgba(255, 209, 0, 0.3); font-weight: 700; font-size: 0.74rem;">
+          <i class="fa-solid fa-shield"></i> ${this.escape(name)}
+        </span>
+        <span style="font-size: 0.7rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> ${this.escape(dateFormatted)}</span>
+      </div>
+    `;
   },
 
   async revertMatch(matchId) {
@@ -5364,6 +5406,9 @@ const AdminApp = {
       `;
       grid.appendChild(card);
     });
+
+    // Renderizar control de jornadas de delegados para División Plata
+    this.renderPlataDelegatesControl();
   },
 
   toggleWebTab(tabId, enabled) {
@@ -5427,6 +5472,142 @@ const AdminApp = {
       this.data.webConfig.showTeamBudgetCard = budgetCardChk.checked;
     }
     this.markDirty();
+  },
+
+  // ==================== GESTIÓN DE DELEGADOS DIVISIÓN PLATA ====================
+  initPlataDelegatesConfig() {
+    if (!this.data) return;
+    if (!this.data.plataDelegatesConfig) {
+      this.data.plataDelegatesConfig = {
+        allowedJornadas: [1],
+        allowAllJornadas: false,
+        delegates: ['Delegado Plata 1', 'Delegado Plata 2']
+      };
+    }
+    if (!Array.isArray(this.data.plataDelegatesConfig.allowedJornadas)) {
+      this.data.plataDelegatesConfig.allowedJornadas = [1];
+    }
+  },
+
+  renderPlataDelegatesControl() {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    const grid = document.getElementById('plata-jornadas-chip-grid');
+    const allowAllChk = document.getElementById('chk-plata-allow-all');
+    const statusBadge = document.getElementById('lbl-plata-delegates-status');
+    if (!grid) return;
+
+    if (allowAllChk) {
+      allowAllChk.checked = !!cfg.allowAllJornadas;
+    }
+
+    const totalJornadas = 26;
+    const allowedSet = new Set(cfg.allowedJornadas || []);
+    const countAllowed = cfg.allowAllJornadas ? totalJornadas : allowedSet.size;
+
+    if (statusBadge) {
+      if (cfg.allowAllJornadas) {
+        statusBadge.textContent = '🟢 Todas las 26 Fechas Habilitadas';
+        statusBadge.style.background = 'rgba(16, 185, 129, 0.2)';
+        statusBadge.style.color = '#34d399';
+        statusBadge.style.borderColor = '#10b981';
+      } else if (countAllowed === 0) {
+        statusBadge.textContent = '🔒 Todas las Fechas Bloqueadas';
+        statusBadge.style.background = 'rgba(239, 68, 68, 0.2)';
+        statusBadge.style.color = '#f87171';
+        statusBadge.style.borderColor = '#ef4444';
+      } else {
+        statusBadge.textContent = `🟢 ${countAllowed} Fecha${countAllowed > 1 ? 's' : ''} Habilitada${countAllowed > 1 ? 's' : ''}`;
+        statusBadge.style.background = 'rgba(16, 185, 129, 0.2)';
+        statusBadge.style.color = '#34d399';
+        statusBadge.style.borderColor = '#10b981';
+      }
+    }
+
+    grid.innerHTML = '';
+    for (let j = 1; j <= totalJornadas; j++) {
+      const isAllowed = cfg.allowAllJornadas || allowedSet.has(j);
+      const chip = document.createElement('div');
+      chip.className = 'plata-jornada-chip';
+      chip.style.padding = '0.45rem 0.6rem';
+      chip.style.borderRadius = '6px';
+      chip.style.cursor = 'pointer';
+      chip.style.fontSize = '0.78rem';
+      chip.style.fontWeight = '700';
+      chip.style.display = 'flex';
+      chip.style.alignItems = 'center';
+      chip.style.justifyContent = 'space-between';
+      chip.style.transition = 'all 0.15s ease';
+
+      if (isAllowed) {
+        chip.style.background = 'rgba(16, 185, 129, 0.15)';
+        chip.style.border = '1px solid #10b981';
+        chip.style.color = '#34d399';
+        chip.innerHTML = `<span>Jornada ${j}</span> <i class="fa-solid fa-unlock" style="font-size: 0.72rem;"></i>`;
+        chip.title = `Jornada ${j} habilitada para delegados. Haz clic para bloquearla.`;
+      } else {
+        chip.style.background = 'rgba(15, 23, 42, 0.6)';
+        chip.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+        chip.style.color = '#64748b';
+        chip.innerHTML = `<span>Jornada ${j}</span> <i class="fa-solid fa-lock" style="font-size: 0.72rem; color: #ef4444;"></i>`;
+        chip.title = `Jornada ${j} bloqueada. Haz clic para habilitarla.`;
+      }
+
+      chip.onclick = () => this.togglePlataJornada(j);
+      grid.appendChild(chip);
+    }
+  },
+
+  togglePlataJornada(jornadaNum) {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    if (cfg.allowAllJornadas) {
+      cfg.allowAllJornadas = false;
+      cfg.allowedJornadas = Array.from({ length: 26 }, (_, i) => i + 1);
+    }
+    const idx = cfg.allowedJornadas.indexOf(jornadaNum);
+    if (idx >= 0) {
+      cfg.allowedJornadas.splice(idx, 1);
+    } else {
+      cfg.allowedJornadas.push(jornadaNum);
+      cfg.allowedJornadas.sort((a, b) => a - b);
+    }
+    this.renderPlataDelegatesControl();
+    this.markDirty();
+  },
+
+  onPlataAllowAllChange() {
+    this.initPlataDelegatesConfig();
+    const chk = document.getElementById('chk-plata-allow-all');
+    this.data.plataDelegatesConfig.allowAllJornadas = !!chk.checked;
+    this.renderPlataDelegatesControl();
+    this.markDirty();
+  },
+
+  setPlataJornadasPreset(preset) {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    cfg.allowAllJornadas = false;
+    if (preset === 'only1') {
+      cfg.allowedJornadas = [1];
+    } else if (preset === '1to3') {
+      cfg.allowedJornadas = [1, 2, 3];
+    } else if (preset === '1to5') {
+      cfg.allowedJornadas = [1, 2, 3, 4, 5];
+    } else if (preset === '1to10') {
+      cfg.allowedJornadas = Array.from({ length: 10 }, (_, i) => i + 1);
+    } else if (preset === 'blockAll') {
+      cfg.allowedJornadas = [];
+    }
+    this.renderPlataDelegatesControl();
+    this.markDirty();
+    this.showToast(`Preset aplicado para Delegados Plata: ${preset}. Recuerda guardar cambios.`, 'info');
+  },
+
+  async savePlataDelegatesConfig() {
+    this.initPlataDelegatesConfig();
+    await this.saveData(true);
+    this.showToast('¡Configuración de fechas para delegados guardada con éxito!', 'success');
   },
 
   buildRoundRobin(teamIds, twoLegs = false) {
