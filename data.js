@@ -1314,16 +1314,30 @@ var INITIAL_LMI_DATA = {
       "name": "Antoine Griezmann",
       "position": "SD",
       "teamId": "fcbayernmunich",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbayernmunich": {
+          "teamId": "fcbayernmunich",
+          "teamName": "FC Bayern Múnich",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936362024_10",
@@ -1378,16 +1392,30 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Henrique",
       "position": "LD",
       "teamId": "fcbayernmunich",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbayernmunich": {
+          "teamId": "fcbayernmunich",
+          "teamName": "FC Bayern Múnich",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936362024_14",
@@ -1443,15 +1471,29 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "fcbayernmunich",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbayernmunich": {
+          "teamId": "fcbayernmunich",
+          "teamName": "FC Bayern Múnich",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936362024_18",
@@ -1523,15 +1565,29 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "fcbayernmunich",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbayernmunich": {
+          "teamId": "fcbayernmunich",
+          "teamName": "FC Bayern Múnich",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936362024_23",
@@ -8434,16 +8490,30 @@ var INITIAL_LMI_DATA = {
       "name": "Federico Valverde",
       "position": "MC",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794020557697_18",
@@ -12586,10 +12656,48 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "fcbayernmunich",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936362024_9",
+                "playerName": "Antoine Griezmann",
+                "teamId": "fcbayernmunich",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936362024_13",
+                "playerName": "Luis Henrique",
+                "teamId": "fcbayernmunich",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794020557697_17",
+                "playerName": "Federico Valverde",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936362024_17",
+                "playerName": "Rivaldo",
+                "teamId": "fcbayernmunich",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936362024_22",
+                "playerName": "Rafael Leão",
+                "teamId": "fcbayernmunich",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-08T22:25:26.626Z"
           },
           {
             "id": "plata_j1_m3",
@@ -15146,7 +15254,64 @@ var INITIAL_LMI_DATA = {
       }
     ]
   },
-  "matchHistory": [],
+  "matchHistory": [
+    {
+      "id": "match_1794176726640",
+      "timestamp": 1794176726640,
+      "date": "08 nov 2026, 05:25 p.m.",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m2",
+      "phase": "Jornada 1",
+      "team1Id": "fcbayernmunich",
+      "team1Name": "FC Bayern Múnich",
+      "team1Logo": "Logos Equipos/bayernmunich.webp",
+      "score1": 2,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1793936362024_9",
+          "playerName": "Antoine Griezmann",
+          "teamId": "fcbayernmunich",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936362024_13",
+          "playerName": "Luis Henrique",
+          "teamId": "fcbayernmunich",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794020557697_17",
+          "playerName": "Federico Valverde",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936362024_17",
+          "playerName": "Rivaldo",
+          "teamId": "fcbayernmunich",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936362024_22",
+          "playerName": "Rafael Leão",
+          "teamId": "fcbayernmunich",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-08T22:25:26.626Z"
+    }
+  ],
   "webConfig": {
     "seasonTitle": "Temporada 13",
     "leagueSubtitle": "Plataforma Oficial de la Liga Master Internacional (LMI) eFootball",
