@@ -1564,9 +1564,9 @@ var INITIAL_LMI_DATA = {
       "name": "Rafael Leão",
       "position": "EI",
       "teamId": "fcbayernmunich",
-      "goals": 2,
+      "goals": 0,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 0,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1578,9 +1578,9 @@ var INITIAL_LMI_DATA = {
         "fcbayernmunich": {
           "teamId": "fcbayernmunich",
           "teamName": "FC Bayern Múnich",
-          "goals": 2,
+          "goals": 0,
           "assists": 1,
-          "goals_liga": 2,
+          "goals_liga": 0,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -1594,16 +1594,29 @@ var INITIAL_LMI_DATA = {
       "name": "Ademola Lookman",
       "position": "DC",
       "teamId": "fcbayernmunich",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbayernmunich": {
+          "teamId": "fcbayernmunich",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936435711_1",
@@ -9887,16 +9900,29 @@ var INITIAL_LMI_DATA = {
       "name": "Roberto Alvarado",
       "position": "ED",
       "teamId": "atleticodemadrid",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 2,
+      "assists": 1,
+      "goals_liga": 2,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794027902114_10",
@@ -9920,31 +9946,57 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "atleticodemadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794027902114_12",
       "name": "Álex Baena",
       "position": "II",
       "teamId": "atleticodemadrid",
-      "goals": 0,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "goals": 3,
+          "assists": 0,
+          "goals_liga": 3,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794027902114_13",
@@ -10112,15 +10164,28 @@ var INITIAL_LMI_DATA = {
       "position": "LD",
       "teamId": "atleticodemadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "atleticodemadrid": {
+          "teamId": "atleticodemadrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794028919267_1",
@@ -12800,10 +12865,63 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "fcbayernmunich",
             "team2Id": "atleticodemadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 6,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794027902114_9",
+                "playerName": "Roberto Alvarado",
+                "teamId": "atleticodemadrid",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794027902114_12",
+                "playerName": "Álex Baena",
+                "teamId": "atleticodemadrid",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1793936362024_23",
+                "playerName": "Ademola Lookman",
+                "teamId": "fcbayernmunich",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936362024_17",
+                "playerName": "Rivaldo",
+                "teamId": "fcbayernmunich",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794027902114_23",
+                "playerName": "Jonathan Clauss",
+                "teamId": "atleticodemadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794027902114_11",
+                "playerName": "Anthony Gordon",
+                "teamId": "atleticodemadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794027902114_9",
+                "playerName": "Roberto Alvarado",
+                "teamId": "atleticodemadrid",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-08T23:38:19.620Z"
           },
           {
             "id": "plata_j2_m2",
@@ -13148,28 +13266,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 6,
             "team1Id": "acmiln",
             "team2Id": "fcbayernmunich",
-            "score1": 0,
-            "score2": 2,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1793936362024_22",
-                "playerName": "Rafael Leão",
-                "teamId": "fcbayernmunich",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1793936362024_17",
-                "playerName": "Rivaldo",
-                "teamId": "fcbayernmunich",
-                "type": "asistencia",
-                "count": 1
-              }
-            ],
-            "annulled": false,
-            "registeredBy": "Esteban Arturo",
-            "registeredAt": "2026-11-08T23:34:44.056Z"
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j6_m6",
@@ -15338,28 +15438,42 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794180884059",
-      "timestamp": 1794180884059,
-      "date": "08 nov 2026, 18:34",
+      "id": "match_1794181099623",
+      "timestamp": 1794181099623,
+      "date": "08 nov 2026, 06:38 p.m.",
       "competition": "plata",
-      "jornada": 6,
-      "fixtureMatchId": "plata_j6_m5",
-      "phase": "Jornada 6",
-      "team1Id": "acmiln",
-      "team1Name": "AC Milan",
-      "team1Logo": "Logos Equipos/acmilan.webp",
-      "score1": 0,
-      "team2Id": "fcbayernmunich",
-      "team2Name": "FC Bayern Múnich",
-      "team2Logo": "Logos Equipos/bayernmunich.webp",
-      "score2": 2,
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m1",
+      "phase": "Jornada 2",
+      "team1Id": "fcbayernmunich",
+      "team1Name": "FC Bayern Múnich",
+      "team1Logo": "Logos Equipos/bayernmunich.webp",
+      "score1": 1,
+      "team2Id": "atleticodemadrid",
+      "team2Name": "Atletico de Madrid",
+      "team2Logo": "Logos Equipos/atleticomadrid.webp",
+      "score2": 6,
       "events": [
         {
-          "playerId": "p_1793936362024_22",
-          "playerName": "Rafael Leão",
-          "teamId": "fcbayernmunich",
+          "playerId": "p_1794027902114_9",
+          "playerName": "Roberto Alvarado",
+          "teamId": "atleticodemadrid",
           "type": "gol",
           "count": 2
+        },
+        {
+          "playerId": "p_1794027902114_12",
+          "playerName": "Álex Baena",
+          "teamId": "atleticodemadrid",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936362024_23",
+          "playerName": "Ademola Lookman",
+          "teamId": "fcbayernmunich",
+          "type": "gol",
+          "count": 1
         },
         {
           "playerId": "p_1793936362024_17",
@@ -15367,10 +15481,31 @@ var INITIAL_LMI_DATA = {
           "teamId": "fcbayernmunich",
           "type": "asistencia",
           "count": 1
+        },
+        {
+          "playerId": "p_1794027902114_23",
+          "playerName": "Jonathan Clauss",
+          "teamId": "atleticodemadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794027902114_11",
+          "playerName": "Anthony Gordon",
+          "teamId": "atleticodemadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794027902114_9",
+          "playerName": "Roberto Alvarado",
+          "teamId": "atleticodemadrid",
+          "type": "asistencia",
+          "count": 1
         }
       ],
-      "registeredBy": "Esteban Arturo",
-      "registeredAt": "2026-11-08T23:34:44.056Z"
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-08T23:38:19.620Z"
     },
     {
       "id": "match_1794180634577",
