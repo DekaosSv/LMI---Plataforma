@@ -13563,13 +13563,6 @@ var INITIAL_LMI_DATA = {
             "played": true,
             "events": [
               {
-                "playerId": "p_1793936559088_11",
-                "playerName": "Gareth Bale",
-                "teamId": "arsenal",
-                "type": "gol",
-                "count": 3
-              },
-              {
                 "playerId": "p_1793936559088_10",
                 "playerName": "Darwin Núñez",
                 "teamId": "arsenal",
@@ -13577,11 +13570,11 @@ var INITIAL_LMI_DATA = {
                 "count": 2
               },
               {
-                "playerId": "p_1793936559088_10",
-                "playerName": "Darwin Núñez",
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
                 "teamId": "arsenal",
-                "type": "asistencia",
-                "count": 1
+                "type": "gol",
+                "count": 3
               },
               {
                 "playerId": "p_1793936559088_18",
@@ -13589,11 +13582,18 @@ var INITIAL_LMI_DATA = {
                 "teamId": "arsenal",
                 "type": "asistencia",
                 "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_10",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
               }
             ],
             "annulled": false,
             "registeredBy": "Esteban Arturo",
-            "registeredAt": "2026-11-08T23:49:37.749Z"
+            "registeredAt": "2026-11-08T23:54:36.917Z"
           },
           {
             "id": "plata_j8_m5",
@@ -15593,9 +15593,9 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794181777750",
-      "timestamp": 1794181777750,
-      "date": "08 nov 2026, 18:49",
+      "id": "match_1794182076918",
+      "timestamp": 1794182076918,
+      "date": "08 nov 2026, 18:54",
       "competition": "plata",
       "jornada": 8,
       "fixtureMatchId": "plata_j8_m4",
@@ -15610,13 +15610,6 @@ var INITIAL_LMI_DATA = {
       "score2": 5,
       "events": [
         {
-          "playerId": "p_1793936559088_11",
-          "playerName": "Gareth Bale",
-          "teamId": "arsenal",
-          "type": "gol",
-          "count": 3
-        },
-        {
           "playerId": "p_1793936559088_10",
           "playerName": "Darwin Núñez",
           "teamId": "arsenal",
@@ -15624,11 +15617,11 @@ var INITIAL_LMI_DATA = {
           "count": 2
         },
         {
-          "playerId": "p_1793936559088_10",
-          "playerName": "Darwin Núñez",
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
           "teamId": "arsenal",
-          "type": "asistencia",
-          "count": 1
+          "type": "gol",
+          "count": 3
         },
         {
           "playerId": "p_1793936559088_18",
@@ -15636,10 +15629,17 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "type": "asistencia",
           "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
         }
       ],
       "registeredBy": "Esteban Arturo",
-      "registeredAt": "2026-11-08T23:49:37.749Z"
+      "registeredAt": "2026-11-08T23:54:36.917Z"
     },
     {
       "id": "match_1794181564160",
