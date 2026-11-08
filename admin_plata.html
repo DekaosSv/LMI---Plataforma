@@ -14,7 +14,7 @@
         .then(r => r.json())
         .then(d => {
           if (d && d.status === 'online') {
-            window.location.href = 'http://127.0.0.1:8000/admin_plata.html';
+            window.location.href = 'http://127.0.0.1:8000/admin_plata.html' + (window.location.hash || '');
           }
         }).catch(() => {});
     }
@@ -739,8 +739,8 @@
   <div id="toast" class="toast"></div>
 
   <!-- Scripts -->
-  <script src="data.js?v=plata1"></script>
-  <script src="admin_plata.js?v=plata1"></script>
+  <script src="data.js?v=20261108_1730"></script>
+  <script src="admin_plata.js?v=20261108_1730"></script>
 </body>
 </html>
 

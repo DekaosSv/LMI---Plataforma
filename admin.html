@@ -2222,6 +2222,22 @@
               </button>
             </div>
             <span id="lbl-github-test-result" style="display: block; font-size: 0.76rem; margin-top: 0.4rem; font-weight: 700;"></span>
+
+            <!-- Enlace Generado para Delegados -->
+            <div style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
+              <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.35rem;">
+                <i class="fa-solid fa-link"></i> Enlace de Invitación Oficial para Delegados (GitHub Pages):
+              </label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="cfg-plata-invite-display" readonly class="form-input" style="flex: 1; font-family: monospace; font-size: 0.78rem; color: #38bdf8; background: rgba(0,0,0,0.4);" placeholder="Ingresa tu token arriba para generar el enlace..." onclick="this.select()" />
+                <button type="button" class="btn btn-primary btn-sm" onclick="AdminApp.copyPlataInviteLink()" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none; white-space: nowrap;">
+                  <i class="fa-solid fa-copy"></i> Copiar Enlace
+                </button>
+              </div>
+              <span style="display: block; font-size: 0.72rem; color: #94a3b8; margin-top: 0.35rem;">
+                📌 Comparte este enlace con tus compañeros delegados. Al abrirlo, se conectarán a GitHub Pages con tu token automáticamente sin que tengan que escribir nada.
+              </span>
+            </div>
           </div>
         </div>
 
@@ -3038,7 +3054,7 @@
   <div class="toast-box" id="toast-box"></div>
 
   <!-- Application Logic with cache-busting -->
-  <script src="data.js?v=1794177003"></script>
-  <script src="admin.js?v=1794177003"></script>
+  <script src="data.js?v=20261108_1730"></script>
+  <script src="admin.js?v=20261108_1730"></script>
 </body>
 </html>

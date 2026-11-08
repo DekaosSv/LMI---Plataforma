@@ -5931,6 +5931,16 @@ const AdminApp = {
     const savedToken = localStorage.getItem('lmi_github_token') || '';
     if (elGhToken) elGhToken.value = savedToken;
 
+    const elInviteDisplay = document.getElementById('cfg-plata-invite-display');
+    if (elInviteDisplay) {
+      if (savedToken && (savedToken.startsWith('ghp_') || savedToken.startsWith('github_pat_') || savedToken.length > 20)) {
+        const b64 = btoa(savedToken);
+        elInviteDisplay.value = `https://dekaossv.github.io/LMI---Plataforma/admin_plata.html#invite=${encodeURIComponent(b64)}`;
+      } else {
+        elInviteDisplay.value = '';
+      }
+    }
+
     if (elSyncBadge) {
       if (savedToken && (savedToken.startsWith('ghp_') || savedToken.startsWith('github_pat_') || savedToken.length > 20)) {
         elSyncBadge.textContent = '🟢 Token Configurado';
@@ -6100,14 +6110,11 @@ const AdminApp = {
 
     // Codificar en Base64 para pasar de forma limpia en el hash
     const b64 = btoa(token);
-    let baseUrl = window.location.href.split('admin.html')[0];
-    // Si estás en local (127.0.0.1 o localhost), generar directamente el enlace público de GitHub Pages para tus compañeros
-    if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:') {
-      baseUrl = 'https://dekaossv.github.io/LMI---Plataforma/';
-    } else if (!baseUrl.endsWith('/')) {
-      baseUrl += '/';
-    }
-    const inviteUrl = `${baseUrl}admin_plata.html#invite=${encodeURIComponent(b64)}`;
+    // El enlace para los delegados SIEMPRE debe ser el de GitHub Pages online
+    const inviteUrl = `https://dekaossv.github.io/LMI---Plataforma/admin_plata.html#invite=${encodeURIComponent(b64)}`;
+
+    const elInviteDisplay = document.getElementById('cfg-plata-invite-display');
+    if (elInviteDisplay) elInviteDisplay.value = inviteUrl;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(inviteUrl).then(() => {

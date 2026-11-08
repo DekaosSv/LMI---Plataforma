@@ -450,7 +450,7 @@ const PlataApp = {
 
   // Guardar directamente en GitHub mediante la API Git Data (Blobs & Commits)
   // Soporta archivos de cualquier tamaño (bypassa el límite de 1MB de Contents API)
-  async saveToGitHub(token, dataObj, commitMessage) {
+  async saveToGitHub(token, dataObj, commitMessage, maxRetries = 3) {
     const owner = 'DekaosSv';
     const repo = 'LMI---Plataforma';
     const branch = 'main';
@@ -464,94 +464,103 @@ const PlataApp = {
       'X-GitHub-Api-Version': '2022-11-28'
     };
 
-    // 1. Obtener el commit actual de la rama main
-    const refRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${branch}?_t=${Date.now()}`, { headers });
-    if (!refRes.ok) {
-      const err = await refRes.json().catch(() => ({}));
-      throw new Error(`Error en GitHub (${refRes.status}): ${err.message || 'Token inválido o sin permisos de repo'}`);
-    }
-    const refData = await refRes.json();
-    const latestCommitSha = refData.object.sha;
-
-    // 2. Crear Blob con codificación UTF-8 / Base64
-    const bytes = new TextEncoder().encode(fullContent);
-    let binary = '';
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    const base64Content = btoa(binary);
-
+    // 1. Crear Blob con codificación UTF-8
     const blobRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/blobs`, {
       method: 'POST',
       headers: { ...headers, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: base64Content,
-        encoding: 'base64'
+        content: fullContent,
+        encoding: 'utf-8'
       })
     });
     if (!blobRes.ok) {
       const err = await blobRes.json().catch(() => ({}));
-      throw new Error(`Error creando Blob (${blobRes.status}): ${err.message || 'Fallo al procesar archivo'}`);
+      throw new Error(`Error creando Blob en GitHub (${blobRes.status}): ${err.message || 'Fallo al procesar archivo'}`);
     }
     const blobData = await blobRes.json();
     const blobSha = blobData.sha;
 
-    // 3. Crear Tree apuntando al nuevo blob de data.js
-    const treeRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees`, {
-      method: 'POST',
-      headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        base_tree: latestCommitSha,
-        tree: [
-          {
-            path: filePath,
-            mode: '100644',
-            type: 'blob',
-            sha: blobSha
-          }
-        ]
-      })
-    });
-    if (!treeRes.ok) {
-      const err = await treeRes.json().catch(() => ({}));
-      throw new Error(`Error creando Árbol Git (${treeRes.status}): ${err.message || 'Fallo de estructura'}`);
-    }
-    const treeData = await treeRes.json();
-    const newTreeSha = treeData.sha;
+    // Retry loop para Tree + Commit + Update Ref (resuelve conflictos concurrentes / non-fast-forward 422)
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        // 2. Obtener el commit actual de la rama main
+        const refRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${branch}?_t=${Date.now()}`, {
+          headers,
+          cache: 'no-store'
+        });
+        if (!refRes.ok) {
+          const err = await refRes.json().catch(() => ({}));
+          throw new Error(`Error en GitHub (${refRes.status}): ${err.message || 'Token inválido o sin permisos de repo'}`);
+        }
+        const refData = await refRes.json();
+        const latestCommitSha = refData.object.sha;
 
-    // 4. Crear Commit
-    const commitRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/commits`, {
-      method: 'POST',
-      headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: commitMessage || `Registro División Plata por ${this.currentUser}`,
-        tree: newTreeSha,
-        parents: [latestCommitSha]
-      })
-    });
-    if (!commitRes.ok) {
-      const err = await commitRes.json().catch(() => ({}));
-      throw new Error(`Error creando Commit (${commitRes.status}): ${err.message || 'Fallo al commitear'}`);
-    }
-    const commitData = await commitRes.json();
-    const newCommitSha = commitData.sha;
+        // 3. Crear Tree apuntando al nuevo blob de data.js
+        const treeRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees`, {
+          method: 'POST',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            base_tree: latestCommitSha,
+            tree: [
+              {
+                path: filePath,
+                mode: '100644',
+                type: 'blob',
+                sha: blobSha
+              }
+            ]
+          })
+        });
+        if (!treeRes.ok) {
+          const err = await treeRes.json().catch(() => ({}));
+          throw new Error(`Error creando Árbol Git (${treeRes.status}): ${err.message || 'Fallo de estructura'}`);
+        }
+        const treeData = await treeRes.json();
+        const newTreeSha = treeData.sha;
 
-    // 5. Actualizar la referencia refs/heads/main
-    const updateRefRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/refs/heads/${branch}`, {
-      method: 'PATCH',
-      headers: { ...headers, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sha: newCommitSha,
-        force: false
-      })
-    });
-    if (!updateRefRes.ok) {
-      const err = await updateRefRes.json().catch(() => ({}));
-      throw new Error(`Error actualizando rama main (${updateRefRes.status}): ${err.message || 'Fallo al publicar'}`);
-    }
+        // 4. Crear Commit
+        const commitRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/commits`, {
+          method: 'POST',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: commitMessage || `Registro División Plata por ${this.currentUser}`,
+            tree: newTreeSha,
+            parents: [latestCommitSha]
+          })
+        });
+        if (!commitRes.ok) {
+          const err = await commitRes.json().catch(() => ({}));
+          throw new Error(`Error creando Commit (${commitRes.status}): ${err.message || 'Fallo al commitear'}`);
+        }
+        const commitData = await commitRes.json();
+        const newCommitSha = commitData.sha;
 
-    return { success: true, commitSha: newCommitSha };
+        // 5. Actualizar la referencia refs/heads/main
+        const updateRefRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/refs/heads/${branch}`, {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sha: newCommitSha,
+            force: false
+          })
+        });
+        if (updateRefRes.ok) {
+          return { success: true, commitSha: newCommitSha };
+        }
+
+        // Si falló por conflicto de referencia (422 o 409), reintentar
+        const err = await updateRefRes.json().catch(() => ({}));
+        if ((updateRefRes.status === 422 || updateRefRes.status === 409) && attempt < maxRetries) {
+          console.warn(`Conflicto de publicación en main (422/409), reintentando intento ${attempt + 1}/${maxRetries}...`);
+          await new Promise(r => setTimeout(r, 600 * attempt));
+          continue;
+        }
+
+        throw new Error(`Error actualizando rama main (${updateRefRes.status}): ${err.message || 'Fallo al publicar'}`);
+      } catch (err) {
+        if (attempt >= maxRetries) throw err;
+      }
+    }
   },
 
   async getLatestRemoteData() {
@@ -563,8 +572,14 @@ const PlataApp = {
         const idx = text.indexOf(prefix);
         if (idx !== -1) {
           const jsonStart = idx + prefix.length;
-          const jsonEnd = text.lastIndexOf(';\n\nif (typeof window');
-          const jsonStr = jsonEnd !== -1 ? text.substring(jsonStart, jsonEnd).trim() : text.substring(jsonStart).trim().replace(/;$/, '');
+          const endRegex = /;\s*(?:\r?\n)+\s*if\s*\(typeof window/;
+          const match = text.substring(jsonStart).match(endRegex);
+          let jsonStr = '';
+          if (match && match.index !== undefined) {
+            jsonStr = text.substring(jsonStart, jsonStart + match.index).trim();
+          } else {
+            jsonStr = text.substring(jsonStart).replace(/;\s*if\s*\(typeof window[\s\S]*$/, '').trim().replace(/;$/, '');
+          }
           return JSON.parse(jsonStr);
         }
       }
@@ -684,8 +699,8 @@ const PlataApp = {
 
     // 2. Si está en GitHub Pages o servidor local apagado, guardar vía GitHub API
     if (!githubToken) {
-      this.setStatus('Falta Token GitHub', 'error');
-      this.showToast('Para guardar en la nube necesitas configurar el Token de GitHub.', 'error');
+      this.setStatus('Falta Autorización', 'error');
+      this.showToast('⚠️ No se detectó la autorización de GitHub. Abre la web usando el Enlace de Invitación oficial que te compartió el Administrador.', 'error');
       PlataAuth.openTokenModal();
       return false;
     }
