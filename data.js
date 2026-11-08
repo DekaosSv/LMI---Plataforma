@@ -2868,21 +2868,63 @@ var INITIAL_LMI_DATA = {
       "name": "Enzo Fernández",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
+      "assists": 3,
+      "goals_liga": 1,
+      "assists_liga": 3,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "goals": 1,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 3,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1793936559088_10",
+      "name": "Darwin Núñez",
+      "position": "SD",
+      "teamId": "arsenal",
+      "goals": 5,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 5,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "goals": 5,
+          "assists": 0,
+          "goals_liga": 5,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
-      "id": "p_1793936559088_10",
-      "name": "Darwin Núñez",
-      "position": "SD",
+      "id": "p_1793936559088_11",
+      "name": "Gareth Bale",
+      "position": "DC",
       "teamId": "arsenal",
       "goals": 2,
       "assists": 0,
@@ -2900,35 +2942,6 @@ var INITIAL_LMI_DATA = {
           "goals": 2,
           "assists": 0,
           "goals_liga": 2,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
-    },
-    {
-      "id": "p_1793936559088_11",
-      "name": "Gareth Bale",
-      "position": "DC",
-      "teamId": "arsenal",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "arsenal": {
-          "teamId": "arsenal",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -3006,16 +3019,29 @@ var INITIAL_LMI_DATA = {
       "name": "Samuele Ricci",
       "position": "MCD",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936559088_17",
@@ -3039,15 +3065,28 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936559088_19",
@@ -4751,15 +4790,28 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_11",
@@ -4942,16 +4994,29 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Suárez",
       "position": "DC",
       "teamId": "clubnacional",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_23",
@@ -13368,10 +13433,70 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "clubnacional",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 6,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936559088_9",
+                "playerName": "Enzo Fernández",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_10",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_16",
+                "playerName": "Samuele Ricci",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_22",
+                "playerName": "Luis Suárez",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_9",
+                "playerName": "Enzo Fernández",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 3
+              },
+              {
+                "playerId": "p_1793936559088_18",
+                "playerName": "Koke",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017241785_10",
+                "playerName": "Maximiliano Araújo",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Esteban Arturo",
+            "registeredAt": "2026-11-08T23:40:30.963Z"
           },
           {
             "id": "plata_j7_m6",
@@ -15437,6 +15562,83 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794181230977",
+      "timestamp": 1794181230977,
+      "date": "08 nov 2026, 18:40",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m5",
+      "phase": "Jornada 7",
+      "team1Id": "clubnacional",
+      "team1Name": "Club Nacional",
+      "team1Logo": "Logos Equipos/nacional.webp",
+      "score1": 1,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 6,
+      "events": [
+        {
+          "playerId": "p_1793936559088_9",
+          "playerName": "Enzo Fernández",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_16",
+          "playerName": "Samuele Ricci",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_22",
+          "playerName": "Luis Suárez",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_9",
+          "playerName": "Enzo Fernández",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936559088_18",
+          "playerName": "Koke",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017241785_10",
+          "playerName": "Maximiliano Araújo",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Esteban Arturo",
+      "registeredAt": "2026-11-08T23:40:30.963Z"
+    },
     {
       "id": "match_1794181099623",
       "timestamp": 1794181099623,
