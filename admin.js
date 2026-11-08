@@ -5790,7 +5790,12 @@ const AdminApp = {
     // Codificar en Base64 para pasar de forma limpia en el hash
     const b64 = btoa(token);
     let baseUrl = window.location.href.split('admin.html')[0];
-    if (!baseUrl.endsWith('/')) baseUrl += '/';
+    // Si estás en local (127.0.0.1 o localhost), generar directamente el enlace público de GitHub Pages para tus compañeros
+    if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:') {
+      baseUrl = 'https://dekaossv.github.io/LMI---Plataforma/';
+    } else if (!baseUrl.endsWith('/')) {
+      baseUrl += '/';
+    }
     const inviteUrl = `${baseUrl}admin_plata.html#invite=${encodeURIComponent(b64)}`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
