@@ -2827,9 +2827,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 4,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 4,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2840,9 +2840,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 0,
-          "assists": 4,
+          "assists": 3,
           "goals_liga": 0,
-          "assists_liga": 4,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2900,10 +2900,10 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 2,
-      "assists": 0,
-      "goals_liga": 2,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2913,10 +2913,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "arsenal": {
           "teamId": "arsenal",
-          "goals": 2,
-          "assists": 0,
-          "goals_liga": 2,
-          "assists_liga": 0,
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -12840,10 +12840,35 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "carabobofutbolclub",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936559088_10",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_8",
+                "playerName": "Kevin De Bruyne",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-08T23:33:27.350Z"
           },
           {
             "id": "plata_j2_m6",
@@ -13186,7 +13211,7 @@ var INITIAL_LMI_DATA = {
             ],
             "annulled": false,
             "registeredBy": "Esteban Arturo",
-            "registeredAt": "2026-11-08T23:33:29.920Z"
+            "registeredAt": "2026-11-08T23:30:34.576Z"
           },
           {
             "id": "plata_j6_m7",
@@ -15320,21 +15345,21 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794180809921",
-      "timestamp": 1794180809921,
-      "date": "08 nov 2026, 18:33",
+      "id": "match_1794180807353",
+      "timestamp": 1794180807353,
+      "date": "08 nov 2026, 06:33 p.m.",
       "competition": "plata",
-      "jornada": 6,
-      "fixtureMatchId": "plata_j6_m6",
-      "phase": "Jornada 6",
-      "team1Id": "flamengo",
-      "team1Name": "Flamengo",
-      "team1Logo": "Logos Equipos/flamengo.webp",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m5",
+      "phase": "Jornada 2",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
       "score1": 0,
       "team2Id": "arsenal",
       "team2Name": "Arsenal",
       "team2Logo": "Logos Equipos/arsenal.png",
-      "score2": 3,
+      "score2": 2,
       "events": [
         {
           "playerId": "p_1793936559088_10",
@@ -15347,7 +15372,7 @@ var INITIAL_LMI_DATA = {
           "playerId": "p_1793936559088_11",
           "playerName": "Gareth Bale",
           "teamId": "arsenal",
-          "type": "gol",
+          "type": "asistencia",
           "count": 1
         },
         {
@@ -15355,11 +15380,11 @@ var INITIAL_LMI_DATA = {
           "playerName": "Kevin De Bruyne",
           "teamId": "arsenal",
           "type": "asistencia",
-          "count": 2
+          "count": 1
         }
       ],
-      "registeredBy": "Esteban Arturo",
-      "registeredAt": "2026-11-08T23:33:29.920Z"
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-08T23:33:27.350Z"
     },
     {
       "id": "match_1794180634577",
