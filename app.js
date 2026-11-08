@@ -29,7 +29,7 @@ async function syncLatestDataAsync() {
           freshData = json;
         }
       }
-    } catch (e) {}
+    } catch (e) { }
 
     // 2. Si no hay backend local (ej. en GitHub Pages), descargar data.js con anti-cache timestamp
     if (!freshData) {
@@ -94,11 +94,11 @@ function getFichajesUrl(name) {
 function loadDataFromStorage() {
   try {
     localStorage.clear();
-  } catch (e) {}
+  } catch (e) { }
 
   if (typeof INITIAL_LMI_DATA !== 'undefined') {
     lmiData = JSON.parse(JSON.stringify(INITIAL_LMI_DATA));
-    
+
     // Set default Copa Estelar bracket if missing
     if (!lmiData.copaEstelarMatches) {
       lmiData.copaEstelarMatches = [
@@ -111,7 +111,7 @@ function loadDataFromStorage() {
         { "fase": "Final", "team1": "Por definir", "score1": "", "team2": "Por definir", "score2": "", "estado": "Por Jugar" }
       ];
     }
-    
+
     // Set default UEFA Champions League bracket if missing
     if (!lmiData.championsLeagueMatches) {
       lmiData.championsLeagueMatches = [
@@ -194,7 +194,7 @@ function initUI() {
   initPlayerSearchUI();
   initMarketUI();
   renderRules();
-  
+
   // Render direct elimination brackets
   renderBracket('copa-estelar-bracket', lmiData.copaEstelarMatches);
   renderBracket('copa-estelar-bracket-pos', lmiData.copaEstelarMatches);
@@ -569,10 +569,10 @@ function renderStats() {
     const list = [];
     allPlayers.forEach(p => {
       const sByTeam = p.statsByTeam || {};
-      const teamEntries = Object.keys(sByTeam).length > 0 
-        ? Object.entries(sByTeam) 
+      const teamEntries = Object.keys(sByTeam).length > 0
+        ? Object.entries(sByTeam)
         : (p.teamId ? [[p.teamId, { [goalsKey]: p[goalsKey] || 0, goals: p.goals || 0 }]] : []);
-      
+
       teamEntries.forEach(([tId, s]) => {
         if (tId === 'brightonhovealbion' || tId === 'vascodagama') return;
         const t = allTeams.find(tm => tm.id === tId);
@@ -603,10 +603,10 @@ function renderStats() {
     const list = [];
     allPlayers.forEach(p => {
       const sByTeam = p.statsByTeam || {};
-      const teamEntries = Object.keys(sByTeam).length > 0 
-        ? Object.entries(sByTeam) 
+      const teamEntries = Object.keys(sByTeam).length > 0
+        ? Object.entries(sByTeam)
         : (p.teamId ? [[p.teamId, { [assistsKey]: p[assistsKey] || 0, assists: p.assists || 0 }]] : []);
-      
+
       teamEntries.forEach(([tId, s]) => {
         if (tId === 'brightonhovealbion' || tId === 'vascodagama') return;
         const t = allTeams.find(tm => tm.id === tId);
@@ -805,7 +805,7 @@ function renderBracket(containerId, matches, phaseFilter = null) {
     const score1Str = String(match.score1 !== null && match.score1 !== undefined ? match.score1 : '');
     const score2Str = String(match.score2 !== null && match.score2 !== undefined ? match.score2 : '');
     const isFinished = match.estado && match.estado.toLowerCase() === 'finalizado';
-    
+
     // Determine winner
     let isT1Winner = false;
     let isT2Winner = false;
@@ -989,13 +989,13 @@ function renderBracket(containerId, matches, phaseFilter = null) {
     const isFinished = finalMatch.estado && finalMatch.estado.toLowerCase() === 'finalizado';
     const score1Str = String(finalMatch.score1 !== null && finalMatch.score1 !== undefined ? finalMatch.score1 : '');
     const score2Str = String(finalMatch.score2 !== null && finalMatch.score2 !== undefined ? finalMatch.score2 : '');
-    
+
     // Determine winner
     let isT1Winner = false;
     let isT2Winner = false;
     let championName = '';
     let championLogo = '';
-    
+
     if (isFinished) {
       const getNumericVal = (valStr) => {
         const clean = valStr.replace(/[^\d]/g, '');
@@ -1005,7 +1005,7 @@ function renderBracket(containerId, matches, phaseFilter = null) {
       const n2 = getNumericVal(score2Str);
       if (n1 > n2) { isT1Winner = true; championName = finalMatch.team1; }
       else if (n2 > n1) { isT2Winner = true; championName = finalMatch.team2; }
-      
+
       const champTeam = normalizedTeams.find(t => t.normName === normalizeSearchString(championName)) || { logo: 'Imagenes/lmi logo original.jpg' };
       championLogo = champTeam.logo;
     }
@@ -1677,7 +1677,7 @@ async function exportChampionsImage() {
         ctx.drawImage(oImg, 0, 0);
         cImg.src = c.toDataURL('image/png');
       }
-    } catch (e) {}
+    } catch (e) { }
   });
 
   wrapper.appendChild(clone);
@@ -1832,7 +1832,7 @@ async function exportCopaEstelarImage() {
         ctx.drawImage(oImg, 0, 0);
         cImg.src = c.toDataURL('image/png');
       }
-    } catch (e) {}
+    } catch (e) { }
   });
 
   wrapper.appendChild(clone);
@@ -2029,10 +2029,10 @@ function loadTeamHub(teamId) {
   const rank = team.leagueRank || 1;
 
   const topScorer = teamPlayers.length > 0
-    ? [...teamPlayers].sort((a,b) => (getPlayerStatsForTeam(b, teamId).goals - getPlayerStatsForTeam(a, teamId).goals))[0]
+    ? [...teamPlayers].sort((a, b) => (getPlayerStatsForTeam(b, teamId).goals - getPlayerStatsForTeam(a, teamId).goals))[0]
     : null;
   const topAssister = teamPlayers.length > 0
-    ? [...teamPlayers].sort((a,b) => (getPlayerStatsForTeam(b, teamId).assists - getPlayerStatsForTeam(a, teamId).assists))[0]
+    ? [...teamPlayers].sort((a, b) => (getPlayerStatsForTeam(b, teamId).assists - getPlayerStatsForTeam(a, teamId).assists))[0]
     : null;
 
   // Partidos Pendientes de este Club en su división
@@ -2068,11 +2068,11 @@ function loadTeamHub(teamId) {
     pendingMatchesHtml = `
       <div style="display: flex; flex-direction: column; gap: 0.6rem; max-height: 290px; overflow-y: auto; padding-right: 4px;">
         ${pendingMatches.map(pm => {
-          const conditionBadge = pm.isHome
-            ? `<span style="font-size: 0.7rem; font-weight: 800; background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; padding: 0.15rem 0.5rem; border-radius: 4px;">LOCAL</span>`
-            : `<span style="font-size: 0.7rem; font-weight: 800; background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; padding: 0.15rem 0.5rem; border-radius: 4px;">VISITANTE</span>`;
+      const conditionBadge = pm.isHome
+        ? `<span style="font-size: 0.7rem; font-weight: 800; background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; padding: 0.15rem 0.5rem; border-radius: 4px;">LOCAL</span>`
+        : `<span style="font-size: 0.7rem; font-weight: 800; background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; padding: 0.15rem 0.5rem; border-radius: 4px;">VISITANTE</span>`;
 
-          return `
+      return `
             <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--lmi-blue)'; this.style.background='#f1f5f9'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.background='#f8fafc'">
               <div style="display: flex; align-items: center; gap: 0.65rem; min-width: 0;">
                 <img src="${escapeHTML(pm.opponent.logo)}" alt="${escapeHTML(pm.opponent.name)}" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
@@ -2087,7 +2087,7 @@ function loadTeamHub(teamId) {
               </div>
             </div>
           `;
-        }).join('')}
+    }).join('')}
       </div>
     `;
   }
@@ -2389,11 +2389,10 @@ function loadRenovationsForTeam(teamId) {
             </div>
           </td>
           <td style="text-align: center;">
-            <select class="form-control card-type-select" onchange="changePlayerCardType('${p.id}', this.value, '${teamId}')" style="display: inline-block; width: auto; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 6px; text-align: center; cursor: pointer; ${
-              cardType === 'Epico' 
-                ? 'background: rgba(255, 215, 0, 0.18); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.4);' 
-                : 'background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;'
-            }">
+            <select class="form-control card-type-select" onchange="changePlayerCardType('${p.id}', this.value, '${teamId}')" style="display: inline-block; width: auto; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 6px; text-align: center; cursor: pointer; ${cardType === 'Epico'
+          ? 'background: rgba(255, 215, 0, 0.18); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.4);'
+          : 'background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1;'
+        }">
               <option value="Normal" ${cardType === 'Normal' ? 'selected' : ''}>Normal</option>
               <option value="Epico" ${cardType === 'Epico' ? 'selected' : ''}>⭐ Épico</option>
             </select>
@@ -2432,7 +2431,7 @@ function handleRenewalPriceKeydown(e) {
   const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
   if (allowedKeys.includes(e.key)) return;
   if (e.ctrlKey || e.metaKey) return;
-  
+
   // Bloquear '-' (negativos), '+', 'e', 'E' y cualquier letra o caracter especial
   if (!/^[0-9.]$/.test(e.key)) {
     e.preventDefault();
@@ -2518,8 +2517,8 @@ function updateRowVisualsForRenewal(playerId, val) {
     nameEl.style.color = isNotRenewed ? '#64748b' : '#0f172a';
   }
   if (statusEl) {
-    statusEl.innerHTML = isNotRenewed 
-      ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ef4444; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">No Renovado</span>' 
+    statusEl.innerHTML = isNotRenewed
+      ? '<span class="badge" style="background: rgba(231, 76, 60, 0.2); color: #ef4444; border: 1px solid rgba(231, 76, 60, 0.4); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">No Renovado</span>'
       : '';
   }
   if (trEl) {
@@ -2580,7 +2579,7 @@ function recalculateRenovationTotals(teamId) {
 
   if (teamBudgetEl) teamBudgetEl.innerText = `$${formatRenewalValue(teamBudgetM)}M USD`;
   if (totalFinalEl) totalFinalEl.innerText = `$${formatRenewalValue(totalRenovations)}M USD`;
-  
+
   if (remainingEl) {
     remainingEl.innerText = `$${formatRenewalValue(remainingM)}M USD`;
     if (remainingM >= 0) {
@@ -2628,7 +2627,7 @@ function exportRenewalReport() {
   let summary = `📋 *INFORME DE RENOVACIONES - LMI TEMPORADA 11*\n`;
   summary += `🛡️ *Club:* ${team.name}\n`;
   summary += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  
+
   let totalRenovations = 0;
   let renewedCount = 0;
   let nonRenewedCount = 0;
@@ -2703,7 +2702,7 @@ function fallbackCopyToClipboard(text) {
       showToast("¡Resumen copiado al portapapeles!", "fa-copy");
       return;
     }
-  } catch (err) {}
+  } catch (err) { }
   alert(text);
 }
 
@@ -2741,7 +2740,7 @@ function showToast(message, iconClass = "fa-info-circle") {
 function initPlayerSearchUI() {
   const teamSel = document.getElementById('player-search-team-filter');
   if (!teamSel) return;
-  
+
   const hiddenSearchTeams = ['brightonhovealbion', 'fctwente'];
   const activeTeams = lmiData.teams.filter(t => !t.hidden && !hiddenSearchTeams.includes(t.id));
   teamSel.innerHTML = `
@@ -2788,7 +2787,7 @@ function filterPlayersDatabase(resetLimit = true) {
 
     // 1. Filtro de Posición
     if (selectedPos && p.position !== selectedPos) return false;
-    
+
     // 2. Filtro de Club
     if (selectedTeam && p.teamId !== selectedTeam) return false;
 
@@ -2987,15 +2986,15 @@ function renderMercado() {
     const isFichaje = m.type.toLowerCase().includes('fichaje') || m.type.toLowerCase().includes('compra') || m.type.toLowerCase().includes('venta');
     const isPrestamoCosto = m.type.toLowerCase().includes('costo');
     const isAnyPrestamo = m.type.toLowerCase().includes('préstamo') || m.type.toLowerCase().includes('prestamo');
-    
+
     if (isFichaje || isPrestamoCosto) {
       totalInvested += m.price || 0;
     }
-    
+
     if (isFichaje && m.price > recordTransfer.price) {
       recordTransfer = { player: m.player, price: m.price, dest: m.toTeamName || 'Liga' };
     }
-    
+
     if (isAnyPrestamo) {
       activeLoansCount++;
     }
@@ -3039,14 +3038,14 @@ function getMovementBadge(type) {
   else if (norm.includes('préstamo') || norm.includes('prestamo')) badgeClass = 'badge-prestamo';
   else if (norm.includes('regreso')) badgeClass = 'badge-regreso';
   else if (norm.includes('baja') || norm.includes('no renov')) badgeClass = 'badge-baja';
-  
+
   return `<span class="badge-movement ${badgeClass}">${type}</span>`;
 }
 
 function renderTeamWithLogo(teamId, teamName) {
   if (!teamName) return '<span style="color: var(--text-muted); font-style: italic;">Sin Equipo</span>';
   if (!teamId) return `<span style="color: var(--text-muted); font-weight: 500;">${teamName}</span>`;
-  
+
   const team = lmiData.teams.find(t => t.id === teamId);
   if (team) {
     return `
@@ -3062,7 +3061,7 @@ function renderTeamWithLogo(teamId, teamName) {
 function loadMarketForTeam(teamId) {
   if (!teamId) return;
   const movements = lmiData.marketMovements || [];
-  
+
   // Altas: where destination team matches teamId
   const altas = movements.filter(m => m.toTeamId === teamId);
   // Bajas: where origin team matches teamId
@@ -3129,7 +3128,7 @@ function renderMarketRecords() {
   if (!tbody) return;
 
   const movements = lmiData.marketMovements || [];
-  
+
   // Filter for Fichajes or Intercambios, sorted by price descending
   const records = movements
     .filter(m => {
@@ -3147,7 +3146,7 @@ function renderMarketRecords() {
     const isTop3 = idx < 3;
     const rankStyle = isTop3 ? 'font-weight: 800; color: var(--neon-gold); font-size: 1.1rem;' : 'color: var(--text-dim);';
     const rowBg = isTop3 ? 'background: rgba(255, 209, 0, 0.03);' : '';
-    
+
     return `
       <tr style="${rowBg}">
         <td style="text-align: center; ${rankStyle}">#${idx + 1}</td>
@@ -3171,7 +3170,7 @@ function renderMarketPrestamos() {
   if (!tbody) return;
 
   const movements = lmiData.marketMovements || [];
-  
+
   // Filter for loans
   const prestamos = movements.filter(m => {
     const typeLower = m.type.toLowerCase();
@@ -3186,7 +3185,7 @@ function renderMarketPrestamos() {
   tbody.innerHTML = prestamos.map(m => {
     const priceVal = m.price > 0 ? `$${m.price.toFixed(1)}M USD` : 'Gratis';
     const seasonsVal = m.seasons ? `${m.seasons} ${m.seasons === 1 ? 'temporada' : 'temporadas'}` : 'No especificado';
-    
+
     return `
       <tr>
         <td><strong style="color: var(--text-primary);">${m.player}</strong></td>
@@ -3314,9 +3313,9 @@ function populateBalonSeasonFilter() {
   filterSelect.innerHTML = `
     <option value="all">Todas las Temporadas (${winners.length})</option>
     ${seasons.map(s => {
-      const count = winners.filter(w => w.season === s).length;
-      return `<option value="${s}" ${s === currentVal ? 'selected' : ''}>${s} (${count})</option>`;
-    }).join('')}
+    const count = winners.filter(w => w.season === s).length;
+    return `<option value="${s}" ${s === currentVal ? 'selected' : ''}>${s} (${count})</option>`;
+  }).join('')}
   `;
 }
 
@@ -3528,7 +3527,7 @@ function renderWebPosiciones() {
 
 function switchWebDivision(div) {
   currentWebDivision = div;
-  
+
   const tabOro = document.getElementById('tab-web-oro');
   const tabPlata = document.getElementById('tab-web-plata');
   const tabChampions = document.getElementById('tab-web-champions');
@@ -3634,7 +3633,7 @@ function switchWebDivision(div) {
 
 function calculateStandings(division) {
   if (!lmiData || !lmiData.teams) return [];
-  
+
   let divTeams = [];
   if (division === 'champions') {
     divTeams = lmiData.teams.filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama');
@@ -4190,14 +4189,14 @@ const RuletaApp = {
   lastSpinResult: null,
 
   sliceColorsOro: [
-    '#1e293b', '#b45309', '#0f172a', '#065f46', 
-    '#1e293b', '#4338ca', '#0f172a', '#991b1b', 
+    '#1e293b', '#b45309', '#0f172a', '#065f46',
+    '#1e293b', '#4338ca', '#0f172a', '#991b1b',
     '#1e293b', '#78350f', '#0f172a', '#581c87'
   ],
 
   sliceColorsPlata: [
-    '#1e293b', '#334155', '#0f172a', '#065f46', 
-    '#1e293b', '#4338ca', '#0f172a', '#991b1b', 
+    '#1e293b', '#334155', '#0f172a', '#065f46',
+    '#1e293b', '#4338ca', '#0f172a', '#991b1b',
     '#1e293b', '#475569', '#0f172a'
   ],
 
@@ -4600,7 +4599,7 @@ const RuletaApp = {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(lmiData)
         });
-      } catch (err) {}
+      } catch (err) { }
     }
   },
 
@@ -4711,7 +4710,7 @@ const RuletaApp = {
           body: JSON.stringify({ text, token, chat_id: chatId })
         });
         if (localRes.ok) return;
-      } catch (e) {}
+      } catch (e) { }
     }
 
     try {

@@ -554,8 +554,104 @@ const PlataApp = {
     return { success: true, commitSha: newCommitSha };
   },
 
+  async getLatestRemoteData() {
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/DekaosSv/LMI---Plataforma/main/data.js?_t=${Date.now()}`, { cache: 'no-store' });
+      if (res.ok) {
+        const text = await res.text();
+        const prefix = 'var INITIAL_LMI_DATA = ';
+        const idx = text.indexOf(prefix);
+        if (idx !== -1) {
+          const jsonStart = idx + prefix.length;
+          const jsonEnd = text.lastIndexOf(';\n\nif (typeof window');
+          const jsonStr = jsonEnd !== -1 ? text.substring(jsonStart, jsonEnd).trim() : text.substring(jsonStart).trim().replace(/;$/, '');
+          return JSON.parse(jsonStr);
+        }
+      }
+    } catch (e) {
+      console.warn('No se pudo descargar data.js remoto fresco:', e);
+    }
+    return null;
+  },
+
+  async mergeWithLatestRemote(matchId, serializedEvents, historyRecord) {
+    const remoteData = await this.getLatestRemoteData();
+    if (!remoteData) return this.data;
+
+    // 1. Sincronizar el partido actual dentro de remoteData
+    const rounds = (remoteData.fixtures && remoteData.fixtures.plata) || [];
+    let target = null;
+    for (const r of rounds) {
+      target = (r.matches || []).find(m => m.id === matchId);
+      if (target) break;
+    }
+
+    if (target && this.currentMatch) {
+      target.played = this.currentMatch.played;
+      target.annulled = !!this.currentMatch.annulled;
+      target.score1 = this.currentMatch.score1;
+      target.score2 = this.currentMatch.score2;
+      target.events = this.currentMatch.events || [];
+      target.registeredBy = this.currentMatch.registeredBy;
+      target.registeredAt = this.currentMatch.registeredAt;
+    }
+
+    // 2. Aplicar estadísticas de jugadores a remoteData
+    if (Array.isArray(serializedEvents) && serializedEvents.length > 0 && Array.isArray(remoteData.players)) {
+      serializedEvents.forEach(ev => {
+        if (!ev.playerId) return;
+        const player = remoteData.players.find(p => p.id === ev.playerId);
+        if (!player) return;
+
+        const cnt = parseInt(ev.count, 10) || 1;
+        const evTeamId = ev.teamId || player.teamId;
+
+        if (!player.statsByTeam) player.statsByTeam = {};
+        if (evTeamId && !player.statsByTeam[evTeamId]) {
+          player.statsByTeam[evTeamId] = {
+            teamId: evTeamId,
+            goals: 0, assists: 0,
+            goals_liga: 0, assists_liga: 0,
+            goals_champions: 0, assists_champions: 0,
+            goals_estelar: 0, assists_estelar: 0
+          };
+        }
+        const tEntry = evTeamId ? player.statsByTeam[evTeamId] : null;
+
+        if (ev.type === 'gol') {
+          player.goals = (player.goals || 0) + cnt;
+          player.goals_liga = (player.goals_liga || 0) + cnt;
+          if (tEntry) {
+            tEntry.goals = (tEntry.goals || 0) + cnt;
+            tEntry.goals_liga = (tEntry.goals_liga || 0) + cnt;
+          }
+        } else if (ev.type === 'asistencia') {
+          player.assists = (player.assists || 0) + cnt;
+          player.assists_liga = (player.assists_liga || 0) + cnt;
+          if (tEntry) {
+            tEntry.assists = (tEntry.assists || 0) + cnt;
+            tEntry.assists_liga = (tEntry.assists_liga || 0) + cnt;
+          }
+        }
+      });
+    }
+
+    // 3. Sincronizar matchHistory
+    if (historyRecord) {
+      if (!remoteData.matchHistory) remoteData.matchHistory = [];
+      const alreadyExists = remoteData.matchHistory.some(h => h.id === historyRecord.id || (h.fixtureMatchId === historyRecord.fixtureMatchId && h.timestamp === historyRecord.timestamp));
+      if (!alreadyExists) {
+        remoteData.matchHistory.unshift(historyRecord);
+      }
+    }
+
+    this.data = remoteData;
+    window.lmiData = remoteData;
+    return remoteData;
+  },
+
   // Guardado Inteligente: Local o Nube según entorno
-  async saveData(silent = false) {
+  async saveData(customCommitMsg = null, silent = false) {
     if (!this.data) return false;
 
     const isLocal = window.location.protocol.startsWith('http:') && 
@@ -594,13 +690,19 @@ const PlataApp = {
       return false;
     }
 
-    this.setStatus('Publicando en GitHub...', 'connecting');
+    this.setStatus('Sincronizando con la nube...', 'connecting');
     if (!silent) {
-      this.showToast('🚀 Guardando y publicando directamente en GitHub...', 'info');
+      this.showToast('🚀 Sincronizando y guardando en GitHub...', 'info');
     }
 
     try {
-      const commitMsg = `Registro Jornada ${this.currentJornada}: ${this.currentMatch ? (this.currentMatch.team1Id + ' vs ' + this.currentMatch.team2Id) : 'División Plata'} [${this.currentUser}]`;
+      // Sincronizar y fusionar con los datos remotos más frescos de GitHub para nunca sobreescribir otros registros
+      if (this.currentMatchId) {
+        await this.mergeWithLatestRemote(this.currentMatchId, this.lastSavedEvents || [], this.lastHistoryRecord || null);
+      }
+
+      const defaultMsg = `Registro Jornada ${this.currentJornada}: ${this.currentMatch ? (this.currentMatch.team1Id + ' vs ' + this.currentMatch.team2Id) : 'División Plata'} [${this.currentUser}]`;
+      const commitMsg = customCommitMsg || defaultMsg;
       const res = await this.saveToGitHub(githubToken, this.data, commitMsg);
 
       if (res && res.success) {
@@ -1319,6 +1421,8 @@ const PlataApp = {
 
     // Prepend to match history
     this.data.matchHistory.unshift(historyRecord);
+    this.lastSavedEvents = serializedEvents;
+    this.lastHistoryRecord = historyRecord;
 
     // 5. Guardar (Local o Cloud GitHub API)
     const ok = await this.saveData();
@@ -1420,6 +1524,8 @@ const PlataApp = {
     };
 
     this.data.matchHistory.unshift(historyRecord);
+    this.lastSavedEvents = [];
+    this.lastHistoryRecord = historyRecord;
 
     // 4. Guardar (Local o Cloud GitHub API)
     const commitMsg = `Anulación Jornada ${this.currentJornada}: ${t1Name} vs ${t2Name} [${delegateUser}]`;

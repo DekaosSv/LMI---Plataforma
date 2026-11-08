@@ -5107,6 +5107,44 @@ const AdminApp = {
   },
 
   // ==================== MODAL: DEPLOY GIT ====================
+  async syncWithCloud() {
+    this.setStatus('Sincronizando con GitHub...', 'loading');
+    const syncBtn = document.getElementById('btn-sync-cloud');
+    if (syncBtn) {
+      syncBtn.disabled = true;
+      syncBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sincronizando...</span>';
+    }
+
+    try {
+      const base = await this.getApiBase();
+      if (!base) {
+        this.showToast('Servidor local no detectado. Inicia admin_server.py o admin.bat.', 'warning');
+        return;
+      }
+
+      const res = await fetch(`${base}/api/sync`, { method: 'POST' });
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        throw new Error(result.error || result.output || 'Fallo en git pull');
+      }
+
+      // Recargar datos desde el archivo actualizado
+      await this.loadData();
+      this.renderAll();
+      this.setStatus('Sincronizado con GitHub', 'ready');
+      this.showToast('✅ ¡Datos sincronizados! Los partidos registrados por tus delegados en la web ya están en tu Admin Hub.', 'success');
+    } catch (err) {
+      console.error('Error sincronizando:', err);
+      this.setStatus('Error al sincronizar', 'error');
+      this.showToast(`Error de sincronización: ${err.message}`, 'error');
+    } finally {
+      if (syncBtn) {
+        syncBtn.disabled = false;
+        syncBtn.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> <span>Sincronizar Nube</span>';
+      }
+    }
+  },
+
   openDeployModal() {
     const modal = document.getElementById('modal-deploy');
     const consoleEl = document.getElementById('deploy-console');

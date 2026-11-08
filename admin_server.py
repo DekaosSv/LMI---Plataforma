@@ -243,6 +243,27 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
             return
 
+        if path == "/api/sync":
+            try:
+                p_pull = subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+                success = p_pull.returncode == 0 or "up to date" in (p_pull.stdout + p_pull.stderr).lower()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "success": success,
+                    "output": p_pull.stdout + p_pull.stderr,
+                    "message": "Sincronización con GitHub completada exitosamente" if success else "Aviso durante la sincronización"
+                }).encode("utf-8"))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
+            return
+
         if path == "/api/deploy":
             try:
                 commit_msg = "Actualización desde LMI Admin Hub"
@@ -253,22 +274,22 @@ class AdminRequestHandler(http.server.SimpleHTTPRequestHandler):
                     except:
                         pass
                 
-                # 1. Traer cambios remotos primero (por si delegados guardaron en GitHub Pages)
-                p_pull = subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
-                
-                # 2. Ejecutar git add
+                # 1. Ejecutar git add
                 add_cmd = ["git", "add", "data.js", "app.js", "index.html", "style.css", "process_lmi_excel.py", "Sala de campeones", "Balon de oro", "Logos Equipos", "Imagenes", "actualizar_web.bat", "admin.html", "admin.js", "admin.css", "admin_server.py", "admin.bat", "admin_plata.html", "admin_plata.js"]
                 p_add = subprocess.run(add_cmd, cwd=BASE_DIR, capture_output=True, text=True)
                 
-                # 3. Ejecutar git commit
+                # 2. Ejecutar git commit local
                 commit_cmd = ["git", "commit", "-m", commit_msg]
                 p_commit = subprocess.run(commit_cmd, cwd=BASE_DIR, capture_output=True, text=True)
+                
+                # 3. Traer cambios remotos y rebasar el commit local encima de los registros de delegados
+                p_pull = subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
                 
                 # 4. Ejecutar git push
                 push_cmd = ["git", "push", "origin", "main"]
                 p_push = subprocess.run(push_cmd, cwd=BASE_DIR, capture_output=True, text=True)
                 
-                output = f"--- Git Pull (Rebase) ---\n{p_pull.stdout}{p_pull.stderr}\n\n--- Git Add ---\n{p_add.stdout}{p_add.stderr}\n\n--- Git Commit ---\n{p_commit.stdout}{p_commit.stderr}\n\n--- Git Push ---\n{p_push.stdout}{p_push.stderr}"
+                output = f"--- Git Add ---\n{p_add.stdout}{p_add.stderr}\n\n--- Git Commit ---\n{p_commit.stdout}{p_commit.stderr}\n\n--- Git Pull (Rebase) ---\n{p_pull.stdout}{p_pull.stderr}\n\n--- Git Push ---\n{p_push.stdout}{p_push.stderr}"
                 
                 success = p_push.returncode == 0 or "Everything up-to-date" in output
                 
@@ -296,6 +317,16 @@ def start_server():
     server_address = ("0.0.0.0", PORT)
     # Permite reusar el socket si se reinicia rápidamente
     socketserver.TCPServer.allow_reuse_address = True
+    
+    # Sincronizar automáticamente con GitHub al iniciar el servidor
+    try:
+        print("=" * 60, flush=True)
+        print(" 🔄 Sincronizando con GitHub (Git Pull)...", flush=True)
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+        print(" ✅ Repositorio actualizado con la nube.", flush=True)
+    except Exception as e:
+        print(f" ⚠️ No se pudo sincronizar al iniciar: {e}", flush=True)
+
     with socketserver.TCPServer(server_address, AdminRequestHandler) as httpd:
         url = f"http://127.0.0.1:{PORT}/admin.html"
         print("=" * 60, flush=True)
