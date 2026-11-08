@@ -132,7 +132,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
           <span>Ver Web</span>
         </a>
-        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1794167206">
+        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1794170703">
           <i class="fa-solid fa-floppy-disk"></i>
           <span>Guardar Cambios</span>
         </button>
@@ -236,7 +236,7 @@
             <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.9rem;">
               <li>Edición en vivo de plantillas, presupuestos y estadísticas.</li>
               <li>Actualización instantánea de goles y asistencias por torneo.</li>
-              <li>Sincronización automática con <code>data.js?v=1794167206> y <code>Registro Balon de Oro.txt</code>.</li>
+              <li>Sincronización automática con <code>data.js?v=1794170703> y <code>Registro Balon de Oro.txt</code>.</li>
               <li>Publicación con 1 clic hacia GitHub Pages.</li>
             </ul>
             <button class="btn btn-gold" onclick="AdminApp.saveData(true)" style="width: 100%;">
@@ -1516,7 +1516,7 @@
               </p>
             </div>
             <button class="btn btn-gold" style="padding: 0.85rem 1.8rem; font-size: 1rem; font-weight: 800;" onclick="AdminApp.applyAllMidseasonMarket()">
-              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1794167206
+              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1794170703
             </button>
           </div>
 
@@ -1534,7 +1534,7 @@
               ¡Mercado de Mitad de Temporada Aplicado Exitosamente!
             </h2>
             <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 650px; margin: 0 auto;">
-              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js?v=1794167206>.
+              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js?v=1794170703>.
             </p>
           </div>
 
@@ -1709,7 +1709,7 @@
 
             <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
               <button class="btn-primary" onclick="AdminApp.saveData()" style="padding: 0.7rem 1.2rem; font-size: 0.88rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                <i class="fa-solid fa-floppy-disk"></i> Guardar data.js?v=1794167206
+                <i class="fa-solid fa-floppy-disk"></i> Guardar data.js?v=1794170703
               </button>
               <button class="btn-secondary" onclick="AdminApp.openDeployModal()" style="padding: 0.7rem 1.2rem; font-size: 0.88rem;">
                 <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Publicar (Git)
@@ -1977,7 +1977,7 @@
           <div class="card-header">
             <div>
               <h2 class="card-title"><i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Ganadores del Balón de Oro</h2>
-              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1794167206> y <code>Registro Balon de Oro.txt</code>.</p>
+              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1794170703> y <code>Registro Balon de Oro.txt</code>.</p>
             </div>
             <button class="btn btn-gold" id="btn-add-bdo-modal">
               <i class="fa-solid fa-plus"></i> Añadir Ganador de Balón de Oro
@@ -2165,51 +2165,28 @@
               </p>
             </div>
             <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn-secondary" onclick="AdminApp.addPlataDelegate()" style="border-color: #38bdf8; color: #38bdf8;">
+                <i class="fa-solid fa-user-plus"></i> Añadir Delegado
+              </button>
               <button class="btn btn-primary" onclick="AdminApp.copyPlataInviteLink()" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none;">
-                <i class="fa-solid fa-share-nodes"></i> Copiar Enlace de Invitación
+                <i class="fa-solid fa-share-nodes"></i> Copiar Enlace
               </button>
               <button class="btn btn-gold" onclick="AdminApp.savePlataDelegatesSecurityConfig()">
-                <i class="fa-solid fa-floppy-disk"></i> Guardar PINs
+                <i class="fa-solid fa-floppy-disk"></i> Guardar y Publicar
               </button>
             </div>
           </div>
 
-          <!-- Grid: Delegados y PINs -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem;">
-              <label style="display: block; font-size: 0.78rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.35rem;">
-                <i class="fa-solid fa-user"></i> Delegado 1
-              </label>
-              <input type="text" id="cfg-del1-name" class="form-input" style="width: 100%; margin-bottom: 0.5rem; font-size: 0.85rem;" value="Delegado Plata 1" placeholder="Nombre..." />
-              <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.25rem;">PIN de Acceso:</label>
-              <input type="text" id="cfg-del1-pin" class="form-input" style="width: 100%; font-size: 0.85rem; font-weight: 800; letter-spacing: 2px;" value="1234" maxlength="8" />
+          <!-- Contenedor Dinámico de Delegados (Añadir / Activar / Desactivar / Eliminar) -->
+          <div style="margin-bottom: 0.75rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">
+                Perfiles de Delegados autorizados (Solo los que estén marcados como <strong>Activos</strong> podrán iniciar sesión):
+              </span>
+              <span style="font-size: 0.76rem; color: #64748b;" id="lbl-delegates-count-status">3 configurados</span>
             </div>
-
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem;">
-              <label style="display: block; font-size: 0.78rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.35rem;">
-                <i class="fa-solid fa-user"></i> Delegado 2
-              </label>
-              <input type="text" id="cfg-del2-name" class="form-input" style="width: 100%; margin-bottom: 0.5rem; font-size: 0.85rem;" value="Delegado Plata 2" placeholder="Nombre..." />
-              <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.25rem;">PIN de Acceso:</label>
-              <input type="text" id="cfg-del2-pin" class="form-input" style="width: 100%; font-size: 0.85rem; font-weight: 800; letter-spacing: 2px;" value="5678" maxlength="8" />
-            </div>
-
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem;">
-              <label style="display: block; font-size: 0.78rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.35rem;">
-                <i class="fa-solid fa-user"></i> Delegado 3
-              </label>
-              <input type="text" id="cfg-del3-name" class="form-input" style="width: 100%; margin-bottom: 0.5rem; font-size: 0.85rem;" value="Delegado Plata 3" placeholder="Nombre..." />
-              <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.25rem;">PIN de Acceso:</label>
-              <input type="text" id="cfg-del3-pin" class="form-input" style="width: 100%; font-size: 0.85rem; font-weight: 800; letter-spacing: 2px;" value="9012" maxlength="8" />
-            </div>
-
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255, 209, 0, 0.25); border-radius: 8px; padding: 1rem;">
-              <label style="display: block; font-size: 0.78rem; font-weight: 800; color: var(--lmi-gold); margin-bottom: 0.35rem;">
-                <i class="fa-solid fa-crown"></i> Administrador Principal
-              </label>
-              <input type="text" class="form-input" style="width: 100%; margin-bottom: 0.5rem; font-size: 0.85rem;" value="Administrador Principal" disabled />
-              <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.25rem;">PIN Maestro:</label>
-              <input type="text" id="cfg-admin-pin" class="form-input" style="width: 100%; font-size: 0.85rem; font-weight: 800; letter-spacing: 2px;" value="9999" maxlength="8" />
+            <div id="plata-delegates-dynamic-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+              <!-- Populated dynamically via AdminApp.renderPlataDelegatesSecurityControl() -->
             </div>
           </div>
 
@@ -3054,7 +3031,7 @@
   <div class="toast-box" id="toast-box"></div>
 
   <!-- Application Logic with cache-busting -->
-  <script src="data.js?v=1794167206"></script>
-  <script src="admin.js?v=1794167206"></script>
+  <script src="data.js?v=1794170703"></script>
+  <script src="admin.js?v=1794170703"></script>
 </body>
 </html>

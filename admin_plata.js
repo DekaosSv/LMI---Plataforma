@@ -53,18 +53,20 @@ const PlataAuth = {
     selectEl.innerHTML = '';
     const delegates = PlataApp.getDelegatesList();
 
+    if (delegates.length === 0) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'No hay delegados activos configurados';
+      selectEl.appendChild(opt);
+      return;
+    }
+
     delegates.forEach(del => {
       const opt = document.createElement('option');
       opt.value = del.id;
       opt.textContent = `👤 ${del.name}`;
       selectEl.appendChild(opt);
     });
-
-    // Opción para Admin Principal
-    const adminOpt = document.createElement('option');
-    adminOpt.value = 'admin';
-    adminOpt.textContent = '👑 Administrador Principal';
-    selectEl.appendChild(adminOpt);
 
     // Recordar última selección si existe
     const lastDelId = localStorage.getItem('lmi_last_delegate_id');
@@ -138,33 +140,17 @@ const PlataAuth = {
 
     const delegateId = document.getElementById('login-delegate-select')?.value;
     const pin = document.getElementById('login-pin-input')?.value.trim();
-    const tokenInput = document.getElementById('login-github-token-input');
     const errorBox = document.getElementById('login-error-alert');
 
-    // Guardar token si el usuario lo escribió
-    if (tokenInput && tokenInput.value.trim()) {
-      localStorage.setItem('lmi_github_token', tokenInput.value.trim());
-      this.updateTokenStatusUI();
-    }
-
     // Validar PIN
-    const cfg = (PlataApp.data && PlataApp.data.plataDelegatesConfig) ? PlataApp.data.plataDelegatesConfig : {};
     let isValid = false;
     let delegateObj = null;
 
-    if (delegateId === 'admin') {
-      const adminPin = cfg.adminPin || '9999';
-      if (pin === adminPin) {
-        isValid = true;
-        delegateObj = { id: 'admin', name: 'Administrador Principal', role: 'admin' };
-      }
-    } else {
-      const delegates = PlataApp.getDelegatesList();
-      const target = delegates.find(d => d.id === delegateId);
-      if (target && target.pin === pin) {
-        isValid = true;
-        delegateObj = target;
-      }
+    const delegates = PlataApp.getDelegatesList();
+    const target = delegates.find(d => d.id === delegateId);
+    if (target && String(target.pin).trim() === pin) {
+      isValid = true;
+      delegateObj = target;
     }
 
     if (!isValid) {
@@ -181,7 +167,7 @@ const PlataAuth = {
     const sessionData = {
       id: delegateObj.id,
       name: delegateObj.name,
-      role: delegateObj.role || 'delegado',
+      role: 'delegado',
       loginTime: Date.now()
     };
 
@@ -190,27 +176,22 @@ const PlataAuth = {
     this.session = sessionData;
 
     this.unlockApp(sessionData);
-    PlataApp.showToast(`🎉 ¡Bienvenido, ${delegateObj.name}! Sesión iniciada correctamente.`, 'success');
   },
 
   unlockApp(sessionData) {
     const overlay = document.getElementById('plata-auth-overlay');
     const appContainer = document.getElementById('plata-app-container');
     const topbarUser = document.getElementById('lbl-topbar-username');
+    const sidebarUser = document.getElementById('lbl-sidebar-username');
+    const signedLbl = document.getElementById('lbl-plata-author-signed');
 
     if (overlay) overlay.style.display = 'none';
     if (appContainer) appContainer.style.display = 'flex';
 
     PlataApp.currentUser = sessionData.name || 'Delegado Plata';
     if (topbarUser) topbarUser.textContent = sessionData.name;
-
-    const signedLbl = document.getElementById('lbl-plata-author-signed');
+    if (sidebarUser) sidebarUser.textContent = sessionData.name;
     if (signedLbl) signedLbl.textContent = sessionData.name;
-
-    const selectUser = document.getElementById('plata-current-user-select');
-    if (selectUser) {
-      selectUser.value = sessionData.name;
-    }
 
     this.updateTokenStatusUI();
   },
@@ -640,17 +621,23 @@ const PlataApp = {
     const cfg = (this.data && this.data.plataDelegatesConfig) ? this.data.plataDelegatesConfig : {};
     if (Array.isArray(cfg.delegates) && cfg.delegates.length > 0) {
       const defaultPins = ['1234', '5678', '9012'];
-      return cfg.delegates.map((d, i) => {
-        if (typeof d === 'string') {
-          return { id: `del${i + 1}`, name: d, pin: defaultPins[i] || '1234' };
-        }
-        return d;
-      });
+      return cfg.delegates
+        .filter(d => d && (d.active !== false)) // Solo delegados activos
+        .map((d, i) => {
+          if (typeof d === 'string') {
+            return { id: `del${i + 1}`, name: d, pin: defaultPins[i] || '1234', active: true };
+          }
+          return {
+            id: d.id || `del_${i}`,
+            name: d.name || `Delegado ${i + 1}`,
+            pin: String(d.pin || '1234'),
+            active: d.active !== false
+          };
+        });
     }
     return [
-      { id: 'del1', name: 'Delegado Plata 1', pin: '1234' },
-      { id: 'del2', name: 'Delegado Plata 2', pin: '5678' },
-      { id: 'del3', name: 'Delegado Plata 3', pin: '9012' }
+      { id: 'del1', name: 'Daniel', pin: '1234', active: true },
+      { id: 'del2', name: 'Esteban Arturo', pin: '5678', active: true }
     ];
   },
 

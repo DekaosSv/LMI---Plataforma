@@ -99,6 +99,32 @@
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #0f172a;
+      color: #fff;
+      padding: 0.85rem 1.25rem;
+      border-radius: 10px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-left: 4px solid #38bdf8;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      z-index: 999999;
+      max-width: 420px;
+    }
+    .toast.show {
+      display: flex;
+      animation: slideUp 0.25s ease;
+    }
+    .toast.success { border-left-color: #10b981; }
+    .toast.error { border-left-color: #ef4444; }
+    .toast.warning { border-left-color: #f59e0b; }
   </style>
 </head>
 <body>
@@ -148,32 +174,6 @@
           </div>
         </div>
 
-        <!-- Estado del Token de GitHub -->
-        <div id="login-token-section" style="margin-bottom: 1.25rem; padding: 0.85rem; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08);">
-          <div id="login-token-status-active" style="display: none; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <i class="fa-solid fa-circle-check" style="color: #34d399; font-size: 1.1rem;"></i>
-              <div>
-                <strong style="font-size: 0.82rem; color: #34d399; display: block;">Conexión a GitHub Activa</strong>
-                <span style="font-size: 0.7rem; color: #94a3b8;">Podrás guardar directo en GitHub Pages.</span>
-              </div>
-            </div>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="PlataAuth.showTokenInputInLogin()" style="font-size: 0.72rem; padding: 0.2rem 0.5rem;">
-              Cambiar
-            </button>
-          </div>
-
-          <div id="login-token-status-missing" style="display: block;">
-            <label style="display: block; font-size: 0.75rem; font-weight: 800; color: #ffd100; margin-bottom: 0.3rem;">
-              <i class="fa-brands fa-github"></i> Token de GitHub (Para Guardar en la Nube):
-            </label>
-            <input type="password" id="login-github-token-input" class="form-input" placeholder="ghp_... o github_pat_..." style="width: 100%; font-size: 0.82rem; font-family: monospace;" />
-            <span style="display: block; font-size: 0.68rem; color: #94a3b8; margin-top: 0.35rem;">
-              💡 Si entraste mediante un enlace de invitación del Admin, este campo se completa solo.
-            </span>
-          </div>
-        </div>
-
         <!-- Alerta de Error en Login -->
         <div id="login-error-alert" style="display: none; padding: 0.65rem 0.85rem; border-radius: 8px; background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fca5a5; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">
           <!-- Populated via JS -->
@@ -202,18 +202,12 @@
     </div>
 
     <!-- Identificación de Usuario en Sidebar -->
-    <div style="padding: 1rem; margin: 0 0.75rem 0.5rem 0.75rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px;">
-      <label style="display: block; font-size: 0.72rem; color: #38bdf8; font-weight: 800; text-transform: uppercase; margin-bottom: 0.35rem;">
-        <i class="fa-solid fa-user-circle"></i> ¿Quién registra hoy?
-      </label>
-      <select id="plata-current-user-select" class="form-select" style="width: 100%; font-size: 0.82rem; font-weight: 800; padding: 0.35rem 0.5rem; background: #070d18; border-color: rgba(56, 189, 248, 0.4); color: #fff;">
-        <option value="Delegado Plata 1">👤 Delegado Plata 1</option>
-        <option value="Delegado Plata 2">👤 Delegado Plata 2</option>
-        <option value="Delegado Plata 3">👤 Delegado Plata 3</option>
-        <option value="custom">✍️ Escribir mi nombre...</option>
-      </select>
-      <input type="text" id="plata-current-user-custom" class="form-input" placeholder="Tu nombre o apodo..." style="display: none; width: 100%; margin-top: 0.4rem; font-size: 0.82rem; padding: 0.35rem 0.5rem;" />
-      <span style="display: block; font-size: 0.68rem; color: #64748b; margin-top: 0.35rem;">Todos los partidos que guardes quedarán firmados con este nombre.</span>
+    <div style="padding: 0.85rem 1rem; margin: 0 0.75rem 0.75rem 0.75rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px;">
+      <span style="display: block; font-size: 0.72rem; color: #38bdf8; font-weight: 800; text-transform: uppercase; margin-bottom: 0.25rem;">
+        <i class="fa-solid fa-user-check"></i> Delegado Activo
+      </span>
+      <div id="lbl-sidebar-username" style="font-size: 0.95rem; font-weight: 800; color: #fff;">Delegado</div>
+      <span style="display: block; font-size: 0.68rem; color: #64748b; margin-top: 0.25rem;">Firma oficial registrada</span>
     </div>
 
     <nav class="sidebar-nav">
@@ -235,10 +229,6 @@
       <a href="index.html" target="_blank" class="nav-btn" style="text-decoration: none;">
         <i class="fa-solid fa-globe" style="color: #10b981;"></i>
         <span>Ver Web Pública ↗</span>
-      </a>
-      <a href="admin.html" class="nav-btn" style="text-decoration: none;">
-        <i class="fa-solid fa-shield-halved" style="color: var(--lmi-gold);"></i>
-        <span>Admin Hub Principal</span>
       </a>
     </nav>
 
@@ -275,9 +265,6 @@
           <span style="font-size: 0.82rem; font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 0.35rem;">
             <i class="fa-solid fa-user-check"></i> <span id="lbl-topbar-username">Delegado Plata 1</span>
           </span>
-          <button class="btn btn-secondary btn-sm" onclick="PlataAuth.openTokenModal()" title="Configuración de Token GitHub" style="padding: 0.2rem 0.5rem; font-size: 0.74rem;">
-            <i class="fa-brands fa-github"></i> <span id="lbl-topbar-token-status">Token</span>
-          </button>
           <button class="btn btn-secondary btn-sm" onclick="PlataAuth.logout()" title="Cerrar Sesión" style="padding: 0.2rem 0.5rem; font-size: 0.74rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35);">
             <i class="fa-solid fa-right-from-bracket"></i> Salir
           </button>

@@ -16158,25 +16158,32 @@ var INITIAL_LMI_DATA = {
   "ruletaHistory": [],
   "plataDelegatesConfig": {
     "allowedJornadas": [
-      1
+      1,
+      2,
+      3,
+      4,
+      5
     ],
     "allowAllJornadas": false,
     "adminPin": "9999",
     "delegates": [
       {
         "id": "del1",
-        "name": "Delegado Plata 1",
-        "pin": "1234"
+        "name": "Daniel",
+        "pin": "1234",
+        "active": true
       },
       {
         "id": "del2",
-        "name": "Delegado Plata 2",
-        "pin": "5678"
+        "name": "Esteban Arturo",
+        "pin": "5678",
+        "active": true
       },
       {
         "id": "del3",
-        "name": "Delegado Plata 3",
-        "pin": "9012"
+        "name": "Vacante",
+        "pin": "9012",
+        "active": false
       }
     ]
   }

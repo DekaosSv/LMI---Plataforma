@@ -5634,27 +5634,66 @@ const AdminApp = {
     const cfg = this.data.plataDelegatesConfig;
     const delegates = cfg.delegates || [];
 
-    const d1 = delegates[0] || { name: 'Delegado Plata 1', pin: '1234' };
-    const d2 = delegates[1] || { name: 'Delegado Plata 2', pin: '5678' };
-    const d3 = delegates[2] || { name: 'Delegado Plata 3', pin: '9012' };
-
-    const elD1Name = document.getElementById('cfg-del1-name');
-    const elD1Pin = document.getElementById('cfg-del1-pin');
-    const elD2Name = document.getElementById('cfg-del2-name');
-    const elD2Pin = document.getElementById('cfg-del2-pin');
-    const elD3Name = document.getElementById('cfg-del3-name');
-    const elD3Pin = document.getElementById('cfg-del3-pin');
-    const elAdminPin = document.getElementById('cfg-admin-pin');
+    const container = document.getElementById('plata-delegates-dynamic-container');
+    const countStatus = document.getElementById('lbl-delegates-count-status');
     const elGhToken = document.getElementById('cfg-github-token-input');
     const elSyncBadge = document.getElementById('lbl-github-sync-status');
 
-    if (elD1Name) elD1Name.value = d1.name || 'Delegado Plata 1';
-    if (elD1Pin) elD1Pin.value = d1.pin || '1234';
-    if (elD2Name) elD2Name.value = d2.name || 'Delegado Plata 2';
-    if (elD2Pin) elD2Pin.value = d2.pin || '5678';
-    if (elD3Name) elD3Name.value = d3.name || 'Delegado Plata 3';
-    if (elD3Pin) elD3Pin.value = d3.pin || '9012';
-    if (elAdminPin) elAdminPin.value = cfg.adminPin || '9999';
+    if (countStatus) {
+      const activeCount = delegates.filter(d => d.active !== false).length;
+      countStatus.textContent = `${activeCount} de ${delegates.length} activos`;
+    }
+
+    if (container) {
+      if (delegates.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 1.5rem; background: rgba(0,0,0,0.25); border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px; color: #94a3b8;">
+            No hay delegados configurados. Haz clic en <strong>+ Añadir Delegado</strong> para crear el primero.
+          </div>
+        `;
+      } else {
+        container.innerHTML = delegates.map((d, idx) => {
+          const isActive = d.active !== false;
+          const cardBorder = isActive ? 'rgba(56, 189, 248, 0.35)' : 'rgba(239, 68, 68, 0.3)';
+          const cardBg = isActive ? 'rgba(0,0,0,0.35)' : 'rgba(239, 68, 68, 0.05)';
+          const statusPill = isActive
+            ? '<span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; font-size: 0.72rem; padding: 0.15rem 0.45rem;">🟢 Activo</span>'
+            : '<span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; font-size: 0.72rem; padding: 0.15rem 0.45rem;">🔴 Inactivo</span>';
+
+          return `
+            <div style="background: ${cardBg}; border: 1px solid ${cardBorder}; border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.65rem; transition: all 0.2s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                  <strong style="color: #38bdf8; font-size: 0.85rem;"><i class="fa-solid fa-user-circle"></i> Delegado #${idx + 1}</strong>
+                  ${statusPill}
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.togglePlataDelegateActive(${idx})" style="padding: 0.2rem 0.5rem; font-size: 0.72rem;" title="${isActive ? 'Desactivar delegado' : 'Activar delegado'}">
+                    ${isActive ? '<i class="fa-solid fa-toggle-on" style="color: #34d399;"></i> Desactivar' : '<i class="fa-solid fa-toggle-off" style="color: #64748b;"></i> Activar'}
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.deletePlataDelegate(${idx})" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; color: #ef4444;" title="Eliminar delegado">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.25rem;">Nombre del Delegado:</label>
+                <input type="text" class="form-input form-input-sm" style="width: 100%; font-weight: 800; font-size: 0.85rem;" value="${d.name || ''}" placeholder="Ej. Daniel..." onchange="AdminApp.updatePlataDelegateField(${idx}, 'name', this.value)" />
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                  <label style="font-size: 0.72rem; font-weight: 700; color: #94a3b8;">PIN de Acceso:</label>
+                  <span style="font-size: 0.68rem; color: #64748b;">(4 a 8 caracteres)</span>
+                </div>
+                <input type="text" class="form-input form-input-sm" style="width: 100%; font-weight: 800; font-size: 0.85rem; letter-spacing: 2px;" value="${d.pin || '1234'}" maxlength="8" onchange="AdminApp.updatePlataDelegateField(${idx}, 'pin', this.value)" />
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
 
     const savedToken = localStorage.getItem('lmi_github_token') || '';
     if (elGhToken) elGhToken.value = savedToken;
@@ -5674,27 +5713,63 @@ const AdminApp = {
     }
   },
 
-  async savePlataDelegatesSecurityConfig() {
+  addPlataDelegate() {
     this.initPlataDelegatesConfig();
     const cfg = this.data.plataDelegatesConfig;
+    if (!Array.isArray(cfg.delegates)) cfg.delegates = [];
 
-    const d1Name = document.getElementById('cfg-del1-name')?.value.trim() || 'Delegado Plata 1';
-    const d1Pin = document.getElementById('cfg-del1-pin')?.value.trim() || '1234';
-    const d2Name = document.getElementById('cfg-del2-name')?.value.trim() || 'Delegado Plata 2';
-    const d2Pin = document.getElementById('cfg-del2-pin')?.value.trim() || '5678';
-    const d3Name = document.getElementById('cfg-del3-name')?.value.trim() || 'Delegado Plata 3';
-    const d3Pin = document.getElementById('cfg-del3-pin')?.value.trim() || '9012';
-    const adminPin = document.getElementById('cfg-admin-pin')?.value.trim() || '9999';
+    const newIndex = cfg.delegates.length + 1;
+    cfg.delegates.push({
+      id: `del_${Date.now()}`,
+      name: `Delegado ${newIndex}`,
+      pin: String(1000 + Math.floor(Math.random() * 9000)),
+      active: true
+    });
 
-    cfg.delegates = [
-      { id: 'del1', name: d1Name, pin: d1Pin },
-      { id: 'del2', name: d2Name, pin: d2Pin },
-      { id: 'del3', name: d3Name, pin: d3Pin }
-    ];
-    cfg.adminPin = adminPin;
+    this.renderPlataDelegatesSecurityControl();
+    this.markDirty();
+    this.showToast(`Delegado #${newIndex} añadido. Recuerda guardar cambios.`, 'info');
+  },
 
+  togglePlataDelegateActive(index) {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    if (cfg.delegates && cfg.delegates[index]) {
+      const current = cfg.delegates[index].active !== false;
+      cfg.delegates[index].active = !current;
+      this.renderPlataDelegatesSecurityControl();
+      this.markDirty();
+      this.showToast(`${cfg.delegates[index].name} ahora está ${!current ? '🟢 Activo' : '🔴 Inactivo'}.`, 'info');
+    }
+  },
+
+  deletePlataDelegate(index) {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    if (cfg.delegates && cfg.delegates[index]) {
+      const delName = cfg.delegates[index].name;
+      if (confirm(`¿Estás seguro de eliminar el perfil de "${delName}"?`)) {
+        cfg.delegates.splice(index, 1);
+        this.renderPlataDelegatesSecurityControl();
+        this.markDirty();
+        this.showToast(`Perfil de "${delName}" eliminado.`, 'info');
+      }
+    }
+  },
+
+  updatePlataDelegateField(index, field, value) {
+    this.initPlataDelegatesConfig();
+    const cfg = this.data.plataDelegatesConfig;
+    if (cfg.delegates && cfg.delegates[index]) {
+      cfg.delegates[index][field] = value.trim();
+      this.markDirty();
+    }
+  },
+
+  async savePlataDelegatesSecurityConfig() {
+    this.initPlataDelegatesConfig();
     await this.saveData(true);
-    this.showToast('¡PINs y nombres de delegados guardados exitosamente!', 'success');
+    this.showToast('¡Configuración de delegados guardada exitosamente en data.js local!', 'success');
   },
 
   saveLocalGitHubToken(val) {
