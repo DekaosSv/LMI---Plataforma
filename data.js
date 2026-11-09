@@ -2804,16 +2804,29 @@ var INITIAL_LMI_DATA = {
       "name": "Sidny Cabral",
       "position": "LD",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936559088_6",
@@ -2896,9 +2909,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2909,9 +2922,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 1,
-          "assists": 3,
+          "assists": 4,
           "goals_liga": 1,
-          "assists_liga": 3,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2953,9 +2966,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 8,
+      "goals": 9,
       "assists": 3,
-      "goals_liga": 8,
+      "goals_liga": 9,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2966,9 +2979,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "arsenal": {
           "teamId": "arsenal",
-          "goals": 8,
+          "goals": 9,
           "assists": 3,
-          "goals_liga": 8,
+          "goals_liga": 9,
           "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -7365,16 +7378,29 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubuniversidaddechile": {
+          "teamId": "clubuniversidaddechile",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017628489_18",
@@ -13505,10 +13531,42 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "clubuniversidaddechile",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936559088_5",
+                "playerName": "Sidny Cabral",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_17",
+                "playerName": "Rasmus Højlund",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_9",
+                "playerName": "Enzo Fernández",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Esteban Arturo",
+            "registeredAt": "2026-11-09T04:18:25.295Z"
           },
           {
             "id": "plata_j1_m5",
@@ -16497,6 +16555,55 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794197905305",
+      "timestamp": 1794197905306,
+      "date": "08 nov 2026, 23:18",
+      "competition": "plata",
+      "jornada": 1,
+      "fixtureMatchId": "plata_j1_m4",
+      "phase": "Jornada 1",
+      "team1Id": "clubuniversidaddechile",
+      "team1Name": "Club Universidad de Chile",
+      "team1Logo": "Logos Equipos/uchile.png",
+      "score1": 1,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1793936559088_5",
+          "playerName": "Sidny Cabral",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_9",
+          "playerName": "Enzo Fernández",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Esteban Arturo",
+      "registeredAt": "2026-11-09T04:18:25.295Z"
+    },
     {
       "id": "match_1794197002830",
       "timestamp": 1794197002830,
