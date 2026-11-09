@@ -1263,7 +1263,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936362024_6",
-      "name": "Warren Zaïre-Emery",
+      "name": "Warren Zaïre-Emery (P)",
       "position": "MC",
       "teamId": "fcbayernmunich",
       "goals": 0,
@@ -1451,7 +1451,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936362024_16",
-      "name": "Federico Dimarco",
+      "name": "Federico Dimarco (P)",
       "position": "II",
       "teamId": "fcbayernmunich",
       "goals": 0,
@@ -1529,7 +1529,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936362024_20",
-      "name": "Lamine Yamal",
+      "name": "Lamine Yamal (P)",
       "position": "ED",
       "teamId": "fcbayernmunich",
       "goals": 0,
@@ -1545,7 +1545,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936362024_21",
-      "name": "Brahim Díaz",
+      "name": "Brahim Díaz (P)",
       "position": "ED",
       "teamId": "fcbayernmunich",
       "goals": 0,
@@ -1591,7 +1591,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936362024_23",
-      "name": "Ademola Lookman",
+      "name": "Ademola Lookman (P)",
       "position": "DC",
       "teamId": "fcbayernmunich",
       "goals": 1,
@@ -1924,7 +1924,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936435711_20",
-      "name": "Moisés Caicedo",
+      "name": "Moisés Caicedo (P)",
       "position": "MCD",
       "teamId": "bocajuniors",
       "goals": 0,
@@ -2420,7 +2420,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936522127_5",
-      "name": "Alejandro Grimaldo",
+      "name": "Alejandro Grimaldo (P)",
       "position": "LI",
       "teamId": "manchesterunited",
       "goals": 0,
@@ -2484,7 +2484,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936522127_9",
-      "name": "Xavi Simons",
+      "name": "Xavi Simons (P)",
       "position": "MP",
       "teamId": "manchesterunited",
       "goals": 0,
@@ -2804,7 +2804,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936559088_6",
-      "name": "Casemiro",
+      "name": "Casemiro (P)",
       "position": "MCD",
       "teamId": "arsenal",
       "goals": 0,
@@ -3106,7 +3106,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936559088_20",
-      "name": "Kai Havertz",
+      "name": "Kai Havertz (P)",
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
@@ -4054,7 +4054,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1793936873896_7",
-      "name": "Aurélien Tchouaméni",
+      "name": "Aurélien Tchouaméni (P)",
       "position": "MCD",
       "teamId": "olympiquelyon",
       "goals": 0,
@@ -6275,7 +6275,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017504232_7",
-      "name": "Joško Gvardiol",
+      "name": "Joško Gvardiol (P)",
       "position": "CT",
       "teamId": "carabobofutbolclub",
       "goals": 0,
@@ -6659,7 +6659,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017579992_8",
-      "name": "Rodrigo De Paul",
+      "name": "Rodrigo De Paul (P)",
       "position": "MC",
       "teamId": "fcbarcelona",
       "goals": 0,
@@ -6851,7 +6851,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017579992_20",
-      "name": "Bernardo Silva",
+      "name": "Bernardo Silva (P)",
       "position": "MP",
       "teamId": "fcbarcelona",
       "goals": 0,
@@ -6867,7 +6867,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017579992_21",
-      "name": "Lee Kang-in",
+      "name": "Lee Kang-in (P)",
       "position": "MP",
       "teamId": "fcbarcelona",
       "goals": 0,
@@ -7987,7 +7987,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794017816312_22",
-      "name": "Christopher Nkunku",
+      "name": "Christopher Nkunku (P)",
       "position": "SD",
       "teamId": "flamengo",
       "goals": 0,
@@ -8993,7 +8993,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794025006334_15",
-      "name": "Julian Ryerson",
+      "name": "Julian Ryerson (P)",
       "position": "LD",
       "teamId": "borussiadortmund",
       "goals": 0,
@@ -9569,7 +9569,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794027731258_5",
-      "name": "Lewis Hall",
+      "name": "Lewis Hall (P)",
       "position": "LI",
       "teamId": "sportingclubedeportugal",
       "goals": 0,
@@ -9585,7 +9585,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794027731258_6",
-      "name": "Morten Hjulmand",
+      "name": "Morten Hjulmand (P)",
       "position": "MCD",
       "teamId": "sportingclubedeportugal",
       "goals": 0,
@@ -10232,8 +10232,8 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794027902114_21",
-      "name": "Lewis Hall",
-      "position": "LI",
+      "name": "Álex Berenguer (P)",
+      "position": "EI",
       "teamId": "atleticodemadrid",
       "goals": 0,
       "assists": 0,
@@ -10629,7 +10629,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "id": "p_1794028919267_22",
-      "name": "Son Heung-min",
+      "name": "Son Heung-min (P)",
       "position": "EI",
       "teamId": "como1907",
       "goals": 0,
@@ -10648,6 +10648,22 @@ var INITIAL_LMI_DATA = {
       "name": "Florian Wirtz",
       "position": "MP",
       "teamId": "como1907",
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false
+    },
+    {
+      "id": "p_1794183400844_jmgimenez",
+      "name": "José María Giménez",
+      "position": "CT",
+      "teamId": "sportingclubedeportugal",
       "goals": 0,
       "assists": 0,
       "goals_liga": 0,
@@ -10942,17 +10958,6 @@ var INITIAL_LMI_DATA = {
       "price": 0,
       "seasons": 1,
       "details": "Movimiento de mercado de mitad de temporada. Nota: Las estadísticas registradas de este jugador corresponden al total acumulado en los clubes donde ha militado en la temporada."
-    },
-    {
-      "player": "Xavi Simons",
-      "type": "Prestamo",
-      "fromTeamId": "psg",
-      "fromTeamName": "PSG",
-      "toTeamId": "manchesterunited",
-      "toTeamName": "Manchester United",
-      "price": 0,
-      "seasons": 1,
-      "details": "Préstamo hasta fin de temporada. Nota: Las estadísticas registradas de este jugador corresponden al total acumulado en los clubes donde ha militado en la temporada."
     },
     {
       "player": "Calvin Bassey",
@@ -11352,69 +11357,333 @@ var INITIAL_LMI_DATA = {
     },
     {
       "player": "Martin Ødegaard",
-      "type": "Prestamo",
+      "type": "Regreso",
       "fromTeamId": "losclille",
       "fromTeamName": "LOSC Lille",
       "toTeamId": "ajaxdeamsterdam",
       "toTeamName": "Ajax de Ámsterdam",
       "price": 0,
       "seasons": 1,
-      "details": ""
+      "details": "[Cesión concluida / Regreso a club de origen]"
     },
     {
       "player": "Ronaldinho",
-      "type": "Prestamo",
+      "type": "Regreso",
       "fromTeamId": "ajaxdeamsterdam",
       "fromTeamName": "Ajax de Ámsterdam",
       "toTeamId": "losclille",
       "toTeamName": "LOSC Lille",
       "price": 0,
       "seasons": 1,
-      "details": ""
+      "details": "[Cesión concluida / Regreso a club de origen]"
     },
     {
       "player": "Neymar JR",
-      "type": "Prestamo",
+      "type": "Intercambio",
       "fromTeamId": "como1907",
       "fromTeamName": "Como 1907",
       "toTeamId": "riverplate",
       "toTeamName": "River Plate",
       "price": 50,
       "seasons": 1,
-      "details": ""
+      "details": "Intercambio definitivo por Harry Kane (River Plate ⇄ Como 1907)"
     },
     {
       "player": "Rodri",
-      "type": "Prestamo",
+      "type": "Regreso",
       "fromTeamId": "como1907",
       "fromTeamName": "Como 1907",
       "toTeamId": "borussiadortmund",
       "toTeamName": "Borussia Dortmund",
       "price": 30,
       "seasons": 1,
-      "details": ""
+      "details": "[Cesión concluida / Regreso a club de origen]"
     },
     {
       "player": "Raphinha",
-      "type": "Prestamo",
+      "type": "Regreso",
       "fromTeamId": "bocajuniors",
       "fromTeamName": "Boca Juniors",
       "toTeamId": "psg",
       "toTeamName": "PSG",
       "price": 0,
       "seasons": 1,
-      "details": ""
+      "details": "[Cesión concluida / Regreso a club de origen]"
     },
     {
       "player": "Mohamed Salah",
-      "type": "Prestamo",
+      "type": "Regreso",
       "fromTeamId": "psg",
       "fromTeamName": "PSG",
       "toTeamId": "bocajuniors",
       "toTeamName": "Boca Juniors",
       "price": 0,
       "seasons": 1,
-      "details": ""
+      "details": "[Cesión concluida / Regreso a club de origen]"
+    },
+    {
+      "player": "Lamine Yamal",
+      "type": "Prestamo",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "fcbayernmunich",
+      "toTeamName": "River Plate",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada desde Como 1907 a River Plate."
+    },
+    {
+      "player": "Son Heung-min",
+      "type": "Prestamo",
+      "fromTeamId": "fcbayernmunich",
+      "fromTeamName": "River Plate",
+      "toTeamId": "como1907",
+      "toTeamName": "Como 1907",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por River Plate al Como 1907."
+    },
+    {
+      "player": "Ademola Lookman",
+      "type": "Prestamo",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "fcbayernmunich",
+      "toTeamName": "FC Bayern Múnich",
+      "price": 50,
+      "seasons": 1,
+      "details": "Préstamo con costo de $50M por 1 temporada."
+    },
+    {
+      "player": "Casemiro",
+      "type": "Prestamo",
+      "fromTeamId": "como1907",
+      "fromTeamName": "Como 1907",
+      "toTeamId": "arsenal",
+      "toTeamName": "Arsenal",
+      "price": 30,
+      "seasons": 1,
+      "details": "Préstamo con costo de $30M por 1 temporada."
+    },
+    {
+      "player": "Warren Zaïre-Emery",
+      "type": "Prestamo",
+      "fromTeamId": "bayernleverkusen",
+      "fromTeamName": "Bayer Leverkusen",
+      "toTeamId": "fcbayernmunich",
+      "toTeamName": "FC Bayern Múnich",
+      "price": 50,
+      "seasons": 2,
+      "details": "Préstamo por 2 temporadas, $50M."
+    },
+    {
+      "player": "Brahim Díaz",
+      "type": "Prestamo",
+      "fromTeamId": "bayernleverkusen",
+      "fromTeamName": "Bayer Leverkusen",
+      "toTeamId": "fcbayernmunich",
+      "toTeamName": "FC Bayern Múnich",
+      "price": 50,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada, $50M."
+    },
+    {
+      "player": "Federico Dimarco",
+      "type": "Prestamo",
+      "fromTeamId": "arsenal",
+      "fromTeamName": "Arsenal",
+      "toTeamId": "fcbayernmunich",
+      "toTeamName": "FC Bayern Múnich",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada desde Arsenal."
+    },
+    {
+      "player": "Kai Havertz",
+      "type": "Prestamo",
+      "fromTeamId": "fcbayernmunich",
+      "fromTeamName": "FC Bayern Múnich",
+      "toTeamId": "arsenal",
+      "toTeamName": "Arsenal",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada desde Bayern Múnich."
+    },
+    {
+      "player": "Bernardo Silva",
+      "type": "Prestamo",
+      "fromTeamId": "intermilan",
+      "fromTeamName": "Inter de Milán",
+      "toTeamId": "fcbarcelona",
+      "toTeamName": "FC Barcelona",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada desde Inter (sin confirmar)."
+    },
+    {
+      "player": "Lee Kang-in",
+      "type": "Prestamo",
+      "fromTeamId": "intermilan",
+      "fromTeamName": "Inter de Milán",
+      "toTeamId": "fcbarcelona",
+      "toTeamName": "FC Barcelona",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada desde Inter."
+    },
+    {
+      "player": "Rodrigo De Paul",
+      "type": "Prestamo",
+      "fromTeamId": "bocajuniors",
+      "fromTeamName": "Boca Juniors",
+      "toTeamId": "fcbarcelona",
+      "toTeamName": "FC Barcelona",
+      "price": 0,
+      "seasons": 1,
+      "details": "Renovación de cesión por 1 temporada más en Barcelona."
+    },
+    {
+      "player": "Scott McTominay",
+      "type": "Prestamo",
+      "fromTeamId": "fcbarcelona",
+      "fromTeamName": "FC Barcelona",
+      "toTeamId": "adodenhaag",
+      "toTeamName": "Inter de Milán",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por Barcelona (sin confirmar)."
+    },
+    {
+      "player": "Jamal Musiala",
+      "type": "Prestamo",
+      "fromTeamId": "fcbarcelona",
+      "fromTeamName": "FC Barcelona",
+      "toTeamId": "adodenhaag",
+      "toTeamName": "Inter de Milán",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por Barcelona."
+    },
+    {
+      "player": "Benjamin Pavard",
+      "type": "Prestamo",
+      "fromTeamId": "borussiadortmund",
+      "fromTeamName": "Borussia Dortmund",
+      "toTeamId": "adodenhaag",
+      "toTeamName": "Inter de Milán",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada desde Borussia Dortmund."
+    },
+    {
+      "player": "Julian Ryerson",
+      "type": "Prestamo",
+      "fromTeamId": "intermilan",
+      "fromTeamName": "Inter de Milán",
+      "toTeamId": "borussiadortmund",
+      "toTeamName": "Borussia Dortmund",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por Inter."
+    },
+    {
+      "player": "Aurélien Tchouaméni",
+      "type": "Prestamo",
+      "fromTeamId": "acmiln",
+      "fromTeamName": "AC Milan",
+      "toTeamId": "olympiquelyon",
+      "toTeamName": "ACF Fiorentina",
+      "price": 50,
+      "seasons": 1,
+      "details": "Préstamo con costo de $50M desde AC Milan."
+    },
+    {
+      "player": "Joško Gvardiol",
+      "type": "Prestamo",
+      "fromTeamId": "acmiln",
+      "fromTeamName": "AC Milan",
+      "toTeamId": "carabobofutbolclub",
+      "toTeamName": "Carabobo Fútbol Club",
+      "price": 50,
+      "seasons": 2,
+      "details": "Préstamo por 2 temporadas, $50M desde AC Milan."
+    },
+    {
+      "player": "Moisés Caicedo",
+      "type": "Prestamo",
+      "fromTeamId": "fcbarcelona",
+      "fromTeamName": "FC Barcelona",
+      "toTeamId": "bocajuniors",
+      "toTeamName": "Boca Juniors",
+      "price": 0,
+      "seasons": 1,
+      "details": "Renovación confirmada de cesión por 1 temporada más en Boca."
+    },
+    {
+      "player": "Xavi Simons",
+      "type": "Prestamo",
+      "fromTeamId": "psg",
+      "fromTeamName": "PSG",
+      "toTeamId": "manchesterunited",
+      "toTeamName": "Manchester United",
+      "price": 70,
+      "seasons": 1,
+      "details": "Préstamo $70M USD + compra obligatoria $90M USD (Total $160M USD)."
+    },
+    {
+      "player": "Alejandro Grimaldo",
+      "type": "Prestamo",
+      "fromTeamId": "intermilan",
+      "fromTeamName": "Inter de Milán",
+      "toTeamId": "manchesterunited",
+      "toTeamName": "Manchester United",
+      "price": 50,
+      "seasons": 1,
+      "details": "Cesión $50M USD + compra obligatoria $50M USD (Total $100M USD, sin confirmar)."
+    },
+    {
+      "player": "Morten Hjulmand",
+      "type": "Prestamo",
+      "fromTeamId": "arsenal",
+      "fromTeamName": "Arsenal",
+      "toTeamId": "sportingclubedeportugal",
+      "toTeamName": "Sporting Clube de Portugal",
+      "price": 20,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada, $20M (sin confirmar)."
+    },
+    {
+      "player": "Lewis Hall",
+      "type": "Prestamo",
+      "fromTeamId": "atleticodemadrid",
+      "fromTeamName": "Atletico de Madrid",
+      "toTeamId": "sportingclubedeportugal",
+      "toTeamName": "Sporting Clube de Portugal",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por Atlético de Madrid (sin confirmar)."
+    },
+    {
+      "player": "Álex Berenguer",
+      "type": "Prestamo",
+      "fromTeamId": "sportingclubedeportugal",
+      "fromTeamName": "Sporting Clube de Portugal",
+      "toTeamId": "atleticodemadrid",
+      "toTeamName": "Atletico de Madrid",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por Sporting de Lisboa (sin confirmar)."
+    },
+    {
+      "player": "Christopher Nkunku",
+      "type": "Prestamo",
+      "fromTeamId": "staderennais",
+      "fromTeamName": "Stade Rennais",
+      "toTeamId": "flamengo",
+      "toTeamName": "Rangers FC",
+      "price": 0,
+      "seasons": 1,
+      "details": "Préstamo por 1 temporada cedido por Stade Rennais a Rangers FC."
     },
     {
       "player": "Thibaut Courtois",
@@ -11424,8 +11693,8 @@ var INITIAL_LMI_DATA = {
       "toTeamId": "como1907",
       "toTeamName": "Como 1907",
       "price": 15,
-      "seasons": 1,
-      "details": "Prestamo de jugadores"
+      "seasons": 2,
+      "details": "Préstamo por 2 temporadas, $15M (Vigente)."
     }
   ],
   "champions": [
