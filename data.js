@@ -2516,29 +2516,16 @@ var INITIAL_LMI_DATA = {
       "name": "João Félix",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 1,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "manchesterunited": {
-          "teamId": "manchesterunited",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1793936522127_11",
@@ -2909,9 +2896,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 4,
+      "assists": 3,
       "goals_liga": 1,
-      "assists_liga": 4,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2922,9 +2909,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 1,
-          "assists": 4,
+          "assists": 3,
           "goals_liga": 1,
-          "assists_liga": 4,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2966,9 +2953,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 9,
+      "goals": 8,
       "assists": 3,
-      "goals_liga": 9,
+      "goals_liga": 8,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2979,9 +2966,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "arsenal": {
           "teamId": "arsenal",
-          "goals": 9,
+          "goals": 8,
           "assists": 3,
-          "goals_liga": 9,
+          "goals_liga": 8,
           "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -3105,9 +3092,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 4,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 4,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3118,9 +3105,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 0,
-          "assists": 4,
+          "assists": 3,
           "goals_liga": 0,
-          "assists_liga": 4,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3149,29 +3136,16 @@ var INITIAL_LMI_DATA = {
       "name": "Kai Havertz (P)",
       "position": "MP",
       "teamId": "arsenal",
-      "goals": 1,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "arsenal": {
-          "teamId": "arsenal",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1793936559088_21",
@@ -3736,9 +3710,9 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3750,9 +3724,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "chelseafc",
           "teamName": "Chelsea FC",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3765,9 +3739,9 @@ var INITIAL_LMI_DATA = {
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 6,
+      "goals": 8,
       "assists": 0,
-      "goals_liga": 6,
+      "goals_liga": 8,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3778,9 +3752,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 6,
+          "goals": 8,
           "assists": 0,
-          "goals_liga": 6,
+          "goals_liga": 8,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8693,9 +8667,9 @@ var INITIAL_LMI_DATA = {
       "name": "Jude Bellingham",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8707,9 +8681,9 @@ var INITIAL_LMI_DATA = {
         "realmadrid": {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8974,15 +8948,28 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794020557697_22",
@@ -14562,49 +14549,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 10,
             "team1Id": "manchesterunited",
             "team2Id": "arsenal",
-            "score1": 1,
-            "score2": 2,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1793936559088_11",
-                "playerName": "Gareth Bale",
-                "teamId": "arsenal",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936559088_18",
-                "playerName": "Koke",
-                "teamId": "arsenal",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936522127_10",
-                "playerName": "João Félix",
-                "teamId": "manchesterunited",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936559088_20",
-                "playerName": "Kai Havertz (P)",
-                "teamId": "arsenal",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936559088_9",
-                "playerName": "Enzo Fernández",
-                "teamId": "arsenal",
-                "type": "asistencia",
-                "count": 1
-              }
-            ],
-            "annulled": false,
-            "registeredBy": "Daniel",
-            "registeredAt": "2026-11-09T03:19:40.446Z"
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j10_m3",
@@ -14621,10 +14569,42 @@ var INITIAL_LMI_DATA = {
             "jornada": 10,
             "team1Id": "chelseafc",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794020557697_7",
+                "playerName": "Jude Bellingham",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794020557697_21",
+                "playerName": "Franco Mastantuono",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_9",
+                "playerName": "Luiz Araújo",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-09T03:20:34.752Z"
           },
           {
             "id": "plata_j10_m5",
@@ -16470,60 +16450,53 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794194380446",
-      "timestamp": 1794194380446,
-      "date": "08 nov 2026, 09:19 p.m.",
+      "id": "match_1794194434752",
+      "timestamp": 1794194434752,
+      "date": "08 nov 2026, 09:20 p.m.",
       "competition": "plata",
       "jornada": 10,
-      "fixtureMatchId": "plata_j10_m2",
+      "fixtureMatchId": "plata_j10_m4",
       "phase": "Jornada 10",
-      "team1Id": "manchesterunited",
-      "team1Name": "Manchester United",
-      "team1Logo": "Logos Equipos/manchesterunited.png",
-      "score1": 1,
-      "team2Id": "arsenal",
-      "team2Name": "Arsenal",
-      "team2Logo": "Logos Equipos/arsenal.png",
-      "score2": 2,
+      "team1Id": "chelseafc",
+      "team1Name": "Chelsea FC",
+      "team1Logo": "Logos Equipos/chelsea.webp",
+      "score1": 2,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 1,
       "events": [
         {
-          "playerId": "p_1793936559088_11",
-          "playerName": "Gareth Bale",
-          "teamId": "arsenal",
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794020557697_7",
+          "playerName": "Jude Bellingham",
+          "teamId": "realmadrid",
           "type": "gol",
           "count": 1
         },
         {
-          "playerId": "p_1793936559088_18",
-          "playerName": "Koke",
-          "teamId": "arsenal",
+          "playerId": "p_1794020557697_21",
+          "playerName": "Franco Mastantuono",
+          "teamId": "realmadrid",
           "type": "asistencia",
           "count": 1
         },
         {
-          "playerId": "p_1793936522127_10",
-          "playerName": "João Félix",
-          "teamId": "manchesterunited",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1793936559088_20",
-          "playerName": "Kai Havertz (P)",
-          "teamId": "arsenal",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1793936559088_9",
-          "playerName": "Enzo Fernández",
-          "teamId": "arsenal",
+          "playerId": "p_1793936668528_9",
+          "playerName": "Luiz Araújo",
+          "teamId": "chelseafc",
           "type": "asistencia",
           "count": 1
         }
       ],
       "registeredBy": "Daniel",
-      "registeredAt": "2026-11-09T03:19:40.446Z"
+      "registeredAt": "2026-11-09T03:20:34.752Z"
     },
     {
       "id": "match_1794194284793",
