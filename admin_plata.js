@@ -34,9 +34,9 @@ const PlataAuth = {
             if (window.history && window.history.replaceState) {
               window.history.replaceState(null, '', window.location.pathname);
             }
-            console.log('Token de GitHub configurado exitosamente mediante enlace de invitación.');
+            console.log('Clave de autorización configurada exitosamente mediante enlace de invitación.');
             setTimeout(() => {
-              PlataApp.showToast('🎉 ¡Token de GitHub configurado automáticamente desde la invitación!', 'success');
+              PlataApp.showToast('🎉 ¡Clave de autorización configurada automáticamente desde la invitación!', 'success');
             }, 500);
           }
         } catch (e) {
@@ -94,7 +94,7 @@ const PlataAuth = {
     }
 
     if (topbarTokenLbl) {
-      topbarTokenLbl.textContent = hasToken ? 'GitHub OK' : 'Sin Token';
+      topbarTokenLbl.textContent = hasToken ? 'Conexión OK' : 'Sin Clave';
       topbarTokenLbl.style.color = hasToken ? '#34d399' : '#fca5a5';
     }
   },
@@ -267,10 +267,10 @@ const PlataAuth = {
     const val = (input?.value || '').trim();
     if (val) {
       localStorage.setItem('lmi_github_token', val);
-      PlataApp.showToast('Token de GitHub guardado en este dispositivo.', 'success');
+      PlataApp.showToast('Clave de autorización guardada en este dispositivo.', 'success');
     } else {
       localStorage.removeItem('lmi_github_token');
-      PlataApp.showToast('Token eliminado.', 'info');
+      PlataApp.showToast('Clave eliminada.', 'info');
     }
     this.updateTokenStatusUI();
     this.closeTokenModal();
@@ -285,7 +285,7 @@ const PlataAuth = {
         resultBox.style.display = 'block';
         resultBox.style.background = 'rgba(239, 68, 68, 0.2)';
         resultBox.style.color = '#fca5a5';
-        resultBox.textContent = '❌ Por favor escribe un token antes de probar.';
+        resultBox.textContent = '❌ Por favor escribe tu clave antes de probar.';
       }
       return;
     }
@@ -294,7 +294,7 @@ const PlataAuth = {
       resultBox.style.display = 'block';
       resultBox.style.background = 'rgba(56, 189, 248, 0.15)';
       resultBox.style.color = '#38bdf8';
-      resultBox.textContent = '⏳ Verificando permisos con GitHub API...';
+      resultBox.textContent = '⏳ Verificando conexión con el servidor oficial...';
     }
 
     try {
@@ -306,7 +306,7 @@ const PlataAuth = {
       });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        throw new Error(`HTTP ${res.status}: ${err.message || 'Token no autorizado'}`);
+        throw new Error(`HTTP ${res.status}: ${err.message || 'Clave no autorizada'}`);
       }
       const data = await res.json();
       const perms = data.permissions || {};
@@ -316,11 +316,11 @@ const PlataAuth = {
         if (canPush) {
           resultBox.style.background = 'rgba(16, 185, 129, 0.2)';
           resultBox.style.color = '#34d399';
-          resultBox.textContent = `✅ Token válido con permisos de escritura en ${data.full_name}.`;
+          resultBox.textContent = `✅ Clave válida con conexión activa y permisos de publicación.`;
         } else {
           resultBox.style.background = 'rgba(245, 158, 11, 0.2)';
           resultBox.style.color = '#fbbf24';
-          resultBox.textContent = `⚠️ Conectó a ${data.full_name}, pero no tiene permisos de escritura (push).`;
+          resultBox.textContent = `⚠️ Conexión activa, pero la clave no cuenta con permisos de escritura.`;
         }
       }
     } catch (err) {
@@ -415,7 +415,7 @@ const PlataApp = {
           const jsonStr = jsonEnd !== -1 ? text.substring(jsonStart, jsonEnd).trim() : text.substring(jsonStart).trim().replace(/;$/, '');
           this.data = JSON.parse(jsonStr);
           window.lmiData = this.data;
-          this.setStatus('Online (GitHub Pages)', 'ready');
+          this.setStatus('Sincronizado', 'ready');
           this.onDataLoaded();
           return;
         }
@@ -426,7 +426,7 @@ const PlataApp = {
 
     if (window.lmiData) {
       this.data = window.lmiData;
-      this.setStatus('Online (GitHub Pages)', 'ready');
+      this.setStatus('Sincronizado', 'ready');
     } else {
       this.setStatus('Error de Conexión', 'error');
       this.showToast('No se pudieron cargar los datos de la liga.', 'error');
@@ -475,7 +475,7 @@ const PlataApp = {
     });
     if (!blobRes.ok) {
       const err = await blobRes.json().catch(() => ({}));
-      throw new Error(`Error creando Blob en GitHub (${blobRes.status}): ${err.message || 'Fallo al procesar archivo'}`);
+      throw new Error(`Error al procesar datos en el servidor (${blobRes.status}): ${err.message || 'Fallo al procesar archivo'}`);
     }
     const blobData = await blobRes.json();
     const blobSha = blobData.sha;
@@ -490,7 +490,7 @@ const PlataApp = {
         });
         if (!refRes.ok) {
           const err = await refRes.json().catch(() => ({}));
-          throw new Error(`Error en GitHub (${refRes.status}): ${err.message || 'Token inválido o sin permisos de repo'}`);
+          throw new Error(`Error de conexión con el servidor (${refRes.status}): ${err.message || 'Clave inválida o sin permisos'}`);
         }
         const refData = await refRes.json();
         const latestCommitSha = refData.object.sha;
@@ -697,21 +697,21 @@ const PlataApp = {
       }
     }
 
-    // 2. Si está en GitHub Pages o servidor local apagado, guardar vía GitHub API
+    // 2. Si no hay servidor local, guardar directamente en la nube
     if (!githubToken) {
       this.setStatus('Falta Autorización', 'error');
-      this.showToast('⚠️ No se detectó la autorización de GitHub. Abre la web usando el Enlace de Invitación oficial que te compartió el Administrador.', 'error');
+      this.showToast('⚠️ No se detectó la clave de autorización oficial. Abre la web usando el Enlace de Invitación oficial que te compartió el Administrador.', 'error');
       PlataAuth.openTokenModal();
       return false;
     }
 
-    this.setStatus('Sincronizando con la nube...', 'connecting');
+    this.setStatus('Sincronizando con la web oficial...', 'connecting');
     if (!silent) {
-      this.showToast('🚀 Sincronizando y guardando en GitHub...', 'info');
+      this.showToast('🚀 Sincronizando y publicando en la web...', 'info');
     }
 
     try {
-      // Sincronizar y fusionar con los datos remotos más frescos de GitHub para nunca sobreescribir otros registros
+      // Sincronizar y fusionar con los datos remotos más frescos de la plataforma para nunca sobreescribir otros registros
       if (this.currentMatchId) {
         await this.mergeWithLatestRemote(this.currentMatchId, this.lastSavedEvents || [], this.lastHistoryRecord || null);
       }
@@ -721,16 +721,16 @@ const PlataApp = {
       const res = await this.saveToGitHub(githubToken, this.data, commitMsg);
 
       if (res && res.success) {
-        this.setStatus('Online (Publicado)', 'ready');
+        this.setStatus('Sincronizado', 'ready');
         if (!silent) {
-          this.showToast(`🎉 ¡Partido registrado por ${this.currentUser} y publicado en GitHub con éxito!`, 'success');
+          this.showToast(`🎉 ¡Partido registrado por ${this.currentUser} y publicado en la web con éxito!`, 'success');
         }
         return true;
       }
     } catch (err) {
-      console.error('Error guardando en GitHub API:', err);
-      this.setStatus('Error en GitHub', 'error');
-      this.showToast(`Error al publicar en GitHub: ${err.message}`, 'error');
+      console.error('Error guardando en la web oficial:', err);
+      this.setStatus('Error de Publicación', 'error');
+      this.showToast(`Error al publicar en la web: ${err.message}`, 'error');
       return false;
     }
 
@@ -1126,22 +1126,42 @@ const PlataApp = {
   },
 
   // ==========================================
-  // ESTUDIO DE EVENTOS (GOLES Y ASISTENCIAS)
+  // ESTUDIO DE EVENTOS (GOLES Y ASISTENCIAS POR EQUIPO)
   // ==========================================
-  addEventRow(type = 'gol') {
+  addEventRowForTeam(teamSide, type = 'gol') {
     if (!this.currentMatch) {
       this.showToast('Primero selecciona un partido para registrar eventos.', 'warning');
       return;
     }
 
-    const t1Id = this.currentMatch.team1Id;
-    const t1Players = this.getPlayersByTeam(t1Id);
-    const defaultPlayerId = t1Players.length > 0 ? t1Players[0].id : '';
+    const teamId = teamSide === 'team2' ? this.currentMatch.team2Id : this.currentMatch.team1Id;
+    const team = this.getTeamById(teamId);
+    const teamPlayers = this.getPlayersByTeam(teamId);
+
+    if (teamPlayers.length === 0) {
+      this.showToast(`No hay jugadores registrados en la plantilla de ${team ? team.name : 'este equipo'}.`, 'error');
+      return;
+    }
+
+    // Comprobar qué jugadores de este equipo ya tienen asignado este tipo de estadística
+    const usedPlayerIds = new Set(
+      this.matchEvents
+        .filter(ev => ev.type === type && (ev.teamId === teamId || this.getPlayerTeamId(ev.playerId) === teamId))
+        .map(ev => ev.playerId)
+    );
+
+    // Buscar el primer jugador libre para este tipo de evento
+    const availablePlayer = teamPlayers.find(p => !usedPlayerIds.has(p.id));
+
+    if (!availablePlayer) {
+      this.showToast(`⚠️ Todos los jugadores disponibles de ${team ? team.name : 'este club'} ya tienen registrado un ${type === 'gol' ? 'gol' : 'asistencia'}. Modifica la cantidad en la fila existente en vez de duplicarla.`, 'warning');
+      return;
+    }
 
     this.matchEvents.push({
-      id: 'ev_' + Date.now() + Math.random().toString(36).substr(2, 5),
-      playerId: defaultPlayerId,
-      teamId: t1Id,
+      id: 'ev_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+      playerId: availablePlayer.id,
+      teamId: teamId,
       type: type,
       count: 1
     });
@@ -1150,110 +1170,199 @@ const PlataApp = {
     this.validateEventsVsScores();
   },
 
-  removeEventRow(index) {
-    this.matchEvents.splice(index, 1);
+  addEventRow(type = 'gol') {
+    this.addEventRowForTeam('team1', type);
+  },
+
+  removeEventRow(evId) {
+    this.matchEvents = this.matchEvents.filter(ev => ev.id !== evId);
     this.renderEventsRows();
     this.validateEventsVsScores();
   },
 
-  renderEventsRows() {
-    const container = document.getElementById('plata-events-container');
-    if (!container) return;
+  updateEventType(evId, newType) {
+    const ev = this.matchEvents.find(e => e.id === evId);
+    if (!ev) return;
 
-    if (this.matchEvents.length === 0) {
-      container.innerHTML = `
-        <p style="color: var(--text-muted); text-align: center; padding: 1.5rem;" id="plata-events-empty">
-          No hay anotaciones ni asistencias asignadas. Si el encuentro terminó 0-0, puedes guardar directamente.
-        </p>
-      `;
+    // Verificar si el jugador ya tiene una fila de ese nuevo tipo
+    const isDuplicate = this.matchEvents.some(e => e.id !== evId && e.playerId === ev.playerId && e.type === newType);
+    if (isDuplicate) {
+      const p = this.getPlayerById(ev.playerId);
+      this.showToast(`⚠️ El jugador ${p ? p.name : ''} ya tiene registrado un ${newType === 'gol' ? 'gol' : 'asistencia'}. Modifica la cantidad en la fila existente.`, 'warning');
+    }
+
+    ev.type = newType;
+    this.renderEventsRows();
+    this.validateEventsVsScores();
+  },
+
+  updateEventPlayer(evId, newPlayerId) {
+    const ev = this.matchEvents.find(e => e.id === evId);
+    if (!ev) return;
+
+    const isDuplicate = this.matchEvents.some(e => e.id !== evId && e.playerId === newPlayerId && e.type === ev.type);
+    if (isDuplicate) {
+      const p = this.getPlayerById(newPlayerId);
+      this.showToast(`⚠️ El jugador ${p ? p.name : ''} ya tiene una fila de ${ev.type === 'gol' ? 'gol' : 'asistencia'}. Incrementa la cantidad en esa fila en lugar de agregar otra.`, 'warning');
+    }
+
+    ev.playerId = newPlayerId;
+    ev.teamId = this.getPlayerTeamId(newPlayerId) || ev.teamId;
+    this.renderEventsRows();
+    this.validateEventsVsScores();
+  },
+
+  updateEventCount(evId, countStr) {
+    const ev = this.matchEvents.find(e => e.id === evId);
+    if (!ev) return;
+    const count = Math.max(1, parseInt(countStr, 10) || 1);
+    ev.count = count;
+    this.validateEventsVsScores();
+  },
+
+  validateDuplicatePlayers() {
+    const counts = {};
+    this.matchEvents.forEach(ev => {
+      if (ev.playerId) {
+        const key = `${ev.playerId}_${ev.type}`;
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    });
+
+    const duplicateKeys = new Set(Object.keys(counts).filter(k => counts[k] > 1));
+    return duplicateKeys;
+  },
+
+  renderEventsRows() {
+    const containerT1 = document.getElementById('plata-events-t1-container');
+    const containerT2 = document.getElementById('plata-events-t2-container');
+    const legacyContainer = document.getElementById('plata-events-container');
+
+    if (!this.currentMatch) {
+      if (containerT1) containerT1.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 1.25rem; font-size: 0.8rem; margin: 0;">Selecciona un partido.</p>';
+      if (containerT2) containerT2.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 1.25rem; font-size: 0.8rem; margin: 0;">Selecciona un partido.</p>';
+      if (legacyContainer) legacyContainer.innerHTML = '';
       return;
     }
 
-    if (!this.currentMatch) return;
-    const t1 = this.getTeamById(this.currentMatch.team1Id) || { id: this.currentMatch.team1Id, name: 'Local' };
-    const t2 = this.getTeamById(this.currentMatch.team2Id) || { id: this.currentMatch.team2Id, name: 'Visitante' };
+    const t1 = this.getTeamById(this.currentMatch.team1Id) || { id: this.currentMatch.team1Id, name: 'Local', logo: 'Logos Equipos/default.png' };
+    const t2 = this.getTeamById(this.currentMatch.team2Id) || { id: this.currentMatch.team2Id, name: 'Visitante', logo: 'Logos Equipos/default.png' };
+
+    // Actualizar encabezados de tarjetas de equipos
+    const t1NameEl = document.getElementById('plata-events-t1-name');
+    const t2NameEl = document.getElementById('plata-events-t2-name');
+    const t1BadgeEl = document.getElementById('plata-events-t1-badge');
+    const t2BadgeEl = document.getElementById('plata-events-t2-badge');
+    if (t1NameEl) t1NameEl.textContent = t1.name;
+    if (t2NameEl) t2NameEl.textContent = t2.name;
+    if (t1BadgeEl && t1.logo) t1BadgeEl.src = t1.logo;
+    if (t2BadgeEl && t2.logo) t2BadgeEl.src = t2.logo;
 
     const t1Players = this.getPlayersByTeam(t1.id);
     const t2Players = this.getPlayersByTeam(t2.id);
 
-    let html = '';
-    this.matchEvents.forEach((ev, idx) => {
-      const isGol = ev.type === 'gol';
-      const typeBadgeBg = isGol ? 'rgba(56, 189, 248, 0.15)' : 'rgba(167, 139, 250, 0.15)';
-      const typeBadgeColor = isGol ? '#38bdf8' : '#a78bfa';
-      const typeIcon = isGol ? 'fa-futbol' : 'fa-hands-clapping';
-
-      html += `
-        <div style="display: flex; gap: 0.5rem; align-items: center; background: rgba(15, 23, 42, 0.6); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
-          <!-- Tipo: Gol o Asistencia -->
-          <div style="display: flex; align-items: center; gap: 0.35rem; min-width: 130px;">
-            <span style="background: ${typeBadgeBg}; color: ${typeBadgeColor}; padding: 0.3rem 0.55rem; border-radius: 6px; font-weight: 800; font-size: 0.78rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-              <i class="fa-solid ${typeIcon}"></i> ${isGol ? 'GOL' : 'ASISTENCIA'}
-            </span>
-            <select class="form-select form-select-sm" style="font-size: 0.75rem; padding: 0.2rem 0.4rem;" onchange="PlataApp.updateEventType(${idx}, this.value)">
-              <option value="gol" ${isGol ? 'selected' : ''}>Gol</option>
-              <option value="asistencia" ${!isGol ? 'selected' : ''}>Asistencia</option>
-            </select>
-          </div>
-
-          <!-- Selector de Jugador -->
-          <div style="flex: 1; min-width: 220px;">
-            <select class="form-select form-select-sm" style="width: 100%; font-weight: 700; font-size: 0.82rem;" onchange="PlataApp.updateEventPlayer(${idx}, this.value)">
-              <optgroup label="🏠 [Local] ${t1.name}">
-                ${t1Players.map(p => `
-                  <option value="${p.id}" ${p.id === ev.playerId ? 'selected' : ''} data-team="${t1.id}">
-                    ${p.name} (${p.position || 'JUG'})
-                  </option>
-                `).join('')}
-              </optgroup>
-              <optgroup label="✈️ [Visitante] ${t2.name}">
-                ${t2Players.map(p => `
-                  <option value="${p.id}" ${p.id === ev.playerId ? 'selected' : ''} data-team="${t2.id}">
-                    ${p.name} (${p.position || 'JUG'})
-                  </option>
-                `).join('')}
-              </optgroup>
-            </select>
-          </div>
-
-          <!-- Cantidad -->
-          <div style="display: flex; align-items: center; gap: 0.35rem;">
-            <label style="font-size: 0.72rem; color: #94a3b8; font-weight: 700;">Cant:</label>
-            <input type="number" min="1" max="15" value="${ev.count || 1}" class="form-input form-input-sm" style="width: 58px; text-align: center; font-weight: 800;" onchange="PlataApp.updateEventCount(${idx}, this.value)">
-          </div>
-
-          <!-- Botón Eliminar Fila -->
-          <button type="button" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.6rem; color: #ef4444;" onclick="PlataApp.removeEventRow(${idx})" title="Eliminar fila">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-        </div>
-      `;
+    // Asegurar que cada evento tenga asignado id único y teamId correcto
+    this.matchEvents.forEach(ev => {
+      if (!ev.id) ev.id = 'ev_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+      if (!ev.teamId) ev.teamId = this.getPlayerTeamId(ev.playerId) || t1.id;
     });
 
-    container.innerHTML = html;
-  },
+    const duplicateKeys = this.validateDuplicatePlayers();
 
-  updateEventType(idx, type) {
-    if (this.matchEvents[idx]) {
-      this.matchEvents[idx].type = type;
-      this.renderEventsRows();
-      this.validateEventsVsScores();
-    }
-  },
+    const renderRowsForTeam = (teamId, teamPlayers, containerEl, emptyClass, emptyText) => {
+      if (!containerEl) return;
+      const teamEvents = this.matchEvents.filter(ev => {
+        const evTeam = ev.teamId || this.getPlayerTeamId(ev.playerId);
+        return evTeam === teamId;
+      });
 
-  updateEventPlayer(idx, playerId) {
-    if (this.matchEvents[idx]) {
-      this.matchEvents[idx].playerId = playerId;
-      this.matchEvents[idx].teamId = this.getPlayerTeamId(playerId);
-      this.validateEventsVsScores();
-    }
-  },
+      if (teamEvents.length === 0) {
+        containerEl.innerHTML = `
+          <p style="color: var(--text-muted); text-align: center; padding: 1.25rem; font-size: 0.8rem; margin: 0;" class="${emptyClass}">
+            ${emptyText}
+          </p>
+        `;
+        return;
+      }
 
-  updateEventCount(idx, countStr) {
-    const count = parseInt(countStr, 10) || 1;
-    if (this.matchEvents[idx]) {
-      this.matchEvents[idx].count = count;
-      this.validateEventsVsScores();
+      let html = '';
+      teamEvents.forEach(ev => {
+        const isGol = ev.type === 'gol';
+        const typeBadgeBg = isGol ? 'rgba(56, 189, 248, 0.15)' : 'rgba(167, 139, 250, 0.15)';
+        const typeBadgeColor = isGol ? '#38bdf8' : '#a78bfa';
+        const typeIcon = isGol ? 'fa-futbol' : 'fa-hands-clapping';
+        const isDuplicate = duplicateKeys.has(`${ev.playerId}_${ev.type}`);
+
+        html += `
+          <div style="display: flex; flex-direction: column; gap: 0.35rem; background: ${isDuplicate ? 'rgba(239, 68, 68, 0.12)' : 'rgba(15, 23, 42, 0.75)'}; padding: 0.65rem 0.8rem; border-radius: 8px; border: 1.5px solid ${isDuplicate ? '#ef4444' : 'var(--border-color)'};">
+            <div style="display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap;">
+              <!-- Badge de Tipo: Gol o Asistencia -->
+              <div style="display: flex; align-items: center; gap: 0.3rem;">
+                <span style="background: ${typeBadgeBg}; color: ${typeBadgeColor}; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: 800; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.25rem;">
+                  <i class="fa-solid ${typeIcon}"></i> ${isGol ? 'GOL' : 'ASIST'}
+                </span>
+                <select class="form-select form-select-sm" style="font-size: 0.74rem; padding: 0.2rem 0.35rem; font-weight: 700;" onchange="PlataApp.updateEventType('${ev.id}', this.value)">
+                  <option value="gol" ${isGol ? 'selected' : ''}>Gol</option>
+                  <option value="asistencia" ${!isGol ? 'selected' : ''}>Asistencia</option>
+                </select>
+              </div>
+
+              <!-- Selector de Jugador (Exclusivo de este equipo) -->
+              <div style="flex: 1; min-width: 170px;">
+                <select class="form-select form-select-sm" style="width: 100%; font-weight: 700; font-size: 0.8rem; ${isDuplicate ? 'border-color: #ef4444; color: #fca5a5;' : ''}" onchange="PlataApp.updateEventPlayer('${ev.id}', this.value)">
+                  ${teamPlayers.map(p => {
+                    const isSelected = (p.id === ev.playerId);
+                    const isUsedInOther = this.matchEvents.some(e => e.id !== ev.id && e.playerId === p.id && e.type === ev.type);
+                    return `
+                      <option value="${p.id}" ${isSelected ? 'selected' : ''} ${isUsedInOther && !isSelected ? 'disabled style="color: #ef4444;"' : ''}>
+                        ${isUsedInOther && !isSelected ? '⚠️ (Ya asignado) ' : ''}${p.name} (${p.position || 'JUG'})
+                      </option>
+                    `;
+                  }).join('')}
+                </select>
+              </div>
+
+              <!-- Cantidad -->
+              <div style="display: flex; align-items: center; gap: 0.25rem;">
+                <label style="font-size: 0.72rem; color: #94a3b8; font-weight: 700;">Cant:</label>
+                <input type="number" min="1" max="15" value="${ev.count || 1}" class="form-input form-input-sm" style="width: 52px; text-align: center; font-weight: 800; padding: 0.2rem;" onchange="PlataApp.updateEventCount('${ev.id}', this.value)">
+              </div>
+
+              <!-- Eliminar Fila -->
+              <button type="button" class="btn btn-secondary btn-sm" style="padding: 0.3rem 0.5rem; color: #ef4444;" onclick="PlataApp.removeEventRow('${ev.id}')" title="Eliminar fila">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+
+            ${isDuplicate ? `
+              <div style="color: #f87171; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; gap: 0.35rem; margin-top: 0.15rem;">
+                <i class="fa-solid fa-triangle-exclamation"></i> Jugador repetido con esta estadística. Aumenta la cantidad en una sola fila.
+              </div>
+            ` : ''}
+          </div>
+        `;
+      });
+
+      containerEl.innerHTML = html;
+    };
+
+    if (containerT1 && containerT2) {
+      renderRowsForTeam(t1.id, t1Players, containerT1, 'events-empty-t1', 'Sin goles ni asistencias asignadas al local.');
+      renderRowsForTeam(t2.id, t2Players, containerT2, 'events-empty-t2', 'Sin goles ni asistencias asignadas al visitante.');
+    } else if (legacyContainer) {
+      let legacyHtml = '';
+      this.matchEvents.forEach(ev => {
+        const isGol = ev.type === 'gol';
+        legacyHtml += `
+          <div style="display: flex; gap: 0.5rem; align-items: center; background: rgba(15, 23, 42, 0.6); padding: 0.65rem 0.85rem; border-radius: 8px;">
+            <span>${isGol ? 'GOL' : 'ASISTENCIA'}</span>
+            <span>${ev.playerId}</span>
+            <span>Cant: ${ev.count || 1}</span>
+            <button onclick="PlataApp.removeEventRow('${ev.id}')">Eliminar</button>
+          </div>
+        `;
+      });
+      legacyContainer.innerHTML = legacyHtml || '<p style="text-align: center; color: #94a3b8;">No hay eventos asignados.</p>';
     }
   },
 
@@ -1278,17 +1387,31 @@ const PlataApp = {
       }
     });
 
+    const duplicateKeys = this.validateDuplicatePlayers();
+    alertBox.style.display = 'block';
+
+    if (duplicateKeys.size > 0) {
+      alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+      alertBox.style.border = '1px solid rgba(239, 68, 68, 0.45)';
+      alertBox.style.color = '#fca5a5';
+      alertBox.innerHTML = `
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <strong>Error de Jugadores Repetidos:</strong> Tienes futbolistas repetidos con la misma estadística. 
+        Ajusta la cantidad en una sola fila para poder publicar en la web.
+      `;
+      return;
+    }
+
     const isT1Match = (t1Goals === s1);
     const isT2Match = (t2Goals === s2);
 
-    alertBox.style.display = 'block';
     if (isT1Match && isT2Match) {
       alertBox.style.background = 'rgba(16, 185, 129, 0.15)';
       alertBox.style.border = '1px solid rgba(16, 185, 129, 0.4)';
       alertBox.style.color = '#34d399';
       alertBox.innerHTML = `
         <i class="fa-solid fa-circle-check"></i>
-        <strong>Goles Verificados:</strong> Coinciden con el marcador (${t1Goals} local / ${t2Goals} visitante). Listo para guardar.
+        <strong>Goles Verificados:</strong> Coinciden con el marcador (${t1Goals} local / ${t2Goals} visitante). Listo para publicar.
       `;
     } else {
       alertBox.style.background = 'rgba(245, 158, 11, 0.15)';
@@ -1296,16 +1419,136 @@ const PlataApp = {
       alertBox.style.color = '#fbbf24';
       alertBox.innerHTML = `
         <i class="fa-solid fa-triangle-exclamation"></i>
-        <strong>Aviso de Goles:</strong> Marcador indica (${s1} - ${s2}), pero se han asignado (${t1Goals} - ${t2Goals}) en eventos. 
-        Si hubo autogol o no asignas todos los goles, aún puedes guardar.
+        <strong>Aviso de Goles:</strong> Marcador indica (${s1} - ${s2}), pero se han asignado (${t1Goals} - ${t2Goals}) en estadísticas. 
+        Si hubo autogol o no asignas todos los goles, aún puedes continuar.
       `;
     }
   },
 
   // ==========================================
-  // REGISTRAR Y GUARDAR PARTIDO
+  // VENTANA DE CONFIRMACIÓN PREVIA ANTES DE PUBLICAR
   // ==========================================
-  async submitMatch() {
+  openMatchConfirmModal(isAnulacion = false) {
+    if (!this.currentMatch) return;
+    const modal = document.getElementById('modal-plata-confirm-match');
+    if (!modal) return;
+
+    const t1 = this.getTeamById(this.currentMatch.team1Id);
+    const t2 = this.getTeamById(this.currentMatch.team2Id);
+    const s1 = parseInt(document.getElementById('plata-score1')?.value, 10) || 0;
+    const s2 = parseInt(document.getElementById('plata-score2')?.value, 10) || 0;
+
+    // Equipos
+    const t1LogoEl = document.getElementById('modal-confirm-t1-logo');
+    const t2LogoEl = document.getElementById('modal-confirm-t2-logo');
+    const t1NameEl = document.getElementById('modal-confirm-t1-name');
+    const t2NameEl = document.getElementById('modal-confirm-t2-name');
+    const scoreDisp = document.getElementById('modal-confirm-score-display');
+    const statusPill = document.getElementById('modal-confirm-status-pill');
+    const jornadaBadge = document.getElementById('modal-confirm-jornada-badge');
+    const authorEl = document.getElementById('modal-confirm-author');
+    const anuladoAlert = document.getElementById('modal-confirm-anulado-alert');
+    const statsWrapper = document.getElementById('modal-confirm-stats-wrapper');
+    const statsSummary = document.getElementById('modal-confirm-stats-summary');
+    const btnPublish = document.getElementById('btn-modal-confirm-publish');
+
+    if (t1LogoEl) t1LogoEl.src = t1?.logo || 'Logos Equipos/default.png';
+    if (t2LogoEl) t2LogoEl.src = t2?.logo || 'Logos Equipos/default.png';
+    if (t1NameEl) t1NameEl.textContent = t1 ? t1.name : 'Local';
+    if (t2NameEl) t2NameEl.textContent = t2 ? t2.name : 'Visitante';
+    if (jornadaBadge) jornadaBadge.textContent = `Jornada ${this.currentJornada} • División Plata`;
+    if (authorEl) authorEl.textContent = this.currentUser || 'Delegado Plata';
+
+    if (isAnulacion) {
+      if (scoreDisp) scoreDisp.textContent = '0 - 0';
+      if (statusPill) {
+        statusPill.textContent = 'ANULADO';
+        statusPill.style.background = 'rgba(239, 68, 68, 0.2)';
+        statusPill.style.color = '#f87171';
+      }
+      if (anuladoAlert) anuladoAlert.style.display = 'block';
+      if (statsWrapper) statsWrapper.style.display = 'none';
+      if (btnPublish) {
+        btnPublish.innerHTML = '<i class="fa-solid fa-ban"></i> Aceptar y Publicar Anulación';
+        btnPublish.style.background = 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)';
+      }
+    } else {
+      if (scoreDisp) scoreDisp.textContent = `${s1} - ${s2}`;
+      if (statusPill) {
+        statusPill.textContent = 'Marcador Final';
+        statusPill.style.background = 'rgba(16, 185, 129, 0.2)';
+        statusPill.style.color = '#34d399';
+      }
+      if (anuladoAlert) anuladoAlert.style.display = 'none';
+      if (statsWrapper) statsWrapper.style.display = 'block';
+      if (btnPublish) {
+        btnPublish.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Aceptar y Publicar en la Web';
+        btnPublish.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+      }
+
+      // Desglosar estadísticas por equipo
+      const buildTeamStatsHtml = (teamId, teamName) => {
+        const teamEvents = this.matchEvents.filter(ev => {
+          const evTeam = ev.teamId || this.getPlayerTeamId(ev.playerId);
+          return evTeam === teamId;
+        });
+
+        const goles = teamEvents.filter(ev => ev.type === 'gol');
+        const asistencias = teamEvents.filter(ev => ev.type === 'asistencia');
+
+        let golesHtml = '<span style="color: #64748b; font-style: italic; font-size: 0.78rem;">Ninguno</span>';
+        if (goles.length > 0) {
+          golesHtml = goles.map(ev => {
+            const p = this.getPlayerById(ev.playerId);
+            const countStr = ev.count > 1 ? ` <strong>(x${ev.count})</strong>` : '';
+            return `<div style="font-size: 0.8rem; color: #f1f5f9;"><i class="fa-solid fa-futbol" style="color: #38bdf8; font-size: 0.75rem;"></i> ${p ? p.name : 'Desconocido'}${countStr}</div>`;
+          }).join('');
+        }
+
+        let asistHtml = '<span style="color: #64748b; font-style: italic; font-size: 0.78rem;">Ninguna</span>';
+        if (asistencias.length > 0) {
+          asistHtml = asistencias.map(ev => {
+            const p = this.getPlayerById(ev.playerId);
+            const countStr = ev.count > 1 ? ` <strong>(x${ev.count})</strong>` : '';
+            return `<div style="font-size: 0.8rem; color: #cbd5e1;"><i class="fa-solid fa-hands-clapping" style="color: #a78bfa; font-size: 0.75rem;"></i> ${p ? p.name : 'Desconocido'}${countStr}</div>`;
+          }).join('');
+        }
+
+        return `
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 8px; padding: 0.75rem;">
+            <div style="font-weight: 800; font-size: 0.82rem; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.35rem; margin-bottom: 0.5rem;">
+              ${teamName}
+            </div>
+            <div style="margin-bottom: 0.5rem;">
+              <div style="font-size: 0.7rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 0.2rem;">Goles:</div>
+              ${golesHtml}
+            </div>
+            <div>
+              <div style="font-size: 0.7rem; font-weight: 800; color: #a78bfa; text-transform: uppercase; margin-bottom: 0.2rem;">Asistencias:</div>
+              ${asistHtml}
+            </div>
+          </div>
+        `;
+      };
+
+      if (statsSummary) {
+        statsSummary.innerHTML = `
+          ${buildTeamStatsHtml(t1 ? t1.id : this.currentMatch.team1Id, t1 ? t1.name : 'Local')}
+          ${buildTeamStatsHtml(t2 ? t2.id : this.currentMatch.team2Id, t2 ? t2.name : 'Visitante')}
+        `;
+      }
+    }
+
+    modal.style.display = 'flex';
+  },
+
+  closeMatchConfirmModal() {
+    const modal = document.getElementById('modal-plata-confirm-match');
+    if (modal) modal.style.display = 'none';
+  },
+
+  // Disparado al pulsar el botón "Registrar y Guardar Partido"
+  submitMatch() {
     if (!this.isJornadaAllowed(this.currentJornada)) {
       this.showToast('Esta jornada está bloqueada por el Administrador Principal. No se puede guardar.', 'error');
       return;
@@ -1316,6 +1559,55 @@ const PlataApp = {
       return;
     }
 
+    const duplicates = this.validateDuplicatePlayers();
+    if (duplicates.size > 0) {
+      this.showToast('No se puede continuar: Tienes futbolistas repetidos con la misma estadística. Modifica la cantidad en una sola fila en vez de duplicarla.', 'error');
+      return;
+    }
+
+    this.pendingPublishType = 'normal';
+    this.openMatchConfirmModal(false);
+  },
+
+  // Disparado al pulsar el botón "Anular Partido"
+  anularMatch() {
+    if (!this.isJornadaAllowed(this.currentJornada)) {
+      this.showToast('Esta jornada está bloqueada por el Administrador Principal. No se puede anular.', 'error');
+      return;
+    }
+
+    if (!this.currentMatch) {
+      this.showToast('Por favor selecciona un partido para anular.', 'error');
+      return;
+    }
+
+    this.pendingPublishType = 'anular';
+    this.openMatchConfirmModal(true);
+  },
+
+  // Confirmación ejecutada desde la ventana modal
+  async executeConfirmedPublish() {
+    const btnPublish = document.getElementById('btn-modal-confirm-publish');
+    if (btnPublish) {
+      btnPublish.disabled = true;
+      btnPublish.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publicando...';
+    }
+
+    try {
+      if (this.pendingPublishType === 'anular') {
+        await this.executeAnulacion();
+      } else {
+        await this.executeSubmitMatch();
+      }
+    } finally {
+      if (btnPublish) {
+        btnPublish.disabled = false;
+      }
+      this.closeMatchConfirmModal();
+    }
+  },
+
+  async executeSubmitMatch() {
     const s1 = parseInt(document.getElementById('plata-score1').value, 10) || 0;
     const s2 = parseInt(document.getElementById('plata-score2').value, 10) || 0;
 
@@ -1404,6 +1696,7 @@ const PlataApp = {
 
     // 3. Actualizar el partido en fixtures.plata
     this.currentMatch.played = true;
+    this.currentMatch.annulled = false;
     this.currentMatch.score1 = s1;
     this.currentMatch.score2 = s2;
     this.currentMatch.events = serializedEvents;
@@ -1434,12 +1727,11 @@ const PlataApp = {
       registeredAt: nowIso
     };
 
-    // Prepend to match history
     this.data.matchHistory.unshift(historyRecord);
     this.lastSavedEvents = serializedEvents;
     this.lastHistoryRecord = historyRecord;
 
-    // 5. Guardar (Local o Cloud GitHub API)
+    // 5. Guardar y publicar
     const ok = await this.saveData();
     if (ok) {
       this.populateMatchesForCurrentJornada();
@@ -1449,29 +1741,11 @@ const PlataApp = {
     }
   },
 
-  async anularMatch() {
-    if (!this.isJornadaAllowed(this.currentJornada)) {
-      this.showToast('Esta jornada está bloqueada por el Administrador Principal. No se puede anular.', 'error');
-      return;
-    }
-
-    if (!this.currentMatch) {
-      this.showToast('Por favor selecciona un partido para anular.', 'error');
-      return;
-    }
-
+  async executeAnulacion() {
     const t1 = this.getTeamById(this.currentMatch.team1Id);
     const t2 = this.getTeamById(this.currentMatch.team2Id);
     const t1Name = t1 ? t1.name : this.currentMatch.team1Id;
     const t2Name = t2 ? t2.name : this.currentMatch.team2Id;
-
-    const confirmMsg = `⚠️ ¿Confirmas ANULAR el partido entre ${t1Name} y ${t2Name} (Jornada ${this.currentJornada})?\n\n` +
-      `• El partido se registrará como JUGADO para ambos equipos.\n` +
-      `• NINGÚN equipo sumará puntos en la tabla de posiciones.\n` +
-      `• Si ya tenía goles o asistencias registradas, serán revertidas de los jugadores.\n\n` +
-      `¿Deseas continuar?`;
-
-    if (!confirm(confirmMsg)) return;
 
     // 1. Revertir estadísticas previas si el partido ya había sido jugado
     if (this.currentMatch.played && Array.isArray(this.currentMatch.events)) {
@@ -1542,7 +1816,7 @@ const PlataApp = {
     this.lastSavedEvents = [];
     this.lastHistoryRecord = historyRecord;
 
-    // 4. Guardar (Local o Cloud GitHub API)
+    // 4. Guardar y publicar
     const commitMsg = `Anulación Jornada ${this.currentJornada}: ${t1Name} vs ${t2Name} [${delegateUser}]`;
     const ok = await this.saveData(commitMsg);
     if (ok) {
@@ -2075,7 +2349,7 @@ const PlataApp = {
   },
 
   // ==========================================
-  // MODAL DE DESPLIEGUE A GITHUB PAGES (GIT)
+  // MODAL DE PUBLICACIÓN EN LA WEB OFICIAL
   // ==========================================
   openDeployModal() {
     const modal = document.getElementById('modal-plata-deploy');
