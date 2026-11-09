@@ -3696,10 +3696,10 @@ var INITIAL_LMI_DATA = {
       "name": "Luiz Araújo",
       "position": "ID",
       "teamId": "chelseafc",
-      "goals": 0,
-      "assists": 1,
-      "goals_liga": 0,
-      "assists_liga": 1,
+      "goals": 1,
+      "assists": 2,
+      "goals_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3710,10 +3710,10 @@ var INITIAL_LMI_DATA = {
         "chelseafc": {
           "teamId": "chelseafc",
           "teamName": "Chelsea FC",
-          "goals": 0,
-          "assists": 1,
-          "goals_liga": 0,
-          "assists_liga": 1,
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3726,10 +3726,10 @@ var INITIAL_LMI_DATA = {
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 6,
-      "assists": 0,
-      "goals_liga": 6,
-      "assists_liga": 0,
+      "goals": 8,
+      "assists": 1,
+      "goals_liga": 8,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3739,10 +3739,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 6,
-          "assists": 0,
-          "goals_liga": 6,
-          "assists_liga": 0,
+          "goals": 8,
+          "assists": 1,
+          "goals_liga": 8,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3755,10 +3755,10 @@ var INITIAL_LMI_DATA = {
       "name": "Vitor Roque",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 2,
-      "assists": 4,
-      "goals_liga": 2,
-      "assists_liga": 4,
+      "goals": 3,
+      "assists": 5,
+      "goals_liga": 3,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3768,10 +3768,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 2,
-          "assists": 4,
-          "goals_liga": 2,
-          "assists_liga": 4,
+          "goals": 3,
+          "assists": 5,
+          "goals_liga": 3,
+          "assists_liga": 5,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3862,16 +3862,29 @@ var INITIAL_LMI_DATA = {
       "name": "Erick Pulgar",
       "position": "MCD",
       "teamId": "chelseafc",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936668528_17",
@@ -4834,15 +4847,28 @@ var INITIAL_LMI_DATA = {
       "position": "II",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_7",
@@ -5102,16 +5128,29 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Suárez",
       "position": "DC",
       "teamId": "clubnacional",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_23",
@@ -5119,15 +5158,28 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017276096_1",
@@ -13956,10 +14008,84 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "clubnacional",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 5,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936668528_9",
+                "playerName": "Luiz Araújo",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_11",
+                "playerName": "Vitor Roque",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_22",
+                "playerName": "Luis Suárez",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017241785_6",
+                "playerName": "Diego Moreira",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_16",
+                "playerName": "Erick Pulgar",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_9",
+                "playerName": "Luiz Araújo",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936668528_11",
+                "playerName": "Vitor Roque",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_23",
+                "playerName": "Johan Cruyff",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-09T03:13:24.219Z"
           },
           {
             "id": "plata_j5_m4",
@@ -16373,6 +16499,97 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794194004219",
+      "timestamp": 1794194004219,
+      "date": "08 nov 2026, 09:13 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m3",
+      "phase": "Jornada 5",
+      "team1Id": "clubnacional",
+      "team1Name": "Club Nacional",
+      "team1Logo": "Logos Equipos/nacional.webp",
+      "score1": 2,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 5,
+      "events": [
+        {
+          "playerId": "p_1793936668528_9",
+          "playerName": "Luiz Araújo",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_11",
+          "playerName": "Vitor Roque",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_22",
+          "playerName": "Luis Suárez",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017241785_6",
+          "playerName": "Diego Moreira",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_16",
+          "playerName": "Erick Pulgar",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_9",
+          "playerName": "Luiz Araújo",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_11",
+          "playerName": "Vitor Roque",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_23",
+          "playerName": "Johan Cruyff",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-09T03:13:24.219Z"
+    },
     {
       "id": "match_1794191833558",
       "timestamp": 1794191833558,
