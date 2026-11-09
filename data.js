@@ -2823,16 +2823,30 @@ var INITIAL_LMI_DATA = {
       "name": "Bruno Fernandes",
       "position": "MCD",
       "teamId": "arsenal",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "arsenal": {
+          "teamId": "arsenal",
+          "teamName": "Arsenal",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936559088_8",
@@ -2840,9 +2854,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 2,
+      "assists": 3,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2853,9 +2867,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 0,
-          "assists": 2,
+          "assists": 3,
           "goals_liga": 0,
-          "assists_liga": 2,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2897,10 +2911,10 @@ var INITIAL_LMI_DATA = {
       "name": "Darwin Núñez",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 9,
-      "assists": 5,
-      "goals_liga": 9,
-      "assists_liga": 5,
+      "goals": 12,
+      "assists": 6,
+      "goals_liga": 12,
+      "assists_liga": 6,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2910,10 +2924,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "arsenal": {
           "teamId": "arsenal",
-          "goals": 9,
-          "assists": 5,
-          "goals_liga": 9,
-          "assists_liga": 5,
+          "goals": 12,
+          "assists": 6,
+          "goals_liga": 12,
+          "assists_liga": 6,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2926,10 +2940,10 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 7,
-      "assists": 0,
-      "goals_liga": 7,
-      "assists_liga": 0,
+      "goals": 8,
+      "assists": 3,
+      "goals_liga": 8,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2939,10 +2953,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "arsenal": {
           "teamId": "arsenal",
-          "goals": 7,
-          "assists": 0,
-          "goals_liga": 7,
-          "assists_liga": 0,
+          "goals": 8,
+          "assists": 3,
+          "goals_liga": 8,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3683,24 +3697,38 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936668528_10",
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 4,
+      "goals": 6,
       "assists": 0,
-      "goals_liga": 4,
+      "goals_liga": 6,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3711,9 +3739,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 4,
+          "goals": 6,
           "assists": 0,
-          "goals_liga": 4,
+          "goals_liga": 6,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -3727,9 +3755,9 @@ var INITIAL_LMI_DATA = {
       "name": "Vitor Roque",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 0,
+      "goals": 2,
       "assists": 4,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3740,9 +3768,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 0,
+          "goals": 2,
           "assists": 4,
-          "goals_liga": 0,
+          "goals_liga": 2,
           "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -3789,15 +3817,29 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936668528_15",
@@ -3869,15 +3911,29 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936668528_20",
@@ -6182,32 +6238,60 @@ var INITIAL_LMI_DATA = {
       "name": "Viktor Tsygankov",
       "position": "SD",
       "teamId": "carabobofutbolclub",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_2",
       "name": "Ángel Di María",
       "position": "SD",
       "teamId": "carabobofutbolclub",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_3",
@@ -6374,32 +6458,60 @@ var INITIAL_LMI_DATA = {
       "name": "Amine Gouiri",
       "position": "DC",
       "teamId": "carabobofutbolclub",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_14",
       "name": "Jørgen Strand Larsen",
       "position": "DC",
       "teamId": "carabobofutbolclub",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_15",
@@ -6455,15 +6567,29 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "carabobofutbolclub",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_19",
@@ -8182,16 +8308,30 @@ var INITIAL_LMI_DATA = {
       "name": "Cristiano Ronaldo",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017852961_12",
@@ -8311,15 +8451,29 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "acmiln",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017852961_20",
@@ -8342,16 +8496,30 @@ var INITIAL_LMI_DATA = {
       "name": "Endrick",
       "position": "DC",
       "teamId": "acmiln",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "acmiln": {
+          "teamId": "acmiln",
+          "teamName": "AC Milan",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017852961_22",
@@ -8486,16 +8654,30 @@ var INITIAL_LMI_DATA = {
       "name": "Jude Bellingham",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794020557697_8",
@@ -8519,15 +8701,29 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "realmadrid",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794020557697_10",
@@ -8676,16 +8872,30 @@ var INITIAL_LMI_DATA = {
       "name": "João Pedro",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "realmadrid": {
+          "teamId": "realmadrid",
+          "teamName": "Real Madrid",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794020557697_19",
@@ -13331,20 +13541,96 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "carabobofutbolclub",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936559088_10",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_8",
+                "playerName": "Kevin De Bruyne",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-09T02:31:00.495Z"
           },
           {
             "id": "plata_j2_m6",
             "jornada": 2,
             "team1Id": "acmiln",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 5,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936668528_11",
+                "playerName": "Vitor Roque",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936668528_14",
+                "playerName": "Juninho Capixaba",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936668528_19",
+                "playerName": "Ganso",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017852961_11",
+                "playerName": "Cristiano Ronaldo",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017852961_21",
+                "playerName": "Endrick",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_9",
+                "playerName": "Luiz Araújo",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-09T02:32:43.000Z"
           },
           {
             "id": "plata_j2_m7",
@@ -13398,10 +13684,62 @@ var INITIAL_LMI_DATA = {
             "jornada": 3,
             "team1Id": "carabobofutbolclub",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794020557697_7",
+                "playerName": "Jude Bellingham",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794020557697_9",
+                "playerName": "Kingsley Coman",
+                "teamId": "realmadrid",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794020557697_18",
+                "playerName": "João Pedro",
+                "teamId": "realmadrid",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017504232_1",
+                "playerName": "Viktor Tsygankov",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_1",
+                "playerName": "Viktor Tsygankov",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_13",
+                "playerName": "Amine Gouiri",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_2",
+                "playerName": "Ángel Di María",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-09T02:34:56.076Z"
           },
           {
             "id": "plata_j3_m5",
@@ -13465,10 +13803,34 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "carabobofutbolclub",
             "team2Id": "fcbayernmunich",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017504232_13",
+                "playerName": "Amine Gouiri",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_14",
+                "playerName": "Jørgen Strand Larsen",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_18",
+                "playerName": "Dani Rodríguez",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-09T02:35:44.374Z"
           },
           {
             "id": "plata_j4_m4",
@@ -13505,10 +13867,62 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "acmiln",
             "team2Id": "arsenal",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936559088_10",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_10",
+                "playerName": "Darwin Núñez",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
+                "teamId": "arsenal",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017852961_21",
+                "playerName": "Endrick",
+                "teamId": "acmiln",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017852961_19",
+                "playerName": "Yan Diomande",
+                "teamId": "acmiln",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936559088_7",
+                "playerName": "Bruno Fernandes",
+                "teamId": "arsenal",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-09T02:37:13.558Z"
           }
         ]
       },
@@ -15959,6 +16373,300 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794191833558",
+      "timestamp": 1794191833558,
+      "date": "08 nov 2026, 08:37 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m7",
+      "phase": "Jornada 4",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 1,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017852961_21",
+          "playerName": "Endrick",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017852961_19",
+          "playerName": "Yan Diomande",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_7",
+          "playerName": "Bruno Fernandes",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-09T02:37:13.559Z"
+    },
+    {
+      "id": "match_1794191744374",
+      "timestamp": 1794191744374,
+      "date": "08 nov 2026, 08:35 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m3",
+      "phase": "Jornada 4",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 2,
+      "team2Id": "fcbayernmunich",
+      "team2Name": "FC Bayern Múnich",
+      "team2Logo": "Logos Equipos/bayernmunich.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794017504232_13",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017504232_14",
+          "playerName": "Jørgen Strand Larsen",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017504232_18",
+          "playerName": "Dani Rodríguez",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-09T02:35:44.374Z"
+    },
+    {
+      "id": "match_1794191696076",
+      "timestamp": 1794191696076,
+      "date": "08 nov 2026, 08:34 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m4",
+      "phase": "Jornada 3",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 2,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1794020557697_7",
+          "playerName": "Jude Bellingham",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794020557697_9",
+          "playerName": "Kingsley Coman",
+          "teamId": "realmadrid",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794020557697_18",
+          "playerName": "João Pedro",
+          "teamId": "realmadrid",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017504232_1",
+          "playerName": "Viktor Tsygankov",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017504232_1",
+          "playerName": "Viktor Tsygankov",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017504232_13",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017504232_2",
+          "playerName": "Ángel Di María",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-09T02:34:56.077Z"
+    },
+    {
+      "id": "match_1794191563000",
+      "timestamp": 1794191563000,
+      "date": "08 nov 2026, 08:32 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m6",
+      "phase": "Jornada 2",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 3,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 5,
+      "events": [
+        {
+          "playerId": "p_1793936668528_11",
+          "playerName": "Vitor Roque",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_14",
+          "playerName": "Juninho Capixaba",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_19",
+          "playerName": "Ganso",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017852961_11",
+          "playerName": "Cristiano Ronaldo",
+          "teamId": "acmiln",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017852961_21",
+          "playerName": "Endrick",
+          "teamId": "acmiln",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_9",
+          "playerName": "Luiz Araújo",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-09T02:32:43.000Z"
+    },
+    {
+      "id": "match_1794191460495",
+      "timestamp": 1794191460495,
+      "date": "08 nov 2026, 08:31 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m5",
+      "phase": "Jornada 2",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 0,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_8",
+          "playerName": "Kevin De Bruyne",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-09T02:31:00.495Z"
+    },
     {
       "id": "match_1794183126223",
       "timestamp": 1794183126223,
