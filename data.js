@@ -14542,7 +14542,8 @@ var INITIAL_LMI_DATA = {
             "score1": null,
             "score2": null,
             "played": false,
-            "events": []
+            "events": [],
+            "annulled": false
           },
           {
             "id": "plata_j10_m2",
@@ -14569,42 +14570,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 10,
             "team1Id": "chelseafc",
             "team2Id": "realmadrid",
-            "score1": 2,
-            "score2": 1,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1793936668528_10",
-                "playerName": "Yuri Alberto",
-                "teamId": "chelseafc",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1794020557697_7",
-                "playerName": "Jude Bellingham",
-                "teamId": "realmadrid",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794020557697_21",
-                "playerName": "Franco Mastantuono",
-                "teamId": "realmadrid",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936668528_9",
-                "playerName": "Luiz Araújo",
-                "teamId": "chelseafc",
-                "type": "asistencia",
-                "count": 1
-              }
-            ],
-            "annulled": false,
-            "registeredBy": "Daniel",
-            "registeredAt": "2026-11-09T03:20:34.752Z"
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j10_m5",
