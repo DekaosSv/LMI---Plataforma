@@ -14043,70 +14043,18 @@ var INITIAL_LMI_DATA = {
             "score1": null,
             "score2": null,
             "played": false,
-            "events": []
+            "events": [],
+            "annulled": false
           },
           {
             "id": "plata_j5_m2",
             "jornada": 5,
             "team1Id": "carabobofutbolclub",
             "team2Id": "clubuniversidaddechile",
-            "score1": 1,
-            "score2": 5,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1794017628489_21",
-                "playerName": "Yoane Wissa",
-                "teamId": "clubuniversidaddechile",
-                "type": "gol",
-                "count": 4
-              },
-              {
-                "playerId": "p_1794017628489_9",
-                "playerName": "Franck Ribéry",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_18",
-                "playerName": "Lucas Paquetá",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017504232_1",
-                "playerName": "Viktor Tsygankov",
-                "teamId": "carabobofutbolclub",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_7",
-                "playerName": "Fredrik Aursnes",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_10",
-                "playerName": "Nicolás de la Cruz",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 2
-              },
-              {
-                "playerId": "p_1794017628489_4",
-                "playerName": "Lilian Thuram",
-                "teamId": "clubuniversidaddechile",
-                "type": "gol",
-                "count": 1
-              }
-            ],
-            "annulled": false,
-            "registeredBy": "Daniel",
-            "registeredAt": "2026-11-09T04:03:22.830Z"
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j5_m3",
