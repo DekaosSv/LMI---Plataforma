@@ -2898,9 +2898,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 9,
-      "assists": 3,
+      "assists": 5,
       "goals_liga": 9,
-      "assists_liga": 3,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2911,9 +2911,9 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "goals": 9,
-          "assists": 3,
+          "assists": 5,
           "goals_liga": 9,
-          "assists_liga": 3,
+          "assists_liga": 5,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2926,9 +2926,9 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 5,
+      "goals": 7,
       "assists": 0,
-      "goals_liga": 5,
+      "goals_liga": 7,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2939,9 +2939,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "arsenal": {
           "teamId": "arsenal",
-          "goals": 5,
+          "goals": 7,
           "assists": 0,
-          "goals_liga": 5,
+          "goals_liga": 7,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -3574,9 +3574,9 @@ var INITIAL_LMI_DATA = {
       "position": "CT",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3587,9 +3587,9 @@ var INITIAL_LMI_DATA = {
         "chelseafc": {
           "teamId": "chelseafc",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3698,9 +3698,9 @@ var INITIAL_LMI_DATA = {
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 2,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3711,9 +3711,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 2,
+          "goals": 4,
           "assists": 0,
-          "goals_liga": 2,
+          "goals_liga": 4,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -3728,9 +3728,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 2,
+      "assists": 4,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3741,9 +3741,9 @@ var INITIAL_LMI_DATA = {
         "chelseafc": {
           "teamId": "chelseafc",
           "goals": 0,
-          "assists": 2,
+          "assists": 4,
           "goals_liga": 0,
-          "assists_liga": 2,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -3900,9 +3900,9 @@ var INITIAL_LMI_DATA = {
       "name": "Flaco López",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3913,9 +3913,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -13714,8 +13714,8 @@ var INITIAL_LMI_DATA = {
             "played": true,
             "events": [
               {
-                "playerId": "p_1793936559088_10",
-                "playerName": "Darwin Núñez",
+                "playerId": "p_1793936559088_11",
+                "playerName": "Gareth Bale",
                 "teamId": "arsenal",
                 "type": "gol",
                 "count": 2
@@ -13758,7 +13758,7 @@ var INITIAL_LMI_DATA = {
             ],
             "annulled": false,
             "registeredBy": "Esteban Arturo",
-            "registeredAt": "2026-11-09T00:05:30.053Z"
+            "registeredAt": "2026-11-09T00:09:27.096Z"
           },
           {
             "id": "plata_j9_m4",
@@ -15690,6 +15690,69 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794182967103",
+      "timestamp": 1794182967103,
+      "date": "08 nov 2026, 19:09",
+      "competition": "plata",
+      "jornada": 9,
+      "fixtureMatchId": "plata_j9_m3",
+      "phase": "Jornada 9",
+      "team1Id": "chelseafc",
+      "team1Name": "Chelsea FC",
+      "team1Logo": "Logos Equipos/chelsea.webp",
+      "score1": 3,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_21",
+          "playerName": "Flaco López",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_11",
+          "playerName": "Vitor Roque",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_3",
+          "playerName": "Daniel Van Buyten",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Esteban Arturo",
+      "registeredAt": "2026-11-09T00:09:27.096Z"
+    },
     {
       "id": "match_1794182730057",
       "timestamp": 1794182730057,
