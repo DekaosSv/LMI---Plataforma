@@ -1360,16 +1360,29 @@ var INITIAL_LMI_DATA = {
       "name": "Khvicha Kvaratskhelia",
       "position": "DC",
       "teamId": "fcbayernmunich",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "fcbayernmunich": {
+          "teamId": "fcbayernmunich",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936362024_12",
@@ -1565,9 +1578,9 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "fcbayernmunich",
       "goals": 2,
-      "assists": 1,
+      "assists": 3,
       "goals_liga": 2,
-      "assists_liga": 1,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -1579,9 +1592,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "fcbayernmunich",
           "teamName": "FC Bayern Múnich",
           "goals": 2,
-          "assists": 1,
+          "assists": 3,
           "goals_liga": 2,
-          "assists_liga": 1,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4834,28 +4847,15 @@ var INITIAL_LMI_DATA = {
       "position": "II",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "clubnacional": {
-          "teamId": "clubnacional",
-          "goals": 0,
-          "assists": 1,
-          "goals_liga": 0,
-          "assists_liga": 1,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1794017241785_7",
@@ -4911,9 +4911,9 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 2,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4924,9 +4924,9 @@ var INITIAL_LMI_DATA = {
         "clubnacional": {
           "teamId": "clubnacional",
           "goals": 0,
-          "assists": 2,
+          "assists": 1,
           "goals_liga": 0,
-          "assists_liga": 2,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4987,29 +4987,16 @@ var INITIAL_LMI_DATA = {
       "name": "Nadiem Amiri",
       "position": "MC",
       "teamId": "clubnacional",
-      "goals": 1,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "clubnacional": {
-          "teamId": "clubnacional",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1794017241785_15",
@@ -5128,58 +5115,32 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Suárez",
       "position": "DC",
       "teamId": "clubnacional",
-      "goals": 1,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "clubnacional": {
-          "teamId": "clubnacional",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1794017241785_23",
       "name": "Johan Cruyff",
       "position": "SD",
       "teamId": "clubnacional",
-      "goals": 1,
-      "assists": 1,
-      "goals_liga": 1,
-      "assists_liga": 1,
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "clubnacional": {
-          "teamId": "clubnacional",
-          "goals": 1,
-          "assists": 1,
-          "goals_liga": 1,
-          "assists_liga": 1,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1794017276096_1",
@@ -8706,9 +8667,9 @@ var INITIAL_LMI_DATA = {
       "name": "Jude Bellingham",
       "position": "MP",
       "teamId": "realmadrid",
-      "goals": 2,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8720,9 +8681,9 @@ var INITIAL_LMI_DATA = {
         "realmadrid": {
           "teamId": "realmadrid",
           "teamName": "Real Madrid",
-          "goals": 2,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 2,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -14397,63 +14358,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 8,
             "team1Id": "clubnacional",
             "team2Id": "realmadrid",
-            "score1": 3,
-            "score2": 1,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1794017241785_14",
-                "playerName": "Nadiem Amiri",
-                "teamId": "clubnacional",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017241785_6",
-                "playerName": "Diego Moreira",
-                "teamId": "clubnacional",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017241785_22",
-                "playerName": "Luis Suárez",
-                "teamId": "clubnacional",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017241785_23",
-                "playerName": "Johan Cruyff",
-                "teamId": "clubnacional",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017241785_23",
-                "playerName": "Johan Cruyff",
-                "teamId": "clubnacional",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017241785_10",
-                "playerName": "Maximiliano Araújo",
-                "teamId": "clubnacional",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794020557697_7",
-                "playerName": "Jude Bellingham",
-                "teamId": "realmadrid",
-                "type": "gol",
-                "count": 1
-              }
-            ],
-            "annulled": false,
-            "registeredBy": "Daniel",
-            "registeredAt": "2026-11-09T03:17:11.997Z"
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j8_m7",
@@ -14583,10 +14491,28 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "clubnacional",
             "team2Id": "fcbayernmunich",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936362024_11",
+                "playerName": "Khvicha Kvaratskhelia",
+                "teamId": "fcbayernmunich",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936362024_22",
+                "playerName": "Rafael Leão",
+                "teamId": "fcbayernmunich",
+                "type": "asistencia",
+                "count": 2
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-09T03:18:04.793Z"
           }
         ]
       },
@@ -16479,74 +16405,39 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794194231997",
-      "timestamp": 1794194231997,
-      "date": "08 nov 2026, 09:17 p.m.",
+      "id": "match_1794194284793",
+      "timestamp": 1794194284793,
+      "date": "08 nov 2026, 09:18 p.m.",
       "competition": "plata",
-      "jornada": 8,
-      "fixtureMatchId": "plata_j8_m6",
-      "phase": "Jornada 8",
+      "jornada": 9,
+      "fixtureMatchId": "plata_j9_m7",
+      "phase": "Jornada 9",
       "team1Id": "clubnacional",
       "team1Name": "Club Nacional",
       "team1Logo": "Logos Equipos/nacional.webp",
-      "score1": 3,
-      "team2Id": "realmadrid",
-      "team2Name": "Real Madrid",
-      "team2Logo": "Logos Equipos/realmadrid.webp",
-      "score2": 1,
+      "score1": 0,
+      "team2Id": "fcbayernmunich",
+      "team2Name": "FC Bayern Múnich",
+      "team2Logo": "Logos Equipos/bayernmunich.webp",
+      "score2": 2,
       "events": [
         {
-          "playerId": "p_1794017241785_14",
-          "playerName": "Nadiem Amiri",
-          "teamId": "clubnacional",
+          "playerId": "p_1793936362024_11",
+          "playerName": "Khvicha Kvaratskhelia",
+          "teamId": "fcbayernmunich",
           "type": "gol",
-          "count": 1
+          "count": 2
         },
         {
-          "playerId": "p_1794017241785_6",
-          "playerName": "Diego Moreira",
-          "teamId": "clubnacional",
+          "playerId": "p_1793936362024_22",
+          "playerName": "Rafael Leão",
+          "teamId": "fcbayernmunich",
           "type": "asistencia",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017241785_22",
-          "playerName": "Luis Suárez",
-          "teamId": "clubnacional",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017241785_23",
-          "playerName": "Johan Cruyff",
-          "teamId": "clubnacional",
-          "type": "asistencia",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017241785_23",
-          "playerName": "Johan Cruyff",
-          "teamId": "clubnacional",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017241785_10",
-          "playerName": "Maximiliano Araújo",
-          "teamId": "clubnacional",
-          "type": "asistencia",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794020557697_7",
-          "playerName": "Jude Bellingham",
-          "teamId": "realmadrid",
-          "type": "gol",
-          "count": 1
+          "count": 2
         }
       ],
       "registeredBy": "Daniel",
-      "registeredAt": "2026-11-09T03:17:11.997Z"
+      "registeredAt": "2026-11-09T03:18:04.793Z"
     },
     {
       "id": "match_1794191833558",
