@@ -3694,15 +3694,28 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "chelseafc",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936668528_9",
@@ -3739,9 +3752,9 @@ var INITIAL_LMI_DATA = {
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 8,
+      "goals": 9,
       "assists": 0,
-      "goals_liga": 8,
+      "goals_liga": 9,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3752,9 +3765,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 8,
+          "goals": 9,
           "assists": 0,
-          "goals_liga": 8,
+          "goals_liga": 9,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -13772,10 +13785,28 @@ var INITIAL_LMI_DATA = {
             "jornada": 3,
             "team1Id": "losclille",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_8",
+                "playerName": "Alan Patrick",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-09T03:59:14.741Z"
           },
           {
             "id": "plata_j3_m6",
@@ -16418,6 +16449,41 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794196754741",
+      "timestamp": 1794196754741,
+      "date": "08 nov 2026, 09:59 p.m.",
+      "competition": "plata",
+      "jornada": 3,
+      "fixtureMatchId": "plata_j3_m5",
+      "phase": "Jornada 3",
+      "team1Id": "losclille",
+      "team1Name": "LOSC Lille",
+      "team1Logo": "Logos Equipos/lille.png",
+      "score1": 0,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_8",
+          "playerName": "Alan Patrick",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-09T03:59:14.741Z"
+    },
     {
       "id": "match_1794194434752",
       "timestamp": 1794194434752,
