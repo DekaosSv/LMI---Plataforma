@@ -94,19 +94,19 @@ const AdminApp = {
     document.getElementById('match-team1-select').addEventListener('change', (e) => this.onMatchTeamChange(1, e.target.value));
     document.getElementById('match-team2-select').addEventListener('change', (e) => this.onMatchTeamChange(2, e.target.value));
     
-    // Auto-sincronizar goleadores y asistidores según marcador ingresado
+    // Validar goles en tiempo real según marcador ingresado
     const score1Input = document.getElementById('match-score1');
     const score2Input = document.getElementById('match-score2');
     if (score1Input) {
-      score1Input.addEventListener('input', () => this.syncEventsWithScores());
-      score1Input.addEventListener('change', () => this.syncEventsWithScores());
+      score1Input.addEventListener('input', () => this.validateAdminEventsVsScores());
+      score1Input.addEventListener('change', () => this.validateAdminEventsVsScores());
     }
     if (score2Input) {
-      score2Input.addEventListener('input', () => this.syncEventsWithScores());
-      score2Input.addEventListener('change', () => this.syncEventsWithScores());
+      score2Input.addEventListener('input', () => this.validateAdminEventsVsScores());
+      score2Input.addEventListener('change', () => this.validateAdminEventsVsScores());
     }
 
-    document.getElementById('btn-add-match-event').addEventListener('click', () => this.addMatchEventRow());
+    document.getElementById('btn-add-match-event')?.addEventListener('click', () => this.addMatchEventRow());
     document.getElementById('btn-apply-match').addEventListener('click', () => this.applyMatchResults());
 
     // Teams Studio
@@ -575,41 +575,17 @@ const AdminApp = {
 
       // Cargar eventos del partido si ya existen
       this.matchEvents = [];
-      const container = document.getElementById('match-events-list');
-      const emptyMsg = document.getElementById('match-events-empty');
-      const header = document.getElementById('match-events-header');
-      if (container) {
-        container.querySelectorAll('.event-row').forEach(r => r.remove());
-        if (targetMatch.events && targetMatch.events.length > 0) {
-          const playerMap = {};
-          targetMatch.events.forEach(ev => {
-            const key = `${ev.teamId}_${ev.playerId}`;
-            if (!playerMap[key]) {
-              playerMap[key] = {
-                teamId: ev.teamId,
-                playerId: ev.playerId,
-                goals: 0,
-                assists: 0
-              };
-            }
-            const isGoal = ev.type === 'gol' || ev.type === 'goal';
-            if (isGoal) {
-              playerMap[key].goals += (ev.count || 1);
-            } else {
-              playerMap[key].assists += (ev.count || 1);
-            }
-          });
-          Object.values(playerMap).forEach(item => {
-            this.addMatchEventRow(item);
-          });
-        } else {
-          if (emptyMsg) emptyMsg.style.display = 'block';
-          if (header) header.style.display = 'none';
-          if (!isNaN(s1) && !isNaN(s2) && (s1 > 0 || s2 > 0)) {
-            this.syncEventsWithScores();
-          }
-        }
+      if (targetMatch.events && Array.isArray(targetMatch.events) && targetMatch.events.length > 0) {
+        this.matchEvents = targetMatch.events.map((ev, idx) => ({
+          id: `ev_${Date.now()}_${idx}`,
+          playerId: ev.playerId,
+          teamId: ev.teamId || this.getPlayerById(ev.playerId)?.teamId || '',
+          type: (ev.type === 'asistencia' || ev.type === 'assist') ? 'asistencia' : 'gol',
+          count: parseInt(ev.count, 10) || 1
+        }));
       }
+      this.renderAdminEventsRows();
+      this.validateAdminEventsVsScores();
     }
   },
 
@@ -695,41 +671,17 @@ const AdminApp = {
 
     // Cargar eventos del partido si ya existen
     this.matchEvents = [];
-    const container = document.getElementById('match-events-list');
-    const emptyMsg = document.getElementById('match-events-empty');
-    const header = document.getElementById('match-events-header');
-    if (container) {
-      container.querySelectorAll('.event-row').forEach(r => r.remove());
-      if (foundMatch.events && foundMatch.events.length > 0) {
-        const playerMap = {};
-        foundMatch.events.forEach(ev => {
-          const key = `${ev.teamId}_${ev.playerId}`;
-          if (!playerMap[key]) {
-            playerMap[key] = {
-              teamId: ev.teamId,
-              playerId: ev.playerId,
-              goals: 0,
-              assists: 0
-            };
-          }
-          const isGoal = ev.type === 'gol' || ev.type === 'goal';
-          if (isGoal) {
-            playerMap[key].goals += (ev.count || 1);
-          } else {
-            playerMap[key].assists += (ev.count || 1);
-          }
-        });
-        Object.values(playerMap).forEach(item => {
-          this.addMatchEventRow(item);
-        });
-      } else {
-        if (emptyMsg) emptyMsg.style.display = 'block';
-        if (header) header.style.display = 'none';
-        if ((foundMatch.score1 > 0 || foundMatch.score2 > 0)) {
-          this.syncEventsWithScores();
-        }
-      }
+    if (foundMatch.events && Array.isArray(foundMatch.events) && foundMatch.events.length > 0) {
+      this.matchEvents = foundMatch.events.map((ev, idx) => ({
+        id: `ev_${Date.now()}_${idx}`,
+        playerId: ev.playerId,
+        teamId: ev.teamId || this.getPlayerById(ev.playerId)?.teamId || foundMatch.team1Id,
+        type: (ev.type === 'asistencia' || ev.type === 'assist') ? 'asistencia' : 'gol',
+        count: parseInt(ev.count, 10) || 1
+      }));
     }
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
   },
 
   populateMatchTeamsForCompetition(comp) {
@@ -2675,167 +2627,173 @@ const AdminApp = {
     if (logoEl && team.logo) logoEl.src = team.logo;
     if (nameEl) nameEl.textContent = team.name;
 
-    // Refresh player selects in existing match event rows
-    this.refreshMatchEventPlayerDropdowns();
-    this.syncEventsWithScores();
+    const t1Id = document.getElementById('match-team1-select')?.value;
+    const t2Id = document.getElementById('match-team2-select')?.value;
+    if (t1Id && t2Id) {
+      this.matchEvents = this.matchEvents.filter(ev => ev.teamId === t1Id || ev.teamId === t2Id);
+    }
+
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
+  },
+
+  addEventRowForTeam(teamSide, type = 'gol') {
+    const team1Id = document.getElementById('match-team1-select')?.value;
+    const team2Id = document.getElementById('match-team2-select')?.value;
+    const targetTeamId = teamSide === 'team2' ? team2Id : team1Id;
+    if (!targetTeamId) {
+      this.showToast('Primero selecciona los equipos del partido.', 'warning');
+      return;
+    }
+
+    const team = this.getTeamById(targetTeamId);
+    const posOrder = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
+    const teamPlayers = this.getPlayersByTeam(targetTeamId).slice().sort((a, b) => {
+      const diff = (posOrder[a.position] || 99) - (posOrder[b.position] || 99);
+      if (diff !== 0) return diff;
+      return (a.name || '').localeCompare(b.name || '');
+    });
+
+    if (teamPlayers.length === 0) {
+      this.showToast(`No hay jugadores registrados en la plantilla de ${team ? team.name : 'este equipo'}.`, 'error');
+      return;
+    }
+
+    // Comprobar qué jugadores de este equipo ya tienen asignado este tipo de estadística
+    const usedPlayerIds = new Set(
+      this.matchEvents
+        .filter(ev => ev.type === type && (ev.teamId === targetTeamId || this.getPlayerById(ev.playerId)?.teamId === targetTeamId))
+        .map(ev => ev.playerId)
+    );
+
+    const availablePlayer = teamPlayers.find(p => !usedPlayerIds.has(p.id));
+    if (!availablePlayer) {
+      this.showToast(`⚠️ Todos los jugadores disponibles de ${team ? team.name : 'este club'} ya tienen registrado un ${type === 'gol' ? 'gol' : 'asistencia'}. Modifica la cantidad en la fila existente en vez de duplicarla.`, 'warning');
+      return;
+    }
+
+    this.matchEvents.push({
+      id: 'ev_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+      playerId: availablePlayer.id,
+      teamId: targetTeamId,
+      type: type,
+      count: 1
+    });
+
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
   },
 
   addMatchEventRow(initialData = null) {
-    const team1Id = document.getElementById('match-team1-select').value;
-    const team2Id = document.getElementById('match-team2-select').value;
-    const team1 = this.getTeamById(team1Id);
-    const team2 = this.getTeamById(team2Id);
-
-    const targetTeamId = (initialData && initialData.teamId) ? initialData.teamId : team1Id;
-
-    // Buscar jugador por defecto que aún no esté seleccionado para evitar repeticiones
-    let defaultPlayerId = (initialData && initialData.playerId) ? initialData.playerId : '';
-    if (!defaultPlayerId) {
-      const usedIds = new Set(this.matchEvents.map(e => e.playerId).filter(Boolean));
-      const teamPlayers = this.getPlayersByTeam(targetTeamId).slice().sort((a, b) => {
-        const order = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
-        return (order[a.position] || 99) - (order[b.position] || 99);
-      });
-      const nonUsed = teamPlayers.find(p => !usedIds.has(p.id));
-      defaultPlayerId = nonUsed ? nonUsed.id : (teamPlayers[0] ? teamPlayers[0].id : '');
-    }
-
-    const eventId = (initialData && initialData.id) ? initialData.id : `ev_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
-    const eventObj = {
-      id: eventId,
-      teamId: targetTeamId,
-      playerId: defaultPlayerId,
-      goals: (initialData && typeof initialData.goals === 'number') ? initialData.goals : 1,
-      assists: (initialData && typeof initialData.assists === 'number') ? initialData.assists : 0
-    };
-    this.matchEvents.push(eventObj);
-
-    const container = document.getElementById('match-events-list');
-    const emptyMsg = document.getElementById('match-events-empty');
-    const header = document.getElementById('match-events-header');
-    if (emptyMsg) emptyMsg.style.display = 'none';
-    if (header) header.style.display = 'flex';
-
-    const row = document.createElement('div');
-    row.className = 'event-row';
-    row.id = `row-${eventId}`;
-    row.innerHTML = `
-      <div style="flex: 2;">
-        <select class="form-select ev-team-select" style="width: 100%; padding: 0.5rem 0.75rem; font-size: 0.88rem;">
-          <option value="${team1Id}" ${eventObj.teamId === team1Id ? 'selected' : ''}>${team1 ? team1.name : 'Local'}</option>
-          <option value="${team2Id}" ${eventObj.teamId === team2Id ? 'selected' : ''}>${team2 ? team2.name : 'Visitante'}</option>
-        </select>
-      </div>
-      <div style="flex: 3; display: flex; flex-direction: column;">
-        <select class="form-select ev-player-select" style="width: 100%; padding: 0.5rem 0.75rem; font-size: 0.88rem;">
-          <!-- Populated dynamically -->
-        </select>
-        <div class="duplicate-player-warning" style="display: none; color: #ef4444; font-size: 0.76rem; font-weight: 700; margin-top: 3px; align-items: center; gap: 4px;">
-          <i class="fa-solid fa-triangle-exclamation"></i> ¡Jugador repetido! Ya está asignado en otra fila.
-        </div>
-      </div>
-      <div style="width: 105px; display: flex; justify-content: center;">
-        <div class="ev-stat-box" title="Goles marcados por el jugador">
-          <span style="font-size: 0.85rem;">⚽</span>
-          <input type="number" min="0" max="15" value="${eventObj.goals}" class="ev-goals-input">
-        </div>
-      </div>
-      <div style="width: 105px; display: flex; justify-content: center;">
-        <div class="ev-stat-box" title="Asistencias dadas por el jugador">
-          <span style="font-size: 0.85rem;">🎯</span>
-          <input type="number" min="0" max="15" value="${eventObj.assists}" class="ev-assists-input">
-        </div>
-      </div>
-      <div style="width: 44px; display: flex; justify-content: center;">
-        <button class="btn btn-danger" style="padding: 0.45rem 0.65rem;" onclick="AdminApp.removeMatchEventRow('${eventId}')" title="Eliminar fila">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      </div>
-    `;
-
-    container.appendChild(row);
-
-    // Event listeners
-    const teamSel = row.querySelector('.ev-team-select');
-    const playerSel = row.querySelector('.ev-player-select');
-    const goalsInput = row.querySelector('.ev-goals-input');
-    const assistsInput = row.querySelector('.ev-assists-input');
-
-    const posOrder = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
-    const sortSquad = (arr) => {
-      return [...arr].sort((a, b) => {
-        const diff = (posOrder[a.position] || 99) - (posOrder[b.position] || 99);
-        if (diff !== 0) return diff;
-        return (a.name || '').localeCompare(b.name || '');
-      });
-    };
-
-    const populatePlayers = (tId, selectedPlayerId = null) => {
-      playerSel.innerHTML = '<option value="">-- Seleccionar Jugador --</option>';
-      const rawPlayers = this.getPlayersByTeam(tId);
-      const players = sortSquad(rawPlayers);
-      players.forEach(p => {
-        const opt = document.createElement('option');
-        opt.value = p.id;
-        opt.textContent = `${p.name} (${p.position || 'MC'})`;
-        if (selectedPlayerId && p.id === selectedPlayerId) {
-          opt.selected = true;
-        }
-        playerSel.appendChild(opt);
-      });
-      if (selectedPlayerId && players.some(p => p.id === selectedPlayerId)) {
-        playerSel.value = selectedPlayerId;
-        eventObj.playerId = selectedPlayerId;
-      } else if (players[0]) {
-        playerSel.value = players[0].id;
-        eventObj.playerId = players[0].id;
-      } else {
-        eventObj.playerId = '';
+    if (initialData && initialData.playerId) {
+      const g = parseInt(initialData.goals, 10) || 0;
+      const a = parseInt(initialData.assists, 10) || 0;
+      if (g > 0) {
+        this.matchEvents.push({
+          id: 'ev_' + Date.now() + '_g_' + Math.random().toString(36).substr(2, 5),
+          playerId: initialData.playerId,
+          teamId: initialData.teamId || this.getPlayerById(initialData.playerId)?.teamId || '',
+          type: 'gol',
+          count: g
+        });
       }
-    };
-
-    populatePlayers(eventObj.teamId, eventObj.playerId);
-
-    teamSel.addEventListener('change', (e) => {
-      eventObj.teamId = e.target.value;
-      populatePlayers(e.target.value);
-      this.validateDuplicatePlayers();
-    });
-
-    playerSel.addEventListener('change', (e) => {
-      eventObj.playerId = e.target.value;
-      this.validateDuplicatePlayers();
-    });
-
-    goalsInput.addEventListener('input', (e) => {
-      eventObj.goals = Math.max(0, parseInt(e.target.value, 10) || 0);
-    });
-
-    assistsInput.addEventListener('input', (e) => {
-      eventObj.assists = Math.max(0, parseInt(e.target.value, 10) || 0);
-    });
-
-    this.validateDuplicatePlayers();
+      if (a > 0) {
+        this.matchEvents.push({
+          id: 'ev_' + Date.now() + '_a_' + Math.random().toString(36).substr(2, 5),
+          playerId: initialData.playerId,
+          teamId: initialData.teamId || this.getPlayerById(initialData.playerId)?.teamId || '',
+          type: 'asistencia',
+          count: a
+        });
+      }
+      this.renderAdminEventsRows();
+      this.validateAdminEventsVsScores();
+      return;
+    }
+    this.addEventRowForTeam('team1', 'gol');
   },
 
   removeMatchEventRow(eventId) {
     this.matchEvents = this.matchEvents.filter(e => e.id !== eventId);
-    const row = document.getElementById(`row-${eventId}`);
-    if (row) row.remove();
-    if (this.matchEvents.length === 0) {
-      const emptyMsg = document.getElementById('match-events-empty');
-      const header = document.getElementById('match-events-header');
-      if (emptyMsg) emptyMsg.style.display = 'block';
-      if (header) header.style.display = 'none';
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
+  },
+
+  updateAdminEventType(evId, newType) {
+    const ev = this.matchEvents.find(e => e.id === evId);
+    if (!ev) return;
+
+    const isDuplicate = this.matchEvents.some(e => e.id !== evId && e.playerId === ev.playerId && e.type === newType);
+    if (isDuplicate) {
+      const p = this.getPlayerById(ev.playerId);
+      this.showToast(`⚠️ El jugador ${p ? p.name : ''} ya tiene registrado un ${newType === 'gol' ? 'gol' : 'asistencia'}. Modifica la cantidad en la fila existente.`, 'warning');
     }
-    this.validateDuplicatePlayers();
+
+    ev.type = newType;
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
+  },
+
+  updateAdminEventPlayer(evId, newPlayerId) {
+    const ev = this.matchEvents.find(e => e.id === evId);
+    if (!ev) return;
+
+    const isDuplicate = this.matchEvents.some(e => e.id !== evId && e.playerId === newPlayerId && e.type === ev.type);
+    if (isDuplicate) {
+      const p = this.getPlayerById(newPlayerId);
+      this.showToast(`⚠️ El jugador ${p ? p.name : ''} ya tiene una fila de ${ev.type === 'gol' ? 'gol' : 'asistencia'}. Incrementa la cantidad en esa fila en lugar de agregar otra.`, 'warning');
+    }
+
+    ev.playerId = newPlayerId;
+    ev.teamId = this.getPlayerById(newPlayerId)?.teamId || ev.teamId;
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
+  },
+
+  updateAdminEventCount(evId, countStr) {
+    const ev = this.matchEvents.find(e => e.id === evId);
+    if (!ev) return;
+    ev.count = Math.max(1, parseInt(countStr, 10) || 1);
+    this.validateAdminEventsVsScores();
   },
 
   refreshMatchEventPlayerDropdowns() {
-    const team1Id = document.getElementById('match-team1-select').value;
-    const team2Id = document.getElementById('match-team2-select').value;
-    const team1 = this.getTeamById(team1Id);
-    const team2 = this.getTeamById(team2Id);
+    this.renderAdminEventsRows();
+    this.validateAdminEventsVsScores();
+  },
+
+  validateDuplicatePlayers() {
+    const counts = {};
+    this.matchEvents.forEach(ev => {
+      if (ev.playerId) {
+        const key = `${ev.playerId}_${ev.type}`;
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    });
+
+    const duplicateKeys = new Set(Object.keys(counts).filter(k => counts[k] > 1));
+    return duplicateKeys;
+  },
+
+  renderAdminEventsRows() {
+    const containerT1 = document.getElementById('admin-events-t1-container');
+    const containerT2 = document.getElementById('admin-events-t2-container');
+    if (!containerT1 || !containerT2) return;
+
+    const team1Id = document.getElementById('match-team1-select')?.value;
+    const team2Id = document.getElementById('match-team2-select')?.value;
+
+    const t1 = this.getTeamById(team1Id) || { id: team1Id, name: 'Equipo Local', logo: 'Logos Equipos/default.png' };
+    const t2 = this.getTeamById(team2Id) || { id: team2Id, name: 'Equipo Visitante', logo: 'Logos Equipos/default.png' };
+
+    const t1NameEl = document.getElementById('admin-events-t1-name');
+    const t2NameEl = document.getElementById('admin-events-t2-name');
+    const t1BadgeEl = document.getElementById('admin-events-t1-badge');
+    const t2BadgeEl = document.getElementById('admin-events-t2-badge');
+    if (t1NameEl) t1NameEl.textContent = t1.name;
+    if (t2NameEl) t2NameEl.textContent = t2.name;
+    if (t1BadgeEl && t1.logo) t1BadgeEl.src = t1.logo;
+    if (t2BadgeEl && t2.logo) t2BadgeEl.src = t2.logo;
 
     const posOrder = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
     const sortSquad = (arr) => {
@@ -2846,158 +2804,345 @@ const AdminApp = {
       });
     };
 
-    document.querySelectorAll('.event-row').forEach(row => {
-      const teamSel = row.querySelector('.ev-team-select');
-      const playerSel = row.querySelector('.ev-player-select');
-      if (!teamSel || !playerSel) return;
+    const t1Players = sortSquad(this.getPlayersByTeam(t1.id));
+    const t2Players = sortSquad(this.getPlayersByTeam(t2.id));
 
-      const currentVal = teamSel.value;
-      teamSel.innerHTML = `
-        <option value="${team1Id}">${team1 ? team1.name : 'Local'}</option>
-        <option value="${team2Id}">${team2 ? team2.name : 'Visitante'}</option>
-      `;
-      teamSel.value = (currentVal === team2Id) ? team2Id : team1Id;
-
-      const currentPlayerVal = playerSel.value;
-      playerSel.innerHTML = '<option value="">-- Seleccionar Jugador --</option>';
-      const rawPlayers = this.getPlayersByTeam(teamSel.value);
-      const players = sortSquad(rawPlayers);
-      players.forEach(p => {
-        const opt = document.createElement('option');
-        opt.value = p.id;
-        opt.textContent = `${p.name} (${p.position || 'MC'})`;
-        playerSel.appendChild(opt);
-      });
-      if (currentPlayerVal && players.some(p => p.id === currentPlayerVal)) {
-        playerSel.value = currentPlayerVal;
-      } else if (players[0]) {
-        playerSel.value = players[0].id;
-      }
+    this.matchEvents.forEach(ev => {
+      if (!ev.id) ev.id = 'ev_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+      if (!ev.teamId) ev.teamId = this.getPlayerById(ev.playerId)?.teamId || t1.id;
     });
 
-    this.validateDuplicatePlayers();
+    const duplicateKeys = this.validateDuplicatePlayers();
+
+    const renderRowsForTeam = (teamId, teamPlayers, containerEl, emptyClass, emptyText) => {
+      const teamEvents = this.matchEvents.filter(ev => {
+        const evTeam = ev.teamId || this.getPlayerById(ev.playerId)?.teamId;
+        return evTeam === teamId;
+      });
+
+      if (teamEvents.length === 0) {
+        containerEl.innerHTML = `
+          <p style="color: var(--text-muted); text-align: center; padding: 1.25rem; font-size: 0.8rem; margin: 0;" class="${emptyClass}">
+            ${emptyText}
+          </p>
+        `;
+        return;
+      }
+
+      let html = '';
+      teamEvents.forEach(ev => {
+        const isGol = ev.type === 'gol';
+        const typeBadgeBg = isGol ? 'rgba(56, 189, 248, 0.15)' : 'rgba(167, 139, 250, 0.15)';
+        const typeBadgeColor = isGol ? '#38bdf8' : '#a78bfa';
+        const typeIcon = isGol ? 'fa-futbol' : 'fa-hands-clapping';
+        const isDuplicate = duplicateKeys.has(`${ev.playerId}_${ev.type}`);
+
+        html += `
+          <div style="display: flex; flex-direction: column; gap: 0.35rem; background: ${isDuplicate ? 'rgba(239, 68, 68, 0.12)' : 'rgba(15, 23, 42, 0.75)'}; padding: 0.65rem 0.8rem; border-radius: 8px; border: 1.5px solid ${isDuplicate ? '#ef4444' : 'var(--border-color)'};">
+            <div style="display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap;">
+              <!-- Badge de Tipo: Gol o Asistencia -->
+              <div style="display: flex; align-items: center; gap: 0.3rem;">
+                <span style="background: ${typeBadgeBg}; color: ${typeBadgeColor}; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: 800; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.25rem;">
+                  <i class="fa-solid ${typeIcon}"></i> ${isGol ? 'GOL' : 'ASIST'}
+                </span>
+                <select class="form-select form-select-sm" style="font-size: 0.74rem; padding: 0.2rem 0.35rem; font-weight: 700;" onchange="AdminApp.updateAdminEventType('${ev.id}', this.value)">
+                  <option value="gol" ${isGol ? 'selected' : ''}>Gol</option>
+                  <option value="asistencia" ${!isGol ? 'selected' : ''}>Asistencia</option>
+                </select>
+              </div>
+
+              <!-- Selector de Jugador (Exclusivo de este equipo) -->
+              <div style="flex: 1; min-width: 170px;">
+                <select class="form-select form-select-sm" style="width: 100%; font-weight: 700; font-size: 0.8rem; ${isDuplicate ? 'border-color: #ef4444; color: #fca5a5;' : ''}" onchange="AdminApp.updateAdminEventPlayer('${ev.id}', this.value)">
+                  ${teamPlayers.map(p => {
+                    const isSelected = (p.id === ev.playerId);
+                    const isUsedInOther = this.matchEvents.some(e => e.id !== ev.id && e.playerId === p.id && e.type === ev.type);
+                    return `
+                      <option value="${p.id}" ${isSelected ? 'selected' : ''} ${isUsedInOther && !isSelected ? 'disabled style="color: #ef4444;"' : ''}>
+                        ${isUsedInOther && !isSelected ? '⚠️ (Ya asignado) ' : ''}${p.name} (${p.position || 'JUG'})
+                      </option>
+                    `;
+                  }).join('')}
+                </select>
+              </div>
+
+              <!-- Cantidad -->
+              <div style="display: flex; align-items: center; gap: 0.25rem;">
+                <label style="font-size: 0.72rem; color: #94a3b8; font-weight: 700;">Cant:</label>
+                <input type="number" min="1" max="15" value="${ev.count || 1}" class="form-control" style="width: 56px; text-align: center; font-weight: 800; padding: 0.2rem; height: auto;" onchange="AdminApp.updateAdminEventCount('${ev.id}', this.value)">
+              </div>
+
+              <!-- Eliminar Fila -->
+              <button type="button" class="btn btn-secondary btn-sm" style="padding: 0.3rem 0.5rem; color: #ef4444;" onclick="AdminApp.removeMatchEventRow('${ev.id}')" title="Eliminar fila">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+
+            ${isDuplicate ? `
+              <div style="color: #f87171; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; gap: 0.35rem; margin-top: 0.15rem;">
+                <i class="fa-solid fa-triangle-exclamation"></i> Jugador repetido con esta estadística. Aumenta la cantidad en una sola fila.
+              </div>
+            ` : ''}
+          </div>
+        `;
+      });
+
+      containerEl.innerHTML = html;
+    };
+
+    renderRowsForTeam(t1.id, t1Players, containerT1, 'events-empty-t1', 'Sin goles ni asistencias asignadas al local.');
+    renderRowsForTeam(t2.id, t2Players, containerT2, 'events-empty-t2', 'Sin goles ni asistencias asignadas al visitante.');
   },
 
-  validateDuplicatePlayers() {
-    // Contar ocurrencias de cada jugador en los eventos actuales
-    const counts = {};
-    this.matchEvents.forEach(e => {
-      if (e.playerId) {
-        counts[e.playerId] = (counts[e.playerId] || 0) + 1;
+  validateAdminEventsVsScores() {
+    const alertBox = document.getElementById('admin-goals-validation-alert');
+    if (!alertBox) return;
+
+    const s1 = parseInt(document.getElementById('match-score1')?.value, 10) || 0;
+    const s2 = parseInt(document.getElementById('match-score2')?.value, 10) || 0;
+    const t1Id = document.getElementById('match-team1-select')?.value;
+    const t2Id = document.getElementById('match-team2-select')?.value;
+
+    let t1Goals = 0;
+    let t2Goals = 0;
+
+    this.matchEvents.forEach(ev => {
+      if (ev.type === 'gol') {
+        const pTeam = ev.teamId || this.getPlayerById(ev.playerId)?.teamId;
+        const cnt = parseInt(ev.count, 10) || 1;
+        if (pTeam === t1Id) t1Goals += cnt;
+        else if (pTeam === t2Id) t2Goals += cnt;
       }
     });
 
-    const duplicateIds = new Set(
-      Object.keys(counts).filter(id => counts[id] > 1)
-    );
+    const duplicateKeys = this.validateDuplicatePlayers();
+    alertBox.style.display = 'block';
 
-    // Actualizar advertencias visuales en cada fila
-    document.querySelectorAll('.event-row').forEach(row => {
-      const rowId = row.id.replace('row-', '');
-      const eventObj = this.matchEvents.find(e => e.id === rowId);
-      const playerSel = row.querySelector('.ev-player-select');
-      const warningEl = row.querySelector('.duplicate-player-warning');
-      const isDuplicate = eventObj && eventObj.playerId && duplicateIds.has(eventObj.playerId);
+    if (duplicateKeys.size > 0) {
+      alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+      alertBox.style.border = '1px solid rgba(239, 68, 68, 0.45)';
+      alertBox.style.color = '#fca5a5';
+      alertBox.innerHTML = `
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <strong>Error de Jugadores Repetidos:</strong> Tienes futbolistas repetidos con la misma estadística. 
+        Ajusta la cantidad en una sola fila para poder guardar el partido.
+      `;
+      return;
+    }
 
-      if (warningEl) {
-        warningEl.style.display = isDuplicate ? 'flex' : 'none';
-      }
-      if (playerSel) {
-        if (isDuplicate) {
-          playerSel.style.borderColor = '#ef4444';
-          playerSel.style.backgroundColor = 'rgba(239, 68, 68, 0.08)';
-          playerSel.style.color = '#fca5a5';
-        } else {
-          playerSel.style.borderColor = '';
-          playerSel.style.backgroundColor = '';
-          playerSel.style.color = '';
-        }
+    const isT1Match = (t1Goals === s1);
+    const isT2Match = (t2Goals === s2);
 
-        // Actualizar opciones para indicar si ya está seleccionado en otra fila
-        const currentSelectedId = eventObj ? eventObj.playerId : '';
-        Array.from(playerSel.options).forEach(opt => {
-          if (!opt.value) return;
-          const p = this.getPlayerById(opt.value);
-          const baseName = p ? `${p.name} (${p.position || 'MC'})` : opt.textContent.replace(/^⚠️ \[Repetido\] /, '');
-          const isUsedElsewhere = (counts[opt.value] || 0) > (opt.value === currentSelectedId ? 1 : 0);
-          if (isUsedElsewhere) {
-            opt.textContent = `⚠️ [Repetido] ${baseName}`;
-            opt.style.color = '#ef4444';
-            opt.style.fontWeight = '700';
-          } else {
-            opt.textContent = baseName;
-            opt.style.color = '';
-            opt.style.fontWeight = '';
-          }
-        });
-      }
-    });
-
-    return duplicateIds;
+    if (isT1Match && isT2Match) {
+      alertBox.style.background = 'rgba(16, 185, 129, 0.15)';
+      alertBox.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+      alertBox.style.color = '#34d399';
+      alertBox.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i>
+        <strong>Goles Verificados:</strong> Coinciden con el marcador (${t1Goals} local / ${t2Goals} visitante). Listo para guardar.
+      `;
+    } else {
+      alertBox.style.background = 'rgba(245, 158, 11, 0.15)';
+      alertBox.style.border = '1px solid rgba(245, 158, 11, 0.4)';
+      alertBox.style.color = '#fbbf24';
+      alertBox.innerHTML = `
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <strong>Aviso de Goles:</strong> Marcador indica (${s1} - ${s2}), pero se han asignado (${t1Goals} - ${t2Goals}) en estadísticas. 
+        Si hubo autogol o no asignas todos los goles, aún puedes continuar.
+      `;
+    }
   },
 
   syncEventsWithScores() {
-    const score1Input = document.getElementById('match-score1');
-    const score2Input = document.getElementById('match-score2');
-    if (!score1Input || !score2Input) return;
-
-    const team1Id = document.getElementById('match-team1-select')?.value;
-    const team2Id = document.getElementById('match-team2-select')?.value;
-    if (!team1Id || !team2Id) return;
-
-    const desiredScore1 = Math.max(0, parseInt(score1Input.value, 10) || 0);
-    const desiredScore2 = Math.max(0, parseInt(score2Input.value, 10) || 0);
-
-    const syncTeam = (tId, desiredGoals) => {
-      const teamPlayers = this.getPlayersByTeam(tId).slice().sort((a, b) => {
-        const order = { 'DC': 1, 'SD': 2, 'SP': 3, 'ED': 4, 'EI': 5, 'MO': 6, 'MC': 7, 'MD': 8, 'MI': 9, 'MCD': 10, 'LD': 11, 'LI': 12, 'DEC': 13, 'PT': 14 };
-        return (order[a.position] || 99) - (order[b.position] || 99);
-      });
-
-      let teamEvents = this.matchEvents.filter(e => e.teamId === tId);
-      let currentGoals = teamEvents.reduce((s, e) => s + (parseInt(e.goals, 10) || 0), 0);
-
-      // Si faltan goles, añadir filas asignando jugadores no repetidos
-      while (currentGoals < desiredGoals) {
-        const usedPlayerIds = new Set(this.matchEvents.map(e => e.playerId).filter(Boolean));
-        const availablePlayer = teamPlayers.find(p => !usedPlayerIds.has(p.id)) || teamPlayers[0];
-        const newEvent = {
-          teamId: tId,
-          playerId: availablePlayer ? availablePlayer.id : '',
-          goals: 1,
-          assists: 0
-        };
-        this.addMatchEventRow(newEvent);
-        teamEvents = this.matchEvents.filter(e => e.teamId === tId);
-        currentGoals += 1;
-      }
-
-      // Si sobran goles, reducir o eliminar filas sobrantes del equipo
-      while (currentGoals > desiredGoals && teamEvents.length > 0) {
-        const lastEv = teamEvents[teamEvents.length - 1];
-        if (lastEv.goals > 1 && (currentGoals - desiredGoals) >= 1) {
-          lastEv.goals -= 1;
-          const row = document.getElementById(`row-${lastEv.id}`);
-          if (row) {
-            const gInput = row.querySelector('.ev-goals-input');
-            if (gInput) gInput.value = lastEv.goals;
-          }
-          currentGoals -= 1;
-        } else {
-          currentGoals -= lastEv.goals;
-          this.removeMatchEventRow(lastEv.id);
-          teamEvents = this.matchEvents.filter(e => e.teamId === tId);
-        }
-      }
-    };
-
-    syncTeam(team1Id, desiredScore1);
-    syncTeam(team2Id, desiredScore2);
-
-    this.validateDuplicatePlayers();
+    this.validateAdminEventsVsScores();
   },
 
-  async applyMatchResults() {
+  // ==========================================
+  // VENTANA DE CONFIRMACIÓN PREVIA ANTES DE GUARDAR
+  // ==========================================
+  openMatchConfirmModal(isAnulacion = false) {
+    const modal = document.getElementById('modal-admin-confirm-match');
+    if (!modal) return;
+
+    const comp = document.getElementById('match-competition')?.value || 'oro';
+    const phase = document.getElementById('match-phase')?.value || '';
+    const jornadaNum = document.getElementById('match-jornada-select')?.value || '1';
+    const team1Id = document.getElementById('match-team1-select')?.value;
+    const team2Id = document.getElementById('match-team2-select')?.value;
+    const s1 = parseInt(document.getElementById('match-score1')?.value, 10) || 0;
+    const s2 = parseInt(document.getElementById('match-score2')?.value, 10) || 0;
+
+    const t1 = this.getTeamById(team1Id);
+    const t2 = this.getTeamById(team2Id);
+
+    const compNames = {
+      'oro': 'División Oro',
+      'plata': 'División Plata',
+      'champions': 'Champions League (Fase Liga)',
+      'champions_ko': 'Champions League (Eliminatorias)',
+      'estelar': 'Copa Estelar'
+    };
+    const phaseLabel = (comp === 'estelar' || comp === 'champions_ko') ? phase : `Jornada ${jornadaNum}`;
+
+    const t1LogoEl = document.getElementById('modal-admin-confirm-t1-logo');
+    const t2LogoEl = document.getElementById('modal-admin-confirm-t2-logo');
+    const t1NameEl = document.getElementById('modal-admin-confirm-t1-name');
+    const t2NameEl = document.getElementById('modal-admin-confirm-t2-name');
+    const scoreDisp = document.getElementById('modal-admin-confirm-score-display');
+    const statusPill = document.getElementById('modal-admin-confirm-status-pill');
+    const phaseBadge = document.getElementById('modal-admin-confirm-phase-badge');
+    const anuladoAlert = document.getElementById('modal-admin-confirm-anulado-alert');
+    const statsWrapper = document.getElementById('modal-admin-confirm-stats-wrapper');
+    const statsSummary = document.getElementById('modal-admin-confirm-stats-summary');
+    const btnSave = document.getElementById('btn-modal-admin-confirm-save');
+
+    if (t1LogoEl) t1LogoEl.src = t1?.logo || 'Logos Equipos/default.png';
+    if (t2LogoEl) t2LogoEl.src = t2?.logo || 'Logos Equipos/default.png';
+    if (t1NameEl) t1NameEl.textContent = t1 ? t1.name : 'Local';
+    if (t2NameEl) t2NameEl.textContent = t2 ? t2.name : 'Visitante';
+    if (phaseBadge) phaseBadge.textContent = `${phaseLabel} • ${compNames[comp] || comp.toUpperCase()}`;
+
+    if (isAnulacion) {
+      if (scoreDisp) scoreDisp.textContent = '0 - 0';
+      if (statusPill) {
+        statusPill.textContent = 'ANULADO';
+        statusPill.style.background = 'rgba(239, 68, 68, 0.2)';
+        statusPill.style.color = '#f87171';
+      }
+      if (anuladoAlert) anuladoAlert.style.display = 'block';
+      if (statsWrapper) statsWrapper.style.display = 'none';
+      if (btnSave) {
+        btnSave.innerHTML = '<i class="fa-solid fa-ban"></i> Aceptar y Confirmar Anulación';
+        btnSave.style.background = 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)';
+      }
+    } else {
+      if (scoreDisp) scoreDisp.textContent = `${s1} - ${s2}`;
+      if (statusPill) {
+        statusPill.textContent = 'Marcador Final';
+        statusPill.style.background = 'rgba(16, 185, 129, 0.2)';
+        statusPill.style.color = '#34d399';
+      }
+      if (anuladoAlert) anuladoAlert.style.display = 'none';
+      if (statsWrapper) statsWrapper.style.display = 'block';
+      if (btnSave) {
+        btnSave.innerHTML = '<i class="fa-solid fa-check-double"></i> Aceptar y Guardar Partido';
+        btnSave.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+      }
+
+      const buildTeamStatsHtml = (teamId, teamName) => {
+        const teamEvents = this.matchEvents.filter(ev => {
+          const evTeam = ev.teamId || this.getPlayerById(ev.playerId)?.teamId;
+          return evTeam === teamId;
+        });
+
+        const goles = teamEvents.filter(ev => ev.type === 'gol');
+        const asistencias = teamEvents.filter(ev => ev.type === 'asistencia');
+
+        let golesHtml = '<span style="color: #64748b; font-style: italic; font-size: 0.78rem;">Ninguno</span>';
+        if (goles.length > 0) {
+          golesHtml = goles.map(ev => {
+            const p = this.getPlayerById(ev.playerId);
+            const countStr = ev.count > 1 ? ` <strong>(x${ev.count})</strong>` : '';
+            return `<div style="font-size: 0.8rem; color: #f1f5f9;"><i class="fa-solid fa-futbol" style="color: #38bdf8; font-size: 0.75rem;"></i> ${p ? p.name : 'Desconocido'}${countStr}</div>`;
+          }).join('');
+        }
+
+        let asistHtml = '<span style="color: #64748b; font-style: italic; font-size: 0.78rem;">Ninguna</span>';
+        if (asistencias.length > 0) {
+          asistHtml = asistencias.map(ev => {
+            const p = this.getPlayerById(ev.playerId);
+            const countStr = ev.count > 1 ? ` <strong>(x${ev.count})</strong>` : '';
+            return `<div style="font-size: 0.8rem; color: #cbd5e1;"><i class="fa-solid fa-hands-clapping" style="color: #a78bfa; font-size: 0.75rem;"></i> ${p ? p.name : 'Desconocido'}${countStr}</div>`;
+          }).join('');
+        }
+
+        return `
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 8px; padding: 0.75rem;">
+            <div style="font-weight: 800; font-size: 0.82rem; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.35rem; margin-bottom: 0.5rem;">
+              ${teamName}
+            </div>
+            <div style="margin-bottom: 0.5rem;">
+              <div style="font-size: 0.7rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 0.2rem;">Goles:</div>
+              ${golesHtml}
+            </div>
+            <div>
+              <div style="font-size: 0.7rem; font-weight: 800; color: #a78bfa; text-transform: uppercase; margin-bottom: 0.2rem;">Asistencias:</div>
+              ${asistHtml}
+            </div>
+          </div>
+        `;
+      };
+
+      if (statsSummary) {
+        statsSummary.innerHTML = `
+          ${buildTeamStatsHtml(team1Id, t1 ? t1.name : 'Local')}
+          ${buildTeamStatsHtml(team2Id, t2 ? t2.name : 'Visitante')}
+        `;
+      }
+    }
+
+    modal.style.display = 'flex';
+  },
+
+  closeMatchConfirmModal() {
+    const modal = document.getElementById('modal-admin-confirm-match');
+    if (modal) modal.style.display = 'none';
+  },
+
+  applyMatchResults() {
+    const team1Id = document.getElementById('match-team1-select')?.value;
+    const team2Id = document.getElementById('match-team2-select')?.value;
+
+    if (team1Id === team2Id) {
+      this.showToast('El equipo local y visitante no pueden ser el mismo', 'error');
+      return;
+    }
+
+    const duplicateKeys = this.validateDuplicatePlayers();
+    if (duplicateKeys && duplicateKeys.size > 0) {
+      this.showToast('No se puede continuar: Tienes futbolistas repetidos con la misma estadística. Modifica la cantidad en una sola fila en vez de duplicarla.', 'error');
+      return;
+    }
+
+    this.pendingAdminPublishType = 'normal';
+    this.openMatchConfirmModal(false);
+  },
+
+  anularCurrentMatch() {
+    const team1Id = document.getElementById('match-team1-select')?.value;
+    const team2Id = document.getElementById('match-team2-select')?.value;
+
+    if (!team1Id || !team2Id || team1Id === team2Id) {
+      this.showToast('Selecciona los dos equipos para poder anular el partido', 'error');
+      return;
+    }
+
+    this.pendingAdminPublishType = 'anular';
+    this.openMatchConfirmModal(true);
+  },
+
+  async executeConfirmedAdminMatch() {
+    const btnSave = document.getElementById('btn-modal-admin-confirm-save');
+    if (btnSave) {
+      btnSave.disabled = true;
+      btnSave.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando...';
+    }
+
+    try {
+      if (this.pendingAdminPublishType === 'anular') {
+        await this.executeAnularCurrentMatch();
+      } else {
+        await this.executeApplyMatchResults();
+      }
+    } finally {
+      if (btnSave) {
+        btnSave.disabled = false;
+      }
+      this.closeMatchConfirmModal();
+    }
+  },
+
+  async executeApplyMatchResults() {
     const comp = document.getElementById('match-competition').value;
     const phase = document.getElementById('match-phase').value;
     const team1Id = document.getElementById('match-team1-select').value;
@@ -3007,36 +3152,53 @@ const AdminApp = {
     const autoStats = document.getElementById('chk-auto-stats').checked;
     const updateBracket = document.getElementById('chk-cup-bracket').checked;
 
-    if (team1Id === team2Id) {
-      this.showToast('El equipo local y visitante no pueden ser el mismo', 'error');
-      return;
-    }
-
-    const duplicateIds = this.validateDuplicatePlayers();
-    if (duplicateIds && duplicateIds.size > 0) {
-      const dupNames = Array.from(duplicateIds).map(id => {
-        const p = this.getPlayerById(id);
-        return p ? p.name : id;
-      }).join(', ');
-      this.showToast(`No se puede guardar: El jugador ${dupNames} aparece repetido en más de una fila. Asigna jugadores diferentes o ajusta las cifras en una sola fila.`, 'error');
-      return;
-    }
-
     const team1 = this.getTeamById(team1Id);
     const team2 = this.getTeamById(team2Id);
+    if (!team1 || !team2) return;
 
-    // Actualizar estadísticas de jugadores
-    let updatedStatsCount = 0;
-    if (autoStats && this.matchEvents.length > 0) {
-      this.matchEvents.forEach(ev => {
-        if (!ev.playerId) return;
-        const player = this.getPlayerById(ev.playerId);
-        if (!player) return;
+    // Si el partido ya había sido jugado previamente, revertir estadísticas anteriores antes de sumar las nuevas
+    let fMatch = null;
+    let fixtureMatchId = null;
+    let jornadaNumber = null;
+    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
+      jornadaNumber = parseInt(document.getElementById('match-jornada-select').value, 10) || 1;
+      fixtureMatchId = document.getElementById('match-fixture-item-select').value;
+      const rounds = (this.data && this.data.fixtures) ? (this.data.fixtures[comp] || []) : [];
+      if (fixtureMatchId) {
+        for (const r of rounds) {
+          fMatch = r.matches.find(m => m.id === fixtureMatchId);
+          if (fMatch) break;
+        }
+      }
+      if (!fMatch) {
+        const r = rounds.find(rd => rd.jornada === jornadaNumber);
+        if (r && r.matches) {
+          fMatch = r.matches.find(m => (m.team1Id === team1.id && m.team2Id === team2.id) || (m.team1Id === team2.id && m.team2Id === team1.id));
+        }
+      }
+      if (fMatch && fMatch.played && Array.isArray(fMatch.events) && fMatch.events.length > 0) {
+        this.revertEventsList(fMatch.events, comp);
+      }
+    }
 
-        const goals = parseInt(ev.goals, 10) || 0;
-        const assists = parseInt(ev.assists, 10) || 0;
-        const evTeamId = ev.teamId || player.teamId;
+    // Serializar y actualizar estadísticas de jugadores
+    const serializedEvents = [];
+    this.matchEvents.forEach(ev => {
+      if (!ev.playerId) return;
+      const player = this.getPlayerById(ev.playerId);
+      const pName = player ? player.name : 'Desconocido';
+      const cnt = parseInt(ev.count, 10) || 1;
+      const evTeamId = ev.teamId || player?.teamId || team1Id;
 
+      serializedEvents.push({
+        playerId: ev.playerId,
+        playerName: pName,
+        teamId: evTeamId,
+        type: ev.type,
+        count: cnt
+      });
+
+      if (autoStats && player) {
         if (!player.statsByTeam) player.statsByTeam = {};
         if (evTeamId && !player.statsByTeam[evTeamId]) {
           player.statsByTeam[evTeamId] = {
@@ -3050,66 +3212,33 @@ const AdminApp = {
         }
         const tEntry = evTeamId ? player.statsByTeam[evTeamId] : null;
 
-        if (goals > 0) {
-          player.goals = (player.goals || 0) + goals;
-          if (tEntry) tEntry.goals = (tEntry.goals || 0) + goals;
+        if (ev.type === 'gol') {
+          player.goals = (player.goals || 0) + cnt;
+          if (tEntry) tEntry.goals = (tEntry.goals || 0) + cnt;
           if (comp === 'oro' || comp === 'plata' || comp === 'liga') {
-            player.goals_liga = (player.goals_liga || 0) + goals;
-            if (tEntry) tEntry.goals_liga = (tEntry.goals_liga || 0) + goals;
+            player.goals_liga = (player.goals_liga || 0) + cnt;
+            if (tEntry) tEntry.goals_liga = (tEntry.goals_liga || 0) + cnt;
           } else if (comp === 'champions' || comp === 'champions_ko') {
-            player.goals_champions = (player.goals_champions || 0) + goals;
-            if (tEntry) tEntry.goals_champions = (tEntry.goals_champions || 0) + goals;
+            player.goals_champions = (player.goals_champions || 0) + cnt;
+            if (tEntry) tEntry.goals_champions = (tEntry.goals_champions || 0) + cnt;
           } else if (comp === 'estelar') {
-            player.goals_estelar = (player.goals_estelar || 0) + goals;
-            if (tEntry) tEntry.goals_estelar = (tEntry.goals_estelar || 0) + goals;
+            player.goals_estelar = (player.goals_estelar || 0) + cnt;
+            if (tEntry) tEntry.goals_estelar = (tEntry.goals_estelar || 0) + cnt;
           }
-          updatedStatsCount += goals;
-        }
-
-        if (assists > 0) {
-          player.assists = (player.assists || 0) + assists;
-          if (tEntry) tEntry.assists = (tEntry.assists || 0) + assists;
+        } else if (ev.type === 'asistencia') {
+          player.assists = (player.assists || 0) + cnt;
+          if (tEntry) tEntry.assists = (tEntry.assists || 0) + cnt;
           if (comp === 'oro' || comp === 'plata' || comp === 'liga') {
-            player.assists_liga = (player.assists_liga || 0) + assists;
-            if (tEntry) tEntry.assists_liga = (tEntry.assists_liga || 0) + assists;
+            player.assists_liga = (player.assists_liga || 0) + cnt;
+            if (tEntry) tEntry.assists_liga = (tEntry.assists_liga || 0) + cnt;
           } else if (comp === 'champions' || comp === 'champions_ko') {
-            player.assists_champions = (player.assists_champions || 0) + assists;
-            if (tEntry) tEntry.assists_champions = (tEntry.assists_champions || 0) + assists;
+            player.assists_champions = (player.assists_champions || 0) + cnt;
+            if (tEntry) tEntry.assists_champions = (tEntry.assists_champions || 0) + cnt;
           } else if (comp === 'estelar') {
-            player.assists_estelar = (player.assists_estelar || 0) + assists;
-            if (tEntry) tEntry.assists_estelar = (tEntry.assists_estelar || 0) + assists;
+            player.assists_estelar = (player.assists_estelar || 0) + cnt;
+            if (tEntry) tEntry.assists_estelar = (tEntry.assists_estelar || 0) + cnt;
           }
-          updatedStatsCount += assists;
         }
-      });
-    }
-
-    // Serializar eventos para guardar en formato estándar compatible
-    const serializedEvents = [];
-    this.matchEvents.forEach(e => {
-      if (!e.playerId) return;
-      const player = this.getPlayerById(e.playerId);
-      const pName = player ? player.name : 'Desconocido';
-      const g = parseInt(e.goals, 10) || 0;
-      const a = parseInt(e.assists, 10) || 0;
-
-      if (g > 0) {
-        serializedEvents.push({
-          playerId: e.playerId,
-          playerName: pName,
-          teamId: e.teamId,
-          type: 'gol',
-          count: g
-        });
-      }
-      if (a > 0) {
-        serializedEvents.push({
-          playerId: e.playerId,
-          playerName: pName,
-          teamId: e.teamId,
-          type: 'asistencia',
-          count: a
-        });
       }
     });
 
@@ -3129,11 +3258,15 @@ const AdminApp = {
         }
 
         if (targetMatch) {
+          if (targetMatch.estado === 'Finalizado' && Array.isArray(targetMatch.events) && targetMatch.events.length > 0) {
+            this.revertEventsList(targetMatch.events, comp);
+          }
           targetMatch.team1 = team1.name;
           targetMatch.score1 = String(score1);
           targetMatch.team2 = team2.name;
           targetMatch.score2 = String(score2);
           targetMatch.estado = 'Finalizado';
+          targetMatch.annulled = false;
           targetMatch.events = serializedEvents;
         } else {
           matchArray.push({
@@ -3143,12 +3276,12 @@ const AdminApp = {
             team2: team2.name,
             score2: String(score2),
             estado: 'Finalizado',
+            annulled: false,
             events: serializedEvents
           });
         }
 
         if (comp === 'champions_ko') {
-          // Lógica Champions League Ida y Vuelta
           const isFinal = phase.toLowerCase() === 'final';
           if (isFinal) {
             if (score1 !== score2) {
@@ -3157,7 +3290,6 @@ const AdminApp = {
               this.showToast(`¡🏆 ${champion} ES EL NUEVO CAMPEÓN DE LA UEFA CHAMPIONS LEAGUE!`, 'success');
             }
           } else {
-            // Determine tie base (ej. "Octavos 1", "Cuartos 2", "Semifinal 1")
             const isIda = phase.toLowerCase().includes('(ida)');
             const isVuelta = phase.toLowerCase().includes('(vuelta)');
             const tieBase = phase.replace(/\((ida|vuelta)\)/i, '').trim();
@@ -3165,7 +3297,6 @@ const AdminApp = {
             const idaMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${tieBase.toLowerCase()} (ida)`);
             const vueltaMatch = matchArray.find(m => m.fase && m.fase.toLowerCase() === `${tieBase.toLowerCase()} (vuelta)`);
 
-            // Sincronizar rivales entre Ida y Vuelta
             if (isIda && vueltaMatch) {
               if (!vueltaMatch.team1 || vueltaMatch.team1.toLowerCase().startsWith('ganador')) vueltaMatch.team1 = team2.name;
               if (!vueltaMatch.team2 || vueltaMatch.team2.toLowerCase().startsWith('ganador')) vueltaMatch.team2 = team1.name;
@@ -3174,10 +3305,9 @@ const AdminApp = {
               if (!idaMatch.team2 || idaMatch.team2.toLowerCase().startsWith('ganador')) idaMatch.team2 = team1.name;
             }
 
-            // Si ambos partidos están jugados, calcular el Marcador Global
             if (idaMatch && vueltaMatch && idaMatch.estado === 'Finalizado' && vueltaMatch.estado === 'Finalizado') {
-              const teamA = idaMatch.team1; // Local en Ida, Visitante en Vuelta
-              const teamB = idaMatch.team2; // Visitante en Ida, Local en Vuelta
+              const teamA = idaMatch.team1;
+              const teamB = idaMatch.team2;
 
               const idaScoreA = parseInt(idaMatch.score1, 10) || 0;
               const idaScoreB = parseInt(idaMatch.score2, 10) || 0;
@@ -3200,7 +3330,6 @@ const AdminApp = {
                 idaMatch.winner = winnerName;
                 vueltaMatch.winner = winnerName;
 
-                // Avanzar al ganador a la siguiente fase
                 const champMapping = {
                   'octavos 1': { phase: 'cuartos 1', teamSlot: 'team1' },
                   'octavos 2': { phase: 'cuartos 1', teamSlot: 'team2' },
@@ -3236,7 +3365,6 @@ const AdminApp = {
             }
           }
         } else {
-          // Copa Estelar (partido único)
           if (score1 !== score2) {
             const winnerName = score1 > score2 ? team1.name : team2.name;
             const copaMapping = {
@@ -3272,34 +3400,15 @@ const AdminApp = {
     }
 
     // Actualizar partido del fixture si es División Oro, Plata o Champions League
-    let fixtureMatchId = null;
-    let jornadaNumber = null;
-    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
-      jornadaNumber = parseInt(document.getElementById('match-jornada-select').value, 10) || 1;
-      fixtureMatchId = document.getElementById('match-fixture-item-select').value;
-      const rounds = (this.data && this.data.fixtures) ? (this.data.fixtures[comp] || []) : [];
-      let fMatch = null;
-      if (fixtureMatchId) {
-        for (const r of rounds) {
-          fMatch = r.matches.find(m => m.id === fixtureMatchId);
-          if (fMatch) break;
-        }
-      }
-      if (!fMatch) {
-        const r = rounds.find(rd => rd.jornada === jornadaNumber);
-        if (r && r.matches) {
-          fMatch = r.matches.find(m => (m.team1Id === team1.id && m.team2Id === team2.id) || (m.team1Id === team2.id && m.team2Id === team1.id));
-        }
-      }
-      if (fMatch) {
-        fixtureMatchId = fMatch.id;
-        fMatch.played = true;
-        fMatch.score1 = score1;
-        fMatch.score2 = score2;
-        fMatch.events = serializedEvents;
-        fMatch.registeredBy = 'Administrador Principal';
-        fMatch.registeredAt = new Date().toISOString();
-      }
+    if (fMatch) {
+      fixtureMatchId = fMatch.id;
+      fMatch.played = true;
+      fMatch.annulled = false;
+      fMatch.score1 = score1;
+      fMatch.score2 = score2;
+      fMatch.events = serializedEvents;
+      fMatch.registeredBy = 'Administrador Principal';
+      fMatch.registeredAt = new Date().toISOString();
     }
 
     // Guardar en el Historial de Partidos para poder auditar o deshacer
@@ -3348,18 +3457,11 @@ const AdminApp = {
 
     // Limpiar eventos y formulario
     this.matchEvents = [];
-    const eventsList = document.getElementById('match-events-list');
-    if (eventsList) {
-      eventsList.innerHTML = `
-        <p style="color: var(--text-muted); text-align: center; padding: 1.25rem;" id="match-events-empty">
-          No hay eventos agregados. Haz clic en "Añadir Goleador / Asistente" si hubo anotaciones o pases de gol.
-        </p>
-      `;
-    }
-    const eventsHeader = document.getElementById('match-events-header');
-    if (eventsHeader) eventsHeader.style.display = 'none';
     document.getElementById('match-score1').value = 0;
     document.getElementById('match-score2').value = 0;
+    this.renderAdminEventsRows();
+    const alertBox = document.getElementById('admin-goals-validation-alert');
+    if (alertBox) alertBox.style.display = 'none';
 
     // Guardar inmediatamente en data.js
     await this.saveData(true);
@@ -3367,29 +3469,16 @@ const AdminApp = {
     this.showToast(`¡Partido registrado y guardado exitosamente! ${team1.name} ${score1} - ${score2} ${team2.name}.`, 'success');
   },
 
-  async anularCurrentMatch() {
+  async executeAnularCurrentMatch() {
     const comp = document.getElementById('match-competition').value;
     const phase = document.getElementById('match-phase').value;
     const team1Id = document.getElementById('match-team1-select').value;
     const team2Id = document.getElementById('match-team2-select').value;
 
-    if (!team1Id || !team2Id || team1Id === team2Id) {
-      this.showToast('Selecciona los dos equipos para poder anular el partido', 'error');
-      return;
-    }
-
     const team1 = this.getTeamById(team1Id);
     const team2 = this.getTeamById(team2Id);
     const t1Name = team1 ? team1.name : team1Id;
     const t2Name = team2 ? team2.name : team2Id;
-
-    const confirmMsg = `⚠️ ¿Confirmas ANULAR el partido entre ${t1Name} y ${t2Name}?\n\n` +
-      `• El partido se registrará como JUGADO para ambos equipos.\n` +
-      `• NINGÚN equipo sumará puntos en la tabla de posiciones.\n` +
-      `• Si ya tenía goles o asistencias registradas, serán restadas automáticamente de los jugadores.\n\n` +
-      `¿Deseas continuar con la anulación?`;
-
-    if (!confirm(confirmMsg)) return;
 
     let fixtureMatchId = null;
     let jornadaNumber = null;
@@ -3414,7 +3503,6 @@ const AdminApp = {
 
       if (fMatch) {
         fixtureMatchId = fMatch.id;
-        // Revertir estadísticas previas si existían
         if (fMatch.played && Array.isArray(fMatch.events) && fMatch.events.length > 0) {
           this.revertEventsList(fMatch.events, comp);
         }
@@ -3476,18 +3564,11 @@ const AdminApp = {
 
     // Limpiar eventos y formulario
     this.matchEvents = [];
-    const eventsList = document.getElementById('match-events-list');
-    if (eventsList) {
-      eventsList.innerHTML = `
-        <p style="color: var(--text-muted); text-align: center; padding: 1.25rem;" id="match-events-empty">
-          No hay eventos agregados. Haz clic en "Añadir Goleador / Asistente" si hubo anotaciones o pases de gol.
-        </p>
-      `;
-    }
-    const eventsHeader = document.getElementById('match-events-header');
-    if (eventsHeader) eventsHeader.style.display = 'none';
     document.getElementById('match-score1').value = 0;
     document.getElementById('match-score2').value = 0;
+    this.renderAdminEventsRows();
+    const alertBox = document.getElementById('admin-goals-validation-alert');
+    if (alertBox) alertBox.style.display = 'none';
 
     this.renderTopScorers();
     this.renderTeamsView();
