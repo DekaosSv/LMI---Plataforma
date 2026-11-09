@@ -1344,9 +1344,25 @@ var INITIAL_LMI_DATA = {
       "name": "Neymar Jr.",
       "position": "SD",
       "teamId": "fcbayernmunich",
-      "goals": 1,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 0,
+      "assists_liga": 0,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false
+    },
+    {
+      "id": "p_1793936362024_11",
+      "name": "Khvicha Kvaratskhelia",
+      "position": "DC",
+      "teamId": "fcbayernmunich",
+      "goals": 2,
+      "assists": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1357,39 +1373,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "fcbayernmunich": {
           "teamId": "fcbayernmunich",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
-    },
-    {
-      "id": "p_1793936362024_11",
-      "name": "Khvicha Kvaratskhelia",
-      "position": "DC",
-      "teamId": "fcbayernmunich",
-      "goals": 2,
-      "assists": 1,
-      "goals_liga": 2,
-      "assists_liga": 1,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "fcbayernmunich": {
-          "teamId": "fcbayernmunich",
           "goals": 2,
-          "assists": 1,
+          "assists": 0,
           "goals_liga": 2,
-          "assists_liga": 1,
+          "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -1559,28 +1546,15 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "fcbayernmunich",
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "fcbayernmunich": {
-          "teamId": "fcbayernmunich",
-          "goals": 0,
-          "assists": 1,
-          "goals_liga": 0,
-          "assists_liga": 1,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1793936362024_21",
@@ -1603,9 +1577,9 @@ var INITIAL_LMI_DATA = {
       "name": "Rafael Leão",
       "position": "EI",
       "teamId": "fcbayernmunich",
-      "goals": 3,
+      "goals": 2,
       "assists": 3,
-      "goals_liga": 3,
+      "goals_liga": 2,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1617,9 +1591,9 @@ var INITIAL_LMI_DATA = {
         "fcbayernmunich": {
           "teamId": "fcbayernmunich",
           "teamName": "FC Bayern Múnich",
-          "goals": 3,
+          "goals": 2,
           "assists": 3,
-          "goals_liga": 3,
+          "goals_liga": 2,
           "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -1633,9 +1607,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ademola Lookman (P)",
       "position": "DC",
       "teamId": "fcbayernmunich",
-      "goals": 2,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 2,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1646,9 +1620,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "fcbayernmunich": {
           "teamId": "fcbayernmunich",
-          "goals": 2,
+          "goals": 1,
           "assists": 0,
-          "goals_liga": 2,
+          "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -6277,9 +6251,9 @@ var INITIAL_LMI_DATA = {
       "name": "Viktor Tsygankov",
       "position": "SD",
       "teamId": "carabobofutbolclub",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6291,9 +6265,9 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 1,
+          "goals": 2,
           "assists": 1,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -7131,16 +7105,29 @@ var INITIAL_LMI_DATA = {
       "name": "Lilian Thuram",
       "position": "LD",
       "teamId": "clubuniversidaddechile",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubuniversidaddechile": {
+          "teamId": "clubuniversidaddechile",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017628489_5",
@@ -7180,6 +7167,35 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
+      "assists": 1,
+      "goals_liga": 0,
+      "assists_liga": 1,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "clubuniversidaddechile": {
+          "teamId": "clubuniversidaddechile",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1794017628489_8",
+      "name": "Pape Gueye",
+      "position": "MC",
+      "teamId": "clubuniversidaddechile",
+      "goals": 0,
       "assists": 0,
       "goals_liga": 0,
       "assists_liga": 0,
@@ -7191,9 +7207,9 @@ var INITIAL_LMI_DATA = {
       "isLegend": false
     },
     {
-      "id": "p_1794017628489_8",
-      "name": "Pape Gueye",
-      "position": "MC",
+      "id": "p_1794017628489_9",
+      "name": "Franck Ribéry",
+      "position": "MP",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
       "assists": 1,
@@ -7220,14 +7236,14 @@ var INITIAL_LMI_DATA = {
       }
     },
     {
-      "id": "p_1794017628489_9",
-      "name": "Franck Ribéry",
+      "id": "p_1794017628489_10",
+      "name": "Nicolás de la Cruz",
       "position": "MP",
       "teamId": "clubuniversidaddechile",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
+      "goals": 0,
+      "assists": 2,
+      "goals_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7237,32 +7253,16 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
       }
-    },
-    {
-      "id": "p_1794017628489_10",
-      "name": "Nicolás de la Cruz",
-      "position": "MP",
-      "teamId": "clubuniversidaddechile",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
     },
     {
       "id": "p_1794017628489_11",
@@ -7365,29 +7365,16 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 2,
-      "assists": 1,
-      "goals_liga": 2,
-      "assists_liga": 1,
+      "goals": 0,
+      "assists": 0,
+      "goals_liga": 0,
+      "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "clubuniversidaddechile": {
-          "teamId": "clubuniversidaddechile",
-          "goals": 2,
-          "assists": 1,
-          "goals_liga": 2,
-          "assists_liga": 1,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1794017628489_18",
@@ -7455,10 +7442,10 @@ var INITIAL_LMI_DATA = {
       "name": "Yoane Wissa",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 0,
-      "assists": 1,
-      "goals_liga": 0,
-      "assists_liga": 1,
+      "goals": 4,
+      "assists": 0,
+      "goals_liga": 4,
+      "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -7468,10 +7455,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 0,
-          "assists": 1,
-          "goals_liga": 0,
-          "assists_liga": 1,
+          "goals": 4,
+          "assists": 0,
+          "goals_liga": 4,
+          "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -7500,29 +7487,16 @@ var INITIAL_LMI_DATA = {
       "name": "Deniz Undav",
       "position": "MP",
       "teamId": "clubuniversidaddechile",
-      "goals": 1,
+      "goals": 0,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false,
-      "statsByTeam": {
-        "clubuniversidaddechile": {
-          "teamId": "clubuniversidaddechile",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
-          "goals_champions": 0,
-          "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0
-        }
-      }
+      "isLegend": false
     },
     {
       "id": "p_1794017654825_1",
@@ -13794,98 +13768,10 @@ var INITIAL_LMI_DATA = {
             "jornada": 3,
             "team1Id": "clubuniversidaddechile",
             "team2Id": "fcbayernmunich",
-            "score1": 4,
-            "score2": 3,
-            "played": true,
-            "events": [
-              {
-                "playerId": "p_1794017628489_17",
-                "playerName": "Rasmus Højlund",
-                "teamId": "clubuniversidaddechile",
-                "type": "gol",
-                "count": 2
-              },
-              {
-                "playerId": "p_1794017628489_18",
-                "playerName": "Lucas Paquetá",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936362024_22",
-                "playerName": "Rafael Leão",
-                "teamId": "fcbayernmunich",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936362024_11",
-                "playerName": "Khvicha Kvaratskhelia",
-                "teamId": "fcbayernmunich",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_9",
-                "playerName": "Franck Ribéry",
-                "teamId": "clubuniversidaddechile",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_17",
-                "playerName": "Rasmus Højlund",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_8",
-                "playerName": "Pape Gueye",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936362024_23",
-                "playerName": "Ademola Lookman (P)",
-                "teamId": "fcbayernmunich",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936362024_10",
-                "playerName": "Neymar Jr.",
-                "teamId": "fcbayernmunich",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1793936362024_20",
-                "playerName": "Lamine Yamal (P)",
-                "teamId": "fcbayernmunich",
-                "type": "asistencia",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_23",
-                "playerName": "Deniz Undav",
-                "teamId": "clubuniversidaddechile",
-                "type": "gol",
-                "count": 1
-              },
-              {
-                "playerId": "p_1794017628489_21",
-                "playerName": "Yoane Wissa",
-                "teamId": "clubuniversidaddechile",
-                "type": "asistencia",
-                "count": 1
-              }
-            ],
-            "annulled": false,
-            "registeredBy": "Daniel",
-            "registeredAt": "2026-11-09T04:01:31.780Z"
+            "score1": null,
+            "score2": null,
+            "played": false,
+            "events": []
           },
           {
             "id": "plata_j3_m3",
@@ -14164,10 +14050,63 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "carabobofutbolclub",
             "team2Id": "clubuniversidaddechile",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 5,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017628489_21",
+                "playerName": "Yoane Wissa",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 4
+              },
+              {
+                "playerId": "p_1794017628489_9",
+                "playerName": "Franck Ribéry",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_18",
+                "playerName": "Lucas Paquetá",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_1",
+                "playerName": "Viktor Tsygankov",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_7",
+                "playerName": "Fredrik Aursnes",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_10",
+                "playerName": "Nicolás de la Cruz",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017628489_4",
+                "playerName": "Lilian Thuram",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-09T04:03:22.830Z"
           },
           {
             "id": "plata_j5_m3",
@@ -16611,28 +16550,35 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
-      "id": "match_1794196891780",
-      "timestamp": 1794196891780,
-      "date": "08 nov 2026, 10:01 p.m.",
+      "id": "match_1794197002830",
+      "timestamp": 1794197002830,
+      "date": "08 nov 2026, 10:03 p.m.",
       "competition": "plata",
-      "jornada": 3,
-      "fixtureMatchId": "plata_j3_m2",
-      "phase": "Jornada 3",
-      "team1Id": "clubuniversidaddechile",
-      "team1Name": "Club Universidad de Chile",
-      "team1Logo": "Logos Equipos/uchile.png",
-      "score1": 4,
-      "team2Id": "fcbayernmunich",
-      "team2Name": "FC Bayern Múnich",
-      "team2Logo": "Logos Equipos/bayernmunich.webp",
-      "score2": 3,
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m2",
+      "phase": "Jornada 5",
+      "team1Id": "carabobofutbolclub",
+      "team1Name": "Carabobo Fútbol Club",
+      "team1Logo": "Logos Equipos/carabobo.webp",
+      "score1": 1,
+      "team2Id": "clubuniversidaddechile",
+      "team2Name": "Club Universidad de Chile",
+      "team2Logo": "Logos Equipos/uchile.png",
+      "score2": 5,
       "events": [
         {
-          "playerId": "p_1794017628489_17",
-          "playerName": "Rasmus Højlund",
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
           "teamId": "clubuniversidaddechile",
           "type": "gol",
-          "count": 2
+          "count": 4
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
         },
         {
           "playerId": "p_1794017628489_18",
@@ -16642,78 +16588,36 @@ var INITIAL_LMI_DATA = {
           "count": 1
         },
         {
-          "playerId": "p_1793936362024_22",
-          "playerName": "Rafael Leão",
-          "teamId": "fcbayernmunich",
+          "playerId": "p_1794017504232_1",
+          "playerName": "Viktor Tsygankov",
+          "teamId": "carabobofutbolclub",
           "type": "gol",
           "count": 1
         },
         {
-          "playerId": "p_1793936362024_11",
-          "playerName": "Khvicha Kvaratskhelia",
-          "teamId": "fcbayernmunich",
-          "type": "asistencia",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017628489_9",
-          "playerName": "Franck Ribéry",
-          "teamId": "clubuniversidaddechile",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017628489_17",
-          "playerName": "Rasmus Højlund",
+          "playerId": "p_1794017628489_7",
+          "playerName": "Fredrik Aursnes",
           "teamId": "clubuniversidaddechile",
           "type": "asistencia",
           "count": 1
         },
         {
-          "playerId": "p_1794017628489_8",
-          "playerName": "Pape Gueye",
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
           "teamId": "clubuniversidaddechile",
           "type": "asistencia",
-          "count": 1
+          "count": 2
         },
         {
-          "playerId": "p_1793936362024_23",
-          "playerName": "Ademola Lookman (P)",
-          "teamId": "fcbayernmunich",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1793936362024_10",
-          "playerName": "Neymar Jr.",
-          "teamId": "fcbayernmunich",
-          "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1793936362024_20",
-          "playerName": "Lamine Yamal (P)",
-          "teamId": "fcbayernmunich",
-          "type": "asistencia",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017628489_23",
-          "playerName": "Deniz Undav",
+          "playerId": "p_1794017628489_4",
+          "playerName": "Lilian Thuram",
           "teamId": "clubuniversidaddechile",
           "type": "gol",
-          "count": 1
-        },
-        {
-          "playerId": "p_1794017628489_21",
-          "playerName": "Yoane Wissa",
-          "teamId": "clubuniversidaddechile",
-          "type": "asistencia",
           "count": 1
         }
       ],
       "registeredBy": "Daniel",
-      "registeredAt": "2026-11-09T04:01:31.780Z"
+      "registeredAt": "2026-11-09T04:03:22.830Z"
     },
     {
       "id": "match_1794194434752",
