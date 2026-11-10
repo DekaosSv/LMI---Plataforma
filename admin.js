@@ -1069,7 +1069,7 @@ const AdminApp = {
       titleEl.textContent = `${divName} • JORNADA ${jornadaNum} (${legLabel})`;
       titleEl.style.color = isChampions ? '#38bdf8' : (comp === 'plata' ? '#94a3b8' : 'var(--lmi-gold)');
     }
-    if (seasonEl) seasonEl.textContent = `${this.data.season || 'Temporada 12'} • eFootball`;
+    if (seasonEl) seasonEl.textContent = `${this.data.season || 'Temporada 13'} • eFootball`;
 
     const restingList = [];
     if (round && round.restingTeams && Array.isArray(round.restingTeams) && round.restingTeams.length > 0) {
@@ -1555,7 +1555,8 @@ const AdminApp = {
       const a = document.createElement('a');
       a.href = dataUrl;
       const fileSuffix = isSinglePhase ? phaseFilter.toUpperCase() : 'Eliminatorias_Completo';
-      a.download = `LMI_Copa_Estelar_${fileSuffix}_T11.png`;
+      const seasonSuffix = (this.data && this.data.season) ? `_${this.data.season.replace(/\s+/g, '_')}` : '_T13';
+    a.download = `LMI_Copa_Estelar_${fileSuffix}${seasonSuffix}.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1878,7 +1879,8 @@ const AdminApp = {
       const a = document.createElement('a');
       a.href = dataUrl;
       const fileSuffix = isSinglePhase ? phaseFilter.toUpperCase() : 'Eliminatorias_Top8';
-      a.download = `LMI_Champions_League_${fileSuffix}_T11.png`;
+      const seasonSuffix = (this.data && this.data.season) ? `_${this.data.season.replace(/\s+/g, '_')}` : '_T13';
+    a.download = `LMI_Champions_League_${fileSuffix}${seasonSuffix}.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -5598,7 +5600,7 @@ const AdminApp = {
     if (!this.data) return;
     if (!this.data.webConfig) {
       this.data.webConfig = {
-        seasonTitle: this.data.season || 'Temporada 11',
+        seasonTitle: this.data.season || 'Temporada 13',
         leagueSubtitle: 'Liga Máster Internacional • Fútbol Competitivo',
         bannerAnnouncement: {
           enabled: false,

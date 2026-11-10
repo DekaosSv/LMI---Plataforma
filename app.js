@@ -550,7 +550,7 @@ function renderStats() {
 
   let goalsKey = 'goals_liga';
   let assistsKey = 'assists_liga';
-  let tournamentLabel = 'Liga Temporada 11';
+  let tournamentLabel = (lmiData && lmiData.season) ? `Liga ${lmiData.season}` : 'Liga Temporada 13';
 
   if (tournament === 'copa') {
     goalsKey = 'goals_estelar';
@@ -684,7 +684,7 @@ function renderStats() {
     return;
   }
 
-  // Si es Liga (Temporada 11), mostrar la barra de tabs de división
+  // Si es Liga (Temporada actual), mostrar la barra de tabs de división
   if (divTabsBar) divTabsBar.style.display = 'flex';
 
   if (currentStatsDivision === 'plata') {
@@ -1710,7 +1710,8 @@ async function exportChampionsImage() {
 
     const link = document.createElement('a');
     const phaseSuffix = phaseFilter !== 'all' ? `_${phaseFilter}` : '_completo';
-    link.download = `LMI_Champions_League${phaseSuffix}_T11.png`;
+    const seasonSuffix = (lmiData && lmiData.season) ? `_${lmiData.season.replace(/\s+/g, '_')}` : '_T13';
+    link.download = `LMI_Champions_League${phaseSuffix}${seasonSuffix}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
 
@@ -1863,7 +1864,8 @@ async function exportCopaEstelarImage() {
     const a = document.createElement('a');
     a.href = dataUrl;
     const fileSuffix = isSinglePhase ? phaseFilter.toUpperCase() : 'Eliminatorias_Completo';
-    a.download = `LMI_Copa_Estelar_${fileSuffix}_T11.png`;
+    const seasonSuffix = (lmiData && lmiData.season) ? `_${lmiData.season.replace(/\s+/g, '_')}` : '_T13';
+    a.download = `LMI_Copa_Estelar_${fileSuffix}${seasonSuffix}.png`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -2319,7 +2321,7 @@ function renderTeamBudgetBox(team) {
 }
 
 
-// RENOVACIONES TEMPORADA 11 ENGINE
+// RENOVACIONES TEMPORADA 13 ENGINE
 function formatRenewalValue(val) {
   if (val === undefined || val === null || isNaN(val)) return '0';
   const num = Number(val);
@@ -2624,7 +2626,8 @@ function exportRenewalReport() {
   if (!team) return;
 
   const teamPlayers = lmiData.players.filter(p => p.teamId === sel.value);
-  let summary = `📋 *INFORME DE RENOVACIONES - LMI TEMPORADA 11*\n`;
+  const curSeason = (lmiData && lmiData.season) ? lmiData.season.toUpperCase() : 'TEMPORADA 13';
+  let summary = `📋 *INFORME DE RENOVACIONES - LMI ${curSeason}*\n`;
   summary += `🛡️ *Club:* ${team.name}\n`;
   summary += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
@@ -3929,7 +3932,7 @@ function onWebJornadaSelectChange() {
   }
 
   if (seasonBadge) {
-    seasonBadge.innerHTML = `${(lmiData && lmiData.season) || 'Temporada 12'} &bull; eFootball`;
+    seasonBadge.innerHTML = `${(lmiData && lmiData.season) || 'Temporada 13'} &bull; eFootball`;
   }
 
   const restTeam = (round && round.restingTeamId) ? (lmiData.teams || []).find(t => t.id === round.restingTeamId) : null;
