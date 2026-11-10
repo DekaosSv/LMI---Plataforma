@@ -563,7 +563,43 @@ const PlataApp = {
     }
   },
 
-  async getLatestRemoteData() {
+  async getLatestRemoteData(token = null) {
+    // 1. Intentar obtener datos directamente de la GitHub API (100% fresco, sin caché de CDN)
+    if (token) {
+      try {
+        const owner = 'DekaosSv';
+        const repo = 'LMI---Plataforma';
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data.js?ref=main`, {
+          headers: {
+            'Authorization': `Bearer ${token.trim()}`,
+            'Accept': 'application/vnd.github.raw+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+          },
+          cache: 'no-store'
+        });
+        if (res.ok) {
+          const text = await res.text();
+          const prefix = 'var INITIAL_LMI_DATA = ';
+          const idx = text.indexOf(prefix);
+          if (idx !== -1) {
+            const jsonStart = idx + prefix.length;
+            const endRegex = /;\s*(?:\r?\n)+\s*if\s*\(typeof window/;
+            const match = text.substring(jsonStart).match(endRegex);
+            let jsonStr = '';
+            if (match && match.index !== undefined) {
+              jsonStr = text.substring(jsonStart, jsonStart + match.index).trim();
+            } else {
+              jsonStr = text.substring(jsonStart).replace(/;\s*if\s*\(typeof window[\s\S]*$/, '').trim().replace(/;$/, '');
+            }
+            return JSON.parse(jsonStr);
+          }
+        }
+      } catch (e) {
+        console.warn('No se pudo obtener data.js vía GitHub API, usando CDN raw con cache-buster:', e);
+      }
+    }
+
+    // 2. Fallback a raw CDN con timestamp único
     try {
       const res = await fetch(`https://raw.githubusercontent.com/DekaosSv/LMI---Plataforma/main/data.js?_t=${Date.now()}`, { cache: 'no-store' });
       if (res.ok) {
@@ -589,29 +625,46 @@ const PlataApp = {
     return null;
   },
 
-  async mergeWithLatestRemote(matchId, serializedEvents, historyRecord) {
-    const remoteData = await this.getLatestRemoteData();
+  async mergeWithLatestRemote(matchId, serializedEvents, historyRecord, token = null) {
+    const remoteData = await this.getLatestRemoteData(token);
     if (!remoteData) return this.data;
 
-    // 1. Sincronizar el partido actual dentro de remoteData
-    const rounds = (remoteData.fixtures && remoteData.fixtures.plata) || [];
-    let target = null;
-    for (const r of rounds) {
-      target = (r.matches || []).find(m => m.id === matchId);
-      if (target) break;
-    }
+    // 1. Fusionar TODOS los partidos de fixtures.plata
+    // Si un partido fue jugado en el servidor remoto O localmente, se conserva como jugado para NUNCA revertir resultados
+    const remotePlata = (remoteData.fixtures && remoteData.fixtures.plata) || [];
+    const localPlata = (this.data && this.data.fixtures && this.data.fixtures.plata) || [];
 
-    if (target && this.currentMatch) {
-      target.played = this.currentMatch.played;
-      target.annulled = !!this.currentMatch.annulled;
-      target.score1 = this.currentMatch.score1;
-      target.score2 = this.currentMatch.score2;
-      target.events = this.currentMatch.events || [];
-      target.registeredBy = this.currentMatch.registeredBy;
-      target.registeredAt = this.currentMatch.registeredAt;
-    }
+    localPlata.forEach(lJornada => {
+      const rJornada = remotePlata.find(r => r.jornada === lJornada.jornada);
+      if (rJornada && Array.isArray(lJornada.matches)) {
+        lJornada.matches.forEach(lMatch => {
+          const rMatch = (rJornada.matches || []).find(m => m.id === lMatch.id);
+          if (rMatch) {
+            if (lMatch.id === matchId && this.currentMatch) {
+              // El partido que se está guardando en este momento tiene máxima prioridad
+              rMatch.played = this.currentMatch.played;
+              rMatch.annulled = !!this.currentMatch.annulled;
+              rMatch.score1 = this.currentMatch.score1;
+              rMatch.score2 = this.currentMatch.score2;
+              rMatch.events = this.currentMatch.events || [];
+              rMatch.registeredBy = this.currentMatch.registeredBy;
+              rMatch.registeredAt = this.currentMatch.registeredAt;
+            } else if (lMatch.played && !rMatch.played) {
+              // Si localmente estaba jugado y en remoto no, conservar el jugado local
+              rMatch.played = true;
+              rMatch.annulled = !!lMatch.annulled;
+              rMatch.score1 = lMatch.score1;
+              rMatch.score2 = lMatch.score2;
+              rMatch.events = lMatch.events || [];
+              rMatch.registeredBy = lMatch.registeredBy;
+              rMatch.registeredAt = lMatch.registeredAt;
+            }
+          }
+        });
+      }
+    });
 
-    // 2. Aplicar estadísticas de jugadores a remoteData
+    // 2. Aplicar estadísticas del partido actual a los jugadores en remoteData
     if (Array.isArray(serializedEvents) && serializedEvents.length > 0 && Array.isArray(remoteData.players)) {
       serializedEvents.forEach(ev => {
         if (!ev.playerId) return;
@@ -651,13 +704,23 @@ const PlataApp = {
       });
     }
 
-    // 3. Sincronizar matchHistory
+    // 3. Sincronizar matchHistory (mantener los remotos y agregar los locales que falten)
+    if (!remoteData.matchHistory) remoteData.matchHistory = [];
     if (historyRecord) {
-      if (!remoteData.matchHistory) remoteData.matchHistory = [];
       const alreadyExists = remoteData.matchHistory.some(h => h.id === historyRecord.id || (h.fixtureMatchId === historyRecord.fixtureMatchId && h.timestamp === historyRecord.timestamp));
       if (!alreadyExists) {
         remoteData.matchHistory.unshift(historyRecord);
       }
+    }
+    // Preservar cualquier otro historial local que no estuviera en remoto
+    if (Array.isArray(this.data && this.data.matchHistory)) {
+      this.data.matchHistory.forEach(lh => {
+        const inRemote = remoteData.matchHistory.some(rh => rh.id === lh.id || (rh.fixtureMatchId === lh.fixtureMatchId && rh.timestamp === lh.timestamp));
+        if (!inRemote) {
+          remoteData.matchHistory.push(lh);
+        }
+      });
+      remoteData.matchHistory.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
     }
 
     this.data = remoteData;
@@ -712,8 +775,9 @@ const PlataApp = {
 
     try {
       // Sincronizar y fusionar con los datos remotos más frescos de la plataforma para nunca sobreescribir otros registros
-      if (this.currentMatchId) {
-        await this.mergeWithLatestRemote(this.currentMatchId, this.lastSavedEvents || [], this.lastHistoryRecord || null);
+      const mId = this.currentMatchId || (this.currentMatch && this.currentMatch.id);
+      if (mId) {
+        await this.mergeWithLatestRemote(mId, this.lastSavedEvents || [], this.lastHistoryRecord || null, githubToken);
       }
 
       const defaultMsg = `Registro Jornada ${this.currentJornada}: ${this.currentMatch ? (this.currentMatch.team1Id + ' vs ' + this.currentMatch.team2Id) : 'División Plata'} [${this.currentUser}]`;
