@@ -345,6 +345,7 @@ const PlataApp = {
   currentMatch: null,
   matchEvents: [],
   activeExportTab: 'standings',
+  pendingMatches: {},
 
   // ==========================================
   // INICIALIZACIÓN
@@ -904,12 +905,289 @@ const PlataApp = {
   // CARGA Y RENDERIZADO INICIAL
   // ==========================================
   onDataLoaded() {
+    this.loadPendingMatches();
     this.populateJornadasDropdown();
     this.onJornadaChange();
     this.populateHistoryFilters();
     this.renderMatchHistory();
     this.renderActiveExport();
     PlataAuth.populateLoginDelegates();
+  },
+
+  // ==========================================
+  // GESTIÓN DE PARTIDOS GUARDADOS LOCALMENTE (PENDIENTES DE DESPLIEGUE)
+  // ==========================================
+  loadPendingMatches() {
+    try {
+      const raw = localStorage.getItem('lmi_plata_pending_matches');
+      if (raw) {
+        this.pendingMatches = JSON.parse(raw) || {};
+        this.applyPendingMatchesToData();
+      } else {
+        this.pendingMatches = {};
+      }
+    } catch (e) {
+      console.warn('Error cargando partidos pendientes:', e);
+      this.pendingMatches = {};
+    }
+    this.updatePendingDeployUI();
+  },
+
+  applyPendingMatchesToData() {
+    if (!this.data || !this.pendingMatches) return;
+    const pendingKeys = Object.keys(this.pendingMatches);
+    if (pendingKeys.length === 0) return;
+
+    const rounds = (this.data.fixtures && this.data.fixtures.plata) || [];
+    pendingKeys.forEach(mId => {
+      const pending = this.pendingMatches[mId];
+      let match = null;
+      for (const r of rounds) {
+        match = (r.matches || []).find(m => m.id === mId);
+        if (match) break;
+      }
+      if (match) {
+        match.played = true;
+        match.annulled = !!pending.annulled;
+        match.score1 = pending.score1;
+        match.score2 = pending.score2;
+        match.events = pending.events || [];
+        match.registeredBy = pending.registeredBy;
+        match.registeredAt = pending.registeredAt;
+
+        if (Array.isArray(pending.events) && Array.isArray(this.data.players)) {
+          pending.events.forEach(ev => {
+            if (!ev.playerId) return;
+            const player = this.getPlayerById(ev.playerId);
+            if (!player) return;
+
+            const cnt = parseInt(ev.count, 10) || 1;
+            const evTeamId = ev.teamId || player.teamId;
+
+            if (!player.statsByTeam) player.statsByTeam = {};
+            if (evTeamId && !player.statsByTeam[evTeamId]) {
+              const teamObj = (this.data.teams || []).find(t => t.id === evTeamId);
+              player.statsByTeam[evTeamId] = {
+                teamId: evTeamId,
+                teamName: teamObj?.name || evTeamId,
+                goals: 0, assists: 0,
+                goals_liga: 0, assists_liga: 0,
+                goals_champions: 0, assists_champions: 0,
+                goals_estelar: 0, assists_estelar: 0
+              };
+            }
+            const tEntry = evTeamId ? player.statsByTeam[evTeamId] : null;
+
+            const inHistory = (this.data.matchHistory || []).some(h => h.fixtureMatchId === mId && h.timestamp === (pending.historyRecord?.timestamp));
+            if (!inHistory) {
+              if (ev.type === 'gol') {
+                player.goals = (player.goals || 0) + cnt;
+                player.goals_liga = (player.goals_liga || 0) + cnt;
+                if (tEntry) {
+                  tEntry.goals = (tEntry.goals || 0) + cnt;
+                  tEntry.goals_liga = (tEntry.goals_liga || 0) + cnt;
+                }
+              } else if (ev.type === 'asistencia') {
+                player.assists = (player.assists || 0) + cnt;
+                player.assists_liga = (player.assists_liga || 0) + cnt;
+                if (tEntry) {
+                  tEntry.assists = (tEntry.assists || 0) + cnt;
+                  tEntry.assists_liga = (tEntry.assists_liga || 0) + cnt;
+                }
+              }
+            }
+          });
+        }
+
+        if (pending.historyRecord) {
+          if (!this.data.matchHistory) this.data.matchHistory = [];
+          const exists = this.data.matchHistory.some(h => h.id === pending.historyRecord.id || (h.fixtureMatchId === mId && h.timestamp === pending.historyRecord.timestamp));
+          if (!exists) {
+            this.data.matchHistory.unshift(pending.historyRecord);
+          }
+        }
+      }
+    });
+  },
+
+  updatePendingDeployUI() {
+    const pendingKeys = Object.keys(this.pendingMatches || {});
+    const count = pendingKeys.length;
+
+    const badge = document.getElementById('badge-plata-pending-count');
+    const deployBtn = document.getElementById('btn-plata-deploy');
+    const deployLbl = document.getElementById('lbl-btn-plata-deploy');
+
+    if (badge) {
+      if (count > 0) {
+        badge.style.display = 'inline-block';
+        badge.textContent = count;
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    if (deployLbl) {
+      deployLbl.textContent = count > 0 ? `Publicar en la Web (${count})` : 'Publicar en la Web';
+    }
+
+    if (deployBtn) {
+      if (count > 0) {
+        deployBtn.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.7)';
+        deployBtn.style.border = '1px solid #38bdf8';
+      } else {
+        deployBtn.style.boxShadow = 'none';
+        deployBtn.style.border = 'none';
+      }
+    }
+
+    const alertContainer = document.getElementById('plata-pending-alert-container');
+    if (alertContainer) {
+      if (count > 0) {
+        alertContainer.style.display = 'block';
+        alertContainer.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.12) 100%); border: 1.5px solid #f59e0b; border-radius: 10px; padding: 0.85rem 1.15rem; margin-bottom: 1.25rem; color: #fbbf24; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 4px 16px rgba(245, 158, 11, 0.15);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
+              <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(245, 158, 11, 0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fbbf24; flex-shrink: 0;">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <div>
+                <div style="font-weight: 800; color: #ffffff; font-size: 0.92rem;">
+                  Tienes ${count} partido(s) guardado(s) pendiente(s) de publicar en la web
+                </div>
+                <div style="font-size: 0.78rem; color: #cbd5e1; margin-top: 0.15rem;">
+                  Los resultados están guardados en tu navegador. Cuando termines de anotar tus partidos, presiona <strong>Publicar en la Web</strong> para subirlos todos juntos.
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="PlataApp.openDeployModal()" style="font-weight: 800; background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none; padding: 0.55rem 1.2rem; font-size: 0.88rem; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35); flex-shrink: 0;">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Publicar en la Web Ahora
+            </button>
+          </div>
+        `;
+      } else {
+        alertContainer.style.display = 'none';
+        alertContainer.innerHTML = '';
+      }
+    }
+  },
+
+  saveLocalMatch(matchId, isAnulacion, serializedEvents, historyRecord) {
+    if (!this.pendingMatches) this.pendingMatches = {};
+
+    this.pendingMatches[matchId] = {
+      id: matchId,
+      jornada: this.currentJornada,
+      team1Id: this.currentMatch.team1Id,
+      team2Id: this.currentMatch.team2Id,
+      score1: this.currentMatch.score1,
+      score2: this.currentMatch.score2,
+      played: true,
+      annulled: !!isAnulacion,
+      events: serializedEvents || [],
+      registeredBy: this.currentMatch.registeredBy,
+      registeredAt: this.currentMatch.registeredAt,
+      historyRecord: historyRecord || null
+    };
+
+    try {
+      localStorage.setItem('lmi_plata_pending_matches', JSON.stringify(this.pendingMatches));
+    } catch (e) {
+      console.warn('No se pudo guardar en localStorage:', e);
+    }
+
+    const isLocal = window.location.protocol.startsWith('http:') && 
+      (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost');
+    if (isLocal) {
+      this.getApiBase().then(base => {
+        if (base) {
+          fetch(`${base}/api/save`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(this.data)
+          }).catch(err => console.warn('Error guardando en servidor local:', err));
+        }
+      });
+    }
+
+    this.populateMatchesForCurrentJornada();
+    this.onMatchSelected(matchId);
+    this.renderMatchHistory();
+    this.renderActiveExport();
+    this.updatePendingDeployUI();
+
+    const pendingCount = Object.keys(this.pendingMatches).length;
+    if (isAnulacion) {
+      this.showToast(`¡Partido anulado y guardado! (${pendingCount} cambio(s) pendiente(s) de publicar en la web)`, 'success');
+    } else {
+      this.showToast(`✅ ¡Partido guardado con éxito! (${pendingCount} cambio(s) pendiente(s) de publicar en la web)`, 'success');
+    }
+  },
+
+  discardPendingMatch(matchId) {
+    if (!this.pendingMatches || !this.pendingMatches[matchId]) return;
+    if (!confirm('¿Deseas descartar este partido guardado antes de publicarlo?')) return;
+    
+    const pending = this.pendingMatches[matchId];
+    
+    // 1. Revertir estadísticas de jugadores si tenía eventos
+    if (Array.isArray(pending.events)) {
+      pending.events.forEach(ev => {
+        if (!ev.playerId) return;
+        const player = this.getPlayerById(ev.playerId);
+        if (!player) return;
+        const cnt = parseInt(ev.count, 10) || 1;
+        const evTeamId = ev.teamId || player.teamId;
+
+        if (ev.type === 'gol') {
+          player.goals = Math.max(0, (player.goals || 0) - cnt);
+          player.goals_liga = Math.max(0, (player.goals_liga || 0) - cnt);
+          if (player.statsByTeam && player.statsByTeam[evTeamId]) {
+            player.statsByTeam[evTeamId].goals = Math.max(0, (player.statsByTeam[evTeamId].goals || 0) - cnt);
+            player.statsByTeam[evTeamId].goals_liga = Math.max(0, (player.statsByTeam[evTeamId].goals_liga || 0) - cnt);
+          }
+        } else if (ev.type === 'asistencia') {
+          player.assists = Math.max(0, (player.assists || 0) - cnt);
+          player.assists_liga = Math.max(0, (player.assists_liga || 0) - cnt);
+          if (player.statsByTeam && player.statsByTeam[evTeamId]) {
+            player.statsByTeam[evTeamId].assists = Math.max(0, (player.statsByTeam[evTeamId].assists || 0) - cnt);
+            player.statsByTeam[evTeamId].assists_liga = Math.max(0, (player.statsByTeam[evTeamId].assists_liga || 0) - cnt);
+          }
+        }
+      });
+    }
+
+    // 2. Revertir partido en fixtures
+    const match = (this.data.fixtures?.plata || []).flatMap(j => j.matches).find(m => m.id === matchId);
+    if (match) {
+      match.played = false;
+      match.annulled = false;
+      match.score1 = null;
+      match.score2 = null;
+      match.events = [];
+      match.registeredBy = null;
+      match.registeredAt = null;
+    }
+
+    // 3. Eliminar de matchHistory
+    if (pending.historyRecord && Array.isArray(this.data.matchHistory)) {
+      this.data.matchHistory = this.data.matchHistory.filter(h => h.id !== pending.historyRecord.id && h.fixtureMatchId !== matchId);
+    }
+
+    // 4. Eliminar de pendingMatches
+    delete this.pendingMatches[matchId];
+    localStorage.setItem('lmi_plata_pending_matches', JSON.stringify(this.pendingMatches));
+
+    // 5. Actualizar UI
+    this.updatePendingDeployUI();
+    this.populateMatchesForCurrentJornada();
+    if (this.currentMatchId === matchId) {
+      this.onMatchSelected(matchId);
+    }
+    this.renderMatchHistory();
+    this.renderActiveExport();
+    this.openDeployModal();
+    this.showToast('Partido descartado.', 'info');
   },
 
   // ==========================================
@@ -1650,22 +1928,23 @@ const PlataApp = {
   },
 
   // Confirmación ejecutada desde la ventana modal
-  async executeConfirmedPublish() {
+  executeConfirmedPublish() {
     const btnPublish = document.getElementById('btn-modal-confirm-publish');
     if (btnPublish) {
       btnPublish.disabled = true;
-      btnPublish.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publicando...';
+      btnPublish.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando...';
     }
 
     try {
       if (this.pendingPublishType === 'anular') {
-        await this.executeAnulacion();
+        this.executeAnulacion();
       } else {
-        await this.executeSubmitMatch();
+        this.executeSubmitMatch();
       }
     } finally {
       if (btnPublish) {
         btnPublish.disabled = false;
+        btnPublish.innerHTML = '<i class="fa-solid fa-check"></i> Aceptar y Guardar Partido';
       }
       this.closeMatchConfirmModal();
     }
@@ -1795,14 +2074,8 @@ const PlataApp = {
     this.lastSavedEvents = serializedEvents;
     this.lastHistoryRecord = historyRecord;
 
-    // 5. Guardar y publicar
-    const ok = await this.saveData();
-    if (ok) {
-      this.populateMatchesForCurrentJornada();
-      this.onMatchSelected(this.currentMatch.id);
-      this.renderMatchHistory();
-      this.renderActiveExport();
-    }
+    // 5. Guardar localmente (en memoria y localStorage)
+    this.saveLocalMatch(this.currentMatch.id, false, serializedEvents, historyRecord);
   },
 
   async executeAnulacion() {
@@ -1880,16 +2153,8 @@ const PlataApp = {
     this.lastSavedEvents = [];
     this.lastHistoryRecord = historyRecord;
 
-    // 4. Guardar y publicar
-    const commitMsg = `Anulación Jornada ${this.currentJornada}: ${t1Name} vs ${t2Name} [${delegateUser}]`;
-    const ok = await this.saveData(commitMsg);
-    if (ok) {
-      this.populateMatchesForCurrentJornada();
-      this.onMatchSelected(this.currentMatch.id);
-      this.renderMatchHistory();
-      this.renderActiveExport();
-      this.showToast(`¡Partido entre ${t1Name} y ${t2Name} anulado! Registrado como jugado sin puntos.`, 'success');
-    }
+    // 4. Guardar localmente (en memoria y localStorage)
+    this.saveLocalMatch(this.currentMatch.id, true, [], historyRecord);
   },
 
   // ==========================================
@@ -2417,7 +2682,82 @@ const PlataApp = {
   // ==========================================
   openDeployModal() {
     const modal = document.getElementById('modal-plata-deploy');
-    if (modal) modal.style.display = 'flex';
+    if (!modal) return;
+
+    const listEl = document.getElementById('plata-deploy-pending-list');
+    const msgInput = document.getElementById('plata-deploy-msg');
+    const consoleEl = document.getElementById('plata-deploy-console');
+    
+    if (consoleEl) {
+      consoleEl.style.display = 'none';
+      consoleEl.textContent = '';
+    }
+
+    const pendingKeys = Object.keys(this.pendingMatches || {});
+    const count = pendingKeys.length;
+
+    if (listEl) {
+      if (count === 0) {
+        listEl.innerHTML = `
+          <div style="background: rgba(148, 163, 184, 0.08); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 8px; padding: 1.25rem; text-align: center; color: #94a3b8; font-size: 0.88rem;">
+            <i class="fa-solid fa-circle-check" style="color: #34d399; font-size: 1.5rem; display: block; margin-bottom: 0.4rem;"></i>
+            <strong style="color: #fff;">No tienes partidos pendientes de publicar</strong>
+            <div style="font-size: 0.78rem; margin-top: 0.25rem; color: #94a3b8;">Todos los partidos que has guardado ya están sincronizados en la web oficial.</div>
+          </div>
+        `;
+        if (msgInput) msgInput.value = 'Sincronización División Plata';
+      } else {
+        let itemsHtml = '';
+        const summaryParts = [];
+        pendingKeys.forEach(mId => {
+          const p = this.pendingMatches[mId];
+          const t1 = this.getTeamById(p.team1Id);
+          const t2 = this.getTeamById(p.team2Id);
+          const t1Name = t1 ? t1.name : p.team1Id;
+          const t2Name = t2 ? t2.name : p.team2Id;
+          const t1Logo = t1 ? t1.logo : 'Logos Equipos/default.png';
+          const t2Logo = t2 ? t2.logo : 'Logos Equipos/default.png';
+          const eventsCount = Array.isArray(p.events) ? p.events.length : 0;
+          
+          summaryParts.push(`${t1Name} vs ${t2Name}`);
+
+          itemsHtml += `
+            <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 0.75rem 0.9rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem; min-width: 0;">
+                <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-weight: 800; font-size: 0.7rem; flex-shrink: 0;">J${p.jornada || '?'}</span>
+                <div style="display: flex; align-items: center; gap: 0.4rem; font-weight: 700; color: #fff; font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                  <img src="${t1Logo}" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
+                  <span>${t1Name}</span>
+                  <span style="background: rgba(0,0,0,0.4); padding: 0.15rem 0.5rem; border-radius: 4px; color: #ffd100; font-weight: 900;">${p.score1} - ${p.score2}</span>
+                  <img src="${t2Logo}" style="width: 20px; height: 20px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
+                  <span>${t2Name}</span>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+                <span style="font-size: 0.72rem; color: #94a3b8;"><i class="fa-solid fa-futbol"></i> ${eventsCount} ev.</span>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="PlataApp.discardPendingMatch('${mId}')" title="Descartar este partido antes de publicar" style="padding: 0.2rem 0.45rem; font-size: 0.72rem; color: #f87171; border-color: rgba(239,68,68,0.3);">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        listEl.innerHTML = `
+          <div style="font-size: 0.8rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+            <span><i class="fa-solid fa-clock-rotate-left"></i> Partidos Listos para Publicar (${count}):</span>
+            <span style="font-size: 0.72rem; color: #94a3b8; font-weight: 600;">Se subirán todos juntos</span>
+          </div>
+          ${itemsHtml}
+        `;
+
+        if (msgInput) {
+          msgInput.value = `Registro División Plata (${count} partidos): ${summaryParts.slice(0, 2).join(', ')}${summaryParts.length > 2 ? '...' : ''} [${this.currentUser}]`;
+        }
+      }
+    }
+
+    modal.style.display = 'flex';
   },
 
   closeDeployModal() {
@@ -2428,11 +2768,19 @@ const PlataApp = {
   async runDeploy() {
     const consoleEl = document.getElementById('plata-deploy-console');
     const btn = document.getElementById('btn-run-plata-deploy');
-    const msg = document.getElementById('plata-deploy-msg')?.value.trim() || `Registro partidos División Plata por ${this.currentUser}`;
+    const token = (localStorage.getItem('lmi_github_token') || '').trim();
 
+    if (!token) {
+      this.showToast('⚠️ No se detectó la clave de autorización oficial. Ingresa tu clave para publicar.', 'error');
+      PlataAuth.openTokenModal();
+      return;
+    }
+
+    const pendingKeys = Object.keys(this.pendingMatches || {});
     if (consoleEl) {
       consoleEl.style.display = 'block';
-      consoleEl.textContent = '== INICIANDO PUBLICACIÓN EN PRODUCCIÓN ==\n';
+      consoleEl.textContent = '== INICIANDO PUBLICACIÓN EN LA WEB OFICIAL ==\n';
+      consoleEl.textContent += `1. Verificando ${pendingKeys.length} partido(s) pendiente(s)...\n`;
     }
 
     if (btn) {
@@ -2441,18 +2789,144 @@ const PlataApp = {
     }
 
     try {
-      const ok = await this.saveData(false);
-      if (ok) {
-        if (consoleEl) {
-          consoleEl.textContent += '\n✓ Datos sincronizados con éxito.\n';
-          consoleEl.textContent += '🎉 ¡PROCESO FINALIZADO CON ÉXITO!\nLos cambios se reflejarán en la web pública en 1-2 minutos.';
+      if (consoleEl) consoleEl.textContent += '2. Descargando versión más reciente de la plataforma oficial...\n';
+      
+      const remoteData = await this.getLatestRemoteData(token);
+      if (!remoteData) {
+        throw new Error('No se pudo descargar la base de datos remota para sincronizar.');
+      }
+
+      if (consoleEl) consoleEl.textContent += '3. Fusionando partidos y estadísticas sin sobreescribir otros registros...\n';
+
+      const remotePlata = (remoteData.fixtures && remoteData.fixtures.plata) || [];
+      const localPlata = (this.data && this.data.fixtures && this.data.fixtures.plata) || [];
+
+      localPlata.forEach(lJornada => {
+        const rJornada = remotePlata.find(r => r.jornada === lJornada.jornada);
+        if (rJornada && Array.isArray(lJornada.matches)) {
+          lJornada.matches.forEach(lMatch => {
+            const rMatch = (rJornada.matches || []).find(m => m.id === lMatch.id);
+            if (rMatch) {
+              const isPending = !!(this.pendingMatches && this.pendingMatches[lMatch.id]);
+              if (isPending) {
+                const p = this.pendingMatches[lMatch.id];
+                rMatch.played = p.played;
+                rMatch.annulled = !!p.annulled;
+                rMatch.score1 = p.score1;
+                rMatch.score2 = p.score2;
+                rMatch.events = p.events || [];
+                rMatch.registeredBy = p.registeredBy;
+                rMatch.registeredAt = p.registeredAt;
+              } else if (lMatch.played && !rMatch.played) {
+                rMatch.played = true;
+                rMatch.annulled = !!lMatch.annulled;
+                rMatch.score1 = lMatch.score1;
+                rMatch.score2 = lMatch.score2;
+                rMatch.events = lMatch.events || [];
+                rMatch.registeredBy = lMatch.registeredBy;
+                rMatch.registeredAt = lMatch.registeredAt;
+              }
+            }
+          });
         }
+      });
+
+      // Aplicar estadísticas de los partidos pendientes a jugadores en remoteData
+      pendingKeys.forEach(mId => {
+        const pending = this.pendingMatches[mId];
+        if (Array.isArray(pending.events) && pending.events.length > 0 && Array.isArray(remoteData.players)) {
+          pending.events.forEach(ev => {
+            if (!ev.playerId) return;
+            const player = remoteData.players.find(p => p.id === ev.playerId);
+            if (!player) return;
+
+            const cnt = parseInt(ev.count, 10) || 1;
+            const evTeamId = ev.teamId || player.teamId;
+
+            if (!player.statsByTeam) player.statsByTeam = {};
+            if (evTeamId && !player.statsByTeam[evTeamId]) {
+              const teamObj = (remoteData.teams || []).find(t => t.id === evTeamId);
+              player.statsByTeam[evTeamId] = {
+                teamId: evTeamId,
+                teamName: teamObj?.name || evTeamId,
+                goals: 0, assists: 0,
+                goals_liga: 0, assists_liga: 0,
+                goals_champions: 0, assists_champions: 0,
+                goals_estelar: 0, assists_estelar: 0
+              };
+            }
+            const tEntry = evTeamId ? player.statsByTeam[evTeamId] : null;
+
+            if (ev.type === 'gol') {
+              player.goals = (player.goals || 0) + cnt;
+              player.goals_liga = (player.goals_liga || 0) + cnt;
+              if (tEntry) {
+                tEntry.goals = (tEntry.goals || 0) + cnt;
+                tEntry.goals_liga = (tEntry.goals_liga || 0) + cnt;
+              }
+            } else if (ev.type === 'asistencia') {
+              player.assists = (player.assists || 0) + cnt;
+              player.assists_liga = (player.assists_liga || 0) + cnt;
+              if (tEntry) {
+                tEntry.assists = (tEntry.assists || 0) + cnt;
+                tEntry.assists_liga = (tEntry.assists_liga || 0) + cnt;
+              }
+            }
+          });
+        }
+
+        if (pending.historyRecord) {
+          if (!remoteData.matchHistory) remoteData.matchHistory = [];
+          const exists = remoteData.matchHistory.some(h => h.id === pending.historyRecord.id || (h.fixtureMatchId === pending.historyRecord.fixtureMatchId && h.timestamp === pending.historyRecord.timestamp));
+          if (!exists) {
+            remoteData.matchHistory.unshift(pending.historyRecord);
+          }
+        }
+      });
+
+      if (Array.isArray(this.data && this.data.matchHistory)) {
+        if (!remoteData.matchHistory) remoteData.matchHistory = [];
+        this.data.matchHistory.forEach(lh => {
+          const inRemote = remoteData.matchHistory.some(rh => rh.id === lh.id || (rh.fixtureMatchId === lh.fixtureMatchId && rh.timestamp === lh.timestamp));
+          if (!inRemote) {
+            remoteData.matchHistory.push(lh);
+          }
+        });
+        remoteData.matchHistory.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+      }
+
+      if (consoleEl) consoleEl.textContent += '4. Subiendo actualización a la nube oficial (GitHub)...\n';
+
+      const userCommitMsg = document.getElementById('plata-deploy-msg')?.value.trim();
+      const defaultCommitMsg = `Registro División Plata: ${pendingKeys.length} partido(s) por ${this.currentUser}`;
+      const finalMsg = userCommitMsg || defaultCommitMsg;
+
+      const res = await this.saveToGitHub(token, remoteData, finalMsg);
+      if (res && res.success) {
+        this.pendingMatches = {};
+        localStorage.removeItem('lmi_plata_pending_matches');
+
+        this.data = remoteData;
+        window.lmiData = remoteData;
+
+        this.updatePendingDeployUI();
+        this.populateMatchesForCurrentJornada();
+        if (this.currentMatchId) this.onMatchSelected(this.currentMatchId);
+        this.renderMatchHistory();
+        this.renderActiveExport();
+
+        if (consoleEl) {
+          consoleEl.textContent += '\n✓ Datos sincronizados con la web oficial con éxito.\n';
+          consoleEl.textContent += '🎉 ¡PUBLICACIÓN COMPLETADA!\nLos resultados se reflejan en la web en 1-2 minutos.';
+        }
+        this.showToast('🎉 ¡Todos los partidos fueron publicados en la web con éxito!', 'success');
       } else {
-        throw new Error('No se pudo guardar la información.');
+        throw new Error('Fallo al actualizar la referencia en el servidor de la web.');
       }
     } catch (err) {
-      console.error('Error en deploy:', err);
-      if (consoleEl) consoleEl.textContent += `\n❌ ERROR: ${err.message}`;
+      console.error('Error publicando en la web:', err);
+      if (consoleEl) consoleEl.textContent += `\n❌ ERROR: ${err.message}\n`;
+      this.showToast(`Error de publicación: ${err.message}`, 'error');
     } finally {
       if (btn) {
         btn.disabled = false;
