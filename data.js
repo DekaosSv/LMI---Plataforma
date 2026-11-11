@@ -3707,16 +3707,30 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Díaz",
       "position": "EI",
       "teamId": "psg",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "psg": {
+          "teamId": "psg",
+          "teamName": "PSG",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936638033_11",
@@ -3881,9 +3895,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ritsu Doan",
       "position": "ID",
       "teamId": "psg",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3895,9 +3909,9 @@ var INITIAL_LMI_DATA = {
         "psg": {
           "teamId": "psg",
           "teamName": "PSG",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -4590,9 +4604,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "olympiquelyon",
       "goals": 1,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 1,
-      "assists_liga": 4,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4604,9 +4618,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
           "goals": 1,
-          "assists": 4,
+          "assists": 5,
           "goals_liga": 1,
-          "assists_liga": 4,
+          "assists_liga": 5,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4679,9 +4693,9 @@ var INITIAL_LMI_DATA = {
       "name": "Sergio Agüero",
       "position": "DC",
       "teamId": "olympiquelyon",
-      "goals": 1,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4693,9 +4707,9 @@ var INITIAL_LMI_DATA = {
         "olympiquelyon": {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
-          "goals": 1,
+          "goals": 4,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 4,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -4822,9 +4836,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "olympiquelyon",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 1,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4836,9 +4850,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
           "goals": 1,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 1,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4852,9 +4866,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "olympiquelyon",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4866,9 +4880,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -5974,16 +5988,30 @@ var INITIAL_LMI_DATA = {
       "name": "George Best",
       "position": "ED",
       "teamId": "staderennais",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 2,
+      "goals_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 1,
+          "assists": 2,
+          "goals_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017276096_10",
@@ -6006,32 +6034,60 @@ var INITIAL_LMI_DATA = {
       "name": "Eden Hazard",
       "position": "SD",
       "teamId": "staderennais",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017276096_12",
       "name": "Junya Ito",
       "position": "MP",
       "teamId": "staderennais",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017276096_13",
@@ -6354,9 +6410,9 @@ var INITIAL_LMI_DATA = {
       "name": "Nico Paz",
       "position": "MP",
       "teamId": "intermilan",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6368,9 +6424,9 @@ var INITIAL_LMI_DATA = {
         "intermilan": {
           "teamId": "intermilan",
           "teamName": "Inter Milan",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -6401,9 +6457,9 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "intermilan",
       "goals": 2,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 2,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6415,9 +6471,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "intermilan",
           "teamName": "Inter Milan",
           "goals": 2,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 2,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -10239,15 +10295,29 @@ var INITIAL_LMI_DATA = {
       "position": "LI",
       "teamId": "borussiadortmund",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794025006334_5",
@@ -10335,31 +10405,59 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "borussiadortmund",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794025006334_11",
       "name": "Ismael Saibari",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794025006334_12",
@@ -10526,32 +10624,60 @@ var INITIAL_LMI_DATA = {
       "name": "Romelu Lukaku",
       "position": "DC",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794025006334_23",
       "name": "Kerim Alajbegović",
       "position": "II",
       "teamId": "borussiadortmund",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "borussiadortmund": {
+          "teamId": "borussiadortmund",
+          "teamName": "Borussia Dortmund",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794025064940_1",
@@ -11879,15 +12005,29 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "como1907",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794028919267_7",
@@ -11895,15 +12035,29 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "como1907",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794028919267_8",
@@ -11911,15 +12065,29 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "como1907",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794028919267_9",
@@ -11986,16 +12154,30 @@ var INITIAL_LMI_DATA = {
       "name": "Jamie Vardy",
       "position": "DC",
       "teamId": "como1907",
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 2,
+          "assists": 0,
+          "goals_liga": 2,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794028919267_12",
@@ -12162,16 +12344,30 @@ var INITIAL_LMI_DATA = {
       "name": "Son Heung-min (P)",
       "position": "EI",
       "teamId": "como1907",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "como1907": {
+          "teamId": "como1907",
+          "teamName": "Como 1907",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794028919267_23",
@@ -13480,10 +13676,77 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "olympiquelyon",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936873896_11",
+                "playerName": "Sergio Agüero",
+                "teamId": "olympiquelyon",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1793936873896_19",
+                "playerName": "Facundo Torres",
+                "teamId": "olympiquelyon",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017276096_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017276096_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017276096_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017276096_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017276096_12",
+                "playerName": "Junya Ito",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936873896_8",
+                "playerName": "Carney Chukwuemeka",
+                "teamId": "olympiquelyon",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936873896_20",
+                "playerName": "Morgan Gibbs-White",
+                "teamId": "olympiquelyon",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:28:35.389Z"
           },
           {
             "id": "oro_j1_m4",
@@ -13500,10 +13763,35 @@ var INITIAL_LMI_DATA = {
             "jornada": 1,
             "team1Id": "como1907",
             "team2Id": "psg",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794028919267_22",
+                "playerName": "Son Heung-min (P)",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794028919267_6",
+                "playerName": "Felix Nmecha",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936638033_20",
+                "playerName": "Ritsu Doan",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:27:18.133Z"
           }
         ],
         "restingTeamId": "liverpool"
@@ -13518,10 +13806,28 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "intermilan",
             "team2Id": "liverpool",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017435168_8",
+                "playerName": "Nico Paz",
+                "teamId": "intermilan",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017435168_10",
+                "playerName": "Karim Adeyemi",
+                "teamId": "intermilan",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:30:02.413Z"
           },
           {
             "id": "oro_j2_m2",
@@ -13640,20 +13946,63 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "como1907",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794028919267_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794028919267_7",
+                "playerName": "Rodri",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:29:06.557Z"
           },
           {
             "id": "oro_j2_m5",
             "jornada": 2,
             "team1Id": "borussiadortmund",
             "team2Id": "psg",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794025006334_11",
+                "playerName": "Ismael Saibari",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794025006334_10",
+                "playerName": "Paulo Dybala",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936638033_10",
+                "playerName": "Luis Díaz",
+                "teamId": "psg",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:29:35.964Z"
           }
         ],
         "restingTeamId": "adodenhaag"
@@ -14018,10 +14367,35 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "borussiadortmund",
             "team2Id": "bocajuniors",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794025006334_23",
+                "playerName": "Kerim Alajbegović",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794025006334_22",
+                "playerName": "Romelu Lukaku",
+                "teamId": "borussiadortmund",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794025006334_4",
+                "playerName": "Théo Hernandez",
+                "teamId": "borussiadortmund",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:30:53.038Z"
           },
           {
             "id": "oro_j4_m5",
@@ -14081,10 +14455,28 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "como1907",
             "team2Id": "olympiquelyon",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794028919267_11",
+                "playerName": "Jamie Vardy",
+                "teamId": "como1907",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794028919267_8",
+                "playerName": "Harry Kane",
+                "teamId": "como1907",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:31:26.357Z"
           },
           {
             "id": "oro_j5_m3",
@@ -14119,10 +14511,13 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "borussiadortmund",
             "team2Id": "intermilan",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 0,
+            "played": true,
+            "events": [],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-11T02:31:34.640Z"
           },
           {
             "id": "oro_j5_m5",
@@ -19101,6 +19496,341 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794364294640",
+      "timestamp": 1794364294640,
+      "date": "10 nov 2026, 08:31 p.m.",
+      "competition": "oro",
+      "jornada": 5,
+      "fixtureMatchId": "oro_j5_m4",
+      "phase": "Jornada 5",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 0,
+      "team2Id": "intermilan",
+      "team2Name": "Inter Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 0,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:31:34.640Z"
+    },
+    {
+      "id": "match_1794364286357",
+      "timestamp": 1794364286357,
+      "date": "10 nov 2026, 08:31 p.m.",
+      "competition": "oro",
+      "jornada": 5,
+      "fixtureMatchId": "oro_j5_m2",
+      "phase": "Jornada 5",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 1,
+      "team2Id": "olympiquelyon",
+      "team2Name": "Olympique Lyon",
+      "team2Logo": "Logos Equipos/lyon.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794028919267_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794028919267_8",
+          "playerName": "Harry Kane",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:31:26.357Z"
+    },
+    {
+      "id": "match_1794364253038",
+      "timestamp": 1794364253038,
+      "date": "10 nov 2026, 08:30 p.m.",
+      "competition": "oro",
+      "jornada": 4,
+      "fixtureMatchId": "oro_j4_m4",
+      "phase": "Jornada 4",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 3,
+      "team2Id": "bocajuniors",
+      "team2Name": "Boca Juniors",
+      "team2Logo": "Logos Equipos/boca.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794025006334_23",
+          "playerName": "Kerim Alajbegović",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794025006334_22",
+          "playerName": "Romelu Lukaku",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794025006334_4",
+          "playerName": "Théo Hernandez",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:30:53.038Z"
+    },
+    {
+      "id": "match_1794364202413",
+      "timestamp": 1794364202413,
+      "date": "10 nov 2026, 08:30 p.m.",
+      "competition": "oro",
+      "jornada": 2,
+      "fixtureMatchId": "oro_j2_m1",
+      "phase": "Jornada 2",
+      "team1Id": "intermilan",
+      "team1Name": "Inter Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 1,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794017435168_8",
+          "playerName": "Nico Paz",
+          "teamId": "intermilan",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017435168_10",
+          "playerName": "Karim Adeyemi",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:30:02.413Z"
+    },
+    {
+      "id": "match_1794364175964",
+      "timestamp": 1794364175964,
+      "date": "10 nov 2026, 08:29 p.m.",
+      "competition": "oro",
+      "jornada": 2,
+      "fixtureMatchId": "oro_j2_m5",
+      "phase": "Jornada 2",
+      "team1Id": "borussiadortmund",
+      "team1Name": "Borussia Dortmund",
+      "team1Logo": "Logos Equipos/borussia.webp",
+      "score1": 1,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794025006334_11",
+          "playerName": "Ismael Saibari",
+          "teamId": "borussiadortmund",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794025006334_10",
+          "playerName": "Paulo Dybala",
+          "teamId": "borussiadortmund",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_10",
+          "playerName": "Luis Díaz",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:29:35.965Z"
+    },
+    {
+      "id": "match_1794364146557",
+      "timestamp": 1794364146557,
+      "date": "10 nov 2026, 08:29 p.m.",
+      "competition": "oro",
+      "jornada": 2,
+      "fixtureMatchId": "oro_j2_m4",
+      "phase": "Jornada 2",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 1,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794028919267_11",
+          "playerName": "Jamie Vardy",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794028919267_7",
+          "playerName": "Rodri",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:29:06.557Z"
+    },
+    {
+      "id": "match_1794364115389",
+      "timestamp": 1794364115389,
+      "date": "10 nov 2026, 08:28 p.m.",
+      "competition": "oro",
+      "jornada": 1,
+      "fixtureMatchId": "oro_j1_m3",
+      "phase": "Jornada 1",
+      "team1Id": "olympiquelyon",
+      "team1Name": "Olympique Lyon",
+      "team1Logo": "Logos Equipos/lyon.webp",
+      "score1": 3,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1793936873896_11",
+          "playerName": "Sergio Agüero",
+          "teamId": "olympiquelyon",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936873896_19",
+          "playerName": "Facundo Torres",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017276096_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017276096_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017276096_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017276096_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017276096_12",
+          "playerName": "Junya Ito",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_8",
+          "playerName": "Carney Chukwuemeka",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_20",
+          "playerName": "Morgan Gibbs-White",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:28:35.389Z"
+    },
+    {
+      "id": "match_1794364038133",
+      "timestamp": 1794364038133,
+      "date": "10 nov 2026, 08:27 p.m.",
+      "competition": "oro",
+      "jornada": 1,
+      "fixtureMatchId": "oro_j1_m5",
+      "phase": "Jornada 1",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 1,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794028919267_22",
+          "playerName": "Son Heung-min (P)",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794028919267_6",
+          "playerName": "Felix Nmecha",
+          "teamId": "como1907",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_20",
+          "playerName": "Ritsu Doan",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-11T02:27:18.133Z"
+    },
     {
       "id": "match_1794363644990",
       "timestamp": 1794363644990,
