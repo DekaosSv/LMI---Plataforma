@@ -1358,9 +1358,9 @@ var INITIAL_LMI_DATA = {
       "name": "Neymar Jr.",
       "position": "SD",
       "teamId": "fcbayernmunich",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -1372,9 +1372,9 @@ var INITIAL_LMI_DATA = {
         "fcbayernmunich": {
           "teamId": "fcbayernmunich",
           "teamName": "FC Bayern Múnich",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -1664,9 +1664,9 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "fcbayernmunich",
       "goals": 4,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 4,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -1677,9 +1677,9 @@ var INITIAL_LMI_DATA = {
         "fcbayernmunich": {
           "teamId": "fcbayernmunich",
           "goals": 4,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 4,
-          "assists_liga": 0,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2709,25 +2709,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "manchesterunited",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1793936522127_9",
-      "name": "Xavi Simons (P)",
-      "position": "MP",
-      "teamId": "manchesterunited",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2738,10 +2722,40 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1793936522127_9",
+      "name": "Xavi Simons (P)",
+      "position": "MP",
+      "teamId": "manchesterunited",
+      "goals": 2,
+      "assists": 1,
+      "goals_liga": 2,
+      "assists_liga": 1,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "manchesterunited": {
+          "teamId": "manchesterunited",
+          "teamName": "Manchester United",
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2754,10 +2768,10 @@ var INITIAL_LMI_DATA = {
       "name": "João Félix",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 1,
-      "assists": 1,
-      "goals_liga": 1,
-      "assists_liga": 1,
+      "goals": 2,
+      "assists": 2,
+      "goals_liga": 2,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2768,10 +2782,10 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 1,
-          "assists": 1,
-          "goals_liga": 1,
-          "assists_liga": 1,
+          "goals": 2,
+          "assists": 2,
+          "goals_liga": 2,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2784,9 +2798,9 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Forlán",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 1,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2798,9 +2812,9 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 1,
+          "goals": 3,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 3,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -5650,16 +5664,30 @@ var INITIAL_LMI_DATA = {
       "name": "Daizen Maeda",
       "position": "EI",
       "teamId": "clubnacional",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "teamName": "Club Nacional",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_18",
@@ -5667,15 +5695,29 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "teamName": "Club Nacional",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_19",
@@ -5698,16 +5740,30 @@ var INITIAL_LMI_DATA = {
       "name": "Dominic Solanke",
       "position": "DC",
       "teamId": "clubnacional",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "teamName": "Club Nacional",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_21",
@@ -9003,16 +9059,30 @@ var INITIAL_LMI_DATA = {
       "name": "Ross Barkley",
       "position": "MC",
       "teamId": "flamengo",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "flamengo": {
+          "teamId": "flamengo",
+          "teamName": "Flamengo",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017816312_9",
@@ -9051,16 +9121,30 @@ var INITIAL_LMI_DATA = {
       "name": "Karl-Heinz Rummenigge",
       "position": "DC",
       "teamId": "flamengo",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "flamengo": {
+          "teamId": "flamengo",
+          "teamName": "Flamengo",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017816312_12",
@@ -16261,10 +16345,84 @@ var INITIAL_LMI_DATA = {
             "jornada": 6,
             "team1Id": "clubnacional",
             "team2Id": "manchesterunited",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 4,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936522127_11",
+                "playerName": "Diego Forlán",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936522127_10",
+                "playerName": "João Félix",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936522127_9",
+                "playerName": "Xavi Simons (P)",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936522127_8",
+                "playerName": "Frenkie de Jong",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936522127_10",
+                "playerName": "João Félix",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936522127_9",
+                "playerName": "Xavi Simons (P)",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_20",
+                "playerName": "Dominic Solanke",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_18",
+                "playerName": "Sadio Mané",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_17",
+                "playerName": "Daizen Maeda",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_20",
+                "playerName": "Dominic Solanke",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-11T02:19:33.342Z"
           },
           {
             "id": "plata_j6_m5",
@@ -16644,10 +16802,49 @@ var INITIAL_LMI_DATA = {
             "jornada": 8,
             "team1Id": "flamengo",
             "team2Id": "fcbayernmunich",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017816312_8",
+                "playerName": "Ross Barkley",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_11",
+                "playerName": "Karl-Heinz Rummenigge",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_8",
+                "playerName": "Ross Barkley",
+                "teamId": "flamengo",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936362024_10",
+                "playerName": "Neymar Jr.",
+                "teamId": "fcbayernmunich",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936362024_23",
+                "playerName": "Ademola Lookman (P)",
+                "teamId": "fcbayernmunich",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Daniel",
+            "registeredAt": "2026-11-11T02:20:44.990Z"
           }
         ]
       },
@@ -18904,6 +19101,153 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794363644990",
+      "timestamp": 1794363644990,
+      "date": "10 nov 2026, 08:20 p.m.",
+      "competition": "plata",
+      "jornada": 8,
+      "fixtureMatchId": "plata_j8_m7",
+      "phase": "Jornada 8",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 2,
+      "team2Id": "fcbayernmunich",
+      "team2Name": "FC Bayern Múnich",
+      "team2Logo": "Logos Equipos/bayernmunich.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794017816312_8",
+          "playerName": "Ross Barkley",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_11",
+          "playerName": "Karl-Heinz Rummenigge",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_8",
+          "playerName": "Ross Barkley",
+          "teamId": "flamengo",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936362024_10",
+          "playerName": "Neymar Jr.",
+          "teamId": "fcbayernmunich",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936362024_23",
+          "playerName": "Ademola Lookman (P)",
+          "teamId": "fcbayernmunich",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-11T02:20:44.990Z"
+    },
+    {
+      "id": "match_1794363573342",
+      "timestamp": 1794363573342,
+      "date": "10 nov 2026, 08:19 p.m.",
+      "competition": "plata",
+      "jornada": 6,
+      "fixtureMatchId": "plata_j6_m4",
+      "phase": "Jornada 6",
+      "team1Id": "clubnacional",
+      "team1Name": "Club Nacional",
+      "team1Logo": "Logos Equipos/nacional.webp",
+      "score1": 3,
+      "team2Id": "manchesterunited",
+      "team2Name": "Manchester United",
+      "team2Logo": "Logos Equipos/manchesterunited.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1793936522127_11",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936522127_10",
+          "playerName": "João Félix",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_9",
+          "playerName": "Xavi Simons (P)",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_8",
+          "playerName": "Frenkie de Jong",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_10",
+          "playerName": "João Félix",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_9",
+          "playerName": "Xavi Simons (P)",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_20",
+          "playerName": "Dominic Solanke",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_18",
+          "playerName": "Sadio Mané",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_17",
+          "playerName": "Daizen Maeda",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_20",
+          "playerName": "Dominic Solanke",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Daniel",
+      "registeredAt": "2026-11-11T02:19:33.342Z"
+    },
     {
       "id": "match_1794283578118",
       "timestamp": 1794283578118,
