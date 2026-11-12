@@ -2709,9 +2709,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "manchesterunited",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -2723,9 +2723,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -2798,9 +2798,9 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Forlán",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 3,
+      "goals": 4,
       "assists": 0,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -2812,9 +2812,9 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 3,
+          "goals": 4,
           "assists": 0,
-          "goals_liga": 3,
+          "goals_liga": 4,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -4129,9 +4129,9 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "chelseafc",
       "goals": 1,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4143,9 +4143,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "chelseafc",
           "teamName": "Chelsea FC",
           "goals": 1,
-          "assists": 3,
+          "assists": 4,
           "goals_liga": 1,
-          "assists_liga": 3,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4158,10 +4158,10 @@ var INITIAL_LMI_DATA = {
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 13,
-      "assists": 1,
-      "goals_liga": 13,
-      "assists_liga": 1,
+      "goals": 15,
+      "assists": 2,
+      "goals_liga": 15,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4171,10 +4171,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 13,
-          "assists": 1,
-          "goals_liga": 13,
-          "assists_liga": 1,
+          "goals": 15,
+          "assists": 2,
+          "goals_liga": 15,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -4340,16 +4340,30 @@ var INITIAL_LMI_DATA = {
       "name": "Rodrigo Garro",
       "position": "MP",
       "teamId": "chelseafc",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
+      "goals": 1,
+      "assists": 1,
+      "goals_liga": 1,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "chelseafc": {
+          "teamId": "chelseafc",
+          "teamName": "Chelsea FC",
+          "goals": 1,
+          "assists": 1,
+          "goals_liga": 1,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1793936668528_19",
@@ -5581,9 +5595,9 @@ var INITIAL_LMI_DATA = {
       "name": "Maximiliano Araújo",
       "position": "LI",
       "teamId": "clubnacional",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5594,9 +5608,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubnacional": {
           "teamId": "clubnacional",
-          "goals": 0,
+          "goals": 1,
           "assists": 2,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -5627,15 +5641,29 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "clubnacional",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubnacional": {
+          "teamId": "clubnacional",
+          "teamName": "Club Nacional",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017241785_13",
@@ -5842,10 +5870,10 @@ var INITIAL_LMI_DATA = {
       "name": "Luis Suárez",
       "position": "DC",
       "teamId": "clubnacional",
-      "goals": 3,
-      "assists": 0,
-      "goals_liga": 3,
-      "assists_liga": 0,
+      "goals": 4,
+      "assists": 1,
+      "goals_liga": 4,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -5856,10 +5884,10 @@ var INITIAL_LMI_DATA = {
         "clubnacional": {
           "teamId": "clubnacional",
           "teamName": "Club Nacional",
-          "goals": 3,
-          "assists": 0,
-          "goals_liga": 3,
-          "assists_liga": 0,
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 4,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -5872,9 +5900,9 @@ var INITIAL_LMI_DATA = {
       "name": "Johan Cruyff",
       "position": "SD",
       "teamId": "clubnacional",
-      "goals": 1,
+      "goals": 2,
       "assists": 2,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -5886,9 +5914,9 @@ var INITIAL_LMI_DATA = {
         "clubnacional": {
           "teamId": "clubnacional",
           "teamName": "Club Nacional",
-          "goals": 1,
+          "goals": 2,
           "assists": 2,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -6030,9 +6058,9 @@ var INITIAL_LMI_DATA = {
       "name": "George Best",
       "position": "ED",
       "teamId": "staderennais",
-      "goals": 1,
+      "goals": 5,
       "assists": 3,
-      "goals_liga": 1,
+      "goals_liga": 5,
       "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6044,9 +6072,9 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 1,
+          "goals": 5,
           "assists": 3,
-          "goals_liga": 1,
+          "goals_liga": 5,
           "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -6077,9 +6105,9 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "staderennais",
       "goals": 2,
-      "assists": 1,
+      "assists": 3,
       "goals_liga": 2,
-      "assists_liga": 1,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -6091,9 +6119,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
           "goals": 2,
-          "assists": 1,
+          "assists": 3,
           "goals_liga": 2,
-          "assists_liga": 1,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -6106,9 +6134,9 @@ var INITIAL_LMI_DATA = {
       "name": "Junya Ito",
       "position": "MP",
       "teamId": "staderennais",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -6120,9 +6148,9 @@ var INITIAL_LMI_DATA = {
         "staderennais": {
           "teamId": "staderennais",
           "teamName": "Stade Rennais",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -6265,15 +6293,29 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "staderennais",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "staderennais": {
+          "teamId": "staderennais",
+          "teamName": "Stade Rennais",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017276096_22",
@@ -7792,9 +7834,9 @@ var INITIAL_LMI_DATA = {
       "name": "Pedri",
       "position": "MC",
       "teamId": "fcbarcelona",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7806,9 +7848,9 @@ var INITIAL_LMI_DATA = {
         "fcbarcelona": {
           "teamId": "fcbarcelona",
           "teamName": "FC Barcelona",
-          "goals": 1,
+          "goals": 2,
           "assists": 1,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8287,9 +8329,9 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8301,9 +8343,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "clubuniversidaddechile",
           "teamName": "Club Universidad de Chile",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 1,
+          "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8316,10 +8358,10 @@ var INITIAL_LMI_DATA = {
       "name": "Franck Ribéry",
       "position": "MP",
       "teamId": "clubuniversidaddechile",
-      "goals": 2,
-      "assists": 1,
-      "goals_liga": 2,
-      "assists_liga": 1,
+      "goals": 3,
+      "assists": 4,
+      "goals_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8329,10 +8371,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 2,
-          "assists": 1,
-          "goals_liga": 2,
-          "assists_liga": 1,
+          "goals": 3,
+          "assists": 4,
+          "goals_liga": 3,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8484,9 +8526,9 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 3,
+      "goals": 4,
       "assists": 1,
-      "goals_liga": 3,
+      "goals_liga": 4,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8497,9 +8539,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 3,
+          "goals": 4,
           "assists": 1,
-          "goals_liga": 3,
+          "goals_liga": 4,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8542,9 +8584,9 @@ var INITIAL_LMI_DATA = {
       "name": "Alex Scott",
       "position": "MC",
       "teamId": "clubuniversidaddechile",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8556,9 +8598,9 @@ var INITIAL_LMI_DATA = {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
           "teamName": "Club Universidad de Chile",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8588,9 +8630,9 @@ var INITIAL_LMI_DATA = {
       "name": "Yoane Wissa",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 6,
+      "goals": 8,
       "assists": 2,
-      "goals_liga": 6,
+      "goals_liga": 8,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8601,9 +8643,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 6,
+          "goals": 8,
           "assists": 2,
-          "goals_liga": 6,
+          "goals_liga": 8,
           "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8633,9 +8675,9 @@ var INITIAL_LMI_DATA = {
       "name": "Deniz Undav",
       "position": "MP",
       "teamId": "clubuniversidaddechile",
-      "goals": 1,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8647,9 +8689,9 @@ var INITIAL_LMI_DATA = {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
           "teamName": "Club Universidad de Chile",
-          "goals": 1,
+          "goals": 3,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 3,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -9289,9 +9331,9 @@ var INITIAL_LMI_DATA = {
       "name": "Karl-Heinz Rummenigge",
       "position": "DC",
       "teamId": "flamengo",
-      "goals": 1,
+      "goals": 3,
       "assists": 0,
-      "goals_liga": 1,
+      "goals_liga": 3,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9303,9 +9345,9 @@ var INITIAL_LMI_DATA = {
         "flamengo": {
           "teamId": "flamengo",
           "teamName": "Flamengo",
-          "goals": 1,
+          "goals": 3,
           "assists": 0,
-          "goals_liga": 1,
+          "goals_liga": 3,
           "assists_liga": 0,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -9384,15 +9426,29 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "flamengo",
       "goals": 0,
-      "assists": 0,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "flamengo": {
+          "teamId": "flamengo",
+          "teamName": "Flamengo",
+          "goals": 0,
+          "assists": 2,
+          "goals_liga": 0,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017816312_17",
@@ -9431,16 +9487,30 @@ var INITIAL_LMI_DATA = {
       "name": "Dan Ndoye",
       "position": "ID",
       "teamId": "flamengo",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "flamengo": {
+          "teamId": "flamengo",
+          "teamName": "Flamengo",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017816312_20",
@@ -9448,15 +9518,29 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "flamengo",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "flamengo": {
+          "teamId": "flamengo",
+          "teamName": "Flamengo",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017816312_21",
@@ -14701,10 +14785,49 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "fcbarcelona",
             "team2Id": "staderennais",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 6,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017579992_7",
+                "playerName": "Pedri",
+                "teamId": "fcbarcelona",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017276096_9",
+                "playerName": "George Best",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 4
+              },
+              {
+                "playerId": "p_1794017276096_11",
+                "playerName": "Eden Hazard",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017276096_12",
+                "playerName": "Junya Ito",
+                "teamId": "staderennais",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017276096_21",
+                "playerName": "Valentín Barco",
+                "teamId": "staderennais",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-12T02:55:35.816Z"
           }
         ],
         "restingTeamId": "psg"
@@ -16114,20 +16237,126 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "flamengo",
             "team2Id": "clubnacional",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 3,
+            "score2": 4,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017241785_10",
+                "playerName": "Maximiliano Araújo",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_12",
+                "playerName": "Ruud Gullit",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_23",
+                "playerName": "Johan Cruyff",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_22",
+                "playerName": "Luis Suárez",
+                "teamId": "clubnacional",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017241785_22",
+                "playerName": "Luis Suárez",
+                "teamId": "clubnacional",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_11",
+                "playerName": "Karl-Heinz Rummenigge",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_20",
+                "playerName": "Alphadjo Cissè",
+                "teamId": "flamengo",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-12T02:50:04.104Z"
           },
           {
             "id": "plata_j2_m3",
             "jornada": 2,
             "team1Id": "clubuniversidaddechile",
             "team2Id": "realmadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 7,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017628489_23",
+                "playerName": "Deniz Undav",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017628489_21",
+                "playerName": "Yoane Wissa",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017628489_9",
+                "playerName": "Franck Ribéry",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 3
+              },
+              {
+                "playerId": "p_1794017628489_9",
+                "playerName": "Franck Ribéry",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_8",
+                "playerName": "Pape Gueye",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_17",
+                "playerName": "Rasmus Højlund",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_19",
+                "playerName": "Alex Scott",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-12T02:48:30.247Z"
           },
           {
             "id": "plata_j2_m4",
@@ -16585,10 +16814,49 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "flamengo",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 3,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1793936668528_18",
+                "playerName": "Rodrigo Garro",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_18",
+                "playerName": "Rodrigo Garro",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_9",
+                "playerName": "Luiz Araújo",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-12T02:51:42.201Z"
           },
           {
             "id": "plata_j4_m5",
@@ -16905,10 +17173,49 @@ var INITIAL_LMI_DATA = {
             "jornada": 5,
             "team1Id": "flamengo",
             "team2Id": "manchesterunited",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017816312_19",
+                "playerName": "Dan Ndoye",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_16",
+                "playerName": "Alexis Saelemaekers",
+                "teamId": "flamengo",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017816312_11",
+                "playerName": "Karl-Heinz Rummenigge",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936522127_11",
+                "playerName": "Diego Forlán",
+                "teamId": "manchesterunited",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936522127_8",
+                "playerName": "Frenkie de Jong",
+                "teamId": "manchesterunited",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-12T02:53:07.184Z"
           },
           {
             "id": "plata_j5_m6",
@@ -19795,6 +20102,314 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794452135816",
+      "timestamp": 1794452135816,
+      "date": "11 nov 2026, 08:55 p.m.",
+      "competition": "oro",
+      "jornada": 4,
+      "fixtureMatchId": "oro_j4_m5",
+      "phase": "Jornada 4",
+      "team1Id": "fcbarcelona",
+      "team1Name": "FC Barcelona",
+      "team1Logo": "Logos Equipos/fcbarcelona.png",
+      "score1": 2,
+      "team2Id": "staderennais",
+      "team2Name": "Stade Rennais",
+      "team2Logo": "Logos Equipos/staderennais.png",
+      "score2": 6,
+      "events": [
+        {
+          "playerId": "p_1794017579992_7",
+          "playerName": "Pedri",
+          "teamId": "fcbarcelona",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017276096_9",
+          "playerName": "George Best",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 4
+        },
+        {
+          "playerId": "p_1794017276096_11",
+          "playerName": "Eden Hazard",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017276096_12",
+          "playerName": "Junya Ito",
+          "teamId": "staderennais",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017276096_21",
+          "playerName": "Valentín Barco",
+          "teamId": "staderennais",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-12T02:55:35.816Z"
+    },
+    {
+      "id": "match_1794451987184",
+      "timestamp": 1794451987184,
+      "date": "11 nov 2026, 08:53 p.m.",
+      "competition": "plata",
+      "jornada": 5,
+      "fixtureMatchId": "plata_j5_m5",
+      "phase": "Jornada 5",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 2,
+      "team2Id": "manchesterunited",
+      "team2Name": "Manchester United",
+      "team2Logo": "Logos Equipos/manchesterunited.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794017816312_19",
+          "playerName": "Dan Ndoye",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_16",
+          "playerName": "Alexis Saelemaekers",
+          "teamId": "flamengo",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017816312_11",
+          "playerName": "Karl-Heinz Rummenigge",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_11",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_8",
+          "playerName": "Frenkie de Jong",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-12T02:53:07.185Z"
+    },
+    {
+      "id": "match_1794451902201",
+      "timestamp": 1794451902201,
+      "date": "11 nov 2026, 08:51 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m4",
+      "phase": "Jornada 4",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 0,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936668528_18",
+          "playerName": "Rodrigo Garro",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_18",
+          "playerName": "Rodrigo Garro",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_9",
+          "playerName": "Luiz Araújo",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-12T02:51:42.201Z"
+    },
+    {
+      "id": "match_1794451804104",
+      "timestamp": 1794451804104,
+      "date": "11 nov 2026, 08:50 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m2",
+      "phase": "Jornada 2",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 3,
+      "team2Id": "clubnacional",
+      "team2Name": "Club Nacional",
+      "team2Logo": "Logos Equipos/nacional.webp",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1794017241785_10",
+          "playerName": "Maximiliano Araújo",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_12",
+          "playerName": "Ruud Gullit",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_23",
+          "playerName": "Johan Cruyff",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_22",
+          "playerName": "Luis Suárez",
+          "teamId": "clubnacional",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017241785_22",
+          "playerName": "Luis Suárez",
+          "teamId": "clubnacional",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_11",
+          "playerName": "Karl-Heinz Rummenigge",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_20",
+          "playerName": "Alphadjo Cissè",
+          "teamId": "flamengo",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-12T02:50:04.104Z"
+    },
+    {
+      "id": "match_1794451710247",
+      "timestamp": 1794451710247,
+      "date": "11 nov 2026, 08:48 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m3",
+      "phase": "Jornada 2",
+      "team1Id": "clubuniversidaddechile",
+      "team1Name": "Club Universidad de Chile",
+      "team1Logo": "Logos Equipos/uchile.png",
+      "score1": 7,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794017628489_23",
+          "playerName": "Deniz Undav",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_8",
+          "playerName": "Pape Gueye",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_19",
+          "playerName": "Alex Scott",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-12T02:48:30.247Z"
+    },
     {
       "id": "match_1794451257218",
       "timestamp": 1794451257218,
