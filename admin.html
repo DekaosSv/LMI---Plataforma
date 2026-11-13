@@ -52,6 +52,10 @@
         <i class="fa-solid fa-shield-halved"></i>
         <span>Clubes y Plantillas</span>
       </button>
+      <button class="nav-btn" data-view="view-player-stats" style="border-left: 3px solid #facc15;">
+        <i class="fa-solid fa-chart-simple" style="color: #facc15;"></i>
+        <span>Editar Estadísticas</span>
+      </button>
       <button class="nav-btn" data-view="view-market">
         <i class="fa-solid fa-arrow-right-arrow-left"></i>
         <span>Mercado de Fichajes</span>
@@ -412,6 +416,11 @@
             <div id="pending-filter-results" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
               <!-- Renderizado dinámicamente -->
             </div>
+          </div>
+
+          <!-- Aviso Automático de Fechas y Partidos Pendientes -->
+          <div id="pending-matches-notice" style="margin-bottom: 1.25rem;">
+            <!-- Renderizado dinámicamente por AdminApp.renderPendingMatchesNotice() -->
           </div>
 
           <!-- Duel Box -->
@@ -2425,6 +2434,73 @@
           </div>
         </div>
 
+      </section>
+
+      <!-- ==================== VIEW 7: EDITOR DE ESTADÍSTICAS DE JUGADORES ==================== -->
+      <section class="module-view" id="view-player-stats">
+        <div class="card" style="border-left: 4px solid #facc15;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-chart-simple" style="color: #facc15;"></i> Editor de Goles y Estadísticas de Jugadores</h2>
+              <p class="card-desc">Busca a cualquier jugador de la liga por nombre o club para corregir o editar manualmente sus goles y asistencias por competición.</p>
+            </div>
+            <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+              <span class="badge" id="stats-editor-count-badge" style="background: rgba(250, 204, 21, 0.15); color: #fde047; border: 1px solid rgba(250, 204, 21, 0.4); font-weight: 800; padding: 0.35rem 0.75rem;">
+                0 jugadores
+              </span>
+            </div>
+          </div>
+
+          <!-- Barra de Búsqueda y Filtros -->
+          <div style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 1rem; margin-bottom: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <div style="flex: 1; min-width: 240px; position: relative;">
+              <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+              <input type="text" class="form-control" id="stats-editor-search" placeholder="Buscar jugador por nombre (ej. Yamal, Haaland, Yuri...)" style="padding-left: 2.35rem;" oninput="AdminApp.renderPlayerStatsEditor()">
+            </div>
+
+            <select class="form-select" id="stats-editor-div" style="width: auto; min-width: 170px; font-weight: 700;" onchange="AdminApp.renderPlayerStatsEditor()">
+              <option value="all">🌐 Todas las Divisiones</option>
+              <option value="oro">🥇 División Oro</option>
+              <option value="plata">🥈 División Plata</option>
+            </select>
+
+            <select class="form-select" id="stats-editor-team" style="width: auto; min-width: 220px; font-weight: 700;" onchange="AdminApp.renderPlayerStatsEditor()">
+              <option value="all">-- Todos los Clubes --</option>
+            </select>
+
+            <label style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.84rem; font-weight: 700; color: #cbd5e1; cursor: pointer; background: rgba(255,255,255,0.04); padding: 0.45rem 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+              <input type="checkbox" id="stats-editor-only-active" onchange="AdminApp.renderPlayerStatsEditor()">
+              <span>Solo con Goles / Asist.</span>
+            </label>
+
+            <button class="btn btn-secondary" onclick="AdminApp.resetPlayerStatsFilters()" title="Limpiar filtros" style="padding: 0.45rem 0.85rem;">
+              <i class="fa-solid fa-xmark"></i> Limpiar
+            </button>
+          </div>
+
+          <!-- Tabla de Jugadores -->
+          <div style="overflow-x: auto;">
+            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(255,255,255,0.12); font-size: 0.76rem; text-transform: uppercase; color: #94a3b8;">
+                  <th style="padding: 0.75rem 0.6rem; text-align: left;">Jugador</th>
+                  <th style="padding: 0.75rem 0.6rem; text-align: left;">Club</th>
+                  <th style="padding: 0.75rem 0.4rem; text-align: center;" title="Goles en Liga">G. Liga</th>
+                  <th style="padding: 0.75rem 0.4rem; text-align: center;" title="Asistencias en Liga">A. Liga</th>
+                  <th style="padding: 0.75rem 0.4rem; text-align: center;" title="Goles en Champions League">G. UCL</th>
+                  <th style="padding: 0.75rem 0.4rem; text-align: center;" title="Asistencias en Champions League">A. UCL</th>
+                  <th style="padding: 0.75rem 0.4rem; text-align: center;" title="Goles en Copa Estelar">G. Copa</th>
+                  <th style="padding: 0.75rem 0.4rem; text-align: center;" title="Asistencias en Copa Estelar">A. Copa</th>
+                  <th style="padding: 0.75rem 0.5rem; text-align: center; color: #fde047;">Total (G / A)</th>
+                  <th style="padding: 0.75rem 0.6rem; text-align: center;">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="stats-editor-tbody">
+                <!-- Populated dynamically via AdminApp.renderPlayerStatsEditor() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
     </div>

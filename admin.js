@@ -305,11 +305,16 @@ const AdminApp = {
       'view-budgets': '<i class="fa-solid fa-wallet" style="color: #10b981;"></i> Presupuestos & Finanzas (TEMP 13)',
       'view-trophies': '<i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Trofeos & Balón de Oro',
       'view-web-control': '<i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web',
+      'view-player-stats': '<i class="fa-solid fa-chart-simple" style="color: #facc15;"></i> Editar Estadísticas de Jugadores',
       'view-ida-vuelta': '<i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i> Registro Partidos Ida y Vuelta'
     };
     document.getElementById('topbar-page-title').innerHTML = titleMap[viewId] || 'Panel de Control';
     if (viewId === 'view-matches') {
       this.renderAdminStandings();
+      this.renderPendingMatchesNotice();
+    }
+    if (viewId === 'view-player-stats') {
+      this.initPlayerStatsEditor();
     }
     if (viewId === 'view-ida-vuelta') {
       this.initIdaVueltaModule();
@@ -335,6 +340,8 @@ const AdminApp = {
     this.renderAdminStandings();
     this.renderBudgetsView();
     this.initIdaVueltaModule();
+    this.renderPendingMatchesNotice();
+    this.initPlayerStatsEditor();
   },
 
   renderAll() {
@@ -347,6 +354,8 @@ const AdminApp = {
     this.renderMatchHistory();
     this.renderWebControlView();
     this.renderAdminStandings();
+    this.renderPendingMatchesNotice();
+    this.renderPlayerStatsEditor();
   },
 
   // ==================== DASHBOARD ====================
@@ -517,6 +526,7 @@ const AdminApp = {
       this.onPhaseChange();
       this.renderCopaEstelarAdminBracket();
     }
+    this.renderPendingMatchesNotice();
   },
 
   populatePhasesForCompetition(comp) {
@@ -3468,6 +3478,7 @@ const AdminApp = {
     // Guardar inmediatamente en data.js
     await this.saveData(true);
     this.renderAdminStandings();
+    this.renderPendingMatchesNotice();
     this.showToast(`¡Partido registrado y guardado exitosamente! ${team1.name} ${score1} - ${score2} ${team2.name}.`, 'success');
   },
 
@@ -3580,6 +3591,7 @@ const AdminApp = {
       this.onJornadaChange();
     }
     this.renderAdminStandings();
+    this.renderPendingMatchesNotice();
 
     await this.saveData(true);
     this.showToast(`¡Partido entre ${t1Name} y ${t2Name} ANULADO con éxito! Registrado como jugado sin puntos.`, 'success');
@@ -8933,6 +8945,478 @@ const AdminApp = {
     this.renderRuletaAdminView();
     this.renderBudgetsView();
     this.showToast(`¡Giro registrado! ${club ? club.name : clubId} obtuvo: ${winner.name} ($${winner.val})`, 'success');
+  },
+
+  // ==================== AVISO DE FECHAS Y PARTIDOS PENDIENTES ====================
+  pendingNoticeExpanded: false,
+
+  togglePendingNoticeDetails() {
+    this.pendingNoticeExpanded = !this.pendingNoticeExpanded;
+    this.renderPendingMatchesNotice();
+  },
+
+  loadPendingMatchFromNotice(comp, jornadaNum, matchId, phase) {
+    const compSel = document.getElementById('match-competition');
+    if (compSel && compSel.value !== comp) {
+      compSel.value = comp;
+      this.onCompetitionChange();
+    }
+
+    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
+      const jornadaSel = document.getElementById('match-jornada-select');
+      if (jornadaSel && jornadaNum) {
+        jornadaSel.value = jornadaNum;
+        this.onJornadaChange();
+      }
+      const fixtureSel = document.getElementById('match-fixture-item-select');
+      if (fixtureSel && matchId) {
+        fixtureSel.value = matchId;
+        this.onFixtureMatchSelect(matchId);
+      }
+    } else if (phase) {
+      const phaseSel = document.getElementById('match-phase');
+      if (phaseSel) {
+        phaseSel.value = phase;
+        this.onPhaseChange();
+      }
+    }
+
+    const duelBox = document.querySelector('.match-duel-box');
+    if (duelBox) {
+      duelBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    this.showToast('Partido cargado en el formulario de registro.', 'info');
+  },
+
+  renderPendingMatchesNotice() {
+    const container = document.getElementById('pending-matches-notice');
+    if (!container || !this.data) return;
+
+    const comp = document.getElementById('match-competition')?.value || 'oro';
+    const compLabels = {
+      oro: 'División Oro',
+      plata: 'División Plata',
+      champions: 'Champions League (Grupos)',
+      champions_ko: 'Champions League (Eliminatorias)',
+      estelar: 'Copa Estelar'
+    };
+    const compName = compLabels[comp] || comp;
+
+    let totalPending = 0;
+    const pendingGroups = []; // { label, jornadaNum, items: [{ matchId, phase, t1Name, t1Logo, t2Name, t2Logo, group }] }
+
+    if (comp === 'oro' || comp === 'plata' || comp === 'champions') {
+      const rounds = (this.data.fixtures && this.data.fixtures[comp]) || [];
+      rounds.forEach(r => {
+        const unplayed = (r.matches || []).filter(m => !m.played);
+        if (unplayed.length > 0) {
+          totalPending += unplayed.length;
+          pendingGroups.push({
+            label: r.name || `Jornada ${r.jornada}`,
+            shortLabel: comp === 'champions' ? `F${r.jornada}` : `J${r.jornada}`,
+            jornadaNum: r.jornada,
+            items: unplayed.map(m => {
+              const t1 = this.getTeamById(m.team1Id) || { name: m.team1Id, logo: 'Logos Equipos/default.png' };
+              const t2 = this.getTeamById(m.team2Id) || { name: m.team2Id, logo: 'Logos Equipos/default.png' };
+              return {
+                matchId: m.id,
+                phase: null,
+                group: m.group || '',
+                t1Name: t1.name,
+                t1Logo: t1.logo || 'Logos Equipos/default.png',
+                t2Name: t2.name,
+                t2Logo: t2.logo || 'Logos Equipos/default.png'
+              };
+            })
+          });
+        }
+      });
+    } else {
+      const koMatches = comp === 'champions_ko' ? (this.data.championsLeagueMatches || []) : (this.data.copaEstelarMatches || []);
+      const unplayed = koMatches.filter(m => !m.estado || m.estado.toLowerCase() !== 'finalizado');
+      if (unplayed.length > 0) {
+        totalPending = unplayed.length;
+        pendingGroups.push({
+          label: 'Eliminatorias Pendientes',
+          shortLabel: `${unplayed.length} llaves`,
+          jornadaNum: null,
+          items: unplayed.map(m => {
+            const t1 = (this.data.teams || []).find(t => (t.name || '').toLowerCase() === (m.team1 || '').toLowerCase());
+            const t2 = (this.data.teams || []).find(t => (t.name || '').toLowerCase() === (m.team2 || '').toLowerCase());
+            return {
+              matchId: null,
+              phase: m.fase,
+              group: m.fase,
+              t1Name: m.team1 || 'Por definir',
+              t1Logo: t1?.logo || 'Logos Equipos/default.png',
+              t2Name: m.team2 || 'Por definir',
+              t2Logo: t2?.logo || 'Logos Equipos/default.png'
+            };
+          })
+        });
+      }
+    }
+
+    if (totalPending === 0) {
+      container.innerHTML = `
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.65rem; color: #34d399; font-size: 0.88rem; font-weight: 700;">
+          <i class="fa-solid fa-circle-check" style="font-size: 1.1rem;"></i>
+          <span>¡Todo al día en ${compName}! No quedan fechas ni partidos pendientes por registrar.</span>
+        </div>
+      `;
+      return;
+    }
+
+    const datesSummaryPills = pendingGroups.map(g => `
+      <span style="display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(245, 158, 11, 0.18); border: 1px solid rgba(245, 158, 11, 0.45); color: #fde68a; padding: 0.2rem 0.55rem; border-radius: 99px; font-size: 0.76rem; font-weight: 800;">
+        ${g.label} <span style="background: rgba(0,0,0,0.35); padding: 0.05rem 0.38rem; border-radius: 99px; color: #fff;">${g.items.length}</span>
+      </span>
+    `).join('');
+
+    let detailsHtml = '';
+    if (this.pendingNoticeExpanded) {
+      const groupsBlocks = pendingGroups.map(g => {
+        const matchChips = g.items.map(item => `
+          <button type="button" onclick="AdminApp.loadPendingMatchFromNotice('${comp}', ${g.jornadaNum ? g.jornadaNum : 'null'}, ${item.matchId ? `'${item.matchId}'` : 'null'}, ${item.phase ? `'${item.phase.replace(/'/g, "\\'")}'` : 'null'})"
+            style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 8px; padding: 0.45rem 0.7rem; color: #e2e8f0; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-align: left; transition: border-color 0.15s;"
+            onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='rgba(148, 163, 184, 0.22)'" title="Clic para cargar este partido">
+            <div style="display: flex; align-items: center; gap: 0.4rem; min-width: 0; flex: 1;">
+              ${item.group ? `<span style="font-size: 0.68rem; color: #38bdf8; font-weight: 800; flex-shrink: 0;">[${item.group}]</span>` : ''}
+              <img src="${item.t1Logo}" style="width: 18px; height: 18px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
+              <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.t1Name}</span>
+              <span style="color: #94a3b8; font-size: 0.72rem; flex-shrink: 0;">vs</span>
+              <img src="${item.t2Logo}" style="width: 18px; height: 18px; object-fit: contain; flex-shrink: 0;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
+              <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.t2Name}</span>
+            </div>
+            <span style="font-size: 0.7rem; color: #f59e0b; font-weight: 800; flex-shrink: 0;">Cargar ↗</span>
+          </button>
+        `).join('');
+
+        return `
+          <div style="margin-top: 0.75rem;">
+            <div style="font-size: 0.78rem; font-weight: 800; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 0.4rem;">
+              <i class="fa-solid fa-calendar-day"></i> ${g.label} (${g.items.length} pendiente${g.items.length > 1 ? 's' : ''})
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 0.45rem;">
+              ${matchChips}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      detailsHtml = `
+        <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(245, 158, 11, 0.25); max-height: 320px; overflow-y: auto; padding-right: 0.25rem;">
+          ${groupsBlocks}
+        </div>
+      `;
+    }
+
+    const datesLabel = (comp === 'oro' || comp === 'plata' || comp === 'champions')
+      ? `en <strong>${pendingGroups.length}</strong> fecha${pendingGroups.length > 1 ? 's' : ''}`
+      : 'en cuadro eliminatorio';
+
+    container.innerHTML = `
+      <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.13) 0%, rgba(217, 119, 6, 0.08) 100%); border: 1.5px solid rgba(245, 158, 11, 0.5); border-radius: 10px; padding: 0.85rem 1.1rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; flex: 1; min-width: 240px;">
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(245, 158, 11, 0.2); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 1.1rem; flex-shrink: 0;">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.92rem; font-weight: 800; color: #fff;">
+                Pendientes en ${compName}: <span style="color: #fbbf24;">${totalPending} partido${totalPending > 1 ? 's' : ''}</span> ${datesLabel}
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.45rem;">
+                ${datesSummaryPills}
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.togglePendingNoticeDetails()" style="border-color: rgba(245, 158, 11, 0.5); color: #fde68a; font-weight: 800; padding: 0.45rem 0.9rem; flex-shrink: 0;">
+            <i class="fa-solid ${this.pendingNoticeExpanded ? 'fa-chevron-up' : 'fa-chevron-down'}"></i>
+            ${this.pendingNoticeExpanded ? 'Ocultar Equipos' : 'Ver Equipos y Fechas'}
+          </button>
+        </div>
+        ${detailsHtml}
+      </div>
+    `;
+  },
+
+  // ==================== EDITOR DE ESTADÍSTICAS DE JUGADORES ====================
+  initPlayerStatsEditor() {
+    const teamSel = document.getElementById('stats-editor-team');
+    if (teamSel && this.data && this.data.teams) {
+      const prev = teamSel.value || 'all';
+      teamSel.innerHTML = '<option value="all">-- Todos los Clubes --</option>';
+      const sortedTeams = [...this.data.teams]
+        .filter(t => !t.hidden && t.division !== 'inactivo' && t.id !== 'brightonhovealbion' && t.id !== 'vascodagama')
+        .sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+      sortedTeams.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t.id;
+        opt.textContent = `${t.name} (${(t.division || 'oro').toUpperCase()})`;
+        teamSel.appendChild(opt);
+      });
+      if (prev === 'all' || sortedTeams.some(t => t.id === prev)) {
+        teamSel.value = prev;
+      }
+    }
+    this.renderPlayerStatsEditor();
+  },
+
+  resetPlayerStatsFilters() {
+    const searchEl = document.getElementById('stats-editor-search');
+    const divEl = document.getElementById('stats-editor-div');
+    const teamEl = document.getElementById('stats-editor-team');
+    const activeEl = document.getElementById('stats-editor-only-active');
+    if (searchEl) searchEl.value = '';
+    if (divEl) divEl.value = 'all';
+    if (teamEl) teamEl.value = 'all';
+    if (activeEl) activeEl.checked = false;
+    this.renderPlayerStatsEditor();
+  },
+
+  normalizeSearchText(str) {
+    return (str || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  },
+
+  renderPlayerStatsEditor() {
+    const tbody = document.getElementById('stats-editor-tbody');
+    const badge = document.getElementById('stats-editor-count-badge');
+    if (!tbody || !this.data || !this.data.players) return;
+
+    const query = this.normalizeSearchText(document.getElementById('stats-editor-search')?.value || '');
+    const divFilter = document.getElementById('stats-editor-div')?.value || 'all';
+    const teamFilter = document.getElementById('stats-editor-team')?.value || 'all';
+    const onlyActive = !!document.getElementById('stats-editor-only-active')?.checked;
+
+    const teamMap = {};
+    (this.data.teams || []).forEach(t => { teamMap[t.id] = t; });
+
+    let filtered = this.data.players.filter(p => {
+      const team = teamMap[p.teamId];
+      if (!team || team.hidden || team.division === 'inactivo') return false;
+      const tDiv = (team.division || 'oro').toLowerCase();
+
+      if (divFilter !== 'all' && tDiv !== divFilter) return false;
+      if (teamFilter !== 'all' && p.teamId !== teamFilter) return false;
+
+      const gTot = (p.goals_liga || 0) + (p.goals_champions || 0) + (p.goals_estelar || 0);
+      const aTot = (p.assists_liga || 0) + (p.assists_champions || 0) + (p.assists_estelar || 0);
+      if (onlyActive && gTot === 0 && aTot === 0 && (p.goals || 0) === 0 && (p.assists || 0) === 0) {
+        return false;
+      }
+
+      if (query) {
+        const pName = this.normalizeSearchText(p.name);
+        const tName = this.normalizeSearchText(team.name);
+        if (!pName.includes(query) && !tName.includes(query)) return false;
+      }
+      return true;
+    });
+
+    filtered.sort((a, b) => {
+      const ga = (a.goals || 0) - (b.goals || 0);
+      if (ga !== 0) return -ga;
+      const aa = (a.assists || 0) - (b.assists || 0);
+      if (aa !== 0) return -aa;
+      return (a.name || '').localeCompare(b.name || '');
+    });
+
+    const totalMatched = filtered.length;
+    if (badge) {
+      badge.textContent = `${totalMatched} jugador${totalMatched === 1 ? '' : 'es'}`;
+    }
+
+    const isUnfiltered = !query && teamFilter === 'all' && divFilter === 'all' && !onlyActive;
+    const limit = isUnfiltered ? 60 : 150;
+    const visible = filtered.slice(0, limit);
+
+    if (visible.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="10" style="text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.9rem;">
+            No se encontraron jugadores con los filtros seleccionados.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    const numInputStyle = 'width: 56px; text-align: center; padding: 0.3rem 0.25rem; background: #0b1120; border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; color: #fff; font-weight: 700; font-size: 0.85rem;';
+
+    let rowsHtml = visible.map(p => {
+      const team = teamMap[p.teamId] || { name: p.teamId, logo: 'Logos Equipos/default.png', division: 'oro' };
+      const divBadgeColor = (team.division || 'oro').toLowerCase() === 'plata' ? '#94a3b8' : '#facc15';
+      const gLiga = p.goals_liga ?? p.goals ?? 0;
+      const aLiga = p.assists_liga ?? p.assists ?? 0;
+      const gUcl = p.goals_champions ?? 0;
+      const aUcl = p.assists_champions ?? 0;
+      const gCopa = p.goals_estelar ?? 0;
+      const aCopa = p.assists_estelar ?? 0;
+      const gTot = gLiga + gUcl + gCopa;
+      const aTot = aLiga + aUcl + aCopa;
+
+      return `
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);" id="stats-row-${p.id}">
+          <td style="padding: 0.6rem 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 0.68rem; font-weight: 800; min-width: 34px; text-align: center;">${p.position || 'JUG'}</span>
+              <span style="font-weight: 700; color: #fff; font-size: 0.88rem;">${p.name}</span>
+            </div>
+          </td>
+          <td style="padding: 0.6rem 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <img src="${team.logo || 'Logos Equipos/default.png'}" style="width: 22px; height: 22px; object-fit: contain;" onerror="this.onerror=null;this.src='Logos Equipos/default.png'">
+              <span style="font-size: 0.82rem; color: #cbd5e1; font-weight: 600;">${team.name}</span>
+              <span style="font-size: 0.65rem; font-weight: 800; color: ${divBadgeColor}; text-transform: uppercase;">${team.division || 'oro'}</span>
+            </div>
+          </td>
+          <td style="padding: 0.5rem 0.35rem; text-align: center;">
+            <input type="number" min="0" id="st-gl-${p.id}" value="${gLiga}" style="${numInputStyle}" oninput="AdminApp.updatePlayerStatsPreview('${p.id}')">
+          </td>
+          <td style="padding: 0.5rem 0.35rem; text-align: center;">
+            <input type="number" min="0" id="st-al-${p.id}" value="${aLiga}" style="${numInputStyle}" oninput="AdminApp.updatePlayerStatsPreview('${p.id}')">
+          </td>
+          <td style="padding: 0.5rem 0.35rem; text-align: center;">
+            <input type="number" min="0" id="st-gu-${p.id}" value="${gUcl}" style="${numInputStyle}" oninput="AdminApp.updatePlayerStatsPreview('${p.id}')">
+          </td>
+          <td style="padding: 0.5rem 0.35rem; text-align: center;">
+            <input type="number" min="0" id="st-au-${p.id}" value="${aUcl}" style="${numInputStyle}" oninput="AdminApp.updatePlayerStatsPreview('${p.id}')">
+          </td>
+          <td style="padding: 0.5rem 0.35rem; text-align: center;">
+            <input type="number" min="0" id="st-gc-${p.id}" value="${gCopa}" style="${numInputStyle}" oninput="AdminApp.updatePlayerStatsPreview('${p.id}')">
+          </td>
+          <td style="padding: 0.5rem 0.35rem; text-align: center;">
+            <input type="number" min="0" id="st-ac-${p.id}" value="${aCopa}" style="${numInputStyle}" oninput="AdminApp.updatePlayerStatsPreview('${p.id}')">
+          </td>
+          <td style="padding: 0.5rem 0.5rem; text-align: center;">
+            <span id="st-tot-${p.id}" style="font-weight: 900; font-size: 0.85rem; color: #fde047;">${gTot}G / ${aTot}A</span>
+          </td>
+          <td style="padding: 0.5rem 0.6rem; text-align: center; white-space: nowrap;">
+            <button type="button" class="btn btn-success btn-sm" onclick="AdminApp.savePlayerStatsRow('${p.id}')" style="padding: 0.32rem 0.65rem; font-size: 0.78rem; font-weight: 800;" title="Guardar estadísticas de ${p.name}">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.resetPlayerStatsRow('${p.id}')" style="padding: 0.32rem 0.5rem; font-size: 0.78rem; color: #fca5a5;" title="Poner en 0 todas sus estadísticas">
+              <i class="fa-solid fa-eraser"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    if (totalMatched > visible.length) {
+      rowsHtml += `
+        <tr>
+          <td colspan="10" style="text-align: center; padding: 0.9rem; color: #94a3b8; font-size: 0.82rem; background: rgba(15, 23, 42, 0.5);">
+            Mostrando <strong>${visible.length}</strong> de <strong>${totalMatched}</strong> jugadores. Usa el buscador o selecciona un club para ver resultados específicos.
+          </td>
+        </tr>
+      `;
+    }
+
+    tbody.innerHTML = rowsHtml;
+  },
+
+  updatePlayerStatsPreview(playerId) {
+    const val = (id) => Math.max(0, parseInt(document.getElementById(id)?.value, 10) || 0);
+    const gTot = val(`st-gl-${playerId}`) + val(`st-gu-${playerId}`) + val(`st-gc-${playerId}`);
+    const aTot = val(`st-al-${playerId}`) + val(`st-au-${playerId}`) + val(`st-ac-${playerId}`);
+    const totEl = document.getElementById(`st-tot-${playerId}`);
+    if (totEl) {
+      totEl.textContent = `${gTot}G / ${aTot}A`;
+      totEl.style.color = '#38bdf8';
+    }
+  },
+
+  async savePlayerStatsRow(playerId) {
+    const player = this.getPlayerById(playerId);
+    if (!player) return;
+
+    const val = (id) => Math.max(0, parseInt(document.getElementById(id)?.value, 10) || 0);
+    const gLiga = val(`st-gl-${playerId}`);
+    const aLiga = val(`st-al-${playerId}`);
+    const gUcl = val(`st-gu-${playerId}`);
+    const aUcl = val(`st-au-${playerId}`);
+    const gCopa = val(`st-gc-${playerId}`);
+    const aCopa = val(`st-ac-${playerId}`);
+
+    const gTot = gLiga + gUcl + gCopa;
+    const aTot = aLiga + aUcl + aCopa;
+
+    player.goals_liga = gLiga;
+    player.assists_liga = aLiga;
+    player.goals_champions = gUcl;
+    player.assists_champions = aUcl;
+    player.goals_estelar = gCopa;
+    player.assists_estelar = aCopa;
+    player.goals = gTot;
+    player.assists = aTot;
+
+    // Sincronizar statsByTeam manteniendo intactos los registros de clubes anteriores si existen
+    if (!player.statsByTeam) player.statsByTeam = {};
+    const teamId = player.teamId;
+    if (teamId) {
+      let otherGL = 0, otherAL = 0, otherGU = 0, otherAU = 0, otherGC = 0, otherAC = 0;
+      Object.values(player.statsByTeam).forEach(entry => {
+        if (entry.teamId !== teamId) {
+          otherGL += (entry.goals_liga || 0);
+          otherAL += (entry.assists_liga || 0);
+          otherGU += (entry.goals_champions || 0);
+          otherAU += (entry.assists_champions || 0);
+          otherGC += (entry.goals_estelar || 0);
+          otherAC += (entry.assists_estelar || 0);
+        }
+      });
+
+      const curGL = Math.max(0, gLiga - otherGL);
+      const curAL = Math.max(0, aLiga - otherAL);
+      const curGU = Math.max(0, gUcl - otherGU);
+      const curAU = Math.max(0, aUcl - otherAU);
+      const curGC = Math.max(0, gCopa - otherGC);
+      const curAC = Math.max(0, aCopa - otherAC);
+
+      const teamObj = this.getTeamById(teamId);
+      player.statsByTeam[teamId] = {
+        teamId,
+        teamName: teamObj ? teamObj.name : teamId,
+        goals_liga: curGL,
+        assists_liga: curAL,
+        goals_champions: curGU,
+        assists_champions: curAU,
+        goals_estelar: curGC,
+        assists_estelar: curAC,
+        goals: curGL + curGU + curGC,
+        assists: curAL + curAU + curAC
+      };
+    }
+
+    const totEl = document.getElementById(`st-tot-${playerId}`);
+    if (totEl) {
+      totEl.textContent = `${gTot}G / ${aTot}A`;
+      totEl.style.color = '#fde047';
+    }
+
+    this.markDirty();
+    await this.saveData(true);
+    this.renderDashboard();
+    this.renderTopScorers();
+    this.renderTeamsView();
+    this.showToast(`✅ Estadísticas de ${player.name} guardadas (${gTot}G / ${aTot}A).`, 'success');
+  },
+
+  async resetPlayerStatsRow(playerId) {
+    const player = this.getPlayerById(playerId);
+    if (!player) return;
+    if (!confirm(`¿Seguro que deseas poner en 0 todos los goles y asistencias de ${player.name}?`)) return;
+
+    ['st-gl-', 'st-al-', 'st-gu-', 'st-au-', 'st-gc-', 'st-ac-'].forEach(prefix => {
+      const el = document.getElementById(`${prefix}${playerId}`);
+      if (el) el.value = 0;
+    });
+    if (player.statsByTeam) {
+      player.statsByTeam = {};
+    }
+    await this.savePlayerStatsRow(playerId);
   },
 
 };
