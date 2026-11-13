@@ -7393,15 +7393,29 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "carabobofutbolclub",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "carabobofutbolclub": {
+          "teamId": "carabobofutbolclub",
+          "teamName": "Carabobo Fútbol Club",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_6",
@@ -7520,9 +7534,9 @@ var INITIAL_LMI_DATA = {
       "name": "Amine Gouiri",
       "position": "DC",
       "teamId": "carabobofutbolclub",
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -7534,9 +7548,9 @@ var INITIAL_LMI_DATA = {
         "carabobofutbolclub": {
           "teamId": "carabobofutbolclub",
           "teamName": "Carabobo Fútbol Club",
-          "goals": 2,
+          "goals": 3,
           "assists": 1,
-          "goals_liga": 2,
+          "goals_liga": 3,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8358,10 +8372,10 @@ var INITIAL_LMI_DATA = {
       "name": "Franck Ribéry",
       "position": "MP",
       "teamId": "clubuniversidaddechile",
-      "goals": 3,
-      "assists": 4,
-      "goals_liga": 3,
-      "assists_liga": 4,
+      "goals": 6,
+      "assists": 5,
+      "goals_liga": 6,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8371,10 +8385,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 3,
-          "assists": 4,
-          "goals_liga": 3,
-          "assists_liga": 4,
+          "goals": 6,
+          "assists": 5,
+          "goals_liga": 6,
+          "assists_liga": 5,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8388,9 +8402,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
-      "assists": 2,
+      "assists": 4,
       "goals_liga": 0,
-      "assists_liga": 2,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8401,9 +8415,9 @@ var INITIAL_LMI_DATA = {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
           "goals": 0,
-          "assists": 2,
+          "assists": 4,
           "goals_liga": 0,
-          "assists_liga": 2,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8432,16 +8446,30 @@ var INITIAL_LMI_DATA = {
       "name": "Conor Gallagher",
       "position": "II",
       "teamId": "clubuniversidaddechile",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubuniversidaddechile": {
+          "teamId": "clubuniversidaddechile",
+          "teamName": "Club Universidad de Chile",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017628489_13",
@@ -8526,9 +8554,9 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 4,
+      "goals": 5,
       "assists": 1,
-      "goals_liga": 4,
+      "goals_liga": 5,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -8539,9 +8567,9 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 4,
+          "goals": 5,
           "assists": 1,
-          "goals_liga": 4,
+          "goals_liga": 5,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -8555,10 +8583,10 @@ var INITIAL_LMI_DATA = {
       "name": "Lucas Paquetá",
       "position": "MC",
       "teamId": "clubuniversidaddechile",
-      "goals": 0,
-      "assists": 4,
-      "goals_liga": 0,
-      "assists_liga": 4,
+      "goals": 1,
+      "assists": 5,
+      "goals_liga": 1,
+      "assists_liga": 5,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8568,10 +8596,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 0,
-          "assists": 4,
-          "goals_liga": 0,
-          "assists_liga": 4,
+          "goals": 1,
+          "assists": 5,
+          "goals_liga": 1,
+          "assists_liga": 5,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8630,10 +8658,10 @@ var INITIAL_LMI_DATA = {
       "name": "Yoane Wissa",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 8,
-      "assists": 2,
-      "goals_liga": 8,
-      "assists_liga": 2,
+      "goals": 9,
+      "assists": 3,
+      "goals_liga": 9,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8643,10 +8671,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 8,
-          "assists": 2,
-          "goals_liga": 8,
-          "assists_liga": 2,
+          "goals": 9,
+          "assists": 3,
+          "goals_liga": 9,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8769,37 +8797,35 @@ var INITIAL_LMI_DATA = {
       "name": "Mark van Bommel",
       "position": "MCD",
       "teamId": "ajaxdeamsterdam",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 1,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017654825_6",
       "name": "Luka Modrić",
       "position": "MC",
-      "teamId": "ajaxdeamsterdam",
-      "goals": 0,
-      "assists": 0,
-      "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1794017654825_7",
-      "name": "Pedro Porro",
-      "position": "LD",
       "teamId": "ajaxdeamsterdam",
       "goals": 0,
       "assists": 1,
@@ -8827,14 +8853,14 @@ var INITIAL_LMI_DATA = {
       }
     },
     {
-      "id": "p_1794017654825_8",
-      "name": "Johan Manzambi",
-      "position": "MP",
+      "id": "p_1794017654825_7",
+      "name": "Pedro Porro",
+      "position": "LD",
       "teamId": "ajaxdeamsterdam",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
-      "assists_liga": 1,
+      "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8846,9 +8872,39 @@ var INITIAL_LMI_DATA = {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
-          "assists_liga": 1,
+          "assists_liga": 2,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1794017654825_8",
+      "name": "Johan Manzambi",
+      "position": "MP",
+      "teamId": "ajaxdeamsterdam",
+      "goals": 1,
+      "assists": 3,
+      "goals_liga": 1,
+      "assists_liga": 3,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "ajaxdeamsterdam": {
+          "teamId": "ajaxdeamsterdam",
+          "teamName": "Ajax de Ámsterdam",
+          "goals": 1,
+          "assists": 3,
+          "goals_liga": 1,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8907,10 +8963,10 @@ var INITIAL_LMI_DATA = {
       "name": "Adriano",
       "position": "DC",
       "teamId": "ajaxdeamsterdam",
-      "goals": 5,
-      "assists": 0,
-      "goals_liga": 5,
-      "assists_liga": 0,
+      "goals": 9,
+      "assists": 1,
+      "goals_liga": 9,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8921,10 +8977,10 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 5,
-          "assists": 0,
-          "goals_liga": 5,
-          "assists_liga": 0,
+          "goals": 9,
+          "assists": 1,
+          "goals_liga": 9,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -9127,10 +9183,10 @@ var INITIAL_LMI_DATA = {
       "name": "Ronaldinho Gaúcho",
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
-      "goals": 1,
-      "assists": 0,
-      "goals_liga": 1,
-      "assists_liga": 0,
+      "goals": 2,
+      "assists": 1,
+      "goals_liga": 2,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9141,10 +9197,10 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 1,
-          "assists": 0,
-          "goals_liga": 1,
-          "assists_liga": 0,
+          "goals": 2,
+          "assists": 1,
+          "goals_liga": 2,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -9269,9 +9325,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ross Barkley",
       "position": "MC",
       "teamId": "flamengo",
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9283,9 +9339,9 @@ var INITIAL_LMI_DATA = {
         "flamengo": {
           "teamId": "flamengo",
           "teamName": "Flamengo",
-          "goals": 1,
+          "goals": 2,
           "assists": 1,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -9316,25 +9372,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "flamengo",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
-      "assists_liga": 0,
-      "goals_champions": 0,
-      "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
-      "cardType": "Normal",
-      "isLegend": false
-    },
-    {
-      "id": "p_1794017816312_11",
-      "name": "Karl-Heinz Rummenigge",
-      "position": "DC",
-      "teamId": "flamengo",
-      "goals": 3,
-      "assists": 0,
-      "goals_liga": 3,
-      "assists_liga": 0,
+      "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -9345,10 +9385,40 @@ var INITIAL_LMI_DATA = {
         "flamengo": {
           "teamId": "flamengo",
           "teamName": "Flamengo",
-          "goals": 3,
-          "assists": 0,
-          "goals_liga": 3,
-          "assists_liga": 0,
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 1,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
+    },
+    {
+      "id": "p_1794017816312_11",
+      "name": "Karl-Heinz Rummenigge",
+      "position": "DC",
+      "teamId": "flamengo",
+      "goals": 4,
+      "assists": 1,
+      "goals_liga": 4,
+      "assists_liga": 1,
+      "goals_champions": 0,
+      "assists_champions": 0,
+      "goals_estelar": 0,
+      "assists_estelar": 0,
+      "cardType": "Normal",
+      "isLegend": false,
+      "statsByTeam": {
+        "flamengo": {
+          "teamId": "flamengo",
+          "teamName": "Flamengo",
+          "goals": 4,
+          "assists": 1,
+          "goals_liga": 4,
+          "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -16469,10 +16539,63 @@ var INITIAL_LMI_DATA = {
             "jornada": 2,
             "team1Id": "ajaxdeamsterdam",
             "team2Id": "manchesterunited",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 4,
+            "score2": 0,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017654825_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_8",
+                "playerName": "Johan Manzambi",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_23",
+                "playerName": "Ronaldinho Gaúcho",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_8",
+                "playerName": "Johan Manzambi",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_5",
+                "playerName": "Mark van Bommel",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_6",
+                "playerName": "Luka Modrić",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T02:00:35.860Z"
           }
         ]
       },
@@ -17520,10 +17643,42 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "ajaxdeamsterdam",
             "team2Id": "carabobofutbolclub",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 1,
+            "score2": 1,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017504232_13",
+                "playerName": "Amine Gouiri",
+                "teamId": "carabobofutbolclub",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017504232_5",
+                "playerName": "Yangel Herrera",
+                "teamId": "carabobofutbolclub",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_7",
+                "playerName": "Pedro Porro",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T02:01:39.838Z"
           },
           {
             "id": "plata_j7_m3",
@@ -17540,10 +17695,49 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "acmiln",
             "team2Id": "clubuniversidaddechile",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 5,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017628489_9",
+                "playerName": "Franck Ribéry",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 3
+              },
+              {
+                "playerId": "p_1794017628489_10",
+                "playerName": "Nicolás de la Cruz",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017628489_18",
+                "playerName": "Lucas Paquetá",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_21",
+                "playerName": "Yoane Wissa",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_17",
+                "playerName": "Rasmus Højlund",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T02:02:44.685Z"
           },
           {
             "id": "plata_j7_m5",
@@ -17915,10 +18109,35 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "acmiln",
             "team2Id": "ajaxdeamsterdam",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017654825_11",
+                "playerName": "Adriano",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 2
+              },
+              {
+                "playerId": "p_1794017654825_8",
+                "playerName": "Johan Manzambi",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_23",
+                "playerName": "Ronaldinho Gaúcho",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T02:04:21.092Z"
           },
           {
             "id": "plata_j9_m3",
@@ -18068,10 +18287,70 @@ var INITIAL_LMI_DATA = {
             "jornada": 9,
             "team1Id": "flamengo",
             "team2Id": "clubuniversidaddechile",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017628489_21",
+                "playerName": "Yoane Wissa",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_18",
+                "playerName": "Lucas Paquetá",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_8",
+                "playerName": "Ross Barkley",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_11",
+                "playerName": "Karl-Heinz Rummenigge",
+                "teamId": "flamengo",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_11",
+                "playerName": "Karl-Heinz Rummenigge",
+                "teamId": "flamengo",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017816312_10",
+                "playerName": "Joelinton",
+                "teamId": "flamengo",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_12",
+                "playerName": "Conor Gallagher",
+                "teamId": "clubuniversidaddechile",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017628489_9",
+                "playerName": "Franck Ribéry",
+                "teamId": "clubuniversidaddechile",
+                "type": "asistencia",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T02:03:43.885Z"
           },
           {
             "id": "plata_j9_m7",
@@ -20102,6 +20381,300 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794535461092",
+      "timestamp": 1794535461092,
+      "date": "12 nov 2026, 08:04 p.m.",
+      "competition": "plata",
+      "jornada": 9,
+      "fixtureMatchId": "plata_j9_m2",
+      "phase": "Jornada 9",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 0,
+      "team2Id": "ajaxdeamsterdam",
+      "team2Name": "Ajax de Ámsterdam",
+      "team2Logo": "Logos Equipos/ajax.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1794017654825_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017654825_8",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_23",
+          "playerName": "Ronaldinho Gaúcho",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T02:04:21.093Z"
+    },
+    {
+      "id": "match_1794535423885",
+      "timestamp": 1794535423885,
+      "date": "12 nov 2026, 08:03 p.m.",
+      "competition": "plata",
+      "jornada": 9,
+      "fixtureMatchId": "plata_j9_m6",
+      "phase": "Jornada 9",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 2,
+      "team2Id": "clubuniversidaddechile",
+      "team2Name": "Club Universidad de Chile",
+      "team2Logo": "Logos Equipos/uchile.png",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_8",
+          "playerName": "Ross Barkley",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_11",
+          "playerName": "Karl-Heinz Rummenigge",
+          "teamId": "flamengo",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_11",
+          "playerName": "Karl-Heinz Rummenigge",
+          "teamId": "flamengo",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017816312_10",
+          "playerName": "Joelinton",
+          "teamId": "flamengo",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_12",
+          "playerName": "Conor Gallagher",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T02:03:43.886Z"
+    },
+    {
+      "id": "match_1794535364685",
+      "timestamp": 1794535364685,
+      "date": "12 nov 2026, 08:02 p.m.",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m4",
+      "phase": "Jornada 7",
+      "team1Id": "acmiln",
+      "team1Name": "AC Milan",
+      "team1Logo": "Logos Equipos/acmilan.webp",
+      "score1": 0,
+      "team2Id": "clubuniversidaddechile",
+      "team2Name": "Club Universidad de Chile",
+      "team2Logo": "Logos Equipos/uchile.png",
+      "score2": 5,
+      "events": [
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T02:02:44.685Z"
+    },
+    {
+      "id": "match_1794535299838",
+      "timestamp": 1794535299838,
+      "date": "12 nov 2026, 08:01 p.m.",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m2",
+      "phase": "Jornada 7",
+      "team1Id": "ajaxdeamsterdam",
+      "team1Name": "Ajax de Ámsterdam",
+      "team1Logo": "Logos Equipos/ajax.png",
+      "score1": 1,
+      "team2Id": "carabobofutbolclub",
+      "team2Name": "Carabobo Fútbol Club",
+      "team2Logo": "Logos Equipos/carabobo.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794017504232_13",
+          "playerName": "Amine Gouiri",
+          "teamId": "carabobofutbolclub",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017504232_5",
+          "playerName": "Yangel Herrera",
+          "teamId": "carabobofutbolclub",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_7",
+          "playerName": "Pedro Porro",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T02:01:39.838Z"
+    },
+    {
+      "id": "match_1794535235860",
+      "timestamp": 1794535235860,
+      "date": "12 nov 2026, 08:00 p.m.",
+      "competition": "plata",
+      "jornada": 2,
+      "fixtureMatchId": "plata_j2_m7",
+      "phase": "Jornada 2",
+      "team1Id": "ajaxdeamsterdam",
+      "team1Name": "Ajax de Ámsterdam",
+      "team1Logo": "Logos Equipos/ajax.png",
+      "score1": 4,
+      "team2Id": "manchesterunited",
+      "team2Name": "Manchester United",
+      "team2Logo": "Logos Equipos/manchesterunited.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794017654825_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_8",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_23",
+          "playerName": "Ronaldinho Gaúcho",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_8",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_5",
+          "playerName": "Mark van Bommel",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_6",
+          "playerName": "Luka Modrić",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T02:00:35.861Z"
+    },
     {
       "id": "match_1794452135816",
       "timestamp": 1794452135816,
