@@ -17860,10 +17860,13 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "losclille",
             "team2Id": "fcbayernmunich",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 1,
+            "played": true,
+            "events": [],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T03:05:15.844Z"
           },
           {
             "id": "plata_j7_m7",
@@ -20437,6 +20440,26 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794539115844",
+      "timestamp": 1794539115844,
+      "date": "12 nov 2026, 09:05 p.m.",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m6",
+      "phase": "Jornada 7",
+      "team1Id": "losclille",
+      "team1Name": "LOSC Lille",
+      "team1Logo": "Logos Equipos/lille.png",
+      "score1": 0,
+      "team2Id": "fcbayernmunich",
+      "team2Name": "FC Bayern Múnich",
+      "team2Logo": "Logos Equipos/bayernmunich.webp",
+      "score2": 1,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T03:05:15.844Z"
+    },
     {
       "id": "match_1794538244013",
       "timestamp": 1794538244013,
