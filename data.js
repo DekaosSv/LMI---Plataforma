@@ -4131,9 +4131,9 @@ var INITIAL_LMI_DATA = {
       "name": "Luiz Araújo",
       "position": "ID",
       "teamId": "chelseafc",
-      "goals": 1,
+      "goals": 2,
       "assists": 4,
-      "goals_liga": 1,
+      "goals_liga": 2,
       "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -4145,9 +4145,9 @@ var INITIAL_LMI_DATA = {
         "chelseafc": {
           "teamId": "chelseafc",
           "teamName": "Chelsea FC",
-          "goals": 1,
+          "goals": 2,
           "assists": 4,
-          "goals_liga": 1,
+          "goals_liga": 2,
           "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -4161,10 +4161,10 @@ var INITIAL_LMI_DATA = {
       "name": "Yuri Alberto",
       "position": "DC",
       "teamId": "chelseafc",
-      "goals": 15,
-      "assists": 2,
-      "goals_liga": 15,
-      "assists_liga": 2,
+      "goals": 16,
+      "assists": 3,
+      "goals_liga": 16,
+      "assists_liga": 3,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -4174,10 +4174,10 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "chelseafc": {
           "teamId": "chelseafc",
-          "goals": 15,
-          "assists": 2,
-          "goals_liga": 15,
-          "assists_liga": 2,
+          "goals": 16,
+          "assists": 3,
+          "goals_liga": 16,
+          "assists_liga": 3,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -8891,9 +8891,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
       "goals": 1,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
-      "assists_liga": 3,
+      "assists_liga": 4,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -8905,9 +8905,9 @@ var INITIAL_LMI_DATA = {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
           "goals": 1,
-          "assists": 3,
+          "assists": 4,
           "goals_liga": 1,
-          "assists_liga": 3,
+          "assists_liga": 4,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
@@ -9186,9 +9186,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ronaldinho Gaúcho",
       "position": "MP",
       "teamId": "ajaxdeamsterdam",
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -9200,9 +9200,9 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 2,
+          "goals": 3,
           "assists": 1,
-          "goals_liga": 2,
+          "goals_liga": 3,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -11817,9 +11817,9 @@ var INITIAL_LMI_DATA = {
       "name": "Ismaïla Sarr",
       "position": "MP",
       "teamId": "atleticodemadrid",
-      "goals": 0,
+      "goals": 1,
       "assists": 2,
-      "goals_liga": 0,
+      "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -11831,9 +11831,9 @@ var INITIAL_LMI_DATA = {
         "atleticodemadrid": {
           "teamId": "atleticodemadrid",
           "teamName": "Atletico de Madrid",
-          "goals": 0,
+          "goals": 1,
           "assists": 2,
-          "goals_liga": 0,
+          "goals_liga": 1,
           "assists_liga": 2,
           "goals_champions": 0,
           "assists_champions": 0,
@@ -17683,10 +17683,35 @@ var INITIAL_LMI_DATA = {
             "jornada": 7,
             "team1Id": "atleticodemadrid",
             "team2Id": "chelseafc",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1793936668528_9",
+                "playerName": "Luiz Araújo",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1793936668528_10",
+                "playerName": "Yuri Alberto",
+                "teamId": "chelseafc",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T03:32:46.998Z"
           },
           {
             "id": "plata_j7_m2",
@@ -17890,10 +17915,35 @@ var INITIAL_LMI_DATA = {
             "jornada": 8,
             "team1Id": "ajaxdeamsterdam",
             "team2Id": "atleticodemadrid",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 2,
+            "score2": 2,
+            "played": true,
+            "events": [
+              {
+                "playerId": "p_1794017654825_23",
+                "playerName": "Ronaldinho Gaúcho",
+                "teamId": "ajaxdeamsterdam",
+                "type": "gol",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794017654825_8",
+                "playerName": "Johan Manzambi",
+                "teamId": "ajaxdeamsterdam",
+                "type": "asistencia",
+                "count": 1
+              },
+              {
+                "playerId": "p_1794027902114_2",
+                "playerName": "Ismaïla Sarr",
+                "teamId": "atleticodemadrid",
+                "type": "gol",
+                "count": 1
+              }
+            ],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-13T03:34:23.374Z"
           },
           {
             "id": "plata_j8_m2",
@@ -20440,6 +20490,90 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794540863374",
+      "timestamp": 1794540863374,
+      "date": "12 nov 2026, 09:34 p.m.",
+      "competition": "plata",
+      "jornada": 8,
+      "fixtureMatchId": "plata_j8_m1",
+      "phase": "Jornada 8",
+      "team1Id": "ajaxdeamsterdam",
+      "team1Name": "Ajax de Ámsterdam",
+      "team1Logo": "Logos Equipos/ajax.png",
+      "score1": 2,
+      "team2Id": "atleticodemadrid",
+      "team2Name": "Atletico de Madrid",
+      "team2Logo": "Logos Equipos/atleticomadrid.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1794017654825_23",
+          "playerName": "Ronaldinho Gaúcho",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_8",
+          "playerName": "Johan Manzambi",
+          "teamId": "ajaxdeamsterdam",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794027902114_2",
+          "playerName": "Ismaïla Sarr",
+          "teamId": "atleticodemadrid",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T03:34:23.374Z"
+    },
+    {
+      "id": "match_1794540766998",
+      "timestamp": 1794540766998,
+      "date": "12 nov 2026, 09:32 p.m.",
+      "competition": "plata",
+      "jornada": 7,
+      "fixtureMatchId": "plata_j7_m1",
+      "phase": "Jornada 7",
+      "team1Id": "atleticodemadrid",
+      "team1Name": "Atletico de Madrid",
+      "team1Logo": "Logos Equipos/atleticomadrid.webp",
+      "score1": 0,
+      "team2Id": "chelseafc",
+      "team2Name": "Chelsea FC",
+      "team2Logo": "Logos Equipos/chelsea.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1793936668528_9",
+          "playerName": "Luiz Araújo",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936668528_10",
+          "playerName": "Yuri Alberto",
+          "teamId": "chelseafc",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-13T03:32:46.998Z"
+    },
     {
       "id": "match_1794539115844",
       "timestamp": 1794539115844,
