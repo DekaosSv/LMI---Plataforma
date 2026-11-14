@@ -17077,13 +17077,13 @@ var INITIAL_LMI_DATA = {
             "jornada": 4,
             "team1Id": "clubuniversidaddechile",
             "team2Id": "atleticodemadrid",
-            "score1": 0,
+            "score1": 1,
             "score2": 0,
             "played": true,
             "events": [],
-            "annulled": true,
+            "annulled": false,
             "registeredBy": "Administrador Principal",
-            "registeredAt": "2026-11-14T04:10:51.734Z"
+            "registeredAt": "2026-11-14T04:23:42.078Z"
           },
           {
             "id": "plata_j4_m2",
@@ -20734,6 +20734,26 @@ var INITIAL_LMI_DATA = {
   },
   "matchHistory": [
     {
+      "id": "match_1794630222078",
+      "timestamp": 1794630222078,
+      "date": "13 nov 2026, 10:23 p.m.",
+      "competition": "plata",
+      "jornada": 4,
+      "fixtureMatchId": "plata_j4_m1",
+      "phase": "Jornada 4",
+      "team1Id": "clubuniversidaddechile",
+      "team1Name": "Club Universidad de Chile",
+      "team1Logo": "Logos Equipos/uchile.png",
+      "score1": 1,
+      "team2Id": "atleticodemadrid",
+      "team2Name": "Atletico de Madrid",
+      "team2Logo": "Logos Equipos/atleticomadrid.webp",
+      "score2": 0,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-14T04:23:42.078Z"
+    },
+    {
       "id": "match_1794629777119",
       "timestamp": 1794629777119,
       "date": "13 nov 2026, 10:16 p.m.",
@@ -20980,27 +21000,6 @@ var INITIAL_LMI_DATA = {
       "events": [],
       "registeredBy": "Administrador Principal",
       "registeredAt": "2026-11-14T04:11:03.078Z"
-    },
-    {
-      "id": "match_1794629451734",
-      "timestamp": 1794629451734,
-      "date": "13 nov 2026, 10:10 p.m.",
-      "competition": "plata",
-      "jornada": 4,
-      "fixtureMatchId": "plata_j4_m1",
-      "phase": "Jornada 4",
-      "team1Id": "clubuniversidaddechile",
-      "team1Name": "Club Universidad de Chile",
-      "team1Logo": "Logos Equipos/uchile.png",
-      "score1": 0,
-      "team2Id": "atleticodemadrid",
-      "team2Name": "Atletico de Madrid",
-      "team2Logo": "Logos Equipos/atleticomadrid.webp",
-      "score2": 0,
-      "annulled": true,
-      "events": [],
-      "registeredBy": "Administrador Principal",
-      "registeredAt": "2026-11-14T04:10:51.734Z"
     },
     {
       "id": "match_1794629443391",
