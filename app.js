@@ -1288,7 +1288,9 @@ function renderWebChampionsView() {
 
   // 1. Render all 6 groups
   if (container) {
-    const groupOrder = ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D', 'Grupo E', 'Grupo F'];
+    const groupOrder = (groupData && groupData.groups && Object.keys(groupData.groups).length > 0)
+      ? Object.keys(groupData.groups)
+      : ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D', 'Grupo E', 'Grupo F'];
     container.innerHTML = groupOrder.map(gName => {
       const gTeams = data.groups[gName] || [];
       const teamCount = gTeams.length;

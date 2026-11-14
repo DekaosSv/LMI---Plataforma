@@ -35,57 +35,57 @@
     </div>
 
     <nav class="sidebar-nav">
-      <span class="nav-section-title">Navegación</span>
+      <span class="nav-section-title"><i class="fa-solid fa-futbol" style="margin-right: 4px; color: var(--lmi-gold);"></i> Competición y Partidos</span>
       <button class="nav-btn active" data-view="view-dashboard">
         <i class="fa-solid fa-chart-pie"></i>
         <span>Resumen General</span>
       </button>
       <button class="nav-btn" data-view="view-matches">
-        <i class="fa-solid fa-trophy"></i>
-        <span>Registrar Partido</span>
+        <i class="fa-solid fa-trophy" style="color: #facc15;"></i>
+        <span>Centro de Partidos</span>
       </button>
-      <button class="nav-btn" data-view="view-ida-vuelta" style="border-left: 3px solid #10b981;">
-        <i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i>
-        <span>Partidos Ida y Vuelta</span>
+      <button class="nav-btn" data-view="view-tournament-generator" style="border-left: 3px solid #a855f7;">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc;"></i>
+        <span>Generador de Torneos</span>
       </button>
+      <button class="nav-btn" data-view="view-club-performance" style="border-left: 3px solid #10b981;">
+        <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i>
+        <span>Rendimiento de Clubes</span>
+      </button>
+
+      <span class="nav-section-title"><i class="fa-solid fa-shield-halved" style="margin-right: 4px; color: #38bdf8;"></i> Clubes, Plantillas y Economía</span>
       <button class="nav-btn" data-view="view-teams">
-        <i class="fa-solid fa-shield-halved"></i>
+        <i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i>
         <span>Clubes y Plantillas</span>
       </button>
-      <button class="nav-btn" data-view="view-player-stats" style="border-left: 3px solid #facc15;">
+      <button class="nav-btn" data-view="view-player-stats">
         <i class="fa-solid fa-chart-simple" style="color: #facc15;"></i>
         <span>Editar Estadísticas</span>
       </button>
       <button class="nav-btn" data-view="view-market">
-        <i class="fa-solid fa-arrow-right-arrow-left"></i>
-        <span>Mercado de Fichajes</span>
+        <i class="fa-solid fa-arrow-right-arrow-left" style="color: #f59e0b;"></i>
+        <span>Mercado y Fichajes</span>
       </button>
-      <button class="nav-btn" data-view="view-midseason-market" style="border-left: 3px solid #f59e0b;">
-        <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i>
-        <span>Mercado Mitad Temporada</span>
-      </button>
-            <button class="nav-btn" data-view="view-ruleta" style="border-left: 3px solid #f59e0b;">
-        <i class="fa-solid fa-dharmachakra" style="color: #f59e0b;"></i>
-        <span>Ruleta de la Fortuna</span>
-      </button>
-      <button class="nav-btn" data-view="view-budgets"  style="border-left: 3px solid #10b981;">
+      <button class="nav-btn" data-view="view-budgets">
         <i class="fa-solid fa-wallet" style="color: #10b981;"></i>
         <span>Presupuestos & Finanzas</span>
       </button>
       <button class="nav-btn" data-view="view-trophies">
-        <i class="fa-solid fa-award"></i>
-        <span>Trofeos & Balón de Oro</span>
+        <i class="fa-solid fa-award" style="color: #fbbf24;"></i>
+        <span>Trofeos, Balón de Oro & Ruleta</span>
       </button>
+
+      <span class="nav-section-title"><i class="fa-solid fa-sliders" style="margin-right: 4px; color: #38bdf8;"></i> Control Web y Admin</span>
       <button class="nav-btn" data-view="view-web-control" style="border-left: 3px solid #38bdf8;">
         <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i>
-        <span>Centro de Control Web</span>
+        <span>Control Web y Admin</span>
       </button>
       <a href="admin_plata.html" target="_blank" class="nav-btn" style="text-decoration: none; border-left: 3px solid #94a3b8; display: flex; align-items: center; gap: 0.65rem;">
         <i class="fa-solid fa-users-gear" style="color: #94a3b8;"></i>
-        <span>Hub División Plata ↗</span>
+        <span>Hub Delegados Plata ↗</span>
       </a>
 
-      <span class="nav-section-title">Sistema</span>
+      <span class="nav-section-title"><i class="fa-solid fa-server" style="margin-right: 4px;"></i> Sistema</span>
       <button class="nav-btn" id="btn-quick-deploy">
         <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i>
         <span>Publicar Web (Git)</span>
@@ -103,11 +103,11 @@
     <div class="sidebar-footer">
       <div class="version-tag">
         <span>Liga Máster Internacional</span>
-        <span class="badge" id="lbl-season">T10</span>
+        <span class="badge" id="lbl-season">T13</span>
       </div>
       <div class="version-tag">
         <span>Admin Hub</span>
-        <span>v2.0 Pro</span>
+        <span>v2.5 Unificado</span>
       </div>
     </div>
   </aside>
@@ -202,50 +202,56 @@
             <div class="card-header">
               <h2 class="card-title"><i class="fa-solid fa-bolt" style="color: var(--lmi-gold);"></i> Acciones Rápidas</h2>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
               <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-matches')">
                 <i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i>
-                <span>Registrar resultado de partido y goles</span>
+                <span>Centro de Partidos: Registrar marcadores, goles y llaves</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start; border-color: rgba(168, 85, 247, 0.45); background: rgba(168, 85, 247, 0.1);" onclick="AdminApp.switchView('view-tournament-generator')">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc;"></i>
+                <span>Generador de Torneos y Fechas (Liga, Copa Estelar y Champions)</span>
+              </button>
+              <button class="btn btn-secondary" style="justify-content: flex-start; border-color: rgba(16, 185, 129, 0.45); background: rgba(16, 185, 129, 0.1);" onclick="AdminApp.switchView('view-club-performance')">
+                <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i>
+                <span>Rendimiento y Actividad de Clubes (Incluye Partidos Anulados)</span>
               </button>
               <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-teams')">
                 <i class="fa-solid fa-user-plus" style="color: #38bdf8;"></i>
-                <span>Gestionar plantilla, fichar o traspasar jugador</span>
+                <span>Clubes, Plantillas y Editor de Estadísticas de Jugadores</span>
               </button>
               <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-market')">
-                <i class="fa-solid fa-arrow-right-arrow-left" style="color: #10b981;"></i>
-                <span>Registrar movimiento oficial de mercado</span>
+                <i class="fa-solid fa-arrow-right-arrow-left" style="color: #f59e0b;"></i>
+                <span>Mercado de Fichajes, Mitad de Temporada y Presupuestos</span>
               </button>
-              <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-trophies')">
-                <i class="fa-solid fa-award" style="color: #f59e0b;"></i>
-                <span>Añadir o editar ganador de Balón de Oro</span>
+              <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="AdminApp.switchView('view-web-control')">
+                <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i>
+                <span>Control de la Web Pública y Acceso de Delegados</span>
               </button>
-              <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(250, 204, 21, 0.4); background: rgba(250, 204, 21, 0.08);" onclick="AdminApp.exportStandingsImage('oro')">
-                <i class="fa-solid fa-camera" style="color: #ffd100;"></i>
-                <span>Descargar Tabla Oficial División Oro (PNG)</span>
-              </button>
-              <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(148, 163, 184, 0.4); background: rgba(148, 163, 184, 0.08);" onclick="AdminApp.exportStandingsImage('plata')">
-                <i class="fa-solid fa-camera" style="color: #cbd5e1;"></i>
-                <span>Descargar Tabla Oficial División Plata (PNG)</span>
-              </button>
-              <button class="btn btn-secondary" style="justify-content: flex-start; border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08); color: #fca5a5;" onclick="AdminApp.openSeasonResetModal()">
-                <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i>
-                <span>Reiniciar estadísticas de temporada (Comenzar Temporada 12)</span>
-              </button>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                <button class="btn btn-secondary" style="justify-content: center; border: 1px solid rgba(250, 204, 21, 0.4); background: rgba(250, 204, 21, 0.08);" onclick="AdminApp.exportStandingsImage('oro')">
+                  <i class="fa-solid fa-camera" style="color: #ffd100;"></i>
+                  <span>Tabla Oro (PNG)</span>
+                </button>
+                <button class="btn btn-secondary" style="justify-content: center; border: 1px solid rgba(148, 163, 184, 0.4); background: rgba(148, 163, 184, 0.08);" onclick="AdminApp.exportStandingsImage('plata')">
+                  <i class="fa-solid fa-camera" style="color: #cbd5e1;"></i>
+                  <span>Tabla Plata (PNG)</span>
+                </button>
+              </div>
             </div>
           </div>
 
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title"><i class="fa-solid fa-circle-info" style="color: #38bdf8;"></i> Estado del Sistema</h2>
+              <h2 class="card-title"><i class="fa-solid fa-circle-info" style="color: #38bdf8;"></i> Organización del Sistema Admin v2.5</h2>
             </div>
-            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
-              Todo el flujo de trabajo de la <strong>Liga Máster Internacional</strong> se encuentra centralizado en este panel.
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.92rem;">
+              El panel está organizado en áreas unificadas de <strong>Control de Administrador</strong> y <strong>Control de la Web</strong>:
             </p>
-            <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.9rem;">
-              <li>Edición en vivo de plantillas, presupuestos y estadísticas.</li>
-              <li>Actualización instantánea de goles y asistencias por torneo.</li>
-              <li>Sincronización automática con <code>data.js?v=1794630231> y <code>Registro Balon de Oro.txt</code>.</li>
-              <li>Publicación con 1 clic hacia GitHub Pages.</li>
+            <ul style="margin: 0.85rem 0 1rem 1.4rem; color: var(--text-secondary); line-height: 1.75; font-size: 0.88rem;">
+              <li><strong>Centro de Partidos & Series:</strong> Registro general y series Ida/Vuelta unificados en una misma vista.</li>
+              <li><strong>Generador Dinámico de Torneos:</strong> Elige equipos participantes, fase de grupos o eliminatorias directas hasta la Final.</li>
+              <li><strong>Rendimiento y Actividad:</strong> Ranking de clubes de más activos a menos activos con conteo y auditoría de partidos anulados.</li>
+              <li><strong>Control Web vs Admin:</strong> Pestañas separadas para personalizar la web pública y administrar permisos/PINs de delegados.</li>
             </ul>
             <button class="btn btn-gold" onclick="AdminApp.saveData(true)" style="width: 100%;">
               <i class="fa-solid fa-floppy-disk"></i> Guardar Todo Ahora
@@ -257,9 +263,14 @@
         <div class="card">
           <div class="card-header">
             <h2 class="card-title"><i class="fa-solid fa-futbol"></i> Máximos Goleadores Actuales (Top 5)</h2>
-            <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="AdminApp.switchView('view-teams')">
-              Ver todos los jugadores
-            </button>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="AdminApp.switchView('view-player-stats')">
+                <i class="fa-solid fa-chart-simple" style="color: #facc15;"></i> Editar Estadísticas
+              </button>
+              <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="AdminApp.switchView('view-teams')">
+                Ver plantillas
+              </button>
+            </div>
           </div>
           <div class="admin-table-container">
             <table class="admin-table">
@@ -285,6 +296,27 @@
 
       <!-- ==================== VIEW 2: MATCHES & STATS ==================== -->
       <section class="module-view" id="view-matches">
+        <!-- Barra Unificada del Área de Competición -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-futbol" style="color: var(--lmi-gold);"></i> Área de Competición:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-matches')">
+              <i class="fa-solid fa-trophy"></i> Registro General & Cuadros
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-ida-vuelta')">
+              <i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i> Series Ida y Vuelta (Plata)
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-tournament-generator')">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc;"></i> Generador de Torneos y Fechas
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-club-performance')">
+              <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i> Rendimiento y Anulados
+            </button>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-header">
             <div>
@@ -805,6 +837,27 @@
 
       <!-- ==================== VIEW: REGISTRO IDA Y VUELTA (CARABOBO & RANGERS) ==================== -->
       <section class="module-view" id="view-ida-vuelta">
+        <!-- Barra Unificada del Área de Competición -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-futbol" style="color: var(--lmi-gold);"></i> Área de Competición:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-matches')">
+              <i class="fa-solid fa-trophy"></i> Registro General & Cuadros
+            </button>
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-ida-vuelta')">
+              <i class="fa-solid fa-arrows-rotate"></i> Series Ida y Vuelta (Plata)
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-tournament-generator')">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc;"></i> Generador de Torneos y Fechas
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-club-performance')">
+              <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i> Rendimiento y Anulados
+            </button>
+          </div>
+        </div>
+
         <!-- Tarjeta de Control y Selección de Serie -->
         <div class="card" style="border: 1px solid rgba(16, 185, 129, 0.4); background: #0b1528;">
           <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 1rem;">
@@ -1004,6 +1057,23 @@
 
       <!-- ==================== VIEW 3: TEAMS & ROSTERS ==================== -->
       <section class="module-view" id="view-teams">
+        <!-- Barra Unificada del Área de Clubes y Jugadores -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i> Gestión de Clubes y Jugadores:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-teams')">
+              <i class="fa-solid fa-shield-halved"></i> Clubes y Plantillas
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-player-stats')">
+              <i class="fa-solid fa-chart-simple" style="color: #facc15;"></i> Editor Global de Estadísticas
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-club-performance')">
+              <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i> Rendimiento y Actividad de Clubes
+            </button>
+          </div>
+        </div>
         
         <!-- Club Selector & Summary Card -->
         <div class="card">
@@ -1175,6 +1245,23 @@
 
       <!-- ==================== VIEW 4: MARKET & TRANSFERS ==================== -->
       <section class="module-view" id="view-market">
+        <!-- Barra Unificada del Área de Mercado y Finanzas -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-arrow-right-arrow-left" style="color: #f59e0b;"></i> Mercado y Economía:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-market')">
+              <i class="fa-solid fa-arrow-right-arrow-left"></i> Movimientos de Mercado
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-midseason-market')">
+              <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i> Asistente Mitad de Temporada
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-budgets')">
+              <i class="fa-solid fa-wallet" style="color: #10b981;"></i> Presupuestos y Finanzas
+            </button>
+          </div>
+        </div>
         
         <!-- Mid-Season Market Callout Banner -->
         <div class="card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.85)); border: 1px solid rgba(245, 158, 11, 0.4); margin-bottom: 1.5rem;">
@@ -1301,6 +1388,23 @@
 
       <!-- ==================== VIEW: MERCADO DE MITAD DE TEMPORADA ==================== -->
       <section class="module-view" id="view-midseason-market">
+        <!-- Barra Unificada del Área de Mercado y Finanzas -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-arrow-right-arrow-left" style="color: #f59e0b;"></i> Mercado y Economía:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-market')">
+              <i class="fa-solid fa-arrow-right-arrow-left"></i> Movimientos de Mercado
+            </button>
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-midseason-market')">
+              <i class="fa-solid fa-people-arrows"></i> Asistente Mitad de Temporada
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-budgets')">
+              <i class="fa-solid fa-wallet" style="color: #10b981;"></i> Presupuestos y Finanzas
+            </button>
+          </div>
+        </div>
         
         <!-- Header & Stepper Card -->
         <div class="card" style="margin-bottom: 1.5rem;">
@@ -1691,6 +1795,24 @@
 
       <!-- ==================== VIEW: PRESUPUESTOS Y FINANZAS (TEMP 13) ==================== -->
       <section class="module-view" id="view-budgets">
+        <!-- Barra Unificada del Área de Mercado y Finanzas -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-arrow-right-arrow-left" style="color: #f59e0b;"></i> Mercado y Economía:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-market')">
+              <i class="fa-solid fa-arrow-right-arrow-left"></i> Movimientos de Mercado
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-midseason-market')">
+              <i class="fa-solid fa-people-arrows" style="color: #f59e0b;"></i> Asistente Mitad de Temporada
+            </button>
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-budgets')">
+              <i class="fa-solid fa-wallet"></i> Presupuestos y Finanzas
+            </button>
+          </div>
+        </div>
+
         <div class="card" style="margin-bottom: 1.5rem;">
           <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
             <div>
@@ -1757,6 +1879,20 @@
 
       <!-- ==================== VIEW: RULETA DE LA FORTUNA ==================== -->
       <section class="module-view" id="view-ruleta">
+        <!-- Barra Unificada de Premios y Ruleta -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Premios y Eventos Especiales:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-trophies')">
+              <i class="fa-solid fa-trophy" style="color: var(--lmi-gold);"></i> Trofeos, Palmarés y Balón de Oro
+            </button>
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-ruleta')">
+              <i class="fa-solid fa-dharmachakra"></i> Ruleta de la Fortuna & Tokens
+            </button>
+          </div>
+        </div>
         
         <!-- Header Card -->
         <div class="card" style="margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 18px; padding: 1.6rem;">
@@ -2037,6 +2173,20 @@
 
       <!-- ==================== VIEW 5: TROPHIES & BALLON D'OR ==================== -->
       <section class="module-view" id="view-trophies">
+        <!-- Barra Unificada de Premios y Ruleta -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Premios y Eventos Especiales:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-trophies')">
+              <i class="fa-solid fa-trophy"></i> Trofeos, Palmarés y Balón de Oro
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-ruleta')">
+              <i class="fa-solid fa-dharmachakra" style="color: #f59e0b;"></i> Ruleta de la Fortuna & Tokens
+            </button>
+          </div>
+        </div>
         
         <!-- Balon de Oro Manager -->
         <div class="card">
@@ -2087,349 +2237,395 @@
 
       </section>
 
-      <!-- ==================== VIEW 6: CENTRO DE CONTROL WEB ==================== -->
+      <!-- ==================== VIEW 6: CENTRO DE CONTROL WEB & ADMIN ==================== -->
       <section class="module-view" id="view-web-control">
+        <!-- Barra Unificada de Control Web vs Control de Administrador -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Panel de Control:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn active" id="wc-tab-btn-all" onclick="AdminApp.switchWebControlSubTab('all')">
+              <i class="fa-solid fa-table-cells-large"></i> Vista Completa
+            </button>
+            <button type="button" class="hub-subnav-btn" id="wc-tab-btn-web" onclick="AdminApp.switchWebControlSubTab('web')">
+              <i class="fa-solid fa-globe" style="color: #38bdf8;"></i> Control de la Web Pública
+            </button>
+            <button type="button" class="hub-subnav-btn" id="wc-tab-btn-admin" onclick="AdminApp.switchWebControlSubTab('admin')">
+              <i class="fa-solid fa-user-shield" style="color: #10b981;"></i> Control de Admin & Delegados
+            </button>
+            <button type="button" class="hub-subnav-btn" id="wc-tab-btn-system" onclick="AdminApp.switchWebControlSubTab('system')">
+              <i class="fa-solid fa-gears" style="color: #f59e0b;"></i> Sistema y Temporada
+            </button>
+          </div>
+        </div>
 
         <!-- Top Overview -->
         <div class="card" style="border-left: 4px solid #38bdf8;">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title"><i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control y Personalización Web</h2>
-              <p class="card-desc">Controla la visibilidad de cada pestaña pública, configura textos y anuncios de la liga, y genera calendarios oficiales sin tocar código.</p>
-            </div>
-            <button class="btn btn-gold" onclick="AdminApp.saveData(true)">
-              <i class="fa-solid fa-floppy-disk"></i> Guardar Todo Ahora
-            </button>
-          </div>
-        </div>
-
-        <!-- 1. Pestañas de la Web (Mostrar / Ocultar) -->
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title"><i class="fa-solid fa-layer-group" style="color: var(--lmi-gold);"></i> Pestañas y Apartados de la Web</h2>
-              <p class="card-desc">Activa o desactiva en tiempo real las pestañas que ven los usuarios en la barra de navegación pública.</p>
-            </div>
-            <div style="display: flex; gap: 0.5rem;">
-              <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.toggleAllWebTabs(true)">
-                <i class="fa-solid fa-check"></i> Activar Todas
-              </button>
-              <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.toggleAllWebTabs(false)">
-                <i class="fa-solid fa-ban"></i> Desactivar Opcionales
-              </button>
-            </div>
-          </div>
-
-          <div class="grid-3" id="web-tabs-control-grid">
-            <!-- Populated dynamically via JS -->
-          </div>
-        </div>
-
-        <!-- Control de Visibilidad de Tarjeta de Presupuesto en Equipos -->
-        <div class="card" style="border-left: 4px solid #10b981;">
           <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
             <div>
-              <h2 class="card-title" style="color: #34d399;">
-                <i class="fa-solid fa-wallet" style="color: #10b981;"></i> Finanzas en Perfiles de Clubes
-              </h2>
-              <p class="card-desc">
-                Controla si los usuarios de la web ven la tarjeta detallada de <strong>Presupuesto & Balance</strong> (desglose de premios de liga, champions y renovaciones) al visitar el perfil de cada club.
-              </p>
+              <h2 class="card-title"><i class="fa-solid fa-sliders" style="color: #38bdf8;"></i> Centro de Control Web y Administración</h2>
+              <p class="card-desc">Gestiona por separado el <strong>Control de la Web Pública</strong> (pestañas, avisos, textos) y el <strong>Control de Administrador</strong> (permisos de delegados, PINs, tokens y temporada).</p>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Mostrar Tarjeta "Presupuesto & Balance"</span>
-              <label class="lmi-switch">
-                <input type="checkbox" id="web-config-show-team-budget-card" onchange="AdminApp.onWebConfigChange()">
-                <span class="lmi-slider"></span>
-              </label>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary" onclick="AdminApp.switchView('view-tournament-generator')" style="border-color: #c084fc; color: #c084fc;">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Ir a Generador de Torneos
+              </button>
+              <button class="btn btn-gold" onclick="AdminApp.saveData(true)">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Todo Ahora
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Control de Fechas Habilitadas para Delegados de División Plata -->
-        <div class="card" style="border-left: 4px solid #94a3b8; background: linear-gradient(135deg, rgba(148, 163, 184, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
-          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-                <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #94a3b8; font-weight: 800; font-size: 0.75rem;">
-                  <i class="fa-solid fa-medal"></i> DIVISIÓN PLATA
-                </span>
-                <span id="lbl-plata-delegates-status" class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; font-weight: 800; font-size: 0.75rem;">
-                  1 Fecha Habilitada
-                </span>
-              </div>
-              <h2 class="card-title" style="color: #cbd5e1;">
-                <i class="fa-solid fa-calendar-check" style="color: #94a3b8;"></i> Control de Fechas Habilitadas para Delegados (División Plata)
-              </h2>
-              <p class="card-desc">
-                Autoriza qué jornadas de <strong>División Plata</strong> pueden registrar tus compañeros desde su <a href="admin_plata.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">Hub de Delegados</a>. Si una fecha está bloqueada aquí, ellos no podrán registrar partidos de esa fecha hasta que la habilites.
-              </p>
-            </div>
-            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-              <a href="admin_plata.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.85rem; border-color: #94a3b8; color: #cbd5e1;">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Hub Delegados
-              </a>
-              <button class="btn btn-gold" onclick="AdminApp.savePlataDelegatesConfig()" style="font-size: 0.8rem; padding: 0.4rem 0.85rem;">
-                <i class="fa-solid fa-floppy-disk"></i> Guardar Permisos
-              </button>
-            </div>
-          </div>
-
-          <!-- Master Switch & Presets -->
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.06);">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <label class="lmi-switch">
-                <input type="checkbox" id="chk-plata-allow-all" onchange="AdminApp.onPlataAllowAllChange()">
-                <span class="lmi-slider"></span>
-              </label>
+        <!-- ==================== BLOQUE A: CONTROL DE LA WEB PÚBLICA ==================== -->
+        <div id="wc-panel-web">
+          <!-- 1. Pestañas de la Web (Mostrar / Ocultar) -->
+          <div class="card">
+            <div class="card-header">
               <div>
-                <strong style="color: #fff; font-size: 0.92rem;">Permitir TODAS las Jornadas a la vez</strong>
-                <p style="margin: 0; font-size: 0.78rem; color: #94a3b8;">Habilita el registro de las 26 jornadas sin restricciones para tus compañeros.</p>
-              </div>
-            </div>
-
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('only1')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">Solo J1</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to3')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J3</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to5')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J5</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to10')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J10</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('blockAll')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem; color: #fca5a5; border-color: rgba(239, 68, 68, 0.4);">Bloquear Todas</button>
-            </div>
-          </div>
-
-          <!-- 26 Interactive Chips -->
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-              <span style="font-size: 0.82rem; font-weight: 700; color: #94a3b8;">
-                Haz clic en cualquier jornada para alternar entre Habilitada (🟢) o Bloqueada (🔒):
-              </span>
-              <span style="font-size: 0.76rem; color: #64748b;">(26 Jornadas de División Plata)</span>
-            </div>
-            <div id="plata-jornadas-chip-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem;">
-              <!-- Populated via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Seguridad & Delegados de División Plata (PINs & GitHub Sync) -->
-        <div class="card" style="border-left: 4px solid #38bdf8; background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
-          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-                <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; font-weight: 800; font-size: 0.75rem;">
-                  <i class="fa-solid fa-lock"></i> SEGURIDAD & NUBE
+                <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 0.72rem; font-weight: 800; margin-bottom: 0.35rem; display: inline-block;">
+                  🌐 CONTROL DE LA WEB PÚBLICA
                 </span>
-                <span id="lbl-github-sync-status" class="badge" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #94a3b8; font-weight: 800; font-size: 0.75rem;">
-                  Token No Configurado
-                </span>
-              </div>
-              <h2 class="card-title" style="color: #cbd5e1;">
-                <i class="fa-solid fa-key" style="color: #38bdf8;"></i> Delegados de División Plata: PINs de Acceso y Conexión GitHub
-              </h2>
-              <p class="card-desc">
-                Define las contraseñas (PIN) de tus compañeros y genera el <strong>enlace de invitación</strong> para que ellos puedan registrar partidos desde su teléfono o PC directamente en GitHub Pages sin que tengas tu computadora encendida.
-              </p>
-            </div>
-            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-              <button class="btn btn-secondary" onclick="AdminApp.addPlataDelegate()" style="border-color: #38bdf8; color: #38bdf8;">
-                <i class="fa-solid fa-user-plus"></i> Añadir Delegado
-              </button>
-              <button class="btn btn-primary" onclick="AdminApp.copyPlataInviteLink()" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none;">
-                <i class="fa-solid fa-share-nodes"></i> Copiar Enlace
-              </button>
-              <button class="btn btn-gold" onclick="AdminApp.savePlataDelegatesSecurityConfig()">
-                <i class="fa-solid fa-floppy-disk"></i> Guardar y Publicar
-              </button>
-            </div>
-          </div>
-
-          <!-- Contenedor Dinámico de Delegados (Añadir / Activar / Desactivar / Eliminar) -->
-          <div style="margin-bottom: 0.75rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
-              <span style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">
-                Perfiles de Delegados autorizados (Solo los que estén marcados como <strong>Activos</strong> podrán iniciar sesión):
-              </span>
-              <span style="font-size: 0.76rem; color: #64748b;" id="lbl-delegates-count-status">3 configurados</span>
-            </div>
-            <div id="plata-delegates-dynamic-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-              <!-- Populated dynamically via AdminApp.renderPlataDelegatesSecurityControl() -->
-            </div>
-          </div>
-
-          <!-- Token de GitHub y Conexión Cloud -->
-          <div style="background: rgba(15, 23, 42, 0.75); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 1.25rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
-              <div>
-                <strong style="color: #fff; font-size: 0.95rem;">
-                  <i class="fa-brands fa-github" style="color: #38bdf8;"></i> Personal Access Token de GitHub (Para Guardar en GitHub Pages)
-                </strong>
-                <p style="margin: 0; font-size: 0.78rem; color: #94a3b8;">
-                  Se guarda de forma local en tu navegador (NUNCA en el código ni en git). Al hacer clic en "Copiar Enlace de Invitación", se vinculará de forma segura en los teléfonos/PCs de tus compañeros.
-                </p>
+                <h2 class="card-title"><i class="fa-solid fa-layer-group" style="color: var(--lmi-gold);"></i> Pestañas y Apartados de la Web</h2>
+                <p class="card-desc">Activa o desactiva en tiempo real las pestañas que ven los usuarios en la barra de navegación pública.</p>
               </div>
               <div style="display: flex; gap: 0.5rem;">
-                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.testGitHubConnection()">
-                  <i class="fa-solid fa-plug"></i> Probar Conexión
+                <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.toggleAllWebTabs(true)">
+                  <i class="fa-solid fa-check"></i> Activar Todas
+                </button>
+                <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;" onclick="AdminApp.toggleAllWebTabs(false)">
+                  <i class="fa-solid fa-ban"></i> Desactivar Opcionales
                 </button>
               </div>
             </div>
 
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
-              <input type="password" id="cfg-github-token-input" class="form-input" placeholder="ghp_... o github_pat_..." style="flex: 1; font-family: monospace; font-size: 0.85rem;" onchange="AdminApp.saveLocalGitHubToken(this.value)" />
-              <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.toggleGitHubTokenVisibility()" title="Mostrar / Ocultar">
-                <i class="fa-solid fa-eye" id="icon-gh-token-eye"></i>
+            <div class="grid-3" id="web-tabs-control-grid">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- 2. Información General y Anuncios de la Web -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title"><i class="fa-solid fa-pen-to-square" style="color: #38bdf8;"></i> Títulos y Temporada Pública</h2>
+              </div>
+              <div class="form-group">
+                <label>Título de la Temporada</label>
+                <input type="text" class="form-control" id="web-config-season" placeholder="Ej: Temporada 13" oninput="AdminApp.onWebConfigChange()">
+              </div>
+              <div class="form-group">
+                <label>Subtítulo Oficial de la Liga</label>
+                <input type="text" class="form-control" id="web-config-subtitle" placeholder="Subtítulo visible en portada..." oninput="AdminApp.onWebConfigChange()">
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title"><i class="fa-solid fa-bullhorn" style="color: #f59e0b;"></i> Barra de Anuncio en Portada</h2>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Mostrar aviso en la parte superior</span>
+                <label class="lmi-switch">
+                  <input type="checkbox" id="web-config-announcement-enabled" onchange="AdminApp.onWebConfigChange()">
+                  <span class="lmi-slider"></span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Mensaje del Anuncio</label>
+                <input type="text" class="form-control" id="web-config-announcement-text" placeholder="Ej: ¡Período de Renovaciones Abierto! Envía tu informe al administrador" oninput="AdminApp.onWebConfigChange()">
+              </div>
+              <div class="form-group">
+                <label>Tipo de Aviso</label>
+                <select class="form-select" id="web-config-announcement-type" onchange="AdminApp.onWebConfigChange()">
+                  <option value="info">🔵 Informativo (Azul)</option>
+                  <option value="warning">🟡 Alerta / Recordatorio (Amarillo)</option>
+                  <option value="success">🟢 Éxito / Especial (Verde)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Control de Visibilidad de Tarjeta de Presupuesto en Equipos -->
+          <div class="card" style="border-left: 4px solid #10b981;">
+            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h2 class="card-title" style="color: #34d399;">
+                  <i class="fa-solid fa-wallet" style="color: #10b981;"></i> Finanzas en Perfiles de Clubes (Web Pública)
+                </h2>
+                <p class="card-desc">
+                  Controla si los usuarios de la web ven la tarjeta detallada de <strong>Presupuesto & Balance</strong> (desglose de premios de liga, champions y renovaciones) al visitar el perfil de cada club.
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Mostrar Tarjeta "Presupuesto & Balance"</span>
+                <label class="lmi-switch">
+                  <input type="checkbox" id="web-config-show-team-budget-card" onchange="AdminApp.onWebConfigChange()">
+                  <span class="lmi-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== BLOQUE B: CONTROL DE ADMINISTRADOR Y DELEGADOS ==================== -->
+        <div id="wc-panel-admin">
+          <!-- Control de Fechas Habilitadas para Delegados de División Plata -->
+          <div class="card" style="border-left: 4px solid #94a3b8; background: linear-gradient(135deg, rgba(148, 163, 184, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
+            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                  <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; font-weight: 800; font-size: 0.75rem;">
+                    🔐 CONTROL DE ADMINISTRADOR
+                  </span>
+                  <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #94a3b8; font-weight: 800; font-size: 0.75rem;">
+                    <i class="fa-solid fa-medal"></i> DIVISIÓN PLATA
+                  </span>
+                  <span id="lbl-plata-delegates-status" class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; font-weight: 800; font-size: 0.75rem;">
+                    1 Fecha Habilitada
+                  </span>
+                </div>
+                <h2 class="card-title" style="color: #cbd5e1;">
+                  <i class="fa-solid fa-calendar-check" style="color: #94a3b8;"></i> Control de Fechas Habilitadas para Delegados (División Plata)
+                </h2>
+                <p class="card-desc">
+                  Autoriza qué jornadas de <strong>División Plata</strong> pueden registrar tus compañeros desde su <a href="admin_plata.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">Hub de Delegados</a>. Si una fecha está bloqueada aquí, ellos no podrán registrar partidos de esa fecha hasta que la habilites.
+                </p>
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                <a href="admin_plata.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.85rem; border-color: #94a3b8; color: #cbd5e1;">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Hub Delegados
+                </a>
+                <button class="btn btn-gold" onclick="AdminApp.savePlataDelegatesConfig()" style="font-size: 0.8rem; padding: 0.4rem 0.85rem;">
+                  <i class="fa-solid fa-floppy-disk"></i> Guardar Permisos
+                </button>
+              </div>
+            </div>
+
+            <!-- Master Switch & Presets -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.06);">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <label class="lmi-switch">
+                  <input type="checkbox" id="chk-plata-allow-all" onchange="AdminApp.onPlataAllowAllChange()">
+                  <span class="lmi-slider"></span>
+                </label>
+                <div>
+                  <strong style="color: #fff; font-size: 0.92rem;">Permitir TODAS las Jornadas a la vez</strong>
+                  <p style="margin: 0; font-size: 0.78rem; color: #94a3b8;">Habilita el registro de las 26 jornadas sin restricciones para tus compañeros.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('only1')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">Solo J1</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to3')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J3</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to5')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J5</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('1to10')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem;">J1 a J10</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.setPlataJornadasPreset('blockAll')" style="font-size: 0.76rem; padding: 0.3rem 0.65rem; color: #fca5a5; border-color: rgba(239, 68, 68, 0.4);">Bloquear Todas</button>
+              </div>
+            </div>
+
+            <!-- 26 Interactive Chips -->
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #94a3b8;">
+                  Haz clic en cualquier jornada para alternar entre Habilitada (🟢) o Bloqueada (🔒):
+                </span>
+                <span style="font-size: 0.76rem; color: #64748b;">(26 Jornadas de División Plata)</span>
+              </div>
+              <div id="plata-jornadas-chip-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Seguridad & Delegados de División Plata (PINs & GitHub Sync) -->
+          <div class="card" style="border-left: 4px solid #38bdf8; background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
+            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                  <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; font-weight: 800; font-size: 0.75rem;">
+                    <i class="fa-solid fa-lock"></i> SEGURIDAD & NUBE
+                  </span>
+                  <span id="lbl-github-sync-status" class="badge" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #94a3b8; font-weight: 800; font-size: 0.75rem;">
+                    Token No Configurado
+                  </span>
+                </div>
+                <h2 class="card-title" style="color: #cbd5e1;">
+                  <i class="fa-solid fa-key" style="color: #38bdf8;"></i> Delegados de División Plata: PINs de Acceso y Conexión GitHub
+                </h2>
+                <p class="card-desc">
+                  Define las contraseñas (PIN) de tus compañeros y genera el <strong>enlace de invitación</strong> para que ellos puedan registrar partidos desde su teléfono o PC directamente en GitHub Pages sin que tengas tu computadora encendida.
+                </p>
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                <button class="btn btn-secondary" onclick="AdminApp.addPlataDelegate()" style="border-color: #38bdf8; color: #38bdf8;">
+                  <i class="fa-solid fa-user-plus"></i> Añadir Delegado
+                </button>
+                <button class="btn btn-primary" onclick="AdminApp.copyPlataInviteLink()" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none;">
+                  <i class="fa-solid fa-share-nodes"></i> Copiar Enlace
+                </button>
+                <button class="btn btn-gold" onclick="AdminApp.savePlataDelegatesSecurityConfig()">
+                  <i class="fa-solid fa-floppy-disk"></i> Guardar y Publicar
+                </button>
+              </div>
+            </div>
+
+            <!-- Contenedor Dinámico de Delegados (Añadir / Activar / Desactivar / Eliminar) -->
+            <div style="margin-bottom: 0.75rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">
+                  Perfiles de Delegados autorizados (Solo los que estén marcados como <strong>Activos</strong> podrán iniciar sesión):
+                </span>
+                <span style="font-size: 0.76rem; color: #64748b;" id="lbl-delegates-count-status">3 configurados</span>
+              </div>
+              <div id="plata-delegates-dynamic-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                <!-- Populated dynamically via AdminApp.renderPlataDelegatesSecurityControl() -->
+              </div>
+            </div>
+
+            <!-- Token de GitHub y Conexión Cloud -->
+            <div style="background: rgba(15, 23, 42, 0.75); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                <div>
+                  <strong style="color: #fff; font-size: 0.95rem;">
+                    <i class="fa-brands fa-github" style="color: #38bdf8;"></i> Personal Access Token de GitHub (Para Guardar en GitHub Pages)
+                  </strong>
+                  <p style="margin: 0; font-size: 0.78rem; color: #94a3b8;">
+                    Se guarda de forma local en tu navegador (NUNCA en el código ni en git). Al hacer clic en "Copiar Enlace de Invitación", se vinculará de forma segura en los teléfonos/PCs de tus compañeros.
+                  </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.testGitHubConnection()">
+                    <i class="fa-solid fa-plug"></i> Probar Conexión
+                  </button>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="password" id="cfg-github-token-input" class="form-input" placeholder="ghp_... o github_pat_..." style="flex: 1; font-family: monospace; font-size: 0.85rem;" onchange="AdminApp.saveLocalGitHubToken(this.value)" />
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.toggleGitHubTokenVisibility()" title="Mostrar / Ocultar">
+                  <i class="fa-solid fa-eye" id="icon-gh-token-eye"></i>
+                </button>
+              </div>
+              <span id="lbl-github-test-result" style="display: block; font-size: 0.76rem; margin-top: 0.4rem; font-weight: 700;"></span>
+
+              <!-- Enlace Generado para Delegados -->
+              <div style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
+                <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.35rem;">
+                  <i class="fa-solid fa-link"></i> Enlace de Invitación Oficial para Delegados (GitHub Pages):
+                </label>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <input type="text" id="cfg-plata-invite-display" readonly class="form-input" style="flex: 1; font-family: monospace; font-size: 0.78rem; color: #38bdf8; background: rgba(0,0,0,0.4);" placeholder="Ingresa tu token arriba para generar el enlace..." onclick="this.select()" />
+                  <button type="button" class="btn btn-primary btn-sm" onclick="AdminApp.copyPlataInviteLink()" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none; white-space: nowrap;">
+                    <i class="fa-solid fa-copy"></i> Copiar Enlace
+                  </button>
+                </div>
+                <span style="display: block; font-size: 0.72rem; color: #94a3b8; margin-top: 0.35rem;">
+                  📌 Comparte este enlace con tus compañeros delegados. Al abrirlo, se conectarán a GitHub Pages con tu token automáticamente sin que tengan que escribir nada.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== BLOQUE C: SISTEMA, CALENDARIOS RÁPIDOS Y TEMPORADA ==================== -->
+        <div id="wc-panel-system">
+          <!-- 3. Generador Centralizado de Fechas / Fixtures -->
+          <div class="card">
+            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <span class="badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #a855f7; font-size: 0.72rem; font-weight: 800; margin-bottom: 0.35rem; display: inline-block;">
+                  ⚙️ GENERACIÓN RÁPIDA Y AVANZADA
+                </span>
+                <h2 class="card-title"><i class="fa-solid fa-calendar-plus" style="color: #10b981;"></i> Generador Oficial de Fechas y Torneos</h2>
+                <p class="card-desc">Usa los atajos rápidos o abre el <strong>Generador Avanzado de Torneos</strong> para elegir equipos participantes, fase de grupos o llaves eliminatorias desde el principio.</p>
+              </div>
+              <button class="btn btn-primary" onclick="AdminApp.switchView('view-tournament-generator')" style="background: linear-gradient(135deg, #9333ea 0%, #6366f1 100%); border: none; font-weight: 800;">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Abrir Generador Avanzado (Elegir Equipos y Fases)
               </button>
             </div>
-            <span id="lbl-github-test-result" style="display: block; font-size: 0.76rem; margin-top: 0.4rem; font-weight: 700;"></span>
 
-            <!-- Enlace Generado para Delegados -->
-            <div style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
-              <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.35rem;">
-                <i class="fa-solid fa-link"></i> Enlace de Invitación Oficial para Delegados (GitHub Pages):
-              </label>
-              <div style="display: flex; gap: 0.5rem; align-items: center;">
-                <input type="text" id="cfg-plata-invite-display" readonly class="form-input" style="flex: 1; font-family: monospace; font-size: 0.78rem; color: #38bdf8; background: rgba(0,0,0,0.4);" placeholder="Ingresa tu token arriba para generar el enlace..." onclick="this.select()" />
-                <button type="button" class="btn btn-primary btn-sm" onclick="AdminApp.copyPlataInviteLink()" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); border: none; white-space: nowrap;">
-                  <i class="fa-solid fa-copy"></i> Copiar Enlace
-                </button>
+            <div class="grid-2">
+              <!-- División Oro -->
+              <div class="fixture-generator-card">
+                <h4><i class="fa-solid fa-crown" style="color: #ffd700;"></i> División Oro (<span id="gen-oro-count">11</span> Clubes)</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                  Genera los partidos de liga entre los clubes asignados a División Oro con algoritmo oficial round-robin y descanso rotativo.
+                </p>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="btn btn-primary" id="btn-gen-oro-ida" onclick="AdminApp.generateDivisionFixture('oro', false)">
+                    <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (11 Jornadas)
+                  </button>
+                  <button class="btn btn-secondary" id="btn-gen-oro-doble" onclick="AdminApp.generateDivisionFixture('oro', true)">
+                    <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (22 Jornadas)
+                  </button>
+                </div>
               </div>
-              <span style="display: block; font-size: 0.72rem; color: #94a3b8; margin-top: 0.35rem;">
-                📌 Comparte este enlace con tus compañeros delegados. Al abrirlo, se conectarán a GitHub Pages con tu token automáticamente sin que tengan que escribir nada.
-              </span>
-            </div>
-          </div>
-        </div>
 
-        <!-- Reinicio de Estadísticas para Nueva Temporada -->
-        <div class="card" style="border-left: 4px solid #ef4444; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
-          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <h2 class="card-title" style="color: #f87171;">
-                <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i> Reiniciar Estadísticas de Temporada (Comenzar T12)
-              </h2>
-              <p class="card-desc">
-                Restablece a 0 únicamente los torneos, goles y estadísticas de la temporada para comenzar la <strong>Temporada 12</strong>.
-                <br>
-                <strong style="color: #34d399;"><i class="fa-solid fa-shield-halved"></i> El registro histórico (Sala de Campeones, Balón de Oro y plantillas) NO SE TOCA.</strong>
-              </p>
-            </div>
-            <button class="btn btn-danger" style="background: #dc2626; border-color: #ef4444; color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);" onclick="AdminApp.openSeasonResetModal()">
-              <i class="fa-solid fa-rotate"></i> Reiniciar Temporada
-            </button>
-          </div>
-        </div>
+              <!-- División Plata -->
+              <div class="fixture-generator-card">
+                <h4><i class="fa-solid fa-shield-halved" style="color: #94a3b8;"></i> División Plata (<span id="gen-plata-count">13</span> Clubes)</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                  Genera los partidos de liga entre los clubes de División Plata. Incluye descanso rotativo por jornada.
+                </p>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="btn btn-primary" id="btn-gen-plata-ida" onclick="AdminApp.generateDivisionFixture('plata', false)">
+                    <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (13 Jornadas)
+                  </button>
+                  <button class="btn btn-secondary" id="btn-gen-plata-doble" onclick="AdminApp.generateDivisionFixture('plata', true)">
+                    <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (26 Jornadas)
+                  </button>
+                </div>
+              </div>
 
-        <!-- 2. Información General y Anuncios de la Web -->
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="card-title"><i class="fa-solid fa-pen-to-square" style="color: #38bdf8;"></i> Títulos y Temporada</h2>
-            </div>
-            <div class="form-group">
-              <label>Título de la Temporada</label>
-              <input type="text" class="form-control" id="web-config-season" placeholder="Ej: Temporada 13" oninput="AdminApp.onWebConfigChange()">
-            </div>
-            <div class="form-group">
-              <label>Subtítulo Oficial de la Liga</label>
-              <input type="text" class="form-control" id="web-config-subtitle" placeholder="Subtítulo visible en portada..." oninput="AdminApp.onWebConfigChange()">
-            </div>
-          </div>
+              <!-- UEFA Champions League -->
+              <div class="fixture-generator-card">
+                <h4><i class="fa-solid fa-trophy" style="color: #38bdf8;"></i> UEFA Champions League (26 Clubes)</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                  Formato Oficial: 2 grupos de 5 clubes y 4 grupos de 4 clubes (5 fechas oficiales, 44 partidos). Clasifican 16 a Octavos de Final (Top 2 de cada grupo + 4 mejores terceros).
+                </p>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="btn btn-gold" onclick="AdminApp.generateChampionsFixture()">
+                    <i class="fa-solid fa-shuffle"></i> Sorteo y Generar 5 Fechas (26 Clubes)
+                  </button>
+                  <button class="btn btn-secondary" onclick="AdminApp.generateChampionsPlayoffs()">
+                    <i class="fa-solid fa-sitemap"></i> Sincronizar 16 a Octavos de Final
+                  </button>
+                </div>
+              </div>
 
-          <div class="card">
-            <div class="card-header">
-              <h2 class="card-title"><i class="fa-solid fa-bullhorn" style="color: #f59e0b;"></i> Barra de Anuncio en Portada</h2>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-              <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Mostrar aviso en la parte superior</span>
-              <label class="lmi-switch">
-                <input type="checkbox" id="web-config-announcement-enabled" onchange="AdminApp.onWebConfigChange()">
-                <span class="lmi-slider"></span>
-              </label>
-            </div>
-            <div class="form-group">
-              <label>Mensaje del Anuncio</label>
-              <input type="text" class="form-control" id="web-config-announcement-text" placeholder="Ej: ¡Período de Renovaciones Abierto! Envía tu informe al administrador" oninput="AdminApp.onWebConfigChange()">
-            </div>
-            <div class="form-group">
-              <label>Tipo de Aviso</label>
-              <select class="form-select" id="web-config-announcement-type" onchange="AdminApp.onWebConfigChange()">
-                <option value="info">🔵 Informativo (Azul)</option>
-                <option value="warning">🟡 Alerta / Recordatorio (Amarillo)</option>
-                <option value="success">🟢 Éxito / Especial (Verde)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Generador Centralizado de Fechas / Fixtures -->
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <h2 class="card-title"><i class="fa-solid fa-calendar-plus" style="color: #10b981;"></i> Generador Oficial de Fechas y Torneos</h2>
-              <p class="card-desc">Genera y regenera los calendarios oficiales directamente desde el panel. En la web pública se mostrarán exclusivamente para consulta de los usuarios.</p>
+              <!-- Copa Estelar -->
+              <div class="fixture-generator-card">
+                <h4><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Copa Estelar LMI</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                  Realiza un nuevo sorteo oficial aleatorio para el cuadro de eliminación directa de Copa Estelar.
+                </p>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="btn btn-gold" onclick="AdminApp.drawCopaEstelar()">
+                    <i class="fa-solid fa-shuffle"></i> Realizar Sorteo Oficial
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="grid-2">
-            <!-- División Oro -->
-            <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-crown" style="color: #ffd700;"></i> División Oro (<span id="gen-oro-count">11</span> Clubes)</h4>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                Genera los partidos de liga entre los clubes asignados a División Oro con algoritmo oficial round-robin y descanso rotativo.
-              </p>
-              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <button class="btn btn-primary" id="btn-gen-oro-ida" onclick="AdminApp.generateDivisionFixture('oro', false)">
-                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (11 Jornadas)
-                </button>
-                <button class="btn btn-secondary" id="btn-gen-oro-doble" onclick="AdminApp.generateDivisionFixture('oro', true)">
-                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (22 Jornadas)
-                </button>
+          <!-- Reinicio de Estadísticas para Nueva Temporada -->
+          <div class="card" style="border-left: 4px solid #ef4444; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);">
+            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h2 class="card-title" style="color: #f87171;">
+                  <i class="fa-solid fa-arrows-rotate" style="color: #ef4444;"></i> Reiniciar Estadísticas de Temporada
+                </h2>
+                <p class="card-desc">
+                  Restablece a 0 únicamente los torneos, goles y estadísticas de la temporada para comenzar una nueva temporada.
+                  <br>
+                  <strong style="color: #34d399;"><i class="fa-solid fa-shield-halved"></i> El registro histórico (Sala de Campeones, Balón de Oro y plantillas) NO SE TOCA.</strong>
+                </p>
               </div>
-            </div>
-
-            <!-- División Plata -->
-            <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-shield-halved" style="color: #94a3b8;"></i> División Plata (<span id="gen-plata-count">13</span> Clubes)</h4>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                Genera los partidos de liga entre los clubes de División Plata. Incluye descanso rotativo por jornada.
-              </p>
-              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <button class="btn btn-primary" id="btn-gen-plata-ida" onclick="AdminApp.generateDivisionFixture('plata', false)">
-                  <i class="fa-solid fa-calendar-plus"></i> Generar Solo Ida (13 Jornadas)
-                </button>
-                <button class="btn btn-secondary" id="btn-gen-plata-doble" onclick="AdminApp.generateDivisionFixture('plata', true)">
-                  <i class="fa-solid fa-calendar-days"></i> Ida y Vuelta (26 Jornadas)
-                </button>
-              </div>
-            </div>
-
-            <!-- UEFA Champions League -->
-            <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-trophy" style="color: #38bdf8;"></i> UEFA Champions League (26 Clubes)</h4>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                Formato Oficial: 2 grupos de 5 clubes y 4 grupos de 4 clubes (5 fechas oficiales, 44 partidos). Clasifican 16 a Octavos de Final (Top 2 de cada grupo + 4 mejores terceros).
-              </p>
-              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <button class="btn btn-gold" onclick="AdminApp.generateChampionsFixture()">
-                  <i class="fa-solid fa-shuffle"></i> Sorteo y Generar 5 Fechas (26 Clubes)
-                </button>
-                <button class="btn btn-secondary" onclick="AdminApp.generateChampionsPlayoffs()">
-                  <i class="fa-solid fa-sitemap"></i> Sincronizar 16 a Octavos de Final
-                </button>
-              </div>
-            </div>
-
-            <!-- Copa Estelar -->
-            <div class="fixture-generator-card">
-              <h4><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Copa Estelar LMI</h4>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                Realiza un nuevo sorteo oficial aleatorio para el cuadro de eliminación directa de Copa Estelar.
-              </p>
-              <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                <button class="btn btn-gold" onclick="AdminApp.drawCopaEstelar()">
-                  <i class="fa-solid fa-shuffle"></i> Realizar Sorteo Oficial
-                </button>
-              </div>
+              <button class="btn btn-danger" style="background: #dc2626; border-color: #ef4444; color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);" onclick="AdminApp.openSeasonResetModal()">
+                <i class="fa-solid fa-rotate"></i> Reiniciar Temporada
+              </button>
             </div>
           </div>
         </div>
@@ -2438,6 +2634,24 @@
 
       <!-- ==================== VIEW 7: EDITOR DE ESTADÍSTICAS DE JUGADORES ==================== -->
       <section class="module-view" id="view-player-stats">
+        <!-- Barra Unificada del Área de Clubes y Jugadores -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i> Gestión de Clubes y Jugadores:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-teams')">
+              <i class="fa-solid fa-shield-halved"></i> Clubes y Plantillas
+            </button>
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-player-stats')">
+              <i class="fa-solid fa-chart-simple"></i> Editor Global de Estadísticas
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-club-performance')">
+              <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i> Rendimiento y Actividad de Clubes
+            </button>
+          </div>
+        </div>
+
         <div class="card" style="border-left: 4px solid #facc15;">
           <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
             <div>
@@ -2497,6 +2711,386 @@
               </thead>
               <tbody id="stats-editor-tbody">
                 <!-- Populated dynamically via AdminApp.renderPlayerStatsEditor() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 8: GENERADOR DINÁMICO DE TORNEOS Y FECHAS ==================== -->
+      <section class="module-view" id="view-tournament-generator">
+        <!-- Barra Unificada del Área de Competición -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-futbol" style="color: var(--lmi-gold);"></i> Área de Competición:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-matches')">
+              <i class="fa-solid fa-trophy"></i> Registro General & Cuadros
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-ida-vuelta')">
+              <i class="fa-solid fa-arrows-rotate" style="color: #10b981;"></i> Series Ida y Vuelta (Plata)
+            </button>
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-tournament-generator')">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Generador de Torneos y Fechas
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-club-performance')">
+              <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i> Rendimiento y Anulados
+            </button>
+          </div>
+        </div>
+
+        <!-- Configuración Principal del Torneo -->
+        <div class="card" style="border-left: 4px solid #a855f7;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="badge" style="background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid #a855f7; font-size: 0.74rem; font-weight: 800; margin-bottom: 0.35rem; display: inline-block;">
+                ✨ MOTOR DE COMPETICIONES A MEDIDA
+              </span>
+              <h2 class="card-title"><i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc;"></i> Generador Oficial de Partidos, Grupos y Eliminatorias</h2>
+              <p class="card-desc">
+                Elige el torneo (<strong>Liga Oro/Plata, Copa Estelar o UEFA Champions League</strong>), selecciona exactamente qué clubes participan y genera automáticamente las fechas o llaves desde el principio hasta la <strong>Gran Final</strong>.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.previewTournamentGeneration()">
+                <i class="fa-solid fa-eye" style="color: #38bdf8;"></i> Previsualizar Calendario / Fases
+              </button>
+              <button type="button" class="btn btn-gold" onclick="AdminApp.executeTournamentGeneration()">
+                <i class="fa-solid fa-rocket"></i> Generar y Guardar en la Liga
+              </button>
+            </div>
+          </div>
+
+          <!-- Paso 1: Parámetros del Torneo y Formato -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 0.98rem; font-weight: 800; color: #e9d5ff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-sliders" style="color: #c084fc;"></i> 1. Elige la Competición y Modalidad (Grupos, Liga o Eliminatorias desde el Principio)
+            </h3>
+
+            <div class="grid-3" style="margin-bottom: 1rem; gap: 1rem;">
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 800; color: #f8fafc;">Torneo Destino</label>
+                <select class="form-select" id="tgen-competition" onchange="AdminApp.onTgenCompetitionChange()" style="font-weight: 700; border-color: #a855f7;">
+                  <option value="oro">🥇 Liga — División Oro</option>
+                  <option value="plata">🥈 Liga — División Plata</option>
+                  <option value="champions">🏆 UEFA Champions League</option>
+                  <option value="estelar">⭐ Copa Estelar LMI</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 800; color: #f8fafc;">Modalidad del Torneo</label>
+                <select class="form-select" id="tgen-format" onchange="AdminApp.onTgenFormatChange()" style="font-weight: 700; border-color: #38bdf8;">
+                  <option value="league">📅 Liga Regular (Todos contra Todos por Fechas)</option>
+                  <option value="groups_knockout">🏆 Fase de Grupos + Eliminatorias hasta la Final</option>
+                  <option value="knockout_only">⚔️ Eliminación Directa desde el Principio (Llaves hasta la Final)</option>
+                  <option value="league_playoffs">🔥 Liga Regular + Liguilla / Playoffs hasta la Final</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin: 0;">
+                <label style="font-weight: 800; color: #f8fafc;">Orden / Sorteo de Cruces</label>
+                <select class="form-select" id="tgen-seeding" onchange="AdminApp.updateTgenSummary()" style="font-weight: 700;">
+                  <option value="random">🎲 Sorteo 100% Aleatorio</option>
+                  <option value="ordered">📋 Por Orden de Selección / Cabezas de Serie</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Opciones adicionales dinámicas según formato -->
+            <div class="grid-4" style="margin: 0; gap: 1rem;">
+              <div class="form-group" id="tgen-box-league-legs" style="margin: 0;">
+                <label>Vueltas (Liga / Fase de Grupos)</label>
+                <select class="form-select" id="tgen-legs" onchange="AdminApp.updateTgenSummary()">
+                  <option value="single">Solo Ida (1 Vuelta)</option>
+                  <option value="double">Ida y Vuelta (2 Vueltas)</option>
+                  <option value="ucl_5">Formato Compacto (5 Fechas Oficiales)</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="tgen-box-groups-count" style="margin: 0;">
+                <label>Cantidad de Grupos</label>
+                <select class="form-select" id="tgen-groups-count" onchange="AdminApp.updateTgenSummary()">
+                  <option value="auto">Automático (según # de clubes)</option>
+                  <option value="2">2 Grupos (A y B)</option>
+                  <option value="3">3 Grupos (A, B y C)</option>
+                  <option value="4">4 Grupos (A - D)</option>
+                  <option value="6">6 Grupos (A - F)</option>
+                  <option value="8">8 Grupos (A - H)</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="tgen-box-ko-qualifiers" style="margin: 0;">
+                <label>Fases Eliminatorias hasta la Final</label>
+                <select class="form-select" id="tgen-ko-stage" onchange="AdminApp.updateTgenSummary()">
+                  <option value="auto">Automático (Todas las fases según clubes)</option>
+                  <option value="16">Desde Octavos de Final (16 Clubes → Cuartos → Semis → Final)</option>
+                  <option value="8">Desde Cuartos de Final (8 Clubes → Semis → Final)</option>
+                  <option value="4">Desde Semifinales (4 Clubes → Final)</option>
+                  <option value="2">Directo a Gran Final (2 Clubes)</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="tgen-box-ko-legs" style="margin: 0;">
+                <label>Formato de Eliminatorias</label>
+                <select class="form-select" id="tgen-ko-legs" onchange="AdminApp.updateTgenSummary()">
+                  <option value="single">Partido Único (Todas las fases)</option>
+                  <option value="two_legs_final_single">Ida y Vuelta (Gran Final a Partido Único)</option>
+                  <option value="two_legs_all">Ida y Vuelta (Incluida la Gran Final)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 2: Selección de Equipos Participantes -->
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+              <div>
+                <h3 style="font-size: 0.98rem; font-weight: 800; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fa-solid fa-shield-halved" style="color: #10b981;"></i> 2. Selecciona los Equipos Participantes
+                  <span class="badge" id="tgen-selected-count" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; font-size: 0.8rem; font-weight: 800;">0 seleccionados</span>
+                </h3>
+                <p style="margin: 0.2rem 0 0 0; font-size: 0.8rem; color: #94a3b8;">
+                  Marca o desmarca cualquier club. El generador ajustará el número de fechas, descansos (byes), grupos y fases eliminatorias automáticamente.
+                </p>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;">
+                <input type="text" class="form-control" id="tgen-team-search" placeholder="Filtrar club..." style="width: 165px; padding: 0.35rem 0.65rem; font-size: 0.8rem;" oninput="AdminApp.renderTgenTeamsGrid()">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.selectTgenTeamsPreset('all_active')" style="font-size: 0.76rem; padding: 0.35rem 0.65rem;">
+                  ✅ Todos Activos
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.selectTgenTeamsPreset('oro')" style="font-size: 0.76rem; padding: 0.35rem 0.65rem; color: #facc15; border-color: rgba(250, 204, 21, 0.4);">
+                  🥇 Solo Oro
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.selectTgenTeamsPreset('plata')" style="font-size: 0.76rem; padding: 0.35rem 0.65rem; color: #cbd5e1; border-color: rgba(148, 163, 184, 0.4);">
+                  🥈 Solo Plata
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.selectTgenTeamsPreset('estelar_18')" style="font-size: 0.76rem; padding: 0.35rem 0.65rem; color: #c084fc; border-color: rgba(192, 132, 252, 0.4);">
+                  ⭐ 18 Copa Estelar
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="AdminApp.selectTgenTeamsPreset('none')" style="font-size: 0.76rem; padding: 0.35rem 0.65rem; color: #f87171;">
+                  ✕ Ninguno
+                </button>
+              </div>
+            </div>
+
+            <div class="tgen-teams-grid" id="tgen-teams-grid">
+              <!-- Populated dynamically via AdminApp.renderTgenTeamsGrid() -->
+            </div>
+          </div>
+
+          <!-- Resumen Matemático de Fechas y Fases -->
+          <div id="tgen-formula-summary" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+            <!-- Populated dynamically via AdminApp.updateTgenSummary() -->
+          </div>
+
+          <!-- Barra de Acciones -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.syncDynamicGroupQualifiersToKnockout()" title="Calcula la tabla actual de grupos y pasa los mejores clasificados al cuadro de eliminatorias">
+                <i class="fa-solid fa-sitemap" style="color: #38bdf8;"></i> Sincronizar Clasificados de Grupos a Eliminatorias
+              </button>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" onclick="AdminApp.previewTournamentGeneration()">
+                <i class="fa-solid fa-magnifying-glass-chart" style="color: #38bdf8;"></i> Previsualizar Fechas y Fases
+              </button>
+              <button type="button" class="btn btn-success" onclick="AdminApp.executeTournamentGeneration()" style="padding: 0.75rem 1.5rem; font-weight: 800;">
+                <i class="fa-solid fa-check-double"></i> Generar y Guardar Torneo Oficial
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor de Vista Previa del Torneo Generado -->
+        <div class="card" id="tgen-preview-card" style="display: none; border: 1px solid rgba(56, 189, 248, 0.4);">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 class="card-title" id="tgen-preview-title" style="color: #38bdf8;">
+                <i class="fa-solid fa-calendar-check"></i> Vista Previa del Torneo Generado
+              </h3>
+              <p class="card-desc" id="tgen-preview-subtitle">Revisa las fechas, grupos y fases eliminatorias hasta la Gran Final antes o después de aplicar.</p>
+            </div>
+            <button type="button" class="btn btn-gold" onclick="AdminApp.executeTournamentGeneration(true)">
+              <i class="fa-solid fa-floppy-disk"></i> Confirmar y Aplicar esta Previsualización
+            </button>
+          </div>
+          <div id="tgen-preview-box" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 9: RENDIMIENTO Y ACTIVIDAD DE CLUBES ==================== -->
+      <section class="module-view" id="view-club-performance">
+        <!-- Barra Unificada del Área de Competición y Clubes -->
+        <div class="hub-subnav">
+          <div class="hub-subnav-label">
+            <i class="fa-solid fa-ranking-star" style="color: #34d399;"></i> Auditoría y Rendimiento:
+          </div>
+          <div class="hub-subnav-tabs">
+            <button type="button" class="hub-subnav-btn active" onclick="AdminApp.switchView('view-club-performance')">
+              <i class="fa-solid fa-ranking-star"></i> Rendimiento y Actividad (Incluye Anulados)
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-matches')">
+              <i class="fa-solid fa-trophy" style="color: #facc15;"></i> Centro de Partidos
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-tournament-generator')">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc;"></i> Generador de Torneos
+            </button>
+            <button type="button" class="hub-subnav-btn" onclick="AdminApp.switchView('view-teams')">
+              <i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i> Clubes y Plantillas
+            </button>
+          </div>
+        </div>
+
+        <!-- KPIs Globales de Actividad y Partidos Anulados -->
+        <div class="grid-4" style="margin-bottom: 1.5rem;">
+          <div class="stat-widget" style="border-left: 4px solid #10b981;">
+            <div class="widget-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="widget-info">
+              <span>Partidos Jugados (Efectivos)</span>
+              <h3 id="perf-kpi-valid-matches" style="color: #34d399;">0</h3>
+            </div>
+          </div>
+
+          <div class="stat-widget" style="border-left: 4px solid #ef4444;">
+            <div class="widget-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">
+              <i class="fa-solid fa-ban"></i>
+            </div>
+            <div class="widget-info">
+              <span>Partidos Anulados</span>
+              <h3 id="perf-kpi-annulled-matches" style="color: #f87171;">0</h3>
+            </div>
+          </div>
+
+          <div class="stat-widget" style="border-left: 4px solid #f59e0b;">
+            <div class="widget-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">
+              <i class="fa-solid fa-hourglass-half"></i>
+            </div>
+            <div class="widget-info">
+              <span>Partidos Pendientes</span>
+              <h3 id="perf-kpi-pending-matches" style="color: #fbbf24;">0</h3>
+            </div>
+          </div>
+
+          <div class="stat-widget" style="border-left: 4px solid #38bdf8;">
+            <div class="widget-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <div class="widget-info">
+              <span>Club Más Activo</span>
+              <h3 id="perf-kpi-most-active" style="font-size: 1.05rem; color: #38bdf8;">-</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla Principal: Rendimiento de Clubes desde los Más Activos hasta los Menos Activos -->
+        <div class="card" style="border-left: 4px solid #10b981;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="card-title"><i class="fa-solid fa-ranking-star" style="color: #10b981;"></i> Rendimiento y Actividad de Clubes (Más Activos a Menos Activos)</h2>
+              <p class="card-desc">
+                Monitorea el cumplimiento de partidos, actividad real, puntos obtenidos y <strong>partidos anulados</strong> de cada club en Liga, Champions League y Copa Estelar.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="badge" id="perf-clubs-count-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-weight: 800; padding: 0.35rem 0.75rem;">
+                0 clubes
+              </span>
+            </div>
+          </div>
+
+          <!-- Filtros y Ordenamiento -->
+          <div style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 1rem; margin-bottom: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <div style="flex: 1; min-width: 210px; position: relative;">
+              <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+              <input type="text" class="form-control" id="perf-search-input" placeholder="Buscar club o DT..." style="padding-left: 2.35rem;" oninput="AdminApp.renderClubPerformanceView()">
+            </div>
+
+            <select class="form-select" id="perf-comp-filter" style="width: auto; min-width: 195px; font-weight: 700;" onchange="AdminApp.renderClubPerformanceView()">
+              <option value="all">🌐 Todas las Competiciones</option>
+              <option value="oro">🥇 Liga División Oro</option>
+              <option value="plata">🥈 Liga División Plata</option>
+              <option value="champions">🏆 UEFA Champions League</option>
+              <option value="estelar">⭐ Copa Estelar LMI</option>
+            </select>
+
+            <select class="form-select" id="perf-div-filter" style="width: auto; min-width: 165px; font-weight: 700;" onchange="AdminApp.renderClubPerformanceView()">
+              <option value="all">🛡️ Ambas Divisiones</option>
+              <option value="oro">🥇 Clubes Oro</option>
+              <option value="plata">🥈 Clubes Plata</option>
+            </select>
+
+            <select class="form-select" id="perf-sort-select" style="width: auto; min-width: 250px; font-weight: 700; border-color: #10b981; color: #34d399;" onchange="AdminApp.renderClubPerformanceView()">
+              <option value="most_active">🔥 De Más Activos a Menos Activos</option>
+              <option value="least_active">❄️ De Menos Activos a Más Activos</option>
+              <option value="most_annulled">🚫 Más Partidos Anulados Primero</option>
+              <option value="most_pending">⏳ Más Partidos Pendientes Primero</option>
+              <option value="best_points">🏆 Mayor Rendimiento (Puntos y DG)</option>
+            </select>
+          </div>
+
+          <!-- Tabla de Rendimiento y Actividad -->
+          <div style="overflow-x: auto;">
+            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(255,255,255,0.12); font-size: 0.75rem; text-transform: uppercase; color: #94a3b8;">
+                  <th style="padding: 0.75rem 0.5rem; text-align: center; width: 45px;">#</th>
+                  <th style="padding: 0.75rem 0.6rem; text-align: left;">Club / DT</th>
+                  <th style="padding: 0.75rem 0.5rem; text-align: center;">Div.</th>
+                  <th style="padding: 0.75rem 0.6rem; text-align: center;">Estado Actividad</th>
+                  <th style="padding: 0.75rem 0.6rem; text-align: left; min-width: 150px;">Cumplimiento</th>
+                  <th style="padding: 0.75rem 0.45rem; text-align: center;" title="Total Partidos Programados">Prog.</th>
+                  <th style="padding: 0.75rem 0.45rem; text-align: center; color: #34d399;" title="Partidos Jugados Válidos (Sin Anular)">Jugados</th>
+                  <th style="padding: 0.75rem 0.45rem; text-align: center; color: #f87171;" title="Partidos Anulados">🚫 Anulados</th>
+                  <th style="padding: 0.75rem 0.45rem; text-align: center; color: #fbbf24;" title="Partidos Pendientes por Jugar">Pend.</th>
+                  <th style="padding: 0.75rem 0.5rem; text-align: center;" title="Ganados - Empatados - Perdidos">G - E - P</th>
+                  <th style="padding: 0.75rem 0.5rem; text-align: center;" title="Goles a Favor / Goles en Contra (Diferencia)">GF:GC (DG)</th>
+                  <th style="padding: 0.75rem 0.6rem; text-align: center; color: #fde047;" title="Puntos Totales y Efectividad">PTS (% Efec.)</th>
+                </tr>
+              </thead>
+              <tbody id="perf-clubs-tbody">
+                <!-- Populated dynamically via AdminApp.renderClubPerformanceView() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Registro Detallado de Partidos Anulados -->
+        <div class="card" style="margin-top: 1.5rem; border-left: 4px solid #ef4444;">
+          <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 class="card-title" style="color: #f87171;">
+                <i class="fa-solid fa-ban" style="color: #ef4444;"></i> Historial y Detalle de Partidos Anulados
+              </h3>
+              <p class="card-desc">
+                Lista de todos los encuentros marcados como <strong>Anulados</strong> (cuentan como fecha cerrada sin sumar puntos ni goles). Puedes cargarlos con 1 clic si deseas reprogramarlos o editar su marcador.
+              </p>
+            </div>
+            <span class="badge" id="perf-annulled-count-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); font-weight: 800; padding: 0.35rem 0.75rem;">
+              0 partidos anulados
+            </span>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Torneo</th>
+                  <th>Jornada / Fase</th>
+                  <th>Equipo Local</th>
+                  <th style="text-align: center;">Estado</th>
+                  <th>Equipo Visitante</th>
+                  <th style="text-align: right;">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="perf-annulled-tbody">
+                <!-- Populated dynamically via AdminApp.renderClubPerformanceView() -->
               </tbody>
             </table>
           </div>
