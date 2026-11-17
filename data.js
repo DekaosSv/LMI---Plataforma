@@ -1207,6 +1207,35 @@ var INITIAL_LMI_DATA = {
         "goalDiff": 0,
         "points": 0
       }
+    },
+    {
+      "id": "manchestercity",
+      "name": "Manchester City",
+      "shortName": "MAN",
+      "colors": {
+        "primary": "#6cafd9",
+        "secondary": "#ffffff",
+        "bgGradient": "linear-gradient(135deg, #6cafd9 0%, #000000 100%)"
+      },
+      "stadium": "Etihad Stadium",
+      "manager": "Sc Oscar",
+      "budget": 800000000,
+      "initialBudget": 800000000,
+      "legendChangeNote": "",
+      "legendRemoveNote": "",
+      "leagueRank": 28,
+      "logo": "Logos Equipos/manchestercity.png",
+      "division": "plata",
+      "stats": {
+        "played": 0,
+        "won": 0,
+        "drawn": 0,
+        "lost": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
     }
   ],
   "players": [
@@ -13335,190 +13364,179 @@ var INITIAL_LMI_DATA = {
   "copaEstelarMatches": [
     {
       "fase": "Ronda Previa 1",
-      "team1": "Galatasaray",
-      "score1": null,
+      "team1": "PSG",
+      "score1": "",
       "team2": "Como 1907",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Ronda Previa 2",
-      "team1": "Boca Juniors",
-      "score1": null,
-      "team2": "Bayern Leverkusen",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ajax de Ámsterdam",
+      "score1": "",
+      "team2": "Chelsea FC",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Ronda Previa 3",
+      "team1": "Real Madrid",
+      "score1": "",
+      "team2": "Club Universidad de Chile",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Ronda Previa 4",
+      "team1": "Club Nacional",
+      "score1": "",
+      "team2": "FC Bayern Múnich",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Ronda Previa 5",
+      "team1": "Olympique Lyon",
+      "score1": "",
+      "team2": "Inter Milan",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Ronda Previa 6",
+      "team1": "Flamengo",
+      "score1": "",
+      "team2": "PT Prachuap FC",
+      "score2": "",
+      "estado": "Pendiente"
+    },
+    {
+      "fase": "Ronda Previa 7",
+      "team1": "ADO Den Haag",
+      "score1": "",
+      "team2": "Manchester City",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 1",
-      "team1": "Como 1907",
-      "score1": null,
+      "team1": "Ganador Ronda Previa 1",
+      "score1": "",
       "team2": "FC Barcelona",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 2",
-      "team1": "Bayern Leverkusen",
-      "score1": null,
-      "team2": "Atletico de Madrid",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Ronda Previa 2",
+      "score1": "",
+      "team2": "Stade Rennais",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 3",
-      "team1": "Arsenal",
-      "score1": null,
-      "team2": "Casa Pia AC",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Ronda Previa 3",
+      "score1": "",
+      "team2": "Liverpool",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 4",
-      "team1": "PSG",
-      "score1": null,
-      "team2": "Manchester City",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Ronda Previa 4",
+      "score1": "",
+      "team2": "Boca Juniors",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 5",
-      "team1": "Liverpool",
-      "score1": null,
-      "team2": "Real Madrid",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Ronda Previa 5",
+      "score1": "",
+      "team2": "Borussia Dortmund",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 6",
-      "team1": "River Plate",
-      "score1": null,
-      "team2": "LOSC Lille",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Ronda Previa 6",
+      "score1": "",
+      "team2": "Galatasaray",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 7",
-      "team1": "AC Milan",
-      "score1": null,
-      "team2": "Borussia Dortmund",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Ronda Previa 7",
+      "score1": "",
+      "team2": "AC Milan",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Octavos 8",
-      "team1": "Inter de Milan",
-      "score1": null,
-      "team2": "Brighton",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Manchester United",
+      "score1": "",
+      "team2": "Arsenal",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 1",
-      "team1": "Como 1907",
-      "score1": null,
-      "team2": "Bayern Leverkusen",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Octavos 1",
+      "score1": "",
+      "team2": "Ganador Octavos 2",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 2",
-      "team1": "Arsenal",
-      "score1": null,
-      "team2": "Manchester City",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Octavos 3",
+      "score1": "",
+      "team2": "Ganador Octavos 4",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 3",
-      "team1": "Liverpool",
-      "score1": null,
-      "team2": "LOSC Lille",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Octavos 5",
+      "score1": "",
+      "team2": "Ganador Octavos 6",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 4",
-      "team1": "Borussia Dortmund",
-      "score1": null,
-      "team2": "Inter de Milan",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Octavos 7",
+      "score1": "",
+      "team2": "Ganador Octavos 8",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Semifinal 1",
-      "team1": "Bayern Leverkusen",
-      "score1": null,
-      "team2": "Manchester City",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Cuartos 1",
+      "score1": "",
+      "team2": "Ganador Cuartos 2",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Semifinal 2",
-      "team1": "Liverpool",
-      "score1": null,
-      "team2": "Inter de Milan",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Cuartos 3",
+      "score1": "",
+      "team2": "Ganador Cuartos 4",
+      "score2": "",
+      "estado": "Pendiente"
     },
     {
       "fase": "Final",
-      "team1": "Bayern Leverkusen",
-      "score1": null,
-      "team2": "Inter de Milan",
-      "score2": null,
-      "estado": "Pendiente",
-      "winner": null,
-      "played": false,
-      "events": []
+      "team1": "Ganador Semifinal 1",
+      "score1": "",
+      "team2": "Ganador Semifinal 2",
+      "score2": "",
+      "estado": "Pendiente"
     }
   ],
   "championsLeagueMatches": [],
@@ -30699,7 +30717,8 @@ var INITIAL_LMI_DATA = {
         "adicionales": 0
       },
       "balanceTemporada": -10,
-      "presupuestoFinal": 815
+      "presupuestoFinal": 800,
+      "teamName": "Manchester City"
     },
     "atleticodemadrid": {
       "excelName": "Atletico de Madrid",
