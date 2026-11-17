@@ -3149,9 +3149,9 @@ var INITIAL_LMI_DATA = {
       "name": "Lucas Hernández",
       "position": "LI",
       "teamId": "arsenal",
-      "goals": 2,
+      "goals": 3,
       "assists": 1,
-      "goals_liga": 2,
+      "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
@@ -3163,14 +3163,14 @@ var INITIAL_LMI_DATA = {
         "arsenal": {
           "teamId": "arsenal",
           "teamName": "Arsenal",
-          "goals": 2,
-          "assists": 1,
-          "goals_liga": 2,
+          "goals_liga": 3,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
-          "assists_estelar": 0
+          "assists_estelar": 0,
+          "goals": 3,
+          "assists": 1
         }
       }
     },
@@ -3287,9 +3287,9 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 0,
-      "assists": 6,
+      "assists": 7,
       "goals_liga": 0,
-      "assists_liga": 6,
+      "assists_liga": 7,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
@@ -3301,13 +3301,13 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals_liga": 0,
-          "assists_liga": 6,
+          "assists_liga": 7,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0,
           "goals": 0,
-          "assists": 6
+          "assists": 7
         }
       }
     },
