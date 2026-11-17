@@ -1288,9 +1288,10 @@ function renderWebChampionsView() {
 
   // 1. Render all 6 groups
   if (container) {
-    const groupOrder = (groupData && groupData.groups && Object.keys(groupData.groups).length > 0)
-      ? Object.keys(groupData.groups)
-      : ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D', 'Grupo E', 'Grupo F'];
+    const groupOrder = Object.keys(data.groups || {});
+    if (groupOrder.length === 0) {
+      container.innerHTML = '<div class="card" style="grid-column:1/-1; text-align:center; padding:2rem; color:#94a3b8;">La fase de grupos todavÃ­a no ha sido generada.</div>';
+    } else {
     container.innerHTML = groupOrder.map(gName => {
       const gTeams = data.groups[gName] || [];
       const teamCount = gTeams.length;
@@ -1382,6 +1383,7 @@ function renderWebChampionsView() {
         </div>
       `;
     }).join('');
+    }
   }
 
   // 2. Render Best Thirds
@@ -1391,7 +1393,8 @@ function renderWebChampionsView() {
     } else {
       thirdsTbody.innerHTML = data.thirds.map((item, idx) => {
         const pos = idx + 1;
-        const isQualified = pos <= 4;
+        const bestThirdsCount = Math.max(0, Number(lmiData.championsQualificationConfig?.bestThirdsCount ?? 4));
+        const isQualified = pos <= bestThirdsCount;
         const rowBorder = isQualified ? '4px solid #10b981' : '4px solid #ef4444';
         const rowBg = isQualified ? 'rgba(16, 185, 129, 0.04)' : 'rgba(239, 68, 68, 0.04)';
         const statusBadge = isQualified
@@ -1430,6 +1433,14 @@ function renderWebChampionsView() {
 
   // 3. Render Fixtures
   const sel = document.getElementById('champions-web-jornada-select');
+  const availableRounds = (lmiData.fixtures?.champions || []).map(r => String(r.jornada));
+  if (sel && availableRounds.length > 0) {
+    const previousValue = sel.value;
+    sel.innerHTML = availableRounds.map((round, index) =>
+      `<option value="${round}">Jornada ${round}${index === availableRounds.length - 1 ? ' (Definición)' : ''}</option>`
+    ).join('') + `<option value="all">Ver Todas las Fechas (1 a ${availableRounds.length})</option>`;
+    sel.value = availableRounds.includes(previousValue) || previousValue === 'all' ? previousValue : availableRounds[0];
+  }
   const jVal = sel ? sel.value : '1';
   renderChampionsWebFixtures(jVal);
 
@@ -1437,8 +1448,39 @@ function renderWebChampionsView() {
   const pFilter = document.getElementById('champions-phase-filter-web')?.value || 'all';
   renderBracket('uefa-champions-bracket-pos', lmiData.championsLeagueMatches, pFilter);
   renderBracket('uefa-champions-bracket', lmiData.championsLeagueMatches, pFilter);
+  updateChampionsProgressBanner();
 }
 window.renderWebChampionsView = renderWebChampionsView;
+
+function updateChampionsProgressBanner() {
+  const banner = document.getElementById('champions-progress-banner');
+  const title = document.getElementById('champions-progress-title');
+  const description = document.getElementById('champions-progress-description');
+  const action = document.getElementById('champions-progress-action');
+  if (!banner || !title || !description || !action || !lmiData) return;
+
+  const rounds = lmiData.fixtures?.champions || [];
+  const matches = rounds.flatMap(r => r.matches || []);
+  const playedCount = matches.filter(m => m.played && m.score1 !== null && m.score2 !== null).length;
+  const complete = matches.length > 0 && playedCount === matches.length;
+
+  if (complete) {
+    title.textContent = 'Â¡Fase de Grupos Concluida! â€¢ Eliminatorias Definidas';
+    description.textContent = `Las ${rounds.length} fechas oficiales han finalizado (${playedCount} partidos). Ya puedes consultar los clasificados y el cuadro eliminatorio.`;
+    action.innerHTML = '<i class="fa-solid fa-sitemap"></i> Ver Eliminatorias';
+    action.onclick = () => switchChampionsSubTab('playoffs');
+  } else if (matches.length > 0) {
+    title.textContent = 'Fase de Grupos en Curso';
+    description.textContent = `${playedCount} de ${matches.length} partidos finalizados. Las eliminatorias se confirmarÃ¡n cuando termine la fase de grupos.`;
+    action.innerHTML = '<i class="fa-solid fa-calendar-check"></i> Ver Partidos de Grupo';
+    action.onclick = () => switchChampionsSubTab('fixtures');
+  } else {
+    title.textContent = 'Fase de Grupos Pendiente de Generar';
+    description.textContent = 'AÃºn no existe un calendario de grupos publicado para esta Champions League.';
+    action.innerHTML = '<i class="fa-solid fa-table-cells-large"></i> Ver Grupos';
+    action.onclick = () => switchChampionsSubTab('groups');
+  }
+}
 
 function renderChampionsWebFixtures(jornadaVal) {
   const container = document.getElementById('champions-web-matches-grid');

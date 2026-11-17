@@ -453,21 +453,21 @@
         </div>
 
         <!-- Banner Informativo: Grupos Concluidos y Acceso a Eliminatorias -->
-        <div class="card" style="background: linear-gradient(135deg, rgba(7, 20, 43, 0.95), rgba(12, 28, 56, 0.95)); border: 1px solid rgba(56, 189, 248, 0.5); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.5rem;">
+        <div class="card" id="champions-progress-banner" style="background: linear-gradient(135deg, rgba(7, 20, 43, 0.95), rgba(12, 28, 56, 0.95)); border: 1px solid rgba(56, 189, 248, 0.5); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.5rem;">
           <div style="display: flex; align-items: center; gap: 1.25rem;">
             <div style="font-size: 2.2rem; color: #38bdf8; display: flex; align-items: center; justify-content: center; min-width: 50px;">
               <i class="fa-solid fa-trophy"></i>
             </div>
             <div>
-              <h4 style="color: #ffffff; font-size: 1.05rem; font-weight: 800; margin: 0 0 0.25rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <h4 id="champions-progress-title" style="color: #ffffff; font-size: 1.05rem; font-weight: 800; margin: 0 0 0.25rem 0; display: flex; align-items: center; gap: 0.5rem;">
                 ¡Fase de Grupos Concluida! &bull; Octavos de Final Definidos
               </h4>
-              <p style="color: #94a3b8; font-size: 0.88rem; margin: 0; line-height: 1.45;">
+              <p id="champions-progress-description" style="color: #94a3b8; font-size: 0.88rem; margin: 0; line-height: 1.45;">
                 Las 5 fechas oficiales han finalizado. Puedes consultar las tablas de grupos y el ranking de mejores terceros en las pestañas superiores, o ver los <strong>8 enfrentamientos oficiales de Octavos de Final</strong>.
               </p>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="switchChampionsSubTab('playoffs')" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: var(--radius-md); white-space: nowrap; cursor: pointer;">
+          <button class="btn btn-primary" id="champions-progress-action" onclick="switchChampionsSubTab('fixtures')" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: var(--radius-md); white-space: nowrap; cursor: pointer;">
             <i class="fa-solid fa-sitemap"></i> Ver Cuadro de Octavos
           </button>
         </div>
@@ -1424,7 +1424,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="data.js?v=1794882088"></script>
+  <script src="data.js?v=1794884683"></script>
   <script src="app.js?v=20261108_1820"></script>
 </body>
 

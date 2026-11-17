@@ -9921,7 +9921,9 @@ const AdminApp = {
       if (groupsCountOpt !== 'auto') {
         numGroups = Math.max(2, Math.min(8, parseInt(groupsCountOpt, 10) || 4));
       } else {
-        if (N >= 24) numGroups = 6;
+        // Six groups are required from 18 clubs onward so that first place,
+        // second place and the best third-place teams can fill a round of 16.
+        if (N >= 18) numGroups = 6;
         else if (N >= 16) numGroups = 4;
         else if (N >= 9) numGroups = 3;
         else numGroups = 2;
@@ -10023,6 +10025,15 @@ const AdminApp = {
       }
 
       const groupNames = Object.keys(groupsObj);
+      const directQualifiers = groupNames.length * 2;
+      const availableThirds = groupNames.filter(gn => (groupsObj[gn].teams || []).length >= 3).length;
+      const totalEligible = directQualifiers + availableThirds;
+      const validKoSizes = [2, 4, 8, 16].filter(size => size >= directQualifiers && size <= totalEligible);
+      const requestedKoSize = koStageOpt !== 'auto' ? parseInt(koStageOpt, 10) : null;
+      koTarget = validKoSizes.includes(requestedKoSize)
+        ? requestedKoSize
+        : (validKoSizes[0] || Math.pow(2, Math.floor(Math.log2(Math.max(2, totalEligible)))));
+      koTarget = Math.max(2, Math.min(16, koTarget));
       const qualifiersPlaceholders = [];
       const firstsList = groupNames.map(gn => `1° ${gn}`);
       const secondsList = groupNames.map(gn => `2° ${gn}`);
@@ -10033,18 +10044,23 @@ const AdminApp = {
         thirdsList.push(`Mejor 3° #${t}`);
       }
 
-      const poolTop = [...firstsList];
-      const poolBottom = [...secondsList.slice().reverse(), ...thirdsList];
+      const qualifiedSlots = [...firstsList, ...secondsList, ...thirdsList].slice(0, koTarget);
       const totalPairs = Math.floor(koTarget / 2);
 
       for (let p = 0; p < totalPairs; p++) {
-        const slotA = poolTop[p] || poolBottom.shift() || `Clasificado ${p * 2 + 1}`;
-        const slotB = poolBottom[p] || poolTop[poolTop.length - 1 - p] || `Clasificado ${p * 2 + 2}`;
+        const slotA = qualifiedSlots[p] || `Clasificado ${p * 2 + 1}`;
+        const slotB = qualifiedSlots[qualifiedSlots.length - 1 - p] || `Clasificado ${p * 2 + 2}`;
         qualifiersPlaceholders.push(slotA, slotB);
       }
 
       plan.koMatches = this.generateDynamicKnockoutBracket(qualifiersPlaceholders, koLegsMode, String(koTarget));
       plan.totalKoMatches = plan.koMatches.length;
+      plan.qualificationConfig = {
+        groupCount: groupNames.length,
+        directQualifiers,
+        bestThirdsCount: bestThirdsNeeded,
+        targetKoSize: koTarget
+      };
     } else if (format === 'knockout_only') {
       const teamNames = selectedTeams.map(t => t.name);
       plan.koMatches = this.generateDynamicKnockoutBracket(teamNames, koLegsMode, koStageOpt);
@@ -10276,6 +10292,9 @@ const AdminApp = {
       if (plan.koMatches.length > 0) {
         this.data.championsLeagueMatches = plan.koMatches;
       }
+      if (plan.qualificationConfig) {
+        this.data.championsQualificationConfig = plan.qualificationConfig;
+      }
     } else if (plan.comp === 'estelar') {
       if (plan.koMatches.length > 0) {
         this.data.copaEstelarMatches = plan.koMatches;
@@ -10310,6 +10329,14 @@ const AdminApp = {
     const groupNames = Object.keys(this.data.championsGroups);
     if (groupNames.length === 0) {
       this.showToast('No se encontraron grupos en Champions League.', 'error');
+      return;
+    }
+
+    const groupMatches = (this.data.fixtures.champions || []).flatMap(r => r.matches || []);
+    const pendingGroupMatches = groupMatches.filter(m => !m.played || m.score1 === null || m.score2 === null);
+    if (groupMatches.length === 0 || pendingGroupMatches.length > 0) {
+      const pendingLabel = groupMatches.length === 0 ? 'todos los' : pendingGroupMatches.length;
+      this.showToast(`La fase de grupos aÃºn no concluye: faltan ${pendingLabel} partidos por registrar.`, 'error');
       return;
     }
 
@@ -10392,18 +10419,22 @@ const AdminApp = {
       return (a.team.name || '').localeCompare(b.team.name || '');
     });
 
+    const savedQualification = this.data.championsQualificationConfig || {};
     const koStageSel = document.getElementById('tgen-ko-stage')?.value || 'auto';
     const koLegsSel = document.getElementById('tgen-ko-legs')?.value || 'two_legs_final_single';
     const totalAvailable = firsts.length + seconds.length + thirds.length;
-    let targetKoSize = koStageSel !== 'auto' ? parseInt(koStageSel, 10) : (totalAvailable >= 16 ? 16 : (totalAvailable >= 8 ? 8 : 4));
+    let targetKoSize = savedQualification.targetKoSize || (koStageSel !== 'auto'
+      ? parseInt(koStageSel, 10)
+      : (totalAvailable >= 16 ? 16 : (totalAvailable >= 8 ? 8 : 4)));
     if (targetKoSize > totalAvailable) {
       targetKoSize = totalAvailable >= 8 ? 8 : (totalAvailable >= 4 ? 4 : 2);
     }
 
+    const bestThirdsNeeded = Math.max(0, targetKoSize - firsts.length - seconds.length);
     const qualifiedPool = [
       ...firsts.map(x => x.team.name),
       ...seconds.map(x => x.team.name),
-      ...thirds.map(x => x.team.name)
+      ...thirds.slice(0, bestThirdsNeeded).map(x => x.team.name)
     ].slice(0, targetKoSize);
 
     // Emparejar 1° contra últimos clasificados (sembrado cruzado)
