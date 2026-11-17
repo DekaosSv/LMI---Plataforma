@@ -30701,7 +30701,7 @@ var INITIAL_LMI_DATA = {
         "id": "copa-estelar",
         "label": "Copa Estelar",
         "icon": "fa-star",
-        "enabled": false
+        "enabled": true
       },
       {
         "id": "uefa-champions",
