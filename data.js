@@ -21004,10 +21004,13 @@ var INITIAL_LMI_DATA = {
             "jornada": 14,
             "team1Id": "realmadrid",
             "team2Id": "fcbayernmunich",
-            "score1": null,
-            "score2": null,
-            "played": false,
-            "events": []
+            "score1": 0,
+            "score2": 1,
+            "played": true,
+            "events": [],
+            "annulled": false,
+            "registeredBy": "Administrador Principal",
+            "registeredAt": "2026-11-17T01:46:45.334Z"
           },
           {
             "id": "plata_j14_m3",
@@ -22963,6 +22966,26 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1794880005334",
+      "timestamp": 1794880005334,
+      "date": "16 nov 2026, 07:46 p.m.",
+      "competition": "plata",
+      "jornada": 14,
+      "fixtureMatchId": "plata_j14_m2",
+      "phase": "Jornada 14",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 0,
+      "team2Id": "fcbayernmunich",
+      "team2Name": "FC Bayern Múnich",
+      "team2Logo": "Logos Equipos/bayernmunich.webp",
+      "score2": 1,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-17T01:46:45.334Z"
+    },
     {
       "id": "match_1794879517852",
       "timestamp": 1794879517852,
