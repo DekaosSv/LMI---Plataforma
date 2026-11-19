@@ -22131,13 +22131,13 @@ var INITIAL_LMI_DATA = {
             "jornada": 15,
             "team1Id": "clubnacional",
             "team2Id": "flamengo",
-            "score1": 0,
+            "score1": 1,
             "score2": 0,
             "played": true,
             "events": [],
-            "annulled": true,
+            "annulled": false,
             "registeredBy": "Administrador Principal",
-            "registeredAt": "2026-11-17T01:37:42.331Z"
+            "registeredAt": "2026-11-19T03:51:41.563Z"
           },
           {
             "id": "plata_j15_m3",
@@ -23641,6 +23641,26 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1795060301563",
+      "timestamp": 1795060301563,
+      "date": "18 nov 2026, 09:51 p.m.",
+      "competition": "plata",
+      "jornada": 15,
+      "fixtureMatchId": "plata_j15_m2",
+      "phase": "Jornada 15",
+      "team1Id": "clubnacional",
+      "team1Name": "Club Nacional",
+      "team1Logo": "Logos Equipos/nacional.webp",
+      "score1": 1,
+      "team2Id": "flamengo",
+      "team2Name": "Flamengo",
+      "team2Logo": "Logos Equipos/flamengo.webp",
+      "score2": 0,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-19T03:51:41.563Z"
+    },
     {
       "id": "match_1795056756018",
       "timestamp": 1795056756018,
