@@ -10,6 +10,8 @@ const AdminApp = {
   matchEvents: [],
   plaintextMode: 'unified',
   cachedParsedPlayers: [],
+  providerMode: 'legacy',
+  dataProvider: null,
   midseason: {
     step: 1,
     currentTeamId: null,
@@ -22,6 +24,7 @@ const AdminApp = {
 
   // ==================== INICIALIZACIÓN ====================
   async init() {
+    this.initDataProviderControls();
     this.bindEvents();
     await this.loadData();
     this.initViews();
@@ -143,6 +146,69 @@ const AdminApp = {
   // ==================== CARGA Y GUARDADO ====================
   apiBase: null,
 
+  getDataProviderConfig() {
+    return window.LMI_CONFIG || { dataProvider: 'legacy' };
+  },
+
+  initDataProviderControls() {
+    const cfg = this.getDataProviderConfig();
+    this.providerMode = cfg.dataProvider === 'supabase' ? 'supabase' : 'legacy';
+    const select = document.getElementById('data-provider-select');
+    const supabaseOption = select?.querySelector('option[value="supabase"]');
+    const localConfigured = Boolean(
+      window.LMIDataProviders
+      && window.LMIDataProviders.isLocalSupabaseUrl(cfg.supabaseUrl)
+      && cfg.supabasePublishableKey
+    );
+    if (supabaseOption) supabaseOption.disabled = !localConfigured;
+    if (this.providerMode === 'supabase' && !localConfigured) {
+      this.providerMode = 'legacy';
+      queueMicrotask(() => this.showToast('Configuración Supabase LOCAL inválida; se mantuvo el proveedor Legacy.', 'error'));
+    }
+    if (select) {
+      select.value = this.providerMode;
+      select.addEventListener('change', event => this.switchDataProvider(event.target.value));
+    }
+    this.updateDataProviderUi();
+  },
+
+  async switchDataProvider(mode) {
+    const requested = mode === 'supabase' ? 'supabase' : 'legacy';
+    const cfg = this.getDataProviderConfig();
+    if (requested === 'supabase' && (
+      !window.LMIDataProviders
+      || !window.LMIDataProviders.isLocalSupabaseUrl(cfg.supabaseUrl)
+      || !cfg.supabasePublishableKey
+    )) {
+      document.getElementById('data-provider-select').value = this.providerMode;
+      this.showToast('Supabase de prueba exige http://127.0.0.1:54321 y una clave publicable local.', 'error');
+      return;
+    }
+    this.providerMode = requested;
+    this.dataProvider = null;
+    this.isDirty = false;
+    this.updateDataProviderUi();
+    await this.loadData();
+  },
+
+  updateDataProviderUi() {
+    const readOnly = this.providerMode === 'supabase';
+    const badge = document.getElementById('data-provider-mode-badge');
+    if (badge) {
+      badge.textContent = readOnly ? 'SUPABASE LOCAL · PRUEBA · SOLO LECTURA' : 'LEGACY · data.js';
+      badge.classList.toggle('provider-test', readOnly);
+    }
+    ['btn-save-data', 'btn-open-deploy', 'btn-quick-deploy', 'btn-run-deploy', 'btn-sync-cloud'].forEach(id => {
+      const element = document.getElementById(id);
+      if (element) element.disabled = readOnly;
+    });
+    document.querySelectorAll('[onclick*="saveData"]').forEach(element => {
+      element.disabled = readOnly;
+      if (readOnly) element.title = 'Deshabilitado: Supabase LOCAL está en modo de solo lectura';
+    });
+    document.body?.classList.toggle('supabase-readonly-mode', readOnly);
+  },
+
   async getApiBase() {
     if (this.apiBase !== null) return this.apiBase;
 
@@ -172,12 +238,37 @@ const AdminApp = {
 
   async loadData() {
     this.setStatus('Cargando base de datos...', 'loading');
-    const base = await this.getApiBase();
     try {
-      const res = await fetch(`${base}/api/data?_t=${Date.now()}`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      if (json.error) throw new Error(json.error);
+      let json;
+      if (this.providerMode === 'supabase') {
+        const cfg = this.getDataProviderConfig();
+        this.dataProvider = window.LMIDataProviders.createDataProvider({
+          dataProvider: 'supabase',
+          supabaseUrl: cfg.supabaseUrl,
+          supabasePublishableKey: cfg.supabasePublishableKey,
+          supabaseLocalOnly: true
+        }, {
+          fetch: window.fetch.bind(window),
+          baseSnapshot: typeof window.INITIAL_LMI_DATA !== 'undefined' ? window.INITIAL_LMI_DATA : null
+        });
+        await this.dataProvider.health();
+        json = await this.dataProvider.load();
+      } else {
+        const base = await this.getApiBase();
+        this.dataProvider = window.LMIDataProviders
+          ? window.LMIDataProviders.createDataProvider({ dataProvider: 'legacy' }, {
+              baseUrl: base,
+              fetch: window.fetch.bind(window)
+            })
+          : null;
+        if (this.dataProvider) json = await this.dataProvider.load();
+        else {
+          const res = await fetch(`${base}/api/data?_t=${Date.now()}`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          json = await res.json();
+          if (json.error) throw new Error(json.error);
+        }
+      }
 
       this.data = json;
       if (!this.data.balonOro) this.data.balonOro = [];
@@ -189,11 +280,25 @@ const AdminApp = {
 
       this.isDirty = false;
       this.updateDirtyIndicator();
-      this.setStatus('Sincronizado', 'ready');
+      this.setStatus(this.providerMode === 'supabase' ? 'Supabase LOCAL · Solo lectura' : 'Sincronizado', this.providerMode === 'supabase' ? 'warning' : 'ready');
       this.renderAll();
-      this.showToast('Base de datos conectada correctamente', 'success');
+      this.updateDataProviderUi();
+      this.showToast(
+        this.providerMode === 'supabase'
+          ? 'Snapshot cargado desde Supabase LOCAL. Guardado y publicación bloqueados.'
+          : 'Base de datos Legacy conectada correctamente',
+        this.providerMode === 'supabase' ? 'warning' : 'success'
+      );
     } catch (err) {
-      console.error('Error cargando /api/data:', err);
+      console.error('Error cargando proveedor de datos:', err);
+      if (this.providerMode === 'supabase') {
+        this.providerMode = 'legacy';
+        const select = document.getElementById('data-provider-select');
+        if (select) select.value = 'legacy';
+        this.updateDataProviderUi();
+        this.showToast(`Supabase LOCAL no disponible (${err.message}). Regresando a Legacy.`, 'error');
+        return this.loadData();
+      }
       // Fallback a INITIAL_LMI_DATA si existe en window
       if (typeof window.INITIAL_LMI_DATA !== 'undefined') {
         this.data = JSON.parse(JSON.stringify(window.INITIAL_LMI_DATA));
@@ -209,6 +314,11 @@ const AdminApp = {
 
   async saveData(silent = false) {
     if (!this.data) return;
+    if (this.providerMode === 'supabase') {
+      this.setStatus('Supabase LOCAL · Solo lectura', 'warning');
+      this.showToast('Guardado bloqueado: Supabase LOCAL está habilitado solo para comparación.', 'warning');
+      return false;
+    }
     // Preservar presupuestos en caso de que en memoria no estén definidos
     if ((!this.data.teamBudgets || Object.keys(this.data.teamBudgets).length === 0) && typeof INITIAL_LMI_DATA !== 'undefined' && INITIAL_LMI_DATA.teamBudgets) {
       this.data.teamBudgets = INITIAL_LMI_DATA.teamBudgets;
@@ -259,10 +369,10 @@ const AdminApp = {
     const indicator = document.getElementById('dirty-indicator');
     if (this.isDirty) {
       indicator.style.display = 'inline-flex';
-      this.setStatus('Cambios pendientes', 'dirty');
+      this.setStatus(this.providerMode === 'supabase' ? 'Cambios locales no persistentes' : 'Cambios pendientes', 'dirty');
     } else {
       indicator.style.display = 'none';
-      this.setStatus('Sincronizado', 'ready');
+      this.setStatus(this.providerMode === 'supabase' ? 'Supabase LOCAL · Solo lectura' : 'Sincronizado', this.providerMode === 'supabase' ? 'warning' : 'ready');
     }
   },
 

@@ -229,6 +229,50 @@ body {
   gap: 0.85rem;
 }
 
+.data-provider-control {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.data-provider-control label {
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.data-provider-control select {
+  background: #0f172a;
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 6px;
+  padding: 0.3rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+#data-provider-mode-badge {
+  color: #86efac;
+  font-size: 0.68rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+#data-provider-mode-badge.provider-test {
+  color: #fbbf24;
+}
+
+.supabase-readonly-mode #btn-save-data,
+.supabase-readonly-mode #btn-open-deploy {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .dirty-indicator {
   display: none;
   align-items: center;
