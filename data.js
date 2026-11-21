@@ -2939,13 +2939,13 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "manchesterunited",
       "goals": 3,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 2,
       "assists_liga": 4,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
@@ -2953,13 +2953,13 @@ var INITIAL_LMI_DATA = {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
           "goals": 3,
-          "assists": 4,
+          "assists": 5,
           "goals_liga": 2,
           "assists_liga": 4,
           "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
-          "assists_estelar": 0
+          "assists_estelar": 1
         }
       }
     },
@@ -2968,13 +2968,13 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Forlán",
       "position": "DC",
       "teamId": "manchesterunited",
-      "goals": 13,
+      "goals": 14,
       "assists": 2,
       "goals_liga": 9,
       "assists_liga": 1,
       "goals_champions": 4,
       "assists_champions": 1,
-      "goals_estelar": 0,
+      "goals_estelar": 1,
       "assists_estelar": 0,
       "cardType": "Normal",
       "isLegend": false,
@@ -2982,13 +2982,13 @@ var INITIAL_LMI_DATA = {
         "manchesterunited": {
           "teamId": "manchesterunited",
           "teamName": "Manchester United",
-          "goals": 13,
+          "goals": 14,
           "assists": 2,
           "goals_liga": 9,
           "assists_liga": 1,
           "goals_champions": 4,
           "assists_champions": 1,
-          "goals_estelar": 0,
+          "goals_estelar": 1,
           "assists_estelar": 0
         }
       }
@@ -3386,13 +3386,13 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 7,
+      "assists": 8,
       "goals_liga": 0,
       "assists_liga": 7,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
@@ -3404,9 +3404,9 @@ var INITIAL_LMI_DATA = {
           "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
-          "assists_estelar": 0,
+          "assists_estelar": 1,
           "goals": 1,
-          "assists": 7
+          "assists": 8
         }
       }
     },
@@ -3444,13 +3444,13 @@ var INITIAL_LMI_DATA = {
       "name": "Darwin Núñez",
       "position": "SD",
       "teamId": "arsenal",
-      "goals": 19,
+      "goals": 21,
       "assists": 9,
       "goals_liga": 17,
       "assists_liga": 8,
       "goals_champions": 2,
       "assists_champions": 1,
-      "goals_estelar": 0,
+      "goals_estelar": 2,
       "assists_estelar": 0,
       "cardType": "Normal",
       "isLegend": false,
@@ -3462,9 +3462,9 @@ var INITIAL_LMI_DATA = {
           "assists_liga": 8,
           "goals_champions": 2,
           "assists_champions": 1,
-          "goals_estelar": 0,
+          "goals_estelar": 2,
           "assists_estelar": 0,
-          "goals": 19,
+          "goals": 21,
           "assists": 9
         }
       }
@@ -3474,14 +3474,14 @@ var INITIAL_LMI_DATA = {
       "name": "Gareth Bale",
       "position": "DC",
       "teamId": "arsenal",
-      "goals": 16,
-      "assists": 4,
+      "goals": 17,
+      "assists": 5,
       "goals_liga": 14,
       "assists_liga": 4,
       "goals_champions": 2,
       "assists_champions": 0,
-      "goals_estelar": 0,
-      "assists_estelar": 0,
+      "goals_estelar": 1,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
@@ -3492,10 +3492,10 @@ var INITIAL_LMI_DATA = {
           "assists_liga": 4,
           "goals_champions": 2,
           "assists_champions": 0,
-          "goals_estelar": 0,
-          "assists_estelar": 0,
-          "goals": 16,
-          "assists": 4
+          "goals_estelar": 1,
+          "assists_estelar": 1,
+          "goals": 17,
+          "assists": 5
         }
       }
     },
@@ -3719,13 +3719,13 @@ var INITIAL_LMI_DATA = {
       "position": "SD",
       "teamId": "arsenal",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
       "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
@@ -3733,13 +3733,13 @@ var INITIAL_LMI_DATA = {
           "teamId": "arsenal",
           "teamName": "Arsenal",
           "goals": 1,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
           "assists_liga": 1,
           "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
-          "assists_estelar": 0
+          "assists_estelar": 1
         }
       }
     },
@@ -9087,15 +9087,29 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "clubuniversidaddechile": {
+          "teamId": "clubuniversidaddechile",
+          "teamName": "Club Universidad de Chile",
+          "goals": 0,
+          "assists": 1,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 0,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 1
+        }
+      }
     },
     {
       "id": "p_1794017628489_7",
@@ -9103,26 +9117,26 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
-          "assists_estelar": 0
+          "assists_estelar": 1
         }
       }
     },
@@ -9162,26 +9176,26 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "clubuniversidaddechile",
       "goals": 12,
-      "assists": 9,
+      "assists": 10,
       "goals_liga": 8,
       "assists_liga": 8,
       "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 3,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
           "goals": 12,
-          "assists": 9,
+          "assists": 10,
           "goals_liga": 8,
           "assists_liga": 8,
           "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 3,
-          "assists_estelar": 0
+          "assists_estelar": 1
         }
       }
     },
@@ -9357,26 +9371,26 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 9,
+      "goals": 10,
       "assists": 1,
       "goals_liga": 7,
       "assists_liga": 1,
       "goals_champions": 1,
       "assists_champions": 0,
-      "goals_estelar": 1,
+      "goals_estelar": 2,
       "assists_estelar": 0,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 9,
+          "goals": 10,
           "assists": 1,
           "goals_liga": 7,
           "assists_liga": 1,
           "goals_champions": 1,
           "assists_champions": 0,
-          "goals_estelar": 1,
+          "goals_estelar": 2,
           "assists_estelar": 0
         }
       }
@@ -9386,27 +9400,27 @@ var INITIAL_LMI_DATA = {
       "name": "Lucas Paquetá",
       "position": "MC",
       "teamId": "clubuniversidaddechile",
-      "goals": 2,
-      "assists": 9,
+      "goals": 3,
+      "assists": 10,
       "goals_liga": 2,
       "assists_liga": 6,
       "goals_champions": 0,
       "assists_champions": 2,
-      "goals_estelar": 0,
-      "assists_estelar": 1,
+      "goals_estelar": 1,
+      "assists_estelar": 2,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 2,
-          "assists": 9,
+          "goals": 3,
+          "assists": 10,
           "goals_liga": 2,
           "assists_liga": 6,
           "goals_champions": 0,
           "assists_champions": 2,
-          "goals_estelar": 0,
-          "assists_estelar": 1
+          "goals_estelar": 1,
+          "assists_estelar": 2
         }
       }
     },
@@ -9475,26 +9489,26 @@ var INITIAL_LMI_DATA = {
       "name": "Yoane Wissa",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 15,
+      "goals": 18,
       "assists": 6,
       "goals_liga": 12,
       "assists_liga": 5,
       "goals_champions": 3,
       "assists_champions": 1,
-      "goals_estelar": 0,
+      "goals_estelar": 3,
       "assists_estelar": 0,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 15,
+          "goals": 18,
           "assists": 6,
           "goals_liga": 12,
           "assists_liga": 5,
           "goals_champions": 3,
           "assists_champions": 1,
-          "goals_estelar": 0,
+          "goals_estelar": 3,
           "assists_estelar": 0
         }
       }
@@ -9521,13 +9535,13 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "clubuniversidaddechile",
       "goals": 3,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 3,
       "assists_liga": 1,
       "goals_champions": 0,
       "assists_champions": 0,
       "goals_estelar": 0,
-      "assists_estelar": 0,
+      "assists_estelar": 1,
       "cardType": "Normal",
       "isLegend": false,
       "statsByTeam": {
@@ -9535,13 +9549,13 @@ var INITIAL_LMI_DATA = {
           "teamId": "clubuniversidaddechile",
           "teamName": "Club Universidad de Chile",
           "goals": 3,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 3,
           "assists_liga": 1,
           "goals_champions": 0,
           "assists_champions": 0,
           "goals_estelar": 0,
-          "assists_estelar": 0
+          "assists_estelar": 1
         }
       }
     },
@@ -14545,10 +14559,70 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 3",
       "team1": "Club Universidad de Chile",
-      "score1": "",
+      "score1": "5",
       "team2": "Liverpool",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "0",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1794017628489_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_23",
+          "playerName": "Deniz Undav",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_6",
+          "playerName": "Stanislav Lobotka",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_7",
+          "playerName": "Fredrik Aursnes",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Club Universidad de Chile"
     },
     {
       "fase": "Octavos 4",
@@ -14585,10 +14659,63 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 8",
       "team1": "Manchester United",
-      "score1": "",
+      "score1": "1",
       "team2": "Arsenal",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "3",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1793936522127_11",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_10",
+          "playerName": "João Félix",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_22",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936559088_8",
+          "playerName": "Kevin De Bruyne",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Arsenal"
     },
     {
       "fase": "Cuartos 1",
@@ -14600,7 +14727,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "fase": "Cuartos 2",
-      "team1": "Ganador Octavos 3",
+      "team1": "Club Universidad de Chile",
       "score1": "",
       "team2": "Ganador Octavos 4",
       "score2": "",
@@ -14618,7 +14745,7 @@ var INITIAL_LMI_DATA = {
       "fase": "Cuartos 4",
       "team1": "Ganador Octavos 7",
       "score1": "",
-      "team2": "Ganador Octavos 8",
+      "team2": "Arsenal",
       "score2": "",
       "estado": "Pendiente"
     },
@@ -14650,129 +14777,129 @@ var INITIAL_LMI_DATA = {
   "championsLeagueMatches": [
     {
       "fase": "Octavos 1 (Ida)",
-      "team1": "1° Grupo A",
+      "team1": "Stade Rennais",
       "score1": "",
-      "team2": "Mejor 3° #4",
+      "team2": "FC Barcelona",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 1 (Vuelta)",
-      "team1": "Mejor 3° #4",
+      "team1": "FC Barcelona",
       "score1": "",
-      "team2": "1° Grupo A",
+      "team2": "Stade Rennais",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 2 (Ida)",
-      "team1": "1° Grupo B",
+      "team1": "Como 1907",
       "score1": "",
-      "team2": "Mejor 3° #3",
+      "team2": "Ajax de Ámsterdam",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 2 (Vuelta)",
-      "team1": "Mejor 3° #3",
+      "team1": "Ajax de Ámsterdam",
       "score1": "",
-      "team2": "1° Grupo B",
+      "team2": "Como 1907",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 3 (Ida)",
-      "team1": "1° Grupo C",
+      "team1": "AC Milan",
       "score1": "",
-      "team2": "Mejor 3° #2",
+      "team2": "Club Nacional",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 3 (Vuelta)",
-      "team1": "Mejor 3° #2",
+      "team1": "Club Nacional",
       "score1": "",
-      "team2": "1° Grupo C",
+      "team2": "AC Milan",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 4 (Ida)",
-      "team1": "1° Grupo D",
+      "team1": "Club Universidad de Chile",
       "score1": "",
-      "team2": "Mejor 3° #1",
+      "team2": "Galatasaray",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 4 (Vuelta)",
-      "team1": "Mejor 3° #1",
+      "team1": "Galatasaray",
       "score1": "",
-      "team2": "1° Grupo D",
+      "team2": "Club Universidad de Chile",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 5 (Ida)",
-      "team1": "1° Grupo E",
+      "team1": "Inter Milan",
       "score1": "",
-      "team2": "2° Grupo F",
+      "team2": "Real Madrid",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 5 (Vuelta)",
-      "team1": "2° Grupo F",
+      "team1": "Real Madrid",
       "score1": "",
-      "team2": "1° Grupo E",
+      "team2": "Inter Milan",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 6 (Ida)",
-      "team1": "1° Grupo F",
+      "team1": "Manchester City",
       "score1": "",
-      "team2": "2° Grupo E",
+      "team2": "Arsenal",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 6 (Vuelta)",
-      "team1": "2° Grupo E",
+      "team1": "Arsenal",
       "score1": "",
-      "team2": "1° Grupo F",
+      "team2": "Manchester City",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 7 (Ida)",
-      "team1": "2° Grupo A",
+      "team1": "Liverpool",
       "score1": "",
-      "team2": "2° Grupo D",
+      "team2": "PT Prachuap FC",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 7 (Vuelta)",
-      "team1": "2° Grupo D",
+      "team1": "PT Prachuap FC",
       "score1": "",
-      "team2": "2° Grupo A",
+      "team2": "Liverpool",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 8 (Ida)",
-      "team1": "2° Grupo B",
+      "team1": "PSG",
       "score1": "",
-      "team2": "2° Grupo C",
+      "team2": "Olympique Lyon",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Octavos 8 (Vuelta)",
-      "team1": "2° Grupo C",
+      "team1": "Olympique Lyon",
       "score1": "",
-      "team2": "2° Grupo B",
+      "team2": "PSG",
       "score2": "",
       "estado": "Pendiente"
     },
@@ -25458,6 +25585,153 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1795234964197",
+      "timestamp": 1795234964197,
+      "date": "20 nov 2026, 10:22 p.m.",
+      "competition": "estelar",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 8",
+      "team1Id": "manchesterunited",
+      "team1Name": "Manchester United",
+      "team1Logo": "Logos Equipos/manchesterunited.png",
+      "score1": 1,
+      "team2Id": "arsenal",
+      "team2Name": "Arsenal",
+      "team2Logo": "Logos Equipos/arsenal.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1793936522127_11",
+          "playerName": "Diego Forlán",
+          "teamId": "manchesterunited",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936522127_10",
+          "playerName": "João Félix",
+          "teamId": "manchesterunited",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_22",
+          "playerName": "Memphis Depay",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_10",
+          "playerName": "Darwin Núñez",
+          "teamId": "arsenal",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1793936559088_8",
+          "playerName": "Kevin De Bruyne",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936559088_11",
+          "playerName": "Gareth Bale",
+          "teamId": "arsenal",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-21T04:22:44.197Z"
+    },
+    {
+      "id": "match_1795234889837",
+      "timestamp": 1795234889837,
+      "date": "20 nov 2026, 10:21 p.m.",
+      "competition": "estelar",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 3",
+      "team1Id": "clubuniversidaddechile",
+      "team1Name": "Club Universidad de Chile",
+      "team1Logo": "Logos Equipos/uchile.png",
+      "score1": 5,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1794017628489_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_23",
+          "playerName": "Deniz Undav",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_18",
+          "playerName": "Lucas Paquetá",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_6",
+          "playerName": "Stanislav Lobotka",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_7",
+          "playerName": "Fredrik Aursnes",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-21T04:21:29.838Z"
+    },
     {
       "id": "match_1795233444373",
       "timestamp": 1795233444373,
