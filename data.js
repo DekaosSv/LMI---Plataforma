@@ -3873,11 +3873,11 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "psg",
       "goals": 1,
-      "assists": 0,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 1,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -3887,11 +3887,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "psg",
           "teamName": "PSG",
           "goals": 1,
-          "assists": 0,
+          "assists": 1,
           "goals_liga": 0,
           "assists_liga": 0,
           "goals_champions": 1,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -3903,11 +3903,11 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "psg",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -3917,11 +3917,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "psg",
           "teamName": "PSG",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -3962,12 +3962,12 @@ var INITIAL_LMI_DATA = {
       "name": "Mohamed Salah",
       "position": "ED",
       "teamId": "psg",
-      "goals": 0,
-      "assists": 1,
+      "goals": 1,
+      "assists": 2,
       "goals_liga": 0,
       "assists_liga": 1,
-      "goals_champions": 0,
-      "assists_champions": 0,
+      "goals_champions": 1,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -3976,12 +3976,12 @@ var INITIAL_LMI_DATA = {
         "psg": {
           "teamId": "psg",
           "teamName": "PSG",
-          "goals": 0,
-          "assists": 1,
+          "goals": 1,
+          "assists": 2,
           "goals_liga": 0,
           "assists_liga": 1,
-          "goals_champions": 0,
-          "assists_champions": 0,
+          "goals_champions": 1,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -3993,11 +3993,11 @@ var INITIAL_LMI_DATA = {
       "position": "EI",
       "teamId": "psg",
       "goals": 1,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 1,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 1,
       "cardType": "Normal",
@@ -4007,11 +4007,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "psg",
           "teamName": "PSG",
           "goals": 1,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 1,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 1
         }
@@ -4022,11 +4022,11 @@ var INITIAL_LMI_DATA = {
       "name": "Diego Costa",
       "position": "DC",
       "teamId": "psg",
-      "goals": 8,
+      "goals": 14,
       "assists": 1,
       "goals_liga": 3,
       "assists_liga": 1,
-      "goals_champions": 2,
+      "goals_champions": 8,
       "assists_champions": 0,
       "goals_estelar": 3,
       "assists_estelar": 0,
@@ -4036,11 +4036,11 @@ var INITIAL_LMI_DATA = {
         "psg": {
           "teamId": "psg",
           "teamName": "PSG",
-          "goals": 8,
+          "goals": 14,
           "assists": 1,
           "goals_liga": 3,
           "assists_liga": 1,
-          "goals_champions": 2,
+          "goals_champions": 8,
           "assists_champions": 0,
           "goals_estelar": 3,
           "assists_estelar": 0
@@ -4163,11 +4163,11 @@ var INITIAL_LMI_DATA = {
       "position": "ID",
       "teamId": "psg",
       "goals": 1,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 0,
       "assists_liga": 1,
       "goals_champions": 0,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 1,
       "assists_estelar": 2,
       "cardType": "Normal",
@@ -4177,11 +4177,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "psg",
           "teamName": "PSG",
           "goals": 1,
-          "assists": 4,
+          "assists": 5,
           "goals_liga": 0,
           "assists_liga": 1,
           "goals_champions": 0,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 1,
           "assists_estelar": 2
         }
@@ -5044,12 +5044,12 @@ var INITIAL_LMI_DATA = {
       "name": "Mikel Oyarzabal",
       "position": "DC",
       "teamId": "olympiquelyon",
-      "goals": 2,
-      "assists": 3,
+      "goals": 3,
+      "assists": 4,
       "goals_liga": 1,
       "assists_liga": 0,
-      "goals_champions": 1,
-      "assists_champions": 3,
+      "goals_champions": 2,
+      "assists_champions": 4,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -5058,12 +5058,12 @@ var INITIAL_LMI_DATA = {
         "olympiquelyon": {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
-          "goals": 2,
-          "assists": 3,
+          "goals": 3,
+          "assists": 4,
           "goals_liga": 1,
           "assists_liga": 0,
-          "goals_champions": 1,
-          "assists_champions": 3,
+          "goals_champions": 2,
+          "assists_champions": 4,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -5074,11 +5074,11 @@ var INITIAL_LMI_DATA = {
       "name": "David Villa",
       "position": "DC",
       "teamId": "olympiquelyon",
-      "goals": 11,
+      "goals": 12,
       "assists": 6,
       "goals_liga": 5,
       "assists_liga": 6,
-      "goals_champions": 6,
+      "goals_champions": 7,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -5088,11 +5088,11 @@ var INITIAL_LMI_DATA = {
         "olympiquelyon": {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
-          "goals": 11,
+          "goals": 12,
           "assists": 6,
           "goals_liga": 5,
           "assists_liga": 6,
-          "goals_champions": 6,
+          "goals_champions": 7,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -5261,11 +5261,11 @@ var INITIAL_LMI_DATA = {
       "position": "ED",
       "teamId": "olympiquelyon",
       "goals": 1,
-      "assists": 4,
+      "assists": 5,
       "goals_liga": 1,
       "assists_liga": 3,
       "goals_champions": 0,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -5275,11 +5275,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "olympiquelyon",
           "teamName": "Olympique Lyon",
           "goals": 1,
-          "assists": 4,
+          "assists": 5,
           "goals_liga": 1,
           "assists_liga": 3,
           "goals_champions": 0,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -7163,12 +7163,12 @@ var INITIAL_LMI_DATA = {
       "name": "Lautaro Martínez",
       "position": "DC",
       "teamId": "intermilan",
-      "goals": 9,
-      "assists": 2,
+      "goals": 11,
+      "assists": 3,
       "goals_liga": 4,
       "assists_liga": 2,
-      "goals_champions": 3,
-      "assists_champions": 0,
+      "goals_champions": 5,
+      "assists_champions": 1,
       "goals_estelar": 2,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7177,12 +7177,12 @@ var INITIAL_LMI_DATA = {
         "intermilan": {
           "teamId": "intermilan",
           "teamName": "Inter Milan",
-          "goals": 9,
-          "assists": 2,
+          "goals": 11,
+          "assists": 3,
           "goals_liga": 4,
           "assists_liga": 2,
-          "goals_champions": 3,
-          "assists_champions": 0,
+          "goals_champions": 5,
+          "assists_champions": 1,
           "goals_estelar": 2,
           "assists_estelar": 0
         }
@@ -7256,11 +7256,11 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "intermilan",
       "goals": 2,
-      "assists": 1,
+      "assists": 3,
       "goals_liga": 1,
       "assists_liga": 1,
       "goals_champions": 1,
-      "assists_champions": 0,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7270,11 +7270,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "intermilan",
           "teamName": "Inter Milan",
           "goals": 2,
-          "assists": 1,
+          "assists": 3,
           "goals_liga": 1,
           "assists_liga": 1,
           "goals_champions": 1,
-          "assists_champions": 0,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -7405,12 +7405,12 @@ var INITIAL_LMI_DATA = {
       "name": "Jérémy Doku",
       "position": "EI",
       "teamId": "intermilan",
-      "goals": 2,
-      "assists": 0,
+      "goals": 4,
+      "assists": 1,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 1,
-      "assists_champions": 0,
+      "goals_champions": 3,
+      "assists_champions": 1,
       "goals_estelar": 1,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7419,12 +7419,12 @@ var INITIAL_LMI_DATA = {
         "intermilan": {
           "teamId": "intermilan",
           "teamName": "Inter Milan",
-          "goals": 2,
-          "assists": 0,
+          "goals": 4,
+          "assists": 1,
           "goals_liga": 0,
           "assists_liga": 0,
-          "goals_champions": 1,
-          "assists_champions": 0,
+          "goals_champions": 3,
+          "assists_champions": 1,
           "goals_estelar": 1,
           "assists_estelar": 0
         }
@@ -7622,11 +7622,11 @@ var INITIAL_LMI_DATA = {
       "position": "MC",
       "teamId": "galatasaray",
       "goals": 0,
-      "assists": 1,
+      "assists": 2,
       "goals_liga": 0,
       "assists_liga": 1,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7636,11 +7636,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
           "goals": 0,
-          "assists": 1,
+          "assists": 2,
           "goals_liga": 0,
           "assists_liga": 1,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -7651,11 +7651,11 @@ var INITIAL_LMI_DATA = {
       "name": "Paul Scholes",
       "position": "MC",
       "teamId": "galatasaray",
-      "goals": 3,
+      "goals": 4,
       "assists": 1,
       "goals_liga": 3,
       "assists_liga": 1,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -7665,11 +7665,11 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 3,
+          "goals": 4,
           "assists": 1,
           "goals_liga": 3,
           "assists_liga": 1,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -7682,11 +7682,11 @@ var INITIAL_LMI_DATA = {
       "position": "II",
       "teamId": "galatasaray",
       "goals": 2,
-      "assists": 3,
+      "assists": 4,
       "goals_liga": 1,
       "assists_liga": 2,
       "goals_champions": 1,
-      "assists_champions": 1,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7696,11 +7696,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
           "goals": 2,
-          "assists": 3,
+          "assists": 4,
           "goals_liga": 1,
           "assists_liga": 2,
           "goals_champions": 1,
-          "assists_champions": 1,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -7711,12 +7711,12 @@ var INITIAL_LMI_DATA = {
       "name": "Vinícius Júnior",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 2,
-      "assists": 2,
+      "goals": 4,
+      "assists": 5,
       "goals_liga": 1,
       "assists_liga": 1,
-      "goals_champions": 1,
-      "assists_champions": 1,
+      "goals_champions": 3,
+      "assists_champions": 4,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7725,12 +7725,12 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 2,
-          "assists": 2,
+          "goals": 4,
+          "assists": 5,
           "goals_liga": 1,
           "assists_liga": 1,
-          "goals_champions": 1,
-          "assists_champions": 1,
+          "goals_champions": 3,
+          "assists_champions": 4,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -7741,11 +7741,11 @@ var INITIAL_LMI_DATA = {
       "name": "Viktor Gyökeres",
       "position": "DC",
       "teamId": "galatasaray",
-      "goals": 4,
+      "goals": 6,
       "assists": 2,
       "goals_liga": 1,
       "assists_liga": 0,
-      "goals_champions": 3,
+      "goals_champions": 5,
       "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -7755,11 +7755,11 @@ var INITIAL_LMI_DATA = {
         "galatasaray": {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
-          "goals": 4,
+          "goals": 6,
           "assists": 2,
           "goals_liga": 1,
           "assists_liga": 0,
-          "goals_champions": 3,
+          "goals_champions": 5,
           "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -7772,11 +7772,11 @@ var INITIAL_LMI_DATA = {
       "position": "DC",
       "teamId": "galatasaray",
       "goals": 7,
-      "assists": 6,
+      "assists": 7,
       "goals_liga": 6,
       "assists_liga": 4,
       "goals_champions": 1,
-      "assists_champions": 2,
+      "assists_champions": 3,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -7786,11 +7786,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "galatasaray",
           "teamName": "Galatasaray",
           "goals": 7,
-          "assists": 6,
+          "assists": 7,
           "goals_liga": 6,
           "assists_liga": 4,
           "goals_champions": 1,
-          "assists_champions": 2,
+          "assists_champions": 3,
           "goals_estelar": 0,
           "assists_estelar": 0
         }
@@ -8017,16 +8017,30 @@ var INITIAL_LMI_DATA = {
       "name": "Julio Enciso",
       "position": "SD",
       "teamId": "galatasaray",
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "goals_liga": 0,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
       "cardType": "Normal",
-      "isLegend": false
+      "isLegend": false,
+      "statsByTeam": {
+        "galatasaray": {
+          "teamId": "galatasaray",
+          "teamName": "Galatasaray",
+          "goals": 1,
+          "assists": 0,
+          "goals_liga": 0,
+          "assists_liga": 0,
+          "goals_champions": 1,
+          "assists_champions": 0,
+          "goals_estelar": 0,
+          "assists_estelar": 0
+        }
+      }
     },
     {
       "id": "p_1794017504232_1",
@@ -9097,11 +9111,11 @@ var INITIAL_LMI_DATA = {
       "name": "Lilian Thuram",
       "position": "LD",
       "teamId": "clubuniversidaddechile",
-      "goals": 1,
+      "goals": 2,
       "assists": 0,
       "goals_liga": 1,
       "assists_liga": 0,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 0,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -9110,11 +9124,11 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 1,
+          "goals": 2,
           "assists": 0,
           "goals_liga": 1,
           "assists_liga": 0,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 0,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -9143,11 +9157,11 @@ var INITIAL_LMI_DATA = {
       "position": "MCD",
       "teamId": "clubuniversidaddechile",
       "goals": 0,
-      "assists": 1,
+      "assists": 3,
       "goals_liga": 0,
       "assists_liga": 0,
       "goals_champions": 0,
-      "assists_champions": 0,
+      "assists_champions": 2,
       "goals_estelar": 0,
       "assists_estelar": 1,
       "cardType": "Normal",
@@ -9157,11 +9171,11 @@ var INITIAL_LMI_DATA = {
           "teamId": "clubuniversidaddechile",
           "teamName": "Club Universidad de Chile",
           "goals": 0,
-          "assists": 1,
+          "assists": 3,
           "goals_liga": 0,
           "assists_liga": 0,
           "goals_champions": 0,
-          "assists_champions": 0,
+          "assists_champions": 2,
           "goals_estelar": 0,
           "assists_estelar": 1
         }
@@ -9232,11 +9246,11 @@ var INITIAL_LMI_DATA = {
       "position": "MP",
       "teamId": "clubuniversidaddechile",
       "goals": 12,
-      "assists": 10,
+      "assists": 13,
       "goals_liga": 8,
       "assists_liga": 8,
       "goals_champions": 1,
-      "assists_champions": 1,
+      "assists_champions": 4,
       "goals_estelar": 3,
       "assists_estelar": 1,
       "cardType": "Normal",
@@ -9245,11 +9259,11 @@ var INITIAL_LMI_DATA = {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
           "goals": 12,
-          "assists": 10,
+          "assists": 13,
           "goals_liga": 8,
           "assists_liga": 8,
           "goals_champions": 1,
-          "assists_champions": 1,
+          "assists_champions": 4,
           "goals_estelar": 3,
           "assists_estelar": 1
         }
@@ -9260,12 +9274,12 @@ var INITIAL_LMI_DATA = {
       "name": "Nicolás de la Cruz",
       "position": "MP",
       "teamId": "clubuniversidaddechile",
-      "goals": 3,
-      "assists": 4,
+      "goals": 5,
+      "assists": 5,
       "goals_liga": 1,
       "assists_liga": 4,
-      "goals_champions": 1,
-      "assists_champions": 0,
+      "goals_champions": 3,
+      "assists_champions": 1,
       "goals_estelar": 1,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -9273,12 +9287,12 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 3,
-          "assists": 4,
+          "goals": 5,
+          "assists": 5,
           "goals_liga": 1,
           "assists_liga": 4,
-          "goals_champions": 1,
-          "assists_champions": 0,
+          "goals_champions": 3,
+          "assists_champions": 1,
           "goals_estelar": 1,
           "assists_estelar": 0
         }
@@ -9427,11 +9441,11 @@ var INITIAL_LMI_DATA = {
       "name": "Rasmus Højlund",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 10,
+      "goals": 11,
       "assists": 1,
       "goals_liga": 7,
       "assists_liga": 1,
-      "goals_champions": 1,
+      "goals_champions": 2,
       "assists_champions": 0,
       "goals_estelar": 2,
       "assists_estelar": 0,
@@ -9440,11 +9454,11 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 10,
+          "goals": 11,
           "assists": 1,
           "goals_liga": 7,
           "assists_liga": 1,
-          "goals_champions": 1,
+          "goals_champions": 2,
           "assists_champions": 0,
           "goals_estelar": 2,
           "assists_estelar": 0
@@ -9545,12 +9559,12 @@ var INITIAL_LMI_DATA = {
       "name": "Yoane Wissa",
       "position": "DC",
       "teamId": "clubuniversidaddechile",
-      "goals": 18,
-      "assists": 6,
+      "goals": 21,
+      "assists": 7,
       "goals_liga": 12,
       "assists_liga": 5,
-      "goals_champions": 3,
-      "assists_champions": 1,
+      "goals_champions": 6,
+      "assists_champions": 2,
       "goals_estelar": 3,
       "assists_estelar": 0,
       "cardType": "Normal",
@@ -9558,12 +9572,12 @@ var INITIAL_LMI_DATA = {
       "statsByTeam": {
         "clubuniversidaddechile": {
           "teamId": "clubuniversidaddechile",
-          "goals": 18,
-          "assists": 6,
+          "goals": 21,
+          "assists": 7,
           "goals_liga": 12,
           "assists_liga": 5,
-          "goals_champions": 3,
-          "assists_champions": 1,
+          "goals_champions": 6,
+          "assists_champions": 2,
           "goals_estelar": 3,
           "assists_estelar": 0
         }
@@ -14875,10 +14889,13 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 6",
       "team1": "Flamengo",
-      "score1": "",
+      "score1": "1",
       "team2": "Galatasaray",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "0",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [],
+      "winner": "Flamengo"
     },
     {
       "fase": "Octavos 7",
@@ -15022,7 +15039,7 @@ var INITIAL_LMI_DATA = {
       "fase": "Cuartos 3",
       "team1": "Inter Milan",
       "score1": "",
-      "team2": "Ganador Octavos 6",
+      "team2": "Flamengo",
       "score2": "",
       "estado": "Pendiente"
     },
@@ -15295,34 +15312,231 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 4 (Ida)",
       "team1": "Club Universidad de Chile",
-      "score1": "",
+      "score1": "4",
       "team2": "Galatasaray",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "3",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_6",
+          "playerName": "Stanislav Lobotka",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_12",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_4",
+          "playerName": "Lilian Thuram",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1794017479657_8",
+          "playerName": "Paul Scholes",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_23",
+          "playerName": "Julio Enciso",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_7",
+          "playerName": "Martín Zubimendi",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Club Universidad de Chile"
     },
     {
       "fase": "Octavos 4 (Vuelta)",
       "team1": "Galatasaray",
-      "score1": "",
+      "score1": "3",
       "team2": "Club Universidad de Chile",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "4",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_9",
+          "playerName": "Marco Reus",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_6",
+          "playerName": "Stanislav Lobotka",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_11",
+          "playerName": "Viktor Gyökeres",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Club Universidad de Chile"
     },
     {
       "fase": "Octavos 5 (Ida)",
       "team1": "Inter Milan",
-      "score1": "",
+      "score1": "4",
       "team2": "Real Madrid",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "0",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1794017435168_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "intermilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017435168_15",
+          "playerName": "Youri Tielemans",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017435168_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "intermilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017435168_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017435168_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "Inter Milan"
     },
     {
       "fase": "Octavos 5 (Vuelta)",
       "team1": "Real Madrid",
-      "score1": "",
+      "score1": "0",
       "team2": "Inter Milan",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [],
+      "winner": "Inter Milan"
     },
     {
       "fase": "Octavos 6 (Ida)",
@@ -15477,34 +15691,132 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 7 (Ida)",
       "team1": "Liverpool",
-      "score1": "",
+      "score1": "1",
       "team2": "PT Prachuap FC",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "0",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [],
+      "winner": "Liverpool"
     },
     {
       "fase": "Octavos 7 (Vuelta)",
       "team1": "PT Prachuap FC",
-      "score1": "",
+      "score1": "0",
       "team2": "Liverpool",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [],
+      "winner": "Liverpool"
     },
     {
       "fase": "Octavos 8 (Ida)",
       "team1": "PSG",
-      "score1": "",
+      "score1": "3",
       "team2": "Olympique Lyon",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "2",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1793936638033_11",
+          "playerName": "Diego Costa",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936638033_9",
+          "playerName": "Mohamed Salah",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_9",
+          "playerName": "Mikel Oyarzabal",
+          "teamId": "olympiquelyon",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_19",
+          "playerName": "Facundo Torres",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_10",
+          "playerName": "Luis Díaz",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_10",
+          "playerName": "David Villa",
+          "teamId": "olympiquelyon",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_9",
+          "playerName": "Mikel Oyarzabal",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "winner": "PSG"
     },
     {
       "fase": "Octavos 8 (Vuelta)",
       "team1": "Olympique Lyon",
-      "score1": "",
+      "score1": "0",
       "team2": "PSG",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "4",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1793936638033_11",
+          "playerName": "Diego Costa",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936638033_18",
+          "playerName": "Maghnes Akliouche",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_7",
+          "playerName": "Alexis Mac Allister",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_6",
+          "playerName": "João Palhinha",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_9",
+          "playerName": "Mohamed Salah",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "PSG"
     },
     {
       "fase": "Cuartos 1 (Ida)",
@@ -15526,13 +15838,13 @@ var INITIAL_LMI_DATA = {
       "fase": "Cuartos 2 (Ida)",
       "team1": "AC Milan",
       "score1": "",
-      "team2": "Ganador Octavos 4",
+      "team2": "Club Universidad de Chile",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 2 (Vuelta)",
-      "team1": "Ganador Octavos 4",
+      "team1": "Club Universidad de Chile",
       "score1": "",
       "team2": "AC Milan",
       "score2": "",
@@ -15540,7 +15852,7 @@ var INITIAL_LMI_DATA = {
     },
     {
       "fase": "Cuartos 3 (Ida)",
-      "team1": "Ganador Octavos 5",
+      "team1": "Inter Milan",
       "score1": "",
       "team2": "Arsenal",
       "score2": "",
@@ -15550,23 +15862,23 @@ var INITIAL_LMI_DATA = {
       "fase": "Cuartos 3 (Vuelta)",
       "team1": "Arsenal",
       "score1": "",
-      "team2": "Ganador Octavos 5",
+      "team2": "Inter Milan",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 4 (Ida)",
-      "team1": "Ganador Octavos 7",
+      "team1": "Liverpool",
       "score1": "",
-      "team2": "Ganador Octavos 8",
+      "team2": "PSG",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 4 (Vuelta)",
-      "team1": "Ganador Octavos 8",
+      "team1": "PSG",
       "score1": "",
-      "team2": "Ganador Octavos 7",
+      "team2": "Liverpool",
       "score2": "",
       "estado": "Pendiente"
     },
@@ -26188,6 +26500,457 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1795496007481",
+      "timestamp": 1795496007481,
+      "date": "23 nov 2026, 10:53 p.m.",
+      "competition": "estelar",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 6",
+      "team1Id": "flamengo",
+      "team1Name": "Flamengo",
+      "team1Logo": "Logos Equipos/flamengo.webp",
+      "score1": 1,
+      "team2Id": "galatasaray",
+      "team2Name": "Galatasaray",
+      "team2Logo": "Logos Equipos/galatasaray.png",
+      "score2": 0,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:53:27.481Z"
+    },
+    {
+      "id": "match_1795495960702",
+      "timestamp": 1795495960702,
+      "date": "23 nov 2026, 10:52 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 7 (Vuelta)",
+      "team1Id": "ptprachuapfc",
+      "team1Name": "PT Prachuap FC",
+      "team1Logo": "Logos Equipos/ptpra.webp",
+      "score1": 0,
+      "team2Id": "liverpool",
+      "team2Name": "Liverpool",
+      "team2Logo": "Logos Equipos/liverpool.png",
+      "score2": 1,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:52:40.703Z"
+    },
+    {
+      "id": "match_1795495947918",
+      "timestamp": 1795495947918,
+      "date": "23 nov 2026, 10:52 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 7 (Ida)",
+      "team1Id": "liverpool",
+      "team1Name": "Liverpool",
+      "team1Logo": "Logos Equipos/liverpool.png",
+      "score1": 1,
+      "team2Id": "ptprachuapfc",
+      "team2Name": "PT Prachuap FC",
+      "team2Logo": "Logos Equipos/ptpra.webp",
+      "score2": 0,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:52:27.918Z"
+    },
+    {
+      "id": "match_1795495931662",
+      "timestamp": 1795495931662,
+      "date": "23 nov 2026, 10:52 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 5 (Vuelta)",
+      "team1Id": "realmadrid",
+      "team1Name": "Real Madrid",
+      "team1Logo": "Logos Equipos/realmadrid.webp",
+      "score1": 0,
+      "team2Id": "intermilan",
+      "team2Name": "Inter Milan",
+      "team2Logo": "Logos Equipos/intermilan.webp",
+      "score2": 1,
+      "events": [],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:52:11.663Z"
+    },
+    {
+      "id": "match_1795495915895",
+      "timestamp": 1795495915895,
+      "date": "23 nov 2026, 10:51 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 5 (Ida)",
+      "team1Id": "intermilan",
+      "team1Name": "Inter Milan",
+      "team1Logo": "Logos Equipos/intermilan.webp",
+      "score1": 4,
+      "team2Id": "realmadrid",
+      "team2Name": "Real Madrid",
+      "team2Logo": "Logos Equipos/realmadrid.webp",
+      "score2": 0,
+      "events": [
+        {
+          "playerId": "p_1794017435168_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "intermilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017435168_15",
+          "playerName": "Youri Tielemans",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017435168_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "intermilan",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017435168_11",
+          "playerName": "Lautaro Martínez",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017435168_20",
+          "playerName": "Jérémy Doku",
+          "teamId": "intermilan",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:51:55.895Z"
+    },
+    {
+      "id": "match_1795495850679",
+      "timestamp": 1795495850679,
+      "date": "23 nov 2026, 10:50 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 8 (Vuelta)",
+      "team1Id": "olympiquelyon",
+      "team1Name": "Olympique Lyon",
+      "team1Logo": "Logos Equipos/lyon.webp",
+      "score1": 0,
+      "team2Id": "psg",
+      "team2Name": "PSG",
+      "team2Logo": "Logos Equipos/psg.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1793936638033_11",
+          "playerName": "Diego Costa",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936638033_18",
+          "playerName": "Maghnes Akliouche",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_7",
+          "playerName": "Alexis Mac Allister",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_6",
+          "playerName": "João Palhinha",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_9",
+          "playerName": "Mohamed Salah",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:50:50.679Z"
+    },
+    {
+      "id": "match_1795495783582",
+      "timestamp": 1795495783582,
+      "date": "23 nov 2026, 10:49 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 8 (Ida)",
+      "team1Id": "psg",
+      "team1Name": "PSG",
+      "team1Logo": "Logos Equipos/psg.png",
+      "score1": 3,
+      "team2Id": "olympiquelyon",
+      "team2Name": "Olympique Lyon",
+      "team2Logo": "Logos Equipos/lyon.webp",
+      "score2": 2,
+      "events": [
+        {
+          "playerId": "p_1793936638033_11",
+          "playerName": "Diego Costa",
+          "teamId": "psg",
+          "type": "gol",
+          "count": 3
+        },
+        {
+          "playerId": "p_1793936638033_9",
+          "playerName": "Mohamed Salah",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_9",
+          "playerName": "Mikel Oyarzabal",
+          "teamId": "olympiquelyon",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_19",
+          "playerName": "Facundo Torres",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936638033_10",
+          "playerName": "Luis Díaz",
+          "teamId": "psg",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_10",
+          "playerName": "David Villa",
+          "teamId": "olympiquelyon",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1793936873896_9",
+          "playerName": "Mikel Oyarzabal",
+          "teamId": "olympiquelyon",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:49:43.582Z"
+    },
+    {
+      "id": "match_1795495712835",
+      "timestamp": 1795495712835,
+      "date": "23 nov 2026, 10:48 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 4 (Vuelta)",
+      "team1Id": "galatasaray",
+      "team1Name": "Galatasaray",
+      "team1Logo": "Logos Equipos/galatasaray.png",
+      "score1": 3,
+      "team2Id": "clubuniversidaddechile",
+      "team2Name": "Club Universidad de Chile",
+      "team2Logo": "Logos Equipos/uchile.png",
+      "score2": 4,
+      "events": [
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_9",
+          "playerName": "Marco Reus",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_6",
+          "playerName": "Stanislav Lobotka",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_11",
+          "playerName": "Viktor Gyökeres",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 2
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:48:32.835Z"
+    },
+    {
+      "id": "match_1795495075046",
+      "timestamp": 1795495075046,
+      "date": "23 nov 2026, 10:37 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 4 (Ida)",
+      "team1Id": "clubuniversidaddechile",
+      "team1Name": "Club Universidad de Chile",
+      "team1Logo": "Logos Equipos/uchile.png",
+      "score1": 4,
+      "team2Id": "galatasaray",
+      "team2Name": "Galatasaray",
+      "team2Logo": "Logos Equipos/galatasaray.png",
+      "score2": 3,
+      "events": [
+        {
+          "playerId": "p_1794017628489_21",
+          "playerName": "Yoane Wissa",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_6",
+          "playerName": "Stanislav Lobotka",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_12",
+          "playerName": "Semih Kılıçsoy",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_4",
+          "playerName": "Lilian Thuram",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_9",
+          "playerName": "Franck Ribéry",
+          "teamId": "clubuniversidaddechile",
+          "type": "asistencia",
+          "count": 3
+        },
+        {
+          "playerId": "p_1794017479657_8",
+          "playerName": "Paul Scholes",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_10",
+          "playerName": "Vinícius Júnior",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_10",
+          "playerName": "Nicolás de la Cruz",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017628489_17",
+          "playerName": "Rasmus Højlund",
+          "teamId": "clubuniversidaddechile",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_23",
+          "playerName": "Julio Enciso",
+          "teamId": "galatasaray",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017479657_7",
+          "playerName": "Martín Zubimendi",
+          "teamId": "galatasaray",
+          "type": "asistencia",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-24T04:37:55.046Z"
+    },
     {
       "id": "match_1795409898803",
       "timestamp": 1795409898803,
