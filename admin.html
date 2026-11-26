@@ -135,10 +135,10 @@
         <div class="data-provider-control" title="Selector de origen para pruebas locales">
           <label for="data-provider-select">Datos</label>
           <select id="data-provider-select">
-            <option value="legacy">Legacy (data.js?v=1795496024>
+            <option value="legacy">Legacy (data.js?v=1795665462>
             <option value="supabase">Supabase LOCAL</option>
           </select>
-          <span id="data-provider-mode-badge">LEGACY · data.js?v=1795496024>
+          <span id="data-provider-mode-badge">LEGACY · data.js?v=1795665462>
         </div>
         <button class="btn btn-secondary" id="btn-sync-cloud" onclick="AdminApp.syncWithCloud()" title="Descargar de GitHub los partidos que hayan registrado tus delegados" style="border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
           <i class="fa-solid fa-arrows-rotate"></i>
@@ -148,7 +148,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
           <span>Ver Web</span>
         </a>
-        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1795496024">
+        <button class="btn btn-primary" id="btn-save-data" title="Guardar cambios en data.js?v=1795665462">
           <i class="fa-solid fa-floppy-disk"></i>
           <span>Guardar Cambios</span>
         </button>
@@ -1541,12 +1541,23 @@
                   <span style="font-size: 0.75rem; color: var(--text-muted);">Formato: <code>PT Donnarumma</code> o <code>Donnarumma (PT)</code></span>
                 </div>
                 <div id="midseason-new-count-badge" class="badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 0.82rem;">
-                  0 / 23 jugadores
+                  0 jugadores
                 </div>
               </div>
 
               <!-- Textarea para pegar lista -->
               <textarea id="midseason-plaintext-input" class="midseason-textarea" placeholder="Pega aquí la lista de 23 jugadores del club (un jugador por línea)...&#10;&#10;Ejemplo:&#10;PT Courtois&#10;PT Lunin&#10;CT Militão&#10;CT Rüdiger&#10;LD Carvajal&#10;LI Mendy&#10;MC Valverde&#10;MC Camavinga&#10;DC Mbappé&#10;EI Vinicius Jr." oninput="AdminApp.onMidseasonInputChanged()"></textarea>
+
+              <div style="margin-top:.75rem;padding:.75rem;border:1px solid rgba(16,185,129,.28);border-radius:8px;background:rgba(16,185,129,.05);">
+                <strong style="color:#a7f3d0;font-size:.84rem;"><i class="fa-solid fa-wallet"></i> Desglose financiero del corte (millones)</strong>
+                <div class="grid-4" style="gap:.5rem;margin-top:.55rem;">
+                  <div class="form-group" style="margin:0;"><label style="font-size:.72rem;">Saldo inicial</label><input id="midseason-finance-initial" type="number" class="form-control" oninput="AdminApp.updateMidseasonFinance('initial',this.value)"></div>
+                  <div class="form-group" style="margin:0;"><label style="font-size:.72rem;">Ingresos fuera de mercado</label><input id="midseason-finance-income" type="number" class="form-control" oninput="AdminApp.updateMidseasonFinance('income',this.value)"></div>
+                  <div class="form-group" style="margin:0;"><label style="font-size:.72rem;">Gastos fuera de mercado</label><input id="midseason-finance-expenses" type="number" class="form-control" oninput="AdminApp.updateMidseasonFinance('expenses',this.value)"></div>
+                  <div class="form-group" style="margin:0;"><label style="font-size:.72rem;">Saldo final declarado</label><input id="midseason-finance-reportedFinal" type="number" class="form-control" oninput="AdminApp.updateMidseasonFinance('reportedFinal',this.value)"></div>
+                </div>
+                <div id="midseason-finance-summary" style="margin-top:.55rem;font-size:.78rem;font-weight:700;"></div>
+              </div>
 
               <!-- Botones de Acción para este Club -->
               <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-color);">
@@ -1642,6 +1653,11 @@
             </div>
           </div>
 
+          <div class="card" style="margin-bottom:1.5rem;border-color:rgba(245,158,11,.5);">
+            <div class="card-header"><div><h3 class="card-title"><i class="fa-solid fa-folder-open" style="color:#f59e0b;"></i> Expedientes por jugador (<span id="midseason-review-count">0</span> pendientes)</h3><p class="card-desc">Cada jugador aparece una sola vez: identidad, movimiento, propietario, cesionario y cláusula se resuelven en la misma tarjeta.</p></div></div>
+            <div id="midseason-review-inbox"></div>
+          </div>
+
           <!-- 1. Traspasos / Movimientos Detectados entre Clubes -->
           <div class="card" style="margin-bottom: 1.5rem;">
             <div class="card-header">
@@ -1694,7 +1710,7 @@
               </p>
             </div>
             <button class="btn btn-gold" style="padding: 0.85rem 1.8rem; font-size: 1rem; font-weight: 800;" onclick="AdminApp.applyAllMidseasonMarket()">
-              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1795496024
+              <i class="fa-solid fa-check-double"></i> Aplicar Mercado y Guardar en data.js?v=1795665462
             </button>
           </div>
 
@@ -1712,7 +1728,7 @@
               ¡Mercado de Mitad de Temporada Aplicado Exitosamente!
             </h2>
             <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 650px; margin: 0 auto;">
-              Todas las plantillas fueron actualizadas a 23 jugadores exactos. Los duplicados fueron purgados, las estadísticas históricas conservadas y los movimientos registrados en <code>data.js?v=1795496024>.
+              Las plantillas confirmadas fueron actualizadas, los casos pendientes quedaron bloqueados, las estadísticas históricas se conservaron y el corte quedó auditado localmente en <code>data.js?v=1795665462>.
             </p>
           </div>
 
@@ -1785,6 +1801,11 @@
                 </tbody>
               </table>
             </div>
+          </div>
+
+          <div class="card" style="margin-bottom:1.5rem;border-color:rgba(168,85,247,.45);">
+            <div class="card-header"><div><h3 class="card-title"><i class="fa-solid fa-file-signature" style="color:#c084fc;"></i> Cláusulas de préstamo pendientes</h3><p class="card-desc">Recordatorio local para el cierre de temporada. No envía mensajes ni ejecuta compras automáticamente.</p></div></div>
+            <div id="midseason-loan-clauses"></div>
           </div>
 
           <!-- Acciones Finales -->
@@ -1919,7 +1940,7 @@
 
             <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
               <button class="btn-primary" onclick="AdminApp.saveData()" style="padding: 0.7rem 1.2rem; font-size: 0.88rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                <i class="fa-solid fa-floppy-disk"></i> Guardar data.js?v=1795496024
+                <i class="fa-solid fa-floppy-disk"></i> Guardar data.js?v=1795665462
               </button>
               <button class="btn-secondary" onclick="AdminApp.openDeployModal()" style="padding: 0.7rem 1.2rem; font-size: 0.88rem;">
                 <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Publicar (Git)
@@ -2201,7 +2222,7 @@
           <div class="card-header">
             <div>
               <h2 class="card-title"><i class="fa-solid fa-award" style="color: var(--lmi-gold);"></i> Ganadores del Balón de Oro</h2>
-              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1795496024> y <code>Registro Balon de Oro.txt</code>.</p>
+              <p class="card-desc">Sincronizado automáticamente con <code>data.js?v=1795665462> y <code>Registro Balon de Oro.txt</code>.</p>
             </div>
             <button class="btn btn-gold" id="btn-add-bdo-modal">
               <i class="fa-solid fa-plus"></i> Añadir Ganador de Balón de Oro
@@ -3857,9 +3878,9 @@
   <div class="toast-box" id="toast-box"></div>
 
   <!-- Application Logic with cache-busting -->
-  <script src="data.js?v=1795496024"></script>
+  <script src="data.js?v=1795665462"></script>
   <script src="config.local.js"></script>
   <script src="src/data-provider.js"></script>
-  <script src="admin.js?v=1795496024"></script>
+  <script src="admin.js?v=1795665462"></script>
 </body>
 </html>

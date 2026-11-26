@@ -13,13 +13,17 @@ const AdminApp = {
   providerMode: 'legacy',
   dataProvider: null,
   midseason: {
+    schemaVersion: 2,
     step: 1,
     currentTeamId: null,
     draftRosters: {},
     detectedDeals: [],
     freeAgents: [],
     newExternal: [],
-    loansReport: []
+    loansReport: [],
+    reviewItems: [],
+    marketCases: [],
+    caseFilter: 'pending'
   },
 
   // ==================== INICIALIZACIÓN ====================
@@ -274,6 +278,7 @@ const AdminApp = {
       if (!this.data.balonOro) this.data.balonOro = [];
       if (!this.data.champions) this.data.champions = [];
       if (!this.data.marketMovements) this.data.marketMovements = [];
+      if (!this.data.loanContracts) this.data.loanContracts = [];
       if (!this.data.copaEstelarMatches) this.data.copaEstelarMatches = [];
       if (!this.data.championsLeagueMatches) this.data.championsLeagueMatches = [];
       if (!this.data.matchHistory) this.data.matchHistory = [];
@@ -7075,6 +7080,106 @@ const AdminApp = {
       .toLowerCase();
   },
 
+  isLoanMarker(name) {
+    return /\s*\(\s*p\s*\)\s*$/i.test(String(name || ''));
+  },
+
+  stripLoanMarker(name) {
+    return String(name || '').replace(/\s*\(\s*p\s*\)\s*$/i, '').trim();
+  },
+
+  ensureLoanState() {
+    if (!this.data.loanContracts) this.data.loanContracts = [];
+    return this.data.loanContracts;
+  },
+
+  getPlayerOwnerTeamId(player) {
+    if (!player) return '';
+    if (player.ownerTeamId) return player.ownerTeamId;
+    const contract = (this.data.loanContracts || []).find(c =>
+      (c.status === 'active' || c.status === 'pending') && (c.playerId === player.id || this.normalizePlayerKey(c.player) === this.normalizePlayerKey(player.name))
+    );
+    if (contract && contract.ownerTeamId) return contract.ownerTeamId;
+    const movement = (this.data.marketMovements || []).find(m =>
+      (m.type || '').toLowerCase().includes('prestamo') && this.arePlayersEquivalent(m.player, player.name).match && (m.ownerTeamId || m.fromTeamId)
+    );
+    return movement ? (movement.ownerTeamId || movement.fromTeamId || '') : '';
+  },
+
+  buildMidseasonDeal(alta, baja, details) {
+    const existing = (this.data.players || []).find(p =>
+      p.id === alta.resolvedPlayerId || this.normalizePlayerKey(p.name) === this.normalizePlayerKey(alta.name)
+    );
+    const isLoan = Boolean(alta.isLoaned);
+    const ownerTeamId = isLoan ? this.getPlayerOwnerTeamId(existing) : '';
+    const sourceTeamId = isLoan ? ownerTeamId : baja.fromTeamId;
+    if (isLoan && !ownerTeamId) {
+      this.addMidseasonReviewItem({ kind: 'propietario de préstamo desconocido', entryName: alta.name, teamId: alta.toTeamId, teamName: alta.toTeamName, reason: 'La marca (P) exige identificar manualmente el club propietario antes de aplicar.' });
+    }
+    const source = this.getTeamById(sourceTeamId);
+    return {
+      player: alta.name, playerId: existing ? existing.id : null,
+      position: alta.position || baja.position || 'MC',
+      fromTeamId: sourceTeamId, fromTeamName: source ? source.name : baja.fromTeamName,
+      currentFromTeamId: baja.fromTeamId, currentFromTeamName: baja.fromTeamName,
+      toTeamId: alta.toTeamId, toTeamName: alta.toTeamName,
+      ownerTeamId, type: isLoan ? 'Prestamo' : 'Fichaje', seasons: 1, price: 0,
+      details, originalPlayer: baja,
+      loanClause: { type: 'none', amount: 0, decisionTeamId: alta.toTeamId, expiresSeason: '', status: 'pending', notes: '' }
+    };
+  },
+
+  createLoanContract(deal, player) {
+    const contracts = this.ensureLoanState();
+    const id = deal.loanContractId || `loan_${player.id}_${Date.now()}`;
+    const existing = contracts.find(c => c.id === id);
+    const clause = deal.loanClause || {};
+    const record = {
+      id, playerId: player.id, player: player.name,
+      ownerTeamId: deal.ownerTeamId, currentTeamId: deal.toTeamId,
+      ownerTeamName: (this.getTeamById(deal.ownerTeamId) || {}).name || deal.fromTeamName || '',
+      currentTeamName: deal.toTeamName || '', seasons: Number(deal.seasons || 1),
+      clauseType: clause.type || 'none', clauseAmount: Number(clause.amount || 0),
+      decisionTeamId: clause.decisionTeamId || deal.toTeamId,
+      expiresSeason: clause.expiresSeason || '', status: clause.status || 'pending',
+      notes: clause.notes || deal.details || '', createdAt: existing ? existing.createdAt : new Date().toISOString(), updatedAt: new Date().toISOString()
+    };
+    if (existing) Object.assign(existing, record); else contracts.push(record);
+    deal.loanContractId = id;
+    return record;
+  },
+
+  updateLoanClause(contractId, field, value) {
+    const contract = this.ensureLoanState().find(c => c.id === contractId);
+    if (!contract) return;
+    contract[field] = field === 'clauseAmount' ? (Number(value) || 0) : value;
+    contract.updatedAt = new Date().toISOString();
+    if (field === 'status' && value === 'executed') {
+      const player = (this.data.players || []).find(p => p.id === contract.playerId);
+      if (player) {
+        player.ownerTeamId = contract.currentTeamId;
+        player.teamId = contract.currentTeamId;
+        player.loanedToTeamId = null;
+        player.isLoaned = false;
+      }
+    }
+    this.markDirty();
+    this.recordMidseasonEvent('loan_clause_updated', { contractId, field, value });
+    this.renderLoanClauses();
+  },
+
+  renderLoanClauses() {
+    const container = document.getElementById('midseason-loan-clauses');
+    if (!container) return;
+    const pending = this.ensureLoanState().filter(c => c.status === 'pending' || c.status === 'active');
+    if (!pending.length) { container.innerHTML = '<div style="color:var(--text-muted);">No hay cláusulas de préstamo pendientes.</div>'; return; }
+    container.innerHTML = pending.map(c => `<div style="padding:.7rem;border:1px solid rgba(168,85,247,.4);border-radius:8px;margin-bottom:.5rem;">
+      <strong>${this.escape(c.player)}</strong> · ${this.escape(c.ownerTeamName)} → ${this.escape(c.currentTeamName)}
+      <span style="color:#c4b5fd;font-size:.8rem;">${this.escape(c.clauseType)} ${c.clauseAmount ? `$${c.clauseAmount}M` : ''} · vence: ${this.escape(c.expiresSeason || 'sin definir')}</span>
+      <div style="margin-top:.45rem;display:flex;gap:.4rem;flex-wrap:wrap;"><button class="btn btn-success" onclick="AdminApp.updateLoanClause('${c.id}','status','executed')">Ejecutada</button><button class="btn btn-secondary" onclick="AdminApp.updateLoanClause('${c.id}','status','rejected')">Rechazada</button><button class="btn btn-danger" onclick="AdminApp.updateLoanClause('${c.id}','status','expired')">Vencida</button></div>
+    </div>`).join('');
+  },
+
   levenshtein(s1, s2) {
     const m = s1.length;
     const n = s2.length;
@@ -7226,6 +7331,165 @@ const AdminApp = {
     return duplicates;
   },
 
+  // El mercado se conserva localmente mientras data.js sea la fuente de verdad.
+  // Nunca se usa una coincidencia aproximada para cambiar una plantilla sin revisión.
+  ensureMidseasonAudit() {
+    if (!this.data.midseasonMarketAudit) {
+      this.data.midseasonMarketAudit = { version: 1, cuts: [], events: [], applications: [] };
+    }
+    return this.data.midseasonMarketAudit;
+  },
+
+  recordMidseasonEvent(type, payload = {}) {
+    const audit = this.ensureMidseasonAudit();
+    audit.events.push({ id: `msa_${Date.now()}_${audit.events.length + 1}`, type, at: new Date().toISOString(), ...payload });
+  },
+
+  findPlayerCandidates(name, limit = 5) {
+    const candidates = (this.data.players || []).map(player => {
+      const result = this.arePlayersEquivalent(player.name, name);
+      return { player, score: result.score || 0, reason: result.reason || 'sin_coincidencia', match: result.match };
+    }).filter(c => c.match).sort((a, b) => b.score - a.score);
+    return candidates.slice(0, limit);
+  },
+
+  addMidseasonReviewItem(item) {
+    const exists = this.midseason.reviewItems.some(existing =>
+      existing.teamId === item.teamId && existing.entryName === item.entryName && existing.kind === item.kind && existing.status === 'open'
+    );
+    if (!exists) this.midseason.reviewItems.push({ id: `review_${Date.now()}_${this.midseason.reviewItems.length + 1}`, status: 'open', ...item });
+  },
+
+  resolveMidseasonReviewItem(id, action, playerId = '') {
+    const item = this.midseason.reviewItems.find(x => x.id === id);
+    if (!item) return;
+    if (action === 'link' && !playerId) {
+      this.showToast('Selecciona un jugador existente para vincular.', 'error');
+      return;
+    }
+    item.status = 'resolved';
+    item.resolution = action;
+    item.playerId = playerId || null;
+    item.resolvedAt = new Date().toISOString();
+    const draft = this.midseason.draftRosters[item.teamId];
+    if (draft) {
+      const alta = (draft.altas || []).find(p => p.reviewId === id || p.name === item.entryName);
+      if (alta) {
+        if (action === 'link') {
+          const player = (this.data.players || []).find(p => p.id === playerId);
+          if (player) Object.assign(alta, { ...player, name: alta.name, position: alta.position || player.position, resolvedPlayerId: player.id });
+        }
+        if (action === 'create') alta.createNew = true;
+        if (action === 'free' || action === 'reject') alta.excluded = true;
+      }
+    }
+    this.recordMidseasonEvent('review_resolved', { reviewId: id, action, playerId: playerId || null });
+    this.renderReviewInbox();
+    this.renderMidseasonDiffCard(draft, true);
+  },
+
+  resolveMidseasonLoanOwner(id, ownerTeamId) {
+    const item = this.midseason.reviewItems.find(x => x.id === id);
+    if (!item || !ownerTeamId) return;
+    const draft = this.midseason.draftRosters[item.teamId];
+    if (draft) {
+      [draft.kept || [], draft.altas || [], draft.newPlayers || []].forEach(list => list.filter(p => p.name === item.entryName).forEach(p => { p.ownerTeamId = ownerTeamId; p.isLoaned = true; }));
+    }
+    item.status = 'resolved'; item.resolution = 'owner_set'; item.ownerTeamId = ownerTeamId; item.resolvedAt = new Date().toISOString();
+    this.recordMidseasonEvent('loan_owner_resolved', { reviewId: id, ownerTeamId });
+    this.renderReviewInbox();
+  },
+
+  renderReviewInbox() {
+    const container = document.getElementById('midseason-review-inbox');
+    const count = document.getElementById('midseason-review-count');
+    if (!container) return;
+    const open = this.midseason.reviewItems.filter(item => item.status === 'open');
+    if (count) count.textContent = open.length;
+    if (!open.length) {
+      container.innerHTML = '<div style="color:#a7f3d0;font-weight:700;">Sin casos pendientes de revisión.</div>';
+      return;
+    }
+    container.innerHTML = open.map(item => {
+      const suggested = this.findPlayerCandidates(item.entryName);
+      const candidateIds = new Set(suggested.map(c => c.player.id));
+      const allCandidates = suggested.concat((this.data.players || []).filter(player => !candidateIds.has(player.id)).map(player => ({ player, score: 0 })));
+      const options = allCandidates.map(c => `<option value="${this.escape(c.player.id)}">${this.escape(c.player.name)} · ${this.escape((this.getTeamById(c.player.teamId) || {}).name || 'Libre')}${c.score ? ` (${Math.round(c.score * 100)}%)` : ''}</option>`).join('');
+      const ownerOptions = (this.data.teams || []).map(team => `<option value="${team.id}">${this.escape(team.name)}</option>`).join('');
+      return `<div style="padding:.8rem;border:1px solid rgba(245,158,11,.45);border-radius:8px;background:rgba(245,158,11,.06);margin-bottom:.65rem;">
+        <div style="font-weight:800;color:#fff;">${this.escape(item.entryName)} <span style="color:#fbbf24;font-size:.78rem;">${this.escape(item.kind)}</span></div>
+        <div style="font-size:.8rem;color:var(--text-muted);margin:.25rem 0 .6rem;">${this.escape(item.reason || 'Requiere una decisión manual')} · ${this.escape(item.teamName || '')}</div>
+        <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;">
+          <select id="review-candidate-${item.id}" class="form-select" style="max-width:350px;font-size:.8rem;"><option value="">Vincular con jugador existente…</option>${options}</select>
+          <button class="btn btn-secondary" onclick="AdminApp.resolveMidseasonReviewItem('${item.id}','link',document.getElementById('review-candidate-${item.id}').value)">Vincular</button>
+          <button class="btn btn-secondary" onclick="AdminApp.resolveMidseasonReviewItem('${item.id}','create')">Crear jugador</button>
+          <button class="btn btn-secondary" onclick="AdminApp.resolveMidseasonReviewItem('${item.id}','free')">Marcar libre</button>
+          <button class="btn btn-danger" onclick="AdminApp.resolveMidseasonReviewItem('${item.id}','reject')">Excluir</button>
+          ${item.kind.includes('propietario') ? `<select id="review-owner-${item.id}" class="form-select" style="max-width:230px;"><option value="">Club propietario…</option>${ownerOptions}</select><button class="btn btn-secondary" onclick="AdminApp.resolveMidseasonLoanOwner('${item.id}',document.getElementById('review-owner-${item.id}').value)">Confirmar propietario</button>` : ''}
+        </div></div>`;
+    }).join('');
+  },
+
+  updateMidseasonFinance(field, value) {
+    const draft = this.midseason.draftRosters[this.midseason.currentTeamId];
+    if (!draft) return;
+    draft.finance = draft.finance || {};
+    draft.finance[field] = Number(value) || 0;
+    draft.finance.touched = true;
+    this.renderMidseasonFinance(draft);
+  },
+
+  renderMidseasonFinance(draft) {
+    const finance = draft && draft.finance;
+    const summary = document.getElementById('midseason-finance-summary');
+    if (!finance || !summary) return;
+    const net = this.getMidseasonTransferNet(draft.teamId);
+    const calculated = Number(finance.initial || 0) + Number(finance.income || 0) - Number(finance.expenses || 0) + net;
+    const difference = Number(finance.reportedFinal || 0) - calculated;
+    summary.textContent = `Calculado: $${calculated.toLocaleString()}M (mercado: $${net.toLocaleString()}M) · Declarado: $${Number(finance.reportedFinal || 0).toLocaleString()}M · Diferencia: $${difference.toLocaleString()}M`;
+    summary.style.color = difference === 0 ? '#34d399' : '#f87171';
+  },
+
+  getMidseasonTransferNet(teamId) {
+    return (this.midseason.detectedDeals || []).reduce((total, deal) => {
+      const price = Number(deal.price || 0);
+      if (deal.toTeamId === teamId) total -= price;
+      if (deal.fromTeamId === teamId) total += price;
+      return total;
+    }, 0);
+  },
+
+  validateMidseasonMarket() {
+    const errors = [];
+    const pendingCases = (this.midseason.marketCases || []).filter(record => record.pending && record.pending.length);
+    if (pendingCases.length) errors.push(`${pendingCases.length} expediente(s) con datos pendientes.`);
+    const open = this.midseason.reviewItems.filter(item => item.status === 'open');
+    if (open.length) errors.push(`${open.length} caso(s) pendiente(s) en la bandeja de revisión.`);
+    (this.midseason.detectedDeals || []).filter(deal => deal.type === 'Prestamo').forEach(deal => {
+      if (!deal.ownerTeamId) errors.push(`${deal.player}: falta identificar el club propietario del préstamo.`);
+      const clause = deal.loanClause || {};
+      if (clause.type && clause.type !== 'none' && !clause.expiresSeason) errors.push(`${deal.player}: una cláusula de compra requiere temporada de vencimiento.`);
+      if (clause.type && clause.type !== 'none' && !clause.decisionTeamId) errors.push(`${deal.player}: falta definir quién decide la cláusula.`);
+    });
+    (this.data.teams || []).forEach(team => {
+      const draft = this.midseason.draftRosters[team.id];
+      if (!draft || draft.status === 'pending') errors.push(`${team.name}: falta confirmar la plantilla.`);
+      const finance = draft && draft.finance;
+      if (!finance || !finance.touched) errors.push(`${team.name}: falta confirmar el desglose financiero.`);
+      else {
+        const expected = Number(finance.initial || 0) + Number(finance.income || 0) - Number(finance.expenses || 0) + this.getMidseasonTransferNet(team.id);
+        if (Number(finance.reportedFinal || 0) !== expected) errors.push(`${team.name}: el saldo financiero no cuadra ($${expected}M calculado).`);
+      }
+    });
+    const finalPlayers = [];
+    Object.values(this.midseason.draftRosters).forEach(draft => (draft.newPlayers || []).filter(p => !p.excluded).forEach(p => finalPlayers.push({ name: p.name, teamName: draft.teamName })));
+    const duplicateKeys = new Map();
+    finalPlayers.forEach(p => { const key = this.normalizePlayerKey(p.name); duplicateKeys.set(key, (duplicateKeys.get(key) || 0) + 1); });
+    const duplicates = [...duplicateKeys.entries()].filter(([, amount]) => amount > 1);
+    if (duplicates.length) errors.push(`Persisten ${duplicates.length} jugador(es) duplicado(s) entre plantillas.`);
+    return errors;
+  },
+
   detectCurrentDuplicates(showAlert = false) {
     const dups = this.findDuplicatePlayersInDb();
     const alertBox = document.getElementById('midseason-duplicate-alert');
@@ -7328,12 +7592,15 @@ const AdminApp = {
 
   initMidseasonMarketView() {
     if (!this.data || !this.data.teams) return;
+    this.ensureMidseasonAudit();
 
     // Initialize draft rosters if not yet initialized
     if (!this.midseason.draftRosters || Object.keys(this.midseason.draftRosters).length === 0) {
       this.midseason.draftRosters = {};
       this.data.teams.forEach(team => {
         const teamPlayers = this.data.players.filter(p => p.teamId === team.id);
+        const budget = (this.data.teamBudgets || {})[team.id] || team.budgetDetails || {};
+        const initial = Number(budget.presupuestoFinal ?? (team.budget ? team.budget / 1000000 : 0) ?? 0);
         this.midseason.draftRosters[team.id] = {
           teamId: team.id,
           teamName: team.name,
@@ -7343,7 +7610,8 @@ const AdminApp = {
           rawText: '',
           altas: [],
           bajas: [],
-          kept: teamPlayers.map(p => ({ ...p }))
+          kept: teamPlayers.map(p => ({ ...p })),
+          finance: { initial, income: 0, expenses: 0, reportedFinal: initial, touched: false }
         };
       });
     }
@@ -7383,6 +7651,7 @@ const AdminApp = {
 
     if (stepNum === 3) {
       this.renderActiveLoansReport();
+      this.renderLoanClauses();
     }
   },
 
@@ -7511,6 +7780,11 @@ const AdminApp = {
       }
       this.onMidseasonInputChanged();
     }
+    ['initial', 'income', 'expenses', 'reportedFinal'].forEach(field => {
+      const input = document.getElementById(`midseason-finance-${field}`);
+      if (input) input.value = draft.finance ? (draft.finance[field] || 0) : 0;
+    });
+    this.renderMidseasonFinance(draft);
 
     // Render diff card if modified
     this.renderMidseasonDiffCard(draft);
@@ -7540,8 +7814,8 @@ const AdminApp = {
 
     const ptCount = lines.filter(l => /^(PT|POR|PO|GK)[\s:\-]|[\(\[]\s*(PT|POR|PO|GK)\s*[\)\]]$/i.test(l)).length;
 
-    badge.textContent = `${lines.length} / 23 jugadores (${ptCount} PT)`;
-    if (lines.length === 23 && ptCount >= 1) {
+    badge.textContent = `${lines.length} jugadores (${ptCount} PT)`;
+    if (lines.length > 0) {
       badge.style.background = 'rgba(16, 185, 129, 0.15)';
       badge.style.borderColor = '#10b981';
       badge.style.color = '#10b981';
@@ -7564,6 +7838,7 @@ const AdminApp = {
     draft.altas = [];
     draft.bajas = [];
     draft.kept = draft.originalPlayers.map(p => ({ ...p }));
+    this.recordMidseasonEvent('roster_confirmed_unchanged', { teamId, teamName: team.name });
 
     this.renderMidseasonClubSelectors();
     this.renderCurrentMidseasonTeam();
@@ -7590,11 +7865,17 @@ const AdminApp = {
     lines.forEach(line => {
       let pos = 'MC';
       let name = line;
+      let parserAmbiguous = false;
 
       const mStart = line.match(posStartRegex);
       if (mStart) {
-        pos = this.normalizePosition(mStart[1]);
-        name = mStart[2].trim();
+        const proposedName = mStart[2].trim();
+        // No recortar nombres como "MI Kel…": un prefijo sólo es posición si deja
+        // un nombre claramente utilizable (varias palabras o al menos cinco letras).
+        if (proposedName.split(/\s+/).length > 1 || proposedName.length >= 5) {
+          pos = this.normalizePosition(mStart[1]);
+          name = proposedName;
+        } else parserAmbiguous = true;
       } else {
         const mEnd = line.match(posEndRegex);
         if (mEnd) {
@@ -7605,11 +7886,144 @@ const AdminApp = {
 
       name = name.replace(/^[\s\-\*\•\d\.\)]+/, '').trim();
       if (name) {
-        parsed.push({ name, position: pos });
+        const isLoaned = this.isLoanMarker(name);
+        parsed.push({ rawLine: line, name: this.stripLoanMarker(name), position: pos, isLoaned, parserSuspicious: name.length < 4, parserAmbiguous });
       }
     });
 
     return parsed;
+  },
+
+  getGlobalExactCandidates(name) {
+    const key = this.normalizePlayerKey(name);
+    return (this.data.players || []).filter(player => this.normalizePlayerKey(player.name) === key);
+  },
+
+  caseKeyForEntry(entry, candidates) {
+    return candidates.length === 1 ? `player:${candidates[0].id}` : `name:${this.normalizePlayerKey(entry.name)}`;
+  },
+
+  buildMarketCases() {
+    const cases = new Map();
+    const referencedPlayers = new Set();
+    (this.data.teams || []).forEach(team => {
+      const draft = this.midseason.draftRosters[team.id];
+      (draft && draft.newPlayers || []).filter(player => !player.excluded).forEach(entry => {
+        const exact = this.getGlobalExactCandidates(entry.name);
+        const key = this.caseKeyForEntry(entry, exact);
+        let record = cases.get(key);
+        if (!record) {
+          const player = exact.length === 1 ? exact[0] : null;
+          record = {
+            id: `case_${key.replace(/[^a-zA-Z0-9:_-]/g, '_')}`,
+            key, rawLines: [], name: entry.name, position: entry.position, playerId: player ? player.id : null,
+            candidate: player || null, confidence: player ? 'exacta' : (exact.length > 1 ? 'múltiple' : 'sin coincidencia'),
+            evidence: player ? 'Nombre normalizado único en toda la liga.' : (exact.length > 1 ? 'Hay más de una identidad con el mismo nombre.' : 'No existe una identidad exacta.'),
+            previousTeamId: player ? player.teamId : null, ownerTeamId: player ? this.getPlayerOwnerTeamId(player) : '',
+            destinationTeamIds: [], occurrences: [], classification: 'alta_libre', pending: [], loanClause: null, decisions: []
+          };
+          cases.set(key, record);
+        }
+        record.rawLines.push(entry.rawLine || entry.name);
+        record.destinationTeamIds.push(team.id);
+        record.occurrences.push({ teamId: team.id, entry, draft });
+        if (record.playerId) { entry.resolvedPlayerId = record.playerId; referencedPlayers.add(record.playerId); }
+        if (entry.parserSuspicious) record.pending.push('Revisar formato: el nombre parece demasiado corto tras analizar posición.');
+        if (entry.parserAmbiguous) record.pending.push('Prefijo de posición ambiguo: se conservó la línea original sin recortar el nombre.');
+        if (exact.length > 1) record.pending.push('Identidad duplicada: selecciona el jugador correcto.');
+        if (!exact.length) {
+          const fuzzy = this.findPlayerCandidates(entry.name);
+          if (fuzzy.length) { record.confidence = 'aproximada'; record.evidence = `Candidato: ${fuzzy[0].player.name} (${Math.round(fuzzy[0].score * 100)}%).`; record.pending.push('Confirma la identidad aproximada o crea un jugador.'); }
+          else record.pending.push('Crea el jugador o marca la entrada como libre/excluida.');
+        }
+      });
+    });
+    cases.forEach(record => {
+      record.destinationTeamIds = [...new Set(record.destinationTeamIds)];
+      const destination = record.destinationTeamIds[0] || null;
+      if (record.destinationTeamIds.length > 1) record.pending.push('El jugador aparece en más de una plantilla final.');
+      const hasLoanMarker = record.occurrences.some(o => o.entry.isLoaned);
+      if (record.playerId && record.previousTeamId === destination && !hasLoanMarker) record.classification = 'permanece';
+      else if (hasLoanMarker || (record.candidate && record.candidate.isLoaned)) {
+        record.classification = 'prestamo';
+        if (!record.ownerTeamId) record.pending.push('Selecciona el club propietario del préstamo.');
+        record.loanClause = { type: 'none', amount: 0, decisionTeamId: destination, expiresSeason: '', status: 'pending', notes: '' };
+      } else if (record.playerId && record.previousTeamId !== destination) record.classification = 'traspaso';
+      else if (!record.playerId) record.classification = 'alta_libre';
+    });
+    (this.data.players || []).forEach(player => {
+      if (!player.teamId || referencedPlayers.has(player.id)) return;
+      const key = `player:${player.id}`;
+      cases.set(key, { id: `case_${player.id}`, key, rawLines: [], name: player.name, position: player.position, playerId: player.id, candidate: player, confidence: 'exacta', evidence: 'No aparece en ninguna plantilla final.', previousTeamId: player.teamId, ownerTeamId: this.getPlayerOwnerTeamId(player), destinationTeamIds: [], occurrences: [], classification: 'baja', pending: [], loanClause: null, decisions: [] });
+    });
+    return [...cases.values()];
+  },
+
+  goToCaseConciliation() {
+    this.midseason.reviewItems = []; // tickets v1 no son compatibles con el expediente único.
+    this.midseason.marketCases = this.buildMarketCases();
+    this.midseason.detectedDeals = this.midseason.marketCases.filter(c => c.classification === 'traspaso' || c.classification === 'prestamo').map(c => {
+      const destinationTeamId = c.destinationTeamIds[0];
+      const destination = this.getTeamById(destinationTeamId);
+      const previous = this.getTeamById(c.previousTeamId);
+      const owner = this.getTeamById(c.ownerTeamId);
+      return { caseId: c.id, player: c.name, playerId: c.playerId, position: c.position, type: c.classification === 'prestamo' ? 'Prestamo' : 'Fichaje', fromTeamId: c.classification === 'prestamo' ? c.ownerTeamId : c.previousTeamId, fromTeamName: (c.classification === 'prestamo' ? owner : previous || {}).name || '', currentFromTeamId: c.previousTeamId, toTeamId: destinationTeamId, toTeamName: destination ? destination.name : '', ownerTeamId: c.ownerTeamId, price: 0, seasons: 1, details: 'Expediente de mercado', originalPlayer: c.candidate, loanClause: c.loanClause };
+    });
+    this.midseason.freeAgents = this.midseason.marketCases.filter(c => c.classification === 'baja');
+    this.midseason.newExternal = this.midseason.marketCases.filter(c => c.classification === 'alta_libre');
+    this.renderConciliationStep();
+    this.setMidseasonStep(2);
+  },
+
+  updateMarketCase(id, field, value) {
+    const record = (this.midseason.marketCases || []).find(c => c.id === id);
+    if (!record) return;
+    if (field === 'playerId') {
+      const player = (this.data.players || []).find(p => p.id === value);
+      if (player) {
+        record.playerId = player.id; record.candidate = player; record.previousTeamId = player.teamId;
+        record.confidence = 'manual'; record.evidence = 'Identidad confirmada manualmente.';
+        record.pending = record.pending.filter(x => !x.includes('identidad') && !x.includes('Crea el jugador') && !x.includes('Confirma'));
+        record.occurrences.forEach(o => { o.entry.resolvedPlayerId = player.id; });
+        const destination = record.destinationTeamIds[0];
+        record.classification = record.occurrences.some(o => o.entry.isLoaned) ? 'prestamo' : (player.teamId === destination ? 'permanece' : 'traspaso');
+        if (record.classification === 'prestamo') { record.ownerTeamId = this.getPlayerOwnerTeamId(player); if (!record.ownerTeamId) record.pending.push('Selecciona el club propietario del préstamo.'); }
+      }
+    } else if (field === 'ownerTeamId') {
+      record.ownerTeamId = value; record.pending = record.pending.filter(x => !x.includes('propietario'));
+    } else if (field === 'classification') record.classification = value;
+    else if (field.startsWith('clause.')) { record.loanClause = record.loanClause || {}; record.loanClause[field.slice(7)] = value; }
+    else if (field === 'create') { record.playerId = null; record.confidence = 'nuevo'; record.occurrences.forEach(o => { o.entry.createNew = true; }); record.pending = record.pending.filter(x => !x.includes('Crea el jugador') && !x.includes('Confirma')); }
+    if ((record.classification === 'traspaso' || record.classification === 'prestamo') && record.playerId && !this.midseason.detectedDeals.some(deal => deal.caseId === id)) {
+      const destinationTeamId = record.destinationTeamIds[0];
+      const fromTeamId = record.classification === 'prestamo' ? record.ownerTeamId : record.previousTeamId;
+      const from = this.getTeamById(fromTeamId); const to = this.getTeamById(destinationTeamId);
+      this.midseason.detectedDeals.push({ caseId: id, player: record.name, playerId: record.playerId, position: record.position, type: record.classification === 'prestamo' ? 'Prestamo' : 'Fichaje', fromTeamId, fromTeamName: from ? from.name : '', currentFromTeamId: record.previousTeamId, toTeamId: destinationTeamId, toTeamName: to ? to.name : '', ownerTeamId: record.ownerTeamId, price: 0, seasons: 1, details: 'Expediente de mercado', originalPlayer: record.candidate, loanClause: record.loanClause });
+    }
+    this.midseason.detectedDeals.forEach(deal => {
+      if (deal.caseId !== id) return;
+      deal.playerId = record.playerId;
+      deal.ownerTeamId = record.ownerTeamId;
+      if (record.ownerTeamId) { const owner = this.getTeamById(record.ownerTeamId); deal.fromTeamId = record.ownerTeamId; deal.fromTeamName = owner ? owner.name : ''; }
+      deal.loanClause = record.loanClause;
+    });
+    this.midseason.freeAgents = this.midseason.marketCases.filter(c => c.classification === 'baja');
+    this.midseason.newExternal = this.midseason.marketCases.filter(c => c.classification === 'alta_libre');
+    this.renderConciliationStep();
+    this.setMidseasonStep(2);
+  },
+
+  renderMarketCases() {
+    const container = document.getElementById('midseason-review-inbox');
+    const count = document.getElementById('midseason-review-count');
+    if (!container) return;
+    const records = this.midseason.marketCases || [];
+    const shown = this.midseason.caseFilter === 'all' ? records : records.filter(c => c.pending.length);
+    if (count) count.textContent = records.filter(c => c.pending.length).length;
+    const options = (this.data.players || []).map(p => `<option value="${p.id}">${this.escape(p.name)}</option>`).join('');
+    const clubs = (this.data.teams || []).map(t => `<option value="${t.id}">${this.escape(t.name)}</option>`).join('');
+    const byClub = new Map(); shown.forEach(c => { const club = c.destinationTeamIds[0] || c.previousTeamId || 'sin_club'; if (!byClub.has(club)) byClub.set(club, []); byClub.get(club).push(c); });
+    container.innerHTML = `<div style="margin-bottom:.75rem;display:flex;gap:.5rem;align-items:center;"><button class="btn btn-secondary" onclick="AdminApp.midseason.caseFilter='pending';AdminApp.renderMarketCases()">Pendientes (${records.filter(c=>c.pending.length).length})</button><button class="btn btn-secondary" onclick="AdminApp.midseason.caseFilter='all';AdminApp.renderMarketCases()">Todos (${records.length})</button></div>` + [...byClub.entries()].map(([clubId, items]) => `<section style="margin-bottom:1rem;"><h4 style="color:#93c5fd;">${this.escape((this.getTeamById(clubId) || {}).name || 'Bajas / libres')} · ${items.length}</h4>${items.map(c => `<article style="padding:.8rem;border:1px solid ${c.pending.length ? 'rgba(245,158,11,.5)' : 'rgba(16,185,129,.35)'};border-radius:8px;margin:.5rem 0;background:rgba(15,23,42,.45);"><strong>${this.escape(c.name)}</strong> <span style="font-size:.75rem;color:#a7f3d0;">${this.escape(c.classification)} · ${this.escape(c.confidence)}</span><div style="font-size:.78rem;color:var(--text-muted);">${this.escape(c.evidence)} · línea: ${this.escape(c.rawLines[0] || '—')}</div><div style="font-size:.8rem;color:#fbbf24;">${c.pending.map(message => this.escape(message)).join(' · ') || 'Sin acción pendiente'}</div>${c.classification === 'prestamo' ? `<div style="display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.55rem;padding:.5rem;background:rgba(168,85,247,.08);border-radius:6px;"><select class="form-select" onchange="AdminApp.updateMarketCase('${c.id}','clause.type',this.value)"><option value="none" ${(c.loanClause || {}).type === 'none' ? 'selected' : ''}>Sin cláusula</option><option value="option" ${(c.loanClause || {}).type === 'option' ? 'selected' : ''}>Opción</option><option value="obligation" ${(c.loanClause || {}).type === 'obligation' ? 'selected' : ''}>Obligación</option></select><input class="form-control" style="max-width:110px;" type="number" placeholder="Importe" value="${(c.loanClause || {}).amount || 0}" onchange="AdminApp.updateMarketCase('${c.id}','clause.amount',this.value)"><input class="form-control" style="max-width:130px;" placeholder="Vencimiento" value="${this.escape((c.loanClause || {}).expiresSeason || '')}" onchange="AdminApp.updateMarketCase('${c.id}','clause.expiresSeason',this.value)"></div>` : ''}${c.pending.length ? `<div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem;"><select id="case-player-${c.id}" class="form-select"><option value="">Vincular identidad…</option>${options}</select><button class="btn btn-secondary" onclick="AdminApp.updateMarketCase('${c.id}','playerId',document.getElementById('case-player-${c.id}').value)">Vincular</button><button class="btn btn-secondary" onclick="AdminApp.updateMarketCase('${c.id}','create','1')">Crear</button>${c.classification === 'prestamo' ? `<select id="case-owner-${c.id}" class="form-select"><option value="">Propietario…</option>${clubs}</select><button class="btn btn-secondary" onclick="AdminApp.updateMarketCase('${c.id}','ownerTeamId',document.getElementById('case-owner-${c.id}').value)">Confirmar propietario</button>` : ''}</div>` : ''}</article>`).join('')}</section>`).join('');
   },
 
   analyzeCurrentClubChanges() {
@@ -7642,7 +8056,8 @@ const AdminApp = {
         kept.push({
           ...originalPlayers[oIdx],
           name: p.name,
-          position: p.position // allow position update
+          position: p.position,
+          isLoaned: p.isLoaned || Boolean(this.getPlayerOwnerTeamId(originalPlayers[oIdx]))
         });
       }
     });
@@ -7665,7 +8080,7 @@ const AdminApp = {
         }
       });
 
-      if (bestMatch && bestOIdx !== -1) {
+      if (bestMatch && bestOIdx !== -1 && bestScore >= 0.98) {
         usedOriginalIndices.add(bestOIdx);
         usedParsedIndices.add(pIdx);
         correctedNames.push({
@@ -7677,8 +8092,14 @@ const AdminApp = {
         kept.push({
           ...bestMatch,
           name: p.name, // adopt the clean new name
-          position: p.position
+          position: p.position,
+          isLoaned: p.isLoaned || Boolean(this.getPlayerOwnerTeamId(bestMatch))
         });
+      }
+      else if (bestMatch && bestOIdx !== -1) {
+        const reviewId = `review_${teamId}_${pIdx}_${Date.now()}`;
+        this.addMidseasonReviewItem({ id: reviewId, kind: 'coincidencia ambigua', entryName: p.name, teamId, teamName: team.name, reason: `Coincidencia aproximada con ${bestMatch.name} (${Math.round(bestScore * 100)}%).` });
+        p.reviewId = reviewId;
       }
     });
 
@@ -7686,6 +8107,12 @@ const AdminApp = {
     const altas = [];
     parsedList.forEach((p, pIdx) => {
       if (!usedParsedIndices.has(pIdx)) {
+        if (!p.reviewId) {
+          const candidates = this.findPlayerCandidates(p.name);
+          const reviewId = `review_${teamId}_${pIdx}_${Date.now()}`;
+          this.addMidseasonReviewItem({ id: reviewId, kind: candidates.length ? 'posible jugador existente' : 'no encontrado', entryName: p.name, teamId, teamName: team.name, reason: candidates.length ? 'Puede corresponder a un jugador existente; confirma antes de aplicar.' : 'No se encontró una coincidencia segura.' });
+          p.reviewId = reviewId;
+        }
         altas.push(p);
       }
     });
@@ -7704,6 +8131,13 @@ const AdminApp = {
     draft.kept = kept;
     draft.correctedNames = correctedNames;
     draft.newPlayers = [...kept, ...altas];
+    draft.newPlayers.forEach(player => {
+      if (!player.isLoaned) return;
+      player.ownerTeamId = player.ownerTeamId || this.getPlayerOwnerTeamId(player);
+      if (!player.ownerTeamId) {
+        this.addMidseasonReviewItem({ kind: 'propietario de préstamo desconocido', entryName: player.name, teamId, teamName: team.name, reason: 'La marca (P) requiere confirmar el club propietario.' });
+      }
+    });
 
     this.renderMidseasonDiffCard(draft, true);
 
@@ -7841,19 +8275,10 @@ const AdminApp = {
   promptManualLinkBaja(teamId, bajaIdx) {
     const draft = this.midseason.draftRosters[teamId];
     if (!draft || !draft.bajas[bajaIdx] || draft.altas.length === 0) return;
-
     const baja = draft.bajas[bajaIdx];
-    const altaOptions = draft.altas.map((a, idx) => `${idx + 1}. [${a.position}] ${a.name}`).join('\n');
-    const input = prompt(`Vincular a "${baja.name}" con una de las nuevas altas de la plantilla:\n\n${altaOptions}\n\nIngresa el número correspondiente:`);
-    if (!input) return;
-
-    const chosenIdx = parseInt(input.trim(), 10) - 1;
-    if (isNaN(chosenIdx) || chosenIdx < 0 || chosenIdx >= draft.altas.length) {
-      this.showToast('Opción inválida.', 'error');
-      return;
-    }
-
-    this.linkBajaToAltaManually(teamId, bajaIdx, chosenIdx);
+    this.addMidseasonReviewItem({ kind: 'vinculación manual requerida', entryName: baja.name, teamId, teamName: draft.teamName, reason: 'Elige el jugador correcto desde la bandeja de revisión; no se usa una selección por texto.' });
+    this.goToConciliationStep();
+    this.showToast('La vinculación se movió a la bandeja de revisión.', 'info');
   },
 
   linkBajaToAltaManually(teamId, bajaIdx, altaIdx) {
@@ -7886,14 +8311,9 @@ const AdminApp = {
     const draft = this.analyzeCurrentClubChanges();
     if (!draft) return;
 
-    const totalCount = draft.kept.length + draft.altas.length;
-    if (totalCount !== 23) {
-      if (!confirm(`⚠️ Advertencia: La plantilla contiene ${totalCount} jugadores (se esperan exactamente 23 en la LMI).\n¿Deseas guardarla en el borrador de todas formas?`)) {
-        return;
-      }
-    }
-
     draft.status = 'modified';
+    draft.finance = draft.finance || { initial: 0, income: 0, expenses: 0, reportedFinal: 0, touched: false };
+    this.recordMidseasonEvent('roster_submitted', { teamId: draft.teamId, teamName: draft.teamName, rawText: draft.rawText, finance: { ...draft.finance } });
     this.renderMidseasonClubSelectors();
     this.renderCurrentMidseasonTeam();
     this.showToast(`Plantilla de "${draft.teamName}" guardada en el borrador (+${draft.altas.length} / -${draft.bajas.length}).`, 'success');
@@ -7915,6 +8335,8 @@ const AdminApp = {
   },
 
   goToConciliationStep() {
+    return this.goToCaseConciliation();
+    /* Flujo v1 conservado temporalmente abajo para compatibilidad de lectura. */
     // Collect all bajas across all clubs
     const allBajas = [];
     const allAltas = [];
@@ -7997,32 +8419,29 @@ const AdminApp = {
     const usedBajaIndices = new Set();
     const usedAltaIndices = new Set();
 
+    // Una marca (P) puede llegar sin que el club propietario lo liste en este corte.
+    // Se busca la identidad existente y se prepara una cesión; nunca se clasifica como libre automáticamente.
+    allAltas.forEach((alta, aIdx) => {
+      if (!alta.isLoaned) return;
+      const player = (this.data.players || []).find(p => this.normalizePlayerKey(p.name) === alta.key);
+      if (!player || player.teamId === alta.toTeamId) return;
+      const currentTeam = this.getTeamById(player.teamId);
+      detectedDeals.push(this.buildMidseasonDeal(alta, {
+        ...player, fromTeamId: player.teamId, fromTeamName: currentTeam ? currentTeam.name : '', position: player.position
+      }, 'Cesión indicada con (P) en la plantilla final'));
+      usedAltaIndices.add(aIdx);
+    });
+
     // Pass 1: exact normalized match
     allAltas.forEach((alta, aIdx) => {
+      if (usedAltaIndices.has(aIdx)) return;
       const bIdx = allBajas.findIndex((baja, idx) => !usedBajaIndices.has(idx) && baja.key === alta.key);
       if (bIdx !== -1) {
         const baja = allBajas[bIdx];
         usedBajaIndices.add(bIdx);
         usedAltaIndices.add(aIdx);
 
-        const prevLoan = (this.data.marketMovements || []).find(m => 
-          this.arePlayersEquivalent(m.player, alta.name).match && 
-          (m.type || '').toLowerCase().includes('prestamo')
-        );
-
-        detectedDeals.push({
-          player: alta.name,
-          position: alta.position || baja.position || 'MC',
-          fromTeamId: baja.fromTeamId,
-          fromTeamName: baja.fromTeamName,
-          toTeamId: alta.toTeamId,
-          toTeamName: alta.toTeamName,
-          type: prevLoan ? 'Prestamo' : 'Fichaje',
-          seasons: prevLoan ? (prevLoan.seasons || 1) : 1,
-          price: 0,
-          details: 'Movimiento de mercado de mitad de temporada',
-          originalPlayer: baja
-        });
+        detectedDeals.push(this.buildMidseasonDeal(alta, baja, 'Movimiento de mercado de mitad de temporada'));
       }
     });
 
@@ -8041,28 +8460,16 @@ const AdminApp = {
         }
       });
 
-      if (bestBIdx !== -1) {
+      if (bestBIdx !== -1 && bestScore >= 0.98) {
         const baja = allBajas[bestBIdx];
         usedBajaIndices.add(bestBIdx);
         usedAltaIndices.add(aIdx);
 
-        const prevLoan = (this.data.marketMovements || []).find(m => 
-          this.arePlayersEquivalent(m.player, alta.name).match && 
-          (m.type || '').toLowerCase().includes('prestamo')
-        );
-
-        detectedDeals.push({
-          player: alta.name,
-          position: alta.position || baja.position || 'MC',
-          fromTeamId: baja.fromTeamId,
-          fromTeamName: baja.fromTeamName,
-          toTeamId: alta.toTeamId,
-          toTeamName: alta.toTeamName,
-          type: prevLoan ? 'Prestamo' : 'Fichaje',
-          seasons: prevLoan ? (prevLoan.seasons || 1) : 1,
-          price: 0,
-          details: baja.name !== alta.name ? `Traspaso (nombre unificado: "${baja.name}" ➔ "${alta.name}")` : 'Movimiento de mercado de mitad de temporada',
-          originalPlayer: baja
+        detectedDeals.push(this.buildMidseasonDeal(alta, baja, baja.name !== alta.name ? `Movimiento (nombre unificado: "${baja.name}" ➔ "${alta.name}")` : 'Movimiento de mercado de mitad de temporada'));
+      } else if (bestBIdx !== -1) {
+        this.addMidseasonReviewItem({
+          kind: 'traspaso ambiguo', entryName: alta.name, teamId: alta.toTeamId, teamName: alta.toTeamName,
+          reason: `Posible salida de ${allBajas[bestBIdx].fromTeamName}; confirma la identidad antes de crear el movimiento.`
         });
       }
     });
@@ -8075,10 +8482,20 @@ const AdminApp = {
     this.midseason.newExternal = newExternal;
 
     this.renderConciliationStep();
+    this.renderReviewInbox();
     this.setMidseasonStep(2);
   },
 
   renderConciliationStep() {
+    if (this.midseason.marketCases && this.midseason.marketCases.length) {
+      this.renderMarketCases();
+      ['midseason-deals-container', 'midseason-free-agents-container', 'midseason-new-external-container'].forEach(id => {
+        const element = document.getElementById(id);
+        const card = element && element.closest('.card');
+        if (card) card.style.display = 'none';
+      });
+      return;
+    }
     const deals = this.midseason.detectedDeals || [];
     const free = this.midseason.freeAgents || [];
     const external = this.midseason.newExternal || [];
@@ -8140,6 +8557,14 @@ const AdminApp = {
                 <input type="text" value="${this.escape(d.details || '')}" placeholder="Opcional..." class="form-control" style="font-size: 0.85rem; padding: 0.35rem 0.6rem;" onchange="AdminApp.updateMidseasonDeal(${idx}, 'details', this.value)">
               </div>
             </div>
+            ${d.type === 'Prestamo' ? `<div class="grid-4" style="gap:.75rem;margin-top:.75rem;align-items:flex-end;background:rgba(168,85,247,.06);padding:.65rem;border-radius:7px;">
+              <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Club propietario</label><select class="form-select" onchange="AdminApp.updateMidseasonDeal(${idx},'ownerTeamId',this.value)"><option value="">Seleccionar propietario…</option>${(this.data.teams || []).map(t => `<option value="${t.id}" ${d.ownerTeamId === t.id ? 'selected' : ''}>${this.escape(t.name)}</option>`).join('')}</select></div>
+              <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Cláusula</label><select class="form-select" onchange="AdminApp.updateMidseasonLoanClause(${idx},'type',this.value)"><option value="none" ${(d.loanClause || {}).type === 'none' ? 'selected' : ''}>Sin cláusula</option><option value="option" ${(d.loanClause || {}).type === 'option' ? 'selected' : ''}>Opción de compra</option><option value="obligation" ${(d.loanClause || {}).type === 'obligation' ? 'selected' : ''}>Obligación de compra</option></select></div>
+              <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Importe cláusula</label><input type="number" value="${(d.loanClause || {}).amount || 0}" class="form-control" onchange="AdminApp.updateMidseasonLoanClause(${idx},'amount',this.value)"></div>
+              <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Vence en temporada</label><input type="text" value="${this.escape((d.loanClause || {}).expiresSeason || '')}" class="form-control" onchange="AdminApp.updateMidseasonLoanClause(${idx},'expiresSeason',this.value)"></div>
+              <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Decide</label><select class="form-select" onchange="AdminApp.updateMidseasonLoanClause(${idx},'decisionTeamId',this.value)">${(this.data.teams || []).map(t => `<option value="${t.id}" ${(d.loanClause || {}).decisionTeamId === t.id ? 'selected' : ''}>${this.escape(t.name)}</option>`).join('')}</select></div>
+              <div class="form-group" style="margin:0;grid-column:span 3;"><label style="font-size:.78rem;">Notas de cláusula</label><input type="text" value="${this.escape((d.loanClause || {}).notes || '')}" class="form-control" onchange="AdminApp.updateMidseasonLoanClause(${idx},'notes',this.value)"></div>
+            </div>` : ''}
           </div>
         `).join('');
       }
@@ -8181,10 +8606,32 @@ const AdminApp = {
   updateMidseasonDeal(idx, field, value) {
     if (!this.midseason.detectedDeals || !this.midseason.detectedDeals[idx]) return;
     this.midseason.detectedDeals[idx][field] = value;
+    if (field === 'ownerTeamId') {
+      const owner = this.getTeamById(value);
+      this.midseason.detectedDeals[idx].fromTeamId = value;
+      this.midseason.detectedDeals[idx].fromTeamName = owner ? owner.name : '';
+    }
+    const current = this.midseason.draftRosters[this.midseason.currentTeamId];
+    if (current) this.renderMidseasonFinance(current);
+    this.recordMidseasonEvent('deal_updated', { index: idx, field, value });
+  },
+
+  updateMidseasonLoanClause(idx, field, value) {
+    const deal = (this.midseason.detectedDeals || [])[idx];
+    if (!deal) return;
+    deal.loanClause = deal.loanClause || { type: 'none', amount: 0, decisionTeamId: deal.toTeamId, expiresSeason: '', status: 'pending', notes: '' };
+    deal.loanClause[field] = field === 'amount' ? (Number(value) || 0) : value;
+    this.recordMidseasonEvent('loan_clause_drafted', { index: idx, field, value });
   },
 
   async applyAllMidseasonMarket() {
-    if (!confirm('⚠️ ¿Confirmas aplicar todos los cambios del Mercado de Mitad de Temporada a la base de datos?\n\n• Se actualizarán las plantillas de todos los clubes a 23 jugadores exactos.\n• Se preservarán los goles y asistencias de los jugadores traspasados.\n• Se purgarán los duplicados.\n• Se guardará una copia de respaldo automática.')) {
+    const validationErrors = this.validateMidseasonMarket();
+    if (validationErrors.length) {
+      this.renderConciliationStep();
+      this.showToast(`No se puede aplicar el mercado: ${validationErrors[0]}`, 'error');
+      return;
+    }
+    if (!confirm('⚠️ ¿Confirmas aplicar todos los cambios del Mercado de Mitad de Temporada a la base de datos?\n\n• Se actualizarán las plantillas confirmadas.\n• Se preservarán los goles y asistencias de los jugadores traspasados.\n• Se bloquearon los duplicados y casos pendientes.\n• Se guardará auditoría local del corte.')) {
       return;
     }
 
@@ -8214,7 +8661,7 @@ const AdminApp = {
         ? draft.newPlayers
         : this.data.players.filter(p => p.teamId === team.id);
 
-      playersList.forEach(item => {
+      playersList.filter(item => !item.excluded).forEach(item => {
         // Priority 1: Direct match by existing Player ID
         let original = null;
         if (item.id && masterPlayersById[item.id]) {
@@ -8224,13 +8671,13 @@ const AdminApp = {
         }
 
         // Priority 2: Direct match by normalized name
-        if (!original) {
+        if (!original && !item.createNew) {
           const k = this.normalizePlayerKey(item.name);
           original = masterPlayersMap[k];
         }
 
         // Priority 3: Match from conciliated deals (transferred players)
-        if (!original && deals.length > 0) {
+        if (!original && !item.createNew && deals.length > 0) {
           const deal = deals.find(d => this.arePlayersEquivalent(d.player, item.name).match);
           if (deal && deal.originalPlayer) {
             original = deal.originalPlayer;
@@ -8238,7 +8685,7 @@ const AdminApp = {
         }
 
         // Priority 4: Fuzzy matching across all historical players
-        if (!original) {
+        if (!original && !item.createNew) {
           for (const p of (this.data.players || [])) {
             if (this.arePlayersEquivalent(p.name, item.name).match) {
               original = p;
@@ -8253,7 +8700,10 @@ const AdminApp = {
             ...original,
             name: item.name,
             position: item.position || original.position || 'MC',
-            teamId: team.id
+            teamId: team.id,
+            ownerTeamId: item.ownerTeamId || original.ownerTeamId || this.getPlayerOwnerTeamId(original) || (item.isLoaned ? '' : team.id),
+            isLoaned: Boolean(item.isLoaned || original.isLoaned),
+            loanedToTeamId: item.isLoaned ? team.id : (original.loanedToTeamId || null)
           });
         } else {
           // Brand new external player entering the league
@@ -8262,6 +8712,9 @@ const AdminApp = {
             name: item.name,
             position: item.position || 'MC',
             teamId: team.id,
+            ownerTeamId: item.ownerTeamId || (item.isLoaned ? '' : team.id),
+            isLoaned: Boolean(item.isLoaned),
+            loanedToTeamId: item.isLoaned ? team.id : null,
             goals: 0,
             assists: 0,
             goals_liga: 0,
@@ -8277,8 +8730,26 @@ const AdminApp = {
       });
     });
 
+    newGlobalPlayers.forEach(player => { if (!player.ownerTeamId && !player.isLoaned) player.ownerTeamId = player.teamId; });
+
     // Replace players array in data
     this.data.players = newGlobalPlayers;
+
+    // La pertenencia actual (teamId) y la propiedad (ownerTeamId) son independientes.
+    deals.forEach(deal => {
+      const player = this.data.players.find(p => p.id === deal.playerId || this.normalizePlayerKey(p.name) === this.normalizePlayerKey(deal.player));
+      if (!player) return;
+      if (deal.type === 'Prestamo') {
+        player.ownerTeamId = deal.ownerTeamId;
+        player.loanedToTeamId = deal.toTeamId;
+        player.isLoaned = true;
+        this.createLoanContract(deal, player);
+      } else if (deal.type === 'Fichaje' || deal.type === 'Intercambio') {
+        player.ownerTeamId = deal.toTeamId;
+        player.loanedToTeamId = null;
+        player.isLoaned = false;
+      }
+    });
 
     // 3. Register movements in data.marketMovements
     if (!this.data.marketMovements) {
@@ -8291,13 +8762,32 @@ const AdminApp = {
         type: d.type || 'Fichaje',
         fromTeamId: d.fromTeamId,
         fromTeamName: d.fromTeamName,
+        ownerTeamId: d.ownerTeamId || (d.type === 'Prestamo' ? d.fromTeamId : d.toTeamId),
+        currentFromTeamId: d.currentFromTeamId || d.fromTeamId,
         toTeamId: d.toTeamId,
         toTeamName: d.toTeamName,
         price: d.price || 0,
         seasons: d.seasons || 1,
-        details: d.details || 'Mercado de mitad de temporada'
+        details: d.details || 'Mercado de mitad de temporada',
+        loanContractId: d.loanContractId || null,
+        loanClause: d.loanClause || null
       });
     });
+
+    // El saldo final del corte sustituye el presupuesto visible solo después de pasar todas las validaciones.
+    this.data.teams.forEach(team => {
+      const finance = this.midseason.draftRosters[team.id].finance;
+      if (!this.data.teamBudgets) this.data.teamBudgets = {};
+      const budget = this.data.teamBudgets[team.id] || { teamId: team.id, excelName: team.name };
+      budget.presupuestoFinal = Number(finance.reportedFinal || 0);
+      budget.midseasonBreakdown = { ...finance, transferNet: this.getMidseasonTransferNet(team.id) };
+      this.data.teamBudgets[team.id] = budget;
+      team.budget = budget.presupuestoFinal * 1000000;
+    });
+    const audit = this.ensureMidseasonAudit();
+    audit.cuts.push(...this.data.teams.map(team => ({ teamId: team.id, teamName: team.name, at: new Date().toISOString(), roster: (this.midseason.draftRosters[team.id].newPlayers || []).filter(p => !p.excluded).map(p => ({ id: p.id || null, name: p.name, position: p.position })), finance: { ...this.midseason.draftRosters[team.id].finance } })));
+    audit.applications.push({ id: `apply_${Date.now()}`, at: new Date().toISOString(), movements: deals.map(d => ({ ...d })), cases: (this.midseason.marketCases || []).map(c => ({ id: c.id, playerId: c.playerId, name: c.name, classification: c.classification, pending: c.pending, ownerTeamId: c.ownerTeamId, destinationTeamIds: c.destinationTeamIds })), status: 'applied' });
+    this.recordMidseasonEvent('market_applied', { deals: deals.length });
 
     // 4. Save to data.js
     await this.saveData(true);
@@ -8326,9 +8816,13 @@ const AdminApp = {
     const tbody = document.getElementById('midseason-loans-tbody');
     if (!tbody || !this.data || !this.data.marketMovements) return;
 
-    // Find all loan movements
-    const movements = this.data.marketMovements || [];
-    const loanMovements = movements.filter(m => (m.type || '').toLowerCase().includes('prestamo'));
+    // Los contratos son la fuente preferida: un historial de movimientos no implica que la cesión siga activa.
+    const contracts = this.ensureLoanState().filter(c => c.status === 'pending' || c.status === 'active');
+    const loanMovements = contracts.length ? contracts.map(c => ({
+      player: c.player, playerId: c.playerId, fromTeamId: c.ownerTeamId, fromTeamName: c.ownerTeamName,
+      toTeamId: c.currentTeamId, toTeamName: c.currentTeamName, seasons: c.seasons,
+      details: c.notes, status: c.status, clauseType: c.clauseType, expiresSeason: c.expiresSeason
+    })) : (this.data.marketMovements || []).filter(m => (m.type || '').toLowerCase().includes('prestamo'));
 
     // Check which player is currently active in the destination team
     const playersMap = {};

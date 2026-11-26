@@ -9864,11 +9864,11 @@ var INITIAL_LMI_DATA = {
       "name": "Adriano",
       "position": "DC",
       "teamId": "ajaxdeamsterdam",
-      "goals": 19,
+      "goals": 20,
       "assists": 2,
       "goals_liga": 12,
       "assists_liga": 2,
-      "goals_champions": 2,
+      "goals_champions": 3,
       "assists_champions": 0,
       "goals_estelar": 5,
       "assists_estelar": 0,
@@ -9878,11 +9878,11 @@ var INITIAL_LMI_DATA = {
         "ajaxdeamsterdam": {
           "teamId": "ajaxdeamsterdam",
           "teamName": "Ajax de Ámsterdam",
-          "goals": 19,
+          "goals": 20,
           "assists": 2,
           "goals_liga": 12,
           "assists_liga": 2,
-          "goals_champions": 2,
+          "goals_champions": 3,
           "assists_champions": 0,
           "goals_estelar": 5,
           "assists_estelar": 0
@@ -13205,11 +13205,11 @@ var INITIAL_LMI_DATA = {
       "name": "Kenan Yıldız",
       "position": "II",
       "teamId": "como1907",
-      "goals": 2,
+      "goals": 3,
       "assists": 2,
       "goals_liga": 1,
       "assists_liga": 1,
-      "goals_champions": 0,
+      "goals_champions": 1,
       "assists_champions": 1,
       "goals_estelar": 1,
       "assists_estelar": 0,
@@ -13219,11 +13219,11 @@ var INITIAL_LMI_DATA = {
         "como1907": {
           "teamId": "como1907",
           "teamName": "Como 1907",
-          "goals": 2,
+          "goals": 3,
           "assists": 2,
           "goals_liga": 1,
           "assists_liga": 1,
-          "goals_champions": 0,
+          "goals_champions": 1,
           "assists_champions": 1,
           "goals_estelar": 1,
           "assists_estelar": 0
@@ -13235,11 +13235,11 @@ var INITIAL_LMI_DATA = {
       "name": "Bukayo Saka",
       "position": "ID",
       "teamId": "como1907",
-      "goals": 6,
+      "goals": 9,
       "assists": 2,
       "goals_liga": 5,
       "assists_liga": 1,
-      "goals_champions": 1,
+      "goals_champions": 4,
       "assists_champions": 1,
       "goals_estelar": 0,
       "assists_estelar": 0,
@@ -13249,11 +13249,11 @@ var INITIAL_LMI_DATA = {
         "como1907": {
           "teamId": "como1907",
           "teamName": "Como 1907",
-          "goals": 6,
+          "goals": 9,
           "assists": 2,
           "goals_liga": 5,
           "assists_liga": 1,
-          "goals_champions": 1,
+          "goals_champions": 4,
           "assists_champions": 1,
           "goals_estelar": 0,
           "assists_estelar": 0
@@ -15146,18 +15146,54 @@ var INITIAL_LMI_DATA = {
     {
       "fase": "Octavos 2 (Ida)",
       "team1": "Como 1907",
-      "score1": "",
+      "score1": "3",
       "team2": "Ajax de Ámsterdam",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1794028919267_9",
+          "playerName": "Kenan Yıldız",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794028919267_10",
+          "playerName": "Bukayo Saka",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 2
+        }
+      ],
+      "winner": "Como 1907"
     },
     {
       "fase": "Octavos 2 (Vuelta)",
       "team1": "Ajax de Ámsterdam",
-      "score1": "",
+      "score1": "1",
       "team2": "Como 1907",
-      "score2": "",
-      "estado": "Pendiente"
+      "score2": "1",
+      "estado": "Finalizado",
+      "annulled": false,
+      "events": [
+        {
+          "playerId": "p_1794028919267_10",
+          "playerName": "Bukayo Saka",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "winner": "Como 1907"
     },
     {
       "fase": "Octavos 3 (Ida)",
@@ -15822,13 +15858,13 @@ var INITIAL_LMI_DATA = {
       "fase": "Cuartos 1 (Ida)",
       "team1": "FC Barcelona",
       "score1": "",
-      "team2": "Ganador Octavos 2",
+      "team2": "Como 1907",
       "score2": "",
       "estado": "Pendiente"
     },
     {
       "fase": "Cuartos 1 (Vuelta)",
-      "team1": "Ganador Octavos 2",
+      "team1": "Como 1907",
       "score1": "",
       "team2": "FC Barcelona",
       "score2": "",
@@ -26500,6 +26536,76 @@ var INITIAL_LMI_DATA = {
     ]
   },
   "matchHistory": [
+    {
+      "id": "match_1795665446348",
+      "timestamp": 1795665446348,
+      "date": "25 nov 2026, 09:57 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 2 (Vuelta)",
+      "team1Id": "ajaxdeamsterdam",
+      "team1Name": "Ajax de Ámsterdam",
+      "team1Logo": "Logos Equipos/ajax.png",
+      "score1": 1,
+      "team2Id": "como1907",
+      "team2Name": "Como 1907",
+      "team2Logo": "Logos Equipos/como.webp",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794028919267_10",
+          "playerName": "Bukayo Saka",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794017654825_11",
+          "playerName": "Adriano",
+          "teamId": "ajaxdeamsterdam",
+          "type": "gol",
+          "count": 1
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-26T03:57:26.348Z"
+    },
+    {
+      "id": "match_1795665416811",
+      "timestamp": 1795665416811,
+      "date": "25 nov 2026, 09:56 p.m.",
+      "competition": "champions_ko",
+      "jornada": null,
+      "fixtureMatchId": null,
+      "phase": "Octavos 2 (Ida)",
+      "team1Id": "como1907",
+      "team1Name": "Como 1907",
+      "team1Logo": "Logos Equipos/como.webp",
+      "score1": 3,
+      "team2Id": "ajaxdeamsterdam",
+      "team2Name": "Ajax de Ámsterdam",
+      "team2Logo": "Logos Equipos/ajax.png",
+      "score2": 1,
+      "events": [
+        {
+          "playerId": "p_1794028919267_9",
+          "playerName": "Kenan Yıldız",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 1
+        },
+        {
+          "playerId": "p_1794028919267_10",
+          "playerName": "Bukayo Saka",
+          "teamId": "como1907",
+          "type": "gol",
+          "count": 2
+        }
+      ],
+      "registeredBy": "Administrador Principal",
+      "registeredAt": "2026-11-26T03:56:56.812Z"
+    },
     {
       "id": "match_1795496007481",
       "timestamp": 1795496007481,
@@ -38464,7 +38570,8 @@ var INITIAL_LMI_DATA = {
     "directQualifiers": 12,
     "bestThirdsCount": 4,
     "targetKoSize": 16
-  }
+  },
+  "loanContracts": []
 };
 
 if (typeof window !== 'undefined') {
